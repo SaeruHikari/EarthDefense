@@ -1,0 +1,484 @@
+{
+	"failures": [],
+	"runs": [
+		{
+			"actions": {
+				"emp": 4
+			},
+			"defense_stage": 0,
+			"earth_hp": 96.3053652573384,
+			"first_clear_seconds": -1.0,
+			"first_clear_wave": -1.0,
+			"first_perk_wave": 3,
+			"frontier": {
+				"alive": 0,
+				"cohort_id": "",
+				"pending": 0,
+				"radius": 0.0,
+				"sortie": 0,
+				"stage": 0
+			},
+			"laser": false,
+			"missile": true,
+			"purchases": [
+				{
+					"id": "K_S01",
+					"science": 72.3,
+					"time": 2.0,
+					"wave": 1
+				},
+				{
+					"id": "I_S03",
+					"science": 62.5,
+					"time": 3.1,
+					"wave": 1
+				},
+				{
+					"id": "D_S01",
+					"science": 54.6,
+					"time": 4.1,
+					"wave": 1
+				},
+				{
+					"id": "K_S02",
+					"science": 46.8,
+					"time": 5.1,
+					"wave": 1
+				},
+				{
+					"id": "D_S02",
+					"science": 39.0,
+					"time": 6.2,
+					"wave": 1
+				},
+				{
+					"id": "I_S01",
+					"science": 33.1,
+					"time": 7.2,
+					"wave": 1
+				},
+				{
+					"id": "I_S02",
+					"science": 25.3,
+					"time": 8.2,
+					"wave": 1
+				},
+				{
+					"id": "I_S04",
+					"science": 19.5,
+					"time": 9.3,
+					"wave": 1
+				},
+				{
+					"id": "I_S05",
+					"science": 7.7,
+					"time": 10.3,
+					"wave": 1
+				},
+				{
+					"id": "C_S01",
+					"science": 1.8,
+					"time": 11.3,
+					"wave": 1
+				},
+				{
+					"id": "C_S02",
+					"science": 0.3,
+					"time": 14.4,
+					"wave": 1
+				},
+				{
+					"id": "D_S03",
+					"science": 1.0,
+					"time": 18.5,
+					"wave": 1
+				},
+				{
+					"id": "C_N1",
+					"science": 1.3,
+					"time": 68.7,
+					"wave": 2
+				},
+				{
+					"id": "D_N1",
+					"science": 0.4,
+					"time": 113.1,
+					"wave": 3
+				},
+				{
+					"id": "K_A1",
+					"science": 35.4,
+					"time": 119.3,
+					"wave": 3
+				},
+				{
+					"id": "D_A1",
+					"science": 17.8,
+					"time": 120.3,
+					"wave": 3
+				},
+				{
+					"id": "C_A1",
+					"science": 0.1,
+					"time": 121.4,
+					"wave": 3
+				},
+				{
+					"id": "M_N1",
+					"science": 1.6,
+					"time": 150.3,
+					"wave": 4
+				},
+				{
+					"id": "M_S01",
+					"science": 8.7,
+					"time": 153.4,
+					"wave": 4
+				},
+				{
+					"id": "M_S02",
+					"science": 5.0,
+					"time": 154.4,
+					"wave": 4
+				},
+				{
+					"id": "I_N1",
+					"science": 0.9,
+					"time": 184.4,
+					"wave": 5
+				},
+				{
+					"id": "M_A1",
+					"science": 71.4,
+					"time": 200.9,
+					"wave": 5
+				},
+				{
+					"id": "I_A1",
+					"science": 57.7,
+					"time": 202.0,
+					"wave": 5
+				}
+			],
+			"seconds": 224.99999999999,
+			"seed": 11,
+			"wave": 6
+		},
+		{
+			"actions": {
+				"emp": 4,
+				"repairs": 1
+			},
+			"defense_stage": 0,
+			"earth_hp": 94.6688752389383,
+			"first_clear_seconds": -1.0,
+			"first_clear_wave": -1.0,
+			"first_perk_wave": 3,
+			"frontier": {
+				"alive": 0,
+				"cohort_id": "",
+				"pending": 0,
+				"radius": 0.0,
+				"sortie": 0,
+				"stage": 0
+			},
+			"laser": false,
+			"missile": true,
+			"purchases": [
+				{
+					"id": "K_S01",
+					"science": 72.3,
+					"time": 2.0,
+					"wave": 1
+				},
+				{
+					"id": "I_S03",
+					"science": 62.5,
+					"time": 3.1,
+					"wave": 1
+				},
+				{
+					"id": "D_S01",
+					"science": 54.6,
+					"time": 4.1,
+					"wave": 1
+				},
+				{
+					"id": "K_S02",
+					"science": 46.8,
+					"time": 5.1,
+					"wave": 1
+				},
+				{
+					"id": "D_S02",
+					"science": 39.0,
+					"time": 6.2,
+					"wave": 1
+				},
+				{
+					"id": "I_S01",
+					"science": 33.1,
+					"time": 7.2,
+					"wave": 1
+				},
+				{
+					"id": "I_S02",
+					"science": 27.3,
+					"time": 8.2,
+					"wave": 1
+				},
+				{
+					"id": "I_S04",
+					"science": 17.5,
+					"time": 9.3,
+					"wave": 1
+				},
+				{
+					"id": "I_S05",
+					"science": 5.7,
+					"time": 10.3,
+					"wave": 1
+				},
+				{
+					"id": "C_S01",
+					"science": 4.0,
+					"time": 12.4,
+					"wave": 1
+				},
+				{
+					"id": "C_S02",
+					"science": 0.7,
+					"time": 16.5,
+					"wave": 1
+				},
+				{
+					"id": "D_S03",
+					"science": 1.0,
+					"time": 18.5,
+					"wave": 1
+				},
+				{
+					"id": "C_N1",
+					"science": 1.6,
+					"time": 70.7,
+					"wave": 2
+				},
+				{
+					"id": "D_N1",
+					"science": 0.0,
+					"time": 112.1,
+					"wave": 3
+				},
+				{
+					"id": "K_A1",
+					"science": 47.5,
+					"time": 131.7,
+					"wave": 3
+				},
+				{
+					"id": "D_A1",
+					"science": 31.8,
+					"time": 132.7,
+					"wave": 3
+				},
+				{
+					"id": "C_A1",
+					"science": 14.2,
+					"time": 133.8,
+					"wave": 3
+				},
+				{
+					"id": "M_N1",
+					"science": 4.3,
+					"time": 152.4,
+					"wave": 4
+				},
+				{
+					"id": "M_S01",
+					"science": 13.3,
+					"time": 155.5,
+					"wave": 4
+				},
+				{
+					"id": "M_S02",
+					"science": 7.7,
+					"time": 156.5,
+					"wave": 4
+				},
+				{
+					"id": "I_N1",
+					"science": 3.6,
+					"time": 186.5,
+					"wave": 5
+				},
+				{
+					"id": "M_A1",
+					"science": 78.0,
+					"time": 203.0,
+					"wave": 5
+				},
+				{
+					"id": "I_A1",
+					"science": 62.4,
+					"time": 204.0,
+					"wave": 5
+				}
+			],
+			"seconds": 224.99999999999,
+			"seed": 9918,
+			"wave": 6
+		},
+		{
+			"actions": {
+				"emp": 4,
+				"repairs": 3
+			},
+			"defense_stage": 0,
+			"earth_hp": 95.6852482564003,
+			"first_clear_seconds": -1.0,
+			"first_clear_wave": -1.0,
+			"first_perk_wave": 5,
+			"frontier": {
+				"alive": 0,
+				"cohort_id": "",
+				"pending": 0,
+				"radius": 0.0,
+				"sortie": 0,
+				"stage": 0
+			},
+			"laser": false,
+			"missile": true,
+			"purchases": [
+				{
+					"id": "K_S01",
+					"science": 72.3,
+					"time": 2.0,
+					"wave": 1
+				},
+				{
+					"id": "I_S03",
+					"science": 62.5,
+					"time": 3.1,
+					"wave": 1
+				},
+				{
+					"id": "D_S01",
+					"science": 54.6,
+					"time": 4.1,
+					"wave": 1
+				},
+				{
+					"id": "K_S02",
+					"science": 46.8,
+					"time": 5.1,
+					"wave": 1
+				},
+				{
+					"id": "D_S02",
+					"science": 39.0,
+					"time": 6.2,
+					"wave": 1
+				},
+				{
+					"id": "I_S01",
+					"science": 33.1,
+					"time": 7.2,
+					"wave": 1
+				},
+				{
+					"id": "I_S02",
+					"science": 27.3,
+					"time": 8.2,
+					"wave": 1
+				},
+				{
+					"id": "I_S04",
+					"science": 17.5,
+					"time": 9.3,
+					"wave": 1
+				},
+				{
+					"id": "I_S05",
+					"science": 7.7,
+					"time": 10.3,
+					"wave": 1
+				},
+				{
+					"id": "C_S01",
+					"science": 1.8,
+					"time": 11.3,
+					"wave": 1
+				},
+				{
+					"id": "C_S02",
+					"science": 0.7,
+					"time": 16.5,
+					"wave": 1
+				},
+				{
+					"id": "D_S03",
+					"science": 3.2,
+					"time": 19.5,
+					"wave": 1
+				},
+				{
+					"id": "C_N1",
+					"science": 3.1,
+					"time": 67.6,
+					"wave": 2
+				},
+				{
+					"id": "D_N1",
+					"science": 7.7,
+					"time": 117.2,
+					"wave": 3
+				},
+				{
+					"id": "M_N1",
+					"science": 2.3,
+					"time": 149.3,
+					"wave": 4
+				},
+				{
+					"id": "M_S01",
+					"science": 1.0,
+					"time": 151.3,
+					"wave": 4
+				},
+				{
+					"id": "M_S02",
+					"science": 8.0,
+					"time": 154.4,
+					"wave": 4
+				},
+				{
+					"id": "I_N1",
+					"science": 2.2,
+					"time": 185.4,
+					"wave": 5
+				},
+				{
+					"id": "K_A1",
+					"science": 70.4,
+					"time": 200.9,
+					"wave": 5
+				},
+				{
+					"id": "D_A1",
+					"science": 54.7,
+					"time": 202.0,
+					"wave": 5
+				},
+				{
+					"id": "C_A1",
+					"science": 41.0,
+					"time": 203.0,
+					"wave": 5
+				}
+			],
+			"seconds": 224.99999999999,
+			"seed": 49127,
+			"wave": 6
+		}
+	]
+}

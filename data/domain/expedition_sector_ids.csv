@@ -1,0 +1,7 @@
+﻿parent_id,position,type,value
+root,0,string,moon
+root,1,string,mercury
+root,2,string,venus
+root,3,string,mars
+root,4,string,europa
+root,5,string,titan

@@ -1,0 +1,3 @@
+﻿parent_id,position,key,type,value
+ammo_packing,0,spread,integer,1
+ammo_packing,1,kinetic_coils,integer,2

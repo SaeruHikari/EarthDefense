@@ -1,0 +1,59 @@
+{
+  "scope": "Design arithmetic and roster completeness only; not combat balance simulation",
+  "friendly_roster": 9,
+  "enemy_roster": 10,
+  "fleet_examples": [
+    {
+      "name": "高周转守备",
+      "units": {
+        "K1": 10,
+        "K2": 2,
+        "M1": 4,
+        "L1": 2
+      },
+      "reserve": 0,
+      "used_points": 20,
+      "total_points": 20
+    },
+    {
+      "name": "穿插破阵",
+      "units": {
+        "K1": 6,
+        "K3": 2,
+        "M1": 4,
+        "L1": 2,
+        "L3": 1
+      },
+      "reserve": 2,
+      "used_points": 18,
+      "total_points": 20
+    },
+    {
+      "name": "重击防线",
+      "units": {
+        "K1": 4,
+        "M1": 2,
+        "L1": 2,
+        "M3": 2,
+        "L2": 2,
+        "L3": 2
+      },
+      "reserve": 0,
+      "used_points": 20,
+      "total_points": 20
+    }
+  ],
+  "source_urls": [
+    "https://qute.co.jp/press-release-eschatos-220106/",
+    "https://store.steampowered.com/app/378770/ESCHATOS/?l=brazilian",
+    "https://rtypefinal2.com/?lang=en",
+    "https://darius.jp/dbcs/en/system/index.html",
+    "https://www.platinumgames.co.jp/dev-sol-cresta/article/440",
+    "https://store.steampowered.com/app/253750/Ikaruga/?l=english",
+    "https://eu-support.konami.com/hc/en-gb/articles/25358374579351-CYGNI-All-Guns-Blazing",
+    "https://store.steampowered.com/app/2678070/Phoenix_2/",
+    "https://blog.novadrift.io/nova-drift-future-content-2/",
+    "https://blog.novadrift.io/patch-notes/"
+  ],
+  "production_files_modified": false
+}

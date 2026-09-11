@@ -1,0 +1,9 @@
+﻿parent_id,position,color,description,id,name,unlock_research,has_cost
+root,0,8ebeff,占据19格相邻六边形，独立生产驱逐舰和母舰；研究外星光学望远镜后开放。,starship_silo,星舰发射井,,true
+root,1,70d6b1,基础 5 矿物/秒，乘资源产量系数与科技；新建消耗 1 个小型Boss掉落的资源核心。,mine,矿物采集站,,true
+root,2,f5c975,基础 4 能量/秒，乘资源产量系数与科技；新建消耗 1 个小型Boss掉落的资源核心。,solar,太阳能阵列,,true
+root,3,aeabff,基础 1.5 科研/秒，乘资源产量系数与科技；新建消耗 1 个小型Boss掉落的资源核心。,lab,地表研究所,,true
+root,4,70d9f4,默认每厂编制3架拦截机；近距离围剿，损失后补充，可通过工程参数与科技扩容。,interceptor,拦截机工厂,,true
+root,5,c1a4ff,默认每厂编制2架激光机，可通过工程参数与科技扩容。需要研究「聚能激光」。,laser,激光机工厂,,true
+root,6,ffae83,默认每厂编制2架导弹机，可通过工程参数与科技扩容。需要研究「制导导弹」。,missile,导弹机工厂,,true
+root,7,75d8f4,为周围地表撑起独立能量护盾，每座设施独立承伤和恢复。,shield,局部护盾塔,D_N4,true

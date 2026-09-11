@@ -1,0 +1,8 @@
+﻿id,base_size,bombard_seconds,legacy_speed_multiplier,drone_fire_cooldown,earth_fire_cooldown
+scout,12,8,1.2,1.05,1.55
+cruiser,22,13,0.78,1.25,1.55
+small_boss,26,10,0.9,1.35,1.75
+boss,37,20,0.7,1.25,1.25
+carrier,48,16,1,1.25,1.25
+meteor,10.5,20,1,1.25,1.25
+default,10.5,20,1,1.25,1.25

@@ -1,0 +1,297 @@
+{
+  "uv": {
+    "u": "(longitude_degrees + 180) / 360",
+    "v": "(90 - latitude_degrees) / 180",
+    "top_left": [
+      -180,
+      90
+    ],
+    "crs": "WGS 84 / EPSG:4326"
+  },
+  "landmark_samples": {
+    "pacific": {
+      "longitude": -140,
+      "latitude": 0,
+      "pixels": {
+        "day": [
+          30,
+          59,
+          117
+        ],
+        "normal": [
+          128,
+          128,
+          255
+        ],
+        "specular": [
+          255,
+          255,
+          255
+        ],
+        "height": 0,
+        "cloud": [
+          9,
+          9,
+          9
+        ]
+      }
+    },
+    "atlantic": {
+      "longitude": -30,
+      "latitude": 0,
+      "pixels": {
+        "day": [
+          30,
+          59,
+          117
+        ],
+        "normal": [
+          128,
+          128,
+          255
+        ],
+        "specular": [
+          255,
+          255,
+          255
+        ],
+        "height": 0,
+        "cloud": [
+          99,
+          99,
+          99
+        ]
+      }
+    },
+    "sahara": {
+      "longitude": 15,
+      "latitude": 25,
+      "pixels": {
+        "day": [
+          219,
+          194,
+          163
+        ],
+        "normal": [
+          127,
+          128,
+          255
+        ],
+        "specular": [
+          0,
+          0,
+          0
+        ],
+        "height": 23,
+        "cloud": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "amazon": {
+      "longitude": -65,
+      "latitude": -5,
+      "pixels": {
+        "day": [
+          44,
+          60,
+          23
+        ],
+        "normal": [
+          128,
+          128,
+          255
+        ],
+        "specular": [
+          0,
+          0,
+          0
+        ],
+        "height": 3,
+        "cloud": [
+          125,
+          125,
+          125
+        ]
+      }
+    },
+    "greenwich": {
+      "longitude": 0,
+      "latitude": 51.48,
+      "pixels": {
+        "day": [
+          108,
+          110,
+          73
+        ],
+        "normal": [
+          128,
+          128,
+          255
+        ],
+        "specular": [
+          0,
+          0,
+          0
+        ],
+        "height": 2,
+        "cloud": [
+          32,
+          32,
+          32
+        ]
+      }
+    },
+    "tibet": {
+      "longitude": 88,
+      "latitude": 32,
+      "pixels": {
+        "day": [
+          184,
+          157,
+          110
+        ],
+        "normal": [
+          128,
+          122,
+          255
+        ],
+        "specular": [
+          0,
+          0,
+          0
+        ],
+        "height": 185,
+        "cloud": [
+          30,
+          30,
+          30
+        ]
+      }
+    },
+    "himalaya": {
+      "longitude": 86.92,
+      "latitude": 27.99,
+      "pixels": {
+        "day": [
+          244,
+          244,
+          246
+        ],
+        "normal": [
+          184,
+          160,
+          255
+        ],
+        "specular": [
+          0,
+          0,
+          0
+        ],
+        "height": 240,
+        "cloud": [
+          181,
+          181,
+          181
+        ]
+      }
+    },
+    "australia": {
+      "longitude": 133,
+      "latitude": -25,
+      "pixels": {
+        "day": [
+          150,
+          117,
+          98
+        ],
+        "normal": [
+          128,
+          128,
+          255
+        ],
+        "specular": [
+          0,
+          0,
+          0
+        ],
+        "height": 19,
+        "cloud": [
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  },
+  "normal_direction_analysis": {
+    "method": "Correlate RGB normal components with independent NASA/GEBCO land-elevation gradients; 2048x1024 bilinear temporary arrays, excluding water and polar rows.",
+    "sample_count": 239276,
+    "correlations": {
+      "red": {
+        "with_east_height_gradient": -0.8634286628488755,
+        "with_south_height_gradient": 0.06233822873650814
+      },
+      "green": {
+        "with_east_height_gradient": 0.06116649344574643,
+        "with_south_height_gradient": -0.8501412376767167
+      }
+    },
+    "inferred_basis": "R points east; G points south (increasing image-v); B points outward. This is inferred from the data, not an explicit publisher convention statement.",
+    "integration": "Normalize (RGB * 2 - 1). Keep G if the bitangent points south; invert G only if the receiving bitangent points north."
+  },
+  "geotiff_tags": {
+    "33550": [
+      0.06666664,
+      0.0666664,
+      0.0
+    ],
+    "33922": [
+      0.0,
+      0.0,
+      0.0,
+      -180.0,
+      90.0,
+      0.0
+    ],
+    "34735": [
+      1,
+      1,
+      0,
+      7,
+      1024,
+      0,
+      1,
+      2,
+      1025,
+      0,
+      1,
+      1,
+      2048,
+      0,
+      1,
+      4326,
+      2049,
+      34737,
+      7,
+      0,
+      2054,
+      0,
+      1,
+      9102,
+      2057,
+      34736,
+      1,
+      1,
+      2059,
+      34736,
+      1,
+      0
+    ],
+    "34737": "WGS 84|"
+  },
+  "cloud_max_rgb_channel_difference": 0,
+  "original_images_modified": false
+}

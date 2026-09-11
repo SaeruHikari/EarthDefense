@@ -1,0 +1,14 @@
+{
+  "source": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/ldem_16_uint.tif",
+  "credit": "NASA's Scientific Visualization Studio / LRO LOLA",
+  "reference": "https://svs.gsfc.nasa.gov/4720/",
+  "dimensions": [
+    5760,
+    2880
+  ],
+  "unit": "0.5 meters",
+  "zero_elevation_value": 20000,
+  "reference_radius_meters": 1737400,
+  "conversion": "TIFF to PNG, all integer samples verified identical",
+  "sha256": "45a2b32d56e81ed30db07fead8abc842b249b6511219d9ca2c53f81bc2dc5d62"
+}

@@ -1,0 +1,9 @@
+# Refined metallic fleet (EARTHWARD 1.15)
+
+Seven original program-authored ships: interceptor, laser, missile, scout, cruiser, small_boss and boss. This directory retains the historical 1.15 packed scenes and editable GLB assets. The current C# renderer loads the nine airframes and eight alien roles from `assets/managed/models`; the one-time procedural migration generator is retired. Runtime scenes preserve `-Z` forward, `+Y` up, unchanged friendly barrel tips, and identity root/child transforms so world positioning and independently configured 0.5 aircraft scales remain owned by the renderer.
+
+Broad brushed-metal hull plates use atlas profile 2 (metallic .94 / roughness .28), machined edges use profile 14 (.95 / .23), titanium frames use profile 3 (.87 / .38), and small ceramic panels retain a contrasting rougher dielectric finish. PBR atlas/lighting is shared with the project; fleet-local profile assignments leave factories unchanged. No extra textures, materials, lights, animation callbacks or per-craft process functions are added.
+
+Hull refinements include stepped nose armor, dark panel seams, beveled wing leading edges, vented engine intakes, open concentric mechanical nozzles, actuator rails and inset deck panels. Individual types retain their weapon silhouette. The new small boss has swept forward shoulders, paired raised command fins, and a gold sensor crown, rather than a scaled cruiser.
+
+Every scene consists of exactly one shared opaque ORM mesh and one shared transparent engine-exhaust mesh, both with one surface. Offline merged rigid detail ranges from 3152 to 4960 triangles (see `manifest.json`). Transparent plumes remain the existing depth-tested shader. This preserves MultiMesh grouping and draw counts; the additional detail increases offline vertex data, not scene node count. Editable `.glb` companions contain the opaque PBR mesh. Screenshot QA is `artifacts/pbr-fleet-116.png` / `-angled.png`.

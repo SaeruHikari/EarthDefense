@@ -1,0 +1,42 @@
+{
+	"factories": [
+		{
+			"kind": "mine",
+			"mesh_instances": 3,
+			"moving_assemblies": 2,
+			"triangles": 5716
+		},
+		{
+			"kind": "solar",
+			"mesh_instances": 2,
+			"moving_assemblies": 1,
+			"triangles": 5116
+		},
+		{
+			"kind": "lab",
+			"mesh_instances": 2,
+			"moving_assemblies": 1,
+			"triangles": 7104
+		},
+		{
+			"kind": "interceptor",
+			"mesh_instances": 5,
+			"moving_assemblies": 1,
+			"triangles": 8236
+		},
+		{
+			"kind": "laser",
+			"mesh_instances": 5,
+			"moving_assemblies": 1,
+			"triangles": 8912
+		},
+		{
+			"kind": "missile",
+			"mesh_instances": 5,
+			"moving_assemblies": 1,
+			"triangles": 9568
+		}
+	],
+	"revision": 2,
+	"source": "procedural beveled PBR geometry; shared rigid meshes and moving mechanical assemblies"
+}

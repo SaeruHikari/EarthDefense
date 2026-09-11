@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://d1ldk584trxu0"
+
+[deps]
+
+files=["res://tests/CombatManaged/Fixtures/fleet127-data/combat_wave_composition.through.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_wave_composition.claw.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_wave_composition.needle.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_wave_composition.rock.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_wave_composition.siege.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_wave_composition.prism.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_wave_composition.weaver.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_wave_composition.hatcher.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_wave_composition.jammer.translation"]
+
+source_file="res://tests/CombatManaged/Fixtures/fleet127-data/combat_wave_composition.csv"
+dest_files=["res://tests/CombatManaged/Fixtures/fleet127-data/combat_wave_composition.through.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_wave_composition.claw.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_wave_composition.needle.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_wave_composition.rock.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_wave_composition.siege.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_wave_composition.prism.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_wave_composition.weaver.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_wave_composition.hatcher.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_wave_composition.jammer.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

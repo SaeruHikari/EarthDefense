@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://ckusgokjsgpka"
+
+[deps]
+
+files=["res://tests/CombatManaged/Fixtures/fleet127-data/expedition_setting_definitions.position.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/expedition_setting_definitions.default.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/expedition_setting_definitions.id.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/expedition_setting_definitions.integer.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/expedition_setting_definitions.max.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/expedition_setting_definitions.min.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/expedition_setting_definitions.name.translation"]
+
+source_file="res://tests/CombatManaged/Fixtures/fleet127-data/expedition_setting_definitions.csv"
+dest_files=["res://tests/CombatManaged/Fixtures/fleet127-data/expedition_setting_definitions.position.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/expedition_setting_definitions.default.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/expedition_setting_definitions.id.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/expedition_setting_definitions.integer.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/expedition_setting_definitions.max.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/expedition_setting_definitions.min.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/expedition_setting_definitions.name.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bdha1xqfdnl68"
+
+[deps]
+
+files=["res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.attribute.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.operation.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.base.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.per.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.level.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.maximum.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.coefficient.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.value.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.step.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.threshold.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.high.translation"]
+
+source_file="res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.csv"
+dest_files=["res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.attribute.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.operation.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.base.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.per.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.level.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.maximum.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.coefficient.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.value.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.step.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.threshold.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perk_effect_rules.high.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

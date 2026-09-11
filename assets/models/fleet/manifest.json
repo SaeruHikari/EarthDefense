@@ -1,0 +1,48 @@
+{
+	"fleet": [
+		{
+			"exhaust_draws": 1,
+			"kind": "interceptor",
+			"opaque_draws": 1,
+			"opaque_triangles": 3556
+		},
+		{
+			"exhaust_draws": 1,
+			"kind": "laser",
+			"opaque_draws": 1,
+			"opaque_triangles": 4300
+		},
+		{
+			"exhaust_draws": 1,
+			"kind": "missile",
+			"opaque_draws": 1,
+			"opaque_triangles": 4116
+		},
+		{
+			"exhaust_draws": 1,
+			"kind": "scout",
+			"opaque_draws": 1,
+			"opaque_triangles": 3152
+		},
+		{
+			"exhaust_draws": 1,
+			"kind": "cruiser",
+			"opaque_draws": 1,
+			"opaque_triangles": 3912
+		},
+		{
+			"exhaust_draws": 1,
+			"kind": "small_boss",
+			"opaque_draws": 1,
+			"opaque_triangles": 4140
+		},
+		{
+			"exhaust_draws": 1,
+			"kind": "boss",
+			"opaque_draws": 1,
+			"opaque_triangles": 4960
+		}
+	],
+	"format": "Godot PBR + glTF 2.0",
+	"revision": "metal-fleet-116"
+}

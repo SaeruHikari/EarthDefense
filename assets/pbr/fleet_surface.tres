@@ -1,0 +1,23 @@
+[gd_resource type="ORMMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/pbr/surface_albedo.png" id="1_71s8w"]
+[ext_resource type="Texture2D" path="res://assets/pbr/surface_emission.png" id="2_aa2xg"]
+[ext_resource type="Texture2D" path="res://assets/pbr/surface_normal.png" id="3_leld4"]
+[ext_resource type="Texture2D" path="res://assets/pbr/surface_orm.png" id="4_gttpb"]
+
+[resource]
+resource_name = "Earthward_PBR_Atlas"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_71s8w")
+orm_texture = ExtResource("4_gttpb")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 8.0
+emission_operator = 1
+emission_texture = ExtResource("2_aa2xg")
+normal_enabled = true
+normal_scale = 0.6
+normal_texture = ExtResource("3_leld4")
+texture_filter = 5
+metadata/pbr_atlas = true

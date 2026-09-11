@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bknjuacun1l5q"
+
+[deps]
+
+files=["res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_branches.position.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_branches.color.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_branches.id.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_branches.name.translation"]
+
+source_file="res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_branches.csv"
+dest_files=["res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_branches.position.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_branches.color.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_branches.id.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_branches.name.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

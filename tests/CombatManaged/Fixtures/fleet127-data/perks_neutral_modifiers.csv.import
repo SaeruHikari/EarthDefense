@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bknayomk24fsj"
+
+[deps]
+
+files=["res://tests/CombatManaged/Fixtures/fleet127-data/perks_neutral_modifiers.position.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perks_neutral_modifiers.key.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perks_neutral_modifiers.type.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perks_neutral_modifiers.value.translation"]
+
+source_file="res://tests/CombatManaged/Fixtures/fleet127-data/perks_neutral_modifiers.csv"
+dest_files=["res://tests/CombatManaged/Fixtures/fleet127-data/perks_neutral_modifiers.position.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perks_neutral_modifiers.key.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perks_neutral_modifiers.type.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perks_neutral_modifiers.value.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

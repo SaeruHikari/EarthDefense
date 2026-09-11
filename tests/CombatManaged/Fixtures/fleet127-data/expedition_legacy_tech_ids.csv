@@ -1,0 +1,7 @@
+﻿parent_id,position,type,value
+root,0,string,carrier_weapons
+root,1,string,carrier_targeting
+root,2,string,carrier_hangars
+root,3,string,carrier_fabrication
+root,4,string,carrier_plating
+root,5,string,carrier_propulsion

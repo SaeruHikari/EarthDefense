@@ -1,0 +1,67 @@
+{
+  "author": "Solar System Scope / INOVE",
+  "license": "CC BY 4.0",
+  "source": "https://www.solarsystemscope.com/textures/",
+  "assets": [
+    {
+      "file": "8k_mercury.jpg",
+      "url": "https://www.solarsystemscope.com/textures/download/8k_mercury.jpg",
+      "bytes": 15035740,
+      "dimensions": [
+        8192,
+        4096
+      ],
+      "sha256": "5c8bd885ae3571c6ba2cd34b3446b9c6d767e314bf0ee8c1d5c147cadd388fc3"
+    },
+    {
+      "file": "8k_venus_surface.jpg",
+      "url": "https://www.solarsystemscope.com/textures/download/8k_venus_surface.jpg",
+      "bytes": 12523129,
+      "dimensions": [
+        8192,
+        4096
+      ],
+      "sha256": "9bc21a50577ed8ac734cda91058724c7a741c19427aa276224ce349351432c5b"
+    },
+    {
+      "file": "4k_venus_atmosphere.jpg",
+      "url": "https://www.solarsystemscope.com/textures/download/4k_venus_atmosphere.jpg",
+      "bytes": 1546146,
+      "dimensions": [
+        4096,
+        2048
+      ],
+      "sha256": "a14aeba3c6ad7a56f989bb32008dec548077aeded420495b34df98f2dc14ba91"
+    },
+    {
+      "file": "8k_mars.jpg",
+      "url": "https://www.solarsystemscope.com/textures/download/8k_mars.jpg",
+      "bytes": 8396951,
+      "dimensions": [
+        8192,
+        4096
+      ],
+      "sha256": "4cc52149924abc6ae507d63032f994e1d42a55cb82c09e002d1a567ff66c23ee"
+    },
+    {
+      "file": "8k_sun.jpg",
+      "url": "https://www.solarsystemscope.com/textures/download/8k_sun.jpg",
+      "bytes": 3696361,
+      "dimensions": [
+        4096,
+        2048
+      ],
+      "sha256": "f22b1cfb306ddce72a7e3b628668a0175b745038ce6268557cb2f7f1bdf98b9d"
+    },
+    {
+      "file": "8k_moon.jpg",
+      "url": "https://www.solarsystemscope.com/textures/download/8k_moon.jpg",
+      "bytes": 15030356,
+      "dimensions": [
+        8192,
+        4096
+      ],
+      "sha256": "d1875bcec83588ca25e4802e576f6bb9f88b39e1e403cb41ff55867419c54796"
+    }
+  ]
+}

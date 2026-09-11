@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dapr7tx7nncx8"
+
+[deps]
+
+files=["res://tests/CombatManaged/Fixtures/fleet127-data/combat_tuning.value.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_tuning.minimum.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_tuning.maximum.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_tuning.description.translation"]
+
+source_file="res://tests/CombatManaged/Fixtures/fleet127-data/combat_tuning.csv"
+dest_files=["res://tests/CombatManaged/Fixtures/fleet127-data/combat_tuning.value.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_tuning.minimum.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_tuning.maximum.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/combat_tuning.description.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

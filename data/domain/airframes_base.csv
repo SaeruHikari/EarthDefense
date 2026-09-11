@@ -1,0 +1,4 @@
+﻿parent_id,position,key,type,value
+root,0,interceptor,string,K1
+root,1,missile,string,M1
+root,2,laser,string,L1

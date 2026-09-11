@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c15dmscvimgmk"
+
+[deps]
+
+files=["res://tests/CombatManaged/Fixtures/fleet127-data/perks_definitions_kinds.position.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perks_definitions_kinds.type.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perks_definitions_kinds.value.translation"]
+
+source_file="res://tests/CombatManaged/Fixtures/fleet127-data/perks_definitions_kinds.csv"
+dest_files=["res://tests/CombatManaged/Fixtures/fleet127-data/perks_definitions_kinds.position.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perks_definitions_kinds.type.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perks_definitions_kinds.value.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

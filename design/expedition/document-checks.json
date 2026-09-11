@@ -1,0 +1,12 @@
+{
+  "stage1_nodes": 24,
+  "stage1_levels": 72,
+  "old_nodes_exactly_once": 56,
+  "stage2_nodes": 72,
+  "stage2_nominal_levels": 504,
+  "missing_local_links": [],
+  "industrial_purchase_wait_before_upgrade_seconds": {
+    "1": 1020.0,
+    "5": 1149.370590452484
+  }
+}

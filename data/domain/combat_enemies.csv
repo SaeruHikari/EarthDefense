@@ -1,0 +1,16 @@
+﻿id,kind,role_id,boss_variant_id,name,armor,minimum_wave,health_multiplier,dps_multiplier,speed_multiplier,attack_cooldown,energy_ratio
+claw,scout,claw,,裂爪突击机,light,1,1.15,1.1,1,0.7,0
+needle,scout,needle,,针翼猎杀机,light,1,1.05,0.8,1.18,0.9,0
+rock,cruiser,rock,,岩甲突进舰,heavy,1,2.4,1.3,0.7,1.8,0
+siege,cruiser,siege,,蚀星攻城舰,heavy,1,2.8,1.6,0.58,3.8,0
+prism,scout,prism,,棱镜游猎机,light,1,1.3,1.2,0.85,1.1,0.65
+weaver,cruiser,weaver,,织幕支援舰,heavy,1,2,0.35,0.62,2.2,0.7
+hatcher,cruiser,hatcher,,孵化运输舟,heavy,1,2.5,0.6,0.7,2,0
+jammer,scout,jammer,,噬频干扰机,light,1,1.6,0.55,1.05,1.5,0
+small_boss_early,small_boss,,,资源运输虫,light,1,4.5,1,0.75,1.8,0
+small_boss_heavy,small_boss,,,资源运输虫,heavy,10,4.5,1,0.75,1.8,0
+boss_brood,boss,,brood,裂巢督军,light,1,8,1.6,0.66,3,0
+boss_forge,boss,,forge,铸甲督军,heavy,10,8,1.6,0.66,3,0
+boss_prism,boss,,prism,棱镜审判者,heavy,20,8,1.6,0.66,3,0.8
+carrier_early,carrier,,,外星母舰,heavy,1,35,1.3,0.3,3,0
+carrier_energy,carrier,,,外星母舰,heavy,20,35,1.3,0.3,3,0.5

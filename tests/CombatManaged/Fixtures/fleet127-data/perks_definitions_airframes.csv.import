@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://qqx4vv5703xk"
+
+[deps]
+
+files=["res://tests/CombatManaged/Fixtures/fleet127-data/perks_definitions_airframes.position.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perks_definitions_airframes.type.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perks_definitions_airframes.value.translation"]
+
+source_file="res://tests/CombatManaged/Fixtures/fleet127-data/perks_definitions_airframes.csv"
+dest_files=["res://tests/CombatManaged/Fixtures/fleet127-data/perks_definitions_airframes.position.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perks_definitions_airframes.type.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/perks_definitions_airframes.value.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

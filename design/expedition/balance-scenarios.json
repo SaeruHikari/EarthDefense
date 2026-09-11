@@ -1,0 +1,148 @@
+{
+  "status": "design_math_only_not_playtest",
+  "scope": "Enumerates 720 order permutations under the same-rank-investment assumption; excludes skill downtime, player action, factory occupancy and tactical failures. Does not prove every route playable.",
+  "rank_rows": [
+    {
+      "completed_before_entry": 0,
+      "enemy_hp_multiplier": 1.0,
+      "enemy_damage_multiplier": 1.0,
+      "material_reward_multiplier": 1.0,
+      "industrial_output_target_multiplier": 1.0,
+      "tier_upgrade_cost_multiplier": 1.0,
+      "fleet_dps_target_multiplier": 1.0,
+      "fleet_ehp_target_multiplier": 1.0,
+      "boss_reference_hp": 12000000.0,
+      "fleet_reference_dps": 150000.0,
+      "boss_ideal_ttk_seconds": 80.0
+    },
+    {
+      "completed_before_entry": 1,
+      "enemy_hp_multiplier": 3.2,
+      "enemy_damage_multiplier": 2.4,
+      "material_reward_multiplier": 3.5,
+      "industrial_output_target_multiplier": 3.3,
+      "tier_upgrade_cost_multiplier": 3.4,
+      "fleet_dps_target_multiplier": 3.1,
+      "fleet_ehp_target_multiplier": 2.35,
+      "boss_reference_hp": 38400000.0,
+      "fleet_reference_dps": 465000.0,
+      "boss_ideal_ttk_seconds": 82.58064516129032
+    },
+    {
+      "completed_before_entry": 2,
+      "enemy_hp_multiplier": 10.240000000000002,
+      "enemy_damage_multiplier": 5.76,
+      "material_reward_multiplier": 12.25,
+      "industrial_output_target_multiplier": 10.889999999999999,
+      "tier_upgrade_cost_multiplier": 11.559999999999999,
+      "fleet_dps_target_multiplier": 9.610000000000001,
+      "fleet_ehp_target_multiplier": 5.522500000000001,
+      "boss_reference_hp": 122880000.00000003,
+      "fleet_reference_dps": 1441500.0000000002,
+      "boss_ideal_ttk_seconds": 85.24453694068677
+    },
+    {
+      "completed_before_entry": 3,
+      "enemy_hp_multiplier": 32.76800000000001,
+      "enemy_damage_multiplier": 13.823999999999998,
+      "material_reward_multiplier": 42.875,
+      "industrial_output_target_multiplier": 35.937,
+      "tier_upgrade_cost_multiplier": 39.303999999999995,
+      "fleet_dps_target_multiplier": 29.791000000000004,
+      "fleet_ehp_target_multiplier": 12.977875000000001,
+      "boss_reference_hp": 393216000.0000001,
+      "fleet_reference_dps": 4468650.000000001,
+      "boss_ideal_ttk_seconds": 87.994360712967
+    },
+    {
+      "completed_before_entry": 4,
+      "enemy_hp_multiplier": 104.85760000000002,
+      "enemy_damage_multiplier": 33.1776,
+      "material_reward_multiplier": 150.0625,
+      "industrial_output_target_multiplier": 118.59209999999997,
+      "tier_upgrade_cost_multiplier": 133.63359999999997,
+      "fleet_dps_target_multiplier": 92.35210000000001,
+      "fleet_ehp_target_multiplier": 30.498006250000003,
+      "boss_reference_hp": 1258291200.0000002,
+      "fleet_reference_dps": 13852815.000000002,
+      "boss_ideal_ttk_seconds": 90.83288847790142
+    },
+    {
+      "completed_before_entry": 5,
+      "enemy_hp_multiplier": 335.5443200000001,
+      "enemy_damage_multiplier": 79.62623999999998,
+      "material_reward_multiplier": 525.21875,
+      "industrial_output_target_multiplier": 391.3539299999999,
+      "tier_upgrade_cost_multiplier": 454.35423999999995,
+      "fleet_dps_target_multiplier": 286.29151,
+      "fleet_ehp_target_multiplier": 71.67031468750001,
+      "boss_reference_hp": 4026531840.000001,
+      "fleet_reference_dps": 42943726.5,
+      "boss_ideal_ttk_seconds": 93.7629816546079
+    }
+  ],
+  "world_intrinsic_proposal": [
+    {
+      "id": "moon",
+      "hp": 1.0,
+      "damage": 0.9,
+      "reward": 0.95
+    },
+    {
+      "id": "mercury",
+      "hp": 0.9,
+      "damage": 1.15,
+      "reward": 1.1
+    },
+    {
+      "id": "venus",
+      "hp": 1.1,
+      "damage": 0.9,
+      "reward": 1.05
+    },
+    {
+      "id": "mars",
+      "hp": 1.15,
+      "damage": 1.0,
+      "reward": 1.1
+    },
+    {
+      "id": "europa",
+      "hp": 1.05,
+      "damage": 1.05,
+      "reward": 1.1
+    },
+    {
+      "id": "titan",
+      "hp": 0.85,
+      "damage": 1.1,
+      "reward": 1.0
+    }
+  ],
+  "orders_checked": 720,
+  "all_ttk_finite": true,
+  "ideal_ttk_bounds": [
+    68.0,
+    107.82742890279908
+  ],
+  "total_alloy_bounds": [
+    1282435.3125,
+    1453111.8750000002
+  ],
+  "startup_cost": {
+    "minerals": 168000,
+    "energy": 113000,
+    "science": 70000,
+    "alloy": 1850
+  },
+  "player_balance_after_fixed_chain_before_new_income": {
+    "minerals": 36928.89730077499,
+    "energy": 90602.92490814399,
+    "science": 4075.8176792644954
+  },
+  "alloy_after_fixed_grant_and_chain": 150,
+  "protocol_pairs": {
+    "unordered_pairs_for_three_types": 45,
+    "directed_main_aux_for_three_types": 90
+  }
+}

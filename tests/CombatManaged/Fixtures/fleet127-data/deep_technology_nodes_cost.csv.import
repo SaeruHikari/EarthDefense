@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bfc7sc8nbqabv"
+
+[deps]
+
+files=["res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_nodes_cost.position.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_nodes_cost.currency.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_nodes_cost.type.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_nodes_cost.value.translation"]
+
+source_file="res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_nodes_cost.csv"
+dest_files=["res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_nodes_cost.position.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_nodes_cost.currency.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_nodes_cost.type.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_nodes_cost.value.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

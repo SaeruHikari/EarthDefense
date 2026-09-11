@@ -1,0 +1,306 @@
+﻿parent_id,position,type,value
+K_S01,0,string,动能伤害 +4%
+K_S21,0,string,动能伤害 +4%
+K_S02,0,string,动能射速 +2%
+K_S22,0,string,动能射速 +2%
+K_S03,0,string,动能伤害 +0.4%
+K_S23,0,string,动能伤害 +0.4%
+K_S04,0,string,对轻甲伤害 +3%
+K_S24,0,string,对轻甲伤害 +3%
+K_S05,0,string,动能武器射程 +2%
+K_S25,0,string,动能武器射程 +2%
+K_S06,0,string,动能伤害 +6%
+K_S26,0,string,动能伤害 +6%
+K_S07,0,string,动能射速 +3%
+K_S27,0,string,动能射速 +3%
+K_S08,0,string,动能伤害 +0.6%
+K_S28,0,string,动能伤害 +0.6%
+K_S09,0,string,对轻甲伤害 +4.5%
+K_S29,0,string,对轻甲伤害 +4.5%
+K_S10,0,string,动能武器射程 +3%
+K_S30,0,string,动能武器射程 +3%
+K_S11,0,string,动能伤害 +8%
+K_S31,0,string,动能伤害 +8%
+K_S12,0,string,动能射速 +4%
+K_S32,0,string,动能射速 +4%
+K_S13,0,string,动能伤害 +0.8%
+K_S33,0,string,动能伤害 +0.8%
+K_S14,0,string,对轻甲伤害 +6%
+K_S34,0,string,对轻甲伤害 +6%
+K_S15,0,string,动能武器射程 +4%
+K_S35,0,string,动能武器射程 +4%
+K_S16,0,string,动能伤害 +12%
+K_S36,0,string,动能伤害 +12%
+K_S17,0,string,动能射速 +6%
+K_S37,0,string,动能射速 +6%
+K_S18,0,string,动能伤害 +1.2%
+K_S38,0,string,动能伤害 +1.2%
+K_S19,0,string,对轻甲伤害 +9%
+K_S39,0,string,对轻甲伤害 +9%
+K_S20,0,string,动能武器射程 +6%
+K_S40,0,string,动能武器射程 +6%
+M_S01,0,string,导弹伤害 +4%
+M_S24,0,string,导弹伤害 +4%
+M_S02,0,string,导弹射速 +2%
+M_S25,0,string,导弹射速 +2%
+M_S03,0,string,导弹爆炸半径 +2%
+M_S26,0,string,导弹爆炸半径 +2%
+M_S04,0,string,导弹爆炸伤害 +2%
+M_S27,0,string,导弹爆炸伤害 +2%
+M_S05,0,string,导弹速度 +4%
+M_S28,0,string,导弹速度 +4%
+M_S06,0,string,导弹伤害 +6%
+M_S29,0,string,导弹伤害 +6%
+M_S07,0,string,导弹射速 +3%
+M_S30,0,string,导弹射速 +3%
+M_S08,0,string,导弹爆炸半径 +3%
+M_S31,0,string,导弹爆炸半径 +3%
+M_S09,0,string,导弹爆炸伤害 +3%
+M_S32,0,string,导弹爆炸伤害 +3%
+M_S10,0,string,导弹速度 +6%
+M_S33,0,string,导弹速度 +6%
+M_S11,0,string,导弹伤害 +8%
+M_S34,0,string,导弹伤害 +8%
+M_S12,0,string,导弹射速 +4%
+M_S35,0,string,导弹射速 +4%
+M_S13,0,string,导弹爆炸半径 +4%
+M_S36,0,string,导弹爆炸半径 +4%
+M_S14,0,string,导弹爆炸伤害 +4%
+M_S37,0,string,导弹爆炸伤害 +4%
+M_S15,0,string,导弹速度 +8%
+M_S38,0,string,导弹速度 +8%
+M_S16,0,string,导弹伤害 +12%
+M_S39,0,string,导弹伤害 +12%
+M_S17,0,string,导弹射速 +6%
+M_S40,0,string,导弹射速 +6%
+M_S18,0,string,导弹爆炸半径 +6%
+M_S41,0,string,导弹爆炸半径 +6%
+M_S19,0,string,导弹爆炸伤害 +6%
+M_S42,0,string,导弹爆炸伤害 +6%
+M_S20,0,string,导弹速度 +12%
+M_S43,0,string,导弹速度 +12%
+L_S01,0,string,激光伤害 +4%
+L_S21,0,string,激光伤害 +4%
+L_S02,0,string,激光射速 +2%
+L_S22,0,string,激光射速 +2%
+L_S03,0,string,激光武器射程 +2%
+L_S23,0,string,激光武器射程 +2%
+L_S04,0,string,激光射速 +0.4%
+L_S24,0,string,激光射速 +0.4%
+L_S05,0,string,激光射程 +0.4%
+L_S25,0,string,激光射程 +0.4%
+L_S06,0,string,激光伤害 +6%
+L_S26,0,string,激光伤害 +6%
+L_S07,0,string,激光射速 +3%
+L_S27,0,string,激光射速 +3%
+L_S08,0,string,激光武器射程 +3%
+L_S28,0,string,激光武器射程 +3%
+L_S09,0,string,激光射速 +0.6%
+L_S29,0,string,激光射速 +0.6%
+L_S10,0,string,激光射程 +0.6%
+L_S30,0,string,激光射程 +0.6%
+L_S11,0,string,激光伤害 +8%
+L_S31,0,string,激光伤害 +8%
+L_S12,0,string,激光射速 +4%
+L_S32,0,string,激光射速 +4%
+L_S13,0,string,激光武器射程 +4%
+L_S33,0,string,激光武器射程 +4%
+L_S14,0,string,激光射速 +0.8%
+L_S34,0,string,激光射速 +0.8%
+L_S15,0,string,激光射程 +0.8%
+L_S35,0,string,激光射程 +0.8%
+L_S16,0,string,激光伤害 +12%
+L_S36,0,string,激光伤害 +12%
+L_S17,0,string,激光射速 +6%
+L_S37,0,string,激光射速 +6%
+L_S18,0,string,激光武器射程 +6%
+L_S38,0,string,激光武器射程 +6%
+L_S19,0,string,激光射速 +1.2%
+L_S39,0,string,激光射速 +1.2%
+L_S20,0,string,激光射程 +1.2%
+L_S40,0,string,激光射程 +1.2%
+I_S01,0,string,矿物设施产量 +4%
+I_S21,0,string,矿物设施产量 +4%
+I_S02,0,string,能源设施产量 +4%
+I_S22,0,string,能源设施产量 +4%
+I_S03,0,string,科研设施产量 +5%
+I_S23,0,string,科研设施产量 +5%
+I_S04,0,string,工厂生产速度 +0.5%
+I_S24,0,string,工厂生产速度 +0.5%
+I_S05,0,string,工厂生产速度 +2.5%
+I_S25,0,string,工厂生产速度 +2.5%
+I_S06,0,string,矿物设施产量 +6%
+I_S26,0,string,矿物设施产量 +6%
+I_S07,0,string,能源设施产量 +6%
+I_S27,0,string,能源设施产量 +6%
+I_S08,0,string,科研设施产量 +7.5%
+I_S28,0,string,科研设施产量 +7.5%
+I_S09,0,string,工厂生产速度 +0.5%
+I_S29,0,string,工厂生产速度 +0.5%
+I_S10,0,string,工厂生产速度 +3.75%
+I_S30,0,string,工厂生产速度 +3.75%
+I_S11,0,string,矿物设施产量 +8%
+I_S31,0,string,矿物设施产量 +8%
+I_S12,0,string,能源设施产量 +8%
+I_S32,0,string,能源设施产量 +8%
+I_S13,0,string,科研设施产量 +10%
+I_S33,0,string,科研设施产量 +10%
+I_S14,0,string,工厂生产速度 +1%
+I_S34,0,string,工厂生产速度 +1%
+I_S15,0,string,工厂生产速度 +5%
+I_S35,0,string,工厂生产速度 +5%
+I_S16,0,string,矿物设施产量 +12%
+I_S36,0,string,矿物设施产量 +12%
+I_S17,0,string,能源设施产量 +12%
+I_S37,0,string,能源设施产量 +12%
+I_S18,0,string,科研设施产量 +15%
+I_S38,0,string,科研设施产量 +15%
+I_S19,0,string,工厂生产速度 +1%
+I_S39,0,string,工厂生产速度 +1%
+I_S20,0,string,工厂生产速度 +7.5%
+I_S40,0,string,工厂生产速度 +7.5%
+D_S01,0,string,战机最大耐久 +4%
+D_S21,0,string,战机最大耐久 +4%
+D_S02,0,string,地球护盾上限 +4%
+D_S22,0,string,地球护盾上限 +4%
+D_S03,0,string,维修速度 +4%
+D_S23,0,string,维修速度 +4%
+D_S04,0,string,战机自爆原始伤害 +4%
+D_S24,0,string,战机自爆原始伤害 +4%
+D_S05,0,string,自爆半径 +2%
+D_S25,0,string,自爆半径 +2%
+D_S06,0,string,战机最大耐久 +6%
+D_S26,0,string,战机最大耐久 +6%
+D_S07,0,string,地球护盾上限 +6%
+D_S27,0,string,地球护盾上限 +6%
+D_S08,0,string,维修速度 +6%
+D_S28,0,string,维修速度 +6%
+D_S09,0,string,战机自爆原始伤害 +6%
+D_S29,0,string,战机自爆原始伤害 +6%
+D_S10,0,string,自爆半径 +3%
+D_S30,0,string,自爆半径 +3%
+D_S11,0,string,战机最大耐久 +8%
+D_S31,0,string,战机最大耐久 +8%
+D_S12,0,string,地球护盾上限 +8%
+D_S32,0,string,地球护盾上限 +8%
+D_S13,0,string,维修速度 +8%
+D_S33,0,string,维修速度 +8%
+D_S14,0,string,战机自爆原始伤害 +8%
+D_S34,0,string,战机自爆原始伤害 +8%
+D_S15,0,string,自爆半径 +4%
+D_S35,0,string,自爆半径 +4%
+D_S16,0,string,战机最大耐久 +12%
+D_S36,0,string,战机最大耐久 +12%
+D_S17,0,string,地球护盾上限 +12%
+D_S37,0,string,地球护盾上限 +12%
+D_S18,0,string,维修速度 +12%
+D_S38,0,string,维修速度 +12%
+D_S19,0,string,战机自爆原始伤害 +12%
+D_S39,0,string,战机自爆原始伤害 +12%
+D_S20,0,string,自爆半径 +6%
+D_S40,0,string,自爆半径 +6%
+C_S01,0,string,球面巡航半径 +4%
+C_S21,0,string,球面巡航半径 +4%
+C_S02,0,string,球面巡航远端范围 +4%
+C_S22,0,string,球面巡航远端范围 +4%
+C_S03,0,string,巡航速度 +3%
+C_S23,0,string,巡航速度 +3%
+C_S04,0,string,巡航远端范围 +0.4%
+C_S24,0,string,巡航远端范围 +0.4%
+C_S05,0,string,巡航半径 +0.4%
+C_S25,0,string,巡航半径 +0.4%
+C_S06,0,string,球面巡航半径 +6%
+C_S26,0,string,球面巡航半径 +6%
+C_S07,0,string,球面巡航远端范围 +6%
+C_S27,0,string,球面巡航远端范围 +6%
+C_S08,0,string,巡航速度 +4.5%
+C_S28,0,string,巡航速度 +4.5%
+C_S09,0,string,巡航远端范围 +0.6%
+C_S29,0,string,巡航远端范围 +0.6%
+C_S10,0,string,巡航半径 +0.6%
+C_S30,0,string,巡航半径 +0.6%
+C_S11,0,string,球面巡航半径 +8%
+C_S31,0,string,球面巡航半径 +8%
+C_S12,0,string,球面巡航远端范围 +8%
+C_S32,0,string,球面巡航远端范围 +8%
+C_S13,0,string,巡航速度 +6%
+C_S33,0,string,巡航速度 +6%
+C_S14,0,string,巡航远端范围 +0.8%
+C_S34,0,string,巡航远端范围 +0.8%
+C_S15,0,string,巡航半径 +0.8%
+C_S35,0,string,巡航半径 +0.8%
+C_S16,0,string,球面巡航半径 +12%
+C_S36,0,string,球面巡航半径 +12%
+C_S17,0,string,球面巡航远端范围 +12%
+C_S37,0,string,球面巡航远端范围 +12%
+C_S18,0,string,巡航速度 +9%
+C_S38,0,string,巡航速度 +9%
+C_S19,0,string,巡航远端范围 +1.2%
+C_S39,0,string,巡航远端范围 +1.2%
+C_S20,0,string,巡航半径 +1.2%
+C_S40,0,string,巡航半径 +1.2%
+K_N1,0,string,解锁 K2 扫荡机
+K_N2,0,string,解锁 K3 猎隼机
+K_N3,0,string,动能武器射程 +25%
+K_A1,0,string,允许动能机用最多25%火力拦截可拦截鱼雷和孢囊
+K_A2,0,string,动能正伤命中轻甲延迟其开火准备，每秒最多0.2秒
+K_A3,0,string,能量层首次被击破后的3秒，动能对该目标船体伤害 +40%
+K_G1,0,string,持续开火2秒后，动能伤害 +100% 持续3秒
+K_G1,1,string,触发后冷却8秒
+K_G2,0,string,可用于拦弹的火力预算上限由25%升至50%
+K_G2,1,string,被威胁设施可请求邻厂近防支援
+M_N1,0,string,解锁 M1 破甲导弹机
+M_N2,0,string,解锁 M2 震荡轰击机
+M_N3,0,string,解锁 M3 破城鱼雷机
+M_A1,0,string,导弹进入目标近炸距离即可结算一次主爆，减少掠过失误
+M_A2,0,string,有效导弹命中重甲形成2秒裂口，动能对重甲系数由0.20临时变为0.35
+M_A3,0,string,同一重甲目标承受第3次有效主弹后，该次伤害 +60%；每目标冷却3秒
+M_G1,0,string,导弹对大型重甲目标的主命中伤害 +100%
+M_G2,0,string,三座不同导弹工厂在2秒内命中同一大型目标时，第三次主命中伤害 +200%
+M_G2,1,string,每目标冷却8秒
+L_N1,0,string,解锁 L1 辉光激光机
+L_N2,0,string,解锁 L2 灼盾长矛机
+L_N3,0,string,解锁 L3 光脉冲压制机
+L_A1,0,string,首次击破目标能量层时造成0.4秒失衡，Boss半效，每条生命一次
+L_A2,0,string,正伤激光命中后，目标能量层恢复被延后2秒
+L_A3,0,string,激光射速 +12%
+L_G1,0,string,激光伤害 +30%
+L_G2,0,string,首次破盾位置产生2秒局部场，场内敌人暂停能量层恢复
+L_G2,1,string,每目标每条生命只触发一次
+I_N1,0,string,单颗资源核心对所在设施的产量增益由5%变为7%
+I_N2,0,string,研究所产量 +25%
+I_N3,0,string,工厂生产速度 +20%
+I_A1,0,string,新资源设施首次投产后的20秒产量 ×2，单设施只触发一次
+I_A2,0,string,实际支付科研后10秒返还该笔科研的15%，返还不再次触发
+I_A3,0,string,击杀的矿物奖励 +40%
+I_G1,0,string,科研设施产量倍率 ×2
+I_G2,0,string,每座工厂可同时推进两个缺额编制的生产，仍共享总编制上限和出舱安全间隔
+D_N1,0,string,战机最大耐久 +20%
+D_N2,0,string,战机维修速度 +30%
+D_N3,0,string,地球护盾恢复速度 +25%
+D_A1,0,string,每架新机首次实际受击伤害 -60%，维修不刷新
+D_A2,0,string,首次跌至30%耐久时恢复15%最大耐久，每条生命一次
+D_A3,0,string,自爆造成的正伤害有10%转换为地球护盾；全军每秒最多恢复护盾上限的2%
+D_G1,0,string,地球护盾上限 ×2
+D_G2,0,string,地球护盾耗尽后若仍存活，重建25%最大护盾
+D_G2,1,string,重建护盾2秒免伤，冷却30秒，不免疫船体伤害
+C_N1,0,string,对大型目标的武器射程 +20%
+C_N2,0,string,解锁真实空间的战略巡航及接敌减速模式
+C_N3,0,string,允许每厂保留一个已就绪编制接替返修或回航机的警戒位置，不额外生成战机
+C_A1,0,string,从巡逻转入拦截时移动速度 +50% 持续3秒，冷却10秒
+C_A2,0,string,太空最大行动中心半径提升到62，适配56半径母舰
+C_A3,0,string,太空最大行动中心半径提升到96，适配88半径母舰
+C_G1,0,string,母舰成为可攻击目标
+C_G1,1,string,太空最大行动中心半径提升到24
+C_G2,0,string,太空最大行动中心半径提升到140，适配128半径母舰
+M_S21,0,string,导弹爆炸半径 +7.5%
+M_S44,0,string,导弹爆炸半径 +7.5%
+M_S22,0,string,导弹制导射程 +7.5%
+M_S45,0,string,导弹制导射程 +7.5%
+M_S23,0,string,导弹飞行速度 +10%
+M_S46,0,string,导弹飞行速度 +10%
+M_N4,0,string,每轮发射导弹数量 +1，初始单发变为双发
+D_N4,0,string,解锁局部护盾塔，由建筑为周围地表提供保护
+I_N4,0,string,每座工厂研究编制 +1（全树上限 +3）
+I_N5,0,string,每座工厂研究编制 +1（全树上限 +3）
+I_N6,0,string,每座工厂研究编制 +1（全树上限 +3）

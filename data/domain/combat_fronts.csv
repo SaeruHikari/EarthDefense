@@ -1,0 +1,9 @@
+﻿id,ordinal,name,color,direction_x,direction_y,direction_z,unlock_wave
+front_01,1,先锋航道,ff9477,0,0,1,1
+front_02,2,晨星航道,efbf76,0.82,0.25,0.52,5
+front_03,3,暮影航道,cf91e5,-0.76,-0.35,0.55,9
+front_04,4,极光航道,7fbbea,0.25,0.95,-0.18,13
+front_05,5,寒夜航道,7cd4bd,-0.22,-0.94,-0.25,17
+front_06,6,赤潮航道,ef788c,0.82,-0.18,-0.55,21
+front_07,7,深渊航道,929fea,-0.82,0.22,-0.53,25
+front_08,8,终环航道,f2d9ac,0,0,-1,29

@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://qn4niuei418t"
+
+[deps]
+
+files=["res://tests/CombatManaged/Fixtures/fleet127-data/expedition_sector_ids.position.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/expedition_sector_ids.type.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/expedition_sector_ids.value.translation"]
+
+source_file="res://tests/CombatManaged/Fixtures/fleet127-data/expedition_sector_ids.csv"
+dest_files=["res://tests/CombatManaged/Fixtures/fleet127-data/expedition_sector_ids.position.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/expedition_sector_ids.type.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/expedition_sector_ids.value.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

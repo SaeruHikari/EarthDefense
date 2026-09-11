@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://casxhjo0nwob"
+
+[deps]
+
+files=["res://tests/CombatManaged/Fixtures/fleet127-data/catalog_columns.column.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/catalog_columns.type.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/catalog_columns.required.translation"]
+
+source_file="res://tests/CombatManaged/Fixtures/fleet127-data/catalog_columns.csv"
+dest_files=["res://tests/CombatManaged/Fixtures/fleet127-data/catalog_columns.column.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/catalog_columns.type.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/catalog_columns.required.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

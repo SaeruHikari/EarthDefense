@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c76t7b5o11uhb"
+
+[deps]
+
+files=["res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_nodes_effect_definition.position.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_nodes_effect_definition.key.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_nodes_effect_definition.type.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_nodes_effect_definition.value.translation"]
+
+source_file="res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_nodes_effect_definition.csv"
+dest_files=["res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_nodes_effect_definition.position.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_nodes_effect_definition.key.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_nodes_effect_definition.type.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/deep_technology_nodes_effect_definition.value.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

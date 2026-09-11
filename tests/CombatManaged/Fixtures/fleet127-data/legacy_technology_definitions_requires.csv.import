@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://hwlau7q08ux6"
+
+[deps]
+
+files=["res://tests/CombatManaged/Fixtures/fleet127-data/legacy_technology_definitions_requires.position.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/legacy_technology_definitions_requires.key.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/legacy_technology_definitions_requires.type.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/legacy_technology_definitions_requires.value.translation"]
+
+source_file="res://tests/CombatManaged/Fixtures/fleet127-data/legacy_technology_definitions_requires.csv"
+dest_files=["res://tests/CombatManaged/Fixtures/fleet127-data/legacy_technology_definitions_requires.position.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/legacy_technology_definitions_requires.key.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/legacy_technology_definitions_requires.type.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/legacy_technology_definitions_requires.value.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

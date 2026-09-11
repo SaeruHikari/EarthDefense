@@ -1,0 +1,4 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Script" path="res://src/Tests/CombatEffectsBatchChecks.cs" id="1"]
+[node name="CombatEffectsBatchChecks" type="Node"]
+script = ExtResource("1")

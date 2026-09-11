@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://ffdispadrx0m"
+
+[deps]
+
+files=["res://tests/CombatManaged/Fixtures/fleet127-data/domain_balance.value.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/domain_balance.minimum.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/domain_balance.maximum.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/domain_balance.unit.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/domain_balance.description.translation"]
+
+source_file="res://tests/CombatManaged/Fixtures/fleet127-data/domain_balance.csv"
+dest_files=["res://tests/CombatManaged/Fixtures/fleet127-data/domain_balance.value.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/domain_balance.minimum.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/domain_balance.maximum.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/domain_balance.unit.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/domain_balance.description.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

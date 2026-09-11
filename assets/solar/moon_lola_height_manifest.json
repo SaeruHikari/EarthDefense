@@ -1,0 +1,12 @@
+﻿{
+    "dimensions":  [
+                       5760,
+                       2880
+                   ],
+    "sha256":  "00656c1625935b0059c61bc5b5ffe78addce5301a8f20d16262f4a4d67dd271f",
+    "source":  "NASA LRO LOLA moon_lola_16.png",
+    "sample_conversion":  "float32(unsigned_16_sample / 65535); every integer sample round-trip verified exactly",
+    "format":  "Godot ImageTexture FORMAT_RF, full 12 mip levels, lossless resource compression",
+    "maximum_integer_error":  0,
+    "runtime_file":  "moon_lola_height.res"
+}

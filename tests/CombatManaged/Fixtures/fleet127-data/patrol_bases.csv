@@ -1,0 +1,4 @@
+﻿kind,patrol_radius,patrol_outer_range,patrol_speed,health
+interceptor,1.25,0.75,0.95,45
+laser,1.6,0.9,0.78,60
+missile,1.9,1,0.68,70

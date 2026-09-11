@@ -1,0 +1,300 @@
+parent_id,position,alien,branch,icon,id,importance,is_pair_second,layout_depth,layout_lane,layout_row,legacy_pair_id,max,name,ranks,size,tier,has_cost,has_draw_position,has_effect_definition,has_effects,has_requires,has_unlock,has_values
+root,0,false,K,,K_S01,1,false,1,-4,1,K_S01,1,弹芯加工 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,1,false,K,,K_S21,1,true,2,-4,2,K_S01,1,弹芯加工 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,2,false,K,,K_S02,1,false,1,-2,1,K_S02,1,枪机循环 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,3,false,K,,K_S22,1,true,2,-2,2,K_S02,1,枪机循环 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,4,false,K,damage,K_S03,1,false,1,0,1,K_S03,1,弹芯精炼 1,1,small,1,true,true,true,true,true,true,true
+root,5,false,K,damage,K_S23,1,true,2,0,2,K_S03,1,弹芯精炼 1 · 续,1,small,1,true,true,true,true,true,true,true
+root,6,false,K,,K_S04,1,false,1,2,1,K_S04,1,轻甲破片 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,7,false,K,,K_S24,1,true,2,2,2,K_S04,1,轻甲破片 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,8,false,K,,K_S05,1,false,1,4,1,K_S05,1,枪口延伸 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,9,false,K,,K_S25,1,true,2,4,2,K_S05,1,枪口延伸 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,10,false,K,,K_S06,1,false,3,-4,3,K_S06,1,弹芯加工 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,11,false,K,,K_S26,1,true,4,-4,4,K_S06,1,弹芯加工 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,12,false,K,,K_S07,1,false,3,-2,3,K_S07,1,枪机循环 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,13,false,K,,K_S27,1,true,4,-2,4,K_S07,1,枪机循环 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,14,false,K,damage,K_S08,1,false,3,0,3,K_S08,1,弹芯精炼 2,1,small,2,true,true,true,true,true,true,true
+root,15,false,K,damage,K_S28,1,true,4,0,4,K_S08,1,弹芯精炼 2 · 续,1,small,2,true,true,true,true,true,true,true
+root,16,false,K,,K_S09,1,false,3,2,3,K_S09,1,轻甲破片 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,17,false,K,,K_S29,1,true,4,2,4,K_S09,1,轻甲破片 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,18,false,K,,K_S10,1,false,3,4,3,K_S10,1,枪口延伸 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,19,false,K,,K_S30,1,true,4,4,4,K_S10,1,枪口延伸 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,20,false,K,,K_S11,1,false,5,-4,5,K_S11,1,弹芯加工 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,21,false,K,,K_S31,1,true,6,-4,6,K_S11,1,弹芯加工 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,22,false,K,,K_S12,1,false,5,-2,5,K_S12,1,枪机循环 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,23,false,K,,K_S32,1,true,6,-2,6,K_S12,1,枪机循环 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,24,false,K,damage,K_S13,1,false,5,0,5,K_S13,1,弹芯精炼 3,1,small,3,true,true,true,true,true,true,true
+root,25,false,K,damage,K_S33,1,true,6,0,6,K_S13,1,弹芯精炼 3 · 续,1,small,3,true,true,true,true,true,true,true
+root,26,false,K,,K_S14,1,false,5,2,5,K_S14,1,轻甲破片 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,27,false,K,,K_S34,1,true,6,2,6,K_S14,1,轻甲破片 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,28,false,K,,K_S15,1,false,5,4,5,K_S15,1,枪口延伸 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,29,false,K,,K_S35,1,true,6,4,6,K_S15,1,枪口延伸 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,30,false,K,,K_S16,1,false,7,-4,7,K_S16,1,弹芯加工 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,31,false,K,,K_S36,1,true,8,-4,8,K_S16,1,弹芯加工 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,32,false,K,,K_S17,1,false,7,-2,7,K_S17,1,枪机循环 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,33,false,K,,K_S37,1,true,8,-2,8,K_S17,1,枪机循环 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,34,false,K,damage,K_S18,1,false,7,0,7,K_S18,1,弹芯精炼 4,1,small,4,true,true,true,true,true,true,true
+root,35,false,K,damage,K_S38,1,true,8,0,8,K_S18,1,弹芯精炼 4 · 续,1,small,4,true,true,true,true,true,true,true
+root,36,false,K,,K_S19,1,false,7,2,7,K_S19,1,轻甲破片 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,37,false,K,,K_S39,1,true,8,2,8,K_S19,1,轻甲破片 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,38,false,K,,K_S20,1,false,7,4,7,K_S20,1,枪口延伸 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,39,false,K,,K_S40,1,true,8,4,8,K_S20,1,枪口延伸 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,40,false,M,,M_S01,1,false,4,-4,4,M_S01,1,战斗部装药 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,41,false,M,,M_S24,1,true,5,-4,5,M_S01,1,战斗部装药 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,42,false,M,,M_S02,1,false,4,-2,4,M_S02,1,挂架装填 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,43,false,M,,M_S25,1,true,5,-2,5,M_S02,1,挂架装填 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,44,false,M,,M_S03,1,false,4,0,4,M_S03,1,爆破整形 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,45,false,M,,M_S26,1,true,5,0,5,M_S03,1,爆破整形 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,46,false,M,blast,M_S04,1,false,4,2,4,M_S04,1,爆轰增幅 1,1,small,1,true,true,true,true,true,true,true
+root,47,false,M,blast,M_S27,1,true,5,2,5,M_S04,1,爆轰增幅 1 · 续,1,small,1,true,true,true,true,true,true,true
+root,48,false,M,,M_S05,1,false,4,4,4,M_S05,1,助推推进 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,49,false,M,,M_S28,1,true,5,4,5,M_S05,1,助推推进 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,50,false,M,,M_S06,1,false,6,-4,6,M_S06,1,战斗部装药 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,51,false,M,,M_S29,1,true,7,-4,7,M_S06,1,战斗部装药 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,52,false,M,,M_S07,1,false,6,-2,6,M_S07,1,挂架装填 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,53,false,M,,M_S30,1,true,7,-2,7,M_S07,1,挂架装填 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,54,false,M,,M_S08,1,false,6,0,6,M_S08,1,爆破整形 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,55,false,M,,M_S31,1,true,7,0,7,M_S08,1,爆破整形 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,56,false,M,blast,M_S09,1,false,6,2,6,M_S09,1,爆轰增幅 2,1,small,2,true,true,true,true,true,true,true
+root,57,false,M,blast,M_S32,1,true,7,2,7,M_S09,1,爆轰增幅 2 · 续,1,small,2,true,true,true,true,true,true,true
+root,58,false,M,,M_S10,1,false,6,4,6,M_S10,1,助推推进 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,59,false,M,,M_S33,1,true,7,4,7,M_S10,1,助推推进 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,60,false,M,,M_S11,1,false,8,-4,8,M_S11,1,战斗部装药 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,61,false,M,,M_S34,1,true,9,-4,9,M_S11,1,战斗部装药 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,62,false,M,,M_S12,1,false,8,-2,8,M_S12,1,挂架装填 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,63,false,M,,M_S35,1,true,9,-2,9,M_S12,1,挂架装填 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,64,false,M,,M_S13,1,false,8,0,8,M_S13,1,爆破整形 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,65,false,M,,M_S36,1,true,9,0,9,M_S13,1,爆破整形 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,66,false,M,blast,M_S14,1,false,8,2,8,M_S14,1,爆轰增幅 3,1,small,3,true,true,true,true,true,true,true
+root,67,false,M,blast,M_S37,1,true,9,2,9,M_S14,1,爆轰增幅 3 · 续,1,small,3,true,true,true,true,true,true,true
+root,68,false,M,,M_S15,1,false,8,4,8,M_S15,1,助推推进 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,69,false,M,,M_S38,1,true,9,4,9,M_S15,1,助推推进 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,70,false,M,,M_S16,1,false,10,-4,10,M_S16,1,战斗部装药 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,71,false,M,,M_S39,1,true,11,-4,11,M_S16,1,战斗部装药 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,72,false,M,,M_S17,1,false,10,-2,10,M_S17,1,挂架装填 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,73,false,M,,M_S40,1,true,11,-2,11,M_S17,1,挂架装填 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,74,false,M,,M_S18,1,false,10,0,10,M_S18,1,爆破整形 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,75,false,M,,M_S41,1,true,11,0,11,M_S18,1,爆破整形 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,76,false,M,blast,M_S19,1,false,10,2,10,M_S19,1,爆轰增幅 4,1,small,4,true,true,true,true,true,true,true
+root,77,false,M,blast,M_S42,1,true,11,2,11,M_S19,1,爆轰增幅 4 · 续,1,small,4,true,true,true,true,true,true,true
+root,78,false,M,,M_S20,1,false,10,4,10,M_S20,1,助推推进 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,79,false,M,,M_S43,1,true,11,4,11,M_S20,1,助推推进 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,80,false,L,,L_S01,1,false,5,-4,5,L_S01,1,晶体增益 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,81,false,L,,L_S21,1,true,6,-4,6,L_S01,1,晶体增益 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,82,false,L,,L_S02,1,false,5,-2,5,L_S02,1,脉冲循环 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,83,false,L,,L_S22,1,true,6,-2,6,L_S02,1,脉冲循环 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,84,false,L,,L_S03,1,false,5,0,5,L_S03,1,光学准直 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,85,false,L,,L_S23,1,true,6,0,6,L_S03,1,光学准直 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,86,false,L,cycle,L_S04,1,false,5,2,5,L_S04,1,光束稳定 1,1,small,1,true,true,true,true,true,true,true
+root,87,false,L,cycle,L_S24,1,true,6,2,6,L_S04,1,光束稳定 1 · 续,1,small,1,true,true,true,true,true,true,true
+root,88,false,L,range,L_S05,1,false,5,4,5,L_S05,1,光程校准 1,1,small,1,true,true,true,true,true,true,true
+root,89,false,L,range,L_S25,1,true,6,4,6,L_S05,1,光程校准 1 · 续,1,small,1,true,true,true,true,true,true,true
+root,90,false,L,,L_S06,1,false,7,-4,7,L_S06,1,晶体增益 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,91,false,L,,L_S26,1,true,8,-4,8,L_S06,1,晶体增益 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,92,false,L,,L_S07,1,false,7,-2,7,L_S07,1,脉冲循环 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,93,false,L,,L_S27,1,true,8,-2,8,L_S07,1,脉冲循环 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,94,false,L,,L_S08,1,false,7,0,7,L_S08,1,光学准直 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,95,false,L,,L_S28,1,true,8,0,8,L_S08,1,光学准直 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,96,false,L,cycle,L_S09,1,false,7,2,7,L_S09,1,光束稳定 2,1,small,2,true,true,true,true,true,true,true
+root,97,false,L,cycle,L_S29,1,true,8,2,8,L_S09,1,光束稳定 2 · 续,1,small,2,true,true,true,true,true,true,true
+root,98,false,L,range,L_S10,1,false,7,4,7,L_S10,1,光程校准 2,1,small,2,true,true,true,true,true,true,true
+root,99,false,L,range,L_S30,1,true,8,4,8,L_S10,1,光程校准 2 · 续,1,small,2,true,true,true,true,true,true,true
+root,100,false,L,,L_S11,1,false,9,-4,9,L_S11,1,晶体增益 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,101,false,L,,L_S31,1,true,10,-4,10,L_S11,1,晶体增益 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,102,false,L,,L_S12,1,false,9,-2,9,L_S12,1,脉冲循环 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,103,false,L,,L_S32,1,true,10,-2,10,L_S12,1,脉冲循环 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,104,false,L,,L_S13,1,false,9,0,9,L_S13,1,光学准直 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,105,false,L,,L_S33,1,true,10,0,10,L_S13,1,光学准直 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,106,false,L,cycle,L_S14,1,false,9,2,9,L_S14,1,光束稳定 3,1,small,3,true,true,true,true,true,true,true
+root,107,false,L,cycle,L_S34,1,true,10,2,10,L_S14,1,光束稳定 3 · 续,1,small,3,true,true,true,true,true,true,true
+root,108,false,L,range,L_S15,1,false,9,4,9,L_S15,1,光程校准 3,1,small,3,true,true,true,true,true,true,true
+root,109,false,L,range,L_S35,1,true,10,4,10,L_S15,1,光程校准 3 · 续,1,small,3,true,true,true,true,true,true,true
+root,110,false,L,,L_S16,1,false,11,-4,11,L_S16,1,晶体增益 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,111,false,L,,L_S36,1,true,12,-4,12,L_S16,1,晶体增益 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,112,false,L,,L_S17,1,false,11,-2,11,L_S17,1,脉冲循环 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,113,false,L,,L_S37,1,true,12,-2,12,L_S17,1,脉冲循环 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,114,false,L,,L_S18,1,false,11,0,11,L_S18,1,光学准直 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,115,false,L,,L_S38,1,true,12,0,12,L_S18,1,光学准直 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,116,false,L,cycle,L_S19,1,false,11,2,11,L_S19,1,光束稳定 4,1,small,4,true,true,true,true,true,true,true
+root,117,false,L,cycle,L_S39,1,true,12,2,12,L_S19,1,光束稳定 4 · 续,1,small,4,true,true,true,true,true,true,true
+root,118,false,L,range,L_S20,1,false,11,4,11,L_S20,1,光程校准 4,1,small,4,true,true,true,true,true,true,true
+root,119,false,L,range,L_S40,1,true,12,4,12,L_S20,1,光程校准 4 · 续,1,small,4,true,true,true,true,true,true,true
+root,120,false,I,,I_S01,1,false,1,-4,1,I_S01,1,矿物分离 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,121,false,I,,I_S21,1,true,2,-4,2,I_S01,1,矿物分离 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,122,false,I,,I_S02,1,false,1,-2,1,I_S02,1,能源转化 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,123,false,I,,I_S22,1,true,2,-2,2,I_S02,1,能源转化 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,124,false,I,,I_S03,1,false,1,0,1,I_S03,1,科研方法 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,125,false,I,,I_S23,1,true,2,0,2,I_S03,1,科研方法 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,126,false,I,assembly,I_S04,1,false,1,2,1,I_S04,1,产线协调 1,1,small,1,true,true,true,true,true,true,true
+root,127,false,I,assembly,I_S24,1,true,2,2,2,I_S04,1,产线协调 1 · 续,1,small,1,true,true,true,true,true,true,true
+root,128,false,I,,I_S05,1,false,1,4,1,I_S05,1,装配节拍 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,129,false,I,,I_S25,1,true,2,4,2,I_S05,1,装配节拍 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,130,false,I,,I_S06,1,false,3,-4,3,I_S06,1,矿物分离 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,131,false,I,,I_S26,1,true,4,-4,4,I_S06,1,矿物分离 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,132,false,I,,I_S07,1,false,3,-2,3,I_S07,1,能源转化 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,133,false,I,,I_S27,1,true,4,-2,4,I_S07,1,能源转化 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,134,false,I,,I_S08,1,false,3,0,3,I_S08,1,科研方法 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,135,false,I,,I_S28,1,true,4,0,4,I_S08,1,科研方法 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,136,false,I,assembly,I_S09,1,false,3,2,3,I_S09,1,产线协调 2,1,small,2,true,true,true,true,true,true,true
+root,137,false,I,assembly,I_S29,1,true,4,2,4,I_S09,1,产线协调 2 · 续,1,small,2,true,true,true,true,true,true,true
+root,138,false,I,,I_S10,1,false,3,4,3,I_S10,1,装配节拍 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,139,false,I,,I_S30,1,true,4,4,4,I_S10,1,装配节拍 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,140,false,I,,I_S11,1,false,5,-4,5,I_S11,1,矿物分离 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,141,false,I,,I_S31,1,true,6,-4,6,I_S11,1,矿物分离 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,142,false,I,,I_S12,1,false,5,-2,5,I_S12,1,能源转化 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,143,false,I,,I_S32,1,true,6,-2,6,I_S12,1,能源转化 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,144,false,I,,I_S13,1,false,5,0,5,I_S13,1,科研方法 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,145,false,I,,I_S33,1,true,6,0,6,I_S13,1,科研方法 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,146,false,I,assembly,I_S14,1,false,5,2,5,I_S14,1,产线协调 3,1,small,3,true,true,true,true,true,true,true
+root,147,false,I,assembly,I_S34,1,true,6,2,6,I_S14,1,产线协调 3 · 续,1,small,3,true,true,true,true,true,true,true
+root,148,false,I,,I_S15,1,false,5,4,5,I_S15,1,装配节拍 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,149,false,I,,I_S35,1,true,6,4,6,I_S15,1,装配节拍 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,150,false,I,,I_S16,1,false,7,-4,7,I_S16,1,矿物分离 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,151,false,I,,I_S36,1,true,8,-4,8,I_S16,1,矿物分离 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,152,false,I,,I_S17,1,false,7,-2,7,I_S17,1,能源转化 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,153,false,I,,I_S37,1,true,8,-2,8,I_S17,1,能源转化 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,154,false,I,,I_S18,1,false,7,0,7,I_S18,1,科研方法 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,155,false,I,,I_S38,1,true,8,0,8,I_S18,1,科研方法 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,156,false,I,assembly,I_S19,1,false,7,2,7,I_S19,1,产线协调 4,1,small,4,true,true,true,true,true,true,true
+root,157,false,I,assembly,I_S39,1,true,8,2,8,I_S19,1,产线协调 4 · 续,1,small,4,true,true,true,true,true,true,true
+root,158,false,I,,I_S20,1,false,7,4,7,I_S20,1,装配节拍 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,159,false,I,,I_S40,1,true,8,4,8,I_S20,1,装配节拍 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,160,false,D,,D_S01,1,false,1,-4,1,D_S01,1,机体加固 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,161,false,D,,D_S21,1,true,2,-4,2,D_S01,1,机体加固 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,162,false,D,,D_S02,1,false,1,-2,1,D_S02,1,行星蓄能 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,163,false,D,,D_S22,1,true,2,-2,2,D_S02,1,行星蓄能 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,164,false,D,,D_S03,1,false,1,0,1,D_S03,1,维修单元 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,165,false,D,,D_S23,1,true,2,0,2,D_S03,1,维修单元 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,166,false,D,,D_S04,1,false,1,2,1,D_S04,1,殉爆装药 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,167,false,D,,D_S24,1,true,2,2,2,D_S04,1,殉爆装药 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,168,false,D,,D_S05,1,false,1,4,1,D_S05,1,殉爆整形 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,169,false,D,,D_S25,1,true,2,4,2,D_S05,1,殉爆整形 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,170,false,D,,D_S06,1,false,3,-4,3,D_S06,1,机体加固 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,171,false,D,,D_S26,1,true,4,-4,4,D_S06,1,机体加固 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,172,false,D,,D_S07,1,false,3,-2,3,D_S07,1,行星蓄能 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,173,false,D,,D_S27,1,true,4,-2,4,D_S07,1,行星蓄能 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,174,false,D,,D_S08,1,false,3,0,3,D_S08,1,维修单元 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,175,false,D,,D_S28,1,true,4,0,4,D_S08,1,维修单元 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,176,false,D,,D_S09,1,false,3,2,3,D_S09,1,殉爆装药 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,177,false,D,,D_S29,1,true,4,2,4,D_S09,1,殉爆装药 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,178,false,D,,D_S10,1,false,3,4,3,D_S10,1,殉爆整形 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,179,false,D,,D_S30,1,true,4,4,4,D_S10,1,殉爆整形 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,180,false,D,,D_S11,1,false,5,-4,5,D_S11,1,机体加固 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,181,false,D,,D_S31,1,true,6,-4,6,D_S11,1,机体加固 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,182,false,D,,D_S12,1,false,5,-2,5,D_S12,1,行星蓄能 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,183,false,D,,D_S32,1,true,6,-2,6,D_S12,1,行星蓄能 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,184,false,D,,D_S13,1,false,5,0,5,D_S13,1,维修单元 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,185,false,D,,D_S33,1,true,6,0,6,D_S13,1,维修单元 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,186,false,D,,D_S14,1,false,5,2,5,D_S14,1,殉爆装药 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,187,false,D,,D_S34,1,true,6,2,6,D_S14,1,殉爆装药 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,188,false,D,,D_S15,1,false,5,4,5,D_S15,1,殉爆整形 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,189,false,D,,D_S35,1,true,6,4,6,D_S15,1,殉爆整形 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,190,false,D,,D_S16,1,false,7,-4,7,D_S16,1,机体加固 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,191,false,D,,D_S36,1,true,8,-4,8,D_S16,1,机体加固 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,192,false,D,,D_S17,1,false,7,-2,7,D_S17,1,行星蓄能 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,193,false,D,,D_S37,1,true,8,-2,8,D_S17,1,行星蓄能 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,194,false,D,,D_S18,1,false,7,0,7,D_S18,1,维修单元 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,195,false,D,,D_S38,1,true,8,0,8,D_S18,1,维修单元 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,196,false,D,,D_S19,1,false,7,2,7,D_S19,1,殉爆装药 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,197,false,D,,D_S39,1,true,8,2,8,D_S19,1,殉爆装药 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,198,false,D,,D_S20,1,false,7,4,7,D_S20,1,殉爆整形 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,199,false,D,,D_S40,1,true,8,4,8,D_S20,1,殉爆整形 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,200,false,C,,C_S01,1,false,1,-4,1,C_S01,1,巡逻区划 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,201,false,C,,C_S21,1,true,2,-4,2,C_S01,1,巡逻区划 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,202,false,C,,C_S02,1,false,1,-2,1,C_S02,1,远端拓展 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,203,false,C,,C_S22,1,true,2,-2,2,C_S02,1,远端拓展 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,204,false,C,,C_S03,1,false,1,0,1,C_S03,1,巡航推进 Ⅰ,1,small,1,true,true,true,true,true,true,true
+root,205,false,C,,C_S23,1,true,2,0,2,C_S03,1,巡航推进 Ⅰ · 续,1,small,1,true,true,true,true,true,true,true
+root,206,false,C,range,C_S04,1,false,1,2,1,C_S04,1,远端调度 1,1,small,1,true,true,true,true,true,true,true
+root,207,false,C,range,C_S24,1,true,2,2,2,C_S04,1,远端调度 1 · 续,1,small,1,true,true,true,true,true,true,true
+root,208,false,C,orbit,C_S05,1,false,1,4,1,C_S05,1,巡航扩界 1,1,small,1,true,true,true,true,true,true,true
+root,209,false,C,orbit,C_S25,1,true,2,4,2,C_S05,1,巡航扩界 1 · 续,1,small,1,true,true,true,true,true,true,true
+root,210,false,C,,C_S06,1,false,3,-4,3,C_S06,1,巡逻区划 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,211,false,C,,C_S26,1,true,4,-4,4,C_S06,1,巡逻区划 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,212,false,C,,C_S07,1,false,3,-2,3,C_S07,1,远端拓展 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,213,false,C,,C_S27,1,true,4,-2,4,C_S07,1,远端拓展 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,214,false,C,,C_S08,1,false,3,0,3,C_S08,1,巡航推进 Ⅱ,1,small,2,true,true,true,true,true,true,true
+root,215,false,C,,C_S28,1,true,4,0,4,C_S08,1,巡航推进 Ⅱ · 续,1,small,2,true,true,true,true,true,true,true
+root,216,false,C,range,C_S09,1,false,3,2,3,C_S09,1,远端调度 2,1,small,2,true,true,true,true,true,true,true
+root,217,false,C,range,C_S29,1,true,4,2,4,C_S09,1,远端调度 2 · 续,1,small,2,true,true,true,true,true,true,true
+root,218,false,C,orbit,C_S10,1,false,3,4,3,C_S10,1,巡航扩界 2,1,small,2,true,true,true,true,true,true,true
+root,219,false,C,orbit,C_S30,1,true,4,4,4,C_S10,1,巡航扩界 2 · 续,1,small,2,true,true,true,true,true,true,true
+root,220,false,C,,C_S11,1,false,5,-4,5,C_S11,1,巡逻区划 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,221,false,C,,C_S31,1,true,6,-4,6,C_S11,1,巡逻区划 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,222,false,C,,C_S12,1,false,5,-2,5,C_S12,1,远端拓展 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,223,false,C,,C_S32,1,true,6,-2,6,C_S12,1,远端拓展 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,224,false,C,,C_S13,1,false,5,0,5,C_S13,1,巡航推进 Ⅲ,1,small,3,true,true,true,true,true,true,true
+root,225,false,C,,C_S33,1,true,6,0,6,C_S13,1,巡航推进 Ⅲ · 续,1,small,3,true,true,true,true,true,true,true
+root,226,false,C,range,C_S14,1,false,5,2,5,C_S14,1,远端调度 3,1,small,3,true,true,true,true,true,true,true
+root,227,false,C,range,C_S34,1,true,6,2,6,C_S14,1,远端调度 3 · 续,1,small,3,true,true,true,true,true,true,true
+root,228,false,C,orbit,C_S15,1,false,5,4,5,C_S15,1,巡航扩界 3,1,small,3,true,true,true,true,true,true,true
+root,229,false,C,orbit,C_S35,1,true,6,4,6,C_S15,1,巡航扩界 3 · 续,1,small,3,true,true,true,true,true,true,true
+root,230,false,C,,C_S16,1,false,7,-4,7,C_S16,1,巡逻区划 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,231,false,C,,C_S36,1,true,8,-4,8,C_S16,1,巡逻区划 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,232,false,C,,C_S17,1,false,7,-2,7,C_S17,1,远端拓展 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,233,false,C,,C_S37,1,true,8,-2,8,C_S17,1,远端拓展 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,234,false,C,,C_S18,1,false,7,0,7,C_S18,1,巡航推进 Ⅳ,1,small,4,true,true,true,true,true,true,true
+root,235,false,C,,C_S38,1,true,8,0,8,C_S18,1,巡航推进 Ⅳ · 续,1,small,4,true,true,true,true,true,true,true
+root,236,false,C,range,C_S19,1,false,7,2,7,C_S19,1,远端调度 4,1,small,4,true,true,true,true,true,true,true
+root,237,false,C,range,C_S39,1,true,8,2,8,C_S19,1,远端调度 4 · 续,1,small,4,true,true,true,true,true,true,true
+root,238,false,C,orbit,C_S20,1,false,7,4,7,C_S20,1,巡航扩界 4,1,small,4,true,true,true,true,true,true,true
+root,239,false,C,orbit,C_S40,1,true,8,4,8,C_S20,1,巡航扩界 4 · 续,1,small,4,true,true,true,true,true,true,true
+root,240,false,K,,K_N1,2,,3,-1,3,,1,扫荡机编制,1,medium,1,true,true,false,true,true,true,true
+root,241,false,K,,K_N2,2,,5,1,5,,1,猎隼机编制,1,medium,2,true,true,false,true,true,true,true
+root,242,false,K,,K_N3,2,,7,-1,7,,1,远距点射,1,medium,3,true,true,false,true,true,true,true
+root,243,true,K,,K_A1,2,,3,-3,3,,1,近防识别,1,medium,1,true,true,false,true,true,true,true
+root,244,true,K,,K_A2,2,,5,-3,5,,1,脉冲压制,1,medium,2,true,true,false,true,true,true,true
+root,245,true,K,,K_A3,2,,7,-3,7,,1,失盾追猎,1,medium,3,true,true,false,true,true,true,true
+root,246,true,K,,K_G1,3,,5,-1,5,,1,超导枪列,1,large,2,true,true,false,true,true,true,true
+root,247,true,K,,K_G2,3,,9,-4,9,,1,行星近防网,1,large,4,true,true,false,true,true,true,true
+root,248,false,M,,M_N1,2,,3,-4,3,,1,制导武装,1,medium,1,true,true,false,true,true,true,true
+root,249,false,M,,M_N2,2,,8,1,8,,1,轰击机编制,1,medium,2,true,true,false,true,true,true,true
+root,250,false,M,,M_N3,2,,10,-1,10,,1,鱼雷机编制,1,medium,3,true,true,false,true,true,true,true
+root,251,true,M,,M_A1,2,,6,-3,6,,1,近炸引信,1,medium,1,true,true,false,true,true,true,true
+root,252,true,M,,M_A2,2,,8,-1,8,,1,甲壳震裂,1,medium,2,true,true,false,true,true,true,true
+root,253,true,M,,M_A3,2,,10,-3,10,,1,饱和锁定,1,medium,3,true,true,false,true,true,true,true
+root,254,true,M,,M_G1,3,,8,-3,8,,1,破城制导,1,large,2,true,true,false,true,true,true,true
+root,255,true,M,,M_G2,3,,12,-4,12,,1,轨道火力链,1,large,4,true,true,false,true,true,true,true
+root,256,false,L,,L_N1,2,,4,-4,4,,1,聚能激光,1,medium,2,true,true,false,true,true,true,true
+root,257,false,L,,L_N2,2,,9,1,9,,1,长矛机编制,1,medium,2,true,true,false,true,true,true,true
+root,258,false,L,,L_N3,2,,11,-1,11,,1,光脉冲机编制,1,medium,3,true,true,false,true,true,true,true
+root,259,true,L,,L_A1,2,,7,-3,7,,1,光盾卸载,1,medium,1,true,true,false,true,true,true,true
+root,260,true,L,,L_A2,2,,9,-1,9,,1,频谱封锁,1,medium,2,true,true,false,true,true,true,true
+root,261,true,L,,L_A3,2,,11,-3,11,,1,连续光泵,1,medium,3,true,true,false,true,true,true,true
+root,262,true,L,,L_G1,3,,9,-3,9,,1,相位聚能,1,large,2,true,true,false,true,true,true,true
+root,263,true,L,,L_G2,3,,13,-4,13,,1,光蚀场,1,large,4,true,true,false,true,true,true,true
+root,264,false,I,,I_N1,2,,3,-1,3,,1,精密核心接口,1,medium,1,true,true,false,true,true,true,true
+root,265,false,I,,I_N2,2,,5,1,5,,1,科研设备,1,medium,2,true,true,false,true,true,true,true
+root,266,false,I,,I_N3,2,,7,-1,7,,1,自动排产,1,medium,3,true,true,false,true,true,true,true
+root,267,true,I,,I_A1,2,,3,-3,3,,1,遗迹催化,1,medium,1,true,true,false,true,true,true,true
+root,268,true,I,,I_A2,2,,5,-3,5,,1,科研回响,1,medium,2,true,true,false,true,true,true,true
+root,269,true,I,,I_A3,2,,7,-3,7,,1,战利精炼,1,medium,3,true,true,false,true,true,true,true
+root,270,true,I,,I_G1,3,,5,-1,5,,1,行星计算阵列,1,large,2,true,true,false,true,true,true,true
+root,271,true,I,,I_G2,3,,9,-4,9,,1,并行产线,1,large,4,true,true,false,true,true,true,true
+root,272,false,D,,D_N1,2,,3,1,3,,1,复合机体,1,medium,1,true,true,false,true,true,true,true
+root,273,false,D,,D_N2,2,,5,1,5,,1,快速维修,1,medium,2,true,true,false,true,true,true,true
+root,274,false,D,,D_N3,2,,7,-1,7,,1,护盾整流,1,medium,3,true,true,false,true,true,true,true
+root,275,true,D,,D_A1,2,,3,-3,3,,1,反应护层,1,medium,1,true,true,false,true,true,true,true
+root,276,true,D,,D_A2,2,,5,-3,5,,1,纳米急救,1,medium,2,true,true,false,true,true,true,true
+root,277,true,D,,D_A3,2,,7,-3,7,,1,牺牲转换,1,medium,3,true,true,false,true,true,true,true
+root,278,true,D,,D_G1,3,,5,-1,5,,1,行星屏障,1,large,2,true,true,false,true,true,true,true
+root,279,true,D,,D_G2,3,,9,-4,9,,1,零界护盾,1,large,4,true,true,false,true,true,true,true
+root,280,false,C,,C_N1,2,,3,-1,3,,1,攻坚测距,1,medium,1,true,true,false,true,true,true,true
+root,281,false,C,,C_N2,2,,5,1,5,,1,远域巡航,1,medium,2,true,true,false,true,true,true,true
+root,282,false,C,,C_N3,2,,7,-1,7,,1,轮替接敌,1,medium,3,true,true,false,true,true,true,true
+root,283,true,C,,C_A1,2,,3,-3,3,,1,应急加力,1,medium,1,true,true,false,true,true,true,true
+root,284,true,C,,C_A2,2,,5,-3,5,,1,深空补给,1,medium,3,true,true,false,true,true,true,true
+root,285,true,C,,C_A3,2,,7,-3,7,,1,外环补给,1,medium,4,true,true,false,true,true,true,true
+root,286,true,C,,C_G1,3,,5,-1,5,,1,母舰攻坚,1,large,2,true,true,false,true,true,true,true
+root,287,true,C,,C_G2,3,,9,-4,9,,1,星环航程,1,large,5,true,true,false,true,true,true,true
+root,288,false,M,blast,M_S21,1,false,6,1,6,M_S21,1,扩散爆轰,1,small,2,true,true,true,true,true,true,true
+root,289,false,M,blast,M_S44,1,true,7,1,7,M_S21,1,扩散爆轰 · 续,1,small,2,true,true,true,true,true,true,true
+root,290,false,M,range,M_S22,1,false,4,-3,4,M_S22,1,远程导引,1,small,2,true,true,true,true,true,true,true
+root,291,false,M,range,M_S45,1,true,5,-3,5,M_S22,1,远程导引 · 续,1,small,2,true,true,true,true,true,true,true
+root,292,false,M,speed,M_S23,1,false,6,3,6,M_S23,1,持续助推,1,small,2,true,true,true,true,true,true,true
+root,293,false,M,speed,M_S46,1,true,7,3,7,M_S23,1,持续助推 · 续,1,small,2,true,true,true,true,true,true,true
+root,294,false,M,missile,M_N4,2,,6,-1,6,,1,双联挂架,1,medium,2,true,true,true,true,true,true,true
+root,295,false,D,shield,D_N4,2,,3,-1,3,,1,区域护盾工程,1,medium,1,true,true,false,true,true,true,true
+root,296,false,I,capacity,I_N4,2,,3,1,3,,1,编制扩容 1,1,medium,1,true,true,false,true,true,true,true
+root,297,false,I,capacity,I_N5,2,,5,3,5,,1,编制扩容 2,1,medium,2,true,true,false,true,true,true,true
+root,298,false,I,capacity,I_N6,2,,7,3,7,,1,编制扩容 3,1,medium,3,true,true,false,true,true,true,true

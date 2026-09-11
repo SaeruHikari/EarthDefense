@@ -1,0 +1,35 @@
+{
+  "seed": 261213,
+  "dimensions": [
+    4096,
+    2048
+  ],
+  "gradient_decode": "GB*2-1; normal_strength = height_range/base_radius*16; latitude metric already baked",
+  "normal_gain_base_4_08_range_0_20": 0.7843137254901961,
+  "coverage_mean": 0.2752300500869751,
+  "height_min": 0.0,
+  "height_max": 0.9172125458717346,
+  "dense_height_percentiles": [
+    0.11928295902907848,
+    0.2889675706624985,
+    0.6316893994808197,
+    0.8276784956455231,
+    0.8862924981117248
+  ],
+  "dense_height_std": 0.1977538913488388,
+  "clipped_gradient_fraction": 0.09434360265731812,
+  "file_bytes": 14865640,
+  "sha256": "271267bc3db5b345c5beb6fa33b872d85c5acf63f70f605d3fbddcd678bf1563",
+  "longitude_seam_mean_delta": [
+    9.6591796875,
+    7.24169921875,
+    3.14501953125,
+    1.0107421875
+  ],
+  "neighbor_mean_delta": [
+    13.444587769001831,
+    6.836321328411172,
+    3.1352033491681928,
+    1.1870030143467643
+  ]
+}

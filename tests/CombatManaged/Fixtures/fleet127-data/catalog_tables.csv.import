@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b6c4p4f12qmwo"
+
+[deps]
+
+files=["res://tests/CombatManaged/Fixtures/fleet127-data/catalog_tables.catalog.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/catalog_tables.parent.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/catalog_tables.parent.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/catalog_tables.shape.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/catalog_tables.id.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/catalog_tables.key.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/catalog_tables.presence.translation"]
+
+source_file="res://tests/CombatManaged/Fixtures/fleet127-data/catalog_tables.csv"
+dest_files=["res://tests/CombatManaged/Fixtures/fleet127-data/catalog_tables.catalog.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/catalog_tables.parent.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/catalog_tables.parent.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/catalog_tables.shape.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/catalog_tables.id.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/catalog_tables.key.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/catalog_tables.presence.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

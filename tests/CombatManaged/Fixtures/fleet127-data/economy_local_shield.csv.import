@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cdesmmn1lrpuh"
+
+[deps]
+
+files=["res://tests/CombatManaged/Fixtures/fleet127-data/economy_local_shield.position.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/economy_local_shield.key.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/economy_local_shield.type.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/economy_local_shield.value.translation"]
+
+source_file="res://tests/CombatManaged/Fixtures/fleet127-data/economy_local_shield.csv"
+dest_files=["res://tests/CombatManaged/Fixtures/fleet127-data/economy_local_shield.position.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/economy_local_shield.key.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/economy_local_shield.type.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/economy_local_shield.value.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

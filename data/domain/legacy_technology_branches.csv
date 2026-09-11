@@ -1,0 +1,8 @@
+﻿parent_id,position,color,id,name
+root,0,70d6b1,industry,资源工业
+root,1,70d9f4,flight,轨道巡航
+root,2,f5c975,ballistics,动能武装
+root,3,c1a4ff,energy,光子科技
+root,4,ffae83,missiles,导弹工程
+root,5,7bbfff,defense,防御后勤
+root,6,e7a8ff,alien,外星远征

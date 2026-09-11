@@ -1,0 +1,34 @@
+# Godot and managed build caches
+/.godot/
+/.vs/
+**/bin/
+**/obj/
+/builds/
+/export_templates/
+
+# Local player profiles, named backups, and isolated test sessions
+/.runtime/
+/.runtime-tests/
+/saves/
+
+# Generated captures, experiments and timing logs. Legacy test oracles are input data.
+/artifacts/*
+!/artifacts/csharp-*-golden.json
+!/artifacts/csharp-natural-gd.json
+!/artifacts/godot-legacy-canonical.json
+!/artifacts/README.md
+tests/*.log
+*.tmp
+*.previous
+*.bak
+*.user
+*.suo
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# Generated official .NET release player and self-contained runtime
+/EarthwardPlayer.exe
+/EarthwardPlayer.console.exe
+/data_Earthward_windows_x86_64/

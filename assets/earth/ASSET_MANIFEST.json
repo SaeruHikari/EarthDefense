@@ -1,0 +1,255 @@
+[
+  {
+    "filename": "8k_earth_clouds.jpg",
+    "source_url": "https://www.solarsystemscope.com/textures/download/8k_earth_clouds.jpg",
+    "bytes": 11619184,
+    "sha256": "c792eca228989d36ebb45d3ea6ff1198be5e21a25d70d2fbcb2124ffd14ba7f5",
+    "format": "JPEG",
+    "mode": "RGB",
+    "dimensions": [
+      8192,
+      4096
+    ],
+    "channel_extrema": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "original_download": true
+  },
+  {
+    "filename": "8k_earth_daymap.jpg",
+    "source_url": "https://www.solarsystemscope.com/textures/download/8k_earth_daymap.jpg",
+    "bytes": 4565076,
+    "sha256": "88ab060b6e7d241cfc590c69f528fab2b3247b738d40124cb590999a6fe44abc",
+    "format": "JPEG",
+    "mode": "RGB",
+    "dimensions": [
+      8192,
+      4096
+    ],
+    "channel_extrema": [
+      [
+        0,
+        255
+      ],
+      [
+        34,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "original_download": true
+  },
+  {
+    "filename": "8k_earth_nightmap.jpg",
+    "source_url": "https://www.solarsystemscope.com/textures/download/8k_earth_nightmap.jpg",
+    "bytes": 3144468,
+    "sha256": "9894e83a585a22c1c425e7ca4f987a9ba625bf08ecee45d3c9dcacae3c2ad5f7",
+    "format": "JPEG",
+    "mode": "RGB",
+    "dimensions": [
+      8192,
+      4096
+    ],
+    "channel_extrema": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        231
+      ]
+    ],
+    "original_download": true
+  },
+  {
+    "filename": "8k_earth_normal_map.png",
+    "derived_from": "8k_earth_normal_map.tif",
+    "bytes": 9576802,
+    "sha256": "2f3e317010d190ba536cfd9b74c77401a60aa4fa9fd3779ea6d961ee8809b796",
+    "format": "PNG",
+    "mode": "RGB",
+    "dimensions": [
+      8192,
+      4096
+    ],
+    "channel_extrema": [
+      [
+        14,
+        242
+      ],
+      [
+        6,
+        237
+      ],
+      [
+        255,
+        255
+      ]
+    ],
+    "pixel_identical_to_original": true,
+    "changes": "Lossless file-format conversion only; no pixel edits, flips or resizing."
+  },
+  {
+    "filename": "8k_earth_normal_map.tif",
+    "source_url": "https://www.solarsystemscope.com/textures/download/8k_earth_normal_map.tif",
+    "bytes": 9490024,
+    "sha256": "79d6dbbde340c653f435f5a012c026a9bed94bdcfd9714e77885f4cba046635a",
+    "format": "TIFF",
+    "mode": "RGB",
+    "dimensions": [
+      8192,
+      4096
+    ],
+    "channel_extrema": [
+      [
+        14,
+        242
+      ],
+      [
+        6,
+        237
+      ],
+      [
+        255,
+        255
+      ]
+    ],
+    "original_download": true
+  },
+  {
+    "filename": "8k_earth_specular_map.png",
+    "derived_from": "8k_earth_specular_map.tif",
+    "bytes": 1858287,
+    "sha256": "c4d6b85935ea558d740c12eaf6390493d5c0b060dd99805cc3c15db4b26bd54a",
+    "format": "PNG",
+    "mode": "RGB",
+    "dimensions": [
+      8192,
+      4096
+    ],
+    "channel_extrema": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "pixel_identical_to_original": true,
+    "changes": "Lossless file-format conversion only; no pixel edits, flips or resizing."
+  },
+  {
+    "filename": "8k_earth_specular_map.tif",
+    "source_url": "https://www.solarsystemscope.com/textures/download/8k_earth_specular_map.tif",
+    "bytes": 1843592,
+    "sha256": "194e67ef7f14dd50b402a1a6f8c7ed55810e16515b95f7736091951efe8dc3fb",
+    "format": "TIFF",
+    "mode": "RGB",
+    "dimensions": [
+      8192,
+      4096
+    ],
+    "channel_extrema": [
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ],
+      [
+        0,
+        255
+      ]
+    ],
+    "original_download": true
+  },
+  {
+    "filename": "earth_height_5400.jpg",
+    "source_url": "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/bmng/topography/gebco_08_rev_elev_5400x2700.jpg",
+    "bytes": 1244508,
+    "sha256": "97828a87bcb6549a527232455e478c5f9e4556f761b37d620a46446da17593ab",
+    "format": "JPEG",
+    "mode": "RGB",
+    "dimensions": [
+      5400,
+      2700
+    ],
+    "channel_extrema": [
+      [
+        0,
+        253
+      ],
+      [
+        0,
+        253
+      ],
+      [
+        0,
+        253
+      ]
+    ],
+    "original_download": true
+  },
+  {
+    "filename": "earth_height_5400.png",
+    "derived_from": "earth_height_5400.tif",
+    "bytes": 1751081,
+    "sha256": "2431efadedc741b69aae4f75e2672dc1dc8c783b54d61fc1f7d9e711595c8a9e",
+    "format": "PNG",
+    "mode": "L",
+    "dimensions": [
+      5400,
+      2700
+    ],
+    "channel_extrema": [
+      0,
+      252
+    ],
+    "pixel_identical_to_original": true,
+    "changes": "Lossless file-format conversion only; no pixel edits, flips or resizing."
+  },
+  {
+    "filename": "earth_height_5400.tif",
+    "source_url": "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/bmng/topography/gebco_08_rev_elev_5400x2700.tif",
+    "bytes": 14596566,
+    "sha256": "1a4d9f6774d80b19eb0c37efd8fb3b9a36a974417c24a52e559c6645accb5965",
+    "format": "TIFF",
+    "mode": "L",
+    "dimensions": [
+      5400,
+      2700
+    ],
+    "channel_extrema": [
+      0,
+      252
+    ],
+    "original_download": true
+  }
+]

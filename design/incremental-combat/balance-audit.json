@@ -1,0 +1,171 @@
+{
+  "status": "DESIGN_ONLY_NOT_GAME_TESTED",
+  "node_count": 168,
+  "small": 120,
+  "medium": 36,
+  "large": 12,
+  "references_exist": true,
+  "acyclic": true,
+  "max_effects_per_node": 2,
+  "small_only_science": true,
+  "first_assault_required_alien_points": 5,
+  "missile_required_alien_points": 0,
+  "laser_required_alien_points": 0,
+  "first_ten_wave_science_budget": {
+    "income_lower_bound": 612.5,
+    "missile_science": 60,
+    "laser_science": 220,
+    "small_nodes_count": 22,
+    "small_mean_science": 10,
+    "early_alien_medium_count": 3,
+    "early_alien_medium_science": 18,
+    "remaining": 58.5
+  },
+  "alien_total_once": 158,
+  "early_alien_choices": [
+    "K_A1",
+    "I_A1",
+    "D_A1",
+    "C_A1"
+  ],
+  "alien_income": [
+    {
+      "wave": 3,
+      "reward": 3,
+      "cumulative": 3
+    },
+    {
+      "wave": 5,
+      "reward": 3,
+      "cumulative": 6
+    },
+    {
+      "wave": 10,
+      "reward": 4,
+      "cumulative": 10
+    },
+    {
+      "wave": 15,
+      "reward": 4,
+      "cumulative": 14
+    },
+    {
+      "wave": 20,
+      "reward": 5,
+      "cumulative": 19
+    },
+    {
+      "wave": 25,
+      "reward": 5,
+      "cumulative": 24
+    },
+    {
+      "wave": 30,
+      "reward": 6,
+      "cumulative": 30
+    },
+    {
+      "wave": 35,
+      "reward": 6,
+      "cumulative": 36
+    },
+    {
+      "wave": 40,
+      "reward": 7,
+      "cumulative": 43
+    }
+  ],
+  "wave_samples": [
+    {
+      "wave": 1,
+      "count_full_fronts": 20,
+      "hp_multiplier": 1.0,
+      "damage_multiplier": 1.0
+    },
+    {
+      "wave": 5,
+      "count_full_fronts": 36,
+      "hp_multiplier": 1.1475,
+      "damage_multiplier": 1.074
+    },
+    {
+      "wave": 10,
+      "count_full_fronts": 56,
+      "hp_multiplier": 1.3629,
+      "damage_multiplier": 1.1742
+    },
+    {
+      "wave": 20,
+      "count_full_fronts": 96,
+      "hp_multiplier": 1.9225,
+      "damage_multiplier": 1.4035
+    },
+    {
+      "wave": 30,
+      "count_full_fronts": 136,
+      "hp_multiplier": 2.7119,
+      "damage_multiplier": 1.6776
+    },
+    {
+      "wave": 40,
+      "count_full_fronts": 176,
+      "hp_multiplier": 3.8254,
+      "damage_multiplier": 2.0052
+    },
+    {
+      "wave": 60,
+      "count_full_fronts": 256,
+      "hp_multiplier": 7.6117,
+      "damage_multiplier": 2.865
+    },
+    {
+      "wave": 80,
+      "count_full_fronts": 336,
+      "hp_multiplier": 15.1456,
+      "damage_multiplier": 4.0933
+    },
+    {
+      "wave": 100,
+      "count_full_fronts": 416,
+      "hp_multiplier": 30.1366,
+      "damage_multiplier": 5.8483
+    }
+  ],
+  "armor_work_model": {
+    "assumptions": "Equal fully burdened investment. No travel, shields regenerating, splash or firepower waste. Armor work shares, not enemy counts. Comparative arithmetic only.",
+    "work_shares": [
+      0.45,
+      0.35,
+      0.2
+    ],
+    "normalized_damage_per_investment": [
+      1,
+      0.85,
+      0.75
+    ],
+    "matrix": [
+      [
+        1.6,
+        0.2,
+        0
+      ],
+      [
+        0.65,
+        1.65,
+        0.2
+      ],
+      [
+        0.65,
+        0.65,
+        1.8
+      ]
+    ],
+    "pure_kinetic_work": null,
+    "pure_missile_work": 2.24050459344577,
+    "pure_laser_work": 1.7891737891737889,
+    "specialist_mix_work": 0.6789525153495741,
+    "pure_missile_cost_relative_to_mix": 3.299942989816004,
+    "pure_laser_cost_relative_to_mix": 2.635197232095962
+  },
+  "first_assault_completed_wave": 24
+}

@@ -1,0 +1,29 @@
+<Project Sdk="Godot.NET.Sdk/4.6.1">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RootNamespace>Earthward</RootNamespace>
+    <AssemblyName>Earthward</AssemblyName>
+    <NuGetAudit>false</NuGetAudit>
+    <Version>1.27.0</Version>
+    <Optimize>true</Optimize>
+    <DebugType>portable</DebugType>
+    <ServerGarbageCollection>true</ServerGarbageCollection>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="src/**/*.cs" />
+    <RuntimeHostConfigurationOption Include="System.GC.HeapCount" Value="8" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' == 'ExportRelease' and '$(IncludeNativeTests)' != 'true'">
+    <Compile Remove="src/Tests/**/*.cs" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(ValidationSlice)' == 'Rendering'">
+    <Compile Remove="src/Application/**/*.cs;src/Presentation/**/*.cs;src/Combat/**/*.cs;src/Tests/**/*.cs" />
+    <Compile Include="src/Combat/CombatData.cs;src/Combat/FactoryCoverageSnapshot.cs;src/Tests/RenderingChecks.cs" />
+  </ItemGroup>
+</Project>

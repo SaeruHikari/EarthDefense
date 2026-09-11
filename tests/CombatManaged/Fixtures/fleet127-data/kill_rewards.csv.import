@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://byhytkp8tsakr"
+
+[deps]
+
+files=["res://tests/CombatManaged/Fixtures/fleet127-data/kill_rewards.minerals.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/kill_rewards.energy.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/kill_rewards.science.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/kill_rewards.score.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/kill_rewards.alien.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/kill_rewards.wave.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/kill_rewards.resource.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/kill_rewards.first.translation"]
+
+source_file="res://tests/CombatManaged/Fixtures/fleet127-data/kill_rewards.csv"
+dest_files=["res://tests/CombatManaged/Fixtures/fleet127-data/kill_rewards.minerals.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/kill_rewards.energy.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/kill_rewards.science.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/kill_rewards.score.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/kill_rewards.alien.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/kill_rewards.wave.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/kill_rewards.resource.translation", "res://tests/CombatManaged/Fixtures/fleet127-data/kill_rewards.first.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
