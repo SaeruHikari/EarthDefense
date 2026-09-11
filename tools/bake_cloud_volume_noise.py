@@ -1,7 +1,8 @@
 ﻿"""Bake deterministic, periodic 3D cloud density noise (no downloaded assets).
 
 Run with NumPy/Pillow Python, then run tools/bake_cloud_volume_texture.ps1.
-The packer is a C# tool scene and verifies every saved Texture3D slice.
+The packer is a C# tool scene that folds this RGBA8 output into the shader's packed RG8
+layout (R shape, G erosion and detail combined) and verifies every saved Texture3D slice.
 RGBA is linear scalar data: R shape, G erosion, B detail, A coarse variation.
 The volume contains independently varying density at EVERY height; it is not a
 surface height map. Coordinates and byte order are Z,Y,X,RGBA (X contiguous).

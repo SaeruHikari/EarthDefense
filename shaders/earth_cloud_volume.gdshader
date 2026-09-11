@@ -132,12 +132,16 @@ void fragment() {
 	float weight_sum = 0.0;
 	vec3 source = vec3(0.0);
 	float previous_light_t = -100.0;
+	float altitude_cache = -1.0;
 	for (int index = 0; index < 96; index++) {
 		if (index >= steps || transmittance < 0.012) { break; }
 		float along = (float(index) + 0.5 + jitter * 0.40) * step_length;
 		float t = (along < length0) ? (a0 + along) : (a1 + along - length0);
 		vec3 p = origin + ray * t;
-		float density = cloud_volume_density(p, weather_mip, 1.0);
+		// The coarse altitude channel needs far less temporal resolution than the density
+		// itself: refresh it every fourth step instead of paying a fetch per step.
+		if ((index & 3) == 0) { altitude_cache = -1.0; }
+		float density = cloud_volume_density_cached(p, weather_mip, 1.0, altitude_cache);
 		if (density < 0.0004) { continue; }
 		if (t - previous_light_t > 0.012) {
 			source = cloud_source_light(p, ray, sun, weather_mip);

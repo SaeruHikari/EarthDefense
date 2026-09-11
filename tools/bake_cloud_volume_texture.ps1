@@ -1,5 +1,6 @@
 param(
     [string]$Raw = 'res://artifacts/cloud_noise_3d.rgba8',
+    [string]$Source = '',
     [string]$Output = 'res://assets/earth/clouds/volume/cloud_noise_3d.res',
     [ValidateRange(1,256)][int]$Size = 96,
     [switch]$SkipBuild
@@ -16,7 +17,12 @@ try {
     $env:APPDATA = Join-Path $profile 'AppData'
     $env:LOCALAPPDATA = Join-Path $profile 'LocalAppData'
     New-Item -ItemType Directory -Force -Path $env:APPDATA,$env:LOCALAPPDATA | Out-Null
-    & $engine --path $projectRoot 'res://tools/bake_cloud_volume_texture.tscn' --position '-1700,100' --audio-driver Dummy -- --raw=$Raw --output=$Output --size=$Size
+    # Mipmaps are never requested: Godot does not serialize them for ImageTexture3D.
+    if ($Source) {
+        & $engine --path $projectRoot 'res://tools/bake_cloud_volume_texture.tscn' --position '-1700,100' --audio-driver Dummy -- --source=$Source --output=$Output
+    } else {
+        & $engine --path $projectRoot 'res://tools/bake_cloud_volume_texture.tscn' --position '-1700,100' --audio-driver Dummy -- --raw=$Raw --output=$Output --size=$Size
+    }
     if ($LASTEXITCODE -ne 0) { throw 'Cloud volume packing or byte validation failed.' }
 } finally {
     $env:APPDATA = $priorAppData
