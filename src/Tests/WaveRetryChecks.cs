@@ -51,7 +51,7 @@ public partial class WaveRetryChecks : Node
         Check(battle.S("rng_seed") == oldBattle.S("rng_seed") && battle.S("rng_state") == oldBattle.S("rng_state"), phase + " restores exact random sequence");
         CombatSnapshotCodec.TryDecode(battle.Value("payload"), out var decoded);
         var actual = (DataMap)decoded!; var original = BattleState(expected);
-        foreach (string key in new[] { "_next_uid", "_clock", "emp_cooldown", "_destroyed_drones" }) Check(actual.N(key) == original.N(key), phase + " restores battle " + key);
+        foreach (string key in new[] { "_next_uid", "_clock", "_number_sequence", "_destroyed_drones" }) Check(actual.N(key) == original.N(key), phase + " restores battle " + key);
         foreach (string key in new[] { "_drones", "enemies", "_shots", "_hostile_shots", "_local_shields" })
         {
             bool equal = DataMap.Equivalent(actual.Value(key), original.Value(key));
@@ -125,21 +125,14 @@ public partial class WaveRetryChecks : Node
             System.IO.File.WriteAllText(PathFor("earthward_checkpoint.json"), midWave);
             Check(_app.LoadCheckpoint() && _app.Game.Wave == 1 && _app.RetryWaveNumber == 1, "loading earlier exact save matches earlier opening rather than future wave");
 
-            // Simulate a genuine pre-feature checkpoint: remove only its matching opening in this isolated directory.
-            var legacy = DataMap.Parse(midWave); legacy.Map("game")["earth_hp"] = 0d;
+            // A checkpoint with no matching wave-start opening can no longer be rebuilt; retry is simply unavailable.
+            var orphan = DataMap.Parse(midWave); orphan.Map("game")["earth_hp"] = 0d;
             _app.FlushCheckpointWrites(); // Complete the asynchronous writer before replacing its file with a fixture.
-            System.IO.File.WriteAllText(PathFor("earthward_checkpoint.json"), legacy.ToJson());
+            System.IO.File.WriteAllText(PathFor("earthward_checkpoint.json"), orphan.ToJson());
             if (System.IO.File.Exists(PathFor("earthward_wave_start.json.previous"))) System.IO.File.Delete(PathFor("earthward_wave_start.json.previous"));
             await NewMain();
-            Check(_app.LoadCheckpoint() && !_app.HasWaveStartRetry, "legacy mid-wave save does not inherit a later wave opening");
-            double legacyMoney = _app.Game.Minerals;
-            await DefeatAndClickRetry();
-            Check(_app.Game.Wave == 1 && _app.Game.EarthHp == 100 && _app.Game.Minerals == legacyMoney && _app.Game.HasResearch("K_S01"), "first legacy recovery retains progress and reorganizes healthy Earth at same wave");
-            Check(_app.HasWaveStartRetry && _app.UserPaused && _app.Battle.GetWaveSpawnPlan().N("cycle_elapsed") == 0 && _app.Battle.GetWaveSpawnPlan().L("spawned") == 0, "legacy recovery establishes a genuine reusable zero-time opening");
-            var reorganized = _app.CurrentWaveStartCheckpoint!;
-            _app.Game.Minerals = 1; _app.Game.EarthHp = 5;
-            Check(_app.RetryWaveStart(), "subsequent legacy retries use captured opening");
-            AssertWaveStart(reorganized, "subsequent legacy retry");
+            Check(_app.LoadCheckpoint() && !_app.HasWaveStartRetry, "checkpoint without matching opening does not inherit a later wave opening");
+            Check(!_app.CanRetryWave && !_app.RetryWaveStart(), "retry without a captured opening is refused instead of rebuilt");
 
             string validOpening = Digest("earthward_wave_start.json");
             string blockedTemporary = PathFor("earthward_wave_start.json.tmp");

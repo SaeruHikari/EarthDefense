@@ -37,23 +37,6 @@ internal static class PatrolCoverageChecks
             Check(!game.SetCombatSetting(Key, invalid), "reject out of range multiplier " + invalid);
             Check(revision == game.FactoryStatsRevision && DataMap.Equivalent(before, game.Serialize()), "bad option preserves active game and cache revision");
         }
-        foreach (var sample in golden.Map("samples").Values.OfType<DataMap>())
-        {
-            var old = sample.Map("save"); string source = old.ToJson();
-            var migrated = new DefenseState(); Check(migrated.Restore(old), "historical checkpoint without option restores");
-            Near(migrated.CombatSettings.N(Key), 2, "historical checkpoint receives new default");
-            Check(source == old.ToJson(), "migration leaves historical input unchanged");
-            var prefs = old.Map("combat_settings").DeepClone();
-            Near(migrated.ReadCombatPreferences(prefs)!.N(Key), 2, "flat historical preferences receive default");
-        }
-        foreach (int version in new[] { 1, 2, 3 })
-        {
-            var settings = DefenseState.DefaultCombatSettings; settings.Remove(Key);
-            double delta = Earthward.WorldScale.EarthRadius - DefenseState.RadiusForWorldScaleVersion(version);
-            foreach (string radius in new[] { "frontier_radius_1", "frontier_radius_2", "frontier_radius_3" }) settings[radius] = settings.N(radius) - delta;
-            var prefs = new DataMap { ["world_scale_version"] = version, ["settings"] = settings };
-            Near(game.ReadCombatPreferences(prefs)!.N(Key), 2, "versioned historical preferences inherit2 at world version" + version);
-        }
         // Compare the nine physical hulls, including warm caches and primed factory stats.
         foreach (var frame in AirframeCatalog.Definitions)
         {
@@ -85,23 +68,15 @@ internal static class PatrolCoverageChecks
         var effects = equipped.TechEffects(); var prepared = equipped.FactoryPatrolStats("interceptor", 3);
         Near(prepared.N("patrol_radius"), 3.75 * (1 + effects.N("patrol_radius_bonus")) * perk, "new base then research then navigation Perk");
         Near(prepared.N("patrol_outer_range"), 2.25 * (1 + effects.N("patrol_outer_bonus")) * perk, "new outer base then research then Perk");
-        var endgame = new DefenseState(); Check(endgame.Restore(golden.Map("samples").Map("full").Map("save")), "real endgame research fixture");
+        var endgame = new DefenseState { Science = 1e12, AlienPoints = 1000000 };
+        Check(endgame.UnlockAllTechnologyCheat(), "real endgame research fixture");
         endgame.SetCombatSetting(Key, 1); var endgameWeapons = endgame.DroneStats(); double action = endgame.PatrolStats("interceptor").N("action_radius");
         endgame.SetCombatSetting(Key, 8);
         Near(endgame.PatrolStats("interceptor").N("action_radius"), action, "fixed endgame action radius does not scale");
         Check(DataMap.Equivalent(endgameWeapons, endgame.DroneStats()), "endgame weapons and expedition fields unchanged");
-        var legacy = new DefenseState(); Check(legacy.Restore(golden.Map("legacy_raw")), "actual old125 investment fixture");
-        foreach (int stage in new[] { 0, 1, 2, 3 })
-        {
-            // Exercise the retained legacy additive terms independently of their purchase UI.
-            for (int index = 1; index <= 3; index++) legacy.Tech["frontier_range_" + index] = stage >= index ? 1L : 0L;
-            legacy.SetCombatSetting(Key, 1); var first = legacy.PatrolStats("interceptor"); var fx = legacy.TechEffects();
-            legacy.SetCombatSetting(Key, 2); var second = legacy.PatrolStats("interceptor");
-            double fixedRadius = 2 * (1 + fx.N("patrol_radius_bonus"));
-            double fixedOuter = (6 + new[] { 0, 24, 48, 80 }[stage]) * (1 + fx.N("patrol_outer_bonus"));
-            Near(second.N("patrol_radius"), first.N("patrol_radius") * 2 - fixedRadius, "assault additive preserved at stage" + stage);
-            Near(second.N("patrol_outer_range"), first.N("patrol_outer_range") * 2 - fixedOuter, "frontier additive preserved at stage" + stage);
-            Near(second.N("action_radius"), first.N("action_radius"), "legacy fixed action radius unchanged at stage" + stage);
-        }
+        var preparedOuter = prepared.N("patrol_outer_range");
+        Check(DataMap.Equivalent(equipped.FactoryPatrolStats("interceptor", 3), prepared), "repeated prepared patrol reads are stable");
+        Near(preparedOuter, 2.25 * (1 + effects.N("patrol_outer_bonus")) * perk, "prepared outer range remains exact");
     }
 }
+

@@ -1,6 +1,5 @@
 ﻿attribute,type
 action_radius,number
-adjacent_point_defense,bool
 armor_breach_seconds,number
 breached_kinetic_heavy_coefficient,number
 capacity_add,number
@@ -74,15 +73,6 @@ shield_break_stagger_seconds,number
 shield_regeneration_bonus,number
 strategic_enabled,bool
 strategic_speed_multiplier,number
-unlock_K2,bool
-unlock_K3,bool
-unlock_L1,bool
-unlock_L2,bool
-unlock_L3,bool
-unlock_M1,bool
-unlock_M2,bool
-unlock_M3,bool
-unlock_shield,bool
 zero_shield_cooldown,number
 zero_shield_duration,number
 zero_shield_fraction,number

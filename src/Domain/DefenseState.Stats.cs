@@ -7,40 +7,38 @@ public sealed partial class DefenseState
 {
     public DataMap DroneStats()
     {
-        double damageMultiplier = (1 + Level("damage") * DomainBalance.Legacy("damage_1")) * CombatSettings.N("drone_base_damage_multiplier", .65);
-        double factoryMultiplier = 1 / (1 + Level("factory_automation") * DomainBalance.Legacy("factory_automation_1") + Level("combat_logistics") * DomainBalance.Legacy("combat_logistics_1"));
-        bool assault = Level("mothership_assault") > 0;
+        double damageMultiplier = CombatSettings.N("drone_base_damage_multiplier", .65);
         var result = new DataMap
         {
-            ["damage"] = CombatSettings.N("drone_damage") * damageMultiplier * (1.0 + Level("kinetic_coils") * DomainBalance.Legacy("kinetic_coils_1")) * (1.0 + Level("kinetic_mastery") * DomainBalance.Legacy("kinetic_mastery_1")),
-            ["fire_rate"] = DomainBalance.Value("kinetic_fire_rate_base") * (1.0 + Level("rapid") * DomainBalance.Legacy("rapid_1")) * (1.0 + Level("fire_control") * DomainBalance.Legacy("fire_control_1")) * (1.0 + Level("ammo_packing") * DomainBalance.Legacy("ammo_packing_1")),
-            ["spread"] = Math.Min(1, Tech.L("spread")),
-            ["bullet_count"] = Level("spread") > 0 ? (long)DomainBalance.Value("spread_bullet_count") : 1L,
-            ["bullet_damage_weights"] = Level("spread") > 0 ? new List<object?> { 1d, DomainBalance.Value("spread_secondary_damage"), DomainBalance.Value("spread_secondary_damage") } : new List<object?> { 1d },
+            ["damage"] = CombatSettings.N("drone_damage") * damageMultiplier,
+            ["fire_rate"] = DomainBalance.Value("kinetic_fire_rate_base"),
+            ["spread"] = 0d,
+            ["bullet_count"] = 1L,
+            ["bullet_damage_weights"] = new List<object?> { 1d },
             ["laser"] = Buildings.L("laser") * FactoryCapacity("laser"),
             ["missile"] = Buildings.L("missile") * FactoryCapacity("missile"),
             ["interceptor"] = Buildings.L("interceptor") * FactoryCapacity("interceptor"),
-            ["laser_damage"] = CombatSettings.N("laser_damage") * damageMultiplier * (1.0 + Math.Max(0.0, Level("laser") - 1.0) * DomainBalance.Value("advanced_weapon_rank_damage")) * (1.0 + Level("laser_focus") * DomainBalance.Legacy("laser_focus_1")) * (1.0 + Level("laser_capacitors") * DomainBalance.Legacy("laser_capacitors_2")) * (1.0 + Level("photonic_mastery") * DomainBalance.Legacy("photonic_mastery_2")),
-            ["missile_damage"] = CombatSettings.N("missile_damage") * damageMultiplier * (1.0 + Math.Max(0.0, Level("missile") - 1.0) * DomainBalance.Value("advanced_weapon_rank_damage")) * (1.0 + Level("warhead") * DomainBalance.Legacy("warhead_1")) * (1.0 + Level("missile_mastery") * DomainBalance.Legacy("missile_mastery_1")),
-            ["laser_fire_rate"] = DomainBalance.Value("laser_fire_rate_base") * (1.0 + Level("laser_cycling") * DomainBalance.Legacy("laser_cycling_1")) * (1.0 + Level("laser_cooling") * DomainBalance.Legacy("laser_cooling_1")) * (1.0 + Level("photonic_mastery") * DomainBalance.Legacy("photonic_mastery_3")),
-            ["missile_fire_rate"] = DomainBalance.Value("missile_fire_rate_base") * (1.0 + Level("missile_feed") * DomainBalance.Legacy("missile_feed_1")) * (1.0 + Level("missile_mastery") * DomainBalance.Legacy("missile_mastery_2")),
-            ["laser_beam_count"] = 1 + Tech.L("laser_arrays"),
-            ["missile_salvo"] = 1 + Tech.L("missile_salvo"),
+            ["laser_damage"] = CombatSettings.N("laser_damage") * damageMultiplier,
+            ["missile_damage"] = CombatSettings.N("missile_damage") * damageMultiplier,
+            ["laser_fire_rate"] = DomainBalance.Value("laser_fire_rate_base"),
+            ["missile_fire_rate"] = DomainBalance.Value("missile_fire_rate_base"),
+            ["laser_beam_count"] = 1L,
+            ["missile_salvo"] = 1L,
             ["missile_extra_projectiles"] = 0L,
-            ["projectile_speed"] = DomainBalance.Value("kinetic_projectile_speed_base") * (1.0 + Level("projectile_drive") * DomainBalance.Legacy("projectile_drive_1") + Level("ammo_packing") * DomainBalance.Legacy("ammo_packing_2")),
-            ["projectile_speed_multiplier"] = 1.0 + Level("projectile_drive") * DomainBalance.Legacy("projectile_drive_1") + Level("ammo_packing") * DomainBalance.Legacy("ammo_packing_2"),
-            ["missile_speed_multiplier"] = 1.0 + Level("missile_engines") * DomainBalance.Legacy("missile_engines_1"),
-            ["missile_blast_radius"] = DomainBalance.Value("missile_blast_radius_base") + Level("missile_blast") * DomainBalance.Legacy("missile_blast_1"),
-            ["missile_turn_rate"] = DomainBalance.Value("missile_turn_rate_base") + Level("missile_guidance") * DomainBalance.Legacy("missile_guidance_1"),
-            ["interceptor_range_multiplier"] = 1.0 + Level("alien_kinetic_range") * DomainBalance.Legacy("alien_kinetic_range_1") + (assault ? DomainBalance.Value("legacy_interceptor_assault_range_add") : 0.0),
-            ["laser_range_multiplier"] = (1.0 + Level("laser_range") * DomainBalance.Legacy("laser_range_1")) * (1.0 + Level("alien_laser_range") * DomainBalance.Legacy("alien_laser_range_1")) * (assault ? DomainBalance.Value("legacy_laser_assault_range_factor") : 1.0),
-            ["missile_range_multiplier"] = (1.0 + Level("alien_missile_range") * DomainBalance.Legacy("alien_missile_range_1")) * (assault ? DomainBalance.Value("legacy_missile_assault_range_factor") : 1.0),
-            ["mothership_assault_unlocked"] = assault,
-            ["weapon_range_bonus"] = DomainBalance.Frontier(LegacyFrontierLevel()).N("weapon_range_bonus"),
-            ["death_blast_damage"] = DeathBlastBaseDamage * (1.0 + Level("death_blast") * DomainBalance.Legacy("death_blast_1")),
+            ["projectile_speed"] = DomainBalance.Value("kinetic_projectile_speed_base"),
+            ["projectile_speed_multiplier"] = 1.0,
+            ["missile_speed_multiplier"] = 1.0,
+            ["missile_blast_radius"] = DomainBalance.Value("missile_blast_radius_base"),
+            ["missile_turn_rate"] = DomainBalance.Value("missile_turn_rate_base"),
+            ["interceptor_range_multiplier"] = 1.0,
+            ["laser_range_multiplier"] = 1.0,
+            ["missile_range_multiplier"] = 1.0,
+            ["mothership_assault_unlocked"] = false,
+            ["weapon_range_bonus"] = 0d,
+            ["death_blast_damage"] = DeathBlastBaseDamage,
             ["death_blast_radius"] = DeathBlastRadius,
-            ["drone_armor"] = Math.Min(DomainBalance.Value("drone_armor_cap"), Level("drone_armor") * DomainBalance.Legacy("drone_armor_1")),
-            ["factory_interval_multiplier"] = factoryMultiplier,
+            ["drone_armor"] = 0d,
+            ["factory_interval_multiplier"] = 1.0,
             ["shield_max"] = ShieldMax(),
         };
         var fx = TechEffects();
@@ -59,17 +57,15 @@ public sealed partial class DefenseState
         var basis = DomainBalance.Patrol(kind);
         double coverage=CombatSettings.N("patrol_coverage_multiplier",2);
         basis["patrol_radius"]=basis.N("patrol_radius")*coverage;basis["patrol_outer_range"]=basis.N("patrol_outer_range")*coverage;
-        string driveId = PerkCatalog.Kinds.Contains(kind) ? kind + "_drive" : "interceptor_drive";
-        bool assault = Level("mothership_assault") > 0;
         var result = new DataMap
         {
-            ["patrol_radius"] = basis.N("patrol_radius") * (1.0 + Level("patrol_radius") * DomainBalance.Legacy("patrol_radius_1") + Level("orbit_navigation") * DomainBalance.Legacy("orbit_navigation_1") + Level("patrol_command") * DomainBalance.Legacy("patrol_command_1")) * (1.0 + Level("alien_navigation") * DomainBalance.Legacy("alien_navigation_1")) + (assault ? DomainBalance.Value("legacy_patrol_assault_radius_add") : 0.0),
-            ["patrol_outer_range"] = basis.N("patrol_outer_range") * (1.0 + Level("patrol_outer") * DomainBalance.Legacy("patrol_outer_1") + Level("orbit_navigation") * DomainBalance.Legacy("orbit_navigation_2") + Level("patrol_command") * DomainBalance.Legacy("patrol_command_2")) * (1.0 + Level("alien_navigation") * DomainBalance.Legacy("alien_navigation_2")) + (assault ? DomainBalance.Value("legacy_patrol_assault_outer_add") : 0.0) + DomainBalance.Frontier(LegacyFrontierLevel()).N("patrol_outer_bonus"),
-            ["patrol_speed"] = basis.N("patrol_speed") * (1.0 + Level("patrol_speed") * DomainBalance.Legacy("patrol_speed_1") + Level(driveId) * DomainBalance.Value("legacy_drive_speed_per_level") + Level("patrol_command") * DomainBalance.Legacy("patrol_command_3")) * (1.0 + Level("alien_propulsion") * DomainBalance.Legacy("alien_propulsion_1")),
-            ["health"] = basis.N("health") * CombatSettings.N("drone_base_health_multiplier", 0.65) * (1.0 + Level("drone_armor") * DomainBalance.Legacy("drone_armor_2")) * (1.0 + Level("defense_network") * DomainBalance.Legacy("defense_network_3")) * (1.0 + Level("alien_field_support") * DomainBalance.Legacy("alien_field_support_1")),
-            ["repair_threshold"] = Math.Min(DomainBalance.Value("repair_threshold_cap"), DomainBalance.Value("repair_threshold_base") + Level("repair_protocol") * DomainBalance.Legacy("repair_protocol_2")),
-            ["repair_rate"] = DomainBalance.Value("repair_rate_base") * (1.0 + Level("field_repair") * DomainBalance.Legacy("field_repair_1") + Level("combat_logistics") * DomainBalance.Legacy("combat_logistics_1")) * (1.0 + Level("alien_field_support") * DomainBalance.Legacy("alien_field_support_2")),
-            ["factory_interval_multiplier"] = 1.0 / (1.0 + Level("factory_automation") * DomainBalance.Legacy("factory_automation_1") + Level("combat_logistics") * DomainBalance.Legacy("combat_logistics_1")),
+            ["patrol_radius"] = basis.N("patrol_radius"),
+            ["patrol_outer_range"] = basis.N("patrol_outer_range"),
+            ["patrol_speed"] = basis.N("patrol_speed"),
+            ["health"] = basis.N("health") * CombatSettings.N("drone_base_health_multiplier", 0.65),
+            ["repair_threshold"] = Math.Min(DomainBalance.Value("repair_threshold_cap"), DomainBalance.Value("repair_threshold_base")),
+            ["repair_rate"] = DomainBalance.Value("repair_rate_base"),
+            ["factory_interval_multiplier"] = 1.0,
         };
         var fx = TechEffects();
         foreach (var (key, bonus) in new[] { ("patrol_radius", "patrol_radius_bonus"), ("patrol_outer_range", "patrol_outer_bonus"), ("patrol_speed", "patrol_speed_bonus"), ("health", "health_bonus"), ("repair_rate", "repair_speed_bonus") })
@@ -142,7 +138,6 @@ public sealed partial class DefenseState
             stats[key] = stats.N(key) * frame.N("fire_rate_multiplier", 1);
         stats["airframe_id"] = frameId;
         stats["capacity_cost"] = frame.I("capacity_cost", 1);
-        stats["role"] = frame.S("role");
         stats["frame_range_multiplier"] = frame.N("range_multiplier", 1);
         stats["missile_blast_radius"] = stats.N("missile_blast_radius") * frame.N("blast_radius_multiplier", 1);
         foreach (string key in new[] { "burst_target_count", "aoe_budget", "warmup_seconds", "suppression_radius", "suppression_delay", "suppression_cooldown", "warmup_damage_multiplier", "turn_multiplier", "scale_multiplier" })

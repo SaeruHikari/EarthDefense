@@ -38,8 +38,4 @@ JammerFireRateMultiplier,0.75,0,2,被干扰后的射速倍率
 HeavyChargeSeconds,2,0.01,60,攻城与铸甲/棱镜Boss蓄力时间
 LightChargeSeconds,0.8,0.01,60,其他蓄力武器时间
 ForgeExposureSeconds,2,0,60,铸甲督军开火后暴露时间
-EmpLargeStagger,0.3,0,60,轨道脉冲对大型敌人眩晕秒数
-EmpSmallStagger,0.6,0,60,轨道脉冲对普通敌人眩晕秒数
-EmpRecoveryBlockSeconds,3,0,300,轨道脉冲阻止能量恢复时间
-EmpCooldown,22,0.01,3600,轨道脉冲冷却
 SporeProjectileSpeedMultiplier,0.6,0.001,10,可拦截孢子弹弹速系数

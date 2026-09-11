@@ -79,7 +79,7 @@ internal static class CsvCatalogLoader
     };
     private static void Validate(Dictionary<string,DataMap> all,Func<string,CsvTable> read)
     {
-        foreach(string name in new[]{"deep-technology.json","airframes.json","perks.json","economy.json","expedition.json","legacy-technology.json"})if(!all.ContainsKey(name))throw new InvalidDataException("catalog_tables.csv: missing required catalog "+name);
+        foreach(string name in new[]{"deep-technology.json","airframes.json","perks.json","economy.json","expedition.json"})if(!all.ContainsKey(name))throw new InvalidDataException("catalog_tables.csv: missing required catalog "+name);
         var nodes=all["deep-technology.json"].List("nodes").Cast<DataMap>().ToDictionary(n=>n.S("id"));
         var branches=all["deep-technology.json"].List("branches").Cast<DataMap>().Select(n=>n.S("id")).ToHashSet();
         var attributeTable=read("technology_attribute_schema.csv");attributeTable.RequireHeaders("attribute","type");var attributes=new Dictionary<string,string>();
@@ -94,7 +94,7 @@ internal static class CsvCatalogLoader
         foreach(var (id,node)in nodes)
         {
             if(!branches.Contains(node.S("branch"))||node.S("size") is not("small" or "medium" or "large")||node.I("max")!=1)throw new InvalidDataException("deep_technology_nodes.csv: invalid branch/size/max for "+id);
-            if(node.Map("values").Count==0||node.S("size")=="small"&&(node.Map("values").Count>2||node.Map("cost").Keys.Any(k=>k!="science")))throw new InvalidDataException("deep_technology_nodes.csv: invalid small-node contract "+id);
+            if(node.S("size")=="small"&&(node.Map("values").Count>2||node.Map("cost").Keys.Any(k=>k!="science"))||node.Map("cost").Count==0)throw new InvalidDataException("deep_technology_nodes.csv: invalid small-node or cost contract "+id);
             foreach(var(k,v)in node.Map("values"))if(!attributes.TryGetValue(k,out string? type)||type=="bool"&&v is not bool||type=="number"&&!DataMap.ValidNumber(v,-1e100,1e100))throw new InvalidDataException("deep_technology_nodes_values.csv: unknown or invalid attribute "+id+"/"+k);
             foreach(var(k,v)in node.Map("cost"))if(k is not("minerals" or "energy" or "science" or "alien_points")||!DataMap.ValidNumber(v,0,1e100,k=="alien_points"))throw new InvalidDataException("deep_technology_nodes_cost.csv: invalid currency "+id+"/"+k);
             Visit(id);
@@ -112,7 +112,5 @@ internal static class CsvCatalogLoader
             var limits=economy.Map("ranges").List(key);if(limits.Count!=2||DataMap.Number(limits[0])>DataMap.Number(limits[1])||!DataMap.ValidNumber(value,DataMap.Number(limits[0]),DataMap.Number(limits[1]),economy.List("integer_settings").Contains(key)))throw new InvalidDataException("economy_settings.csv: default outside valid range "+key);
         }
         foreach(var building in economy.List("buildings").Cast<DataMap>())if(building.S("unlock_research").Length>0&&!nodes.ContainsKey(building.S("unlock_research")))throw new InvalidDataException("economy_buildings.csv: unknown research "+building.S("id"));
-        var legacy=all["legacy-technology.json"].List("definitions").Cast<DataMap>().Select(n=>n.S("id")).ToHashSet();
-        foreach(var node in all["legacy-technology.json"].List("definitions").Cast<DataMap>())foreach(string field in new[]{"requires","legacy_requires","purchase_requires"})foreach(var (key,value)in node.Map(field))if(!legacy.Contains(key)||!DataMap.ValidNumber(value,0,10000,true))throw new InvalidDataException("legacy_technology_definitions_"+field+".csv: invalid legacy reference "+key);
     }
 }

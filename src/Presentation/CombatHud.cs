@@ -9,7 +9,6 @@ namespace Earthward.Presentation;
 public partial class CombatHud : Node2D
 {
     public Main App = null!;
-    public double EmpAge { get; set; } = 10;
     public double ShieldFlash
     {
         get; set;
@@ -21,7 +20,6 @@ public partial class CombatHud : Node2D
             return;
         if (!App.WorldIsPaused())
         {
-            EmpAge += delta * App.Speed;
             ShieldFlash = Math.Max(0, ShieldFlash - delta * 1.4);
         }
         QueueRedraw();
@@ -46,7 +44,7 @@ public partial class CombatHud : Node2D
             var p = enemy.Vector3("space_position");
             if (!planet.IsSpaceVisible(p))
                 continue;
-            Color c = enemy.S("kind") == "meteor" ? UiTheme.Amber : UiTheme.Coral;
+            Color c = UiTheme.Coral;
             var tip = planet.GetSpaceScreenPosition(p);
             var tail = planet.GetSpaceScreenPosition(p - enemy.Vector3("tangent") * .4f);
             DrawLine(tail, tip, UiTheme.Alpha(c, .16f), 1, true);
@@ -77,8 +75,6 @@ public partial class CombatHud : Node2D
         }
         if (!App.IsSpectating())
         {
-            if (EmpAge < 1)
-                DrawArc(App.WorldSize * .5f, planet.GetProjectedPlanetRadius() * (1 + (float)EmpAge * .16f), 0, Mathf.Tau, 160, new Color(.6f, .94f, .94f, (1 - (float)EmpAge) * .55f), 1.5f, true);
             if (ShieldFlash > 0)
                 DrawArc(App.WorldSize * .5f, planet.GetProjectedPlanetRadius() + 3, 0, Mathf.Tau, 160, new Color(.55f, .92f, .96f, (float)ShieldFlash * .32f), 1.5f, true);
         }

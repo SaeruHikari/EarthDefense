@@ -239,8 +239,6 @@ C_S19,0,patrol_outer_bonus,number,0.018
 C_S39,0,patrol_outer_bonus,number,0.018
 C_S20,0,patrol_radius_bonus,number,0.018
 C_S40,0,patrol_radius_bonus,number,0.018
-K_N1,0,unlock_K2,bool,true
-K_N2,0,unlock_K3,bool,true
 K_N3,0,kinetic_range_bonus,number,0.25
 K_A1,0,point_defense_budget,number,0.25
 K_A2,0,kinetic_suppress_seconds,number,0.2
@@ -251,10 +249,6 @@ K_G1,1,kinetic_burst_multiplier,number,2.0
 K_G1,2,kinetic_burst_duration,number,3.0
 K_G1,3,kinetic_burst_cooldown,number,8.0
 K_G2,0,point_defense_budget,number,0.5
-K_G2,1,adjacent_point_defense,bool,true
-M_N1,0,unlock_M1,bool,true
-M_N2,0,unlock_M2,bool,true
-M_N3,0,unlock_M3,bool,true
 M_A1,0,proximity_fuse_radius,number,0.3
 M_A2,0,armor_breach_seconds,number,2.0
 M_A2,1,breached_kinetic_heavy_coefficient,number,0.35
@@ -266,9 +260,6 @@ M_G2,0,linked_factory_count,integer,3
 M_G2,1,linked_factory_window,number,2.0
 M_G2,2,linked_damage_multiplier,number,3.0
 M_G2,3,linked_cooldown,number,8.0
-L_N1,0,unlock_L1,bool,true
-L_N2,0,unlock_L2,bool,true
-L_N3,0,unlock_L3,bool,true
 L_A1,0,shield_break_stagger_seconds,number,0.4
 L_A2,0,laser_regen_delay,number,2.0
 L_A3,0,laser_fire_rate_bonus,number,0.12
@@ -316,7 +307,6 @@ M_S45,0,missile_range_bonus,number,0.075
 M_S23,0,missile_speed_bonus,number,0.1
 M_S46,0,missile_speed_bonus,number,0.1
 M_N4,0,missile_extra_projectiles,integer,1
-D_N4,0,unlock_shield,bool,true
 I_N4,0,capacity_add,integer,1
 I_N5,0,capacity_add,integer,1
 I_N6,0,capacity_add,integer,1

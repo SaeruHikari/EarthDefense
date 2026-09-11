@@ -30,14 +30,12 @@ internal static class LocalShieldChecks
         var malformed = saved.DeepClone(); malformed.Map("research_state").Map("nodes").Remove("D_N4"); Check(!copy.Restore(malformed), "cannot restore a tower without its unlock");
         var poor = new DefenseState(); Check(poor.Restore(saved), "unlocked building test fixture"); poor.Minerals = poor.Energy = 0;
         Check(poor.BuildingUnlocked("shield") && !poor.CanBuild("shield"), "UI technology lock is distinct from insufficient funds");
-        foreach (var row in golden.Map("samples").Values.OfType<DataMap>())
-        {
-            var source = row.Map("save"); var old = new DefenseState(); Check(old.Restore(source), "old save without shield building restores");
-            Check(old.Buildings.L("shield") == 0, "old progress does not create tower");
-            Near(old.Shield, source.N("shield"), "unused old balance is preserved for compatibility");
-            Near(old.ShieldFacilityStats().N("capacity"), old.ShieldMax(), "all old shield investment feeds one facility");
-        }
-        var full = new DefenseState(); Check(full.Restore(golden.Map("samples").Map("full").Map("save")), "advanced shield technology fixture");
+        // The legacy scalar shield balance never regenerates and never absorbs damage.
+        var legacy = new DefenseState { Shield = 500 };
+        legacy.Shield = 500; legacy.Tick(1); Near(legacy.Shield, 500, "unused old balance is preserved but inert");
+        Near(legacy.ShieldFacilityStats().N("capacity"), legacy.ShieldMax(), "all shield investment feeds one facility");
+        var full = new DefenseState { Science = 1e9, AlienPoints = 1000000 };
+        Check(full.UnlockAllTechnologyCheat(), "advanced shield technology owned");
         var fullStats = full.ShieldFacilityStats(); Near(fullStats.N("break_recovery_fraction"), .25, "D_G2 rebuild fraction"); Near(fullStats.N("break_hold_seconds"), 2, "D_G2 local protection duration"); Near(fullStats.N("break_cooldown"), 30, "D_G2 local cooldown");
         full.Shield = 1000; full.EarthHp = 100; full.TakeDamage(30); Near(full.EarthHp, 70, "advanced shield research does not silently create global armor");
         var repair = new DefenseState { Minerals = 10000, Energy = 10000, Shield = 40 };

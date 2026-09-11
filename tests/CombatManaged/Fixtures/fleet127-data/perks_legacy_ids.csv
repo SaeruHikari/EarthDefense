@@ -1,7 +1,0 @@
-﻿parent_id,position,type,value
-root,0,string,expanded_hangar
-root,1,string,assembly
-root,2,string,targeting
-root,3,string,armor
-root,4,string,navigation
-root,5,string,last_stand

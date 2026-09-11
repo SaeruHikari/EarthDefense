@@ -184,14 +184,12 @@ public static class CatalogData
         if(!relativePath.EndsWith(".csv",StringComparison.Ordinal)||relativePath.Contains("..")||Path.IsPathRooted(relativePath))throw new InvalidDataException("Invalid CSV catalog path: "+relativePath);
         if(!CsvCache.TryGetValue(relativePath,out var table)){table=CsvTable.Parse(_read(relativePath),relativePath);CsvCache[relativePath]=table;}return table;
     }
-    private static bool _legacyFixture;
     private static bool _csvLoaded;
-    public static void ConfigureLegacyFixture(string rootDirectory) { Configure(rootDirectory); _legacyFixture=true; }
     public static void Configure(string rootDirectory) => Configure(file => File.ReadAllText(Path.Combine(rootDirectory, file)));
     public static void Configure(Func<string, string> read)
     {
         _read = read;
-        Revision++;CsvCache.Clear();_legacyFixture=false;_csvLoaded=false;
+        Revision++;CsvCache.Clear();_csvLoaded=false;
         Cache.Clear();
         RowCache.Clear();
         IndexCache.Clear();
@@ -199,23 +197,13 @@ public static class CatalogData
     public static void ValidateRuntime() { Load("economy.json"); DomainBalance.ValidateReferences(); PerkEffectRules.Validate(); }
     public static DataMap Load(string file)
     {
-        if (!_legacyFixture && file != "technology-migration-127.json")
+        if (!_csvLoaded)
         {
-            if (!_csvLoaded)
-            {
-                var loaded = CsvCatalogLoader.Load(ReadCsv);
-                foreach(var (key,loadedValue) in loaded) Cache[key]=loadedValue;
-                _csvLoaded=true;
-            }
-            return Cache.TryGetValue(file,out var catalog)?catalog:throw new InvalidDataException("Unknown runtime CSV catalog: "+file);
+            var loaded = CsvCatalogLoader.Load(ReadCsv);
+            foreach(var (key,loadedValue) in loaded) Cache[key]=loadedValue;
+            _csvLoaded=true;
         }
-        if (!Cache.TryGetValue(file,out var value))
-        {
-            value=DataMap.Parse(_read(file));
-            if(value.Count==0)throw new InvalidDataException("Missing or invalid frozen catalog: "+file);
-            Cache[file]=value;
-        }
-        return value;
+        return Cache.TryGetValue(file,out var catalog)?catalog:throw new InvalidDataException("Unknown runtime CSV catalog: "+file);
     }
     public static IReadOnlyList<DataMap> Rows(string file, string key)
     {

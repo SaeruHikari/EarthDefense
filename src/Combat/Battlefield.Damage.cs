@@ -194,7 +194,7 @@ public sealed partial class Battlefield
             EventNotice?.Invoke("中型 Boss 已击毁 · 外星科技与永久研究已回收");
         else if (C.S(e, "kind") == "small_boss" || C.B(e, "resource_core_carrier"))
             EventNotice?.Invoke($"小 Boss 已击毁 · 资源核心 +{Game.CombatSettings.I("resource_core_drop_count", 5)}");
-        AddBurst(C.V(e, "space_position"), C.S(e, "kind") == "meteor" ? CombatScale.Gold : CombatScale.Coral, C.N(e, "size") * 1.6);
+        AddBurst(C.V(e, "space_position"), CombatScale.Coral, C.N(e, "size") * 1.6);
         if (C.B(e, "post_carrier") && _postSpawned >= C.I(_postPlan, "carrier_count", 1) && FrontierCohortStatus().I("alive") == 0)
         {
             _cohortComplete = true;

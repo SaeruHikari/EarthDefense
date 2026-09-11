@@ -53,7 +53,7 @@ internal static class AllDirectionsCombat
         var game=new DefenseState{Wave=1};var b=new Battlefield(game,new RotatingSurface());var farSide=Vector3.Forward*(float)CombatScale.CloseAssault;
         var enemy=b.SpawnEnemy("scout",new(){["wave"]=1L,["role"]="claw"},farSide)!;enemy["phase"]="ground_attack";
         Check((bool)Call(b,"CanBombardEarth",enemy)!,"wave1 far-side enemy has ordinary planetary attack access");double shield=game.EarthHp;
-        Call(b,"FireHostile",enemy,2d,false);Check(b.HostileShots.Count>0,"far-side planetary shot is actually fired");b.UpdateShots(.3);Near(game.EarthHp,shield-2,"actual far-side shot damages Earth normally",.000001);
+        Call(b,"FireHostile",enemy,2d,false);Check(b.HostileShots.Count>0,"far-side planetary shot is actually fired");b.UpdateShots(1.0);Near(game.EarthHp,shield-2,"actual far-side shot damages Earth normally",.000001);
         b.DetonateHostile(Vector3.Forward*(float)CombatScale.EarthCollisionRadius,new(){["damage"]=10d,["target_kind"]="earth",["blast_radius"]=0d},null,true);Near(game.EarthHp,shield-12,"all-direction impact has no geographic damage immunity",.000001);
     }
     private static void FixedWaveCounts()

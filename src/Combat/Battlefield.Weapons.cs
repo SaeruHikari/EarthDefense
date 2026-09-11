@@ -325,7 +325,9 @@ public sealed partial class Battlefield
     {
         if (_projectileSectors.Count == 0 || C.S(d, "kind") != "interceptor" || !HasTech("K_A1"))
             return false;
-        int maximum = HasTech("K_G2") ? 2 : 4;
+        // The firepower fraction spendable on interception is table-driven by the owning technology node (K_A1 25%, K_G2 50%).
+        double budget = C.N(_globalWeapons, "point_defense_budget", .25);
+        int maximum = Math.Max(1, (int)Math.Round(1 / Math.Max(.05, budget)));
         long spent = C.L(d, "point_defense_shots"), total = C.L(d, "total_weapon_shots", maximum);
         if (spent * maximum >= total)
             return false;

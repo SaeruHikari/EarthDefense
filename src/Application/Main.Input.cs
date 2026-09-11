@@ -105,10 +105,6 @@ public partial class Main
                         GetViewport().SetInputAsHandled();
                     }
                     break;
-                case Key.E:
-                    if (Modal == "" && !UserPaused)
-                        Emp();
-                    break;
                 case Key.Tab:
                     if (Modal == "")
                     {
@@ -369,9 +365,6 @@ public partial class Main
                 break;
             case "speed":
                 Speed = Speed == 1 ? 2 : 1;
-                break;
-            case "emp":
-                Emp();
                 break;
             case "repair":
                 if (Game.Repair())

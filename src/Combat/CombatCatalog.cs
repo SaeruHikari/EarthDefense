@@ -56,10 +56,6 @@ public static class CombatCatalog
         public double HeavyChargeSeconds { get; }
         public double LightChargeSeconds { get; }
         public double ForgeExposureSeconds { get; }
-        public double EmpLargeStagger { get; }
-        public double EmpSmallStagger { get; }
-        public double EmpRecoveryBlockSeconds { get; }
-        public double EmpCooldown { get; }
         public double SporeProjectileSpeedMultiplier { get; }
         internal Tuning(CsvTable table)
         {
@@ -111,12 +107,8 @@ public static class CombatCatalog
             HeavyChargeSeconds = Get("HeavyChargeSeconds");
             LightChargeSeconds = Get("LightChargeSeconds");
             ForgeExposureSeconds = Get("ForgeExposureSeconds");
-            EmpLargeStagger = Get("EmpLargeStagger");
-            EmpSmallStagger = Get("EmpSmallStagger");
-            EmpRecoveryBlockSeconds = Get("EmpRecoveryBlockSeconds");
-            EmpCooldown = Get("EmpCooldown");
             SporeProjectileSpeedMultiplier = Get("SporeProjectileSpeedMultiplier");
-            var known = new HashSet<string>(new[] { "HealthBase", "HealthSettingReference", "DamageBase", "TacticalSpeedBase", "EliteFirstWave", "EliteInterval", "EliteOrdinal", "EliteHealthMultiplier", "EliteDamageMultiplier", "GroundDamageFloor", "GroundDamageMultiplier", "SmallBossSpawnFraction", "MediumBossSpawnFraction", "MotherAltitude", "SpawnConeMin", "SpawnConeMax", "SpawnMotherClearance", "FrontierLateralRadius", "FrontierLateralMinimum", "FrontierForwardMin", "FrontierForwardMax", "ContinuingVolleyCount", "ContinuingHangarInterval", "ContinuingCarrierHealthMultiplier", "LegacySpawnSpeedBase", "LegacySpawnSpeedWaveGrowth", "ArmorExposedMultiplier", "WeaverCooldown", "WeaverRange", "WeaverMaxLinks", "WeaverShieldFraction", "WeaverRecoveryBudget", "WeaverRecoveryFraction", "JammerCooldown", "JammerDuration", "JammerFireRateMultiplier", "HeavyChargeSeconds", "LightChargeSeconds", "ForgeExposureSeconds", "EmpLargeStagger", "EmpSmallStagger", "EmpRecoveryBlockSeconds", "EmpCooldown", "SporeProjectileSpeedMultiplier" }, StringComparer.Ordinal);
+            var known = new HashSet<string>(new[] { "HealthBase", "HealthSettingReference", "DamageBase", "TacticalSpeedBase", "EliteFirstWave", "EliteInterval", "EliteOrdinal", "EliteHealthMultiplier", "EliteDamageMultiplier", "GroundDamageFloor", "GroundDamageMultiplier", "SmallBossSpawnFraction", "MediumBossSpawnFraction", "MotherAltitude", "SpawnConeMin", "SpawnConeMax", "SpawnMotherClearance", "FrontierLateralRadius", "FrontierLateralMinimum", "FrontierForwardMin", "FrontierForwardMax", "ContinuingVolleyCount", "ContinuingHangarInterval", "ContinuingCarrierHealthMultiplier", "LegacySpawnSpeedBase", "LegacySpawnSpeedWaveGrowth", "ArmorExposedMultiplier", "WeaverCooldown", "WeaverRange", "WeaverMaxLinks", "WeaverShieldFraction", "WeaverRecoveryBudget", "WeaverRecoveryFraction", "JammerCooldown", "JammerDuration", "JammerFireRateMultiplier", "HeavyChargeSeconds", "LightChargeSeconds", "ForgeExposureSeconds", "SporeProjectileSpeedMultiplier" }, StringComparer.Ordinal);
             foreach (var row in table.Rows) if (!known.Contains(row.String("id"))) throw row.Error("id", "unknown tuning parameter");
             foreach (double integer in new[] {EliteFirstWave,EliteInterval,EliteOrdinal,ContinuingVolleyCount,WeaverMaxLinks})
                 if (Math.Floor(integer) != integer) throw new InvalidDataException(table.SourceName + ": count parameters require integers");
@@ -177,7 +169,7 @@ public static class CombatCatalog
                 var value = new EnemyKind(row.String("id"),row.Number("base_size"),row.Number("bombard_seconds"),row.Number("legacy_speed_multiplier"),row.Number("drone_fire_cooldown"),row.Number("earth_fire_cooldown"));
                 if (value.Size<=0 || value.BombardSeconds<=0 || value.LegacySpeed<=0 || value.DroneCooldown<=0 || value.EarthCooldown<=0 || !Kinds.TryAdd(value.Id,value)) throw row.Error("id","invalid or duplicate enemy kind");
             }
-            foreach(string kind in new[]{"scout","cruiser","small_boss","boss","carrier","meteor","default"}) if(!Kinds.ContainsKey(kind))throw new InvalidDataException(kinds.SourceName+": missing kind "+kind);
+            foreach(string kind in new[]{"scout","cruiser","small_boss","boss","carrier","default"}) if(!Kinds.ContainsKey(kind))throw new InvalidDataException(kinds.SourceName+": missing kind "+kind);
             var stages=CatalogData.ReadCsv("combat_defense_stages.csv");stages.RequireHeaders("stage","health_multiplier","damage_multiplier");var seen=new HashSet<long>();
             foreach(var row in stages.Rows)
             {

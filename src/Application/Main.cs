@@ -390,20 +390,6 @@ public partial class Main : Node2D
 		UpdateFactoryPerkSites();
 	}
 
-	private void Emp()
-	{
-		if (!Started || UserPaused || Modal != "" || Defeated || IsObserving())
-			return;
-		if (Battle.UseEmp())
-		{
-			BattleHud.EmpAge = 0;
-			Sounds.PlaySound("emp");
-			ShowNotice("轨道脉冲已释放 · 干扰近地敌军与能量恢复");
-		}
-		else
-			ShowNotice($"轨道脉冲正在充能 · {Battle.EmpCooldown:0} 秒");
-	}
-
 	private void WaveCompleted()
 	{
 		if (Defeated)

@@ -8,11 +8,11 @@ namespace Earthward.Combat;
 
 public sealed partial class Battlefield
 {
-    private static readonly string[] SnapshotFields = "active wave_running enemies _drones _shots _hostile_shots _beams _bursts _damage_numbers _factories _factory_activity _motherships _invasion_won _dead _next_uid _clock _assignment_clock _destroyed_drones _number_sequence emp_cooldown _emp_age wave_remaining wave_total _wave_spawn_snapshot _wave_spawn_duration _wave_spawn_elapsed _wave_spawned _wave_initial_count _wave_spawn_cancelled _wave_segment_start _wave_segment_count _wave_segment_spawned _spawn_clock _boss_spawned _small_boss_spawned _post_defense _post_plan _post_spawned _fixed_cycle_elapsed _fixed_cycle_running _fixed_cohort_complete _local_shields".Split(' ');
+    private static readonly string[] SnapshotFields = "active wave_running enemies _drones _shots _hostile_shots _beams _bursts _damage_numbers _factories _factory_activity _motherships _invasion_won _dead _next_uid _clock _assignment_clock _destroyed_drones _number_sequence wave_remaining wave_total _wave_spawn_snapshot _wave_spawn_duration _wave_spawn_elapsed _wave_spawned _wave_initial_count _wave_spawn_cancelled _wave_segment_start _wave_segment_count _wave_segment_spawned _spawn_clock _boss_spawned _small_boss_spawned _post_defense _post_plan _post_spawned _fixed_cycle_elapsed _fixed_cycle_running _fixed_cohort_complete _local_shields".Split(' ');
     public DataMap SerializeCombatSnapshot()
     {
         SyncLocalShields();
-        var data = new DataMap { ["active"] = Active, ["wave_running"] = WaveRunning, ["enemies"] = Enemies, ["_drones"] = Drones, ["_shots"] = Shots, ["_hostile_shots"] = HostileShots, ["_beams"] = Beams, ["_bursts"] = Bursts, ["_damage_numbers"] = DamageNumbers, ["_factories"] = Factories, ["_factory_activity"] = FactoryActivity, ["_motherships"] = Motherships, ["_invasion_won"] = InvasionWon, ["_dead"] = Dead, ["_next_uid"] = _nextUid, ["_clock"] = Clock, ["_assignment_clock"] = _assignmentClock, ["_destroyed_drones"] = DestroyedDrones, ["_number_sequence"] = NumberSequence, ["emp_cooldown"] = EmpCooldown, ["_emp_age"] = EmpAge, ["wave_remaining"] = WaveRemaining, ["wave_total"] = WaveTotal, ["_wave_spawn_snapshot"] = _wavePlan, ["_wave_spawn_duration"] = _spawnDuration, ["_wave_spawn_elapsed"] = _spawnElapsed, ["_wave_spawned"] = _spawned, ["_wave_initial_count"] = _initialCount, ["_wave_spawn_cancelled"] = _spawnCancelled, ["_wave_segment_start"] = _segmentStart, ["_wave_segment_count"] = _segmentCount, ["_wave_segment_spawned"] = _segmentSpawned, ["_spawn_clock"] = _spawnClock, ["_boss_spawned"] = _bossSpawned, ["_small_boss_spawned"] = _smallBossSpawned, ["_post_defense"] = _postDefense, ["_post_plan"] = _postPlan, ["_post_spawned"] = _postSpawned, ["_fixed_cycle_elapsed"] = _cycleElapsed, ["_fixed_cycle_running"] = _fixedRunning, ["_fixed_cohort_complete"] = _cohortComplete, ["_local_shields"] = _localShields };
+        var data = new DataMap { ["active"] = Active, ["wave_running"] = WaveRunning, ["enemies"] = Enemies, ["_drones"] = Drones, ["_shots"] = Shots, ["_hostile_shots"] = HostileShots, ["_beams"] = Beams, ["_bursts"] = Bursts, ["_damage_numbers"] = DamageNumbers, ["_factories"] = Factories, ["_factory_activity"] = FactoryActivity, ["_motherships"] = Motherships, ["_invasion_won"] = InvasionWon, ["_dead"] = Dead, ["_next_uid"] = _nextUid, ["_clock"] = Clock, ["_assignment_clock"] = _assignmentClock, ["_destroyed_drones"] = DestroyedDrones, ["_number_sequence"] = NumberSequence, ["wave_remaining"] = WaveRemaining, ["wave_total"] = WaveTotal, ["_wave_spawn_snapshot"] = _wavePlan, ["_wave_spawn_duration"] = _spawnDuration, ["_wave_spawn_elapsed"] = _spawnElapsed, ["_wave_spawned"] = _spawned, ["_wave_initial_count"] = _initialCount, ["_wave_spawn_cancelled"] = _spawnCancelled, ["_wave_segment_start"] = _segmentStart, ["_wave_segment_count"] = _segmentCount, ["_wave_segment_spawned"] = _segmentSpawned, ["_spawn_clock"] = _spawnClock, ["_boss_spawned"] = _bossSpawned, ["_small_boss_spawned"] = _smallBossSpawned, ["_post_defense"] = _postDefense, ["_post_plan"] = _postPlan, ["_post_spawned"] = _postSpawned, ["_fixed_cycle_elapsed"] = _cycleElapsed, ["_fixed_cycle_running"] = _fixedRunning, ["_fixed_cohort_complete"] = _cohortComplete, ["_local_shields"] = _localShields };
         return new()
         {
             ["version"] = 4,
@@ -40,7 +40,7 @@ public sealed partial class Battlefield
             return false;
         if (!CombatSnapshotCodec.HasFields(d, "active:bool wave_running:bool _invasion_won:bool _dead:bool _post_defense:bool _wave_spawn_cancelled:bool _boss_spawned:bool _small_boss_spawned:bool _factories:map _motherships:map _post_plan:map _wave_spawn_snapshot:map enemies:array _drones:array _shots:array _hostile_shots:array _beams:array _bursts:array _damage_numbers:array _factory_activity:array"))
             return false;
-        foreach (var k in "_next_uid _clock _assignment_clock _destroyed_drones _number_sequence emp_cooldown _emp_age wave_remaining wave_total _wave_spawn_duration _wave_spawn_elapsed _wave_spawned _wave_initial_count _wave_segment_start _wave_segment_count _wave_segment_spawned _spawn_clock _post_spawned".Split(' '))
+        foreach (var k in "_next_uid _clock _assignment_clock _destroyed_drones _number_sequence wave_remaining wave_total _wave_spawn_duration _wave_spawn_elapsed _wave_spawned _wave_initial_count _wave_segment_start _wave_segment_count _wave_segment_spawned _spawn_clock _post_spawned".Split(' '))
             if (!Nonnegative(d.Value(k), double.MaxValue))
                 return false;
         if (!legacy)
@@ -184,7 +184,7 @@ public sealed partial class Battlefield
                 return false;
             if (a.B("stationary_bombard") && (!UsesStationaryBombardment(a) || a.S("phase") != "ground_attack" || !CombatSnapshotCodec.HasFields(a, "aim_direction:v3 aim_up:v3") || C.V(a, "velocity").LengthSquared() > .000001))
                 return false;
-            if (!CombatSnapshotCodec.HasFields(a, "space_position:v3 target_space:v3 speed:number base_speed:number phase:text bombard_time:number bombard_duration:number base_size:number size:number wave:int age:number fire:number") || !new[] { "meteor", "scout", "small_boss", "cruiser", "boss", "carrier" }.Contains(a.S("kind")) || !new[] { "dive", "approach", "ground_attack", "retreat" }.Contains(a.S("phase")))
+            if (!CombatSnapshotCodec.HasFields(a, "space_position:v3 target_space:v3 speed:number base_speed:number phase:text bombard_time:number bombard_duration:number base_size:number size:number wave:int age:number fire:number") || !new[] { "scout", "small_boss", "cruiser", "boss", "carrier" }.Contains(a.S("kind")) || !new[] { "approach", "ground_attack", "retreat" }.Contains(a.S("phase")))
                 return false;
             if (a.ContainsKey("post_wave_id") && !CombatSnapshotCodec.HasFields(a, "post_wave_id:text post_carrier:bool post_damage_multiplier:number locked_volley_count:int hangar_remaining:int hangar_clock:number hangar_open:number"))
                 return false;
@@ -247,8 +247,6 @@ public sealed partial class Battlefield
         InvasionWon = d.B("_invasion_won");
         Dead = d.B("_dead");
         Clock = d.N("_clock");
-        EmpCooldown = d.N("emp_cooldown");
-        EmpAge = d.N("_emp_age");
         DestroyedDrones = d.L("_destroyed_drones");
         NumberSequence = d.L("_number_sequence");
         _nextUid = d.L("_next_uid");

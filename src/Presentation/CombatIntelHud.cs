@@ -93,7 +93,6 @@ public partial class CombatIntelHud : Node2D
                 "cruiser" => "外星重舰",
                 "boss" => "外星指挥舰",
                 "small_boss" => "资源运载虫",
-                "meteor" => "陨石",
                 _ => "外星单位"
             }),
             ["armor"] = armor,

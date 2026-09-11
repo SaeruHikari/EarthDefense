@@ -8,7 +8,6 @@ death_blast_radius,0.55,0,1000000000000.0,scalar,death blast radius
 mineral_output_base,5,0,1000000000000.0,scalar,mineral output base
 energy_output_base,4,0,1000000000000.0,scalar,energy output base
 science_output_base,1.5,0,1000000000000.0,scalar,science output base
-legacy_industry_growth,1.12,0,1000000000000.0,scalar,legacy industry growth
 shield_capacity_base,100,0,1000000000000.0,scalar,shield capacity base
 shield_regeneration_base,0.8,0,1000000000000.0,scalar,shield regeneration base
 building_cost_per_existing,0.3,0,1000000000000.0,scalar,building cost per existing
@@ -19,7 +18,6 @@ repair_minerals,65,0,1000000000000.0,scalar,repair minerals
 repair_energy,55,0,1000000000000.0,scalar,repair energy
 repair_earth_health,30,0,1000000000000.0,scalar,repair earth health
 repair_shield_budget,40,0,1000000000000.0,scalar,repair shield budget
-sacrifice_shield_budget_fraction,0.02,0,1000000000000.0,scalar,sacrifice shield budget fraction
 wave_minerals_base,45,0,1000000000000.0,scalar,wave minerals base
 wave_minerals_increment,8,0,1000000000000.0,scalar,wave minerals increment
 wave_energy_base,25,0,1000000000000.0,scalar,wave energy base
@@ -39,21 +37,10 @@ missile_fire_rate_base,0.6,0,1000000000000.0,scalar,missile fire rate base
 kinetic_projectile_speed_base,630,0,1000000000000.0,scalar,kinetic projectile speed base
 missile_blast_radius_base,0.22,0,1000000000000.0,scalar,missile blast radius base
 missile_turn_rate_base,3.5,0,1000000000000.0,scalar,missile turn rate base
-advanced_weapon_rank_damage,0.35,0,1000000000000.0,scalar,advanced weapon rank damage
-spread_bullet_count,3,0,1000000000000.0,scalar,spread bullet count
-spread_secondary_damage,0.5,0,1000000000000.0,scalar,spread secondary damage
 drone_armor_cap,0.75,0,1000000000000.0,scalar,drone armor cap
 repair_threshold_base,0.35,0,1000000000000.0,scalar,repair threshold base
 repair_threshold_cap,0.75,0,1000000000000.0,scalar,repair threshold cap
 repair_rate_base,0.12,0,1000000000000.0,scalar,repair rate base
 tactical_turn_rate_base,4.2,0,1000000000000.0,scalar,tactical turn rate base
 factory_spawn_interval_min,0.5,0,1000000000000.0,scalar,factory spawn interval min
-legacy_interceptor_assault_range_add,4,0,1000000000000.0,scalar,legacy interceptor assault range add
-legacy_laser_assault_range_factor,2,0,1000000000000.0,scalar,legacy laser assault range factor
-legacy_missile_assault_range_factor,2.2,0,1000000000000.0,scalar,legacy missile assault range factor
-legacy_patrol_assault_radius_add,2,0,1000000000000.0,scalar,legacy patrol assault radius add
-legacy_patrol_assault_outer_add,6,0,1000000000000.0,scalar,legacy patrol assault outer add
-legacy_drive_speed_per_level,0.065,0,1000000000000.0,scalar,legacy drive speed per level
-legacy_basic_research_cost_growth,1.65,0,1000000000000.0,scalar,legacy basic research cost growth
-legacy_advanced_research_cost_growth,1.32,0,1000000000000.0,scalar,legacy advanced research cost growth
 resource_core_reference_fraction,0.05,0,1,ratio,original resource core reference fraction

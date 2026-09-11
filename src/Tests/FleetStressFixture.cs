@@ -67,8 +67,7 @@ public sealed class FleetStressFixture
     {
         _fixtureProjectRoot = Path.GetFullPath(projectRoot ?? Directory.GetCurrentDirectory());
         string path = Path.GetFullPath(Path.Combine(_fixtureProjectRoot, "tests", "CombatManaged", "Fixtures", "fleet127-data"));
-        var legacy = typeof(CatalogData).GetMethod("ConfigureLegacyFixture", BindingFlags.Public | BindingFlags.Static);
-        if (legacy != null) legacy.Invoke(null, new object[] { path }); else CatalogData.Configure(path);
+        CatalogData.Configure(path);
         return path;
     }
     public FleetStressFixture(DefenseState game, Battlefield battle, int friendlyCount = 5000, int enemyCount = 1000, FleetStressLayout layout = FleetStressLayout.Cluster)

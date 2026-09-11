@@ -1,9 +1,0 @@
-﻿parent_id,position,key,type,value
-root,0,mine,integer,1
-root,1,solar,integer,1
-root,2,lab,integer,1
-root,3,interceptor,integer,1
-root,4,laser,integer,0
-root,5,missile,integer,0
-root,6,starship_silo,integer,0
-root,7,shield,integer,0

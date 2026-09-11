@@ -114,7 +114,7 @@ public partial class CombatAssetChecks : Node
                 CheckKey(boss, true, false, "boss/" + variant);
                 enemies.Add(boss);
             }
-            foreach (string kind in new[] { "meteor", "scout", "cruiser", "small_boss", "boss", "carrier", "mothership" })
+            foreach (string kind in new[] { "scout", "cruiser", "small_boss", "boss", "carrier", "mothership" })
             {
                 var actor = Packet(kind, uid++);
                 CheckKey(actor, true, false, kind);
@@ -179,15 +179,11 @@ public partial class CombatAssetChecks : Node
                 CheckKey(effect, false, true, delayed == "blast" ? "projectile/missile" : "projectile/interceptor");
                 bullets.Add(effect);
             }
-            foreach (string role in new[] { "torpedo", "spore" })
-            {
-                var shot = Packet("hostile", uid++);
-                shot["interceptable"] = true;
-                shot["projectile_role"] = role;
-                shot["target_kind"] = "drone";
-                CheckKey(shot, false, true, "projectile/hostile");
-                bullets.Add(shot);
-            }
+            var hostileInterceptable = Packet("hostile", uid++);
+            hostileInterceptable["interceptable"] = true;
+            hostileInterceptable["target_kind"] = "drone";
+            CheckKey(hostileInterceptable, false, true, "projectile/hostile");
+            bullets.Add(hostileInterceptable);
             var hostileAgainstEarth = Packet("hostile", uid++);
             hostileAgainstEarth["target_kind"] = "earth";
             CheckKey(hostileAgainstEarth, false, true, "projectile/hostile");

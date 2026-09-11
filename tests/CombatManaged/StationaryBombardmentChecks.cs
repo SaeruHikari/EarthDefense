@@ -29,7 +29,7 @@ internal static class StationaryBombardmentChecks
         foreach(string role in DefenseWavePlan.RoleOrder)TravelHoldFireRetreat(role);
         ApproachCounterfire();SavedHoldAndReapproach();LargeHullAndBossRoutes();
     }
-    private static (DefenseState Game,Battlefield Battle,DataMap Enemy) Scene(string role="claw",double altitude=1.5,double scale=.5)
+    private static (DefenseState Game,Battlefield Battle,DataMap Enemy) Scene(string role="claw",double altitude=2,double scale=.5)
     {
         string kind=role is "claw" or "needle" or "prism" or "jammer"?"scout":"cruiser";
         var g=new DefenseState{Wave=1};g.SetCombatSetting("enemy_aircraft_scale",scale);var b=new Battlefield(g,new Surface()){Active=true};b.Random.Seed=126;
@@ -54,7 +54,7 @@ internal static class StationaryBombardmentChecks
                 Near(e.Vector3("space_position").DistanceTo(held),0,"bombarding ship never drifts along surface "+role,1e-8);
                 Near(e.Vector3("velocity").LengthSquared(),0,"bombarding ship stops actual velocity "+role,1e-12);
                 Check(e.Vector3("tangent").Dot(-held.Normalized())>.9999&&e.Vector3("aim_direction").Dot(-held.Normalized())>.9999,"rendered nose and aim face Earth "+role);
-                Check(e.Vector3("space_position").Length()>CombatScale.EarthCollisionRadius+e.N("hit_radius"),"stationary hull remains completely above Earth "+role);
+                Check(e.Vector3("space_position").Length()>CombatScale.EarthCollisionRadius+e.N("hit_radius")&&e.Vector3("space_position").Length()>=CombatScale.ShieldShellRadius-.0001,"stationary hull never descends below the shield shell "+role);
                 Check(e.S("phase")=="ground_attack","stationary status retains compatible attack phase "+role);
             }
             if(!b.Enemies.Contains(e))break;
@@ -72,14 +72,14 @@ internal static class StationaryBombardmentChecks
         var d=b.SpawnFactoryDrone(b.Factories[18]);d["state"]="engaging";d["launch_age"]=2d;d["space_position"]=Vector3.Back*(float)(CombatScale.EarthRadius+.7);b.WorldCache[d.L("uid")]=d.Vector3("space_position");
         var e=b.SpawnEnemy("scout",new(){["wave"]=1L,["role"]="claw"},Vector3.Back*(float)(CombatScale.EarthRadius+3))!;e["fire"]=0d;
         Call(b,"UpdateEnemies",1d/60);Check(b.HostileShots.Count==0,"approaching enemy cannot fire at friendly outside return-fire range");
-        e["space_position"]=Vector3.Back*(float)(CombatScale.EarthRadius+1.5);e["fire"]=0d;Call(b,"UpdateEnemies",1d/60);
+        e["space_position"]=Vector3.Back*(float)(CombatScale.CloseAssault+.6);e["fire"]=0d;Call(b,"UpdateEnemies",1d/60);
         Check(e.S("phase")=="approach"&&!e.B("stationary_bombard")&&b.HostileShots.Any(s=>s.S("target_kind")=="drone"),"approaching enemy retains legal anti-air attack before parking");
         b.HostileShots.Clear();e["space_position"]=Vector3.Back*(float)CombatScale.CloseAssault;e["fire"]=0d;Call(b,"UpdateEnemies",1d/60);
         Check(e.B("stationary_bombard")&&b.HostileShots.Any(s=>s.S("target_kind")=="earth")&&b.HostileShots.All(s=>s.S("target_kind")!="drone"),"parked ship prioritizes Earth while friendly is nearby");
     }
     private static void SavedHoldAndReapproach()
     {
-        var(g,b,e)=Scene("claw",.35);for(int i=0;i<60;i++)b.Step(1d/60);var p=e.Vector3("space_position");
+        var(g,b,e)=Scene("claw",2);for(int i=0;i<60;i++)b.Step(1d/60);var p=e.Vector3("space_position");
         var save=b.SerializeCombatSnapshot();Check(Battlefield.ValidateCombatSnapshot(save),"stationary combat snapshot validates");var g2=new DefenseState();Check(g2.Restore(g.Serialize()),"stationary companion game restores");var copy=new Battlefield(g2,new Surface());Check(copy.RestoreCombatSnapshot(DataMap.Parse(save.ToJson())),"stationary world position and flag survive JSON restore");var e2=copy.Enemies.Single(x=>x.L("uid")==e.L("uid"));
         for(int i=0;i<60;i++){b.Step(1d/60);copy.Step(1d/60);Near(e2.Vector3("space_position").DistanceTo(p),0,"saved stationary ship never jumps or resumes orbit",1e-8);Near(e.N("bombard_time"),e2.N("bombard_time"),"saved hold timer continues identically",1e-12);Near(e.N("fire"),e2.N("fire"),"saved attack cadence continues identically",1e-12);}
         Check(b.HostileShots.Select(x=>x.L("uid")).SequenceEqual(copy.HostileShots.Select(x=>x.L("uid"))),"saved actual fire events remain deterministic");
@@ -94,8 +94,8 @@ internal static class StationaryBombardmentChecks
     }
     private static void LargeHullAndBossRoutes()
     {
-        var(g,b,e)=Scene("rock",1.5,2);for(int i=0;i<600&&!e.B("stationary_bombard");i++)b.Step(1d/60);
-        Check(e.B("stationary_bombard")&&e.Vector3("space_position").Length()>=CombatScale.EarthCollisionRadius+e.N("hit_radius")+.0249,"largest editable cruiser hull parks outside ground");Check(e.Vector3("space_position").Length()<CombatScale.EarthRadius+CombatScale.DroneAltitude,"large cruiser still enters friendly patrol altitude before bombardment");
+        var(g,b,e)=Scene("rock",2,2);for(int i=0;i<600&&!e.B("stationary_bombard");i++)b.Step(1d/60);
+        Check(e.B("stationary_bombard")&&e.Vector3("space_position").Length()>=CombatScale.EarthCollisionRadius+e.N("hit_radius")+.0249,"largest editable cruiser hull parks outside ground");Check(e.Vector3("space_position").Length()>=CombatScale.ShieldShellRadius,"large cruiser parks outside the shield shell instead of dipping below it");
         foreach(var scenario in new[]{("small_boss",3L),("boss",3L),("boss",10L),("boss",20L)})
         {
             var game=new DefenseState{Wave=scenario.Item2};var other=new Battlefield(game,new Surface()){Active=true};var actor=other.SpawnEnemy(scenario.Item1,new(){["wave"]=scenario.Item2},Vector3.Back*(float)(CombatScale.EarthRadius+1))!;

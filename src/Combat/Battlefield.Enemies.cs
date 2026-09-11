@@ -11,29 +11,13 @@ public sealed partial class Battlefield
     private readonly PointSearchTree<DefenderCandidate> _defenderTree = new();
     private readonly record struct DefenderCandidate(DataMap Actor, Vector3 Position, Vector3 Normal, Vector3 Home, double Cosine, double Range, bool Interceptor, int Order);
     private bool _defendersValid;
-    public bool UseEmp()
-    {
-        if (!Active || Dead || EmpCooldown > 0)
-            return false;
-        foreach (var e in Enemies)
-        {
-            e["stagger_until"] = Clock + (C.Large(e) ? CombatCatalog.Current.Values.EmpLargeStagger : CombatCatalog.Current.Values.EmpSmallStagger);
-            e["energy_recovery_blocked_until"] = Clock + CombatCatalog.Current.Values.EmpRecoveryBlockSeconds;
-        }
-        foreach (var s in HostileShots)
-            if (C.B(s, "interceptable"))
-                s["life"] = 0d;
-        EmpCooldown = CombatCatalog.Current.Values.EmpCooldown;
-        EmpAge = 0;
-        return true;
-    }
     public double GetEnemyProjectileSpeed(string targetKind = "drone") => Math.Max(.1, Game.CombatSettings.N(targetKind == "drone" ? "enemy_bullet_speed" : "enemy_bombard_speed", targetKind == "drone" ? 6 : 3.2));
     public double EnemyFireCooldown(string kind, string targetKind = "drone") { var data = CombatCatalog.Current.Kind(kind); return targetKind == "drone" ? data.DroneCooldown : data.EarthCooldown; }
     private bool CanBombardEarth(DataMap e) => C.B(e, "post_carrier")
         ? C.S(e, "phase") == "ground_attack" && C.V(e, "space_position").Length() <= CombatScale.LegacyCarrierStandoff + .01
         : UsesStationaryBombardment(e)
             ? C.S(e, "phase") != "retreat" && InsideStationaryBombardmentZone(e)
-            : C.S(e, "kind") != "meteor" && C.S(e, "phase") != "retreat" && C.V(e, "space_position").Length() <= CombatScale.CloseAssault + .0001;
+            : C.S(e, "phase") != "retreat" && C.V(e, "space_position").Length() <= CombatScale.CloseAssault + .0001;
     private void EnsureDefenders()
     {
         if (_defendersValid)
@@ -127,72 +111,44 @@ public sealed partial class Battlefield
                 continue;
             var e = Enemies[i];
             UpdatePerkStatus(e, dt);
-            var previous = C.V(e, "space_position");
             string kind = C.S(e, "kind");
             bool managed = UpdateEnemySkill(e, dt);
             if (epoch != _epoch)
                 return;
             e["age"] = C.N(e, "age") + dt;
             e["hit"] = Math.Max(0, C.N(e, "hit") - dt);
-            if (kind == "meteor")
-                e["space_position"] = previous + C.Scale(C.V(e, "velocity"), dt * MovementMultiplier(e));
-            else
+            if (C.B(e, "post_carrier"))
             {
-                if (C.B(e, "post_carrier"))
+                e["hangar_open"] = Math.Max(0, C.N(e, "hangar_open") - dt);
+                AdvancePostCarrier(e, dt);
+            }
+            else
+                AdvanceEnemyRoute(e, dt);
+            if (C.S(e, "phase") != "retreat" && !managed && Clock >= C.N(e, "stagger_until"))
+            {
+                e["fire"] = C.N(e, "fire") - dt;
+                if (C.N(e, "fire") <= 0)
                 {
-                    e["hangar_open"] = Math.Max(0, C.N(e, "hangar_open") - dt);
-                    AdvancePostCarrier(e, dt);
-                }
-                else
-                    AdvanceEnemyRoute(e, dt);
-                if (C.S(e, "phase") != "retreat" && !managed && Clock >= C.N(e, "stagger_until"))
-                {
-                    e["fire"] = C.N(e, "fire") - dt;
-                    if (C.N(e, "fire") <= 0)
+                    if (CanBombardEarth(e))
                     {
-                        if (CanBombardEarth(e))
+                        FireHostile(e, C.N(e, "ground_damage", 2.5));
+                        e["fire"] = C.N(e, "attack_cooldown", EnemyFireCooldown(kind, "earth"));
+                    }
+                    else
+                    {
+                        var defender = PickEnemyDefender(e);
+                        if (defender.Count > 0)
                         {
-                            FireHostile(e, C.N(e, "ground_damage", 2.5));
-                            e["fire"] = C.N(e, "attack_cooldown", EnemyFireCooldown(kind, "earth"));
+                            FireAtDrone(e, defender);
+                            e["fire"] = C.N(e, "attack_cooldown", EnemyFireCooldown(kind));
                         }
                         else
-                        {
-                            var defender = PickEnemyDefender(e);
-                            if (defender.Count > 0)
-                            {
-                                FireAtDrone(e, defender);
-                                e["fire"] = C.N(e, "attack_cooldown", EnemyFireCooldown(kind));
-                            }
-                            else
-                                e["fire"] = .12;
-                        }
+                            e["fire"] = .12;
                     }
                 }
             }
             var current = C.V(e, "space_position");
-            if (kind == "meteor")
-            {
-                double contact = CombatGeometry.SphereHitFraction(previous, current, Vector3.Zero, CombatScale.EarthCollisionRadius + C.N(e, "hit_radius") * .3);
-                e.TryAdd("earth_impact_damage", 3d);
-                if (InterceptLocalShieldSegment(e, previous, current, contact, "earth_impact_damage", out var shieldImpact))
-                {
-                    AddBurst(shieldImpact, CombatScale.Cyan, 22);
-                    Enemies.Remove(e);
-                    _enemyById.Remove(C.L(e, "uid"));
-                    continue;
-                }
-                if (!double.IsPositiveInfinity(contact))
-                {
-                    var at = previous.Lerp(current, (float)contact);
-                    DamageEarth(C.N(e, "earth_impact_damage", 3), at, C.B(e, "local_shield_checked"));
-                    AddBurst(at, CombatScale.Coral, 28);
-                    Enemies.Remove(e);
-                    _enemyById.Remove(C.L(e, "uid"));
-                    if (Dead || epoch != _epoch)
-                        return;
-                }
-            }
-            else if (C.S(e, "phase") == "retreat" && current.Length() > CombatScale.RetreatExit)
+            if (C.S(e, "phase") == "retreat" && current.Length() > CombatScale.RetreatExit)
             {
                 Enemies.Remove(e);
                 _enemyById.Remove(C.L(e, "uid"));
@@ -288,7 +244,7 @@ public sealed partial class Battlefield
             e["tangent"] = velocity.Normalized();
         e["world_up"] = radial;
     }
-    private DataMap HostilePacket(Vector3 origin, Vector3 heading, double speed, double damage, int index, int count, DataMap enemy, bool interceptable, string target) => new() { ["uid"] = NewUid(), ["space_position"] = origin, ["velocity"] = C.Scale(heading, speed), ["tangent"] = heading, ["kind"] = "hostile", ["life"] = target == "earth" ? 7d : 5d, ["damage"] = damage / Math.Max(count, 1), ["target_kind"] = target, ["interceptable"] = interceptable, ["hp"] = 8d, ["max_hp"] = 8d, ["projectile_role"] = C.S(enemy, "boss_variant_id") == "brood" ? "spore" : "torpedo", ["secondary_damage_fraction"] = interceptable ? 1d : .25, ["blast_radius"] = interceptable ? .38 : .16, ["volley_index"] = index, ["volley_count"] = count };
+    private DataMap HostilePacket(Vector3 origin, Vector3 heading, double speed, double damage, int index, int count, bool interceptable, string target) => new() { ["uid"] = NewUid(), ["space_position"] = origin, ["velocity"] = C.Scale(heading, speed), ["tangent"] = heading, ["kind"] = "hostile", ["life"] = target == "earth" ? 7d : 5d, ["damage"] = damage / Math.Max(count, 1), ["target_kind"] = target, ["interceptable"] = interceptable, ["hp"] = 8d, ["max_hp"] = 8d, ["secondary_damage_fraction"] = interceptable ? 1d : .25, ["blast_radius"] = interceptable ? .38 : .16, ["volley_index"] = index, ["volley_count"] = count };
     private void FireHostile(DataMap e, double damage, bool interceptable = false)
     {
         if (!CanBombardEarth(e))
@@ -300,7 +256,7 @@ public sealed partial class Battlefield
         for (int i = 0; i < count; i++)
         {
             var heading = CombatGeometry.VolleyDirection(direction, origin, i, count);
-            HostileShots.Add(HostilePacket(origin + C.Scale(heading, .06 * GetEnemyScale()), heading, speed, damage, i, count, e, interceptable, "earth"));
+            HostileShots.Add(HostilePacket(origin + C.Scale(heading, .06 * GetEnemyScale()), heading, speed, damage, i, count, interceptable, "earth"));
         }
     }
     private void FireAtDrone(DataMap e, DataMap d, bool interceptable = false)
@@ -321,7 +277,7 @@ public sealed partial class Battlefield
         double reach = Math.Min(speed * 5, origin.DistanceTo(target) + .22);
         for (int i = 0; i < count; i++)
         {
-            var shot = HostilePacket(origin, CombatGeometry.VolleyDirection(direction, origin, i, count), speed, C.N(e, "attack_damage", 8), i, count, e, interceptable, "drone");
+            var shot = HostilePacket(origin, CombatGeometry.VolleyDirection(direction, origin, i, count), speed, C.N(e, "attack_damage", 8), i, count, interceptable, "drone");
             shot["target_uid"] = d["uid"];
             shot["intercept_time"] = time;
             shot["aim_point"] = target;

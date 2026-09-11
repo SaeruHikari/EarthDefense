@@ -420,16 +420,15 @@ public partial class Main
             return;
         }
         bool resume = SaveExists && !Started;
-        float width = resume ? 716 : 556, x = 720 - width * .5f;
+        float width = resume ? 582 : 422, x = 720 - width * .5f;
         FloatingPanel(new(x - 8, 828, width + 16, 56), .72f);
         string label = Defeated ? "重新部署 →" : CampaignWon ? UserPaused ? "继续防御" : _campaignStatus.S("earth_phase") == "ceasefire" ? "休整中" : "地球防御中" : Started ? Battle.WaveRunning ? UserPaused ? "继续防御" : "防御进行中" : "下一波 →" : "开始防御 →";
         Button(new(x, 836, 144, 40), label, Defeated ? "modal:restart" : CampaignWon || Battle.WaveRunning ? "pause" : "start", true, true, "primary");
-        Button(new(x + 152, 836, 126, 40), Battle.EmpCooldown <= 0 ? "轨道脉冲 E" : $"脉冲 {Math.Ceiling(Battle.EmpCooldown):00}s", "emp", false, Battle.EmpCooldown <= 0 && Started);
-        Button(new(x + 286, 836, 64, 40), $"{Speed:0} ×", "speed");
-        Button(new(x + 358, 836, 98, 40), "修复防线", "repair", false, Game.CanRepair());
-        Button(new(x + 464, 836, 92, 40), "说明 F1", "help");
+        Button(new(x + 152, 836, 64, 40), $"{Speed:0} ×", "speed");
+        Button(new(x + 224, 836, 98, 40), "修复防线", "repair", false, Game.CanRepair());
+        Button(new(x + 330, 836, 92, 40), "说明 F1", "help");
         if (resume)
-            Button(new(x + 564, 836, 152, 40), "继续上次防御 →", "load");
+            Button(new(x + 430, 836, 152, 40), "继续上次防御 →", "load");
     }
 
     private void DrawSolarNavigation()
@@ -469,7 +468,7 @@ public partial class Main
                 Text(names[i], new(458, y + 6), 17, UiTheme.Ink);
                 Text(descriptions[i], new(458, y + 32), 13, UiTheme.Muted);
             }
-            Text("空格 开始 / 暂停   E 脉冲   TAB 科技树   C 战斗参数   V 观战", new(407, 639), 13, UiTheme.Cyan);
+            Text("空格 开始 / 暂停   TAB 科技树   C 战斗参数   V 观战", new(407, 639), 13, UiTheme.Cyan);
             Text("切换天体不会暂停战斗；空格与右上按钮全局暂停。", new(407, 668), 13, UiTheme.Muted);
             Button(new(407, 683, 180, 35), "开始新的防御", "modal:restart");
             Button(new(837, 683, 197, 35), "继续守望 →", "modal:close", true, true, "primary");

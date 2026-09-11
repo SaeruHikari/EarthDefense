@@ -61,7 +61,9 @@ public static class CombatScale
     public const double EarthCollisionRadius = EarthRadius + .07, DroneAltitude = .70, PlanetPixelRadius = 208;
     public const double SpawnMin = EarthRadius + 4, SpawnMax = EarthRadius + 5.2, RetreatExit = EarthRadius + 8, LaunchDuration = 1.3;
     public const double DefenseEntryRadius = EarthRadius + 3, LegacyCarrierStandoff = EarthRadius + 1.45;
-    public const double WeaponRange = 4.5, KineticRange = 1.65, CloseAssault = EarthRadius + .35;
+    // Enemy movement never descends below the local shield shell; the assault standoff sits just outside it.
+    public const double ShieldShellRadius = EarthRadius + WorldScale.ShieldAltitude;
+    public const double WeaponRange = 4.5, KineticRange = 1.65, CloseAssault = ShieldShellRadius + .35;
     public static double DefaultFrontierRadius(int stage) => EarthRadius + new double[] { 40, 72, 112 }[Math.Clamp(stage, 1, 3) - 1];
     public static readonly Color Cyan = new("8ae6eb"), Coral = new("ef947e"), Gold = new("d5bd85"), Violet = new("c2acf4");
 }

@@ -5,7 +5,11 @@ using System.Text;
 using System.Globalization;
 CultureInfo.CurrentCulture=CultureInfo.GetCultureInfo("fr-FR");
 var cases=new Dictionary<string,DataMap>();
-foreach(string file in Directory.GetFiles("tests/DomainManaged/Fixtures/pre-csv","*.json"))cases[Path.GetFileName(file)]=DataMap.Parse(File.ReadAllText(file));
+foreach(string name in new[]{"deep-technology.json","airframes.json","perks.json","economy.json","expedition.json"})
+{
+    CatalogData.Configure(Path.GetFullPath("data/domain"));
+    cases[name]=CatalogData.Load(name).DeepClone();
+}
 cases["scalars"]=new(){["z"]=new List<object?>{null,true,false,"comma, quote\" slash/ line\n<&\u4e2d\u6587\u2028\ud83d\ude80"},["a"]=new DataMap{["f"]=(float).1,["d"]=.1,["min"]=double.Epsilon,["max"]=double.MaxValue,["negative_zero"]=-0d,["small_exp"]=1e-8,["big_exp"]=1e30,["long"]=long.MaxValue,["ulong"]=ulong.MaxValue,["decimal"]=.1234567890123456789012345678m,["empty"]=new DataMap()}};
 var basis=new Basis(new Vector3(.1f,.2f,.3f),new Vector3(.4f,.5f,.6f),new Vector3(.7f,.8f,.9f));
 cases["godot"]=new(){["v2"]=new Vector2(.1f,-.2f),["v3"]=new Vector3(.1f,3.5f,1000),["v4"]=new Vector4(1,2,3,4),["color"]=new Color(.1f,.2f,.3f,.4f),["q"]=new Quaternion(.1f,.2f,.3f,.4f),["b"]=basis,["t"]=new Transform3D(basis,new Vector3(.1f,.2f,.3f))};

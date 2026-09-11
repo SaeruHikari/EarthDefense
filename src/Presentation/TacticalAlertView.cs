@@ -14,6 +14,8 @@ public partial class TacticalAlertView : Node2D
         public Vector2 Direction = Vector2.Right, Reticle;
         public Rect2 Rect;
     }
+    /// <summary>How long a confirmed notice stays on screen before fading out.</summary>
+    public const double AlertLifetime = 8;
     public Card Mother { get; } = new();
     public Card Damage { get; } = new();
     public string HoverAction { get; set; } = "";
@@ -56,7 +58,8 @@ public partial class TacticalAlertView : Node2D
         string id = damage ? "damage" : "mother";
         float alpha = c.Acknowledged ? .46f : 1;
         if (HoverAction.StartsWith(id)) alpha = 1;
-        if (damage && c.Age > 6.5) alpha *= (float)Math.Clamp((8 - c.Age) / 1.5, 0, 1);
+        // Confirmed signals and damage reports share one timed lifetime; the preview countdown is driven by its own window.
+        if (!c.Preview && c.Age > AlertLifetime - 1.5) alpha *= (float)Math.Clamp((AlertLifetime - c.Age) / 1.5, 0, 1);
         float entrance = (float)Math.Clamp(c.Age / .28, 0, 1);
         alpha *= .45f + .55f * entrance;
         Color ink = UiTheme.Alpha(UiTheme.Ink, alpha), accent = UiTheme.Alpha(tone, alpha);

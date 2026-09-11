@@ -264,18 +264,16 @@ public sealed partial class Battlefield
         double size = kindData.Size;
         double baseSpeed = (CombatCatalog.Current.Values.LegacySpawnSpeedBase + Game.Wave * CombatCatalog.Current.Values.LegacySpawnSpeedWaveGrowth) * kindData.LegacySpeed;
         double speed = baseSpeed * GetEnemySpeedMultiplier();
-        bool dive = kind == "meteor";
-        var direction = dive ? (target - position).Normalized() : -position.Normalized();
+        var direction = -position.Normalized();
         double health = EnemyMaxHealth(kind);
-        var enemy = new DataMap { ["uid"] = NewUid(), ["space_position"] = position, ["velocity"] = C.Scale(direction, speed), ["tangent"] = direction, ["target_space"] = target, ["kind"] = kind, ["speed"] = speed, ["base_speed"] = baseSpeed, ["phase"] = dive ? "dive" : "approach", ["bombard_time"] = 0d, ["bombard_duration"] = kindData.BombardSeconds, ["hp"] = health, ["max_hp"] = health, ["base_size"] = size, ["size"] = size * GetEnemyScale(), ["hit_radius"] = size * 2 / CombatScale.PlanetPixelRadius * GetEnemyScale(), ["wave"] = Game.Wave, ["hit"] = 0d, ["age"] = 0d, ["fire"] = .45 };
+        var enemy = new DataMap { ["uid"] = NewUid(), ["space_position"] = position, ["velocity"] = C.Scale(direction, speed), ["tangent"] = direction, ["target_space"] = target, ["kind"] = kind, ["speed"] = speed, ["base_speed"] = baseSpeed, ["phase"] = "approach", ["bombard_time"] = 0d, ["bombard_duration"] = kindData.BombardSeconds, ["hp"] = health, ["max_hp"] = health, ["base_size"] = size, ["size"] = size * GetEnemyScale(), ["hit_radius"] = size * 2 / CombatScale.PlanetPixelRadius * GetEnemyScale(), ["wave"] = Game.Wave, ["hit"] = 0d, ["age"] = 0d, ["fire"] = .45 };
         var metadata = planned ?? new()
         {
             ["wave"] = Game.Wave,
             ["stage"] = 0,
             ["role"] = kind == "scout" ? "claw" : "rock"
         };
-        if (!dive)
-            EnemyCatalog.Apply(enemy, metadata, Game.CombatSettings);
+        EnemyCatalog.Apply(enemy, metadata, Game.CombatSettings);
         if (kind == "boss")
         {
             enemy["reward_event_id"] = $"earth:wave:{Game.Wave}:medium:0";

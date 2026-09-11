@@ -75,44 +75,25 @@ public partial class Main
     public bool ValidateCheckpoint(DataMap data)
     {
         if (data.ContainsKey("play_time_seconds") && !DataMap.ValidNumber(data.Value("play_time_seconds"), 0, DefenseState.MaxExactInteger) || data.ContainsKey("play_time_estimated") && data.Value("play_time_estimated") is not bool) return false;
-        if (!DataMap.ValidNumber(data.Value("version"), 1, 3) || data.N("version") != data.I("version") || data.Value("started") is not bool || data.Value("game") is not DataMap state || data.Value("slots") is not List<object?> slots)
+        if (!DataMap.ValidNumber(data.Value("version"), 3, 3) || data.N("version") != data.I("version") || data.Value("started") is not bool || data.Value("game") is not DataMap state || data.Value("slots") is not List<object?> slots)
             return false;
-        if (data.ContainsKey("celestial") && data.Value("celestial") is not DataMap)
+        if (data.Value("celestial") is not DataMap celestial)
             return false;
-        var celestial = data.Map("celestial");
         if (!DataMap.ValidNumber(celestial.Value("earth_rotation_y", Mathf.DegToRad(12)), -double.MaxValue, double.MaxValue) || !DataMap.ValidNumber(celestial.Value("elapsed", 0), 0, double.MaxValue))
             return false;
-        if (data.I("version") == 3 && (!data.ContainsKey("destroyed_fronts") || !state.ContainsKey("expedition") || data.Value("expedition_battle") is not DataMap))
-            return false;
-        if (data.ContainsKey("destroyed_fronts") && data.Value("destroyed_fronts") is not List<object?>)
+        if (data.Value("destroyed_fronts") is not List<object?> || !state.ContainsKey("expedition") || data.Value("expedition_battle") is not DataMap)
             return false;
         if (!InvasionDirector.ValidateDestroyedFronts(data.List("destroyed_fronts")))
             return false;
-        if (data.ContainsKey("site_directions") && data.Value("site_directions") is not List<object?>)
+        if (data.Value("site_directions") is not List<object?>)
             return false;
-        if (data.ContainsKey("expedition_battle") && (data.Value("expedition_battle") is not DataMap campaignSnapshot || !DefenseCampaignDirector.ValidateSnapshot(campaignSnapshot)))
+        if (data.Value("expedition_battle") is not DataMap campaignSnapshot || !DefenseCampaignDirector.ValidateSnapshot(campaignSnapshot))
             return false;
-        if (data.ContainsKey("combat_snapshot"))
-        {
-            if (data.Value("combat_snapshot") is not DataMap combatSnapshot) return false;
-            if (data.ContainsKey("expedition_battle"))
-            { if (!DataMap.Equivalent(combatSnapshot, data.Map("expedition_battle").Map("earth"))) return false; }
-            else if (!Battlefield.ValidateCombatSnapshot(combatSnapshot)) return false;
-        }
-        if (data.ContainsKey("invasion_anchor"))
-        {
-            var anchor = data.List("invasion_anchor");
-            if (anchor.Count != 3 || anchor.Any(v => !DataMap.ValidNumber(v, -1.01, 1.01)) || Math.Abs(Math.Sqrt(anchor.Sum(v => Math.Pow(DataMap.Number(v), 2))) - 1) > .01)
-                return false;
-        }
-        if (state.Value("buildings") is not DataMap buildings)
+        if (data.ContainsKey("combat_snapshot") && (!DataMap.Equivalent(data.Map("combat_snapshot"), campaignSnapshot.Map("earth"))))
             return false;
-        if (data.I("version") == 1)
-        {
-            if (slots.Count != 16)
-                return false;
-        }
-        else if (data.Value("site_directions") is not List<object?> || !PlanetView.ValidateStructureLayout(slots, data.List("site_directions")))
+        if (data.Value("invasion_anchor") is not List<object?> anchor || anchor.Count != 3 || anchor.Any(v => !DataMap.ValidNumber(v, -1.01, 1.01)) || Math.Abs(Math.Sqrt(anchor.Sum(v => Math.Pow(DataMap.Number(v), 2))) - 1) > .01)
+            return false;
+        if (state.Value("buildings") is not DataMap buildings || !PlanetView.ValidateStructureLayout(slots, data.List("site_directions")))
             return false;
         var counts = new Dictionary<string, long> { { "mine", 0 }, { "solar", 0 }, { "lab", 0 }, { "interceptor", 0 }, { "laser", 0 }, { "missile", 0 }, { "shield", 0 }, { "starship_silo", 0 } };
         foreach (var value in slots)
@@ -209,23 +190,14 @@ public partial class Main
             Battle.RestoreInvasionAnchor(data.Vector3("invasion_anchor"));
         Battle.RestoreDestroyedFronts(data.List("destroyed_fronts").Cast<string>());
         Campaign.ResetRuntime();
-        if (data.ContainsKey("expedition_battle"))
-        {
-            if (!Campaign.Restore(data.Map("expedition_battle")))
-                throw new InvalidOperationException("Validated campaign failed to restore");
-        }
-        else if (data.ContainsKey("combat_snapshot"))
-        {
-            if (!Battle.RestoreCombatSnapshot(data.Map("combat_snapshot")))
-                throw new InvalidOperationException("Validated combat failed to restore");
-        }
+        if (!Campaign.Restore(data.Map("expedition_battle")))
+            throw new InvalidOperationException("Validated campaign failed to restore");
         Campaign.SyncCampaign();
         CampaignWon = Battle.GetDestroyedFronts().Count == 8;
         Started = data.B("started");
         Battle.Active = Started;
         Defeated = false;
-        bool legacyShieldLayout = !data.Map("game").Map("buildings").ContainsKey("shield");
-        UserPaused = retry || Started && legacyShieldLayout;
+        UserPaused = retry;
         Battle.Paused = UserPaused;
         Campaign.Paused = UserPaused;
         Planet.Paused = UserPaused;
@@ -244,8 +216,6 @@ public partial class Main
         RefreshWaveRetryForCurrentRun();
         ShowNotice(retry
             ? $"已回到第 {Game.Wave:00} 波开头 · 已暂停布防，按空格继续"
-            : UserPaused && legacyShieldLayout
-            ? $"已恢复第 {Game.Wave:00} 波 · 已暂停，研究并布置局部护盾后按空格继续"
             : $"已恢复第 {Game.Wave:00} 波记录 · 地球科技、资源与舰队进度已恢复");
         SyncRender();
         return true;

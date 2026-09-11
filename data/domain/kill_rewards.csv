@@ -1,5 +1,4 @@
 ﻿kind,minerals,energy,science,score,alien_points,wave_alien_reward,resource_core_setting,first_medium_boss
-meteor,5,0,0,10,0,false,,false
 scout,9,3,2,30,0,false,,false
 cruiser,22,9,6,90,0,false,,false
 carrier,22,9,6,90,0,false,,false

@@ -25,7 +25,6 @@ public partial class SoundBank : Node
         Sounds["build"] = Tone(440, 880, .18, false);
         Sounds["research"] = Tone(660, 1320, .38, false);
         Sounds["start"] = Tone(220, 440, .42, false);
-        Sounds["emp"] = Tone(280, 40, .75, true);
         Sounds["clear"] = Tone(520, 1040, .5, false);
         Sounds["error"] = Tone(150, 110, .16, false);
     }

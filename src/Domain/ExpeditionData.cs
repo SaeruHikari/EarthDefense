@@ -79,7 +79,6 @@ public sealed class ExpeditionData
             ["telescope_satellite"] = new DataMap { ["deployed"] = false },
             ["settings"] = DefaultSettings,
             ["research"] = new DataMap { ["telescope"] = false },
-            ["legacy_research"] = new DataMap(),
             ["sectors"] = sectors,
             ["fleet"] = BlankFleet(),
             ["runtime_snapshot"] = new DataMap()
@@ -129,67 +128,37 @@ public sealed class ExpeditionData
             return null;
         if (input.Count == 0)
             return Blank();
-        int version = input.I("version");
-        if (!DataMap.ValidNumber(input.Value("version"), 1, 4, true) || input.Value("earth_liberated") is not bool || (version >= 3 && (input.Count != 9 || input.Value("fleet") is not DataMap || input.Value("legacy_research") is not DataMap)) || input.Value("settings") is not DataMap sourceSettings)
+        if (!DataMap.ValidNumber(input.Value("version"), 4, 4, true) || input.Count != 8 || input.Value("earth_liberated") is not bool || input.Value("fleet") is not DataMap || input.Value("settings") is not DataMap sourceSettings)
             return null;
-        var settingsInput = sourceSettings.DeepClone();
-        if (version < 3)
-            foreach (string key in settingsInput.Keys.Where(k => !DefaultSettings.ContainsKey(k) || k.StartsWith("carrier_", StringComparison.Ordinal)).ToList())
-                settingsInput.Remove(key);
-        var settings = ValidateSettings(settingsInput);
+        var settings = ValidateSettings(sourceSettings.DeepClone());
         if (settings == null)
             return null;
-        bool shrink = version == 3 && settings.N("carrier_scale_multiplier") == 25;
-        if (shrink)
-            settings["carrier_scale_multiplier"] = 8d;
-        if (input.Value("research") is not DataMap research || research.Value("telescope") is not bool)
+        if (input.Value("research") is not DataMap research || research.Count != 1 || research.Value("telescope") is not bool)
             return null;
-        var legacy = input.Map("legacy_research").DeepClone();
-        var ids = CatalogData.Load("expedition.json").List("legacy_tech_ids");
-        foreach (var (key, v) in research)
-        {
-            if (key == "telescope")
-                continue;
-            if (version >= 3 || !ids.Contains(key) || !DataMap.ValidNumber(v, 0, 5, true))
-                return null;
-            legacy[key] = DataMap.Integer(v);
-        }
-        if (legacy.Any(p => !ids.Contains(p.Key) || !DataMap.ValidNumber(p.Value, 0, 5, true)) || (research.B("telescope") && !input.B("earth_liberated")))
+        if (input.Value("telescope_satellite") is not DataMap satellite || satellite.Count != 1 || satellite.Value("deployed") is not bool)
             return null;
-        var satellite = new DataMap { ["deployed"] = research.B("telescope") };
-        if (version >= 2)
-        {
-            if (input.Value("telescope_satellite") is not DataMap sat || sat.Count != 1 || sat.Value("deployed") is not bool)
-                return null;
-            satellite = sat.DeepClone();
-        }
-        if (satellite.B("deployed") && !research.B("telescope"))
+        if (satellite.B("deployed") != research.B("telescope") || research.B("telescope") && !input.B("earth_liberated"))
             return null;
         if (input.Value("sectors") is not DataMap sectors || sectors.Count != SectorIds.Count)
             return null;
         var cleaned = new DataMap();
         foreach (string id in SectorIds)
         {
-            if (sectors.Value(id) is not DataMap sector || new[] { "observation_paid", "revealed", "cleared" }.Any(k => sector.Value(k) is not bool))
+            if (sectors.Value(id) is not DataMap sector || sector.Count != 5 || new[] { "observation_paid", "revealed", "cleared" }.Any(k => sector.Value(k) is not bool))
                 return null;
-            if (sector.B("observation_paid") && (!research.B("telescope") || !satellite.B("deployed")) || sector.B("cleared") && !sector.B("revealed"))
+            if (sector.B("observation_paid") && (!research.B("telescope") || !satellite.B("deployed")) || sector.B("cleared") && !sector.B("revealed") || sector.B("observation_paid") != sector.B("revealed"))
                 return null;
             var claimed = sector.ContainsKey("rewarded_targets") ? sector.List("rewarded_targets") : new List<object?>();
             if (claimed.Count > 2 || claimed.Distinct().Count() != claimed.Count || claimed.Any(v => v is not string kind || kind is not ("hive" or "barracks") || !sector.B("revealed")))
                 return null;
-            bool revealed = version < 3 ? sector.B("observation_paid") : sector.B("revealed");
-            if (version >= 3 && (revealed != sector.B("observation_paid") || sector.Count != 5))
+            string status = sector.B("cleared") ? "cleared" : sector.B("revealed") ? "revealed" : "unobserved";
+            if (sector.S("status") != status)
                 return null;
-            string status = sector.B("cleared") ? "cleared" : revealed ? "revealed" : "unobserved";
-            if (version >= 3 && sector.S("status") != status)
-                return null;
-            cleaned[id] = new DataMap { ["observation_paid"] = sector.B("observation_paid"), ["status"] = status, ["revealed"] = revealed, ["cleared"] = sector.B("cleared"), ["rewarded_targets"] = DataMap.Clone(claimed) };
+            cleaned[id] = new DataMap { ["observation_paid"] = sector.B("observation_paid"), ["status"] = status, ["revealed"] = sector.B("revealed"), ["cleared"] = sector.B("cleared"), ["rewarded_targets"] = DataMap.Clone(claimed) };
         }
-        var fleet = ValidateFleet(version >= 3 ? input.Map("fleet") : new());
+        var fleet = ValidateFleet(input.Map("fleet"));
         if (fleet == null)
             return null;
-        if (shrink)
-            ShrinkCarriers(fleet, 8f / 25f);
         if (!research.B("telescope") && (fleet.List("orders").Count > 0 || fleet.List("ships").Count > 0))
             return null;
         if (input.Value("runtime_snapshot") is not DataMap runtime)
@@ -201,10 +170,9 @@ public sealed class ExpeditionData
         {
             ["version"] = 4L,
             ["earth_liberated"] = input.B("earth_liberated"),
-            ["telescope_satellite"] = satellite,
+            ["telescope_satellite"] = satellite.DeepClone(),
             ["settings"] = settings,
             ["research"] = new DataMap { ["telescope"] = research.B("telescope") },
-            ["legacy_research"] = legacy,
             ["sectors"] = cleaned,
             ["fleet"] = fleet,
             ["runtime_snapshot"] = normalizedRuntime
@@ -216,10 +184,9 @@ public sealed class ExpeditionData
     {
         if (value.Count == 0)
             return BlankFleet();
-        if (value.Count != 4 || !DataMap.ValidNumber(value.Value("version"), 1, 4, true) || !DataMap.ValidNumber(value.Value("next_id"), 3000001, 9007199254740991, true) || value.Value("orders") is not List<object?> orders || value.Value("ships") is not List<object?> ships)
+        if (value.Count != 4 || !DataMap.ValidNumber(value.Value("version"), 4, 4, true) || !DataMap.ValidNumber(value.Value("next_id"), 3000001, 9007199254740991, true) || value.Value("orders") is not List<object?> orders || value.Value("ships") is not List<object?> ships)
             return null;
-        double sourceRadius = DefenseState.RadiusForWorldScaleVersion(Math.Max(1, value.I("version") - 1));
-        double radiusDelta = WorldScale.EarthRadius - sourceRadius;
+        double sourceRadius = WorldScale.EarthRadius;
         var used = new HashSet<long>();
         var active = new HashSet<long>();
         var slots = new HashSet<long>();
@@ -239,81 +206,6 @@ public sealed class ExpeditionData
             if (row.S("state") != expected)
                 return null;
         }
-        var result = value.DeepClone();
-        result["version"] = 4L;
-        if (value.I("version") == 1)
-            foreach (var ship in result.List("ships").OfType<DataMap>())
-            {
-                ship["target"] = Vec(StagingTarget(ship.I("slot")));
-                RelocateLegacy(ship);
-            }
-        if (radiusDelta != 0)
-            foreach (var ship in result.List("ships").OfType<DataMap>())
-            {
-                foreach (string key in new[] { "launch_origin", "launch_end", "position", "target" })
-                    ship[key] = ExpandLegacyPosition(ship.List(key), radiusDelta);
-                ship["clearance"] = ship.N("clearance") + radiusDelta;
-            }
-        return result;
-    }
-    private static List<object?> ExpandLegacyPosition(List<object?> position, double radiusDelta)
-    {
-        double x = DataMap.Number(position[0]), y = DataMap.Number(position[1]), z = DataMap.Number(position[2]);
-        double radius = Math.Sqrt(x * x + y * y + z * z);
-        if (radius <= 1e-12)
-            return (List<object?>)DataMap.Clone(position)!;
-        double scale = 1 + radiusDelta / radius;
-        return new() { x * scale, y * scale, z * scale };
-    }
-    private static List<object?> Vec(Vector3 v) => new() { (double)v.X, (double)v.Y, (double)v.Z };
-    private static Vector3 StagingTarget(int slot)
-    {
-        int row = slot / 2 % 4, column = slot % 2, band = slot / 8;
-        return new Vector3(column == 0 ? -5.1f : -2.7f, 1.425f - row * .95f, column == 0 ? 3.8f : 6.7f) + new Vector3(-1.6f * band, 0, -2.4f * band);
-    }
-    private static float Smooth(float low, float high, float value)
-    {
-        float x = Math.Clamp((value - low) / (high - low), 0, 1);
-        return x * x * (3 - 2 * x);
-    }
-    private static void RelocateLegacy(DataMap ship)
-    {
-        if (ship.S("state") == "launching")
-            return;
-        var target = ship.Vector3("target");
-        float minimum = ship.Vector3("launch_origin").Length() + .18f;
-        if (ship.S("state") == "parked")
-        {
-            ship["position"] = Vec(target.Normalized() * Math.Max(minimum, target.Length()));
-            return;
-        }
-        float progress = (float)Math.Clamp((ship.N("age") - ship.N("launch_seconds")) / ship.N("transit_seconds"), 0, 1), turn = Smooth(0, 1, Math.Min(1, progress / .72f));
-        var a = ship.Vector3("launch_normal");
-        var b = target.Normalized();
-        var radial = a.Dot(b) < -.999f ? a.Rotated(a.Cross(Math.Abs(a.Y) < .9 ? Vector3.Up : Vector3.Right).Normalized(), MathF.PI * turn) : a.Slerp(b, turn).Normalized();
-        float radius = (float)ship.N("clearance") + (Math.Max(minimum, target.Length()) - (float)ship.N("clearance")) * Smooth(.55f, 1, progress);
-        ship["position"] = Vec(radial * radius);
-    }
-    private static void ShrinkCarriers(DataMap fleet, float ratio)
-    {
-        foreach (var ship in fleet.List("ships").OfType<DataMap>())
-        {
-            if (ship.S("kind") != "carrier")
-                continue;
-            float old = (float)ship.N("hull_length");
-            var normal = ship.Vector3("launch_normal");
-            float surface = ship.Vector3("launch_origin").Dot(normal) - old * .5f - .22f, length = old * ratio, clearance = Math.Max(surface + length * .5f + 1.4f, 6.5f + WorldScale.EarthRadiusDelta);
-            ship["hull_length"] = (double)length;
-            ship["clearance"] = (double)clearance;
-            ship["launch_origin"] = Vec(normal * (surface + length * .5f + .22f));
-            ship["launch_end"] = Vec(normal * clearance);
-            if (ship.S("state") == "launching")
-                ship["position"] = Vec(ship.Vector3("launch_origin").Lerp(ship.Vector3("launch_end"), Smooth(0, 1, (float)(ship.N("age") / ship.N("launch_seconds")))));
-            else if (ship.S("state") == "transit")
-            {
-                float t = (float)Math.Clamp((ship.N("age") - ship.N("launch_seconds")) / ship.N("transit_seconds"), 0, 1), target = Math.Max(ship.Vector3("launch_origin").Length() + .18f, ship.Vector3("target").Length());
-                ship["position"] = Vec(ship.Vector3("position").Normalized() * (clearance + (target - clearance) * Smooth(.55f, 1, t)));
-            }
-        }
+        return value.DeepClone();
     }
 }

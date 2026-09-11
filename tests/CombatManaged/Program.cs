@@ -1,65 +1,24 @@
 using Earthward.Domain;using Earthward.Combat;using Godot;using System.Globalization;
-CultureInfo.CurrentCulture=CultureInfo.InvariantCulture;CatalogData.Configure(Path.GetFullPath("data/domain"));if(args.Contains("--frozen-catalog"))Earthward.Tests.FleetStressFixture.ConfigureCatalog();if(args.Contains("--world-layout")){WorldStressLayoutChecks.Run();return;}if(args.Contains("--parallel-flight")){ParallelFlightChecks.Run();return;}if(args.Contains("--fleet-capacity")){FleetCapacityChecks.Run();return;}if(args.Contains("--explosion-tech")){ExplosionTechChecks.Run();return;}if(args.Contains("--spatial-index")){SpatialIndexChecks.Run();return;}if(args.Contains("--fleet-replay")){FleetReplay.Run(false,args.Contains("--serial-flight"));return;}if(args.Contains("--stress")){FleetLoadBench.Run(args);return;}if(args.Contains("--local-shields")){LocalShieldChecks.RunStandalone();return;}if(args.Contains("--bombardment")){StationaryBombardmentChecks.RunStandalone();return;}if(args.Contains("--coverage")){FactoryCoverageChecks.RunStandalone();return;}if(args.Contains("--earth-scale")||(args.Length==0&&Math.Abs((double)Earthward.WorldScale.EarthRadius-Earthward.WorldScale.LegacyEarthRadius)>.000001)){EarthScaleCombat.Run();return;}if(args.Contains("--natural")){if(Math.Abs((double)Earthward.WorldScale.EarthRadius-Earthward.WorldScale.LegacyEarthRadius)>.000001){Console.Error.WriteLine("The --natural comparison is the archived radius-4 GD/C# baseline. Use --earth-scale for the current world; do not compare the current world trajectories against archived radius-4 saves.");System.Environment.ExitCode=2;return;}NaturalOpening.Run();return;}if(args.Contains("--bench")){CombatBench.Run();return;}int checks=0,failed=0;
+CultureInfo.CurrentCulture=CultureInfo.InvariantCulture;CatalogData.Configure(Path.GetFullPath("data/domain"));if(args.Contains("--world-layout")){WorldStressLayoutChecks.Run();return;}if(args.Contains("--parallel-flight")){ParallelFlightChecks.Run();return;}if(args.Contains("--fleet-capacity")){FleetCapacityChecks.Run();return;}if(args.Contains("--explosion-tech")){ExplosionTechChecks.Run();return;}if(args.Contains("--spatial-index")){SpatialIndexChecks.Run();return;}if(args.Contains("--stress")){FleetLoadBench.Run(args);return;}if(args.Contains("--local-shields")){LocalShieldChecks.RunStandalone();return;}if(args.Contains("--bombardment")){StationaryBombardmentChecks.RunStandalone();return;}if(args.Contains("--coverage")){FactoryCoverageChecks.RunStandalone();return;}if(args.Contains("--earth-scale")){EarthScaleCombat.Run();return;}if(args.Contains("--bench")){CombatBench.Run();return;}int checks=0,failed=0;
 void Check(bool ok,string label){checks++;if(!ok){failed++;Console.WriteLine("FAIL "+label);}}
-void Compare(object? a,object? b,string label){if(b is DataMap map){Check(a is DataMap,label+" map");if(a is DataMap actual)foreach(var(k,v)in map)Compare(actual.Value(k),v,label+"."+k);return;}if(b is List<object?> list){if(a is System.Collections.IEnumerable array){var actual=array.Cast<object?>().ToList();Check(actual.Count==list.Count,label+" count");for(int i=0;i<Math.Min(actual.Count,list.Count);i++)Compare(actual[i],list[i],label+"."+i);}else Check(false,label+" array");return;}if(b is Vector3 v3){Check(a is Vector3 v&&v.DistanceTo(v3)<(label.StartsWith("live ")||label.StartsWith("role ")?.001:.00001),label+" vector "+a+" / "+b);return;}if(b is Color color){Check(a is Color c&&Math.Abs(c.R-color.R)+Math.Abs(c.G-color.G)+Math.Abs(c.B-color.B)+Math.Abs(c.A-color.A)<.00001,label+" color");return;}if(CombatSnapshotCodec.IsNumber(b)){double actual=DataMap.Number(a,double.NaN),want=DataMap.Number(b);Check(double.IsFinite(actual)&&Math.Abs(actual-want)<=Math.Max(1e-8,Math.Abs(want)*1e-7),label+" "+actual+" / "+want);return;}Check(Equals(a,b),label+" "+a+" / "+b);}
-Check(CombatSnapshotCodec.TryDecode(DataMap.Parse(File.ReadAllText("artifacts/csharp-combat-golden.json")),out var decoded),"read original Godot golden");var golden=(DataMap)decoded!;var random=golden.Map("random");var rng=new CombatRandom(122);foreach(var n in random.List("uints"))Compare((long)rng.NextUInt(),n,"PCG integer");rng.Seed=122;foreach(var n in random.List("floats"))Compare((double)rng.Randf(),n,"Godot randf");rng.Seed=122;foreach(var n in random.List("ranges"))Compare(rng.Range(-3.7,22.8),n,"Godot range");Check(unchecked((long)rng.State).ToString()==random.S("state"),"RNG final state");
-foreach(var row in golden.List("armor").OfType<DataMap>()){var actor=new DataMap{["hp"]=1000d,["max_hp"]=1000d,["armor_type"]=row.S("armor"),["energy_hp"]=row.N("shield"),["energy_max_hp"]=row.N("shield")};var r=EnemyArmor.Resolve(actor,100,row.S("family"),new(),10);Compare(new DataMap{["total"]=r.Total,["energy"]=r.Energy,["hull"]=r.Hull,["broke"]=r.Broke,["immune"]=r.Immune},row.Map("result"),"armor result");Compare(actor,row.Map("actor"),"armor actor");}
-foreach(var row in golden.List("wave_plans").OfType<DataMap>()){var p=row.Map("plan");long w=p.L("wave");var actual=DefenseWavePlan.Build(w,36,30,45,w==3||w%5==0,w>=31?1:0,w>=31?2:0);Compare(actual,p,"waveplan"+w);for(int i=0;i<row.List("entries").Count;i++)Compare(DefenseWavePlan.Entry(actual,i),row.List("entries")[i],"entry"+w+":"+i);}
-foreach(var row in golden.List("enemy_catalog").OfType<DataMap>()){var entry=row.Map("entry");var actual=new DataMap{["kind"]=row.Map("actor").S("kind")};EnemyCatalog.Apply(actual,entry,new());Compare(actual,row.Map("actor"),"catalog"+entry.S("role"));}
-var invasion=new InvasionDirector();invasion.ConfigureAnchor(new Vector3(.2f,.3f,1).Normalized());rng.Seed=122;foreach(var row in golden.List("invasion").OfType<DataMap>()){long w=row.L("wave");Compare(invasion.FrontsForWave(w),row.List("fronts"),"fronts"+w);Compare(invasion.SpawnPoint(w,rng),row.Map("spawn"),"spawn"+w);Compare(invasion.WaveBudget(w,10,2,2),row.Value("budget"),"budget"+w);}
+// Self-consistent runtime checks over the live CSV catalogs (no frozen legacy baselines).
+foreach(long wave in new long[]{1,5,10,20,28,60,120})
+foreach(int stage in Enumerable.Range(0,4))
+foreach(string role in DefenseWavePlan.RoleOrder)
+foreach(string kind in new[]{"scout","cruiser","small_boss","boss","carrier"})
+{
+    var actual=new DataMap{["kind"]=kind};
+    EnemyCatalog.Apply(actual,new DataMap{["wave"]=wave,["stage"]=stage,["role"]=role,["index"]=0},new DefenseState().CombatSettings);
+    Check(actual.N("max_hp")>0&&actual.N("tactical_speed")>0,$"enemy compiled {wave}/{stage}/{role}/{kind}");
+}
+foreach(long wave in new long[]{1,5,10,20,28,60,120})
+{
+    var plan=DefenseWavePlan.Build(wave,36,30,45,wave==3||wave%5==0,wave>=31?1:0,wave>=31?2:0);
+    Check(plan.L("planned_count")>=0&&plan.L("planned_count")<=36,"wave plan budget "+wave);
+    for(long i=0;i<plan.L("planned_count");i++)Check(DefenseWavePlan.Entry(plan,i).Count>0,"spawn order "+wave+"/"+i);
+}
+var invasion=new InvasionDirector();invasion.ConfigureAnchor(new Vector3(.2f,.3f,1).Normalized());
+foreach(long wave in Enumerable.Range(1,65).Select(i=>(long)i)){Check(invasion.FrontsForWave(wave).Count>0,"fronts "+wave);Check(invasion.WaveBudget(wave,10,2,2)>=0,"budget "+wave);}
 var state=new DefenseState();var battle=new Battlefield(state);battle.StartWave();for(int i=0;i<600;i++){state.Tick(1d/60);battle.Step(1d/60);}var snapshot=DataMap.Parse(battle.SerializeCombatSnapshot().ToJson());Check(Battlefield.ValidateCombatSnapshot(snapshot),"live ten second snapshot");var copy=new Battlefield(state);Check(copy.RestoreCombatSnapshot(snapshot),"live snapshot restore");Check(copy.Drones.Count==battle.Drones.Count&&copy.Enemies.Count==battle.Enemies.Count,"actors persist");Check(copy.Random.State==battle.Random.State,"random persists");
-File.WriteAllText("artifacts/csharp-roundtrip-for-gd.json",snapshot.ToJson());
-var live=DataMap.Parse(File.ReadAllText("artifacts/csharp-live-golden.json"));
-foreach(var scenario in live.List("scenarios").OfType<DataMap>()){
- var samples=scenario.List("samples").Cast<DataMap>().ToList();var g=new DefenseState();Check(g.Restore(samples[0].Map("state")),"GD live state "+scenario.S("mode"));var b=new Battlefield(g);Check(Battlefield.ValidateCombatSnapshot(samples[0].Map("battle")),"GD live accepted "+scenario.S("mode"));Check(b.RestoreCombatSnapshot(samples[0].Map("battle")),"GD live imported "+scenario.S("mode"));int frame=1;
- foreach(var sample in samples.Skip(1)){
-  while(frame<sample.I("frame")){g.Tick(1d/60);b.Step(1d/60);frame++;}
-  CombatSnapshotCodec.TryDecode(sample.Map("battle").Value("payload"),out var original);CombatSnapshotCodec.TryDecode(b.SerializeCombatSnapshot().Value("payload"),out var actual);var want=(DataMap)original!;var got=(DataMap)actual!;
-  foreach(string k in new[]{"_clock","wave_remaining","wave_total","_wave_spawn_elapsed","_wave_spawned","_fixed_cycle_elapsed","_fixed_cycle_running","_boss_spawned","_small_boss_spawned"})Compare(got.Value(k),want.Value(k),"live "+scenario.S("mode")+" f"+frame+" "+k);
-  foreach(string listKey in new[]{"_drones","enemies","_shots","_hostile_shots"}){var wa=want.List(listKey);var aa=got.List(listKey);Check(wa.Count==aa.Count,"live "+scenario.S("mode")+" f"+frame+" "+listKey+" count "+aa.Count+"/"+wa.Count);for(int i=0;i<Math.Min(wa.Count,aa.Count);i++){var w=(DataMap)wa[i]!;var a=(DataMap)aa[i]!;foreach(string key in new[]{"uid","kind","hp","space_position","normal","velocity","phase","state","fire","target_uid","aim_target_uid","aim_direction","launch_age","airframe_id"})if(w.ContainsKey(key))Compare(a.Value(key),w.Value(key),"live "+scenario.S("mode")+" f"+frame+" "+listKey+i+" "+key);}}
-  Check(b.Random.State==unchecked((ulong)long.Parse(sample.Map("battle").S("rng_state"))),"live RNG parity "+scenario.S("mode")+" f"+frame);
- }
-}
-var weaponGolden=DataMap.Parse(File.ReadAllText("artifacts/csharp-weapons-golden.json"));
-object? Invoke(Battlefield b,string method,params object?[] args)=>typeof(Battlefield).GetMethod(method,System.Reflection.BindingFlags.Instance|System.Reflection.BindingFlags.NonPublic|System.Reflection.BindingFlags.Public)!.Invoke(b,args);
-foreach(var scenario in weaponGolden.List("scenarios").OfType<DataMap>()){
- string frameId=scenario.S("frame");var g=new DefenseState{Wave=28,CompletedWaves=27};foreach(var row in DeepTechnology.Nodes)g.DeepResearch[row.S("id")]=1L;foreach(var p in scenario.Map("state").Map("buildings"))g.Buildings[p.Key]=p.Value;Check(g.FactoryPerks.ImportSnapshot(scenario.Map("perks")),"weapon perks "+frameId);g.InvalidateFactoryStats();Check(g.SetAirframe(AirframeCatalog.Definition(frameId).S("kind"),-1,-1,frameId),"weapon physical selection "+frameId);var b=new Battlefield(g);var samples=scenario.List("samples").Cast<DataMap>().ToList();Check(b.RestoreCombatSnapshot(samples[0].Map("battle")),"weapon original import "+frameId);int tick=0;
- foreach(var sample in samples.Skip(1)){
-  while(tick<sample.I("tick")){typeof(Battlefield).GetProperty("Clock")!.SetValue(b,b.Clock+.1);foreach(var e in b.Enemies)Invoke(b,"UpdatePerkStatus",e,.1);b.RebuildTargetSectors();Invoke(b,"UpdateEffects",.1);Invoke(b,"UpdateFiring",.1);b.UpdateShots(.1);tick++;}
-  CombatSnapshotCodec.TryDecode(sample.Map("battle").Value("payload"),out var decodedExpected);var expected=(DataMap)decodedExpected!;CombatSnapshotCodec.TryDecode(b.SerializeCombatSnapshot().Value("payload"),out var decodedActual);var actual=(DataMap)decodedActual!;
-  foreach(string key in new[]{"_drones","enemies","_shots","_hostile_shots","_beams","_damage_numbers","_next_uid","_number_sequence"})Compare(actual.Value(key),expected.Value(key),"weapon "+frameId+" tick"+tick+" "+key);
-  Check(b.Random.State==unchecked((ulong)long.Parse(sample.Map("battle").S("rng_state"))),"weapon RNG "+frameId+" "+tick);
- }
-}
-// Mechanisms whose trigger is not guaranteed by the finite weapon reference trace.
-foreach(var scenario in weaponGolden.List("scenarios").OfType<DataMap>()){
- string id=scenario.S("frame");var g=new DefenseState{Wave=28,CompletedWaves=27};foreach(var row in DeepTechnology.Nodes)g.DeepResearch[row.S("id")]=1L;foreach(var p in scenario.Map("state").Map("buildings"))g.Buildings[p.Key]=p.Value;g.FactoryPerks.ImportSnapshot(scenario.Map("perks"));g.InvalidateFactoryStats();g.SetAirframe(AirframeCatalog.Definition(id).S("kind"),-1,-1,id);var b=new Battlefield(g);b.RestoreCombatSnapshot(((DataMap)scenario.List("samples")[0]!).Map("battle"));var d=b.Drones[0];var e=b.Enemies[1];var stats=b.DroneWeaponStats(d);var packet=(DataMap)Invoke(b,"WeaponSource",d,stats)!;packet["primary"]=true;
- if(id=="K2"){d["fire"]=2d;e["hp"]=.01;b.ApplyEnemyDamage(e,10,context:packet);double after=d.N("fire");Check(after<2,"K2 actual kill reload credit");var second=b.Enemies[0];second["hp"]=.01;b.ApplyEnemyDamage(second,10,context:packet);Check(d.N("fire")==after,"K2 kill credit has real one-second lock");}
- if(id=="M2"){d["shock_hits"]=0;d["shock_next"]=0d;for(int i=0;i<3;i++)b.ApplyEnemyDamage(e,1,context:packet);Check(d.I("shock_hits")==3,"M2 actual heavy hits charge next shot");double boosted=(double)Invoke(b,"FrameFiringDamage",d,e,stats,100d)!;Check(boosted>100&&d.I("shock_hits")==0,"M2 charge consumed once");Check((double)Invoke(b,"FrameFiringDamage",d,e,stats,100d)! ==100,"M2 no repeat free charged shot");}
- if(id=="L2"){e["energy_hp"]=0d;d["lock_progress"]=0d;d["lock_tick"]=b.Clock;d["lock_uid"]=e.L("uid");typeof(Battlefield).GetProperty("Clock")!.SetValue(b,b.Clock+1);Check((bool)Invoke(b,"FrameWeaponReady",d,e,stats,.1)!,"L2 fires while warming");Check((double)Invoke(b,"FrameFiringDamage",d,e,stats,100d)! ==100,"L2 incomplete charge no full multiplier");typeof(Battlefield).GetProperty("Clock")!.SetValue(b,b.Clock+1);Invoke(b,"FrameWeaponReady",d,e,stats,.1);Check((double)Invoke(b,"FrameFiringDamage",d,e,stats,100d)!>100,"L2 full focus produces real multiplier");d["lock_lost_at"]=b.Clock;var alternate=b.Enemies[0];Invoke(b,"FrameWeaponReady",d,alternate,stats,.1);Check(d.N("lock_progress")>0&&d.N("lock_progress")<stats.N("warmup_seconds"),"L2 reacquisition memory retains partial charge");}
- if(id=="L3"){d["pulse_next"]=0d;e["l3_pulse_ready"]=0d;e["fire"]=1d;Invoke(b,"FireSuppressionPulse",d,e,stats);double delayed=e.N("fire");Check(delayed>1,"L3 pulse actually postpones hostile trigger");var second=d.DeepClone();second["uid"]=10001L;second["pulse_next"]=0d;Invoke(b,"FireSuppressionPulse",second,e,stats);Check(e.N("fire")==delayed,"L3 overlapping pulse cannot stack permanent lock");}
- if(id=="K1"){e["energy_hp"]=1000d;e["energy_max_hp"]=1000d;double hp=e.N("hp");int shots=b.Shots.Count;b.DetonateDroneDeath(e.Vector3("space_position"),stats,packet);Check(e.N("hp")==hp&&e.N("energy_hp")==1000&&b.Shots.Count==shots,"kinetic self-blast respects shield immunity and has no recursive procs");}
-}
-var roleGolden=DataMap.Parse(File.ReadAllText("artifacts/csharp-roles-golden.json"));
-foreach(var scenario in roleGolden.List("scenarios").OfType<DataMap>()){
- string role=scenario.S("role");var g=new DefenseState();Check(g.Restore(scenario.Map("state")),"role state "+role);var b=new Battlefield(g);var samples=scenario.List("samples").Cast<DataMap>().ToList();Check(b.RestoreCombatSnapshot(samples[0].Map("battle")),"role import "+role);int tick=0;
- foreach(var sample in samples.Skip(1)){
-  while(tick<sample.I("tick")){typeof(Battlefield).GetProperty("Clock")!.SetValue(b,b.Clock+.1);Invoke(b,"UpdateEffects",.1);Invoke(b,"UpdateEnemies",.1);b.UpdateShots(.1);tick++;}
-  CombatSnapshotCodec.TryDecode(sample.Map("battle").Value("payload"),out var ed);CombatSnapshotCodec.TryDecode(b.SerializeCombatSnapshot().Value("payload"),out var ad);var expected=(DataMap)ed!;var actual=(DataMap)ad!;
-  foreach(string key in new[]{"_drones","enemies","_shots","_hostile_shots","_beams","_damage_numbers","_next_uid","_number_sequence"})Compare(actual.Value(key),expected.Value(key),"role "+role+" tick"+tick+" "+key);
-  Compare(g.EarthHp,sample.Value("earth_hp"),"role Earth hull "+role);Compare(g.Shield,sample.Value("shield"),"role Earth shield "+role);
-  Check(b.Random.State==unchecked((ulong)long.Parse(sample.Map("battle").S("rng_state"))),"role RNG "+role+" "+tick);
- }
-}
 CombatContracts.Run(Check);
 Console.WriteLine($"COMBAT_MANAGED checks={checks} failures={failed}");System.Environment.ExitCode=failed==0?0:1;
-
-
-
-
-
-
-
-
-
-

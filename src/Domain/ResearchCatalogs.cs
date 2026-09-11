@@ -9,7 +9,7 @@ public static partial class DeepTechnology
 	public static IReadOnlyList<DataMap> Branches => CatalogData.Rows("deep-technology.json", "branches");
 	public static DataMap Definition(string id) => TryParseSuccessor(id, out string branch, out int rank) ? SuccessorDefinition(branch, rank) : CatalogData.Definition("deep-technology.json", "nodes", id);
 	public static bool Has(string id) => Definition(id).Count > 0;
-	public static DataMap Effects(DataMap levels, ISet<string>? credited = null, DataMap? successorLevels = null)
+	public static DataMap Effects(DataMap levels, DataMap? successorLevels = null)
 	{
 		var result = new DataMap { ["tech_abilities"] = new DataMap(), ["production_lanes"] = 1L, ["action_radius"] = 0d, ["strategic_enabled"] = false, ["strategic_speed_multiplier"] = 1d };
 		foreach (var row in Nodes)
@@ -17,7 +17,7 @@ public static partial class DeepTechnology
 			string id = row.S("id");
 			if (row.S("size") != "small")
 				result.Map("tech_abilities")[id] = levels.L(id) > 0;
-			if (levels.L(id) <= 0 || (credited?.Contains(id) == true && !IsConvertedLegacyEffect(id)))
+			if (levels.L(id) <= 0)
 				continue;
 			foreach (var (key, value) in row.Map("values"))
 			{
@@ -40,31 +40,24 @@ public static partial class DeepTechnology
 			}
 		return result;
 	}
-	public static DataMap? Validate(object? value, DataMap? legacy = null)
+	public static DataMap? Validate(object? value)
 	{
-		if (value is not DataMap data || !DataMap.ValidNumber(data.Value("version"), 1, 3, true) || data.Value("nodes") is not DataMap levels || data.Value("credited") is not List<object?> list)
+		if (value is not DataMap data || data.Count != 3 || !DataMap.ValidNumber(data.Value("version"), 3, 3, true) || data.Value("nodes") is not DataMap levels || data.Value("successor_levels") is not DataMap tails)
 			return null;
-		int version = data.I("version"); bool old = version < 3;
-		if (data.Count != (old ? 4 : 5) || levels.Count > (old ? Migration127SourceNodes.Count : Nodes.Count) || list.Count > levels.Count) return null;
-		string field = version == 1 ? "refinements" : "successor_levels";
-		if (data.Value(field) is not DataMap tails || tails.Count > ChainBranches.Length) return null;
-		DataMap DefinitionForSource(string id) => old ? Migration127SourceDefinition(id) : CatalogData.Definition("deep-technology.json", "nodes", id);
-		if (levels.Any(pair => DefinitionForSource(pair.Key).Count == 0 || !DataMap.ValidNumber(pair.Value, 1, 1, true))) return null;
-		var credited = new HashSet<string>();
-		foreach (var item in list)
-			if (item is not string id || !levels.ContainsKey(id) || !credited.Add(id)) return null;
+		if (levels.Count > Nodes.Count || tails.Count > ChainBranches.Length) return null;
+		foreach (var (id, level) in levels)
+			if (CatalogData.Definition("deep-technology.json", "nodes", id).Count == 0 || !DataMap.ValidNumber(level, 1, 1, true))
+				return null;
 		foreach (string id in levels.Keys)
-			if (!credited.Contains(id) && !(version == 3 && IsMigratedCapacityGrant(id, data.Map("migration"))) && DefinitionForSource(id).List("requires").Cast<string>().Any(parent => !levels.ContainsKey(parent))) return null;
+			if (CatalogData.Definition("deep-technology.json", "nodes", id).List("requires").Cast<string>().Any(parent => !levels.ContainsKey(parent)))
+				return null;
 		var chain = new DataMap();
-		foreach (var (key, count) in tails)
+		foreach (var (branch, count) in tails)
 		{
-			string branch = version == 1 && key.EndsWith("_G2", StringComparison.Ordinal) ? key[..^3] : key;
-			if (!ChainBranches.Contains(branch) || (version == 1 && key != branch + "_G2") || !levels.ContainsKey(branch + "_G2") || !DataMap.ValidNumber(count, 1, SuccessorMaxRank, true)) return null;
+			if (!ChainBranches.Contains(branch) || !levels.ContainsKey(branch + "_G2") || !DataMap.ValidNumber(count, 1, SuccessorMaxRank, true)) return null;
 			chain[branch] = DataMap.Integer(count);
 		}
-		if (old) return Migrate127(levels, credited, chain, legacy ?? new(), version);
-		if (data.Value("migration") is not DataMap migration || !ValidMigration127Summary(migration)) return null;
-		return new() { ["version"] = 3L, ["nodes"] = levels.DeepClone(), ["credited"] = DataMap.Clone(list), ["successor_levels"] = chain, ["migration"] = migration.DeepClone() };
+		return new() { ["version"] = 3L, ["nodes"] = levels.DeepClone(), ["successor_levels"] = chain };
 	}
 
 }

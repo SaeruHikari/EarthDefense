@@ -26,7 +26,6 @@ public sealed partial class DefenseState
         ["resource_cores"] = ResourceCores,
         ["completed_waves"] = CompletedWaves,
         ["buildings"] = Buildings.DeepClone(),
-        ["tech"] = Tech.DeepClone(),
         ["combat_settings"] = CombatSettings.DeepClone(),
         ["resource_core_upgrades"] = _resourceUpgrades.DeepClone(),
         ["research_state"] = DeepSave(),
@@ -35,9 +34,8 @@ public sealed partial class DefenseState
         ["research_flags"] = _flags.DeepClone(),
         ["expedition"] = Expedition.Serialize()
     };
-    private DataMap DeepSave() => new() { ["version"] = 3L, ["nodes"] = DeepResearch.DeepClone(), ["credited"] = _credited.Cast<object?>().ToList(), ["successor_levels"] = _successorLevels.DeepClone(), ["migration"] = _researchMigration.DeepClone() };
+    private DataMap DeepSave() => new() { ["version"] = 3L, ["nodes"] = DeepResearch.DeepClone(), ["successor_levels"] = _successorLevels.DeepClone() };
     private DataMap RuntimeSave() => new() { ["science_refunds"] = _refunds.Select(row => (object?)row.DeepClone()).ToList(), ["resource_boosts"] = _boosts.Select(row => (object?)row.DeepClone()).ToList(), ["zero_shield_until"] = _zeroShieldUntil, ["zero_shield_ready"] = _zeroShieldReady, ["sacrifice_bucket"] = _sacrificeBucket, ["sacrifice_used"] = _sacrificeUsed, ["rewarded_enemies"] = _rewardedEnemies.Cast<object?>().ToList() };
-    private static DataMap BlankRuntime() => new() { ["science_refunds"] = new List<object?>(), ["resource_boosts"] = new List<object?>(), ["zero_shield_until"] = 0d, ["zero_shield_ready"] = 0d, ["sacrifice_bucket"] = -1L, ["sacrifice_used"] = 0d, ["rewarded_enemies"] = new List<object?>() };
     private static bool SiteId(string key) => long.TryParse(key, out long id) && id >= 0 && id <= MaxExactInteger && id.ToString(CultureInfo.InvariantCulture) == key;
     private static DataMap? ValidateResourceUpgrades(object? value, DataMap counts)
     {
@@ -57,28 +55,23 @@ public sealed partial class DefenseState
     }
     public bool Restore(DataMap data)
     {
-        if (!DataMap.ValidNumber(data.Value("version"), 1, 1, true) || !DataMap.ValidNumber(data.Value("world_scale_version", 1), 1, WorldScaleVersion, true) || !DataMap.ValidNumber(data.Value("defense_reach_stage", 0), 0, 3, true))
+        if (!DataMap.ValidNumber(data.Value("version"), 1, 1, true) || !DataMap.ValidNumber(data.Value("world_scale_version"), WorldScaleVersion, WorldScaleVersion, true) || !DataMap.ValidNumber(data.Value("defense_reach_stage", 0), 0, 3, true))
             return false;
-        if (data.ContainsKey("run_id") && (data.Value("run_id") is not string id || id.Length == 0 || id.Length > 96))
+        if (data.Value("run_id") is not string suppliedRunId || suppliedRunId.Length == 0 || suppliedRunId.Length > 96)
             return false;
         if (new[] { "minerals", "energy", "science" }.Any(k => !DataMap.ValidNumber(data.Value(k), 0, ResourceLimit)) || !DataMap.ValidNumber(data.Value("defense_time", 0), 0, DefenseTimeLimit) || !DataMap.ValidNumber(data.Value("earth_hp"), 0, DomainBalance.Value("earth_max_health")))
             return false;
         if (new[] { "wave", "kills", "score" }.Any(k => !DataMap.ValidNumber(data.Value(k), 0, MaxExactInteger, true)) || new[] { "alien_points", "resource_cores" }.Any(k => !DataMap.ValidNumber(data.Value(k, 0), 0, MaxExactInteger, true)) || !DataMap.ValidNumber(data.Value("completed_waves", data.Value("wave")), 0, data.N("wave"), true))
             return false;
-        if (data.Value("buildings") is not DataMap savedBuildings || data.Value("tech") is not DataMap savedTech || savedTech.Keys.Any(key => !CatalogData.Load("legacy-technology.json").Map("initial_levels").ContainsKey(key)))
+        if (data.Value("buildings") is not DataMap savedBuildings)
             return false;
-        DataMap? settings = data.ContainsKey("combat_settings") ? data.Value("combat_settings") is DataMap values ? MigrateCombatSettings(values, data.I("world_scale_version", 1)) : null : DefaultCombatSettings;
+        DataMap? settings = data.Value("combat_settings") is DataMap values ? MigrateCombatSettings(values, WorldScaleVersion) : null;
         if (settings == null)
             return false;
         var buildings = new DataMap();
         foreach (var definition in BuildingDefinitions)
         {
             string key = definition.S("id");
-            if (key is "starship_silo" or "shield" && !savedBuildings.ContainsKey(key))
-            {
-                buildings[key] = 0L;
-                continue;
-            }
             if (!DataMap.ValidNumber(savedBuildings.Value(key), 0, MaxExactInteger, true))
                 return false;
             buildings[key] = savedBuildings.L(key);
@@ -86,47 +79,28 @@ public sealed partial class DefenseState
         var upgrades = ValidateResourceUpgrades(data.Value("resource_core_upgrades", new DataMap()), buildings);
         if (upgrades == null)
             return false;
-        var tech = new DataMap();
-        foreach (var definition in LegacyTechnologies)
-        {
-            string key = definition.S("id");
-            if (!savedTech.ContainsKey(key) && !LegacyTechIds.Contains(key))
-            {
-                tech[key] = 0L;
-                continue;
-            }
-            if (!DataMap.ValidNumber(savedTech.Value(key), 0, definition.N("legacy_max", definition.N("max")), true))
-                return false;
-            tech[key] = Math.Min(definition.L("max"), savedTech.L(key));
-        }
-        var payload = ValidateResearchPayload(data, tech);
+        var payload = ValidateResearchPayload(data);
         if (payload == null)
             return false;
         var state = payload.Map("state");
-        var effects = DeepTechnology.Effects(state.Map("nodes"), state.List("credited").Cast<string>().ToHashSet(), state.Map("successor_levels"));
         if (!DataMap.ValidNumber(data.Value("shield"), 0, ResourceLimit))
             return false;
         foreach (string kind in new[] { "laser", "missile" })
-            if (buildings.L(kind) > 0 && tech.L(kind) == 0 && !state.Map("nodes").ContainsKey(kind == "missile" ? "M_N1" : "L_N1"))
-                return false;
-        foreach (var definition in LegacyTechnologies)
-            if (tech.L(definition.S("id")) > 0 && !RequirementsMet(tech, definition.Map("requires")) && (!definition.ContainsKey("legacy_requires") || !RequirementsMet(tech, definition.Map("legacy_requires"))))
+            if (buildings.L(kind) > 0 && !state.Map("nodes").ContainsKey(kind == "missile" ? "M_N1" : "L_N1"))
                 return false;
         if (buildings.L("shield") > 0 && !state.Map("nodes").ContainsKey("D_N4"))
             return false;
-        if (data.ContainsKey("expedition") && (data.Value("expedition") is not DataMap nested || nested.Count == 0))
+        if (data.Value("expedition") is not DataMap nested || nested.Count == 0)
             return false;
-        var expedition = ExpeditionData.Validate(data.Value("expedition", new DataMap()));
+        var expedition = ExpeditionData.Validate(nested);
         if (expedition == null || buildings.L("starship_silo") > 0 && !expedition.Map("research").B("telescope"))
             return false;
-        string runId = data.S("run_id", "legacy-" + FactoryPerks.Hash(LegacyJson.Stringify(data)));
+        string runId = suppliedRunId;
         if (!FactoryPerks.ResetRunSites(runId))
             return false;
-        bool applyMigrationRefund = !data.ContainsKey("research_state") || data.Map("research_state").I("version") < 3;
-        _researchRefundApplied = applyMigrationRefund ? state.Map("migration").Map("refund").DeepClone() : new();
-        Minerals = Math.Min(ResourceLimit, data.N("minerals") + _researchRefundApplied.N("minerals"));
-        Energy = Math.Min(ResourceLimit, data.N("energy") + _researchRefundApplied.N("energy"));
-        Science = Math.Min(ResourceLimit, data.N("science") + _researchRefundApplied.N("science"));
+        Minerals = data.N("minerals");
+        Energy = data.N("energy");
+        Science = data.N("science");
         EarthHp = data.N("earth_hp");
         Shield = data.N("shield");
         Wave = data.L("wave");
@@ -137,10 +111,7 @@ public sealed partial class DefenseState
         ResourceCores = data.L("resource_cores");
         CompletedWaves = data.L("completed_waves", Wave);
         Buildings = buildings;
-        Tech = tech;
         CombatSettings = settings;
-        if (!data.ContainsKey("research_state") && Math.Abs(CombatSettings.N("enemy_wave_duration") - 30) < .00001)
-            CombatSettings["enemy_wave_duration"] = 45d;
         _resourceUpgrades = upgrades;
         Expedition.Restore(expedition);
         DefenseReachStage = data.I("defense_reach_stage");
@@ -170,13 +141,9 @@ public sealed partial class DefenseState
         ResourceCores = 0;
         CompletedWaves = 0;
         Buildings = CatalogData.Load("economy.json").Map("initial_buildings").DeepClone();
-        Tech = CatalogData.Load("legacy-technology.json").Map("initial_levels").DeepClone();
         CombatSettings = DefaultCombatSettings;
         DeepResearch = new();
-        _credited.Clear();
         _successorLevels = new();
-        _researchMigration = new();
-        _researchRefundApplied = new();
         _flags = new()
         {
             ["first_medium_boss_defeated"] = false,
@@ -200,30 +167,15 @@ public sealed partial class DefenseState
         Changed?.Invoke();
         return true;
     }
-    private static DataMap? ValidateResearchPayload(DataMap data, DataMap legacy)
+    private static DataMap? ValidateResearchPayload(DataMap data)
     {
-        string[] fields = { "research_state", "research_runtime", "airframe_selection", "research_flags" };
-        int present = fields.Count(data.ContainsKey);
-        if (present == 0)
-            return new()
-            {
-                ["state"] = MigrateLegacyResearch(legacy),
-                ["runtime"] = BlankRuntime(),
-                ["airframes"] = AirframeCatalog.EmptySelection(),
-                ["flags"] = new DataMap { ["first_medium_boss_defeated"] = data.L("completed_waves") >= 3 || data.L("alien_points") > 0, ["missile_intel"] = legacy.L("missile") > 0, ["laser_intel"] = legacy.L("laser") > 0 || data.L("completed_waves") >= 10, ["unrestricted_research"] = false }
-            };
-        if (present != 4)
-            return null;
-        var state = DeepTechnology.Validate(data.Value("research_state"), legacy);
+        var state = DeepTechnology.Validate(data.Value("research_state"));
         var frames = AirframeCatalog.Validate(data.Value("airframe_selection"));
-        if (state == null || frames == null || data.Value("research_flags") is not DataMap flags || (flags.Count != 3 && flags.Count != 4) || flags.Keys.Any(k => k is not ("first_medium_boss_defeated" or "missile_intel" or "laser_intel" or "unrestricted_research")) || new[] { "first_medium_boss_defeated", "missile_intel", "laser_intel" }.Any(k => flags.Value(k) is not bool) || (flags.ContainsKey("unrestricted_research") && flags.Value("unrestricted_research") is not bool))
-            return null;
-        var legacyRights = MigrateLegacyResearch(legacy).Map("nodes");
-        if (state.List("credited").Cast<string>().Any(id => !legacyRights.ContainsKey(id)))
+        if (state == null || frames == null || data.Value("research_flags") is not DataMap flags || flags.Count != 4 || flags.Keys.Any(k => k is not ("first_medium_boss_defeated" or "missile_intel" or "laser_intel" or "unrestricted_research")) || new[] { "first_medium_boss_defeated", "missile_intel", "laser_intel", "unrestricted_research" }.Any(k => flags.Value(k) is not bool))
             return null;
         foreach (string id in state.Map("nodes").Keys)
         {
-            if (state.List("credited").Contains(id) || flags.B("unrestricted_research") || DeepTechnology.IsMigratedCapacityGrant(id, state.Map("migration")))
+            if (flags.B("unrestricted_research"))
                 continue;
             var gate = DeepTechnology.Definition(id).Map("unlock");
             if (data.I("defense_reach_stage") < gate.I("defense_stage") || data.L("completed_waves") < gate.L("completed_wave") || gate.B("first_medium_boss_defeated") && !flags.B("first_medium_boss_defeated"))
@@ -235,7 +187,7 @@ public sealed partial class DefenseState
                 string id = field == "templates" ? value as string ?? "" : (value as DataMap)?.S("airframe") ?? "";
                 var def = AirframeCatalog.Definition(id);
                 string node = def.S("unlock_node");
-                if (node.Length == 0 || id is "M1" or "L1" || id == AirframeCatalog.BaseFor(def.S("kind")) && legacy.L(def.S("kind")) > 0)
+                if (node.Length == 0 || id == AirframeCatalog.BaseFor(def.S("kind")))
                     continue;
                 if (!state.Map("nodes").ContainsKey(node))
                     return null;
@@ -277,9 +229,7 @@ public sealed partial class DefenseState
     {
         var state = payload.Map("state");
         DeepResearch = state.Map("nodes").DeepClone();
-        _credited = state.List("credited").Cast<string>().ToHashSet();
         _successorLevels = state.Map("successor_levels").DeepClone();
-        _researchMigration = state.Map("migration").DeepClone();
         _flags = payload.Map("flags").DeepClone();
         _flags["unrestricted_research"] = _flags.B("unrestricted_research");
         _airframes = payload.Map("airframes").DeepClone();

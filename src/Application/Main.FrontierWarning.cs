@@ -46,6 +46,10 @@ public partial class Main
             _alertPoll = 0;
             RefreshTacticalTargets();
         }
+        // A confirmed signal is a timed notice, not a permanent indicator; it expires like a damage report.
+        var mother = TacticalAlerts.Mother;
+        mother.Active = _alertTargets.Count > 0 && !Defeated
+            && (CurrentFrontierWarning != null || mother.Age < TacticalAlertView.AlertLifetime);
         var damage = TacticalAlerts.Damage;
         _attackSamples.RemoveAll(sample => _alertClock - sample.Time >= 8);
         damage.Active = _attackSamples.Count > 0 && !Defeated;

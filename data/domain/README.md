@@ -11,7 +11,7 @@
 | 科技前置关系 | `deep_technology_nodes_requires.csv` |
 | 每个科技的费用 | `deep_technology_nodes_cost.csv` |
 | 科技波次和阶段门槛 | `deep_technology_nodes_unlock.csv` |
-| 科技说明文字 | `deep_technology_nodes_effects.csv`、`deep_technology_nodes_effect_definition.csv` |
+| 科技说明文字 | `deep_technology_nodes_effects.csv` |
 | 科技图位置 | `deep_technology_nodes_draw_position.csv` |
 | 9 种飞机的倍率、射程、生产时长与机型能力参数 | `airframes_definitions.csv` |
 | 39 种特性的描述和类别 | `perks_definitions.csv` |
@@ -25,9 +25,8 @@
 | 初始资源、武器基数、资源产出、修理、波次奖励等 | `domain_balance.csv` |
 | 各工厂基础巡航半径、远端范围、速度和生命 | `patrol_bases.csv` |
 | 击杀每类敌人的资源、积分、外星点和核心规则 | `kill_rewards.csv` |
-| 旧存档科技继续生效的数值系数 | `legacy_effect_coefficients.csv` |
 | 后继单级科技的收益、科研与外星点增长曲线 | `successor_research.csv` |
-| 旧存档的四层航程基础值 | `legacy_frontiers.csv` |
+| 四层边境航程基础值（供 C_A2/C_A3/C_G2 与外推使用） | `legacy_frontiers.csv` |
 | 暂停开放的远征系统参数与既有存档权益 | `expedition_*.csv` |
 
 `combat_*.csv` 由战斗系统维护，包含敌人和波次构成等内容；其具体列见该部分说明。
@@ -58,9 +57,9 @@
 
 ## 兼容与校验
 
-`technology-migration-127.json` 是冻结的历史迁移映射，不是可调的当前数值源；保留它是为了读取已购买的旧科技和进行一次性容量退款。`golden-*.json` 是测试参考。旧正式 JSON 的只读参考保存在 `tests/DomainManaged/Fixtures/pre-csv`，运行时不会因为 CSV 失败而读取它们。
+`golden-*.json` 是测试参考，不参与运行时加载。
 
-性能或历史测试若必须加载旧 JSON，需要显式调用 `CatalogData.ConfigureLegacyFixture(path)`；这是专用测试入口。正常游戏使用 `Configure`，只加载 CSV。每次重新配置会增加 Revision 并清除缓存。当前数据一次完成解析和引用校验，运行过程中使用缓存，不逐帧读取 CSV。
+游戏只从 CSV 加载数值，没有旧 JSON 回退。每次重新配置会增加 Revision 并清除缓存。当前数据一次完成解析和引用校验，运行过程中使用缓存，不逐帧读取 CSV。
 
 修改后执行独立领域校验：
 
@@ -94,7 +93,7 @@ parent_id,position,attribute,type,value
 K_S01,0,kinetic_damage_bonus,number,0.04
 ```
 
-把末尾改为 `0.05`；同步 `deep_technology_nodes_effects.csv` 的说明以及 `deep_technology_nodes_effect_definition.csv` 的显示数值。伴随节点 K_S21 是另一个独立购买节点，不会自动跟着修改。如果希望整对仍均分收益，要明确修改两项。
+把末尾改为 `0.05`；同步 `deep_technology_nodes_effects.csv` 的说明。伴随节点 K_S21 是另一个独立购买节点，不会自动跟着修改。如果希望整对仍均分收益，要明确修改两项。
 
 **给某节点增加第二个前置。** 在 `deep_technology_nodes_requires.csv`，同一 `parent_id` 的 position 应依次为 0、1、2。第一列是“需要前置的节点”，value 才是前置 ID。例如：
 
@@ -121,7 +120,7 @@ K_S21,0,string,K_S01
 | `combat_fronts.csv` | 母舰方位、颜色、方向与开放波次。 |
 | `combat_defense_stages.csv` | 每次外推对应的数值倍率。 |
 | `combat_armor.csv` | 武器对护甲/能量层的伤害关系。 |
-| `combat_tuning.csv` | 波次、数量、生成范围、精锐、EMP 及特殊技能等公共系数。 |
+| `combat_tuning.csv` | 波次、数量、生成范围、精锐及特殊技能等公共系数。 |
 
 修改一类敌人的生命倍率可从 `combat_enemies.csv` 的对应 health 列开始，而不是把每个波次都复制一份敌人记录。各参数名称、单位和范围以表头与 tuning 表说明为准。
 

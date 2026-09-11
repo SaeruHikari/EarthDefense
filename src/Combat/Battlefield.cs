@@ -40,11 +40,6 @@ public sealed partial class Battlefield
     {
         get; private set;
     }
-    public double EmpCooldown
-    {
-        get; private set;
-    }
-    public double EmpAge { get; private set; } = 10;
     public long DestroyedDrones
     {
         get; private set;
@@ -144,7 +139,6 @@ public sealed partial class Battlefield
         if (timing != null) mark = timing.Record(CombatStage.WorldSynchronization, mark);
         double dt = Math.Min(delta, .06) * SpeedScale;
         Clock += dt;
-        EmpAge += dt;
         UpdateEffects(dt);
         UpdateLocalShields(dt);
         if (timing != null) mark = timing.Record(CombatStage.EffectsAndShields, mark);
@@ -158,7 +152,6 @@ public sealed partial class Battlefield
         }
         if (Active && !Dead)
         {
-            EmpCooldown = Math.Max(0, EmpCooldown - dt);
             if (_fixedRunning)
                 AdvanceFixedSchedule(Math.Max(delta, 0) * SpeedScale);
             if (Enemies.Count > 0)
@@ -187,8 +180,6 @@ public sealed partial class Battlefield
         Dead = false;
         InvasionWon = false;
         Clock = 0;
-        EmpCooldown = 0;
-        EmpAge = 10;
         DestroyedDrones = 0;
         NumberSequence = 0;
         _nextUid = 1;

@@ -17,7 +17,7 @@ public static class RenderAssets
         "enemy/claw", "enemy/needle", "enemy/rock", "enemy/siege",
         "enemy/prism", "enemy/weaver", "enemy/hatcher", "enemy/jammer",
         "boss/brood", "boss/forge", "boss/prism",
-        "meteor", "scout", "cruiser", "small_boss", "boss", "carrier", "mothership",
+        "scout", "cruiser", "small_boss", "boss", "carrier", "mothership",
         "projectile/interceptor", "projectile/laser", "projectile/missile", "projectile/hostile"
     }.ToDictionary(key => key, key => ModelDirectory + key.Replace('/', '_') + ".scn", StringComparer.Ordinal);
 

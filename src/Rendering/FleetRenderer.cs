@@ -59,7 +59,7 @@ public sealed partial class FleetRenderer
                 return "projectile/laser";
             return "projectile/interceptor";
         }
-        if (kind is "meteor" or "carrier" or "mothership")
+        if (kind is "carrier" or "mothership")
             return kind;
         if (enemy)
         {

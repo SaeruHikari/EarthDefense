@@ -10,8 +10,6 @@ deep_technology_nodes.csv,importance,number,true
 deep_technology_nodes.csv,is_pair_second,bool,false
 deep_technology_nodes.csv,layout_depth,number,true
 deep_technology_nodes.csv,layout_lane,number,true
-deep_technology_nodes.csv,layout_row,number,true
-deep_technology_nodes.csv,legacy_pair_id,string,false
 deep_technology_nodes.csv,max,number,true
 deep_technology_nodes.csv,name,string,true
 deep_technology_nodes.csv,ranks,number,true
@@ -29,7 +27,6 @@ airframes_definitions.csv,kind,string,true
 airframes_definitions.csv,large_target_damage_multiplier,number,false
 airframes_definitions.csv,name,string,true
 airframes_definitions.csv,range_multiplier,number,true
-airframes_definitions.csv,role,string,true
 airframes_definitions.csv,scale_multiplier,number,true
 airframes_definitions.csv,spawn_multiplier,number,true
 airframes_definitions.csv,speed_multiplier,number,true
@@ -62,17 +59,3 @@ expedition_setting_definitions.csv,integer,bool,true
 expedition_setting_definitions.csv,max,number,true
 expedition_setting_definitions.csv,min,number,true
 expedition_setting_definitions.csv,name,string,true
-legacy_technology_branches.csv,color,string,true
-legacy_technology_branches.csv,id,string,true
-legacy_technology_branches.csv,name,string,true
-legacy_technology_definitions.csv,branch,string,true
-legacy_technology_definitions.csv,description,string,true
-legacy_technology_definitions.csv,id,string,true
-legacy_technology_definitions.csv,legacy_max,number,false
-legacy_technology_definitions.csv,max,number,true
-legacy_technology_definitions.csv,name,string,true
-legacy_technology_definitions.csv,requires_defense_stage,number,false
-legacy_technology_definitions.csv,tier,number,true
-legacy_technology_definitions_gates.csv,alien_cost,number,true
-legacy_technology_definitions_gates.csv,completed_wave,number,true
-legacy_technology_definitions_gates.csv,from_level,number,true

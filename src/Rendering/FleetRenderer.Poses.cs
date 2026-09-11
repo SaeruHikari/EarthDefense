@@ -94,8 +94,6 @@ public sealed partial class FleetRenderer
             var right = tangent.Cross(normal).Normalized();
             float unitScale = scale * (category == "drones" ? FrameScales.GetValueOrDefault(actor.S("airframe_id"), 1) : 1);
             var transform = new Transform3D(new Basis(right, normal, -tangent).Scaled(Vector3.One * unitScale), position);
-            if (actor.S("kind") == "meteor")
-                transform = transform.RotatedLocal(Vector3.Up, (float)time * .43f + uid * .71f);
             double hp = actor.N("hp", 1), max = actor.N("max_hp", 1);
             bool critical = !projectile && max > 0 && hp > 0 && hp <= max * .3 && (category == "drones" || actor.S("kind") is "scout" or "cruiser") && !actor.B("post_carrier");
             string visual = VisualKey(actor, enemy, projectile);

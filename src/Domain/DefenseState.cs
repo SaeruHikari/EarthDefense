@@ -12,7 +12,6 @@ public sealed partial class DefenseState
     public static double DeathBlastBaseDamage => DomainBalance.Value("death_blast_damage");
     public static double DeathBlastRadius => DomainBalance.Value("death_blast_radius");
     public static IReadOnlyList<DataMap> BuildingDefinitions => CatalogData.Rows("economy.json", "buildings");
-    public static IReadOnlyList<DataMap> LegacyTechnologies => CatalogData.Rows("legacy-technology.json", "definitions");
     public static DataMap DefaultCombatSettings => CatalogData.Load("economy.json").Map("settings").DeepClone();
     public static IReadOnlyList<string> IntegerCombatSettings => CatalogData.Load("economy.json").List("integer_settings").Cast<string>().ToList();
     public static IReadOnlyList<string> ResourceFacilityKinds => new[] { "mine", "solar", "lab" };
@@ -54,11 +53,8 @@ public sealed partial class DefenseState
         get; set;
     }
     public DataMap Buildings { get; private set; } = CatalogData.Load("economy.json").Map("initial_buildings").DeepClone();
-    public DataMap Tech { get; private set; } = CatalogData.Load("legacy-technology.json").Map("initial_levels").DeepClone();
     public DataMap CombatSettings { get; private set; } = DefaultCombatSettings;
     public DataMap DeepResearch { get; private set; } = new();
-    private HashSet<string> _credited = new();
-    private DataMap _researchMigration = new(), _researchRefundApplied = new();
     private DataMap _successorLevels = new(), _flags = new() { ["first_medium_boss_defeated"] = false, ["missile_intel"] = false, ["laser_intel"] = false, ["unrestricted_research"] = false };
     private DataMap _airframes = AirframeCatalog.EmptySelection(), _resourceUpgrades = new();
     private List<DataMap> _refunds = new(), _boosts = new();
@@ -79,9 +75,7 @@ public sealed partial class DefenseState
         FactoryPerks.Changed += () => { InvalidateFactoryStats(); Changed?.Invoke(); };
         Expedition.Changed += () => Changed?.Invoke();
     }
-    private double Level(string id) => (id is "missile" or "laser") && WeaponUnlocked(id) ? Math.Max(1, Tech.N(id)) : Tech.N(id);
     private static DataMap Find(IEnumerable<DataMap> rows, string id) => rows.FirstOrDefault(row => row.S("id") == id)?.DeepClone() ?? new();
-    private static bool RequirementsMet(DataMap levels, DataMap requirements) => requirements.All(pair => levels.L(pair.Key) >= DataMap.Integer(pair.Value));
     private static DataMap ScaledCost(DataMap source, double multiplier)
     {
         var r = new DataMap();
@@ -100,13 +94,13 @@ public sealed partial class DefenseState
     }
     public DataMap ResourceFacilityBaseOutputs()
     {
-        double multiplier = CombatSettings.N("resource_output_multiplier", .1), efficiency = (1 + Level("mining") * DomainBalance.Legacy("mining_1")) * (1 + Level("industrial_synergy") * DomainBalance.Legacy("industrial_synergy_1")) * Math.Pow(DomainBalance.Value("legacy_industry_growth"), Level("industrial_mastery"));
+        double multiplier = CombatSettings.N("resource_output_multiplier", .1);
         var fx = TechEffects();
         return new()
         {
-            ["mine"] = DomainBalance.Value("mineral_output_base") * multiplier * efficiency * (1 + Level("mineral_processing") * DomainBalance.Legacy("mineral_processing_1")) * (1 + fx.N("mineral_output_bonus")),
-            ["solar"] = DomainBalance.Value("energy_output_base") * multiplier * efficiency * (1 + Level("energy_grid") * DomainBalance.Legacy("energy_grid_1")) * (1 + Level("laser_capacitors") * DomainBalance.Legacy("laser_capacitors_1") + Level("photonic_mastery") * DomainBalance.Legacy("photonic_mastery_1")) * (1 + fx.N("energy_output_bonus")),
-            ["lab"] = DomainBalance.Value("science_output_base") * multiplier * efficiency * (1 + Level("research_methods") * DomainBalance.Legacy("research_methods_1")) * (1 + fx.N("science_output_bonus")) * fx.N("science_output_multiplier", 1)
+            ["mine"] = DomainBalance.Value("mineral_output_base") * multiplier * (1 + fx.N("mineral_output_bonus")),
+            ["solar"] = DomainBalance.Value("energy_output_base") * multiplier * (1 + fx.N("energy_output_bonus")),
+            ["lab"] = DomainBalance.Value("science_output_base") * multiplier * (1 + fx.N("science_output_bonus")) * fx.N("science_output_multiplier", 1)
         };
     }
     public DataMap Rates()
@@ -190,9 +184,8 @@ public sealed partial class DefenseState
         Science = Math.Min(ResourceLimit, Science + income.N("science") * delta);
         Changed?.Invoke();
     }
-    private static double ShieldCapacity(DataMap levels) => DomainBalance.Value("shield_capacity_base") + levels.N("shield") * DomainBalance.Legacy("shield_1") + levels.N("defense_network") * DomainBalance.Legacy("defense_network_1");
-    public double ShieldMax() => ShieldCapacity(Tech) * (1 + TechEffects().N("earth_shield_bonus")) * TechEffects().N("earth_shield_multiplier", 1);
-    public double ShieldRegeneration() => (DomainBalance.Value("shield_regeneration_base") + Level("shield") * DomainBalance.Legacy("shield_2") + Level("shield_regen") * DomainBalance.Legacy("shield_regen_1") + Level("defense_network") * DomainBalance.Legacy("defense_network_2")) * (1 + TechEffects().N("shield_regeneration_bonus"));
+    public double ShieldMax() => DomainBalance.Value("shield_capacity_base") * (1 + TechEffects().N("earth_shield_bonus")) * TechEffects().N("earth_shield_multiplier", 1);
+    public double ShieldRegeneration() => DomainBalance.Value("shield_regeneration_base") * (1 + TechEffects().N("shield_regeneration_bonus"));
     public DataMap BuildingCost(string id)
     {
         if (id == "starship_silo")
@@ -201,7 +194,7 @@ public sealed partial class DefenseState
         if (def.Count == 0)
             return new();
         double count = Buildings.N(id);
-        var result = ScaledCost(def.Map("cost"), (1 + DomainBalance.Value("building_cost_per_existing") * count + DomainBalance.Value("building_cost_late_factor") * Math.Pow(Math.Max(0, count - DomainBalance.Value("building_cost_late_start")), DomainBalance.Value("building_cost_late_power"))) / (1 + Level("industrial_synergy") * DomainBalance.Legacy("industrial_synergy_2")));
+        var result = ScaledCost(def.Map("cost"), 1 + DomainBalance.Value("building_cost_per_existing") * count + DomainBalance.Value("building_cost_late_factor") * Math.Pow(Math.Max(0, count - DomainBalance.Value("building_cost_late_start")), DomainBalance.Value("building_cost_late_power")));
         if (ResourceFacilityKinds.Contains(id))
             result["resource_cores"] = 1L;
         return result;
@@ -288,7 +281,7 @@ public sealed partial class DefenseState
         EarthHp = Math.Max(0, EarthHp - amount);
         Changed?.Invoke();
     }
-    public DataMap RepairCost() => ScaledCost(new() { ["minerals"] = DomainBalance.Value("repair_minerals"), ["energy"] = DomainBalance.Value("repair_energy") }, 1 / (1 + Level("repair_protocol") * DomainBalance.Legacy("repair_protocol_1")));
+    public DataMap RepairCost() => ScaledCost(new() { ["minerals"] = DomainBalance.Value("repair_minerals"), ["energy"] = DomainBalance.Value("repair_energy") }, 1);
     public bool CanRepair() => EarthHp > 0 && (EarthHp < DomainBalance.Value("earth_max_health") || (HasDamagedLocalShields?.Invoke() ?? false)) && CanAfford(RepairCost());
     public bool Repair()
     {
@@ -319,8 +312,8 @@ public sealed partial class DefenseState
         Changed?.Invoke();
         return amount;
     }
-    public double KillRewardMultiplier() => 1 + Level("salvage") * DomainBalance.Legacy("salvage_1");
-    public double WaveRewardMultiplier() => 1 + Level("salvage") * DomainBalance.Legacy("salvage_2") + Level("industrial_mastery") * DomainBalance.Legacy("industrial_mastery_1");
+    public double KillRewardMultiplier() => 1;
+    public double WaveRewardMultiplier() => 1;
     public long AlienRewardForWave(long wave, int stage = 0) => (long)Math.Ceiling((DomainBalance.Value("alien_reward_base") + Math.Floor(Math.Max(0, wave) / DomainBalance.Value("alien_reward_wave_interval"))) * (1 + DomainBalance.Value("alien_reward_stage_increment") * Math.Clamp(stage, 0, 3)));
     public void RewardKill(string kind, long waveValue = -1, int stage = 0)
     {

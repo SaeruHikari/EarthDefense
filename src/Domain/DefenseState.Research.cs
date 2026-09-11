@@ -5,30 +5,16 @@ namespace Earthward.Domain;
 
 public sealed partial class DefenseState
 {
-    private static readonly string[] LegacyTechIds = { "damage", "rapid", "spread", "shield", "laser", "missile", "mining" };
     public bool HasResearch(string id) => DeepTechnology.TryParseSuccessor(id, out string branch, out int rank) ? _successorLevels.L(branch) >= rank : DeepResearch.L(id) > 0;
     public int ResearchLevel(string id) => HasResearch(id) ? 1 : 0;
-    public object? ResearchValue(string id, string key, object? fallback = null) => HasResearch(id) ? DeepTechnology.Definition(id).Map("values").Value(key, fallback) : fallback;
-    public IReadOnlyList<DataMap> ResearchBranches() => DeepTechnology.Branches;
-    private bool WeaponUnlocked(string kind) => kind == "interceptor" || Tech.N(kind) > 0 || HasResearch(kind == "missile" ? "M_N1" : "L_N1");
-    private int LegacyFrontierLevel()
-    {
-        for (int i = 3; i > 0; i--)
-            if (Tech.N("frontier_range_" + i) > 0)
-                return i;
-        return 0;
-    }
-    public int FrontierTechnologyLevel() => Math.Max(LegacyFrontierLevel(), HasResearch("C_G2") ? 3 : HasResearch("C_A3") ? 2 : HasResearch("C_A2") ? 1 : 0);
+    public int ResearchCapacityBonus => (int)Math.Clamp(TechEffects().L("capacity_add"), 0, 3);
+    private bool WeaponUnlocked(string kind) => kind == "interceptor" || HasResearch(kind == "missile" ? "M_N1" : "L_N1");
+    public int FrontierTechnologyLevel() => HasResearch("C_G2") ? 3 : HasResearch("C_A3") ? 2 : HasResearch("C_A2") ? 1 : 0;
     public DataMap TechEffects()
     {
         if (_techEffects != null)
             return _techEffects;
-        _techEffects = DeepTechnology.Effects(DeepResearch, _credited, _successorLevels);
-        double radius = Tech.N("mothership_assault") > 0 ? DomainBalance.Frontier(0).N("action_radius_base") + WorldScale.EarthRadiusDelta : 0;
-        for (int stage = 1; stage <= 3; stage++)
-            if (Tech.N("frontier_range_" + stage) > 0)
-                radius = DomainBalance.Frontier(stage).N("action_radius_base") + WorldScale.EarthRadiusDelta;
-        _techEffects["action_radius"] = Math.Max(_techEffects.N("action_radius"), radius);
+        _techEffects = DeepTechnology.Effects(DeepResearch, _successorLevels);
         return _techEffects;
     }
     public List<DataMap> GraphNodes(string focusId = "")
@@ -49,11 +35,11 @@ public sealed partial class DefenseState
         if (def.Count == 0)
             return new();
         bool owned = HasResearch(id);
-        var status = new DataMap { ["id"] = id, ["name"] = def.S("name"), ["branch"] = def.S("branch"), ["size"] = def.S("size"), ["alien"] = def.B("alien"), ["tier"] = def.I("tier"), ["level"] = owned ? 1L : 0L, ["max"] = 1L, ["cost"] = def.Map("cost").DeepClone(), ["lock_reason"] = "", ["can_purchase"] = false, ["preview"] = string.Join("\n", def.List("effects").Cast<string>()), ["requires"] = new DataMap(), ["requirement_details"] = new List<object?>(), ["credited"] = _credited.Contains(id) };
+        var status = new DataMap { ["id"] = id, ["name"] = def.S("name"), ["branch"] = def.S("branch"), ["size"] = def.S("size"), ["alien"] = def.B("alien"), ["tier"] = def.I("tier"), ["level"] = owned ? 1L : 0L, ["max"] = 1L, ["cost"] = def.Map("cost").DeepClone(), ["lock_reason"] = "", ["can_purchase"] = false, ["preview"] = string.Join("\n", def.List("effects").Cast<string>()), ["requires"] = new DataMap(), ["requirement_details"] = new List<object?>() };
         foreach (string parent in def.List("requires").Cast<string>())
         {
             status.Map("requires")[parent] = 1L;
-            status.List("requirement_details").Add(new DataMap { ["id"] = parent, ["name"] = DeepTechnology.Definition(parent).S("name", parent), ["required_level"] = 1L, ["current_level"] = ResearchLevel(parent), ["met"] = HasResearch(parent), ["legacy_requirements"] = new DataMap() });
+            status.List("requirement_details").Add(new DataMap { ["id"] = parent, ["name"] = DeepTechnology.Definition(parent).S("name", parent), ["required_level"] = 1L, ["current_level"] = ResearchLevel(parent), ["met"] = HasResearch(parent) });
         }
         if (owned)
         {
@@ -117,58 +103,8 @@ public sealed partial class DefenseState
                 ["due"] = DefenseTime + TechEffects().N("science_refund_delay")
             });
     }
-    public DataMap TechGate(string id, int targetLevel = -1)
-    {
-        var definition = Find(LegacyTechnologies, id);
-        if (definition.Count == 0)
-            return new();
-        long target = targetLevel < 0 ? Tech.L(id) + 1 : targetLevel;
-        var result = new DataMap { ["completed_wave"] = 0L, ["alien_cost"] = 0L };
-        foreach (var gate in definition.List("gates").OfType<DataMap>())
-        {
-            if (gate.L("from_level") <= target)
-                result["completed_wave"] = Math.Max(result.L("completed_wave"), gate.L("completed_wave"));
-            if (gate.L("from_level") == target)
-                result["alien_cost"] = result.L("alien_cost") + gate.L("alien_cost");
-        }
-        return result;
-    }
-    public DataMap TechCost(string id)
-    {
-        if (DeepTechnology.Has(id))
-            return DeepTechnology.Definition(id).Map("cost").DeepClone();
-        var def = Find(LegacyTechnologies, id);
-        if (def.Count == 0)
-            return new();
-        var result = ScaledCost(def.Map("cost"), Math.Pow(LegacyTechIds.Contains(id) ? DomainBalance.Value("legacy_basic_research_cost_growth") : DomainBalance.Value("legacy_advanced_research_cost_growth"), Tech.N(id)));
-        long ap = TechGate(id).L("alien_cost");
-        if (ap > 0)
-            result["alien_points"] = ap;
-        return result;
-    }
-    public string TechLockReason(string id)
-    {
-        if (DeepTechnology.Has(id))
-            return GetGroupStatus(id).S("lock_reason");
-        var def = Find(LegacyTechnologies, id);
-        if (def.Count == 0)
-            return "未知科技";
-        if (Tech.L(id) >= def.L("max"))
-            return "已达最高等级";
-        if (DefenseReachStage < def.I("requires_defense_stage"))
-            return $"清空上一批母舰，进入第 {def.I("requires_defense_stage")} 次外推后解锁";
-        var req = def.Map("requires").DeepClone();
-        foreach (var (k, v) in def.Map("purchase_requires"))
-            req[k] = Math.Max(req.L(k), DataMap.Integer(v));
-        foreach (var (k, v) in req)
-            if (Tech.L(k) < DataMap.Integer(v))
-                return $"需要 {Find(LegacyTechnologies, k).S("name", k)} Lv.{DataMap.Integer(v)}";
-        long wave = TechGate(id).L("completed_wave");
-        return CompletedWaves < wave ? $"需完成第 {wave:00} 波（当前 {CompletedWaves:00} 波）" : "";
-    }
     public bool CanResearch(string id) => DeepTechnology.Has(id) && GetGroupStatus(id).B("can_purchase");
     public bool Research(string id) => DeepTechnology.Has(id) && PurchaseGroup(id);
-    public string TechEffectPreview(string id) => DeepTechnology.Has(id) ? GroupEffectPreview(id) : Find(LegacyTechnologies, id).S("description");
     public List<DataMap> AvailableAirframes(string kind)
     {
         var list = new List<DataMap>();

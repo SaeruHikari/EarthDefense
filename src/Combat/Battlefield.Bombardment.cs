@@ -7,7 +7,7 @@ namespace Earthward.Combat;
 public sealed partial class Battlefield
 {
     private static bool UsesStationaryBombardment(DataMap enemy) => C.S(enemy, "kind") is "scout" or "cruiser" or "small_boss" or "boss" or "carrier" && !C.B(enemy, "post_carrier");
-    private static double MinimumBombardmentRadius(DataMap enemy) => CombatScale.EarthCollisionRadius + Math.Max(0, C.N(enemy, "hit_radius")) + .025;
+    private static double MinimumBombardmentRadius(DataMap enemy) => Math.Max(CombatScale.ShieldShellRadius, CombatScale.EarthCollisionRadius + Math.Max(0, C.N(enemy, "hit_radius")) + .025);
     private static double StationaryBombardmentRadius(DataMap enemy) => Math.Max(CombatScale.CloseAssault, MinimumBombardmentRadius(enemy));
     private static bool InsideStationaryBombardmentZone(DataMap enemy)
     {

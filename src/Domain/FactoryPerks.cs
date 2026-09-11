@@ -511,30 +511,6 @@ public sealed class FactoryPerks
         if (source is not DataMap original)
             return null;
         var data = original.DeepClone();
-        if (DataMap.ValidNumber(data.Value("version"), 1, 1, true))
-        {
-            if (data.Count != 8 || data.Value("levels") is not DataMap old || old.Count != 6 || PerkCatalog.LegacyIds.Any(id => !old.ContainsKey(id)))
-                return null;
-            foreach (var row in PerkCatalog.Entries)
-                if (!old.ContainsKey(row.S("id")))
-                    old[row.S("id")] = 0L;
-            data["aircraft_templates"] = BlankTemplates();
-            data["aircraft_sites"] = new DataMap();
-            data["berths"] = new DataMap();
-            data["advanced_unlocked"] = false;
-            data["known_intel"] = new List<object?>();
-            data["version"] = 3L;
-        }
-        if (DataMap.ValidNumber(data.Value("version"), 2, 2, true))
-        {
-            if (data.Count != 12 || data.Value("levels") is not DataMap old || old.Count != 27 || PerkCatalog.Entries.Take(27).Any(row => !old.ContainsKey(row.S("id"))))
-                return null;
-            foreach (var row in PerkCatalog.Entries)
-                if (!old.ContainsKey(row.S("id")))
-                    old[row.S("id")] = 0L;
-            data["known_intel"] = new List<object?>();
-            data["version"] = 3L;
-        }
         string[] keys = { "version", "energy_cores", "settings", "levels", "templates", "active_run", "sites", "claims", "aircraft_templates", "aircraft_sites", "berths", "advanced_unlocked", "known_intel" };
         if (data.Count != 13 || keys.Any(k => !data.ContainsKey(k)) || !DataMap.ValidNumber(data.Value("version"), 3, 3, true) || !DataMap.ValidNumber(data.Value("energy_cores"), 0, MaxCurrency, true) || data.Value("advanced_unlocked") is not bool)
             return null;
