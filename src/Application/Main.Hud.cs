@@ -391,7 +391,7 @@ public partial class Main
         DrawShieldBuildingCard(new Rect2(1134, 599, 276, 63));
         Box(new(1134, 669, 276, 54), new("122128"), new("45665c"), 3);
         Text("工厂 / 战机特性", new(1147, 691), 14, UiTheme.Mint);
-        Text("两类双槽 · 能源核心升级 · 跨局继承", new(1147, 712), 10, UiTheme.Muted);
+        Text("两类双槽 · 芯片购买与升级 · 跨局继承", new(1147, 712), 10, UiTheme.Muted);
         RegisterButton(new(1134, 669, 276, 54), "tab:perks");
         if (Game.DefenseReachStage > 0)
         {
@@ -513,7 +513,7 @@ public partial class Main
         bool defeat = Modal == "defeat";
         Box(new(436, 249, 568, 381), new("18252e"), defeat ? UiTheme.Coral : UiTheme.Mint, 16);
         Center(defeat ? "这一次，星光暂时熄灭。" : "近地威胁已清空，守望仍将继续。", new(456, 283, 528, 54), 26, UiTheme.Ink);
-        Center(defeat ? "永久特性与能源核心已保留，强化后再次部署。" : "休整之后，母舰阵地将逐层拉远。", new(456, 343, 528, 36), 14, UiTheme.Muted);
+        Center(defeat ? "永久特性与外星芯片已保留，强化后再次部署。" : "休整之后，母舰阵地将逐层拉远。", new(456, 343, 528, 36), 14, UiTheme.Muted);
         Center($"坚持 {Game.Wave:00} 波     拦截 {Game.Kills} 个目标     积分 {UiTheme.Number(Game.Score)}", new(456, 400, 528, 36), 17, UiTheme.Mint);
         if (defeat)
             DrawDefeatAchievement();

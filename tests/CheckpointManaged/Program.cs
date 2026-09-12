@@ -80,8 +80,8 @@ queue.Flush();queue.EnqueueOwned("new-run",1,queuePath,new(){["run_id"]="new-run
 Check(DataMap.Parse(File.ReadAllText(queuePath)).S("run_id")=="new-run"&&queue.TakeResults().All(r=>r.RunId=="new-run"),"flushed run switch cannot be overwritten by old jobs");
 // Retry retains the separate permanent profile and its idempotent reward claims.
 string profile=Path.Combine(folder,"perks.json");var meta=new FactoryPerks();Check(meta.LoadProfile(profile)&&meta.ResetRunSites(game.RunId),"isolated permanent profile");
-var reward=meta.ClaimBossReward(game.RunId,"earth:wave:1:medium:0",new(){["wave"]=1L,["kinds_unlocked"]=new List<object?>{"interceptor"}});string metaHash=Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(profile)));
-Check(reward.B("claimed")&&!meta.ClaimBossReward(game.RunId,"earth:wave:1:medium:0").B("claimed")&&metaHash==Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(profile))),"same wave reward cannot replay persistent claim");
+var reward=meta.ClaimAlienChip(game.RunId,"earth:wave:1:enemy:3");string metaHash=Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(profile)));
+Check(reward.B("claimed")&&!meta.ClaimAlienChip(game.RunId,"earth:wave:1:enemy:3").B("claimed")&&metaHash==Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(profile))),"same aircraft death cannot replay permanent chip claim");
 var report=new DataMap{["passes"]=passed,["failures"]=failed,["drones"]=5000,["projectiles"]=3000,["decoded_visits"]=visits,["checkpoint_bytes"]=bytes.Length,["timings_ms"]=timings,["scope"]="one functional save/load; no simulation ticks or performance stress loop"};File.WriteAllText("artifacts/large-checkpoint-report.json",report.ToJson(true));Console.WriteLine(report.ToJson());System.Environment.ExitCode=failed==0?0:1;
 
 sealed class Surface:ICombatSurface

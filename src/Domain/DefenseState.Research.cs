@@ -195,27 +195,4 @@ public sealed partial class DefenseState
     }
     public int FactoryPlannedAircraftCount(string kind, long site = -1) => FactoryAirframePlan(kind, site).Count(row => row.B("enabled"));
     public int FactoryProductionLanes(string kind, long site = -1) => TechEffects().I("production_lanes", 1);
-    public DataMap PerkRewardContext()
-    {
-        var kinds = PerkCatalog.Kinds.Where(WeaponUnlocked).ToArray();
-        return new()
-        {
-            ["wave"] = Wave,
-            ["kinds_unlocked"] = kinds.Cast<object?>().ToList(),
-            ["defense_stage"] = DefenseReachStage,
-            ["airframes_unlocked"] = kinds.SelectMany(AvailableAirframes).Where(row => row.B("unlocked")).Select(row => (object?)row.S("id")).ToList()
-        };
-    }
-    public DataMap ClaimFactoryBossReward(string eventId, long waveValue = -1, int stage = -1)
-    {
-        var context = PerkRewardContext();
-        if (waveValue >= 0)
-            context["wave"] = waveValue;
-        if (stage >= 0)
-            context["defense_stage"] = stage;
-        var result = FactoryPerks.ClaimBossReward(RunId, eventId, context);
-        if (result.B("claimed"))
-            FactoryPerkRewarded?.Invoke(result);
-        return result;
-    }
 }

@@ -25,8 +25,8 @@ internal static class CsvCatalogChecks
         var active=new DefenseState();active.UnlockAllTechnologyCheat();var twice=new DefenseState();
         Check(active.DroneStats().ToJson()==stats,"CSV-only runtime exact compiled stats hash input");Check(reads.Values.All(n=>n==1),"one-time load per startup");
         long revision=CatalogData.Revision;var normal=PerkCatalog.Effects("f_kinetic_quality",1,PerkCatalog.DefaultSettings).N("damage_multiplier");
-        CatalogData.Configure(file=>{var text=File.ReadAllText(Path.Combine(root,file));return file=="perk_effect_rules.csv"?text.Replace("f_kinetic_quality,damage_multiplier,linear,1,0.16,","f_kinetic_quality,damage_multiplier,linear,1,0.32,"):text;});
-        Check(CatalogData.Revision>revision&&PerkCatalog.Effects("f_kinetic_quality",1,PerkCatalog.DefaultSettings).N("damage_multiplier")==1.32&&normal==1.16,"editing actual perk CSV invalidates cache and changes formula");
+        CatalogData.Configure(file=>{var text=File.ReadAllText(Path.Combine(root,file));return file=="perk_effect_rules.csv"?text.Replace("f_kinetic_quality,damage_multiplier,linear,1,0.08,","f_kinetic_quality,damage_multiplier,linear,1,0.16,"):text;});
+        Check(CatalogData.Revision>revision&&PerkCatalog.Effects("f_kinetic_quality",1,PerkCatalog.DefaultSettings).N("damage_multiplier")==1.16&&normal==1.08,"editing actual perk CSV invalidates cache and changes lowered formula");
         foreach(string mutation in new[]{"missing_table","unknown_attribute","invalid_reference","cycle","missing_balance","invalid_perk","negative_airframe","invalid_reward_reference","invalid_successor_reference"})
         {
             CatalogData.Configure(file=>

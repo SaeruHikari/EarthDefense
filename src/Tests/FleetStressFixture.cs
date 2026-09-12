@@ -88,7 +88,7 @@ public sealed class FleetStressFixture
         _game.SetCombatSetting("factory_starting_capacity_factor", .5);
         var owned = new FactoryPerks().Snapshot();
         foreach (string id in owned.Map("levels").Keys.ToArray()) owned.Map("levels")[id] = 1L;
-        owned["advanced_unlocked"] = true; owned["energy_cores"] = 1000000L;
+        owned["advanced_unlocked"] = true; owned["alien_chips"] = 1000000L;
         if (!_game.FactoryPerks.ImportSnapshot(owned) || !_game.FactoryPerks.ResetRunSites(_game.RunId)) throw new InvalidOperationException("Cannot configure fixed benchmark perks");
         _surface.Records.Clear(); _targetBySite.Clear(); _capacityBySite.Clear();
         int siteCount = 0;

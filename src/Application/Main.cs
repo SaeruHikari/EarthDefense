@@ -11,6 +11,7 @@ namespace Earthward.Application;
 
 public partial class Main : Node2D
 {
+	public const string PerkProfilePath = "user://earthward_alien_chip_perks.json";
 	// Persistence paths and logical world size. Sidebar layout never resizes the world.
 	public const string SavePath = "user://earthward_checkpoint.json";
 	public const string SettingsPath = "user://earthward_combat_settings.json";
@@ -126,10 +127,10 @@ public partial class Main : Node2D
 		WorldSize = GetViewportRect().Size;
 		Game = new DefenseState();
 		CombatCatalog.Validate();
-		if (!Game.FactoryPerks.LoadProfile(ProjectSettings.GlobalizePath("user://earthward_factory_perks.json")))
+		if (!Game.FactoryPerks.LoadProfile(ProjectSettings.GlobalizePath(PerkProfilePath)))
 			ShowNotice("永久特性档案读取失败，已保护原文件；请检查存档目录");
 		LoadAchievements();
-		Game.FactoryPerkRewarded += OnFactoryPerkRewarded;
+		Game.AlienChipDropped += OnAlienChipDropped;
 		Game.Changed += InvalidateResearchGraph;
 		foreach (string id in new[] { "mine", "solar", "interceptor", "laser", "missile", "shield", "satellite_launcher" })
 		{
@@ -214,13 +215,15 @@ public partial class Main : Node2D
 
 	public override void _ExitTree()
 	{
+		if (Game != null && !Game.FlushAlienChipDrops())
+			GD.PushError("退出时外星芯片保存失败：" + Game.FactoryPerks.LastError);
 		FlushCheckpointWrites(false);
 		if (Game != null && IsInstanceValid(GetViewport()))
 			GetViewport().SizeChanged -= ResizeWorldView;
 		if (Game != null)
 		{
 			Game.Changed -= InvalidateResearchGraph;
-			Game.FactoryPerkRewarded -= OnFactoryPerkRewarded;
+			Game.AlienChipDropped -= OnAlienChipDropped;
 		}
 		if (Planet != null && IsInstanceValid(Planet))
 			Planet.ResearchSatelliteLaunchCompleted -= OnResearchSatelliteLaunchCompleted;
@@ -325,6 +328,7 @@ public partial class Main : Node2D
 				QueueCheckpointSave();
 		}
 		NoticeTime = Math.Max(0, NoticeTime - delta);
+		UpdateAlienChipNotice();
 		_uiRefresh += delta;
 		if (_uiRefresh >= 1d / 60 || Mouse != previousMouse)
 		{
@@ -450,6 +454,7 @@ public partial class Main : Node2D
 		Defeated = true;
 		Modal = "defeat";
 		NextWave = -1;
+		FlushAlienChipsForPersistence();
 		RecordDefeatAchievement();
 	}
 
@@ -541,15 +546,6 @@ public partial class Main : Node2D
 		FocusId = "system";
 		SolarNavOpen = false;
 		DockOpen = false;
-	}
-
-	private void OnFactoryPerkRewarded(DataMap payload)
-	{
-		string unlocked = payload.S("unlocked");
-		string name = Game.FactoryPerks.Definitions().FirstOrDefault(d => d.S("id") == unlocked)?.S("name", unlocked) ?? unlocked;
-		ShowNotice(unlocked != "" ? $"获得新特性 · {name} · 能源核心 +{payload.L("energy_cores", 2)}" : $"回收能源核心 +{payload.L("energy_cores", 2)} · 永久强化已入库");
-		FactoryPerkSidebar.Refresh();
-		SaveIfSafe();
 	}
 
 	private void UpdateFactoryPerkSites()

@@ -13,6 +13,8 @@ public partial class Main
     private readonly CheckpointWriteQueue _checkpointWriter = new();
     public bool QueueCheckpointSave()
     {
+        if (!FlushAlienChipsForPersistence())
+            return false;
         _checkpointPending = false;
         try
         {
@@ -52,6 +54,8 @@ public partial class Main
 
     public bool SaveCheckpoint()
     {
+        if (!FlushAlienChipsForPersistence())
+            return false;
         FlushCheckpointWrites();
         _checkpointPending = false;
         try
@@ -162,6 +166,8 @@ public partial class Main
 
     private bool RestoreCheckpointData(DataMap data, bool retry)
     {
+        if (!FlushAlienChipsForPersistence())
+            return false;
         FlushCheckpointWrites();
         ClearFactoryCoverage();
         _researchWindowFocus = "";
@@ -222,6 +228,8 @@ public partial class Main
 
     public bool Restart()
     {
+        if (!FlushAlienChipsForPersistence())
+            return false;
         FlushCheckpointWrites();
         var preferences = Game.CombatSettings.DeepClone();
         if (!Game.Reset())
@@ -259,7 +267,7 @@ public partial class Main
         NextWave = -1;
         Speed = 1;
         RefreshCampaignUi();
-        ShowNotice("新的守望开始 · 已继承永久特性、等级和能源核心");
+        ShowNotice("新的守望开始 · 已继承永久特性、等级和外星芯片");
         InitializeSatelliteGuide();
         UpdateFactoryPerkSites();
         return true;

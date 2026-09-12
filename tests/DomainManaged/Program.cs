@@ -59,7 +59,34 @@ foreach(var (id, attribute, value) in new[]
  ("M_S21","missile_blast_radius_bonus",.075), ("M_S44","missile_blast_radius_bonus",.075),
  ("M_S23","missile_speed_bonus",.1), ("M_S46","missile_speed_bonus",.1)
 }) Compare(DeepTechnology.Definition(id).Map("values").Value(attribute),value,"stronger surviving research unchanged: "+id);
-foreach(var row in golden.List("perk_effects").OfType<DataMap>())Compare(PerkCatalog.Effects(row.S("id"),row.I("level"),PerkCatalog.DefaultSettings),row.Map("effects"),row.S("id")+" level"+row.I("level"));
+// Keep the historical reference immutable. The chip economy halves numerical benefits,
+// while control durations, required hits, penalties, and integer baseline targets stay intact.
+var retainedPerkControls = new HashSet<string>
+{
+ "launch_damage_seconds", "kill_spawn_reduction_cooldown", "erosion_max_stacks", "erosion_duration",
+ "cluster_fragments", "slow_duration", "slow_boss_multiplier", "refraction_targets", "k2_dense_hits_required",
+ "k2_dense_duration", "k2_reload_cooldown", "k3_peak_damage_multiplier", "m2_delayed_seconds",
+ "m2_shock_required", "m2_shock_cooldown", "m3_escort_radius", "l3_damage_multiplier"
+};
+foreach(var row in golden.List("perk_effects").OfType<DataMap>())
+{
+ int level=row.I("level");var expected=row.Map("effects").DeepClone();
+ foreach(string field in expected.Keys.ToArray())
+ {
+  double previous=expected.N(field);
+  expected[field]=field switch
+  {
+   "capacity_add" => 1+(level-1)/5,
+   "pierce_extra_targets" => Math.Min(3,1+(level-1)/5),
+   "ricochet_targets" => level>=8?2:1,
+   "spawn_multiplier" or "m3_escort_lock_multiplier" => 1/(1+(1/previous-1)*.5),
+   _ when retainedPerkControls.Contains(field) => previous,
+   _ when field.EndsWith("_multiplier") => 1+(previous-1)*.5,
+   _ => previous*.5
+  };
+ }
+ Compare(PerkCatalog.Effects(row.S("id"),level,PerkCatalog.DefaultSettings),expected,"rebalanced "+row.S("id")+" level"+level);
+}
 Compare(PerkCatalog.NeutralModifiers(),golden.Map("perk_neutral"),"neutral");
 // Real managed purchase, persistent transactions, inheritance and failure tests.
 var funded=new DefenseState{Minerals=1e12,Energy=1e12,Science=1e12,AlienPoints=100000,ResourceCores=100,Wave=120,CompletedWaves=120};funded.SetDefenseReachStage(3);funded.RewardKill("boss",120,3);
@@ -74,11 +101,21 @@ var small=new DefenseState();double opening=small.Science;Check(small.PurchaseGr
 var assault=new DefenseState{Science=100000,AlienPoints=100,Wave=24,CompletedWaves=23};assault.RewardKill("boss",3);foreach(string id in new[]{"C_S01","C_S21","C_S02","C_S22","C_S06","C_S26","C_N1","C_A1"})Check(assault.PurchaseGroup(id),"assault prerequisite "+id);Check(!assault.PurchaseGroup("C_G1")&&assault.GetGroupStatus("C_G1").S("lock_reason").Contains("24"),"assault explicit24gate");assault.RewardWave(24);Check(assault.PurchaseGroup("C_G1")&&assault.DroneStats().B("mothership_assault_unlocked"),"wave25 actual assault authorization");
 funded.SetCombatSetting("resource_core_upgrade_percent",20);Check(funded.EffectiveResourceCorePercent()==22,"core configurablebase20 plus2points");double mineBase=funded.ResourceFacilityBaseOutputs().N("mine");Check(funded.Build("mine",33),"buildboostedresource");Compare(funded.ResourceFacilityOutput("mine",33),mineBase*2,"boostdoubleactualsiteoutput");Check(funded.UpgradeResourceFacility(33,"mine"),"coreupgradeboostedsite");Compare(funded.ResourceFacilityOutput("mine",33),mineBase*2*1.22,"coreplusboostcomposeonce");funded.Tick(10);var timerCopy=new DefenseState();Check(timerCopy.Restore(DataMap.Parse(funded.Serialize().ToJson())),"boost10seconds snapshot");timerCopy.Tick(10);Compare(timerCopy.ResourceFacilityOutput("mine",33),mineBase*1.22,"boostremaining10 expires");
 var carrier=new DefenseState{Wave=40};var unit=new DataMap{["kind"]="carrier",["uid"]=100L,["wave"]=30L,["defense_stage"]=1L};var wallet=carrier.Serialize();Check(carrier.RewardEnemy(unit),"carrierfirstreward");Check(carrier.Minerals==wallet.N("minerals")+22&&carrier.Energy==wallet.N("energy")+9&&carrier.Science==wallet.N("science")+6&&carrier.AlienPoints==0,"carrierold22/9/6/AP0");Check(!carrier.RewardEnemy(unit),"carrierduplicateidempotent");var carrier2=new DefenseState();Check(carrier2.Restore(DataMap.Parse(carrier.Serialize().ToJson()))&&!carrier2.RewardEnemy(unit),"carrierledgerpersists");carrier.RewardEnemy(new(){["kind"]="boss",["uid"]=101L,["wave"]=3L,["spawn_wave"]=3L});Check(carrier.AlienPoints==3,"overlappingbossusesgeneratedwave");
-string folder=Path.GetFullPath(Path.Combine(".runtime-tests","domain-permanent-"+Guid.NewGuid().ToString("N")));Directory.CreateDirectory(folder);string profile=Path.Combine(folder,"perks.json");var perks=new FactoryPerks();Check(perks.ProfilePath.Length==0&&!File.Exists(profile),"constructor noIO");Check(perks.LoadProfile(profile),"bindexplicitisolatedprofile");var context=new DataMap{["wave"]=3L,["kinds_unlocked"]=new List<object?>{"interceptor"},["defense_stage"]=0L};var drop=perks.ClaimBossReward("original","wave3",context);Check(drop.B("claimed")&&drop.S("unlocked")=="a_kinetic_core"&&perks.EnergyCores==2,"firstdropdirectaircraftdamage");Check(perks.Upgrade("a_kinetic_core")&&perks.GetLevel("a_kinetic_core")==2&&perks.EnergyCores==0,"firstboss fundsactualpermanentupgrade");Check(perks.Equip("interceptor",-1,0,"a_kinetic_core","aircraft"),"equiprealaircrafttemplate");var fromDisk=new FactoryPerks();Check(fromDisk.LoadProfile(profile)&&fromDisk.GetLevel("a_kinetic_core")==2,"permanentloadinvestment");Check(!fromDisk.ClaimBossReward("original","wave3",context).B("claimed"),"reloadsamehistoricalrewardnoamount");Check(fromDisk.ResetRunSites("fresh")&&fromDisk.GetLevel("a_kinetic_core")==2&&fromDisk.SlotsFor("interceptor",-1,"aircraft")[0]=="a_kinetic_core","newrunkeepslevelsandtemplates");
-for(int i=0;i<30;i++)fromDisk.ClaimBossReward("fresh","early"+i,context);Check(!fromDisk.IsUnlocked("a_kinetic_pierce")&&!fromDisk.IsUnlocked("a_laser_crystal"),"earlydroppoolgatesadvancedandunavailabletypes");
-var stale=new FactoryPerks();Check(stale.LoadProfile(profile),"secondwriteropenssameversion");Check(fromDisk.ClaimBossReward("fresh","newwrite",context).B("claimed"),"firstwritercommits");var staleBefore=stale.Snapshot();Check(!stale.ClaimBossReward("fresh","stalewrite",context).B("claimed")&&DataMap.Equivalent(stale.Snapshot(),staleBefore),"stalediskwriteratomicrejected");
+string folder=Path.GetFullPath(Path.Combine(".runtime-tests","domain-permanent-"+Guid.NewGuid().ToString("N")));Directory.CreateDirectory(folder);string profile=Path.Combine(folder,"perks.json");
+var perks=new FactoryPerks();Check(perks.ProfilePath.Length==0&&!File.Exists(profile),"constructor noIO");Check(perks.LoadProfile(profile),"bind explicit isolated profile");
+var drop=perks.ClaimAlienChip("original","enemy:1");Check(drop.B("claimed")&&drop.L("alien_chips")==1&&perks.AlienChips==1&&!perks.IsUnlocked("a_kinetic_core"),"aircraft chip drop adds one currency without randomly unlocking perks");
+Check(perks.CreditAlienChips(4)&&perks.Purchase("a_kinetic_core")&&perks.GetLevel("a_kinetic_core")==1&&perks.AlienChips==2,"three chips purchase chosen level-one aircraft perk");
+Check(perks.Upgrade("a_kinetic_core")&&perks.GetLevel("a_kinetic_core")==2&&perks.AlienChips==0,"two additional chips fund first permanent upgrade");
+Check(perks.Equip("interceptor",-1,0,"a_kinetic_core","aircraft"),"equip real aircraft template");
+var fromDisk=new FactoryPerks();Check(fromDisk.LoadProfile(profile)&&fromDisk.GetLevel("a_kinetic_core")==2,"permanent load retains chip investment");
+Check(!fromDisk.ClaimAlienChip("original","enemy:1").B("claimed"),"reload same historical enemy cannot duplicate chip");
+Check(fromDisk.ResetRunSites("fresh")&&fromDisk.GetLevel("a_kinetic_core")==2&&fromDisk.SlotsFor("interceptor",-1,"aircraft")[0]=="a_kinetic_core","new run keeps levels and templates");
+for(int i=0;i<30;i++)fromDisk.ClaimAlienChip("fresh","early"+i);
+Check(!fromDisk.IsUnlocked("a_kinetic_pierce")&&!fromDisk.IsUnlocked("a_laser_crystal"),"chip drops never auto-unlock unpurchased perks");
+var stale=new FactoryPerks();Check(stale.LoadProfile(profile),"second writer opens same version");Check(fromDisk.ClaimAlienChip("fresh","newwrite").B("claimed"),"first writer commits chip");
+var staleBefore=stale.Snapshot();Check(!stale.ClaimAlienChip("fresh","stalewrite").B("claimed")&&DataMap.Equivalent(stale.Snapshot(),staleBefore),"stale disk writer atomically rejects chip");
 var blocked=new FactoryPerks();Check(blocked.LoadProfile(profile),"readfailurefixturebind");File.WriteAllText(profile,"corrupt");File.WriteAllText(profile+".bak","also corrupt");var blockedBefore=blocked.Snapshot();Check(!blocked.LoadProfile(profile)&&!blocked.Upgrade("a_kinetic_core")&&!blocked.ResetRunSites("badreset")&&DataMap.Equivalent(blocked.Snapshot(),blockedBefore),"bothcorruptprofilesreadonlyretainmemory");Check(File.ReadAllText(profile)=="corrupt"&&File.ReadAllText(profile+".bak")=="also corrupt","corruptsourcepreservednotreplacedbyblank");
-var allPerks=new FactoryPerks();var allMeta=allPerks.Snapshot();allMeta["advanced_unlocked"]=true;allMeta["energy_cores"]=100000L;foreach(string id in allMeta.Map("levels").Keys.ToList())allMeta.Map("levels")[id]=1L;Check(allPerks.ImportSnapshot(allMeta),"all39fixture");Check(allPerks.ResetRunSites("berth"),"bindstableslots");foreach(var frame in AirframeCatalog.Definitions){string kind=frame.S("kind"),id=frame.S("id");Check(allPerks.Definitions("aircraft",kind,id).Count==4,"4applicableperks "+id);foreach(var row in allPerks.Definitions("aircraft",kind,id)){Check(allPerks.Equip(kind,-1,0,row.S("id"),"aircraft",-1,id),"equiptype "+row.S("id"));Check(!DataMap.Equivalent(allPerks.Modifiers(kind,-1,"aircraft",-1,id),PerkCatalog.NeutralModifiers()),"actualexclusiveeffect "+row.S("id"));}allPerks.Equip(kind,-1,0,"","aircraft",-1,id);}
+var allPerks=new FactoryPerks();var allMeta=allPerks.Snapshot();allMeta["advanced_unlocked"]=true;allMeta["alien_chips"]=100000L;foreach(string id in allMeta.Map("levels").Keys.ToList())allMeta.Map("levels")[id]=1L;Check(allPerks.ImportSnapshot(allMeta),"all39fixture");Check(allPerks.ResetRunSites("berth"),"bindstableslots");foreach(var frame in AirframeCatalog.Definitions){string kind=frame.S("kind"),id=frame.S("id");Check(allPerks.Definitions("aircraft",kind,id).Count==4,"4applicableperks "+id);foreach(var row in allPerks.Definitions("aircraft",kind,id)){Check(allPerks.Equip(kind,-1,0,row.S("id"),"aircraft",-1,id),"equiptype "+row.S("id"));Check(!DataMap.Equivalent(allPerks.Modifiers(kind,-1,"aircraft",-1,id),PerkCatalog.NeutralModifiers()),"actualexclusiveeffect "+row.S("id"));}allPerks.Equip(kind,-1,0,"","aircraft",-1,id);}
 Check(allPerks.Equip("interceptor",-1,0,"a_kinetic_core","aircraft")&&allPerks.Equip("interceptor",18,0,"a_kinetic_pierce","aircraft")&&allPerks.Equip("interceptor",18,0,"a_kinetic_ricochet","aircraft",2),"threelevelinheritance");Check(allPerks.SlotsFor("interceptor",19,"aircraft",2)[0]=="a_kinetic_core"&&allPerks.SlotsFor("interceptor",18,"aircraft",1)[0]=="a_kinetic_pierce"&&allPerks.SlotsFor("interceptor",18,"aircraft",2)[0]=="a_kinetic_ricochet","berthstableandfactoryisolated");
 foreach(string mutation in new[]{"unknown_node","fractional_schema","invalid_frame","bad_refund","invalid_flag","unknown_setting","wrong_kind"}){var before=reopen.Serialize();var bad=before.DeepClone();switch(mutation){case "unknown_node":bad.Map("research_state").Map("nodes")["fake"]=1L;break;case "fractional_schema":bad.Map("research_state")["version"]=1.5;break;case "invalid_frame":bad.Map("airframe_selection").Map("templates")["interceptor"]="M3";break;case "bad_refund":bad.Map("research_runtime").List("science_refunds").Add(new DataMap{["amount"]=-1d,["due"]=10d});break;case "invalid_flag":bad.Map("research_flags")["laser_intel"]=1L;break;case "unknown_setting":bad.Map("combat_settings")["fake"]=1L;break;case "wrong_kind":bad.Map("resource_core_upgrades")["5"]=new DataMap{["kind"]="interceptor",["level"]=1L};break;}Check(!reopen.Restore(bad)&&DataMap.Equivalent(reopen.Serialize(),before),"invalidstateatomic "+mutation);}
 var vectorMap=new DataMap{["v"]=new Godot.Vector3(1,2,3)};var vectorRound=DataMap.Parse(vectorMap.ToJson());Check(vectorRound.List("v").Count==3&&vectorRound.Vector3("v")==new Godot.Vector3(1,2,3),"GodotvaluearrayJSONboundary");
@@ -99,5 +136,6 @@ ResearchContinuationChecks.Run(Check, golden);
 LocalShieldChecks.Run(Check, golden);
 CsvCatalogChecks.Run(Check);
 AchievementChecks.Run(Check);
+AlienChipChecks.Run(Check);
 Console.WriteLine($"DOMAIN_RESULT {checks-failures} PASS / {failures} FAIL");
 return failures==0?0:1;

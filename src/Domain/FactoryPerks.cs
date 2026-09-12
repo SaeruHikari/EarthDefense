@@ -10,17 +10,19 @@ namespace Earthward.Domain;
 /// <summary>Permanent profile, explicitly bound to a file; never restored from run checkpoints.</summary>
 public sealed class FactoryPerks
 {
-    public const int ProfileVersion = 3, SlotCount = 2, MaxSites = 65536, MaxBerths = 65536, MaxBerthIndex = 32767, MaxClaims = 200000, MaxFileBytes = 32 * 1024 * 1024;
+    public const int ProfileVersion = 4, SlotCount = 2, MaxSites = 65536, MaxBerths = 65536, MaxBerthIndex = 32767, MaxClaims = 200000, MaxFileBytes = 32 * 1024 * 1024;
     public const long MaxCurrency = 9007199254740991;
-    public const string CurrencyName = "能源核心";
+    public const string CurrencyName = "外星芯片";
     public event Action? Changed;
+    public event Action? CurrencyChanged;
     private DataMap _data;
+    private HashSet<string> _claims = new(StringComparer.Ordinal);
     private string _path = "", _digest = "";
     private bool _loadBlocked;
     public string LastError { get; private set; } = "";
     public string LoadWarning { get; private set; } = "";
     public string ProfilePath => _path;
-    public long EnergyCores => _data.L("energy_cores");
+    public long AlienChips => _data.L("alien_chips");
     public string ActiveRunId => _data.S("active_run");
     public bool AdvancedUnlocked => _data.B("advanced_unlocked");
     public DataMap Settings => _data.Map("settings").DeepClone();
@@ -32,7 +34,7 @@ public sealed class FactoryPerks
         _data = new()
         {
             ["version"] = ProfileVersion,
-            ["energy_cores"] = 0L,
+            ["alien_chips"] = 0L,
             ["settings"] = PerkCatalog.DefaultSettings,
             ["levels"] = levels,
             ["templates"] = BlankTemplates(),
@@ -59,7 +61,7 @@ public sealed class FactoryPerks
     private double UpgradeBase(string id) => PerkCatalog.Definition(id).I("stage") > 0 ? PerkEffectRules.Tier(1).N("upgrade_base_cost") : _data.Map("settings").N("upgrade_base_cost");
     private double UpgradeGrowth(string id) => PerkCatalog.Definition(id).I("stage") > 0 ? PerkEffectRules.Tier(1).N("upgrade_growth") : _data.Map("settings").N("upgrade_growth");
     public string EffectText(string id, int level = -1) => PerkCatalog.EffectText(id, level < 0 ? Math.Max(1, GetLevel(id)) : level, _data.Map("settings"));
-    public string UnlockReason(string id) => !_data.Map("levels").ContainsKey(id) ? "未知 Perk" : IsUnlocked(id) ? "" : PerkCatalog.Definition(id).I("stage") > 0 && !AdvancedUnlocked ? "首次清空8艘近地母舰后，进入中型Boss掉落池" : "击败中型Boss解锁；仅掉落当前已开放机型的特性";
+    public string UnlockReason(string id) => !_data.Map("levels").ContainsKey(id) ? "未知特性" : IsUnlocked(id) ? "" : PerkCatalog.Definition(id).I("stage") > 0 && !AdvancedUnlocked ? "首次清空 8 艘近地母舰后开放购买" : $"使用 {PurchaseCost(id)} 枚外星芯片购买";
     public List<DataMap> Definitions(string layer = "", string kind = "", string airframe = "")
     {
         var result = new List<DataMap>();
@@ -79,6 +81,8 @@ public sealed class FactoryPerks
             item["upgrade_base_cost"] = UpgradeBase(id);
             item["upgrade_growth"] = UpgradeGrowth(id);
             item["upgrade_cost"] = UpgradeCost(id);
+            item["purchase_cost"] = PurchaseCost(id);
+            item["purchase_lock_reason"] = PurchaseLockReason(id);
             item["effect_text"] = EffectText(id);
             item["next_effect_text"] = GetLevel(id) < MaxLevel(id) ? EffectText(id, GetLevel(id) + 1) : "已满级";
             item["unlock_reason"] = UnlockReason(id);
@@ -196,19 +200,35 @@ public sealed class FactoryPerks
         copy["berths"] = new DataMap();
         return Commit(copy);
     }
+    public long PurchaseCost(string id)
+    {
+        var definition = PerkCatalog.Definition(id);
+        return definition.Count == 0 || IsUnlocked(id) ? 0 : PerkEffectRules.Tier(definition.I("stage") > 0 ? 1 : 0).L("purchase_cost");
+    }
+    public string PurchaseLockReason(string id) => !_data.Map("levels").ContainsKey(id) ? "未知特性" : IsUnlocked(id) ? "已拥有此特性" : PerkCatalog.Definition(id).I("stage") > 0 && !AdvancedUnlocked ? "首次清空 8 艘近地母舰后开放购买" : AlienChips < PurchaseCost(id) ? "外星芯片不足" : "";
+    public bool Purchase(string id)
+    {
+        LastError = PurchaseLockReason(id);
+        if (LastError.Length > 0)
+            return false;
+        var copy = Snapshot();
+        copy["alien_chips"] = AlienChips - PurchaseCost(id);
+        copy.Map("levels")[id] = 1L;
+        return Commit(copy);
+    }
     public long UpgradeCost(string id)
     {
         int level = GetLevel(id);
         return level <= 0 || level >= MaxLevel(id) ? 0 : (long)Math.Min(MaxCurrency, Math.Ceiling(UpgradeBase(id) * Math.Pow(UpgradeGrowth(id), level - 1)));
     }
-    public string UpgradeLockReason(string id) => !_data.Map("levels").ContainsKey(id) ? "未知 Perk" : !IsUnlocked(id) ? "先击败中型 Boss 解锁此 Perk" : GetLevel(id) >= MaxLevel(id) ? "此 Perk 已达到等级上限" : EnergyCores < UpgradeCost(id) ? "能源核心不足" : "";
+    public string UpgradeLockReason(string id) => !_data.Map("levels").ContainsKey(id) ? "未知特性" : !IsUnlocked(id) ? "请先购买此特性" : GetLevel(id) >= MaxLevel(id) ? "此特性已达到等级上限" : AlienChips < UpgradeCost(id) ? "外星芯片不足" : "";
     public bool Upgrade(string id)
     {
         LastError = UpgradeLockReason(id);
         if (LastError.Length > 0)
             return false;
         var copy = Snapshot();
-        copy["energy_cores"] = EnergyCores - UpgradeCost(id);
+        copy["alien_chips"] = AlienChips - UpgradeCost(id);
         copy.Map("levels")[id] = GetLevel(id) + 1;
         return Commit(copy);
     }
@@ -238,97 +258,45 @@ public sealed class FactoryPerks
     public bool HasClaimed(string run, object? id)
     {
         string key = ClaimKey(run, id);
-        return key.Length > 0 && _data.List("claims").Contains(key);
+        return key.Length > 0 && _claims.Contains(key);
     }
-    private static bool ValidContext(DataMap c)
+    /// <summary>Credits exactly one successful aircraft drop, atomically with its permanent receipt.</summary>
+    public DataMap ClaimAlienChip(string run, object? eventId) => ClaimAlienChipBatch(run, new[] { eventId });
+    /// <summary>Persists a frame-independent batch once; duplicate receipts never mint a second chip.</summary>
+    public DataMap ClaimAlienChips(string run, IReadOnlyList<string> eventIds) => ClaimAlienChipBatch(run, eventIds);
+    private DataMap ClaimAlienChipBatch(string run, IEnumerable<object?> eventIds)
     {
-        if (c.Count == 0)
-            return true;
-        if (!DataMap.ValidNumber(c.Value("wave", 0), 0, MaxCurrency, true) || !DataMap.ValidNumber(c.Value("defense_stage", 0), 0, 128, true))
-            return false;
-        var kinds = c.ContainsKey("kinds_unlocked") ? c.List("kinds_unlocked") : new List<object?> { "interceptor" };
-        if (kinds.Count == 0 || kinds.Count > 3 || kinds.Any(x => x is not string s || !PerkCatalog.Kinds.Contains(s)) || kinds.Distinct().Count() != kinds.Count)
-            return false;
-        if (c.ContainsKey("airframes_unlocked"))
+        if (!ValidToken(run) || eventIds == null)
+            return ClaimFailure("外星芯片掉落的本局编号无效");
+        var additions = new HashSet<string>(StringComparer.Ordinal);
+        foreach (object? eventId in eventIds)
         {
-            if (c.Value("airframes_unlocked") is not List<object?> frames || frames.Count > 9 || frames.Distinct().Count() != frames.Count)
-                return false;
-            foreach (var x in frames)
-                if (x is not string id || AirframeCatalog.Definition(id).Count == 0 || !kinds.Contains(AirframeCatalog.Definition(id).S("kind")))
-                    return false;
+            string key = ClaimKey(run, eventId);
+            if (key.Length == 0)
+                return ClaimFailure("外星芯片掉落的事件编号无效");
+            if (!_claims.Contains(key))
+                additions.Add(key);
         }
-        return true;
-    }
-    private static IEnumerable<string> DropPool(DataMap c, bool advanced)
-    {
-        if (c.Count == 0)
-            return PerkCatalog.LegacyIds;
-        var kinds = c.ContainsKey("kinds_unlocked") ? c.List("kinds_unlocked") : new List<object?> { "interceptor" };
-        var frames = c.List("airframes_unlocked");
-        if (frames.Count == 0)
-            frames = kinds.Cast<string>().Select(k => (object?)AirframeCatalog.BaseFor(k)).ToList();
-        return PerkCatalog.Entries.Where(row => (row.I("stage") == 0 || advanced) && (row.List("airframes").Count == 0 || row.List("airframes").Any(frames.Contains)) && (row.List("kinds").Count == 0 || row.List("kinds").Any(kinds.Contains))).OrderBy(row => row.I("priority")).Select(row => row.S("id"));
-    }
-    public DataMap ClaimBossReward(string run, object? eventId, DataMap? context = null)
-    {
-        context ??= new();
-        string key = ClaimKey(run, eventId);
-        if (key.Length == 0 || !ValidContext(context))
+        if (additions.Count == 0)
         {
-            Fail("奖励的本局编号、事件编号或战斗上下文无效");
-            return new()
-            {
-                ["ok"] = false,
-                ["claimed"] = false,
-                ["reason"] = LastError
-            };
+            LastError = "";
+            return new() { ["ok"] = true, ["claimed"] = false, ["duplicate"] = true, ["alien_chips"] = 0L, ["reason"] = "" };
         }
-        if (_data.List("claims").Contains(key))
-            return new()
-            {
-                ["ok"] = true,
-                ["claimed"] = false,
-                ["duplicate"] = true,
-                ["energy_cores"] = 0L,
-                ["unlocked"] = ""
-            };
-        if (_data.List("claims").Count >= MaxClaims)
-        {
-            Fail("永久奖励账本已达到上限");
-            return new()
-            {
-                ["ok"] = false,
-                ["claimed"] = false,
-                ["reason"] = LastError
-            };
-        }
+        if (additions.Count > MaxClaims - _claims.Count)
+            return ClaimFailure("永久奖励账本已达到上限");
+        if (additions.Count > MaxCurrency - AlienChips)
+            return ClaimFailure("外星芯片余额已达到上限");
         var copy = Snapshot();
-        copy["advanced_unlocked"] = AdvancedUnlocked || context.I("defense_stage") >= 1;
-        string unlocked = DropPool(context, copy.B("advanced_unlocked")).FirstOrDefault(id => !IsUnlocked(id)) ?? "";
-        long reward = Math.Min(_data.Map("settings").L("boss_core_reward"), MaxCurrency - EnergyCores);
-        copy["energy_cores"] = EnergyCores + reward;
-        copy.List("claims").Add(key);
-        if (unlocked.Length > 0)
-            copy.Map("levels")[unlocked] = 1L;
-        if (!Commit(copy))
-            return new()
-            {
-                ["ok"] = false,
-                ["claimed"] = false,
-                ["reason"] = LastError
-            };
-        return new()
-        {
-            ["ok"] = true,
-            ["claimed"] = true,
-            ["duplicate"] = false,
-            ["energy_cores"] = reward,
-            ["unlocked"] = unlocked,
-            ["level"] = GetLevel(unlocked),
-            ["unlocked_layer"] = PerkCatalog.Definition(unlocked).S("layer"),
-            ["advanced_unlocked"] = AdvancedUnlocked,
-            ["known_intel"] = DataMap.Clone(_data.List("known_intel"))
-        };
+        copy["alien_chips"] = AlienChips + additions.Count;
+        copy.List("claims").AddRange(additions.Cast<object?>());
+        if (!Commit(copy, currencyOnly: true))
+            return ClaimFailure(LastError);
+        return new() { ["ok"] = true, ["claimed"] = true, ["duplicate"] = false, ["alien_chips"] = (long)additions.Count, ["reason"] = "" };
+    }
+    private DataMap ClaimFailure(string reason)
+    {
+        Fail(reason);
+        return new() { ["ok"] = false, ["claimed"] = false, ["duplicate"] = false, ["alien_chips"] = 0L, ["reason"] = LastError };
     }
     public bool KnowsIntel(string id) => _data.List("known_intel").Contains(id);
     public bool RememberIntel(string id)
@@ -377,13 +345,13 @@ public sealed class FactoryPerks
         copy["claims"] = copy.List("claims").Cast<string>().Order(StringComparer.Ordinal).Cast<object?>().ToList();
         return copy;
     }
-    public bool CreditEnergyCores(long amount)
+    public bool CreditAlienChips(long amount)
     {
-        if (amount <= 0 || amount > MaxCurrency - EnergyCores)
-            return Fail("能源核心增量无效或超过余额上限");
+        if (amount <= 0 || amount > MaxCurrency - AlienChips)
+            return Fail("外星芯片增量无效或超过余额上限");
         var copy = Snapshot();
-        copy["energy_cores"] = EnergyCores + amount;
-        return Commit(copy);
+        copy["alien_chips"] = AlienChips + amount;
+        return Commit(copy, currencyOnly: true);
     }
     public bool ImportSnapshot(object? value) => Commit(value);
     public bool LoadProfile(string path)
@@ -422,16 +390,10 @@ public sealed class FactoryPerks
         }
         else
         {
-            var original = DataMap.Parse(backup.Length > 0 ? backup : primary);
-            if (original.I("version") != ProfileVersion && !Persist(data))
-            {
-                _path = previousPath;
-                _digest = previousDigest;
-                _loadBlocked = true;
-                return false;
-            }
             _data = data;
+            _claims = data.List("claims").Cast<string>().ToHashSet(StringComparer.Ordinal);
             Changed?.Invoke();
+            CurrencyChanged?.Invoke();
         }
         return true;
     }
@@ -475,7 +437,7 @@ public sealed class FactoryPerks
         catch (Exception error) when (error is IOException or UnauthorizedAccessException or ArgumentException) { return Fail("无法原子写入永久档案：" + error.Message); }
         finally { try { if (File.Exists(temporary)) File.Delete(temporary); } catch (IOException) { } catch (UnauthorizedAccessException) { } }
     }
-    private bool Commit(object? value)
+    private bool Commit(object? value, bool currencyOnly = false)
     {
         if (_loadBlocked)
             return Fail("永久档案读取失败，修复并重新载入前暂停永久改动");
@@ -489,9 +451,14 @@ public sealed class FactoryPerks
         }
         if (_path.Length > 0 && !Persist(data))
             return false;
+        bool currencyChanged = AlienChips != data.L("alien_chips");
         _data = data;
+        _claims = data.List("claims").Cast<string>().ToHashSet(StringComparer.Ordinal);
         LastError = "";
-        Changed?.Invoke();
+        if (!currencyOnly)
+            Changed?.Invoke();
+        if (currencyChanged)
+            CurrencyChanged?.Invoke();
         return true;
     }
     private bool Fail(string message)
@@ -511,8 +478,8 @@ public sealed class FactoryPerks
         if (source is not DataMap original)
             return null;
         var data = original.DeepClone();
-        string[] keys = { "version", "energy_cores", "settings", "levels", "templates", "active_run", "sites", "claims", "aircraft_templates", "aircraft_sites", "berths", "advanced_unlocked", "known_intel" };
-        if (data.Count != 13 || keys.Any(k => !data.ContainsKey(k)) || !DataMap.ValidNumber(data.Value("version"), 3, 3, true) || !DataMap.ValidNumber(data.Value("energy_cores"), 0, MaxCurrency, true) || data.Value("advanced_unlocked") is not bool)
+        string[] keys = { "version", "alien_chips", "settings", "levels", "templates", "active_run", "sites", "claims", "aircraft_templates", "aircraft_sites", "berths", "advanced_unlocked", "known_intel" };
+        if (data.Count != 13 || keys.Any(k => !data.ContainsKey(k)) || !DataMap.ValidNumber(data.Value("version"), ProfileVersion, ProfileVersion, true) || !DataMap.ValidNumber(data.Value("alien_chips"), 0, MaxCurrency, true) || data.Value("advanced_unlocked") is not bool)
             return null;
         if (data.Value("settings") is not DataMap settings || settings.Count != PerkCatalog.DefaultSettings.Count)
             return null;
@@ -565,8 +532,8 @@ public sealed class FactoryPerks
             return null;
         if (data.Value("known_intel") is not List<object?> intel || intel.Count > 2 || intel.Distinct().Count() != intel.Count || intel.Any(x => x is not string id || id is not ("M1" or "L1")))
             return null;
-        data["version"] = 3L;
-        data["energy_cores"] = data.L("energy_cores");
+        data["version"] = (long)ProfileVersion;
+        data["alien_chips"] = data.L("alien_chips");
         data["claims"] = claims.Cast<string>().Order(StringComparer.Ordinal).Cast<object?>().ToList();
         return data;
     }

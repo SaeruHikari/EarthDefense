@@ -11,7 +11,7 @@
 | 机型 | [airframes_base.csv](domain/airframes_base.csv) | 3 | parent_id, position, key, type, value |
 | 机型 | [airframes_definitions.csv](domain/airframes_definitions.csv) | 9 | parent_id, position, aoe_budget, blast_radius_multiplier, burst_target_count, capacity_cost, damage_multiplier … |
 | 结构映射 | [catalog_columns.csv](domain/catalog_columns.csv) | 61 | table, column, type, required |
-| 结构映射 | [catalog_tables.csv](domain/catalog_tables.csv) | 31 | table, catalog, parent_table, parent_field, shape, id_column, key_column … |
+| 结构映射 | [catalog_tables.csv](domain/catalog_tables.csv) | 30 | table, catalog, parent_table, parent_field, shape, id_column, key_column … |
 | 战斗 / 敌人与波次 | [combat_armor.csv](domain/combat_armor.csv) | 9 | layer, weapon_family, damage_multiplier |
 | 战斗 / 敌人与波次 | [combat_defense_stages.csv](domain/combat_defense_stages.csv) | 4 | stage, health_multiplier, damage_multiplier |
 | 战斗 / 敌人与波次 | [combat_enemies.csv](domain/combat_enemies.csv) | 15 | id, kind, role_id, boss_variant_id, name, armor, minimum_wave … |
@@ -45,15 +45,15 @@
 | 历史与远征兼容 | [legacy_frontiers.csv](domain/legacy_frontiers.csv) | 4 | stage, action_radius_base, weapon_range_bonus, patrol_outer_bonus |
 | 机型 | [patrol_bases.csv](domain/patrol_bases.csv) | 3 | kind, patrol_radius, patrol_outer_range, patrol_speed, health |
 | 特性 | [perk_effect_rules.csv](domain/perk_effect_rules.csv) | 62 | perk_id, attribute, operation, base, per_level, level_offset, maximum … |
-| 特性 | [perk_setting_bounds.csv](domain/perk_setting_bounds.csv) | 11 | key, minimum, maximum, integer |
-| 特性 | [perk_tiers.csv](domain/perk_tiers.csv) | 2 | stage, max_level, upgrade_base_cost, upgrade_growth |
-| 特性 | [perks.csv](domain/perks.csv) | 1 | parent_id, position, record_id, has_definitions, has_legacy_ids, has_neutral_modifiers, has_settings |
+| 特性 | [perk_economy.csv](domain/perk_economy.csv) | 1 | key, value |
+| 特性 | [perk_setting_bounds.csv](domain/perk_setting_bounds.csv) | 10 | key, minimum, maximum, integer |
+| 特性 | [perk_tiers.csv](domain/perk_tiers.csv) | 2 | stage, max_level, purchase_cost, upgrade_base_cost, upgrade_growth |
+| 特性 | [perks.csv](domain/perks.csv) | 1 | parent_id, position, record_id, has_definitions, has_neutral_modifiers, has_settings |
 | 特性 | [perks_definitions.csv](domain/perks_definitions.csv) | 39 | parent_id, position, color, description, display_key, display_mode, effect_label … |
 | 特性 | [perks_definitions_airframes.csv](domain/perks_definitions_airframes.csv) | 18 | parent_id, position, type, value |
 | 特性 | [perks_definitions_kinds.csv](domain/perks_definitions_kinds.csv) | 33 | parent_id, position, type, value |
-| 特性 | [perks_legacy_ids.csv](domain/perks_legacy_ids.csv) | 6 | parent_id, position, type, value |
 | 特性 | [perks_neutral_modifiers.csv](domain/perks_neutral_modifiers.csv) | 53 | parent_id, position, key, type, value |
-| 特性 | [perks_settings.csv](domain/perks_settings.csv) | 11 | parent_id, position, parameter, type, value |
+| 特性 | [perks_settings.csv](domain/perks_settings.csv) | 10 | parent_id, position, parameter, type, value |
 | 经济 / 基础 / 奖励 | [successor_research.csv](domain/successor_research.csv) | 6 | branch, attribute, display_name, increment, science_base, science_growth, alien_base … |
 | 科技树 | [technology_attribute_schema.csv](domain/technology_attribute_schema.csv) | 79 | attribute, type |
 

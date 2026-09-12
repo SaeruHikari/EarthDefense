@@ -80,6 +80,7 @@ public sealed partial class Battlefield
     // Reset/restore starts a new actor timeline; ephemeral HUD notifications
     // must not retain identities from a previous use of the same actor UIDs.
     public int TimelineEpoch => _epoch;
+    private double _chipSettlementClock;
     private bool _layoutDirty = true, _postDefense, _fixedRunning, _cohortComplete;
     private int _postSpawned;
     private DataMap _postPlan = new(), _wavePlan = new(), _globalWeapons = new();
@@ -130,8 +131,18 @@ public sealed partial class Battlefield
     }
     public void Step(double delta)
     {
-        if (Paused || Game == null)
-            return;
+        if (Game == null) return;
+        _chipSettlementClock += double.IsFinite(delta) ? Math.Max(0, delta) : 0;
+        if (_chipSettlementClock >= 1)
+        {
+            _chipSettlementClock = 0;
+            if (!Game.FlushAlienChipDrops())
+            {
+                EventNotice?.Invoke("外星芯片暂未保存，正在重试 · " + Game.FactoryPerks.LastError);
+                _chipSettlementClock = -4;
+            }
+        }
+        if (Paused) return;
         var timing = Performance;
         long mark = timing?.BeginFrame() ?? 0;
         RefreshConfiguration();
@@ -468,4 +479,3 @@ public sealed partial class Battlefield
         return origin.DistanceSquaredTo(position) <= range * range && Home(d).Dot(position.Normalized()) >= GetProfile(d).Cosine && CombatGeometry.HasLineOfSight(origin, position);
     }
 }
-

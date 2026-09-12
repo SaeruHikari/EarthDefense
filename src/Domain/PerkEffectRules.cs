@@ -11,6 +11,7 @@ internal static class PerkEffectRules
     private static Dictionary<string,List<Rule>> _rules=new(StringComparer.Ordinal);
     private static Dictionary<int,DataMap> _tiers=new();
     private static Dictionary<string,DataMap> _bounds=new();
+    private static double _alienChipDropChance;
     private static void Ensure()
     {
         if(_revision==CatalogData.Revision)return;
@@ -27,21 +28,26 @@ internal static class PerkEffectRules
             if(!rules.ContainsKey(id))rules[id]=new();rules[id].Add(rule);
         }
         if(!definitions.SetEquals(rules.Keys))throw new InvalidDataException("perk_effect_rules.csv: every perk must have an implemented effect rule");
-        var tierTable=CatalogData.ReadCsv("perk_tiers.csv");tierTable.RequireHeaders("stage","max_level","upgrade_base_cost","upgrade_growth");var tiers=new Dictionary<int,DataMap>();
+        var tierTable=CatalogData.ReadCsv("perk_tiers.csv");tierTable.RequireHeaders("stage","max_level","purchase_cost","upgrade_base_cost","upgrade_growth");var tiers=new Dictionary<int,DataMap>();
         foreach(var row in tierTable.Rows)
         {
-            int stage=(int)row.Integer("stage");long max=row.Integer("max_level"),basis=row.Integer("upgrade_base_cost");double growth=row.Number("upgrade_growth");
-            if(stage is <0 or >1||max is <1 or >10000||basis<1||growth<1||!tiers.TryAdd(stage,new(){["max_level"]=max,["upgrade_base_cost"]=basis,["upgrade_growth"]=growth}))throw row.Error("stage","invalid or duplicate tier");
+            int stage=(int)row.Integer("stage");long max=row.Integer("max_level"),purchase=row.Integer("purchase_cost"),basis=row.Integer("upgrade_base_cost");double growth=row.Number("upgrade_growth");
+            if(stage is <0 or >1||max is <1 or >10000||purchase<1||purchase>FactoryPerks.MaxCurrency||basis<1||growth<1||!tiers.TryAdd(stage,new(){["max_level"]=max,["purchase_cost"]=purchase,["upgrade_base_cost"]=basis,["upgrade_growth"]=growth}))throw row.Error("stage","invalid or duplicate tier");
         }
         if(tiers.Count!=2)throw new InvalidDataException("perk_tiers.csv: both normal and advanced tiers are required");
         var boundsTable=CatalogData.ReadCsv("perk_setting_bounds.csv");boundsTable.RequireHeaders("key","minimum","maximum","integer");var bounds=new Dictionary<string,DataMap>();
         foreach(var row in boundsTable.Rows){string key=row.String("key");double min=row.Number("minimum"),max=row.Number("maximum");bool whole=row.Boolean("integer");if(!settings.ContainsKey(key)||!DataMap.ValidNumber(settings.Value(key),min,max,whole)||!bounds.TryAdd(key,new(){["minimum"]=min,["maximum"]=max,["integer"]=whole}))throw row.Error("key","unknown, duplicate or invalid default/bounds");}
         if(bounds.Count!=settings.Count)throw new InvalidDataException("perk_setting_bounds.csv: every setting requires bounds");
-        _rules=rules;_tiers=tiers;_bounds=bounds;_revision=CatalogData.Revision;
+        var economyTable=CatalogData.ReadCsv("perk_economy.csv");economyTable.RequireHeaders("key","value");
+        if(economyTable.Rows.Count!=1||economyTable.Rows[0].String("key")!="alien_chip_drop_chance")throw new InvalidDataException("perk_economy.csv: requires exactly one alien_chip_drop_chance row");
+        double dropChance=economyTable.Rows[0].Number("value");
+        if(dropChance<0||dropChance>1)throw economyTable.Rows[0].Error("value","drop probability must be between zero and one");
+        _rules=rules;_tiers=tiers;_bounds=bounds;_alienChipDropChance=dropChance;_revision=CatalogData.Revision;
     }
     public static void Validate()=>Ensure();
     public static DataMap Bounds(string key){Ensure();return _bounds[key];}
     public static DataMap Tier(int stage){Ensure();return _tiers[stage];}
+    public static double AlienChipDropChance { get { Ensure(); return _alienChipDropChance; } }
     public static DataMap Evaluate(string id,int level,DataMap settings)
     {
         if(level<=0)return new();Ensure();if(!_rules.TryGetValue(id,out var rules))return new();var result=new DataMap();

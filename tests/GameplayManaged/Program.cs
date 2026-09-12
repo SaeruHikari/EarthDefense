@@ -9,8 +9,40 @@ int checks = 0, failures = 0;
 void Check(bool result, string label) { checks++; if (!result) { failures++; Console.WriteLine("GAMEPLAY_FAIL " + label); } }
 void Near(double a, double b, string label) => Check(Math.Abs(a - b) < .00001, label + $" ({a}/{b})");
 object? Invoke(object obj, string method, params object?[] args) => obj.GetType().GetMethod(method, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)!.Invoke(obj, args);
+// Production reward path uses deterministic per-enemy rolls and batches permanent writes.
+var chipGame = new DefenseState();
+var chipOpening = chipGame.Serialize(); chipOpening["run_id"] = "alien-chip-gameplay-contract";
+Check(chipGame.Restore(chipOpening), "bind deterministic chip reward run");
+Near(PerkCatalog.AlienChipDropChance, .03, "ordinary aircraft default chip probability is three percent");
+long chipEvents = 0; int chipNotifications = 0;
+chipGame.AlienChipDropped += drop => { chipNotifications++; chipEvents += drop.L("alien_chips"); };
+const int chipCandidates = 2000;
+for (int i = 0; i < chipCandidates; i++)
+    Check(chipGame.RewardEnemy(new() { ["kind"] = i % 2 == 0 ? "scout" : "cruiser", ["hp"] = 0d, ["reward_event_id"] = "chip-candidate:" + i, ["wave"] = 1L }), "real reward accepts unique destroyed aircraft " + i);
+long pendingChips = chipGame.PendingAlienChipCount;
+Check(pendingChips >= 30 && pendingChips <= 90 && chipGame.FactoryPerks.AlienChips == 0 && chipEvents == 0, "low probability rolls queue individual chips without synchronous profile writes");
+Check(chipGame.FlushAlienChipDrops() && chipGame.PendingAlienChipCount == 0 && chipGame.FactoryPerks.AlienChips == pendingChips && chipEvents == pendingChips && chipNotifications == 1, "single batch flush awards exactly one chip per winning enemy and one combined notification");
+Check(PerkCatalog.Entries.All(row => !chipGame.FactoryPerks.IsUnlocked(row.S("id"))), "aircraft kills never randomly unlock perks");
+long earnedChips = chipGame.FactoryPerks.AlienChips;
+Check(chipGame.Restore(chipOpening), "reload pre-kill run state while retaining permanent chip profile");
+for (int i = 0; i < chipCandidates; i++)
+    chipGame.RewardEnemy(new() { ["kind"] = i % 2 == 0 ? "scout" : "cruiser", ["hp"] = 0d, ["reward_event_id"] = "chip-candidate:" + i, ["wave"] = 1L });
+Check(chipGame.FlushAlienChipDrops() && chipGame.FactoryPerks.AlienChips == earnedChips && chipEvents == earnedChips, "replayed kills cannot reroll or duplicate permanent chip rewards");
+foreach (string excluded in new[] { "carrier", "medium_boss", "small_boss", "asteroid" })
+    for (int i = 0; i < 150; i++)
+        chipGame.RewardEnemy(new() { ["kind"] = excluded, ["hp"] = 0d, ["reward_event_id"] = "excluded:" + excluded + ":" + i, ["wave"] = 3L });
+for (int i = 0; i < 150; i++)
+{
+    chipGame.RewardEnemy(new() { ["kind"] = "scout", ["hp"] = 1d, ["reward_event_id"] = "alive:" + i });
+    chipGame.RewardEnemy(new() { ["kind"] = "scout", ["hp"] = 0d, ["resource_core_carrier"] = true, ["reward_event_id"] = "core-boss:" + i });
+    chipGame.RewardEnemy(new() { ["kind"] = "cruiser", ["hp"] = 0d, ["post_carrier"] = true, ["reward_event_id"] = "post-carrier:" + i });
+}
+Check(chipGame.PendingAlienChipCount == 0 && chipGame.FlushAlienChipDrops() && chipGame.FactoryPerks.AlienChips == earnedChips, "bosses, motherships, asteroids, live aircraft, and disguised carriers cannot drop chips");
+Check(PerkCatalog.Entries.All(row => !chipGame.FactoryPerks.IsUnlocked(row.S("id"))), "old medium-boss source no longer grants free perks");
+chipGame.RewardWave(3);
+Check(chipGame.FactoryPerks.AlienChips == earnedChips, "wave completion does not grant old permanent currency");
 var game = new DefenseState();
-foreach (string key in new[] { "minerals", "energy", "science", "resource_cores", "alien_points", "energy_cores" })
+foreach (string key in new[] { "minerals", "energy", "science", "resource_cores", "alien_points", "alien_chips" })
 {
     double before = game.CheatResourceBalance(key);
     Check(game.AddResourcesCheat(key, 123), "grant " + key);
@@ -21,7 +53,7 @@ foreach (string key in new[] { "minerals", "energy", "science", "resource_cores"
         Near(game.CheatResourceBalance(key), before + 123, "invalid preserves " + key);
     }
 }
-foreach (string key in new[] { "resource_cores", "alien_points", "energy_cores" }) Check(!game.AddResourcesCheat(key, .5), "whole currency " + key);
+foreach (string key in new[] { "resource_cores", "alien_points", "alien_chips" }) Check(!game.AddResourcesCheat(key, .5), "whole currency " + key);
 var beforeSave = game.Serialize().ToJson();
 Check(!game.AddResourcesCheat("science", 100, () => false), "resource persistence failure rejected");
 Check(beforeSave == game.Serialize().ToJson(), "resource persistence failure rolls back full run");

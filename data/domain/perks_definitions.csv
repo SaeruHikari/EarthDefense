@@ -1,5 +1,5 @@
 ﻿parent_id,position,color,description,display_key,display_mode,effect_label,icon,id,layer,name,priority,stage,has_airframes,has_kinds
-root,0,70d9f4,增加装备该 Perk 的工厂编制，缺额由工厂正常补造。,,,,hangar,expanded_hangar,factory,扩展机库,50,0,true,true
+root,0,70d9f4,初始增加 1 个工厂编制，此后每升 5 级再增加 1 个；缺额由工厂正常补造。,,,,hangar,expanded_hangar,factory,扩展机库,50,0,true,true
 root,1,7fe0bf,提高工厂补造速度，已有生产进度继续保留。,,,,assembly,assembly,factory,自动装配,51,0,true,true
 root,2,e5be79,提高该工厂所属飞机的武器伤害。,,,,targeting,targeting,factory,精准火控,20,0,true,true
 root,3,a7bdf5,提高所属飞机最大生命，改装不免费恢复生命。,,,,armor,armor,factory,强化装甲,52,0,true,true

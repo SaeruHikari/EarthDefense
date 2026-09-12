@@ -71,6 +71,17 @@ public static class VectorIcons
                 if (icon == "return")
                     Line(new(-.9f, .84f), new(.4f, .84f));
                 break;
+            case "chip":
+                Poly(new(-.56f, -.66f), new(.36f, -.66f), new(.66f, -.36f), new(.66f, .66f), new(-.66f, .66f), new(-.66f, -.56f), new(-.56f, -.66f));
+                Poly(new(0, -.32f), new(.3f, 0), new(0, .32f), new(-.3f, 0), new(0, -.32f));
+                foreach (float pin in new[] { -.36f, 0f, .36f })
+                {
+                    Line(new(-.66f, pin), new(-.96f, pin));
+                    Line(new(.66f, pin), new(.96f, pin));
+                    Line(new(pin, -.66f), new(pin, -.96f));
+                    Line(new(pin, .66f), new(pin, .96f));
+                }
+                break;
             case "mineral":
             case "core":
             case "energy_break":

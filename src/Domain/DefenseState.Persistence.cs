@@ -106,6 +106,7 @@ public sealed partial class DefenseState
         if (expedition == null)
             return false;
         string runId = suppliedRunId;
+        if (!FlushAlienChipDrops()) return false;
         if (!FactoryPerks.ResetRunSites(runId))
             return false;
         Minerals = data.N("minerals");
@@ -136,6 +137,7 @@ public sealed partial class DefenseState
     }
     public bool Reset()
     {
+        if (!FlushAlienChipDrops()) return false;
         string id = Guid.NewGuid().ToString("N");
         if (!FactoryPerks.ResetRunSites(id))
             return false;

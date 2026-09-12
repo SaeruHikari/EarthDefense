@@ -108,7 +108,7 @@ internal static class FactoryCoverageChecks
     }
     private static void PerkOwnershipAndDeduplication()
     {
-        var (g,s,b)=Create();Check(g.FactoryPerks.ResetRunSites(g.RunId),"perk ownership bound to the actual run");var settings=g.FactoryPerks.Snapshot();settings.Map("levels")["navigation"]=5L;settings.Map("levels")["a_kinetic_core"]=3L;settings["energy_cores"]=1000L;Check(g.FactoryPerks.ImportSnapshot(settings),"real coverage-affecting perk unlocked in memory");
+        var (g,s,b)=Create();Check(g.FactoryPerks.ResetRunSites(g.RunId),"perk ownership bound to the actual run");var settings=g.FactoryPerks.Snapshot();settings.Map("levels")["navigation"]=5L;settings.Map("levels")["a_kinetic_core"]=3L;settings["alien_chips"]=1000L;Check(g.FactoryPerks.ImportSnapshot(settings),"real coverage-affecting perk unlocked in memory");
         var first=b.SpawnFactoryDrone(b.Factories[18],0);var second=b.SpawnFactoryDrone(b.Factories[18],1);var neighbor=b.SpawnFactoryDrone(b.Factories[19],0);var before=b.GetFactoryCoverage(18)!;var other=b.GetFactoryCoverage(19)!;
         Check(before.AircraftCount==2&&before.Bands.Count==1,"identical living profiles collapse into one band");Check(g.FactoryPerks.Equip("interceptor",18,0,"navigation"),"factory navigation perk equipped for one real site");var boosted=b.GetFactoryCoverage(18)!;
         Check(boosted.Bands.Single().PatrolRadius>before.Bands.Single().PatrolRadius&&boosted.Bands.Single().OuterRange>before.Bands.Single().OuterRange,"coverage includes real factory navigation perk");Check(b.GetFactoryCoverage(19)!.Bands.SequenceEqual(other.Bands),"same family different factory retains its own coverage");

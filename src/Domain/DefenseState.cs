@@ -19,7 +19,6 @@ public sealed partial class DefenseState
     // inserted into orbit.
     public static IReadOnlyList<string> ResourceFacilityKinds => new[] { "mine", "solar" };
     public event Action? Changed;
-    public event Action<DataMap>? FactoryPerkRewarded;
     public FactoryPerks FactoryPerks { get; } = new();
     public ExpeditionData Expedition { get; } = new();
     public string RunId { get; private set; } = Guid.NewGuid().ToString("N");
@@ -342,13 +341,12 @@ public sealed partial class DefenseState
     }
     public bool RewardEnemy(DataMap enemy)
     {
-        string id = enemy.S("reward_event_id");
-        if (id.Length == 0)
-            id = $"{enemy.L("wave", Wave)}:{enemy.L("uid", -1)}:{enemy.S("kind", "scout")}";
+        string id = EnemyRewardIdentity(enemy, Wave);
         if (!_rewardedEnemies.Add(id))
             return false;
         string kind = enemy.B("resource_core_carrier") ? "small_boss" : enemy.S("reward_kind", enemy.S("kind", "scout"));
         RewardKill(kind, enemy.L("spawn_wave", enemy.L("wave", Wave)), enemy.I("defense_stage", DefenseReachStage));
+        QueueAlienChipDrop(enemy, id);
         return true;
     }
     public void RewardWave(long waveValue = -1)

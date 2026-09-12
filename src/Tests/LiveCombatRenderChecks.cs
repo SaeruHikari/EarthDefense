@@ -45,7 +45,7 @@ public partial class LiveCombatRenderChecks : Node
             throw new InvalidOperationException("LiveCombatRenderChecks requires a user profile under this project's .runtime-tests directory.");
         Directory.CreateDirectory(profile);
         // Only this isolated fixture's known files are reset; never enumerate or remove player directories.
-        foreach (string name in new[] { "earthward_checkpoint.json", "earthward_factory_perks.json", "earthward_combat_settings.json" })
+        foreach (string name in new[] { "earthward_checkpoint.json", "earthward_alien_chip_perks.json", "earthward_combat_settings.json" })
             foreach (string suffix in new[] { "", ".previous", ".bak", ".tmp" })
             {
                 string path = Path.GetFullPath(Path.Combine(profile, name + suffix));

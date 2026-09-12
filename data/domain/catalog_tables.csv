@@ -1,4 +1,4 @@
-﻿table,catalog,parent_table,parent_field,shape,id_column,key_column,presence_column
+table,catalog,parent_table,parent_field,shape,id_column,key_column,presence_column
 deep_technology.csv,deep-technology.json,,,object,record_id,,
 deep_technology_branches.csv,deep-technology.json,deep_technology.csv,branches,object_list,id,,has_branches
 deep_technology_nodes.csv,deep-technology.json,deep_technology.csv,nodes,object_list,id,,has_nodes
@@ -15,7 +15,6 @@ perks.csv,perks.json,,,object,record_id,,
 perks_definitions.csv,perks.json,perks.csv,definitions,object_list,id,,has_definitions
 perks_definitions_airframes.csv,perks.json,perks_definitions.csv,airframes,list,,,has_airframes
 perks_definitions_kinds.csv,perks.json,perks_definitions.csv,kinds,list,,,has_kinds
-perks_legacy_ids.csv,perks.json,perks.csv,legacy_ids,list,,,has_legacy_ids
 perks_neutral_modifiers.csv,perks.json,perks.csv,neutral_modifiers,map,,key,has_neutral_modifiers
 perks_settings.csv,perks.json,perks.csv,settings,map,,parameter,has_settings
 economy.csv,economy.json,,,object,record_id,,

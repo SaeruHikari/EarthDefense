@@ -187,11 +187,9 @@ public sealed partial class Battlefield
                 ward["energy_broken_at"] = Clock;
             }
         }
-        if (C.S(e, "kind") == "boss")
-            Game.ClaimFactoryBossReward(C.S(e, "reward_event_id", $"earth:wave:{C.L(e, "wave", Game.Wave)}:medium:0"), C.L(e, "wave", Game.Wave), C.I(e, "defense_stage"));
         Game.RewardEnemy(e);
         if (C.S(e, "kind") == "boss")
-            EventNotice?.Invoke("中型 Boss 已击毁 · 外星科技与永久研究已回收");
+            EventNotice?.Invoke("中型 Boss 已击毁 · 外星科技点已回收");
         else if (C.S(e, "kind") == "small_boss" || C.B(e, "resource_core_carrier"))
             EventNotice?.Invoke($"小 Boss 已击毁 · 资源核心 +{Game.CombatSettings.I("resource_core_drop_count", 5)}");
         AddBurst(C.V(e, "space_position"), CombatScale.Coral, C.N(e, "size") * 1.6);
@@ -455,4 +453,3 @@ public sealed partial class Battlefield
         }
     }
 }
-

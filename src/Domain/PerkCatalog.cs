@@ -7,7 +7,7 @@ namespace Earthward.Domain;
 public static class PerkCatalog
 {
 	public static IReadOnlyList<DataMap> Entries => CatalogData.Rows("perks.json", "definitions");
-	public static string[] LegacyIds => CatalogData.Load("perks.json").List("legacy_ids").Cast<string>().ToArray();
+	public static double AlienChipDropChance => PerkEffectRules.AlienChipDropChance;
 	public static string[] Kinds => new[] { "interceptor", "laser", "missile" };
 	public static string[] Layers => new[] { "factory", "aircraft" };
 	public static DataMap DefaultSettings => CatalogData.Load("perks.json").Map("settings").DeepClone();
@@ -17,7 +17,7 @@ public static class PerkCatalog
 		if (row.Count > 0)
 		{
 			var tier = PerkEffectRules.Tier(row.I("stage") > 0 ? 1 : 0);
-			row["max_level"] = tier.I("max_level");row["upgrade_base_cost"] = tier.I("upgrade_base_cost");row["upgrade_growth"] = tier.N("upgrade_growth");
+			row["max_level"] = tier.I("max_level");row["purchase_cost"] = tier.L("purchase_cost");row["upgrade_base_cost"] = tier.I("upgrade_base_cost");row["upgrade_growth"] = tier.N("upgrade_growth");
 		}
 		return row;
 	}

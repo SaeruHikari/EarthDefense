@@ -57,7 +57,7 @@ public partial class ResourceCheatUiChecks : Node
             _app.OpenCombatSettings(); await Frames();
             await Action("modal:combat:page:cheat");
             Check(_app.CheatAmountField.Visible && _app.CombatFields.Values.All(field => !field.Visible), "cheat page reuses modal with only its own amount control");
-            Check(_app.Buttons.Count(row => row.S("action").StartsWith("modal:combat:resource:")) == 6, "six resource choices include permanent energy cores");
+            Check(_app.Buttons.Count(row => row.S("action").StartsWith("modal:combat:resource:")) == 6, "six resource choices include permanent alien chips");
             foreach (string resource in Main.CheatResourceIds)
             {
                 await Action("modal:combat:resource:" + resource);
@@ -70,7 +70,7 @@ public partial class ResourceCheatUiChecks : Node
                 Check(_app.CheatFeedback.Contains("当前"), "submit reports actual new balance");
             }
             Check(Godot.FileAccess.FileExists(Main.SavePath), "ordinary resources immediately save atomic checkpoint");
-            Check(Godot.FileAccess.FileExists("user://earthward_factory_perks.json"), "permanent energy cores save existing profile");
+            Check(Godot.FileAccess.FileExists("user://earthward_alien_chip_perks.json"), "permanent alien chips save existing profile");
             await Action("modal:combat:resource:resource_cores");
             double cores = _app.Game.CheatResourceBalance("resource_cores");
             foreach (string bad in new[] { "0", "-3", "1.5", "NaN", "Infinity", "1e309", "100000000000000000000", "oops" })
@@ -103,7 +103,7 @@ public partial class ResourceCheatUiChecks : Node
             Check(!_app.CheatAmountField.Visible && !_app.CheatAmountField.HasFocus(), "closing parameters releases cheat input");
             Check(_app.LoadCheckpoint(), "cheated checkpoint restores through production loader");
             Check(_app.Game.CheatResourceBalance("minerals") == mineral + 10, "ordinary cheat survives checkpoint reload");
-            Check(_app.Game.CheatResourceBalance("energy_cores") >= 7, "permanent energy credit survives checkpoint reload");
+            Check(_app.Game.CheatResourceBalance("alien_chips") >= 7, "permanent alien chip credit survives checkpoint reload");
             Check(DeepTechnology.Nodes.All(node => _app.Game.HasResearch(node.S("id"))), "regular technology cheat survives actual checkpoint reload");
             Check(DeepTechnology.ChainBranches.All(branch => _app.Game.SuccessorCount(branch) == 0), "checkpoint reload preserves unpurchased advanced research");
 

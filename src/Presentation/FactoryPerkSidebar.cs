@@ -121,13 +121,13 @@ public partial class FactoryPerkSidebar : Control
         Scroll.AddChild(body);
         var currency = new HBoxContainer { CustomMinimumSize = new Vector2(0, 22) };
         body.AddChild(currency);
-        currency.AddChild(NewGlyph("core", UiTheme.Amber, new Vector2(22, 22)));
-        CoreLabel = UiTheme.Label("能源核心  0", 14, UiTheme.Amber);
+        currency.AddChild(NewGlyph("chip", UiTheme.Alien, new Vector2(22, 22)));
+        CoreLabel = UiTheme.Label("外星芯片  0", 14, UiTheme.Alien);
         CoreLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         currency.AddChild(CoreLabel);
         var badge = UiTheme.Label("跨局保留", 10, UiTheme.Mint);
         badge.CustomMinimumSize = new Vector2(48, 0);
-        badge.TooltipText = "已解锁特性、等级、能源核心与类型默认配装跨局保留；本局单厂覆盖随新局重置。";
+        badge.TooltipText = "购买的特性、永久等级、外星芯片与类型默认配装跨局保留；本局单厂覆盖随新局重置。";
         currency.AddChild(badge);
         var layers = new HBoxContainer();
         layers.AddThemeConstantOverride("separation", 5);
@@ -195,10 +195,10 @@ public partial class FactoryPerkSidebar : Control
         }
         var heading = new HBoxContainer { CustomMinimumSize = new Vector2(0, 18) };
         body.AddChild(heading);
-        var title = UiTheme.Label("特性背包", 11, UiTheme.Muted);
+        var title = UiTheme.Label("特性背包 · 芯片采购", 11, UiTheme.Muted);
         title.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         heading.AddChild(title);
-        _inventoryCount = UiTheme.Label("已解锁 0/6", 10, UiTheme.Mint, false);
+        _inventoryCount = UiTheme.Label("已拥有 0/6", 10, UiTheme.Mint, false);
         _inventoryCount.CustomMinimumSize = new Vector2(66, 0);
         _inventoryCount.HorizontalAlignment = HorizontalAlignment.Right;
         heading.AddChild(_inventoryCount);
@@ -234,7 +234,7 @@ public partial class FactoryPerkSidebar : Control
         actions.AddChild(EquipButton);
         UpgradeButton = UiTheme.Button("升级", 11);
         UpgradeButton.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-        UpgradeButton.Pressed += () => Upgrade(SelectedPerk);
+        BindTargetAction(UpgradeButton, BuyOrUpgradeSelected);
         actions.AddChild(UpgradeButton);
         _readyComplete = true;
         RebuildSources();
@@ -254,16 +254,23 @@ public partial class FactoryPerkSidebar : Control
     public override void _ExitTree()
     {
         if (_perks != null)
+        {
             _perks.Changed -= QueueRefresh;
+            _perks.CurrencyChanged -= RefreshCurrencyState;
+        }
     }
 
     public void Bind(DefenseState game)
     {
         if (_perks != null)
+        {
             _perks.Changed -= QueueRefresh;
+            _perks.CurrencyChanged -= RefreshCurrencyState;
+        }
         _game = game;
         _perks = game.FactoryPerks;
         _perks.Changed += QueueRefresh;
+        _perks.CurrencyChanged += RefreshCurrencyState;
         Refresh();
     }
 
@@ -380,6 +387,9 @@ public partial class FactoryPerkSidebar : Control
 
     private void QueueRefresh()
     {
+        RefreshCurrency();
+        if (!IsVisibleInTree())
+            return;
         if (_refreshPending || !IsInsideTree())
             return;
         _refreshPending = true;
@@ -392,7 +402,7 @@ public partial class FactoryPerkSidebar : Control
             return;
         if (_perks == null || _game == null)
         {
-            CoreLabel.Text = "能源核心  —";
+            CoreLabel.Text = "外星芯片  —";
             return;
         }
         _definitions.Clear();
@@ -418,9 +428,8 @@ public partial class FactoryPerkSidebar : Control
         foreach (var (id, tile) in InventoryTiles)
             if (!VisibleIds.Contains(id))
                 tile.Visible = false;
-        CoreLabel.Text = "能源核心  " + UiTheme.Number(_perks.EnergyCores);
-        CoreLabel.TooltipText = "中型 Boss 掉落的永久升级货币。工厂与战机分开装备，等级跨局共享保留。";
-        _inventoryCount.Text = $"已解锁 {unlocked}/{VisibleIds.Count}";
+        RefreshCurrency();
+        _inventoryCount.Text = $"已拥有 {unlocked}/{VisibleIds.Count}";
         foreach (var (kind, button) in KindButtons)
             UiTheme.Mark(button, kind == SelectedKind);
         foreach (var (layer, button) in LayerButtons)
@@ -440,6 +449,27 @@ public partial class FactoryPerkSidebar : Control
             SlotButtons[i].QueueRedraw();
         }
         RefreshDetail();
+    }
+
+    public void RefreshCurrency()
+    {
+        if (!_readyComplete || _perks == null)
+            return;
+        CoreLabel.Text = "外星芯片  " + UiTheme.Number(_perks.AlienChips);
+        CoreLabel.TooltipText = $"击落普通敌方战机有 {PerkCatalog.AlienChipDropChance * 100:0.##}% 概率回收 1 个外星芯片。用于购买与永久升级特性，升级价格逐级递增。芯片与等级跨局保留。";
+    }
+
+    private void RefreshCurrencyState()
+    {
+        RefreshCurrency();
+        if (!_readyComplete || _perks == null || !IsVisibleInTree())
+            return;
+        // Currency changes never need to recreate definitions, source lists or sockets.
+        foreach (var (id, definition) in _definitions)
+            definition["purchase_lock_reason"] = _perks.PurchaseLockReason(id);
+        RefreshDetail();
+        foreach (string id in VisibleIds)
+            InventoryTiles[id].QueueRedraw();
     }
 
     private void RefreshBerths()
@@ -539,18 +569,22 @@ public partial class FactoryPerkSidebar : Control
         bool unlocked = d.B("unlocked"), current = _equipped[SelectedSlot] == id, other = _equipped.Contains(id) && !current;
         int level = d.I("level"), maximum = d.I("max_level");
         bool incompatible = SelectedLayer == "aircraft" && !VisibleIds.Contains(id);
-        string equipReason = _perks!.EquipLockReason(SelectedKind, SelectedSiteId, SelectedSlot, id, SelectedLayer, SelectedBerth, SelectedAirframe), upgradeReason = _perks.UpgradeLockReason(id);
-        DetailName.Text = $"{d.S("name")}  ·  " + (unlocked ? $"Lv.{level}" : "未解锁");
-        DetailEffect.Text = incompatible ? "当前机型不适用 · 永久等级保留" : d.S("effect_text");
+        string equipReason = _perks!.EquipLockReason(SelectedKind, SelectedSiteId, SelectedSlot, id, SelectedLayer, SelectedBerth, SelectedAirframe);
+        string actionReason = unlocked ? _perks.UpgradeLockReason(id) : _perks.PurchaseLockReason(id);
+        DetailName.Text = $"{d.S("name")}  ·  " + (unlocked ? $"Lv.{level}" : "待购买");
+        DetailEffect.Text = incompatible ? "当前机型不适用 · 永久等级保留" : (unlocked ? "" : "Lv.1 · ") + d.S("effect_text");
         DetailEffect.TooltipText = d.S("description");
-        DetailNext.Text = !unlocked ? (d.I("stage") > 0 ? "高级 · 清空首轮母舰后掉落" : "基础 · 中型 Boss 掉落解锁") : level >= maximum ? "永久强化 · 已满级" : "下级 " + d.S("next_effect_text");
+        DetailNext.Text = !unlocked ? (actionReason != "" ? actionReason : "购买后永久拥有 · 免费装入空槽") : level >= maximum ? "永久强化 · 已满级" : "下级 " + d.S("next_effect_text");
+        DetailNext.TooltipText = DetailNext.Text;
         DetailNext.AddThemeColorOverride("font_color", unlocked ? UiTheme.Amber : UiTheme.Muted);
         EquipButton.Text = current ? $"已装备 · 槽 {SelectedSlot + 1}" : other ? "另一槽已装备" : $"装入槽 {SelectedSlot + 1}";
         EquipButton.Disabled = current || equipReason != "";
         EquipButton.TooltipText = equipReason != "" ? equipReason : $"免费装备至{_scope}；可直接拖入槽位。";
-        UpgradeButton.Text = !unlocked ? "尚未解锁" : level >= maximum ? "已满级" : "升级 · ◇ " + UiTheme.Number(d.L("upgrade_cost"));
-        UpgradeButton.Disabled = upgradeReason != "";
-        UpgradeButton.TooltipText = upgradeReason != "" ? upgradeReason : $"消耗 {UiTheme.Number(d.L("upgrade_cost"))} 能源核心，所有装备此特性的单位共享永久等级。";
+        UpgradeButton.Text = !unlocked ? "购买 · " + UiTheme.Number(d.L("purchase_cost")) : level >= maximum ? "已满级" : "升级 · " + UiTheme.Number(d.L("upgrade_cost"));
+        UpgradeButton.Disabled = actionReason != "";
+        UpgradeButton.TooltipText = actionReason != "" ? actionReason : !unlocked
+            ? $"消耗 {UiTheme.Number(d.L("purchase_cost"))} 外星芯片，永久获得 Lv.1；购买后可自行装入选中槽位。"
+            : $"消耗 {UiTheme.Number(d.L("upgrade_cost"))} 外星芯片，所有装备此特性的单位共享永久等级。后续升级价格逐级递增。";
     }
 
     private void DrawInventory(Button tile, string id)
@@ -558,12 +592,15 @@ public partial class FactoryPerkSidebar : Control
         if (!_definitions.TryGetValue(id, out var d))
             return;
         bool unlocked = d.B("unlocked"), selected = id == SelectedPerk;
-        Color tint = unlocked ? new Color(d.S("color", "9be4cc")) : new Color("5c727e");
+        bool purchasable = !unlocked && d.S("purchase_lock_reason") == "";
+        Color tint = unlocked ? new Color(d.S("color", "9be4cc")) : purchasable ? UiTheme.Alien : new Color("5c727e");
         DrawEquipmentFrame(tile, new Rect2(Vector2.One, tile.Size - new Vector2(2, 2)), selected, tile.IsHovered(), false);
         VectorIcons.Draw(tile, d.S("icon", id), new Vector2(tile.Size.X * .5f, 25), 13, tint);
         UiTheme.Center(tile, d.S("name"), new Vector2(0, tile.Size.Y - 5), tile.Size.X, 10, unlocked ? UiTheme.Ink : UiTheme.Muted);
         if (unlocked)
             SmallBadge(tile, $"L{d.I("level")}", new Vector2(tile.Size.X - 27, 5), UiTheme.Amber);
+        else if (purchasable)
+            VectorIcons.Draw(tile, "chip", new Vector2(tile.Size.X - 13, 12), 5, UiTheme.Alien, 1);
         else
             DrawLock(tile, new Vector2(tile.Size.X - 14, 13), new Color("77909a"));
         if (d.I("stage") > 0)
@@ -688,6 +725,25 @@ public partial class FactoryPerkSidebar : Control
         Refresh();
     }
 
+    private void BuyOrUpgradeSelected()
+    {
+        if (_perks == null)
+            return;
+        if (_perks.IsUnlocked(SelectedPerk))
+            Upgrade(SelectedPerk);
+        else
+            Purchase(SelectedPerk);
+    }
+
+    public void Purchase(string id)
+    {
+        if (_perks == null)
+            return;
+        bool ok = _perks.Purchase(id);
+        Feedback(ok ? $"已购入 {_definitions.GetValueOrDefault(id)?.S("name", id) ?? id} · Lv.1 · 选择槽位即可装备" : _perks.LastError, ok);
+        Refresh();
+    }
+
     private void InheritDefault()
     {
         if (_perks == null || SelectedSiteId < 0)
@@ -718,12 +774,16 @@ public partial class FactoryPerkSidebar : Control
         if (d.B("unlocked"))
         {
             text += "\n下级：" + d.S("next_effect_text");
-            text += d.I("level") < d.I("max_level") ? $"\n升级消耗 {UiTheme.Number(d.L("upgrade_cost"))} 能源核心 · 等级跨局保留" : "\n已达到永久等级上限";
+            text += d.I("level") < d.I("max_level") ? $"\n升级消耗 {UiTheme.Number(d.L("upgrade_cost"))} 外星芯片 · 逐级递增 · 等级跨局保留" : "\n已达到永久等级上限";
             text += "\n拖入装备槽 / 双击装入所选槽 · 装备免费";
         }
         else
-            text += "\n\n" + d.S("unlock_reason", "击败中型 Boss 后解锁。");
-        return UiTheme.Tooltip(d.S("name") + (d.B("unlocked") ? $" · Lv.{d.I("level")}" : " · 未解锁"), text);
+        {
+            text += $"\n\nLv.1 永久购买 · {UiTheme.Number(d.L("purchase_cost"))} 外星芯片";
+            string reason = d.S("purchase_lock_reason");
+            text += reason != "" ? "\n" + reason : "\n可在详情卡购买，随后免费装备。";
+        }
+        return UiTheme.Tooltip(d.S("name") + (d.B("unlocked") ? $" · Lv.{d.I("level")}" : " · 待购买"), text);
     }
 }
 

@@ -17,7 +17,8 @@
 | 39 种特性的描述和类别 | `perks_definitions.csv` |
 | 特性适用工厂、机型 | `perks_definitions_kinds.csv`、`perks_definitions_airframes.csv` |
 | 特性实际效果公式 | `perk_effect_rules.csv` |
-| 基础与高级特性的升级费用/等级上限 | `perk_tiers.csv`、`perks_settings.csv` |
+| 基础与高级特性的购买价、升级费用/等级上限 | `perk_tiers.csv`、`perks_settings.csv` |
+| 普通敌方战机的外星芯片掉率（默认 3%，每次 1 枚） | `perk_economy.csv` |
 | 永久特性工程参数的合法范围 | `perk_setting_bounds.csv` |
 | 首次战败成就文案、每项护盾容量科技的永久额外增量 | `achievements.csv` 的 `reward_per_research`（默认 1） |
 | 建筑定义、数量上限与造价 | `economy_buildings.csv`、`economy_buildings_cost.csv` |
@@ -112,7 +113,7 @@ K_S21,0,string,K_S01
 
 ## 一个特性公式编辑例子
 
-在 `perk_effect_rules.csv` 查找 `perk_id=f_kinetic_quality` 与 `attribute=damage_multiplier`。当前 `operation=linear`、`base=1`、`per_level=0.16`、`level_offset=0`，因此等级 1 为 ×1.16、等级 5 为 ×1.80。
+在 `perk_effect_rules.csv` 查找 `perk_id=f_kinetic_quality` 与 `attribute=damage_multiplier`。当前 `operation=linear`、`base=1`、`per_level=0.08`、`level_offset=0`，因此等级 1 为 ×1.08、等级 5 为 ×1.40。
 
 若把 `per_level` 改为 `0.20`，对应变为 ×1.20 和 ×2.00。ID、等级和装备归属不变。该行的空 maximum 表示没有额外硬上限。穿透等阶梯能力应保留其 floor_step / threshold 操作，不能直接照搬成连续的小数目标数。
 

@@ -197,13 +197,13 @@ public partial class Main
             SettingsInfo(498, new[] { "固定时间增援 · 波次开始后保持当前计划", $"当前第 {Game.Wave} 波：已派遣 {UiTheme.Number(plan.N("spawned"))} / {UiTheme.Number(plan.N("planned_count"))} · {plan.N("elapsed"):0.0} / {plan.N("duration"):0.0} 秒", $"下一波：{next.L("wave")} 波 · {UiTheme.Number(next.N("planned_count"))} 敌军 · {FormatSetting(next.N("duration"))} 秒", "Boss 与孵化子机计入总配额；周期不能小于生成窗口。" });
         }
         else if (_combatPage == "strategy")
-            SettingsInfo(455, new[] { "资源建设与高级科技", "每波小 Boss 掉资源核心；三种资源设施每座消耗 1 核心。", "额外 1 核心可强化一座资源设施，按设定百分比线性相加。", $"资源核心 {Game.ResourceCores} · 外星点 {Game.AlienPoints} · 永久能源核心 {Game.FactoryPerks.EnergyCores}" });
+            SettingsInfo(455, new[] { "资源建设与高级科技", "每波小 Boss 掉资源核心；资源设施每座消耗 1 核心。", "资源核心强化设施；外星科技点用于研究外星科技。", $"资源核心 {Game.ResourceCores} · 外星点 {Game.AlienPoints} · 外星芯片 {Game.FactoryPerks.AlienChips}" });
         else if (_combatPage == "feedback")
             SettingsInfo(455, new[] { "伤害反馈使用实际受伤比例", "受伤比例 = 实际耐久与护盾损失 / (最大耐久 + 护盾上限)", "目标强度 = 最大红色强度 × clamp(受伤比例 / 满幅阈值, 0, 1)", "过渡速度控制接近目标的快慢；无新伤害时恢复正常大气。" });
         else if (_combatPage == "barrage")
             SettingsInfo(543, new[] { $"当前生效：每轮 {Game.EnemyBulletCount()} 发 · 已防御 {Game.DefenseTime:0} 秒", "每轮弹数 = 初始弹数 + 已过增长周期 × 每次增量，受上限约束。", "存档保留成长时间，调整不会改变已经在飞行的子弹。" });
         else if (_combatPage == "incremental")
-            SettingsInfo(555, new[] { "三次拉远 → 三项边界航程研究 → 外层持续防御", "能源核心与已解锁特性跨局保留；编制基数作用于下一次生产。" });
+            SettingsInfo(555, new[] { "三次拉远 → 三项边界航程研究 → 外层持续防御", "普通敌机低概率回收外星芯片，用于购买与永久升级特性。" });
         Text(UiTheme.Fit(_settingsNotice, 1060, 12), new(184, 677), 12, _settingsError ? UiTheme.Coral : UiTheme.Mint);
         Text($"当前单厂编制点：动能 {Game.FactoryCapacity("interceptor")} / 激光 {Game.FactoryCapacity("laser")} / 导弹 {Game.FactoryCapacity("missile")}", new(184, 705), 12, UiTheme.Cyan);
         Button(new(182, 736, 180, 39), "恢复默认数值", "modal:combat:defaults");
@@ -217,4 +217,3 @@ public partial class Main
             Text(lines[i], new(200, y + 28 + i * 29), i == 0 ? 16 : 12, i == 0 ? UiTheme.Mint : UiTheme.Muted);
     }
 }
-
