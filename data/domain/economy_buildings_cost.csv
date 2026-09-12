@@ -3,9 +3,9 @@ mine,0,minerals,number,85.0
 mine,1,energy,number,25.0
 solar,0,minerals,number,70.0
 solar,1,energy,number,20.0
-interceptor,0,minerals,number,100.0
-interceptor,1,energy,number,45.0
-laser,0,minerals,number,480.0
-laser,1,energy,number,360.0
-missile,0,minerals,number,240.0
-missile,1,energy,number,140.0
+interceptor,0,minerals,number,80.0
+interceptor,1,energy,number,35.0
+laser,0,minerals,number,400.0
+laser,1,energy,number,300.0
+missile,0,minerals,number,200.0
+missile,1,energy,number,115.0
