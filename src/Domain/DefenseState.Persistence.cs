@@ -26,6 +26,8 @@ public sealed partial class DefenseState
         ["resource_cores"] = ResourceCores,
         ["completed_waves"] = CompletedWaves,
         ["shield_build_ready_wave"] = _shieldBuildReadyWave,
+        ["research_satellite_deployed"] = ResearchSatelliteDeployed,
+        ["research_satellite_launching"] = ResearchSatelliteLaunchInProgress,
         ["buildings"] = Buildings.DeepClone(),
         ["combat_settings"] = CombatSettings.DeepClone(),
         ["resource_core_upgrades"] = _resourceUpgrades.DeepClone(),
@@ -69,14 +71,21 @@ public sealed partial class DefenseState
         DataMap? settings = data.Value("combat_settings") is DataMap values ? ValidatedCombatSettings(values.DeepClone()) : null;
         if (settings == null)
             return false;
+        if (data.Value("research_satellite_deployed") is not bool satelliteDeployed || data.Value("research_satellite_launching") is not bool satelliteLaunching || satelliteDeployed && satelliteLaunching)
+            return false;
         var buildings = new DataMap();
         foreach (var definition in BuildingDefinitions)
         {
             string key = definition.S("id");
             if (!DataMap.ValidNumber(savedBuildings.Value(key), 0, MaxExactInteger, true))
                 return false;
-            buildings[key] = savedBuildings.L(key);
+            long count = savedBuildings.L(key);
+            if (count > BuildingMaxCount(key))
+                return false;
+            buildings[key] = count;
         }
+        if ((satelliteDeployed || satelliteLaunching) && buildings.L("satellite_launcher") <= 0)
+            return false;
         var upgrades = ValidateResourceUpgrades(data.Value("resource_core_upgrades", new DataMap()), buildings);
         if (upgrades == null)
             return false;
@@ -94,7 +103,7 @@ public sealed partial class DefenseState
         if (data.Value("expedition") is not DataMap nested || nested.Count == 0)
             return false;
         var expedition = ExpeditionData.Validate(nested);
-        if (expedition == null || buildings.L("starship_silo") > 0 && !expedition.Map("research").B("telescope"))
+        if (expedition == null)
             return false;
         string runId = suppliedRunId;
         if (!FactoryPerks.ResetRunSites(runId))
@@ -113,6 +122,8 @@ public sealed partial class DefenseState
         CompletedWaves = data.L("completed_waves", Wave);
         _shieldBuildReadyWave = data.L("shield_build_ready_wave", 0);
         Buildings = buildings;
+        if (!SetResearchSatelliteState(satelliteDeployed, satelliteLaunching))
+            return false;
         CombatSettings = settings;
         _resourceUpgrades = upgrades;
         Expedition.Restore(expedition);
@@ -143,6 +154,8 @@ public sealed partial class DefenseState
         ResourceCores = 0;
         CompletedWaves = 0;
         _shieldBuildReadyWave = 0;
+        ResearchSatelliteDeployed = false;
+        ResearchSatelliteLaunchInProgress = false;
         Buildings = CatalogData.Load("economy.json").Map("initial_buildings").DeepClone();
         CombatSettings = DefaultCombatSettings;
         DeepResearch = new();

@@ -25,6 +25,7 @@ public partial class Main
             return;
         }
         ClearShieldCoverageOnly();
+        ClearSatelliteLauncher();
         SelectedCoverageSiteId = site;
         RefreshFactoryCoverage();
         QueueRedraw();
@@ -43,9 +44,12 @@ public partial class Main
     public void ClearFactoryCoverage()
     {
         bool had = SelectedCoverageSiteId >= 0 || CurrentFactoryCoverage != null
-            || SelectedShieldCoverageSiteId >= 0 || CurrentShieldCoverage != null;
+            || SelectedShieldCoverageSiteId >= 0 || CurrentShieldCoverage != null
+            || SelectedSatelliteLauncherSiteId >= 0 || SatelliteLauncherHudRect != default;
         ClearFactoryCoverageOnly();
         ClearShieldCoverageOnly();
+        SelectedSatelliteLauncherSiteId = -1;
+        SatelliteLauncherHudRect = default;
         if (!had)
             return;
         QueueRedraw();

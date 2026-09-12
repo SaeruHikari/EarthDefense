@@ -39,25 +39,15 @@ public sealed partial class PlanetView : SubViewportContainer, ICombatSurface
     public Node3D SpaceRoot { get; private set; } = null!;
     public event Action<int>? SlotSelected;
     public event Action? CameraChanged, FactoryLayoutChanged, StrategicCameraRequested;
+    public event Action? ResearchSatelliteLaunchCompleted;
     public event Action<string>? FocusChanged;
     private SubViewport _viewport = null!;
-    private SubViewport _cloudViewport = null!;
-    private Camera3D _cloudCamera = null!;
     private TextureRect _presenter = null!;
-    // The volumetric cloud layer is low frequency and expensive per pixel, so it renders
-    // through its own reduced-resolution camera on a dedicated visual layer. The main
-    // camera skips that layer and the presenter composites the two buffers.
-    private const uint CloudLayer = 1u << 19;
-    private const int CloudResolutionDivisor = 2;
-    // The low-resolution cloud buffer is already tonemapped, so compositing it directly over the
-    // tonemapped scene skips the filmic compression the clouds used to receive inside the 3D pass
-    // (measured +7% brighter, highlights blown out). Squaring both layers approximates the inverse
-    // display transform so the square root compresses the sum once, matching the single-pass result
-    // (measured 3.7% -> 0.8% mean deviation against the full-resolution reference).
-    private const string CloudCompositeShader = "shader_type canvas_item;\nrender_mode blend_premul_alpha;\nuniform sampler2D cloud_layer : filter_linear, repeat_disable;\nvoid fragment() {\n\tvec4 base = texture(TEXTURE, UV);\n\tvec4 cloud = texture(cloud_layer, UV);\n\tvec3 sum = cloud.rgb * cloud.rgb + base.rgb * base.rgb * (1.0 - cloud.a);\n\tCOLOR = vec4(sqrt(sum), cloud.a + base.a * (1.0 - cloud.a));\n}";
     private EarthVisual _earth = null!;
     private CelestialVisual _celestial = null!;
     private OrbitalResearchStationVisual _researchStation = null!;
+    private SatelliteLaunchVehicleVisual? _satelliteLaunch;
+    private float _satelliteLaunchTargetPhase;
     private FleetRenderer _fleet = null!;
     private CombatEffectsView _effects = null!;
     private Environment _environment = null!;
@@ -89,15 +79,9 @@ public sealed partial class PlanetView : SubViewportContainer, ICombatSurface
         AddChild(host);
         _viewport = new SubViewport { TransparentBg = true, OwnWorld3D = true, Size = NativeRenderSize(), Msaa3D = Viewport.Msaa.Msaa4X, AnisotropicFilteringLevel = Viewport.AnisotropicFiltering.Anisotropy16X, UseDebanding = true, RenderTargetUpdateMode = SubViewport.UpdateMode.Always };
         host.AddChild(_viewport);
-        // Shares the parent viewport's world: the cloud proxy mesh keeps its exact transform
-        // and material parameters, only the camera resolution and cull mask differ.
-        _cloudViewport = new SubViewport { TransparentBg = true, Size = CloudRenderSize(_viewport.Size), Msaa3D = Viewport.Msaa.Disabled, UseDebanding = true, RenderTargetUpdateMode = SubViewport.UpdateMode.Always };
-        _viewport.AddChild(_cloudViewport);
-        _cloudCamera = new Camera3D { CullMask = CloudLayer, Fov = 36, Near = .1f, Far = 420, Current = true };
-        _cloudViewport.AddChild(_cloudCamera);
-        var compositor = new ShaderMaterial { Shader = new Shader { Code = CloudCompositeShader } };
-        compositor.SetShaderParameter("cloud_layer", _cloudViewport.GetTexture());
-        _presenter = new TextureRect { Texture = _viewport.GetTexture(), Material = compositor, Size = ViewSize, MouseFilter = MouseFilterEnum.Ignore, ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.Scale };
+        // Transparent viewport textures already contain premultiplied color. Present
+        // the scene once, preserving translucent cloud/atmosphere edges over space.
+        _presenter = new TextureRect { Texture = _viewport.GetTexture(), Material = new CanvasItemMaterial { BlendMode = CanvasItemMaterial.BlendModeEnum.PremultAlpha }, Size = ViewSize, MouseFilter = MouseFilterEnum.Ignore, ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.Scale };
         AddChild(_presenter);
         var scene = new Node3D();
         _viewport.AddChild(scene);
@@ -111,7 +95,6 @@ public sealed partial class PlanetView : SubViewportContainer, ICombatSurface
         scene.AddChild(new WorldEnvironment { Environment = _environment });
         Camera = new Camera3D { Fov = 36, Near = .1f, Far = 420, Current = true };
         scene.AddChild(Camera);
-        Camera.CullMask &= ~CloudLayer;
         AddLight(scene, new(-32, -38, 0), new("fff4e5"), 1.5f, true);
         AddLight(scene, new(8, 139, 0), new("6687b4"), .16f, false);
         AddLight(scene, new(30, 15, 0), new("b7cde6"), .035f, false);
@@ -120,7 +103,6 @@ public sealed partial class PlanetView : SubViewportContainer, ICombatSurface
         SpaceRoot = new Node3D { Name = "InertialSpace" };
         scene.AddChild(SpaceRoot);
         _earth = new EarthVisual(Globe, SunDirection);
-        _earth.SetCloudLayer(CloudLayer);
         _celestial = new CelestialVisual(SpaceRoot);
         _researchStation = new OrbitalResearchStationVisual(SpaceRoot);
         Grid = new SphericalGrid { Name = "SurfaceConstructionGrid" };
@@ -129,6 +111,9 @@ public sealed partial class PlanetView : SubViewportContainer, ICombatSurface
         _atmosphere = (MeshInstance3D)RenderAssets.Instantiate("res://assets/managed/world/atmosphere.scn");
         Globe.AddChild(_atmosphere);
         _atmosphereMaterial = (ShaderMaterial)RenderAssets.ShaderMaterial(_atmosphere).Duplicate();
+        // The cloud shader attenuates the full ground-air pass, then restores
+        // only the shorter air column between the camera and the visible cloud.
+        _atmosphereMaterial.RenderPriority = -18;
         _atmosphere.MaterialOverride = _atmosphereMaterial;
         _atmosphere.Scale *= WorldScale.AtmosphereRadius / (WorldScale.LegacyEarthRadius + .48f);
         _atmosphereMaterial.SetShaderParameter("planet_radius", WorldScale.EarthRadius);
@@ -160,7 +145,24 @@ public sealed partial class PlanetView : SubViewportContainer, ICombatSurface
         }
         _earth.Update(delta, Paused);
         _celestial.Update(delta, Paused, Camera);
-        _researchStation?.Update(delta, Paused);
+        UpdateSatelliteLauncherOrbit();
+        _researchStation?.Update(delta, Paused || _satelliteLaunch != null);
+        if (_satelliteLaunch != null)
+        {
+            SatelliteLaunchVehicleVisual sequence = _satelliteLaunch;
+            if (sequence.Update(delta, Paused))
+            {
+                _satelliteLaunch = null;
+                sequence.Root.QueueFree();
+                var station = _researchStation;
+                if (station != null)
+                {
+                    station.SetOrbitPhase(_satelliteLaunchTargetPhase);
+                    station.SetDeployed(true);
+                }
+                ResearchSatelliteLaunchCompleted?.Invoke();
+            }
+        }
         UpdateFocusTransition(delta);
         UpdateNavigationHighlight((float)delta);
         if (PlacingBuilding)
@@ -171,16 +173,7 @@ public sealed partial class PlanetView : SubViewportContainer, ICombatSurface
             UpdateSelectedFootprint();
         }
         if (CaptureFrameTimings) LastPlanetProcessMs = System.Diagnostics.Stopwatch.GetElapsedTime(processStarted).TotalMilliseconds;
-        SyncCloudCamera();
     }
-    private void SyncCloudCamera()
-    {
-        _cloudCamera.GlobalTransform = Camera.GlobalTransform;
-        _cloudCamera.Fov = Camera.Fov;
-        _cloudCamera.Near = Camera.Near;
-        _cloudCamera.Far = Camera.Far;
-    }
-    private static Vector2I CloudRenderSize(Vector2I full) => new(Math.Max(2, full.X / CloudResolutionDivisor), Math.Max(2, full.Y / CloudResolutionDivisor));
     public void SetViewSize(Vector2I dimensions, Vector2I physicalDimensions = default)
     {
         ViewSize = new(Math.Max(1, dimensions.X), Math.Max(1, dimensions.Y));
@@ -189,7 +182,6 @@ public sealed partial class PlanetView : SubViewportContainer, ICombatSurface
         if (_viewport == null)
             return;
         _viewport.Size = physicalDimensions.X > 0 && physicalDimensions.Y > 0 ? physicalDimensions : NativeRenderSize();
-        _cloudViewport.Size = CloudRenderSize(_viewport.Size);
         _presenter.Size = ViewSize;
         if (_focusId == "system")
             FocusSystem(true);

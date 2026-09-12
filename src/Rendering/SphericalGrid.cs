@@ -48,6 +48,9 @@ public sealed partial class SphericalGrid : Node3D
         _selectedCells = [];
     }
     public Vector3 GetCellCenter(int cell) => cell >= 0 && cell < CellCount ? _data.Centers[cell] : Vector3.Zero;
+    /// <summary>Ordered unit-sphere corners for a surface-aligned building foundation.</summary>
+    public Vector3[] GetCellPolygonDirections(int cell)
+        => cell >= 0 && cell < CellCount ? _data.Polygons[cell].Select(corner => _data.Corners[corner]).ToArray() : [];
     public int GetCellCount() => CellCount;
     public int FindNearestCell(Vector3 normal, ISet<int>? excluded = null)
     {
@@ -110,7 +113,9 @@ public sealed partial class SphericalGrid : Node3D
         var result = new List<int> { cell };
         var visited = new HashSet<int> { cell };
         var frontier = new List<int> { cell };
-        for (int ring = 0; ring < 2; ring++)
+        // A launch pad occupies the center plus its six immediate hexagonal
+        // neighbours: a readable seven-cell honeycomb footprint.
+        for (int ring = 0; ring < 1; ring++)
         {
             var next = new List<int>();
             foreach (int current in frontier)
@@ -126,7 +131,7 @@ public sealed partial class SphericalGrid : Node3D
             }
             frontier = next;
         }
-        return result.Count == 19 && result.All(c => _data.Polygons[c].Length == 6) ? result.ToArray() : [];
+        return result.Count == 7 && result.All(c => _data.Polygons[c].Length == 6) ? result.ToArray() : [];
     }
     private Vector3 Point(Vector3 n, float lift) => n * (_terrain.SurfaceRadius(n) + lift);
     // Smaller angular cells need fewer arc samples; retain the original drawing
@@ -262,8 +267,6 @@ public sealed partial class SphericalGrid : Node3D
     }
     public static bool ValidateStructureLayout(IReadOnlyList<object?> slots, IReadOnlyList<object?> directions)
     {
-        if (!slots.Contains("starship_silo"))
-            return true;
         if (slots.Count != directions.Count)
             return false;
         int level = WorldScale.GridLevel;
@@ -302,27 +305,17 @@ public sealed partial class SphericalGrid : Node3D
             if (kind == "")
                 continue;
             var footprint = new List<int> { cell };
-            if (kind == "starship_silo")
+            if (kind == "satellite_launcher")
             {
-                var visited = new HashSet<int> { cell };
-                var frontier = new List<int> { cell };
-                for (int ring = 0; ring < 2; ring++)
+                if (topology.Polygons[cell].Length != 6)
+                    return false;
+                foreach (int adjacent in topology.Neighbors[cell])
                 {
-                    var next = new List<int>();
-                    foreach (int current in frontier)
-                    {
-                        if (topology.Polygons[current].Length != 6)
-                            return false;
-                        foreach (int adjacent in topology.Neighbors[current])
-                            if (visited.Add(adjacent))
-                            {
-                                footprint.Add(adjacent);
-                                next.Add(adjacent);
-                            }
-                    }
-                    frontier = next;
+                    if (topology.Polygons[adjacent].Length != 6)
+                        return false;
+                    footprint.Add(adjacent);
                 }
-                if (footprint.Count != 19 || footprint.Any(c => topology.Polygons[c].Length != 6))
+                if (footprint.Count != 7)
                     return false;
             }
             foreach (int member in footprint)

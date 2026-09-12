@@ -19,7 +19,7 @@
 | 特性实际效果公式 | `perk_effect_rules.csv` |
 | 基础与高级特性的升级费用/等级上限 | `perk_tiers.csv`、`perks_settings.csv` |
 | 永久特性工程参数的合法范围 | `perk_setting_bounds.csv` |
-| 建筑定义与造价 | `economy_buildings.csv`、`economy_buildings_cost.csv` |
+| 建筑定义、数量上限与造价 | `economy_buildings.csv`、`economy_buildings_cost.csv` |
 | 初始设施数量 | `economy_initial_buildings.csv` |
 | 参数界面的默认值、上下限和整数设置 | `economy_settings.csv`、`economy_ranges.csv`、`economy_integer_settings.csv` |
 | 初始资源、武器基数、资源产出、波次奖励等 | `domain_balance.csv` |
@@ -41,6 +41,7 @@
 - `has_` 列表示该记录是否具有对应的子表字段。已有字段通常保留为 `true`；空关系由没有子行表示。根表和 `catalog_tables.csv`、`catalog_columns.csv` 属于结构描述，日常调数值无需改动。
 - 科技属性必须出现在 `technology_attribute_schema.csv`，并由对应的战斗或领域逻辑实现。加入新名字不会自动创造新的玩法；拼错名字会被校验拒绝。
 - 单级科技 `max=1`；小科技只付科研。三项容量中科技仍合计最多研究 +3；该限制是玩法规则，不会同时限制工厂基数、参数倍率和永久特性。
+- 建筑可用 `max_count` 设置场上数量上限；空值表示没有该项限制。`satellite_launcher` 当前为 `max_count=1`、`has_cost=false`，费用子表不含该建筑记录。
 
 ## 特性公式
 
@@ -84,7 +85,9 @@ dotnet run --project tests/DomainManaged/DomainManaged.csproj -v quiet
 
 所有运行中的数值来自当前启动时加载的 CSV；更改建筑、经济或存档结构后应清理开发 profile 并从新局开始。永久特性档案也按当前 ProfileVersion 校验，不提供旧格式迁移。
 
-科研不再由地面研究所产生。`domain_balance.csv` 中的 `science_output_base` 是固定轨道研究站的基数，乘 `economy_settings.csv` 的 `resource_output_multiplier` 后作为唯一的持续科研收入；研究站模型和带流光的半透明轨道环由 `src/Rendering/OrbitalResearchStationVisual.cs` 创建，不占用地表建筑槽。
+科研不再由地面研究所产生。建设栏第一项为免费的卫星发射中心（`satellite_launcher`），限建一座，初始数量为 0。玩家通过开局引导建造中心，再点击地表中心免费发射科研卫星；完成火箭上升、分级与入轨动画后才开始持续科研收入。`domain_balance.csv` 的 `science_output_base=0.8` 乘 `economy_settings.csv` 的 `resource_output_multiplier=0.1`，默认得到 **0.08 科研/秒**。发射之前持续科研为 0，击杀与波次科研奖励独立结算。
+
+发射中心的占地和实际模型都是七格蜂窝：中心发射塔与外围六格贴地附属平台。占地由球面网格拓扑确定，模型由 `src/Rendering/SatelliteLauncherModel.cs` 创建。科研卫星和轨道环由 `src/Rendering/OrbitalResearchStationVisual.cs` 创建；轨道平面按发射中心位置确定，经过发射台正上方，地心半径 **20.25**、相对地球表面高度 **4.25**。这些几何与动画常量属于渲染代码，当前不是 CSV 参数；卫星本身不占地表建筑槽。
 
 ## 两个科技编辑例子
 

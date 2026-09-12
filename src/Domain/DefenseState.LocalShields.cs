@@ -83,7 +83,7 @@ public sealed partial class DefenseState
     {
         var definition = Find(BuildingDefinitions, id);
         if (definition.Count == 0) return "\u672a\u77e5\u5efa\u7b51";
-        if (id == "starship_silo" && (!ExpeditionEnabled || !Expedition.Research.B("telescope"))) return "\u661f\u8230\u7cfb\u7edf\u5c1a\u672a\u5f00\u653e";
+        if (id == "satellite_launcher" && Buildings.L(id) >= BuildingMaxCount(id)) return "\u536b\u661f\u53d1\u5c04\u5668\u53ea\u80fd\u5efa\u9020\u4e00\u6b21";
         if (id is "laser" or "missile" && !WeaponUnlocked(id)) return "\u9700\u8981\u7814\u7a76\u5bf9\u5e94\u6b66\u5668\u79d1\u6280";
         string research = definition.S("unlock_research");
         return research.Length > 0 && !HasResearch(research) ? "\u9700\u8981\u7814\u7a76\u300c" + DeepTechnology.Definition(research).S("name", research) + "\u300d" : "";

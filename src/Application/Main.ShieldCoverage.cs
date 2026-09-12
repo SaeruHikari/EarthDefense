@@ -22,6 +22,7 @@ public partial class Main
             return;
         }
         ClearFactoryCoverageOnly();
+        ClearSatelliteLauncher();
         SelectedShieldCoverageSiteId = site;
         RefreshShieldCoverage();
         QueueRedraw();

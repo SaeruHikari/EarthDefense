@@ -59,3 +59,4 @@ expedition_setting_definitions.csv,integer,bool,true
 expedition_setting_definitions.csv,max,number,true
 expedition_setting_definitions.csv,min,number,true
 expedition_setting_definitions.csv,name,string,true
+economy_buildings.csv,max_count,integer,false

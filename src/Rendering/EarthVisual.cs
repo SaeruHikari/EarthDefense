@@ -48,8 +48,14 @@ public sealed class EarthVisual
         _groundMaterial = (ShaderMaterial)RenderAssets.ShaderMaterial(_surface).Duplicate();
         _surface.MaterialOverride = _groundMaterial;
         _cloudMaterial = (ShaderMaterial)RenderAssets.ShaderMaterial(_cloud).Duplicate();
+        // Keep both cloud layers in the main 3D pass: the volume must sample
+        // its actual opaque depth to stop at aircraft and rockets inside it.
+        // Explicit ordering avoids camera-dependent sorting of concentric shells.
+        _cloudMaterial.RenderPriority = -16;
         _cloud.MaterialOverride = _cloudMaterial;
+        _cloud.Layers = 1;
         _cirrusMaterial = (ShaderMaterial)RenderAssets.ShaderMaterial(_cirrus).Duplicate();
+        _cirrusMaterial.RenderPriority = -14;
         _cirrus.MaterialOverride = _cirrusMaterial;
         _weather = [_groundMaterial, _cloudMaterial, _cirrusMaterial];
         ConfigureWorldRadii();
@@ -62,6 +68,7 @@ public sealed class EarthVisual
         }
         SetCloudTime(0);
         UpdateLod(360);
+        Update(0, true);
     }
     private void ConfigureWorldRadii()
     {
@@ -132,10 +139,6 @@ public sealed class EarthVisual
         float lower = Mathf.Lerp(_height.GetPixel(x0, Math.Min(y0 + 1, h - 1)).R, _height.GetPixel((x0 + 1) % w, Math.Min(y0 + 1, h - 1)).R, x - x0);
         return WorldScale.EarthRadius + Mathf.Clamp(Mathf.Lerp(upper, lower, y - y0), 0, 1) * WorldScale.MaxElevation;
     }
-    /// <summary>Volumetric clouds render through their own reduced-resolution camera, so they must
-    /// live on a visual layer the main camera skips. The cirrus shell stays in the main pass.</summary>
-    public void SetCloudLayer(uint layers) => _cloud.Layers = layers;
-
     public void SetCloudTime(double seconds)
     {
         if (!double.IsFinite(seconds) || seconds < 0)

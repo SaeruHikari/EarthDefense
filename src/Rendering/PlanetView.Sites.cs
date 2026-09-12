@@ -6,14 +6,17 @@ public sealed partial class PlanetView
 {
     public void ResetPlanet()
     {
+        CancelResearchSatelliteLaunch();
+        _researchStation?.ResetOrbitAnchor();
         ClearSites();
         ClearCombatUnits();
         _restoring = true;
         Grid.SetSubdivision(WorldScale.GridLevel);
         Globe.Rotation = new(0, Mathf.DegToRad(12), 0);
         ResetCamera();
-        // Science is produced by the permanent orbital station; the third
-        // starter cell remains open for future surface infrastructure.
+        // The third starter cell remains open for the one-time satellite
+        // launcher and future surface infrastructure. Science comes online
+        // only after the first satellite reaches orbit.
         string[] initial = ["mine", "solar", "", "interceptor"];
         for (int i = 0; i < SiteCoordinates.Length; i++)
             AppendSite(CoordinateNormal(SiteCoordinates[i]), i < 4 ? initial[i] : "");
@@ -22,6 +25,8 @@ public sealed partial class PlanetView
     }
     private void ClearSites()
     {
+        _satelliteLauncherSite = -1;
+        _researchStation?.SetOrbitAvailable(false);
         foreach (var site in _siteNodes)
         {
             Globe.RemoveChild(site);
@@ -98,6 +103,8 @@ public sealed partial class PlanetView
         if (!_restoring && PlacementReason(index, kind, true) != "")
             return false;
         _slots[index] = kind;
+        if (kind == "satellite_launcher" && _researchStation != null)
+            ConfigureSatelliteLauncherOrbit(index);
         _facilities.Remove(index);
         var site = _siteNodes[index];
         foreach (var child in site.GetChildren())
@@ -105,10 +112,10 @@ public sealed partial class PlanetView
             site.RemoveChild(child);
             child.QueueFree();
         }
-        if (kind is "interceptor" or "missile" or "laser" or "mine" or "solar" or "shield")
+        if (kind is "interceptor" or "missile" or "laser" or "mine" or "solar" or "shield" or "satellite_launcher")
             _facilities[index] = new(site, kind);
-        else if (kind == "starship_silo" && ResourceLoader.Exists("res://assets/managed/factories/starship_silo.scn"))
-            site.AddChild(RenderAssets.Instantiate("res://assets/managed/factories/starship_silo.scn"));
+        if (kind == "satellite_launcher")
+            SatelliteLauncherModel.AddHoneycombFoundation(_facilities[index].Root, Grid, _siteCells[index], site.Transform.AffineInverse(), _earth.SurfaceRadius);
         if (!_restoring)
         {
             if (!_slots.Contains("") && _slots.Count >= Grid.CellCount)
@@ -246,7 +253,7 @@ public sealed partial class PlanetView
             return [];
         if (kind == "")
             kind = _slots[site];
-        return kind == "starship_silo" ? Grid.GetClusterCells(_siteCells[site]) : [_siteCells[site]];
+        return kind == "satellite_launcher" ? Grid.GetClusterCells(_siteCells[site]) : [_siteCells[site]];
     }
     private string PlacementReason(int site, string kind, bool replace = false)
     {
@@ -275,7 +282,7 @@ public sealed partial class PlanetView
             Grid.SetHoverCells([]);
             return;
         }
-        var cells = PlacingKind == "starship_silo" ? Grid.GetClusterCells(cell) : [cell];
+        var cells = PlacingKind == "satellite_launcher" ? Grid.GetClusterCells(cell) : [cell];
         bool valid = cells.Length > 0 && cells.All(c => !_footprintToSite.ContainsKey(c));
         Grid.SetHoverCells(cells.Length > 0 ? cells : [cell], valid);
     }

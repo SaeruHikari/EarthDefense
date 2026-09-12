@@ -96,7 +96,7 @@ public partial class Main
             return false;
         if (state.Value("buildings") is not DataMap buildings || !PlanetView.ValidateStructureLayout(slots, data.List("site_directions")))
             return false;
-        var counts = new Dictionary<string, long> { { "mine", 0 }, { "solar", 0 }, { "interceptor", 0 }, { "laser", 0 }, { "missile", 0 }, { "shield", 0 }, { "starship_silo", 0 } };
+        var counts = new Dictionary<string, long> { { "mine", 0 }, { "solar", 0 }, { "interceptor", 0 }, { "laser", 0 }, { "missile", 0 }, { "shield", 0 }, { "satellite_launcher", 0 } };
         foreach (var value in slots)
         {
             if (value is not string kind || kind != "" && !counts.ContainsKey(kind))
@@ -110,14 +110,10 @@ public partial class Main
         if (!verifier.Restore(state))
             return false;
         var fleet = verifier.Expedition.Serialize().Map("fleet");
-        foreach (var entry in fleet.List("orders").Concat(fleet.List("ships")))
-        {
-            if (entry is not DataMap ship)
-                return false;
-            int site = ship.I("silo_id", -1);
-            if (site < 0 || site >= slots.Count || (string?)slots[site] != "starship_silo")
-                return false;
-        }
+        // The current defense campaign has no expedition shipyards. A science
+        // launcher must never validate as the old starship production silo.
+        if (fleet.List("orders").Count > 0 || fleet.List("ships").Count > 0)
+            return false;
         foreach (var pair in state.Map("resource_core_upgrades"))
         {
             if (!int.TryParse(pair.Key, out int site) || site < 0 || site >= slots.Count || pair.Value is not DataMap record || (string?)slots[site] != record.S("kind"))
@@ -186,6 +182,7 @@ public partial class Main
         SolarNavOpen = false;
         Planet.RestoreSites(data.List("slots"), data.List("site_directions"));
         Planet.RestoreCelestialState(data.Map("celestial"));
+        Planet.SyncResearchSatellite(Game.ResearchSatelliteDeployed, Game.ResearchSatelliteLaunchInProgress);
         Battle.ResetBattle();
         if (data.ContainsKey("invasion_anchor"))
             Battle.RestoreInvasionAnchor(data.Vector3("invasion_anchor"));
@@ -218,6 +215,7 @@ public partial class Main
         ShowNotice(retry
             ? $"已回到第 {Game.Wave:00} 波开头 · 已暂停布防，按空格继续"
             : $"已恢复第 {Game.Wave:00} 波记录 · 地球科技、资源与舰队进度已恢复");
+        InitializeSatelliteGuide();
         SyncRender();
         return true;
     }
@@ -262,6 +260,7 @@ public partial class Main
         Speed = 1;
         RefreshCampaignUi();
         ShowNotice("新的守望开始 · 已继承永久特性、等级和能源核心");
+        InitializeSatelliteGuide();
         UpdateFactoryPerkSites();
         return true;
     }

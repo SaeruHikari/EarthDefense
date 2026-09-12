@@ -16,7 +16,9 @@ public sealed class FacilityVisual
     public FacilityVisual(Node3D parent, string kind)
     {
         Kind = kind;
-        Root = kind == "shield" ? ShieldProjectorModel.Create() : RenderAssets.Instantiate($"res://assets/managed/factories/{kind}.scn");
+        Root = kind == "shield" ? ShieldProjectorModel.Create()
+            : kind == "satellite_launcher" ? SatelliteLauncherModel.Create()
+            : RenderAssets.Instantiate($"res://assets/managed/factories/{kind}.scn");
         parent.AddChild(Root);
         foreach (var node in Root.FindChildren("*", "Node3D", true, false))
             if (node is Node3D p)
@@ -38,6 +40,14 @@ public sealed class FacilityVisual
         {
             strip.Scale = new(Math.Max(.005f, progress), 1, 1);
             strip.Position = new((progress - 1) * .07f, .224f, .051f);
+        }
+        if (Kind == "satellite_launcher")
+        {
+            float clamp = .075f * phase;
+            if (_parts.TryGetValue("LaunchClampLeft", out var leftClamp))
+                leftClamp.Position = new(-.125f - clamp, .70f, .018f);
+            if (_parts.TryGetValue("LaunchClampRight", out var rightClamp))
+                rightClamp.Position = new(.125f + clamp, .70f, .018f);
         }
     }
     public void Update(double time)
@@ -61,6 +71,15 @@ public sealed class FacilityVisual
         {
             solar.Position = new(0, .177f, 0);
             solar.Rotation = new(-.27f + Mathf.Sin(t * .12f) * .11f, Mathf.Sin(t * .08f) * .15f, 0);
+        }
+        else if (Kind == "satellite_launcher")
+        {
+            if (_parts.TryGetValue("PadGlowRing", out var ring))
+                ring.Rotation = new(0, Mathf.PosMod(t * .38f, Mathf.Tau), 0);
+            if (_parts.TryGetValue("TelemetryDish", out var dish))
+                dish.Rotation = new(Mathf.Pi * .5f + .08f * Mathf.Sin(t * .24f), Mathf.PosMod(t * .12f, Mathf.Tau), 0);
+            if (_parts.TryGetValue("LaunchBeacon", out var beacon))
+                beacon.Scale = Vector3.One * (.92f + .18f * Mathf.Sin(t * 2.2f));
         }
     }
 }

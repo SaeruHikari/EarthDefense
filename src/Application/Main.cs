@@ -130,7 +130,7 @@ public partial class Main : Node2D
 			ShowNotice("永久特性档案读取失败，已保护原文件；请检查存档目录");
 		Game.FactoryPerkRewarded += OnFactoryPerkRewarded;
 		Game.Changed += InvalidateResearchGraph;
-		foreach (string id in new[] { "mine", "solar", "interceptor", "laser", "missile", "shield", "starship_silo" })
+		foreach (string id in new[] { "mine", "solar", "interceptor", "laser", "missile", "shield", "satellite_launcher" })
 		{
 			string path = $"res://assets/ui/build_icons/{id}.png";
 			if (ResourceLoader.Exists(path))
@@ -142,6 +142,7 @@ public partial class Main : Node2D
 		Planet = new PlanetView { Game = Game, ViewSize = new Vector2I((int)WorldSize.X, (int)WorldSize.Y), DefaultCameraDistance = WorldScale.DefaultCameraDistance, ZIndex = -10, ProcessPriority = -10 };
 		AddChild(Planet);
 		Planet.SlotSelected += SlotSelected;
+		Planet.ResearchSatelliteLaunchCompleted += OnResearchSatelliteLaunchCompleted;
 		Planet.CameraChanged += SyncBackgroundView;
 		Planet.FocusChanged += OnFocusChanged;
 		RefreshCelestialCatalog();
@@ -205,6 +206,7 @@ public partial class Main : Node2D
 			LoadCheckpoint();
 		else if (_demo)
 			StartWave();
+		InitializeSatelliteGuide();
 		SyncRender();
 		QueueRedraw();
 	}
@@ -219,6 +221,8 @@ public partial class Main : Node2D
 			Game.Changed -= InvalidateResearchGraph;
 			Game.FactoryPerkRewarded -= OnFactoryPerkRewarded;
 		}
+		if (Planet != null && IsInstanceValid(Planet))
+			Planet.ResearchSatelliteLaunchCompleted -= OnResearchSatelliteLaunchCompleted;
 		if (IsInstanceValid(Planet))
 		{
 			Planet.CameraChanged -= SyncBackgroundView;

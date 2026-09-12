@@ -10,14 +10,21 @@ namespace Earthward.Rendering;
 /// </summary>
 public sealed class OrbitalResearchStationVisual
 {
-    public const float OrbitRadius = WorldScale.EarthRadius + 3.35f;
-    public const float OrbitInclination = .28f;
+    // Keep a clear, readable gap above the atmosphere and shield ring.  The
+    // launcher path targets this same radius, so the payload always inserts
+    // into the exact orbital plane selected by the launch site.
+    public const float OrbitRadius = WorldScale.EarthRadius + 4.25f;
     public const float OrbitRate = .035f;
-    public const float OrbitRingThickness = .022f;
+    public const float OrbitRingThickness = .045f;
+    // Hidden initialization basis. Construction replaces it with the site's
+    // surface normal before revealing the orbit.
+    public static readonly Vector3 DefaultOrbitAnchor = new Vector3(0, .82f, -.57f).Normalized();
 
     public Node3D Root { get; }
     public Node3D Model { get; }
     public float OrbitPhase { get; private set; }
+    public bool IsDeployed { get; private set; }
+    public Vector3 OrbitAnchor { get; private set; } = DefaultOrbitAnchor;
 
     private readonly Node3D _orbit;
     private readonly Node3D _leftWing;
@@ -26,6 +33,7 @@ public sealed class OrbitalResearchStationVisual
     private readonly ShaderMaterial _orbitRingMaterial;
     private readonly ShaderMaterial _orbitHaloMaterial;
     private readonly float _phaseOffset;
+    private Basis _orbitBasis = Basis.Identity;
 
     private static readonly Dictionary<string, Mesh> MeshCache = new(StringComparer.Ordinal);
     private static StandardMaterial3D? _alloy;
@@ -50,10 +58,12 @@ void vertex() {
 void fragment() {
     float sweep = 0.5 + 0.5 * cos(ring_angle - pulse_phase);
     float glint = pow(max(sweep, 0.0), 7.0);
-    float grain = 0.86 + 0.14 * sin(ring_angle * 9.0 + pulse_phase * 1.7);
-    float alpha = ring_alpha * (0.23 + 0.46 * sweep + 0.31 * glint) * grain;
+    float grain = 0.95 + 0.05 * sin(ring_angle * 9.0 + pulse_phase * 1.7);
+    // A continuous bright floor keeps the whole visible arc readable; the
+    // moving highlight adds detail without making the rest disappear.
+    float alpha = ring_alpha * (0.68 + 0.20 * sweep + 0.12 * glint) * grain;
     ALBEDO = ring_tint.rgb;
-    EMISSION = ring_tint.rgb * (0.25 + 0.72 * sweep + 1.45 * glint);
+    EMISSION = ring_tint.rgb * (0.85 + 0.60 * sweep + 1.15 * glint);
     ALPHA = alpha;
 }
 """;
@@ -80,16 +90,17 @@ void fragment() {
 
         _orbitRingMaterial = new ShaderMaterial { Shader = _orbitRingShader };
         _orbitRingMaterial.SetShaderParameter("ring_tint", new Color("65e9e9", .74f));
-        _orbitRingMaterial.SetShaderParameter("ring_alpha", .34f);
+        _orbitRingMaterial.SetShaderParameter("ring_alpha", .72f);
         _orbitHaloMaterial = new ShaderMaterial { Shader = _orbitRingShader };
         _orbitHaloMaterial.SetShaderParameter("ring_tint", new Color("3ca8df", .52f));
-        _orbitHaloMaterial.SetShaderParameter("ring_alpha", .16f);
+        _orbitHaloMaterial.SetShaderParameter("ring_alpha", .22f);
 
         Root = new Node3D { Name = "OrbitalResearchStationOrbit" };
         parent.AddChild(Root);
-        _orbit = new Node3D { Name = "ResearchStationOrbitPivot", Rotation = new(OrbitInclination, 0, -.18f) };
+        _orbit = new Node3D { Name = "ResearchStationOrbitPivot" };
         Root.AddChild(_orbit);
-        Part(_orbit, "ResearchStationOrbitHalo", Torus("research_orbit_halo", OrbitRadius + .008f, .072f, 128, 8), _orbitHaloMaterial, Vector3.Zero);
+        SetOrbitAnchor(DefaultOrbitAnchor);
+        Part(_orbit, "ResearchStationOrbitHalo", Torus("research_orbit_halo", OrbitRadius - .04f, .13f, 192, 8), _orbitHaloMaterial, Vector3.Zero);
         Part(_orbit, "ResearchStationOrbitRing", Torus("research_orbit_ring", OrbitRadius, OrbitRingThickness, 128, 8), _orbitRingMaterial, Vector3.Zero);
         Model = new Node3D { Name = "OrbitalResearchStation", Position = new(0, 0, OrbitRadius) };
         _orbit.AddChild(Model);
@@ -113,13 +124,79 @@ void fragment() {
         Part(_antenna, "AntennaMast", Cylinder("mast", .018f, .014f, .34f, 12), _alloy, Vector3.Zero);
         Part(_antenna, "AntennaDish", Torus("dish", .085f, .012f), _science, new(0, .16f, 0), new(Mathf.Pi * .5f, 0, 0));
         Part(Model, "NavigationBeacon", Sphere("beacon", .035f), _science, new(0, -.12f, -.19f));
+        SetDeployed(false);
+        SetOrbitAvailable(false);
+    }
+
+    public static Vector3 OrbitPoint(float phase)
+        => OrbitPoint(DefaultOrbitAnchor, phase);
+
+    public static Vector3 OrbitPoint(Vector3 anchor, float phase)
+    {
+        Basis basis = BuildOrbitBasis(anchor);
+        return basis * new Basis(new Quaternion(Vector3.Up, phase)) * new Vector3(0, 0, OrbitRadius);
+    }
+
+    public Vector3 GetOrbitPoint(float phase)
+        => _orbitBasis * new Basis(new Quaternion(Vector3.Up, phase)) * new Vector3(0, 0, OrbitRadius);
+
+    public void SetOrbitAnchor(Vector3 normal)
+    {
+        if (!normal.IsFinite() || normal.LengthSquared() < .0001f)
+            normal = DefaultOrbitAnchor;
+        OrbitAnchor = normal.Normalized();
+        _orbitBasis = BuildOrbitBasis(OrbitAnchor);
+        ApplyOrbitTransform();
+    }
+
+    public void ResetOrbitAnchor()
+    {
+        SetOrbitAnchor(DefaultOrbitAnchor);
+        SetOrbitAvailable(false);
+    }
+
+    public void SetOrbitAvailable(bool available) => Root.Visible = available;
+
+    public void SetOrbitPhase(float phase)
+    {
+        OrbitPhase = Mathf.PosMod(phase, Mathf.Tau);
+        ApplyOrbitTransform();
+        Model.Position = new(0, 0, OrbitRadius);
+    }
+
+    public void SetDeployed(bool deployed)
+    {
+        IsDeployed = deployed;
+        Model.Visible = deployed;
+    }
+
+    private void ApplyOrbitTransform()
+    {
+        _orbit.Basis = _orbitBasis * new Basis(new Quaternion(Vector3.Up, OrbitPhase));
+        _orbit.Position = Vector3.Zero;
+    }
+
+    private static Basis BuildOrbitBasis(Vector3 anchor)
+    {
+        Vector3 z = anchor.Normalized();
+        // Use a world-right tangent as the stable in-plane reference.  Using
+        // world-up here makes the derived orbit plane contain the default
+        // camera's view axis, so the transparent torus collapses into a
+        // distracting vertical line.  Falling back near ±X keeps the basis
+        // numerically stable for a launcher placed on that meridian.
+        Vector3 reference = Math.Abs(z.Dot(Vector3.Right)) > .94f ? Vector3.Up : Vector3.Right;
+        Vector3 y = z.Cross(reference).Normalized();
+        if (y.LengthSquared() < .0001f)
+            y = Vector3.Right;
+        Vector3 x = y.Cross(z).Normalized();
+        return new Basis(x, y, z);
     }
 
     public void Update(double delta, bool paused)
     {
         if (!paused && double.IsFinite(delta) && delta > 0)
             OrbitPhase = Mathf.PosMod(OrbitPhase + (float)Math.Min(delta, .25) * OrbitRate, Mathf.Tau);
-        _orbit.Rotation = new(OrbitInclination, OrbitPhase, -.18f);
+        ApplyOrbitTransform();
         float t = OrbitPhase + _phaseOffset;
         _orbitRingMaterial.SetShaderParameter("pulse_phase", t * .75f);
         _orbitHaloMaterial.SetShaderParameter("pulse_phase", -t * .42f);

@@ -44,11 +44,11 @@ public partial class RenderingChecks : Node
             Check(planet.GetFactorySites().Count == 1, "Initial real factory");
             var slots = planet.GetSlots();
             Check((string)slots[0]! == "mine" && (string)slots[1]! == "solar" && (string)slots[2]! == "" && (string)slots[3]! == "interceptor", "Initial geography uses extraction, power and defense only");
-            Check(planet.HasOrbitalResearchStation, "Permanent orbital research station is present");
-            Check(Math.Abs(planet.GetOrbitalResearchStationWorldPosition().Length() - OrbitalResearchStationVisual.OrbitRadius) < .01f, "Orbital research station stays on its fixed low orbit");
+            Check(!planet.HasOrbitalResearchStation && !planet.HasOrbitalResearchOrbit, "No orbit is visible before the launch center is built");
             var orbitRing = planet.SpaceRoot.FindChild("ResearchStationOrbitRing", true, false);
             var orbitHalo = planet.SpaceRoot.FindChild("ResearchStationOrbitHalo", true, false);
             Check(orbitRing is MeshInstance3D && orbitHalo is MeshInstance3D, "Research station orbit has a layered transparent ring and halo");
+            planet.SyncResearchSatellite(false, false);
             Check(!planet.Grid.ConstructionOverlayVisible, "Construction hex grid is clear outside build mode");
             planet.PlacingBuilding = true;
             Check(planet.Grid.ConstructionOverlayVisible, "Construction hex grid appears while placing a building");
@@ -114,7 +114,17 @@ public partial class RenderingChecks : Node
             Check(NoLegacyScripts(planet), "Managed view tree contains no GDScript instances");
             planet.ClearCombatUnits();
             planet.SetViewSize(new(1440, 900));
+            planet._Process(0);
+            planet.MeasureRenderTime(true);
             await ToSignal(GetTree().CreateTimer(.6), SceneTreeTimer.SignalName.Timeout);
+            var gpu = new List<double>();
+            for (int sample = 0; sample < 45; sample++)
+            {
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                gpu.Add(planet.LastViewportGpuMs);
+            }
+            gpu.Sort();
+            GD.Print($"WORLD_GPU_1440_900: median {gpu[gpu.Count / 2]:F3} ms, p95 {gpu[(int)(gpu.Count * .95)]:F3} ms");
             if (DisplayServer.GetName() != "headless")
             {
                 await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);

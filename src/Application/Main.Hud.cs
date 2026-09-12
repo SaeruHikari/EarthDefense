@@ -47,6 +47,7 @@ public partial class Main
             DrawFrontierWarning();
             DrawFactoryCoverageHud();
             DrawShieldCoverageHud();
+            DrawSatelliteLauncherHud();
             DrawHudTooltip();
             DrawResourceUpgradeCursor();
             DrawAircraftHover();
@@ -135,7 +136,7 @@ public partial class Main
         Hint(rect, hint);
     }
 
-    public static string BuildingName(string kind) => kind switch { "mine" => "采矿站", "solar" => "太阳能阵列", "interceptor" => "动能战机工厂", "laser" => "激光战机工厂", "missile" => "导弹战机工厂", "starship_silo" => "星舰发射井", "shield" => "局部护盾发生器", _ => kind };
+    public static string BuildingName(string kind) => kind switch { "mine" => "采矿站", "solar" => "太阳能阵列", "interceptor" => "动能战机工厂", "laser" => "激光战机工厂", "missile" => "导弹战机工厂", "satellite_launcher" => "卫星发射中心", "shield" => "局部护盾发生器", _ => kind };
 
     public static string CostText(DataMap cost)
     {
@@ -165,7 +166,7 @@ public partial class Main
         foreach (var row in new[] { ("minerals", "矿物", Game.Minerals, UiTheme.Mint), ("energy", "能量", Game.Energy, UiTheme.Amber), ("science", "科研", Game.Science, UiTheme.Cyan) })
         {
             double rate = rates.N(row.Item1) * collecting;
-            string source = row.Item1 == "science" ? "科研轨道站（固定一座）" : row.Item2;
+            string source = row.Item1 == "science" ? Game.ResearchSatelliteDeployed ? "科研卫星" : "科研卫星（待发射）" : row.Item2;
             Add(row.Item1, row.Item1, UiTheme.Number(row.Item3), Rate(rate), row.Item4, $"{source} · 当前 {UiTheme.Number(row.Item3)} · 实际收入 {FormatSetting(rate)} / 秒");
         }
         Add("resource_cores", "core", UiTheme.Number(Game.ResourceCores), "—", UiTheme.Amber, "资源核心 · 击败小型 Boss 获得，用于建设及强化资源设施");
@@ -347,14 +348,16 @@ public partial class Main
     {
         Text("生产建设", new(1137, 200), 13, UiTheme.Amber);
         Text("设施 " + Game.FacilityCount(), new(1332, 200), 11, UiTheme.Muted);
-        string[] ids = { "mine", "solar", "interceptor", "laser", "missile" };
+        string[] ids = { "satellite_launcher", "mine", "solar", "interceptor", "missile", "laser" };
         for (int i = 0; i < ids.Length; i++)
         {
             string id = ids[i];
             var rect = new Rect2(1134 + i % 2 * 143, 215 + i / 2 * 126, 132, 118);
             var entry = BuildingHud(id);
             bool locked = entry.LockReason.Length > 0, selected = SelectedBuild == id;
-            Box(rect, new("0d171d"), selected ? UiTheme.Amber : new("3b4b4e"), 2);
+            bool guide = id == "satellite_launcher" && !Game.HasSatelliteLauncher && !Game.ResearchSatelliteDeployed;
+            Color border = selected ? UiTheme.Amber : guide ? UiTheme.Alien : new("3b4b4e");
+            Box(rect, new("0d171d"), border, 2);
             if (_buildIcons.TryGetValue(id, out var icon))
                 DrawTextureRect(icon, new(rect.Position + new Vector2(14, 0), new(104, 78)), false, new Color(1, 1, 1, locked ? .35f : 1));
             else
@@ -363,12 +366,21 @@ public partial class Main
             if (selected)
             {
                 DrawRect(new(rect.Position + new Vector2(2, 2), new(128, 3)), UiTheme.Amber);
-                Text("连建", rect.Position + new Vector2(96, 76), 10, UiTheme.Amber);
+                Text(id == "satellite_launcher" ? "七格" : "连建", rect.Position + new Vector2(96, 76), 10, UiTheme.Amber);
+            }
+            else if (guide)
+            {
+                float pulse = .62f + .25f * MathF.Sin((float)Elapsed * 4.2f);
+                DrawRect(new(rect.Position + new Vector2(2, 2), new(128, 3)), UiTheme.Alpha(UiTheme.Alien, pulse));
+                Text("开局引导", rect.Position + new Vector2(72, 76), 10, UiTheme.Alien);
             }
             Text(HudFitText(BuildingName(id), 120, 12), rect.Position + new Vector2(8, 94), 12, locked ? UiTheme.Muted : UiTheme.Ink);
-            Text(HudFitText(locked ? "研究解锁" : entry.CostText, 118, 10), rect.Position + new Vector2(8, 112), 10, locked ? UiTheme.Dim : CanBuildFromHud(entry) ? UiTheme.Mint : UiTheme.Amber);
+            string costLabel = id == "satellite_launcher" ? (Game.HasSatelliteLauncher ? "已建造 · 点击设施发射" : "免费 · 七格蜂窝 · 限一座") : locked ? "研究解锁" : entry.CostText;
+            bool affordable = CanBuildFromHud(entry) || id == "satellite_launcher" && Game.HasSatelliteLauncher;
+            Text(HudFitText(costLabel, 118, 10), rect.Position + new Vector2(8, 112), 10, locked ? UiTheme.Dim : affordable ? UiTheme.Mint : UiTheme.Amber);
             RegisterButton(rect, "build:" + id);
             if (locked) Hint(rect, entry.LockReason);
+            else if (guide) Hint(rect, "开局引导 · 建造一次卫星发射中心，随后点击地表设施发射免费的科研卫星");
         }
         DrawShieldBuildingCard(new Rect2(1134, 599, 276, 63));
         Box(new(1134, 669, 276, 54), new("122128"), new("45665c"), 3);
@@ -641,6 +653,7 @@ public partial class Main
             "armor_heavy" => "armor",
             "mine" => "mineral",
             "solar" => "power",
+            "satellite_launcher" => "orbit",
             _ => id
         }, p, r, c);
     }

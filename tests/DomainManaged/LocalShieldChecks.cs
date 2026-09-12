@@ -11,7 +11,11 @@ internal static class LocalShieldChecks
         var game = new DefenseState();
         Check(game.Shield == 0 && game.Buildings.L("shield") == 0 && !game.BuildingUnlocked("shield"), "new run has no global shield or free tower");
         Check(!DefenseState.ResourceFacilityKinds.Contains("lab") && game.Buildings.L("lab") == 0 && !game.BuildingUnlocked("lab"), "surface laboratory is removed from new runs");
-        Near(game.Rates().N("science"), .08, "one fixed orbital research station provides a conservative science rate");
+        Near(game.Rates().N("science"), 0, "science stays offline until the first satellite reaches orbit");
+        Check(game.BuildingMaxCount("satellite_launcher") == 1 && game.CanBuild("satellite_launcher"), "one-time satellite launcher is available in a new run");
+        Check(game.Build("satellite_launcher", 2) && game.HasSatelliteLauncher && !game.CanBuild("satellite_launcher"), "satellite launcher can only be built once");
+        Check(game.BeginResearchSatelliteLaunch() && game.ResearchSatelliteLaunchInProgress && game.Rates().N("science") == 0, "research satellite launch starts with science offline");
+        Check(game.CompleteResearchSatelliteLaunch() && game.ResearchSatelliteDeployed && game.Rates().N("science") > 0, "completed satellite launch activates conservative science income");
         var opening = new DefenseState();
         Check(opening.PurchaseGroup("D_N4") && opening.ResearchLevel("D_N4") == 1, "local shield is a free single-level medium technology available at opening");
         Check(opening.LocalShieldBuildLimit == 1, "opening shield technology grants one field slot");

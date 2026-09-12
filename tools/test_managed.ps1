@@ -8,6 +8,10 @@ $originalLocalAppData = $env:LOCALAPPDATA
 Push-Location $projectRoot
 try {
     if (-not $SkipBuild) { Build-EarthwardManaged $projectRoot 'Debug' }
+    # Native UI checks edit their own settings (for example the coverage
+    # multiplier).  Give every suite invocation a fresh profile so a prior
+    # test run can never leak state into the next one.
+    $runStamp = Get-Date -Format 'yyyyMMdd-HHmmss-fff'
     foreach ($suite in @('DomainManaged', 'CombatManaged')) {
         $modes = if ($suite -eq 'CombatManaged') { @('--local-shields', '--coverage', '--bombardment') } else { @('') }
         foreach ($mode in $modes) {
@@ -20,9 +24,9 @@ try {
         }
     }
     $scenes = @('rendering')
-    if (-not $HeadlessOnly) { $scenes += @('presentation', 'local_shield_render', 'research_topology', 'research_extensions_ui', 'factory_coverage') }
+    if (-not $HeadlessOnly) { $scenes += @('presentation', 'local_shield_render', 'research_topology', 'research_extensions_ui', 'factory_coverage', 'satellite_launch', 'satellite_launcher_ui') }
     foreach ($scene in $scenes) {
-        $profile = Join-Path $projectRoot ('.runtime-tests\managed-suite-' + $scene)
+        $profile = Join-Path $projectRoot ('.runtime-tests\managed-suite-' + $runStamp + '-' + $scene)
         $env:APPDATA = Join-Path $profile 'AppData'
         $env:LOCALAPPDATA = Join-Path $profile 'LocalAppData'
         New-Item -ItemType Directory -Force -Path $env:APPDATA, $env:LOCALAPPDATA | Out-Null

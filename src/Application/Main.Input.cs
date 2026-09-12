@@ -65,7 +65,7 @@ public partial class Main
                 case Key.Escape:
                     if (Modal != "")
                         Modal = "";
-                    else if (SelectedCoverageSiteId >= 0 || SelectedShieldCoverageSiteId >= 0)
+                    else if (SelectedCoverageSiteId >= 0 || SelectedShieldCoverageSiteId >= 0 || SelectedSatelliteLauncherSiteId >= 0)
                     {
                         ClearFactoryCoverage();
                         GetViewport().SetInputAsHandled();
@@ -310,6 +310,12 @@ public partial class Main
             case "shield_coverage:close":
                 ClearFactoryCoverage();
                 break;
+            case "satellite:close":
+                ClearSatelliteLauncher();
+                break;
+            case "satellite:launch:research":
+                LaunchResearchSatellite();
+                break;
             case "spectator:toggle":
                 if (IsSpectating())
                     ExitSpectator();
@@ -459,6 +465,11 @@ public partial class Main
             SelectShieldCoverage(index);
             return;
         }
+        if (kind == "satellite_launcher" && SelectedBuild == "")
+        {
+            SelectSatelliteLauncher(index);
+            return;
+        }
         if (kind is "interceptor" or "laser" or "missile" && SelectedBuild == "")
         {
             SelectFactoryCoverage(index);
@@ -498,15 +509,23 @@ public partial class Main
         }
         if (Game.Build(SelectedBuild, slot))
         {
-            Planet.SetSlot(slot, SelectedBuild);
+            string builtKind = SelectedBuild;
+            Planet.SetSlot(slot, builtKind);
             RefreshCampaignUi();
             Sounds.PlaySound("build");
-            ShowNotice(BuildingName(SelectedBuild) + " 建造完成 · 生产已接入行星网络");
+            ShowNotice(BuildingName(builtKind) + " 建造完成 · 生产已接入行星网络");
             Planet.PlacingBuilding = true;
             if (_buildPainting)
                 _paintSavePending = true;
             else
                 SaveIfSafe();
+            if (builtKind == "satellite_launcher")
+            {
+                FinishBuildStroke();
+                SelectedBuild = "";
+                Planet.PlacingBuilding = false;
+                NotifySatelliteLauncherBuilt(slot);
+            }
         }
         else
         {

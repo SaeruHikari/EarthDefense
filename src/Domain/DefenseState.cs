@@ -14,8 +14,9 @@ public sealed partial class DefenseState
     public static IReadOnlyList<DataMap> BuildingDefinitions => CatalogData.Rows("economy.json", "buildings");
     public static DataMap DefaultCombatSettings => CatalogData.Load("economy.json").Map("settings").DeepClone();
     public static IReadOnlyList<string> IntegerCombatSettings => CatalogData.Load("economy.json").List("integer_settings").Cast<string>().ToList();
-    // Ground construction now covers extraction and power only.  Science is
-    // supplied by the single permanent orbital research station.
+    // Ground construction covers extraction, power, defense and the one-time
+    // satellite launch facility. Science starts when the first satellite is
+    // inserted into orbit.
     public static IReadOnlyList<string> ResourceFacilityKinds => new[] { "mine", "solar" };
     public event Action? Changed;
     public event Action<DataMap>? FactoryPerkRewarded;
@@ -114,11 +115,10 @@ public sealed partial class DefenseState
             double levels = _resourceLevelTotals.N(kind);
             result[currency] = Math.Min(ResourceLimit, basis.N(kind) * (Buildings.N(kind) + levels * CoreUpgradeFraction() + _boostUnits.N(kind)));
         }
-        // One orbital station is always present and cannot be spammed or
-        // upgraded as a surface facility.  Research modifiers still apply so
-        // the technology tree can improve its output without reintroducing a
-        // second ground economy.
-        result["science"] = Math.Min(ResourceLimit, basis.N("science"));
+        // Science is supplied by the run-owned research satellite. During the
+        // launch sequence it remains offline, so the first launch is a clear
+        // incremental milestone instead of a hidden starting income source.
+        result["science"] = ResearchSatelliteDeployed ? Math.Min(ResourceLimit, basis.N("science")) : 0;
         return result;
     }
     public double CoreUpgradeFraction() => CombatSettings.N("resource_core_upgrade_percent", 5) * .01 + (HasResearch("I_N1") ? Math.Round(TechEffects().N("resource_core_fraction") - DomainBalance.Value("resource_core_reference_fraction"), 12) : 0);
@@ -198,8 +198,6 @@ public sealed partial class DefenseState
     public double ShieldRegeneration() => DomainBalance.Value("shield_regeneration_base") * (1 + TechEffects().N("shield_regeneration_bonus"));
     public DataMap BuildingCost(string id)
     {
-        if (id == "starship_silo")
-            return Expedition.SiloCost();
         var def = Find(BuildingDefinitions, id);
         if (def.Count == 0)
             return new();
@@ -211,7 +209,7 @@ public sealed partial class DefenseState
     }
     public bool CanBuild(string id)
     {
-        if (!BuildingUnlocked(id) || EarthHp <= 0 || Buildings.L(id) >= MaxExactInteger)
+        if (!BuildingUnlocked(id) || EarthHp <= 0 || Buildings.L(id) >= BuildingMaxCount(id))
             return false;
         if (id == "shield" && ShieldBuildLockReason().Length > 0)
             return false;
