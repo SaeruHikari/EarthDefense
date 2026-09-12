@@ -77,6 +77,9 @@ public sealed partial class Battlefield
     private InvasionDirector _invasion = new();
     private long _nextUid = 1, _revision = -1, _motherWave = -1;
     private int _epoch;
+    // Reset/restore starts a new actor timeline; ephemeral HUD notifications
+    // must not retain identities from a previous use of the same actor UIDs.
+    public int TimelineEpoch => _epoch;
     private bool _layoutDirty = true, _postDefense, _fixedRunning, _cohortComplete;
     private int _postSpawned;
     private DataMap _postPlan = new(), _wavePlan = new(), _globalWeapons = new();
@@ -465,5 +468,4 @@ public sealed partial class Battlefield
         return origin.DistanceSquaredTo(position) <= range * range && Home(d).Dot(position.Normalized()) >= GetProfile(d).Cosine && CombatGeometry.HasLineOfSight(origin, position);
     }
 }
-
 

@@ -8,13 +8,12 @@ public partial class TacticalAlertView : Node2D
     {
         public bool Active, Preview, Acknowledged, Backside, Offscreen;
         public string Title = "", Detail = "", TargetId = "";
-        public int Count = 1, Index;
         public double Age, Remaining, Window, Amount;
         public Vector3 WorldPosition;
         public Vector2 Direction = Vector2.Right, Reticle;
         public Rect2 Rect;
     }
-    /// <summary>How long a confirmed notice stays on screen before fading out.</summary>
+    /// <summary>How long an arrival, preview, or damage notice stays on screen before fading out.</summary>
     public const double AlertLifetime = 8;
     public Card Mother { get; } = new();
     public Card Damage { get; } = new();
@@ -22,8 +21,6 @@ public partial class TacticalAlertView : Node2D
     public string PressedAction { get; set; } = "";
     public double Clock { get; set; }
     public Rect2 PlayArea { get; set; }
-    public static Rect2 PreviousRect(Card c) => new(c.Rect.End.X - 75, c.Rect.Position.Y + 123, 28, 30);
-    public static Rect2 NextRect(Card c) => new(c.Rect.End.X - 43, c.Rect.Position.Y + 123, 28, 30);
     public string HitTest(Vector2 point)
     {
         if (!Visible) return "";
@@ -31,11 +28,6 @@ public partial class TacticalAlertView : Node2D
         {
             var (c, id) = pair;
             if (!c.Active || !c.Rect.HasPoint(point)) continue;
-            if (id == "mother" && c.Count > 1)
-            {
-                if (PreviousRect(c).HasPoint(point)) return "mother:prev";
-                if (NextRect(c).HasPoint(point)) return "mother:next";
-            }
             return id + ":focus";
         }
         return "";
@@ -58,8 +50,8 @@ public partial class TacticalAlertView : Node2D
         string id = damage ? "damage" : "mother";
         float alpha = c.Acknowledged ? .46f : 1;
         if (HoverAction.StartsWith(id)) alpha = 1;
-        // Confirmed signals and damage reports share one timed lifetime; the preview countdown is driven by its own window.
-        if (!c.Preview && c.Age > AlertLifetime - 1.5) alpha *= (float)Math.Clamp((AlertLifetime - c.Age) / 1.5, 0, 1);
+        // Every notice fades on the same fixed schedule, including advance warnings.
+        if (c.Age > AlertLifetime - 1.5) alpha *= (float)Math.Clamp((AlertLifetime - c.Age) / 1.5, 0, 1);
         float entrance = (float)Math.Clamp(c.Age / .28, 0, 1);
         alpha *= .45f + .55f * entrance;
         Color ink = UiTheme.Alpha(UiTheme.Ink, alpha), accent = UiTheme.Alpha(tone, alpha);
@@ -70,7 +62,9 @@ public partial class TacticalAlertView : Node2D
         Line(p + new Vector2(14, 0), p + new Vector2(90, 0), accent, 2);
         Line(new(r.End.X, p.Y + 30), new(r.End.X, p.Y + 70), accent, 2);
         Text(damage ? "PLANET // IMPACT" : "TACTICAL // EARLY WARNING", p + new Vector2(16, 20), 10, UiTheme.Alpha(tone, .72f * alpha));
-        var emblem = p + new Vector2(64, 82);
+        // Keep the heading above the emblem so it fits even in a narrow HUD card.
+        Text(UiTheme.Fit(c.Title, r.Size.X - 58, 18), p + new Vector2(16, 43), 18, ink);
+        var emblem = p + new Vector2(64, 91);
         float pulse = .5f + .5f * MathF.Sin((float)Clock * 3.2f);
         DrawArc(emblem, 42, 0, Mathf.Tau, 64, UiTheme.Alpha(tone, (.10f + pulse * .08f) * alpha), 1, true);
         float sweep = (float)Clock * .5f;
@@ -80,20 +74,24 @@ public partial class TacticalAlertView : Node2D
         Vector2[] stem = [emblem + new Vector2(-8, -43), emblem + new Vector2(8, -43), emblem + new Vector2(5, 20), emblem + new Vector2(-5, 20)];
         DrawColoredPolygon(stem, accent);
         DrawRect(new Rect2(emblem + new Vector2(-5, 32), new Vector2(10, 10)), accent);
-        Text(c.Title, p + new Vector2(122, 49), 18, ink);
         Text(UiTheme.Fit(c.Detail, r.Size.X - 135, 11), p + new Vector2(122, 70), 11, UiTheme.Alpha(UiTheme.Muted, alpha));
-        string value = damage ? $"−{c.Amount:0.#}" : c.Preview ? $"{Math.Ceiling(c.Remaining):0}s" : $"{c.Count:00}";
-        Text(value, p + new Vector2(122, 106), 29, accent);
-        Text(damage ? "8 秒内累计损伤" : c.Preview ? "预计抵达" : "母舰信号", p + new Vector2(192, 102), 10, UiTheme.Alpha(UiTheme.Muted, alpha));
+        if (damage || c.Preview)
+        {
+            string value = damage ? $"−{c.Amount:0.#}" : $"{Math.Ceiling(c.Remaining):0}s";
+            Text(UiTheme.Fit(value, r.Size.X - 135, 29), p + new Vector2(122, 106), 29, accent);
+            Text(damage ? "8 秒内累计损伤" : "预计抵达", p + new Vector2(122, 125), 10, UiTheme.Alpha(UiTheme.Muted, alpha));
+        }
+        else
+        {
+            Text("母舰抵达", p + new Vector2(122, 103), 16, accent);
+            float scanWidth = Math.Max(0, r.Size.X - 138);
+            Line(p + new Vector2(122, 118), p + new Vector2(122 + scanWidth, 118), UiTheme.Alpha(tone, .24f * alpha));
+            float scanX = 122 + scanWidth * ((float)Clock * .4f % 1);
+            Line(p + new Vector2(scanX, 114), p + new Vector2(scanX, 122), accent, 1.4f);
+        }
         Text(c.Backside ? "背面 · 点击定位" : c.Offscreen ? "视野外 · 点击定位" : "点击定位目标", p + new Vector2(16, 148), 10, UiTheme.Alpha(tone, alpha));
         // Direction is separate from the click caption and remains visible while acknowledged.
         DrawArrow(p + new Vector2(r.Size.X - 24, 45), c.Direction, accent, 8);
-        if (!damage && c.Count > 1)
-        {
-            Text($"{c.Index + 1}/{c.Count}", p + new Vector2(151, 145), 10, UiTheme.Alpha(UiTheme.Muted, alpha));
-            DrawNav(PreviousRect(c), false, HoverAction == "mother:prev", accent);
-            DrawNav(NextRect(c), true, HoverAction == "mother:next", accent);
-        }
         if (c.Preview)
         {
             float t = (float)Math.Clamp(1 - c.Remaining / Math.Max(c.Window, .001), 0, 1);
@@ -102,12 +100,6 @@ public partial class TacticalAlertView : Node2D
         if (HoverAction == id + ":focus" || PressedAction == id + ":focus")
             DrawPolyline(plate.Append(plate[0]).ToArray(), accent, PressedAction == id + ":focus" ? 2.4f : 1.7f, true);
         DrawTarget(c, tone, alpha);
-    }
-    private void DrawNav(Rect2 r, bool next, bool hover, Color color)
-    {
-        DrawRect(r, UiTheme.Alpha(color, hover ? .16f : .045f));
-        var center = r.GetCenter(); float sign = next ? 1 : -1;
-        DrawPolyline([center + new Vector2(-3 * sign, -5), center + new Vector2(3 * sign, 0), center + new Vector2(-3 * sign, 5)], color, 1.5f, true);
     }
     private void DrawArrow(Vector2 p, Vector2 d, Color color, float radius)
     {

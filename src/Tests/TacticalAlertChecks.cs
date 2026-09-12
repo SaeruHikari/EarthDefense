@@ -46,6 +46,79 @@ public partial class TacticalAlertChecks : Node
         Check(_app.Campaign.Restore(snapshot), "real director restores configured ceasefire");
         _app.UpdateTacticalAlerts(.2);
     }
+    private DataMap[] ResetArrivalFixture()
+    {
+        _app.Battle.ResetBattle(); _app.Game.Wave = 4; _app.Battle.StartWave();
+        _app.UpdateTacticalAlerts(.2);
+        return _app.Battle.Motherships.Values.OrderBy(m => m.L("uid")).ToArray();
+    }
+    private async Task CheckArrivalQueue()
+    {
+        var mothers = ResetArrivalFixture();
+        var card = _app.TacticalAlerts.Mother;
+        Check(mothers.Length == 2 && card.Active && !card.Acknowledged, "two simultaneous real fronts open the first independent arrival card");
+        string first = "mother:" + mothers[0].L("uid"), second = "mother:" + mothers[1].L("uid");
+        Check(card.TargetId == first, "simultaneous arrivals use stable FIFO order");
+        _app.UpdateTacticalAlerts(3);
+        double age = card.Age;
+        var reinforcement = mothers[0].DeepClone();
+        reinforcement["uid"] = 700001L;
+        reinforcement["kind"] = "carrier";
+        reinforcement["space_position"] = mothers[0].Vector3("space_position") + new Vector3(4, 3, 2);
+        _app.Battle.Enemies.Add(reinforcement);
+        _app.UpdateTacticalAlerts(.2);
+        Check(card.TargetId == first && Math.Abs(card.Age - age - .2) < .00001, "later reinforcement queues without renewing or replacing current card");
+        Check(_app.TacticalAlerts.HitTest(new(card.Rect.End.X - 60, card.Rect.Position.Y + 138)) == "mother:focus"
+            && _app.TacticalAlerts.HitTest(new(card.Rect.End.X - 28, card.Rect.Position.Y + 138)) == "mother:focus", "former arrow areas belong to the card and have no navigation hitboxes");
+        age = card.Age;
+        _app.Modal = "settings"; _app.UpdateTacticalAlerts(30);
+        Check(Math.Abs(card.Age - age) < .00001 && !_app.TacticalAlerts.Visible, "fully obscuring modal freezes notification lifetime");
+        _app.Modal = ""; _app.UpdateTacticalAlerts(0);
+        _app.UpdateTacticalAlerts(TacticalAlertView.AlertLifetime - card.Age - .05);
+        Check(card.Active && card.TargetId == first, "first card remains visible until its own eight-second deadline while user-paused");
+        _app.UpdateTacticalAlerts(.06);
+        Check(card.Active && card.TargetId == second && card.Age < .1 && !card.Acknowledged, "expiry automatically gives second queued mothership a fresh full lifetime");
+        _app.UpdateTacticalAlerts(3);
+        Check(card.Active && card.TargetId == second && card.Age >= 3, "second simultaneous arrival stays visible for an independent interval");
+
+        _app.Planet.ResetCamera();
+        Vector2 pressed = card.Rect.Position + new Vector2(150, 55);
+        Input.ParseInputEvent(new InputEventMouseMotion { Position = pressed, GlobalPosition = pressed });
+        Input.ParseInputEvent(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = true, Position = pressed, GlobalPosition = pressed });
+        await Frames(2);
+        _app.UpdateTacticalAlerts(TacticalAlertView.AlertLifetime + .01);
+        Check(card.Active && card.TargetId == "mother:700001", "third carrier from combat enemies receives its own arrival card");
+        Input.ParseInputEvent(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = false, Position = pressed, GlobalPosition = pressed });
+        await Frames(2);
+        Check(_app.Planet.GetFocusId() == "earth" && !card.Acknowledged, "pressing an expired card cannot focus or acknowledge its successor on release");
+        await Capture("tactical-alerts-single-arrival-card");
+        _app.UpdateTacticalAlerts(TacticalAlertView.AlertLifetime + .01); _app.UpdateTacticalAlerts(.2);
+        Check(!card.Active && _app.Battle.Motherships.Values.All(m => m.N("hp") > 0) && reinforcement.N("hp") > 0, "queue empties even while every announced mothership remains alive");
+        _app.UpdateTacticalAlerts(20);
+        Check(!card.Active, "polling living announced identities never reopens expired cards");
+
+        mothers = ResetArrivalFixture();
+        Check(card.Active && card.TargetId == first && card.Age < .1, "reset clears old notices and rearms reused front UIDs for the next battle");
+        mothers[1]["hp"] = 0d;
+        _app.UpdateTacticalAlerts(TacticalAlertView.AlertLifetime + .01);
+        Check(!card.Active, "destroyed queued mothership is skipped instead of showing stale alert");
+        mothers = ResetArrivalFixture();
+        string withdrawn = _app.Battle.Motherships.First(pair => pair.Value.L("uid") == mothers[1].L("uid")).Key;
+        _app.Battle.Motherships.Remove(withdrawn);
+        _app.UpdateTacticalAlerts(TacticalAlertView.AlertLifetime + .01);
+        Check(!card.Active, "withdrawn queued mothership is skipped");
+
+        ResetArrivalFixture();
+        var snapshot = _app.Battle.SerializeCombatSnapshot();
+        _app.UpdateTacticalAlerts(TacticalAlertView.AlertLifetime + .01);
+        age = card.Age;
+        _app.Defeated = true; _app.UpdateTacticalAlerts(30);
+        Check(Math.Abs(card.Age - age) < .00001 && !_app.TacticalAlerts.Visible && !card.Active, "defeat screen freezes and hides the current notification");
+        _app.Defeated = false;
+        Check(_app.Battle.RestoreCombatSnapshot(snapshot), "real battle snapshot restores successfully");
+        _app.UpdateTacticalAlerts(.2);
+        Check(card.Active && card.TargetId == first && card.Age < .1, "restoring battle clears prior presentation state and restarts current front notices once");
+    }
     public override async void _Ready()
     {
         try
@@ -61,7 +134,7 @@ public partial class TacticalAlertChecks : Node
             float fov = _app.Planet.Camera.Fov;
             _app.Battle.StartWave(); _app.UpdateTacticalAlerts(.2);
             var card = _app.TacticalAlerts.Mother;
-            Check(card.Active && !card.Preview && card.Count > 0, "first-wave physical mothership announces actual UID");
+            Check(card.Active && !card.Preview, "first-wave physical mothership announces actual UID");
             Check(card.TargetId.StartsWith("mother:"), "arrival target has stable UID identity");
             Check(_app.Battle.Motherships.Values.Any(m => "mother:" + m.L("uid") == card.TargetId && m.Vector3("space_position").IsEqualApprox(card.WorldPosition)), "arrival matches actual world position");
             Check(_app.Planet.CaptureCameraState().ToJson() == initialCamera, "arrival does not change camera");
@@ -80,18 +153,12 @@ public partial class TacticalAlertChecks : Node
             await Wait(1.3);
             Check(_app.Planet.Camera.Fov == fov, "tactical focus preserves strategic FOV");
             Check((_app.Planet.Camera.GlobalPosition - firstPosition).Length() > 10, "focus keeps reasonable standoff");
-            await Wait(TacticalAlertView.AlertLifetime + .2);
-            _app.UpdateTacticalAlerts(.2);
+            _app.UpdateTacticalAlerts(TacticalAlertView.AlertLifetime + .2);
             Check(!card.Active && card.TargetId.StartsWith("mother:"), "live mothership confirmation expires while the target remains alive");
             Input.ParseInputEvent(new InputEventKey { Keycode = Key.Escape, Pressed = true }); await Frames();
             Check(_app.Planet.GetFocusId() == "earth", "Escape returns ordinary Earth navigation");
             _app.Planet.ResetCamera(); _app.DockOpen = true;
-            _app.Battle.ResetBattle(); _app.Game.Wave = 4; _app.Battle.StartWave(); _app.UpdateTacticalAlerts(.2);
-            Check(card.Count >= 2 && !card.Acknowledged, "new front reawakens alert without duplicating old UID");
-            string beforeCycle = card.TargetId;
-            await Click(TacticalAlertView.NextRect(card).GetCenter());
-            Check(card.TargetId != beforeCycle, "small arrow selects another actual direction");
-            Check(_app.Planet.GetFocusId() == "earth", "cycling targets alone does not move camera");
+            await CheckArrivalQueue();
             var worldBack = -_app.Planet.Camera.GlobalPosition.Normalized() * WorldScale.EarthRadius;
             var damageMethod = typeof(Battlefield).GetMethod("DamageEarth", BindingFlags.Instance | BindingFlags.NonPublic)!;
             double hpBefore = _app.Game.EarthHp;
@@ -139,8 +206,8 @@ public partial class TacticalAlertChecks : Node
             Check(!card.Rect.Intersects(new Rect2(_app.WorldSize.X - 318, 87, 300, 43)), "collapsed command title rail remains completely unobstructed");
             var director = new InvasionDirector(); director.ConfigureAnchor(_app.Battle.GetInvasionAnchor());
             var status = _app.Campaign.GetStatus();
-            var expected = director.FrontierSpawnPoint(card.Index, status.I("earth_next_carriers"), _app.CurrentFrontierWarning!.Radius, new CombatRandom(122)).Vector3("position");
-            Check(card.WorldPosition.IsEqualApprox(expected), "preview uses actual frontier anchor count and radius");
+            var expected = director.FrontierSpawnPoint(0, status.I("earth_next_carriers"), _app.CurrentFrontierWarning!.Radius, new CombatRandom(122)).Vector3("position");
+            Check(card.WorldPosition.IsEqualApprox(expected), "single representative preview uses first actual frontier direction and radius");
             double remaining = card.Remaining;
             await Wait(.3);
             Check(Math.Abs(card.Remaining - remaining) < .00001, "paused warning countdown remains frozen");
@@ -151,6 +218,10 @@ public partial class TacticalAlertChecks : Node
             _app.Planet.ResetCamera();
             _app.Campaign.Paused = false; _app.Campaign.SpeedScale = 2; _app.Campaign.Step(.5); _app.Campaign.Paused = true; _app.UpdateTacticalAlerts(.2);
             Check(Math.Abs(card.Remaining - (remaining - 1)) < .00001, "countdown follows actual accelerated director clock");
+            _app.UpdateTacticalAlerts(TacticalAlertView.AlertLifetime + .01);
+            Check(!card.Active && _app.CurrentFrontierWarning != null, "preview expires after eight seconds even with a remaining simulation countdown");
+            _app.UpdateTacticalAlerts(.2);
+            Check(!card.Active, "unchanged frontier countdown does not reopen an expired preview");
             SetCeasefire(.001);
             _app.Campaign.Paused = false; _app.Campaign.SpeedScale = 1; _app.Campaign.Step(.02); _app.Campaign.Paused = true;
             _app.Battle.Paused = false; _app.Battle.Step(1.5); _app.Battle.Paused = true; _app.UpdateTacticalAlerts(.2);

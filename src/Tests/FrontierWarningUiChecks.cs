@@ -97,6 +97,10 @@ public partial class FrontierWarningUiChecks : Node
             await ToSignal(GetTree().CreateTimer(.5), SceneTreeTimer.SignalName.Timeout);
             await Capture("frontier-warning-research");
             Check(!_app.FrontierWarningRect.Intersects(_app.ResearchGraph.GetGlobalRect()), "warning avoids expanded research sidebar");
+            _app.UpdateTacticalAlerts(TacticalAlertView.AlertLifetime + .01);
+            Check(_app.CurrentFrontierWarning != null && !_app.TacticalAlerts.Mother.Active && _app.FrontierWarningRect.Size == Vector2.Zero, "advance warning has a fixed eight-second card lifetime independent of paused arrival countdown");
+            _app.UpdateTacticalAlerts(.3);
+            Check(!_app.TacticalAlerts.Mother.Active, "same transition does not repeatedly announce while countdown remains pending");
         }
         catch (Exception error) { Check(false, error.ToString()); }
         if (IsInstanceValid(_app)) { _app.QueueFree(); await Frames(4); await ToSignal(GetTree().CreateTimer(.12), SceneTreeTimer.SignalName.Timeout); }

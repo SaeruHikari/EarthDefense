@@ -11,10 +11,14 @@ public partial class Main
     public TacticalAlertView TacticalAlerts { get; private set; } = null!;
     public Vector3 EarthAttackLocalDirection => _attackLocalNormal;
     private sealed record AlertTarget(string Id, long Uid, Vector3 Position, bool Preview);
-    private readonly List<AlertTarget> _alertTargets = new();
+    private readonly Dictionary<string, AlertTarget> _liveAlertTargets = new(StringComparer.Ordinal);
+    private readonly Queue<AlertTarget> _pendingMotherAlerts = new();
     private readonly HashSet<string> _seenAlertTargets = new(StringComparer.Ordinal);
+    private readonly HashSet<string> _seenPreviewTransitions = new(StringComparer.Ordinal);
     private readonly List<(double Time, double Amount)> _attackSamples = new();
-    private string _alertRunId = "", _previewTransition = "", _alertPress = "";
+    private string _alertRunId = "", _alertPress = "", _alertPressedTarget = "";
+    private int _alertTimelineEpoch = -1;
+    private AlertTarget? _previewAlertTarget;
     private Vector2 _alertPressPosition;
     private Vector3 _attackLocalNormal;
     private double _alertPoll, _alertClock, _lastAttackTime = -100;
@@ -30,26 +34,29 @@ public partial class Main
     public void UpdateTacticalAlerts(double delta)
     {
         if (!IsInstanceValid(TacticalAlerts) || Game == null || Battle == null || Campaign == null) return;
-        _alertClock += Math.Max(0, delta);
-        if (_alertRunId != Game.RunId)
+        // Count the time a notice is actually available to the player. A modal
+        // covers the HUD completely, while a user-paused world leaves it visible.
+        double elapsed = double.IsFinite(delta) ? Math.Max(0, delta) : 0;
+        double visibleElapsed = Modal == "" && !Defeated ? elapsed : 0;
+        _alertClock += visibleElapsed;
+        if (_alertRunId != Game.RunId || _alertTimelineEpoch != Battle.TimelineEpoch)
         {
             _alertRunId = Game.RunId;
-            _seenAlertTargets.Clear(); _alertTargets.Clear(); _attackSamples.Clear();
-            _previewTransition = ""; _alertPress = ""; _lastAttackTime = -100;
+            _alertTimelineEpoch = Battle.TimelineEpoch;
+            _seenAlertTargets.Clear(); _liveAlertTargets.Clear(); _pendingMotherAlerts.Clear();
+            _seenPreviewTransitions.Clear(); _attackSamples.Clear(); _previewAlertTarget = null;
+            _alertPress = ""; _alertPressedTarget = ""; _lastAttackTime = -100;
             TacticalAlerts.Mother.Active = TacticalAlerts.Damage.Active = false;
             _alertPoll = 1;
         }
-        TacticalAlerts.Mother.Age += Math.Max(0, delta);
-        _alertPoll += Math.Max(0, delta);
+        if (TacticalAlerts.Mother.Active) TacticalAlerts.Mother.Age += visibleElapsed;
+        _alertPoll += elapsed;
         if (_alertPoll >= .15)
         {
             _alertPoll = 0;
             RefreshTacticalTargets();
         }
-        // A confirmed signal is a timed notice, not a permanent indicator; it expires like a damage report.
-        var mother = TacticalAlerts.Mother;
-        mother.Active = _alertTargets.Count > 0 && !Defeated
-            && (CurrentFrontierWarning != null || mother.Age < TacticalAlertView.AlertLifetime);
+        AdvanceMotherAlert();
         var damage = TacticalAlerts.Damage;
         _attackSamples.RemoveAll(sample => _alertClock - sample.Time >= 8);
         damage.Active = _attackSamples.Count > 0 && !Defeated;
@@ -70,75 +77,69 @@ public partial class Main
     {
         var status = Campaign.GetStatus();
         CurrentFrontierWarning = FrontierWarning.FromStatus(status, WorldScale.EarthRadius);
-        var card = TacticalAlerts.Mother;
-        string selected = card.TargetId;
-        Vector3 previousPoint = card.WorldPosition;
-        bool wasPreview = card.Preview;
-        _alertTargets.Clear();
+        _liveAlertTargets.Clear();
+        foreach (var mother in Battle.Motherships.Values)
+            if (mother.N("hp") > 0) AddLiveAlert(mother);
+        foreach (var enemy in Battle.Enemies)
+            if (enemy.N("hp") > 0 && enemy.S("kind") is "carrier" or "mothership") AddLiveAlert(enemy);
+        foreach (var target in _liveAlertTargets.Values.OrderBy(target => target.Uid))
+            if (_seenAlertTargets.Add(target.Id)) _pendingMotherAlerts.Enqueue(target);
+
+        // Keep the existing one-wave relocation warning as a single timed
+        // direction notice. Physical arrivals are separate per-UID events.
         var warning = CurrentFrontierWarning;
-        bool fresh = false;
+        _previewAlertTarget = null;
         if (warning != null)
         {
             var preview = new InvasionDirector(); preview.ConfigureAnchor(Battle.GetInvasionAnchor());
             int count = Math.Clamp(status.I("earth_next_carriers", 2), 1, 512);
-            var isolatedRandom = new CombatRandom(122);
-            for (int i = 0; i < count; i++)
-            {
-                var point = preview.FrontierSpawnPoint(i, count, warning.Radius, isolatedRandom);
-                _alertTargets.Add(new($"{warning.TransitionId}:{i}", 0, point.Vector3("position"), true));
-            }
-            fresh = _previewTransition != warning.TransitionId;
-            _previewTransition = warning.TransitionId;
-            card.Remaining = warning.Remaining; card.Window = warning.WindowDuration;
-            card.Title = "母舰即将抵达"; card.Detail = $"新阵地 · 离地 {UiTheme.Number(warning.Altitude)}";
+            var point = preview.FrontierSpawnPoint(0, count, warning.Radius, new CombatRandom(122));
+            _previewAlertTarget = new(warning.TransitionId + ":preview", 0, point.Vector3("position"), true);
+            if (_seenPreviewTransitions.Add(warning.TransitionId)) _pendingMotherAlerts.Enqueue(_previewAlertTarget);
         }
-        else
-        {
-            foreach (var mother in Battle.Motherships.Values)
-                if (mother.N("hp") > 0) AddLiveAlert(mother, ref fresh);
-            foreach (var enemy in Battle.Enemies)
-                if (enemy.N("hp") > 0 && enemy.S("kind") is "carrier" or "mothership") AddLiveAlert(enemy, ref fresh);
-            _alertTargets.Sort((a, b) => a.Uid.CompareTo(b.Uid));
-            _seenAlertTargets.IntersectWith(_alertTargets.Select(target => target.Id));
-            card.Title = "母舰信号确认"; card.Detail = "敌军增援 · 已锁定阵位";
-            _previewTransition = "";
-        }
-        card.Active = _alertTargets.Count > 0 && !Defeated;
-        if (!card.Active) return;
-        int index = _alertTargets.FindIndex(target => target.Id == selected);
-        if (index < 0 && wasPreview && warning == null)
-        {
-            float nearest = float.PositiveInfinity;
-            for (int i = 0; i < _alertTargets.Count; i++)
-            {
-                float distance = _alertTargets[i].Position.DistanceSquaredTo(previousPoint);
-                if (distance < nearest) { nearest = distance; index = i; }
-            }
-        }
-        card.Index = index >= 0 ? index : Math.Clamp(card.Index, 0, _alertTargets.Count - 1);
-        card.Count = _alertTargets.Count;
-        SelectAlertTarget(card.Index);
-        if (fresh || wasPreview != card.Preview) { card.Age = 0; card.Acknowledged = false; }
-        // RefreshTacticalTargets runs periodically while the target remains alive.
-        // Do not let that polling revive an expired confirmation card; only a new
-        // target (fresh=true above) or a pre-arrival warning may make it visible.
-        card.Active = warning != null || card.Age < TacticalAlertView.AlertLifetime;
     }
-    private void AddLiveAlert(DataMap enemy, ref bool fresh)
+    private void AddLiveAlert(DataMap enemy)
     {
         long uid = enemy.L("uid"); var position = enemy.Vector3("space_position");
         if (!position.IsFinite() || position.LengthSquared() < .01f) return;
         string id = "mother:" + uid.ToString(System.Globalization.CultureInfo.InvariantCulture);
-        if (_seenAlertTargets.Add(id)) fresh = true;
-        _alertTargets.Add(new(id, uid, position, false));
+        _liveAlertTargets.TryAdd(id, new(id, uid, position, false));
     }
-    private void SelectAlertTarget(int index)
+    private AlertTarget? ResolveAlertTarget(string id)
     {
-        if (_alertTargets.Count == 0) return;
-        index = (index % _alertTargets.Count + _alertTargets.Count) % _alertTargets.Count;
-        var target = _alertTargets[index]; var card = TacticalAlerts.Mother;
-        card.Index = index; card.TargetId = target.Id; card.WorldPosition = target.Position; card.Preview = target.Preview;
-        ProjectAlert(card);
+        if (_liveAlertTargets.TryGetValue(id, out var target)) return target;
+        return _previewAlertTarget?.Id == id ? _previewAlertTarget : null;
+    }
+    private void AdvanceMotherAlert()
+    {
+        var card = TacticalAlerts.Mother;
+        if (Defeated) { card.Active = false; return; }
+        var target = card.Active ? ResolveAlertTarget(card.TargetId) : null;
+        if (card.Active && (card.Age >= TacticalAlertView.AlertLifetime || target == null
+            || card.Preview && _pendingMotherAlerts.Any(pending => !pending.Preview)))
+            card.Active = false;
+        if (!card.Active)
+        {
+            target = null;
+            while (_pendingMotherAlerts.TryDequeue(out var pending))
+            {
+                target = ResolveAlertTarget(pending.Id);
+                if (target == null) continue;
+                card.Active = true;
+                card.TargetId = target.Id;
+                card.Preview = target.Preview;
+                card.Age = 0;
+                card.Acknowledged = false;
+                break;
+            }
+        }
+        if (!card.Active || target == null) return;
+        card.WorldPosition = target.Position;
+        card.Title = card.Preview ? "母舰即将抵达" : "检测到高能信号";
+        card.Detail = card.Preview && CurrentFrontierWarning != null
+            ? $"新阵地 · 离地 {UiTheme.Number(CurrentFrontierWarning.Altitude)}" : "敌方母舰 · 已锁定阵位";
+        card.Remaining = card.Preview ? CurrentFrontierWarning!.Remaining : 0;
+        card.Window = card.Preview ? CurrentFrontierWarning!.WindowDuration : 0;
     }
     public void NotifyEarthAttack(double amount, Vector3 worldPosition)
     {
@@ -195,7 +196,7 @@ public partial class Main
     private bool TacticalAlertContains(Vector2 point) => IsInstanceValid(TacticalAlerts) && Modal == "" && TacticalAlerts.HitTest(point) != "";
     private bool TacticalAlertInput(InputEvent e)
     {
-        if (!IsInstanceValid(TacticalAlerts) || Modal != "" || Defeated) { _alertPress = ""; return false; }
+        if (!IsInstanceValid(TacticalAlerts) || Modal != "" || Defeated) { _alertPress = ""; _alertPressedTarget = ""; return false; }
         if (e is InputEventKey key && key.Pressed && !key.Echo && key.Keycode == Key.Escape && Planet.GetFocusId().StartsWith("alert:"))
         {
             FocusBody("earth"); GetViewport().SetInputAsHandled(); return true;
@@ -207,14 +208,16 @@ public partial class Main
             if (button.Pressed && hit != "")
             {
                 _alertPress = hit; _alertPressPosition = button.Position;
+                _alertPressedTarget = hit == "mother:focus" ? TacticalAlerts.Mother.TargetId : TacticalAlerts.Damage.TargetId;
                 Dragging = false; _middleDragging = false; _navigationPressedTarget = new();
                 if (_buildPainting) FinishBuildStroke();
                 _upgradePointerDown = false;
             }
             else if (!button.Pressed && _alertPress != "")
             {
-                string action = _alertPress; _alertPress = "";
-                if (hit == action && button.Position.DistanceTo(_alertPressPosition) < 12) ActivateTacticalAlert(action);
+                string action = _alertPress, target = _alertPressedTarget;
+                _alertPress = ""; _alertPressedTarget = "";
+                if (hit == action && button.Position.DistanceTo(_alertPressPosition) < 12) ActivateTacticalAlert(action, target);
                 TacticalAlerts.PressedAction = "";
                 GetViewport().SetInputAsHandled(); return true;
             }
@@ -224,28 +227,28 @@ public partial class Main
         Dragging = false;
         GetViewport().SetInputAsHandled(); return true;
     }
-    private void ActivateTacticalAlert(string action)
+    private void ActivateTacticalAlert(string action, string pressedTarget)
     {
-        if (action is "mother:prev" or "mother:next")
-        {
-            SelectAlertTarget(TacticalAlerts.Mother.Index + (action.EndsWith("next") ? 1 : -1));
-            TacticalAlerts.Mother.Acknowledged = false;
-            return;
-        }
-        ClearFactoryCoverage(); ExitSpectator(); CancelBuildSelection(); CancelResourceUpgrade();
         if (action == "mother:focus" && TacticalAlerts.Mother.Active)
         {
-            // Resolve again at click time so movement during the last polling interval cannot misdirect a click.
-            string selected = TacticalAlerts.Mother.TargetId;
+            // A queued arrival may replace a timed-out card between mouse down
+            // and mouse up. Never redirect that click to the replacement ship.
+            if (TacticalAlerts.Mother.TargetId != pressedTarget) return;
             RefreshTacticalTargets();
-            int index = _alertTargets.FindIndex(target => target.Id == selected);
-            if (index < 0 && selected.StartsWith("mother:")) return;
-            if (index >= 0) SelectAlertTarget(index);
-            if (TacticalAlerts.Mother.Active && Planet.FocusPoint(TacticalAlerts.Mother.WorldPosition, TacticalAlerts.Mother.TargetId))
+            var target = ResolveAlertTarget(pressedTarget);
+            if (target == null || TacticalAlerts.Mother.Age >= TacticalAlertView.AlertLifetime)
+            {
+                AdvanceMotherAlert();
+                return;
+            }
+            ClearFactoryCoverage(); ExitSpectator(); CancelBuildSelection(); CancelResourceUpgrade();
+            TacticalAlerts.Mother.WorldPosition = target.Position;
+            if (Planet.FocusPoint(target.Position, target.Id))
                 TacticalAlerts.Mother.Acknowledged = true;
         }
         else if (action == "damage:focus" && TacticalAlerts.Damage.Active)
         {
+            ClearFactoryCoverage(); ExitSpectator(); CancelBuildSelection(); CancelResourceUpgrade();
             Planet.RotateEarthToDirection(_attackLocalNormal);
             TacticalAlerts.Damage.Acknowledged = true;
         }
