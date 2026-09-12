@@ -17,7 +17,7 @@
 | 战斗 / 敌人与波次 | [combat_enemies.csv](domain/combat_enemies.csv) | 15 | id, kind, role_id, boss_variant_id, name, armor, minimum_wave … |
 | 战斗 / 敌人与波次 | [combat_enemy_kinds.csv](domain/combat_enemy_kinds.csv) | 6 | id, base_size, bombard_seconds, legacy_speed_multiplier, drone_fire_cooldown, earth_fire_cooldown |
 | 战斗 / 敌人与波次 | [combat_fronts.csv](domain/combat_fronts.csv) | 8 | id, ordinal, name, color, direction_x, direction_y, direction_z … |
-| 战斗 / 敌人与波次 | [combat_tuning.csv](domain/combat_tuning.csv) | 40 | id, value, minimum, maximum, description |
+| 战斗 / 敌人与波次 | [combat_tuning.csv](domain/combat_tuning.csv) | 43 | id, value, minimum, maximum, description |
 | 战斗 / 敌人与波次 | [combat_wave_composition.csv](domain/combat_wave_composition.csv) | 11 | from_wave, through_wave, claw, needle, rock, siege, prism … |
 | 科技树 | [deep_technology.csv](domain/deep_technology.csv) | 1 | parent_id, position, record_id, has_branches, has_nodes |
 | 科技树 | [deep_technology_branches.csv](domain/deep_technology_branches.csv) | 6 | parent_id, position, color, id, name |

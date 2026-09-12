@@ -146,6 +146,8 @@ public partial class ResearchTopologyChecks : Node
             GetWindow().Size = new Vector2I(1440, 900);
             _app = new Main(); AddChild(_app); _app.UserPaused = true; _app.PreserveCheckpoint = true;
             await Frames(5);
+            Check(_app.Game.Science == 0, "topology fixture starts with the real zero-science wallet");
+            Check(_app.Game.AddResourcesCheat("science", 10), "fund explicit native node purchase fixture");
             string camera = _app.Planet.CaptureCameraState().ToJson();
             _app.Action("tab:tech"); await ToSignal(GetTree().CreateTimer(.5), SceneTreeTimer.SignalName.Timeout);
             var graph = _app.ResearchGraph;

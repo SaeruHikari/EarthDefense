@@ -90,15 +90,16 @@ Check(paidReload.Restore(game.Serialize()) && paidReload.SuccessorCount("K") == 
 game = new DefenseState(); game.Expedition.SetEarthLiberated(true);
 var battle = new Battlefield(game); var director = new DefenseCampaignDirector(game, battle);
 var warning = director.GetFrontierWarning();
-Near(warning.N("remaining"), 225, "initial peace remains five default waves");
+double defaultCycle = game.CombatSettings.N("enemy_wave_duration");
+Near(warning.N("remaining"), 5 * defaultCycle, "initial peace remains five default waves");
 Check(warning.B("pending") && warning.N("remaining") > warning.N("window_duration"), "warning not visible before last cycle");
-director.Step(180.05); warning = director.GetFrontierWarning();
-Check(warning.N("remaining") < warning.N("window_duration") && warning.N("remaining") > 44, "first new frontier enters warning window");
+director.Step(4 * defaultCycle + .05); warning = director.GetFrontierWarning();
+Check(warning.N("remaining") < warning.N("window_duration") && warning.N("remaining") > defaultCycle - 1, "first new frontier enters warning window");
 double remaining = warning.N("remaining"); director.Paused = true; director.Step(20);
 Near(director.GetFrontierWarning().N("remaining"), remaining, "paused countdown stays still");
 director.Paused = false; director.SpeedScale = 2; director.Step(1);
 Near(director.GetFrontierWarning().N("remaining"), remaining - 2, "arrival follows game speed");
-director.SpeedScale = 1; director.Step(50);
+director.SpeedScale = 1; director.Step(defaultCycle + 5);
 Check(battle.WaveRunning && !director.GetFrontierWarning().B("pending"), "first arrival clears warning");
 for (int stage = 1; stage <= 3; stage++)
 {
@@ -110,9 +111,9 @@ for (int stage = 1; stage <= 3; stage++)
     if (stage < 3)
     {
         Check(warning.B("pending") && warning.I("next_stage") == stage + 1, "new frontier warning stage " + (stage + 1));
-        Near(warning.N("remaining"), 45, "whole cycle offered before relocated fleet");
+        Near(warning.N("remaining"), defaultCycle, "whole cycle offered before relocated fleet");
         Near(warning.N("target_radius"), stage == 1 ? 88 : 128, "warning uses actual next radius");
-        director.Step(44.9);
+        director.Step(defaultCycle - .1);
         Check(!battle.WaveRunning && director.GetFrontierWarning().B("pending"), "no early new fleet");
         director.Step(.2);
         Check(battle.WaveRunning && !director.GetFrontierWarning().B("pending"), "relocated fleet arrives at deadline");
@@ -143,6 +144,7 @@ var oldWeapons = battle.DroneWeaponStats(drone); double oldRadius = oldWeapons.N
 Buy("M_S21"); Buy("M_S22"); Buy("M_S23"); var coverage = battle.GetFactoryCoverage(0)!; var weapons = battle.DroneWeaponStats(drone);
 var packet = battle.MakeShot(origin, enemy.Vector3("space_position"), 10, true, 0, weapons);
 Check(packet.N("blast_radius") > oldRadius && packet.N("projectile_speed") > oldSpeed * 3.6 && coverage.Bands[0].WeaponRange > oldRange, "three small nodes reach actual blast, flight and lock-range values");
+OpeningCombatChecks.Run(Check);
 Console.WriteLine($"GAMEPLAY_CHECKS: {checks} checks, {failures} failures");
 System.Environment.ExitCode = failures == 0 ? 0 : 1;
 

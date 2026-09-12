@@ -1,7 +1,7 @@
 key,value,minimum,maximum,unit,description
 initial_minerals,320,0,1000000000000.0,scalar,initial minerals
 initial_energy,180,0,1000000000000.0,scalar,initial energy
-initial_science,80,0,1000000000000.0,scalar,initial science
+initial_science,0,0,1000000000000.0,scalar,initial science
 earth_max_health,100,0,1000000000000.0,scalar,earth max health
 death_blast_damage,35,0,1000000000000.0,scalar,death blast damage
 death_blast_radius,0.55,0,1000000000000.0,scalar,death blast radius
@@ -18,8 +18,8 @@ wave_minerals_base,45,0,1000000000000.0,scalar,wave minerals base
 wave_minerals_increment,8,0,1000000000000.0,scalar,wave minerals increment
 wave_energy_base,25,0,1000000000000.0,scalar,wave energy base
 wave_energy_increment,4,0,1000000000000.0,scalar,wave energy increment
-wave_science_base,12,0,1000000000000.0,scalar,wave science base
-wave_science_increment,2,0,1000000000000.0,scalar,wave science increment
+wave_science_base,0,0,1000000000000.0,scalar,wave science base
+wave_science_increment,0,0,1000000000000.0,scalar,wave science increment
 wave_score_base,100,0,1000000000000.0,scalar,wave score base
 wave_score_increment,20,0,1000000000000.0,scalar,wave score increment
 wave_shield_budget,20,0,1000000000000.0,scalar,wave shield budget

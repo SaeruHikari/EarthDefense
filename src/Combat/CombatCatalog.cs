@@ -20,6 +20,9 @@ public static class CombatCatalog
         public double HealthBase { get; }
         public double HealthSettingReference { get; }
         public double DamageBase { get; }
+        public double OpeningDamageMultiplier { get; }
+        public double OpeningDamageHoldThroughWave { get; }
+        public double OpeningDamageFullWave { get; }
         public double TacticalSpeedBase { get; }
         public double EliteFirstWave { get; }
         public double EliteInterval { get; }
@@ -71,6 +74,9 @@ public static class CombatCatalog
             HealthBase = Get("HealthBase");
             HealthSettingReference = Get("HealthSettingReference");
             DamageBase = Get("DamageBase");
+            OpeningDamageMultiplier = Get("OpeningDamageMultiplier");
+            OpeningDamageHoldThroughWave = Get("OpeningDamageHoldThroughWave");
+            OpeningDamageFullWave = Get("OpeningDamageFullWave");
             TacticalSpeedBase = Get("TacticalSpeedBase");
             EliteFirstWave = Get("EliteFirstWave");
             EliteInterval = Get("EliteInterval");
@@ -108,12 +114,22 @@ public static class CombatCatalog
             LightChargeSeconds = Get("LightChargeSeconds");
             ForgeExposureSeconds = Get("ForgeExposureSeconds");
             SporeProjectileSpeedMultiplier = Get("SporeProjectileSpeedMultiplier");
-            var known = new HashSet<string>(new[] { "HealthBase", "HealthSettingReference", "DamageBase", "TacticalSpeedBase", "EliteFirstWave", "EliteInterval", "EliteOrdinal", "EliteHealthMultiplier", "EliteDamageMultiplier", "GroundDamageFloor", "GroundDamageMultiplier", "SmallBossSpawnFraction", "MediumBossSpawnFraction", "MotherAltitude", "SpawnConeMin", "SpawnConeMax", "SpawnMotherClearance", "FrontierLateralRadius", "FrontierLateralMinimum", "FrontierForwardMin", "FrontierForwardMax", "ContinuingVolleyCount", "ContinuingHangarInterval", "ContinuingCarrierHealthMultiplier", "LegacySpawnSpeedBase", "LegacySpawnSpeedWaveGrowth", "ArmorExposedMultiplier", "WeaverCooldown", "WeaverRange", "WeaverMaxLinks", "WeaverShieldFraction", "WeaverRecoveryBudget", "WeaverRecoveryFraction", "JammerCooldown", "JammerDuration", "JammerFireRateMultiplier", "HeavyChargeSeconds", "LightChargeSeconds", "ForgeExposureSeconds", "SporeProjectileSpeedMultiplier" }, StringComparer.Ordinal);
+            var known = new HashSet<string>(new[] { "OpeningDamageMultiplier", "OpeningDamageHoldThroughWave", "OpeningDamageFullWave", "HealthBase", "HealthSettingReference", "DamageBase", "TacticalSpeedBase", "EliteFirstWave", "EliteInterval", "EliteOrdinal", "EliteHealthMultiplier", "EliteDamageMultiplier", "GroundDamageFloor", "GroundDamageMultiplier", "SmallBossSpawnFraction", "MediumBossSpawnFraction", "MotherAltitude", "SpawnConeMin", "SpawnConeMax", "SpawnMotherClearance", "FrontierLateralRadius", "FrontierLateralMinimum", "FrontierForwardMin", "FrontierForwardMax", "ContinuingVolleyCount", "ContinuingHangarInterval", "ContinuingCarrierHealthMultiplier", "LegacySpawnSpeedBase", "LegacySpawnSpeedWaveGrowth", "ArmorExposedMultiplier", "WeaverCooldown", "WeaverRange", "WeaverMaxLinks", "WeaverShieldFraction", "WeaverRecoveryBudget", "WeaverRecoveryFraction", "JammerCooldown", "JammerDuration", "JammerFireRateMultiplier", "HeavyChargeSeconds", "LightChargeSeconds", "ForgeExposureSeconds", "SporeProjectileSpeedMultiplier" }, StringComparer.Ordinal);
             foreach (var row in table.Rows) if (!known.Contains(row.String("id"))) throw row.Error("id", "unknown tuning parameter");
             foreach (double integer in new[] {EliteFirstWave,EliteInterval,EliteOrdinal,ContinuingVolleyCount,WeaverMaxLinks})
                 if (Math.Floor(integer) != integer) throw new InvalidDataException(table.SourceName + ": count parameters require integers");
             if (EliteOrdinal >= EliteInterval || MediumBossSpawnFraction < SmallBossSpawnFraction || SpawnConeMin > SpawnConeMax || FrontierForwardMin > FrontierForwardMax)
                 throw new InvalidDataException(table.SourceName + ": inconsistent paired parameters");
+            if (OpeningDamageMultiplier <= 0 || OpeningDamageMultiplier > 1 || OpeningDamageHoldThroughWave < 1
+                || OpeningDamageFullWave <= OpeningDamageHoldThroughWave
+                || Math.Floor(OpeningDamageHoldThroughWave) != OpeningDamageHoldThroughWave
+                || Math.Floor(OpeningDamageFullWave) != OpeningDamageFullWave)
+                throw new InvalidDataException(table.SourceName + ": invalid opening damage ramp");
+        }
+        public double DamageMultiplierForWave(long wave)
+        {
+            double progress = Math.Clamp((wave - OpeningDamageHoldThroughWave) / (OpeningDamageFullWave - OpeningDamageHoldThroughWave), 0, 1);
+            return OpeningDamageMultiplier + (1 - OpeningDamageMultiplier) * progress;
         }
     }
     public sealed class Data

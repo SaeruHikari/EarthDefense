@@ -21,7 +21,7 @@ internal static class LocalShieldChecks
         Check(opening.LocalShieldBuildLimit == 2, "opening shield technology grants two field slots");
         Check(opening.BuildingCost("shield").Count == 0, "local shield generator has no construction cost");
         Check(opening.Build("shield", 40) && opening.Wave == 0, "first local shield tower can be placed without resources");
-        Near(opening.Minerals, 320, "free shield leaves opening minerals"); Near(opening.Energy, 180, "free shield leaves opening energy"); Near(opening.Science, 80, "free local shield research does not consume science"); Near(opening.ResourceCores, 0, "free local shield construction does not consume resource cores");
+        Near(opening.Minerals, 320, "free shield leaves opening minerals"); Near(opening.Energy, 180, "free shield leaves opening energy"); Near(opening.Science, 0, "free local shield research does not consume science"); Near(opening.ResourceCores, 0, "free local shield construction does not consume resource cores");
         Check(opening.LocalShieldBuildReadyWave == 3 && opening.LocalShieldBuildCooldownRemaining == 3, "shield construction starts a three-wave cooldown");
         opening.Wave = 2;
         Check(!opening.CanBuild("shield") && opening.LocalShieldBuildCooldownRemaining == 1,

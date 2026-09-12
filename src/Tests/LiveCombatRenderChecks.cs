@@ -110,7 +110,7 @@ public partial class LiveCombatRenderChecks : Node
             app.Speed = 1;
             app.Battle.Random.Seed = 11;
             Check(app.Game.Wave == 0 && app.Game.DeepResearch.Count == 0, "actual Main starts a fresh unresearched run");
-            Check(app.Game.Minerals == 320 && app.Game.Energy == 180 && app.Game.Science == 80, "default starting resources unchanged");
+            Check(app.Game.Minerals == 320 && app.Game.Energy == 180 && app.Game.Science == 0, "new run starts with zero science and unchanged construction resources");
             Check(app.Game.FactoryPerks.Snapshot().Map("levels").Values.All(level => DataMap.Integer(level) == 0), "no permanent upgrades injected");
             Check(DataMap.Equivalent(app.Game.CombatSettings, DefenseState.DefaultCombatSettings), "production default combat parameters unchanged");
             await Frames(3);

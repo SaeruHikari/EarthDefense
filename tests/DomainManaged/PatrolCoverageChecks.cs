@@ -59,7 +59,7 @@ internal static class PatrolCoverageChecks
             Check(DataMap.Equivalent(oldWeapon, game.AircraftDroneStats(kind, 18, 0, id)), "all damage/range/projectile/physical weapon fields unchanged " + id);
         }
         // Tech and navigation Perk still compose after the configurable base.
-        var equipped = new DefenseState();
+        var equipped = new DefenseState { Science = 100 };
         Check(equipped.PurchaseGroup("C_S01") && equipped.PurchaseGroup("C_S02"), "real coverage research purchases");
         var meta = equipped.FactoryPerks.Snapshot(); meta.Map("levels")["navigation"] = 3L;
         meta.Map("templates")["interceptor"] = new List<object?> { "navigation", "" };

@@ -11,6 +11,7 @@ public sealed partial class DefenseState
         ["version"] = 1L,
         ["incremental_version"] = 1L,
         ["world_scale_version"] = WorldScaleVersion,
+        ["balance_revision"] = CombatBalanceRevision,
         ["run_id"] = RunId,
         ["defense_reach_stage"] = DefenseReachStage,
         ["minerals"] = Minerals,
@@ -68,7 +69,7 @@ public sealed partial class DefenseState
             return false;
         if (data.Value("buildings") is not DataMap savedBuildings)
             return false;
-        DataMap? settings = data.Value("combat_settings") is DataMap values ? ValidatedCombatSettings(values.DeepClone()) : null;
+        DataMap? settings = data.Value("combat_settings") is DataMap values ? ReadBalancedCombatSettings(values, data.Value("balance_revision", 0)) : null;
         if (settings == null)
             return false;
         if (data.Value("research_satellite_deployed") is not bool satelliteDeployed || data.Value("research_satellite_launching") is not bool satelliteLaunching || satelliteDeployed && satelliteLaunching)

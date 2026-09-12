@@ -1,7 +1,7 @@
 ﻿branch,attribute,display_name,increment,science_base,science_growth,alien_base,alien_growth
-K,kinetic_damage_bonus,动能伤害,0.03,1200,1.22,12,1.38
-M,missile_damage_bonus,导弹伤害,0.03,1200,1.22,12,1.38
-L,laser_damage_bonus,激光伤害,0.03,1200,1.22,12,1.38
-I,science_output_bonus,科研产量,0.03,1200,1.22,12,1.38
-D,health_bonus,战机耐久,0.03,1200,1.22,12,1.38
-C,patrol_speed_bonus,巡航速度,0.03,1200,1.22,12,1.38
+K,kinetic_damage_bonus,动能伤害,0.03,70,1.22,12,1.38
+M,missile_damage_bonus,导弹伤害,0.03,70,1.22,12,1.38
+L,laser_damage_bonus,激光伤害,0.03,70,1.22,12,1.38
+I,science_output_bonus,科研产量,0.03,70,1.22,12,1.38
+D,health_bonus,战机耐久,0.03,70,1.22,12,1.38
+C,patrol_speed_bonus,巡航速度,0.03,70,1.22,12,1.38

@@ -12,7 +12,7 @@ root,9,missile_factory_capacity,number,2.0
 root,10,enemy_count_multiplier,number,2.0
 root,11,enemy_aircraft_scale,number,0.5
 root,12,enemy_bullet_base_count,number,1.0
-root,13,enemy_bullet_growth_interval,number,90.0
+root,13,enemy_bullet_growth_interval,number,180.0
 root,14,enemy_bullet_growth_step,number,1.0
 root,15,enemy_bullet_max_count,number,8.0
 root,16,enemy_bullet_speed,number,6.0
@@ -20,12 +20,12 @@ root,17,enemy_bombard_speed,number,3.2
 root,18,resource_core_drop_count,number,5.0
 root,19,enemy_speed_multiplier,number,1.5
 root,20,resource_output_multiplier,number,0.1
-root,21,enemy_wave_duration,number,45.0
-root,22,enemy_spawn_duration,number,30.0
+root,21,enemy_wave_duration,number,60.0
+root,22,enemy_spawn_duration,number,45.0
 root,23,enemy_health_growth,number,0.035
 root,24,enemy_damage_growth,number,0.018
-root,25,enemy_wave_base_count,number,10.0
-root,26,enemy_wave_growth,number,2.0
+root,25,enemy_wave_base_count,number,6.0
+root,26,enemy_wave_growth,number,1.0
 root,27,atmosphere_hit_full_percent,number,8.0
 root,28,atmosphere_hit_max_strength,number,1.0
 root,29,atmosphere_hit_lerp_speed,number,12.0

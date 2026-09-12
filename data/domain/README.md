@@ -27,6 +27,7 @@
 | 初始资源、武器基数、资源产出、波次奖励等 | `domain_balance.csv` |
 | 各工厂基础巡航半径、远端范围、速度和生命 | `patrol_bases.csv` |
 | 击杀每类敌人的资源、积分、外星点和核心规则 | `kill_rewards.csv` |
+| 零科研开局、卫星科研与无战斗科研奖励 | `domain_balance.csv` 的 `initial_science`、`science_output_base`、`wave_science_*` 及 `kill_rewards.csv` 的 `science` |
 | 后继单级科技的收益、科研与外星点增长曲线 | `successor_research.csv` |
 | 四层边境航程基础值（供 C_A2/C_A3/C_G2 与外推使用） | `legacy_frontiers.csv` |
 | 暂停开放的远征系统参数与既有存档权益 | `expedition_*.csv` |
@@ -79,7 +80,7 @@ dotnet run --project tests/DomainManaged/DomainManaged.csproj -v quiet
 | 改动 | 当前开发版行为 |
 | --- | --- |
 | 科技/特性公式、基础机型倍率 | 重启并载入后按新表编译效果；已购买节点、永久特性所有权和等级保持。 |
-| `economy_settings.csv` 的默认参数 | 只影响新局与当前版本新写入的记录；要改变当前运行的倍率，使用游戏内参数页。
+| `economy_settings.csv` 的默认参数 | 新局使用默认值；本次数值版本首次读取旧参数时，仅将敌人数基数、波增长、周期、部署窗口、弹数增长间隔这五项刷新为新默认，后续手动调整仍会保留。其余参数保留已有设置。 |
 | 永久特性设置 | 当前 ProfileVersion 的永久档优先；修改默认表不会覆盖已保存的配置。
 | 初始资源、初始建筑 | 只影响新局。结构改动后请清理开发 profile。
 | 敌人造型类别、波次权重、生成基数与技能参数 | 重启后新计划/新单位使用表值；当前版本快照按同一架构读取。
@@ -87,7 +88,7 @@ dotnet run --project tests/DomainManaged/DomainManaged.csproj -v quiet
 
 所有运行中的数值来自当前启动时加载的 CSV；更改建筑、经济或存档结构后应清理开发 profile 并从新局开始。永久特性档案也按当前 ProfileVersion 校验，不提供旧格式迁移。
 
-科研不再由地面研究所产生。建设栏第一项为免费的卫星发射中心（`satellite_launcher`），限建一座，初始数量为 0。玩家通过开局引导建造中心，再点击地表中心免费发射科研卫星；完成火箭上升、分级与入轨动画后才开始持续科研收入。`domain_balance.csv` 的 `science_output_base=0.8` 乘 `economy_settings.csv` 的 `resource_output_multiplier=0.1`，默认得到 **0.08 科研/秒**。发射之前持续科研为 0，击杀与波次科研奖励独立结算。
+科研不再由地面研究所产生。建设栏第一项为免费的卫星发射中心（`satellite_launcher`），限建一座，初始数量为 0。玩家通过开局引导建造中心，再点击地表中心免费发射科研卫星；完成火箭上升、分级与入轨动画后才开始持续科研收入。`domain_balance.csv` 的 `science_output_base=0.8` 乘 `economy_settings.csv` 的 `resource_output_multiplier=0.1`，默认得到 **0.08 科研/秒**。初始科研及发射前持续科研均为 0，击杀与波次科研奖励默认也为 0，避免战斗奖励打破每分钟一次初级研究的节奏。
 
 发射中心的占地和实际模型都是七格蜂窝：中心发射塔与外围六格贴地附属平台。占地由球面网格拓扑确定，模型由 `src/Rendering/SatelliteLauncherModel.cs` 创建。科研卫星和轨道环由 `src/Rendering/OrbitalResearchStationVisual.cs` 创建；轨道平面按发射中心位置确定，经过发射台正上方，地心半径 **20.25**、相对地球表面高度 **4.25**。这些几何与动画常量属于渲染代码，当前不是 CSV 参数；卫星本身不占地表建筑槽。
 
@@ -130,6 +131,8 @@ K_S21,0,string,K_S01
 | `combat_tuning.csv` | 波次、数量、生成范围、精锐及特殊技能等公共系数。 |
 
 修改一类敌人的生命倍率可从 `combat_enemies.csv` 的对应 health 列开始，而不是把每个波次都复制一份敌人记录。各参数名称、单位和范围以表头与 tuning 表说明为准。
+
+前期伤害缓冲由 `combat_tuning.csv` 的三个参数控制：`OpeningDamageMultiplier=0.35`，保持至 `OpeningDamageHoldThroughWave=10`，再线性恢复到 `OpeningDamageFullWave=20` 时的完整伤害。它同时作用于对飞机伤害和对地伤害下限；波数必须为整数，恢复结束波必须大于保持截止波。该倍率叠加在 `DamageBase=11.7` 与原有波次成长、首波保护、精锐及阶段倍率上。
 
 ## Excel 保存与 ID
 

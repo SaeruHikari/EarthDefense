@@ -90,7 +90,7 @@ public partial class WaveRetryChecks : Node
             Check(_app.ValidateWaveStartRecord(DataMap.Parse(Read("earthward_wave_start.json"))), "persisted opening record passes complete strict validation");
             string sidecarHash = Digest("earthward_wave_start.json");
             _app.Battle.Paused = false; _app.Campaign.Paused = false;
-            for (int i = 0; i < 180; i++) { _app.Game.Tick(1d / 60); _app.Battle.Step(1d / 60); _app.Campaign.Step(1d / 60); }
+            for (int i = 0; i < 360; i++) { _app.Game.Tick(1d / 60); _app.Battle.Step(1d / 60); _app.Campaign.Step(1d / 60); }
             Check(_app.Battle.GetWaveSpawnPlan().N("cycle_elapsed") > 2 && _app.Battle.GetWaveSpawnPlan().L("spawned") > 0, "fixture genuinely advances into the wave");
             Check(_app.Game.PurchaseGroup("K_S01"), "fixture researches during wave");
             var slots = _app.Planet.GetSlots();

@@ -62,8 +62,10 @@ internal static class AllDirectionsCombat
         {
             var game=new DefenseState{Wave=wave-1};var b=new Battlefield(game,new RotatingSurface());b.Random.Seed=125;b.StartWave();
             long count=(game.CombatSettings.L("enemy_wave_base_count")+game.CombatSettings.L("enemy_wave_growth")*(wave-1))*game.CombatSettings.L("enemy_count_multiplier");
-            var plan=b.GetWaveSpawnPlan();Near(plan.N("duration"),30,"30 second deployment window retained",.000001);Near(plan.N("cycle_duration"),45,"45 second wave cycle retained",.000001);
-            Check(plan.L("planned_count")==count,"larger Earth never multiplies the wave budget");b.UpdateSpawning(30);
+            if(wave==1)count=(long)Math.Ceiling(count*game.CombatSettings.N("first_wave_enemy_count_multiplier"));
+            double spawn=game.CombatSettings.N("enemy_spawn_duration"),cycle=game.CombatSettings.N("enemy_wave_duration");
+            var plan=b.GetWaveSpawnPlan();Near(plan.N("duration"),spawn,"configured deployment window retained",.000001);Near(plan.N("cycle_duration"),cycle,"configured wave cycle retained",.000001);
+            Check(plan.L("planned_count")==count,"larger Earth never multiplies the wave budget");b.UpdateSpawning(spawn);
             Check(b.GetWaveSpawnPlan().L("spawned")==count&&b.WaveRemaining==0,"every planned enemy consumes one budget entry");
             long actual=b.Enemies.Count+b.Enemies.Sum(e=>e.List("cargo").Count);Check(actual==count,"hatcher reserve is within the same total budget");
         }

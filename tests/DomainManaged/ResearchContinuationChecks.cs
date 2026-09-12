@@ -14,8 +14,11 @@ internal static class ResearchContinuationChecks
         var definition = DeepTechnology.Definition("K_R00001");
         Check(definition.I("max") == 1 && definition.Map("values").Count == 1 && definition.S("size") == "medium" && definition.B("alien"), "one property and one purchase with correct paid category");
         Check(definition.List("requires").Single() as string == "K_G2" && DeepTechnology.Definition("K_R00002").List("requires").Single() as string == "K_R00001", "independent sequential prerequisites");
-        Near(definition.Map("cost").N("science"), 1200, "first cost science");
-        Near(DeepTechnology.Definition("K_R00002").Map("cost").N("science"), 1464, "second cost science");
+        foreach (string branch in new[] { "K", "M", "L", "I", "D", "C" })
+        {
+            Near(DeepTechnology.Definition(branch + "_R00001").Map("cost").N("science"), 70, "first cost science follows slower satellite economy: " + branch);
+            Near(DeepTechnology.Definition(branch + "_R00002").Map("cost").N("science"), 86, "second cost retains incremental growth: " + branch);
+        }
         Near(DeepTechnology.Definition("K_R00002").Map("cost").N("alien_points"), 17, "second cost alien");
         var maximum = DeepTechnology.Definition("K_R10000").Map("cost");
         Check(maximum.N("science") == DefenseState.ResourceLimit && maximum.L("alien_points") == DefenseState.MaxExactInteger, "extreme-rank cost ceilings retained");
@@ -25,7 +28,7 @@ internal static class ResearchContinuationChecks
         Check(funded.UnlockAllTechnologyCheat(), "fixed tree fully owned for continuation access");
         var before = funded.Serialize();
         Check(funded.PurchaseGroup("K_R00001"), "first successor purchases once");
-        Near(funded.Science, before.N("science") - 1200, "one science payment");
+        Near(funded.Science, before.N("science") - 70, "one science payment");
         Near(funded.AlienPoints, before.N("alien_points") - 12, "one alien payment");
         var paid = funded.Serialize(); Check(!funded.PurchaseGroup("K_R00001") && DataMap.Equivalent(paid, funded.Serialize()), "duplicate is a no-op with no charge or refund");
         Check(funded.PurchaseGroup("K_R00002") && funded.ResearchLevel("K_R00001") == 1 && funded.ResearchLevel("K_R00002") == 1, "second research is a distinct node");
