@@ -33,11 +33,11 @@ public partial class ResearchTopologyChecks : Node
     private void InspectStaticTree(ResearchGraphView graph)
     {
         var nodes = graph.Nodes.Where(node => !node.B("is_successor")).ToArray();
-        Check(nodes.Length == 300 && nodes.Count(node => node.S("size") == "small") == 247, "300 static nodes include 247 independent small technologies");
+        Check(nodes.Length == 248 && nodes.Count(node => node.S("size") == "small") == 195, "248 static nodes include 195 independent small technologies");
         Check(nodes.All(node => node.B("visible") && graph.NodeButtons[node.S("id")].Visible), "every ordinary technology is browsable before unlock");
         Check(nodes.Any(node => !node.B("available") && node.S("lock_reason") != ""), "unlocked visibility preserves real research locks");
         int expected = nodes.Sum(node => ResearchGraphView.PrerequisiteIds(node).Length);
-        Check(graph.Connections.Count == expected, "every actual prerequisite has exactly one connection");
+        Check(graph.Connections.Count == expected && expected == 287, "all 287 actual prerequisite links have exactly one connection");
         Check(graph.Connections.All(edge => edge.Kind == ResearchConnectionKind.Prerequisite), "complete ordinary catalog has no hidden or missing parent edges");
         bool exact = true, ordered = true;
         foreach (var node in nodes)
@@ -65,10 +65,10 @@ public partial class ResearchTopologyChecks : Node
                 pairedRays &= Math.Abs(parent.Normalized().Cross(child.Normalized())) < .00001f && Math.Abs(child.DistanceTo(parent) - ResearchGraphView.RingSpacing) < .002;
             }
         }
-        Check(rings, "all 300 static technologies occupy their exact real prerequisite-depth ring");
-        Check(singleSteps && singleCount == 235, "all 235 single-parent upgrades advance by exactly one ring");
+        Check(rings, "all 248 static technologies occupy their exact real prerequisite-depth ring");
+        Check(singleSteps && singleCount == 187, "all 187 single-parent upgrades advance by exactly one ring");
         Check(deepestSteps && multiCount == 44, "all 44 multi-parent upgrades sit immediately outside their deepest prerequisite");
-        Check(pairedRays && pairCount == 124, "all 124 split small-tech pairs remain adjacent on exactly the same ray");
+        Check(pairedRays && pairCount == 98, "all 98 marked adjacent pairs including shield repair remain on exactly the same ray");
         Check(graph.Connections.Count(graph.IsSecondaryConnection) == 54, "54 earlier or cross-branch prerequisite links remain present as secondary connections");
         bool separated = true;
         string closestPair = "";

@@ -51,7 +51,7 @@ public partial class ResearchExtensionsUiChecks : Node
             _app.Action("tab:tech");
             await ToSignal(GetTree().CreateTimer(.5), SceneTreeTimer.SignalName.Timeout);
             var graph = _app.ResearchGraph;
-            Check(graph.Nodes.Count(node => !node.B("is_successor")) == 300, "full static tree includes deeper branches, capacity and shield unlock");
+            Check(graph.Nodes.Count(node => !node.B("is_successor")) == 248, "deduplicated tree retains deeper branches, capacity and shield unlock");
             foreach (var (id, icon) in new[] { ("M_S21", "blast"), ("M_S22", "range"), ("M_S23", "speed") })
             {
                 var node = graph.Node(id);

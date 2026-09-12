@@ -8,6 +8,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'data/domain'
 BRANCHES = 'KMLIDC'
 FIRST_RADIUS, RING_SPACING, SPOKE_DEGREES = 220.0, 84.0, 6.0
+NODE_RADII = {'small': 12, 'medium': 20, 'large': 32}
+MINIMUM_GAP = 8
 # D_N4 is an existing direct medium technology whose established presentation
 # lane is deliberately kept on the third ring.  Its new repair child follows
 # that node on the next ring; retaining the anchor prevents a medium node from
@@ -60,6 +62,18 @@ def generate():
                 angle = math.radians(branch_index * 60 + spoke * SPOKE_DEGREES)
                 return (math.sin(angle) * radius, -math.cos(angle) * radius)
             def score(assignment):
+                # Pruned lanes create additional choices. Account for actual
+                # node size while choosing a lane, rather than selecting the
+                # shortest links and only discovering an overlap afterwards.
+                assigned = {node['id']: slots[node['id']] for node in group if node not in remaining}
+                assigned.update((node['id'], spoke) for node, spoke in zip(remaining, assignment))
+                same_ring = [(key, p) for key, p in positions.items() if depths[key] == level]
+                for key, spoke in assigned.items():
+                    p = point(spoke)
+                    for other, q in same_ring:
+                        if math.dist(p, q) < NODE_RADII[index[key]['size']] + NODE_RADII[index[other]['size']] + MINIMUM_GAP:
+                            return math.inf
+                    same_ring.append((key, p))
                 total = 0.0
                 for node, spoke in zip(remaining, assignment):
                     key = node['id']; parents = requires[key]
@@ -81,12 +95,12 @@ def generate():
             for node, spoke in zip(remaining, best): slots[node['id']] = spoke
             for node in group: positions[node['id']] = point(slots[node['id']])
     minimum, nearest = math.inf, None
-    radii = {'small':12,'medium':20,'large':32}
+    radii = NODE_RADII
     for i, a in enumerate(nodes):
         for b in nodes[i+1:]:
             gap = math.dist(positions[a['id']],positions[b['id']])-radii[a['size']]-radii[b['size']]
             if gap < minimum: minimum, nearest = gap, (a['id'],b['id'])
-    if minimum < 8: raise ValueError('Overlapping research nodes: ' + str((minimum,nearest)))
+    if minimum < MINIMUM_GAP: raise ValueError('Overlapping research nodes: ' + str((minimum,nearest)))
     single, multi, pairs, secondary = 0, 0, 0, 0
     for node in nodes:
         key = node['id']; parents = requires[key]

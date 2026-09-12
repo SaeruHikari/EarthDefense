@@ -20,13 +20,13 @@
 | 战斗 / 敌人与波次 | [combat_wave_composition.csv](domain/combat_wave_composition.csv) | 11 | from_wave, through_wave, claw, needle, rock, siege, prism … |
 | 科技树 | [deep_technology.csv](domain/deep_technology.csv) | 1 | parent_id, position, record_id, has_branches, has_nodes |
 | 科技树 | [deep_technology_branches.csv](domain/deep_technology_branches.csv) | 6 | parent_id, position, color, id, name |
-| 科技树 | [deep_technology_nodes.csv](domain/deep_technology_nodes.csv) | 300 | parent_id, position, alien, branch, icon, id, importance … |
-| 科技树 | [deep_technology_nodes_cost.csv](domain/deep_technology_nodes_cost.csv) | 338 | parent_id, position, currency, type, value |
-| 科技树 | [deep_technology_nodes_draw_position.csv](domain/deep_technology_nodes_draw_position.csv) | 600 | parent_id, position, type, value |
-| 科技树 | [deep_technology_nodes_effects.csv](domain/deep_technology_nodes_effects.csv) | 305 | parent_id, position, type, value |
-| 科技树 | [deep_technology_nodes_requires.csv](domain/deep_technology_nodes_requires.csv) | 335 | parent_id, position, type, value |
-| 科技树 | [deep_technology_nodes_unlock.csv](domain/deep_technology_nodes_unlock.csv) | 618 | parent_id, position, key, type, value |
-| 科技树 | [deep_technology_nodes_values.csv](domain/deep_technology_nodes_values.csv) | 318 | parent_id, position, attribute, type, value |
+| 科技树 | [deep_technology_nodes.csv](domain/deep_technology_nodes.csv) | 248 | parent_id, position, alien, branch, icon, id, importance … |
+| 科技树 | [deep_technology_nodes_cost.csv](domain/deep_technology_nodes_cost.csv) | 286 | parent_id, position, currency, type, value |
+| 科技树 | [deep_technology_nodes_draw_position.csv](domain/deep_technology_nodes_draw_position.csv) | 496 | parent_id, position, type, value |
+| 科技树 | [deep_technology_nodes_effects.csv](domain/deep_technology_nodes_effects.csv) | 253 | parent_id, position, type, value |
+| 科技树 | [deep_technology_nodes_requires.csv](domain/deep_technology_nodes_requires.csv) | 287 | parent_id, position, type, value |
+| 科技树 | [deep_technology_nodes_unlock.csv](domain/deep_technology_nodes_unlock.csv) | 514 | parent_id, position, key, type, value |
+| 科技树 | [deep_technology_nodes_values.csv](domain/deep_technology_nodes_values.csv) | 266 | parent_id, position, attribute, type, value |
 | 经济 / 基础 / 奖励 | [domain_balance.csv](domain/domain_balance.csv) | 41 | key, value, minimum, maximum, unit, description |
 | 经济 / 基础 / 奖励 | [economy.csv](domain/economy.csv) | 1 | parent_id, position, record_id, has_buildings, has_initial_buildings, has_integer_settings, has_local_shield … |
 | 经济 / 基础 / 奖励 | [economy_buildings.csv](domain/economy_buildings.csv) | 7 | parent_id, position, color, description, id, name, unlock_research, has_cost, max_count |

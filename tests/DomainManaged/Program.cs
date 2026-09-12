@@ -12,14 +12,60 @@ void Compare(object? actual,object? expected,string path)
  if(DataMap.ValidNumber(expected,-double.MaxValue,double.MaxValue)){double a=DataMap.Number(actual,double.NaN),e=DataMap.Number(expected);Check(double.IsFinite(a)&&Math.Abs(a-e)<=Math.Max(1e-8,Math.Abs(e)*1e-7),path+" "+a+" / "+e);return;}
  Check(Equals(actual,expected),path+" actual="+actual+" expected="+expected);
 }
-Check(DeepTechnology.Nodes.Count==300,"300 nodes");Check(PerkCatalog.Entries.Count==39,"39 perks");
+Check(DeepTechnology.Nodes.Count==248,"248 retained technology nodes");Check(PerkCatalog.Entries.Count==39,"39 perks");
+Check(DeepTechnology.Nodes.Count(node=>node.S("size")=="small")==195,"195 independent small technologies remain");
+Check(DeepTechnology.Nodes.Count(node=>node.S("size")=="medium")==41,"all 41 medium technologies remain");
+Check(DeepTechnology.Nodes.Count(node=>node.S("size")=="large")==12,"all 12 large technologies remain");
+Check(DeepTechnology.Nodes.Count(node=>node.B("is_pair_second"))==98,"98 marked adjacent research pairs including shield repair");
+var removedResearch = new[]
+{
+ "K_S03","K_S23","K_S08","K_S28","K_S13","K_S33","K_S18","K_S38",
+ "L_S04","L_S24","L_S09","L_S29","L_S14","L_S34","L_S19","L_S39",
+ "L_S05","L_S25","L_S10","L_S30","L_S15","L_S35","L_S20","L_S40",
+ "I_S04","I_S24","I_S09","I_S29","I_S14","I_S34","I_S19","I_S39",
+ "C_S04","C_S24","C_S09","C_S29","C_S14","C_S34","C_S19","C_S39",
+ "C_S05","C_S25","C_S10","C_S30","C_S15","C_S35","C_S20","C_S40",
+ "M_S08","M_S31","M_S10","M_S33"
+}.ToHashSet();
+var freshResearch = new DefenseState();
+var freshResearchIds = freshResearch.GraphNodes().Select(node=>node.S("id")).ToHashSet();
+Check(removedResearch.Count==52,"exact redundant low-value research removal set");
+foreach(string id in removedResearch)
+ Check(!DeepTechnology.Has(id)&&!freshResearch.CanResearch(id)&&!freshResearchIds.Contains(id),"removed research has no definition, purchase, or graph node: "+id);
+Check(DeepTechnology.Nodes.All(node=>node.List("requires").Cast<string>().All(parent=>!removedResearch.Contains(parent))),"no dangling prerequisite references deleted research");
+foreach(var (id, parents) in new[]
+{
+ ("I_N4",new[]{"I_S25"}), ("I_N5",new[]{"I_N4","I_S30"}), ("I_N6",new[]{"I_N5","I_S35"}),
+ ("M_S13",new[]{"M_S44"}), ("M_S15",new[]{"M_S46"})
+}) Check(DeepTechnology.Definition(id).List("requires").Cast<string>().SequenceEqual(parents),"rewired research keeps exact surviving prerequisites: "+id);
+foreach(string branch in new[]{"K","M","L","I","D","C"})
+{
+ for(int rank=1;rank<=3;rank++)
+ {
+  Check(DeepTechnology.Definition(branch+"_N"+rank).S("size")=="medium","regular medium retained: "+branch+"_N"+rank);
+  var alien=DeepTechnology.Definition(branch+"_A"+rank);
+  Check(alien.S("size")=="medium"&&alien.B("alien"),"alien medium retained: "+branch+"_A"+rank);
+ }
+ for(int rank=1;rank<=2;rank++) Check(DeepTechnology.Definition(branch+"_G"+rank).S("size")=="large","large milestone retained: "+branch+"_G"+rank);
+}
+foreach(var (id, attribute, value) in new[]
+{
+ ("K_S01","kinetic_damage_bonus",.04), ("K_S36","kinetic_damage_bonus",.12),
+ ("L_S02","laser_fire_rate_bonus",.02), ("L_S37","laser_fire_rate_bonus",.06),
+ ("L_S03","laser_range_bonus",.02), ("L_S38","laser_range_bonus",.06),
+ ("I_S05","production_speed_bonus",.025), ("I_S40","production_speed_bonus",.075),
+ ("C_S02","patrol_outer_bonus",.06), ("C_S37","patrol_outer_bonus",.18),
+ ("C_S01","patrol_radius_bonus",.06), ("C_S36","patrol_radius_bonus",.18),
+ ("M_S21","missile_blast_radius_bonus",.075), ("M_S44","missile_blast_radius_bonus",.075),
+ ("M_S23","missile_speed_bonus",.1), ("M_S46","missile_speed_bonus",.1)
+}) Compare(DeepTechnology.Definition(id).Map("values").Value(attribute),value,"stronger surviving research unchanged: "+id);
 foreach(var row in golden.List("perk_effects").OfType<DataMap>())Compare(PerkCatalog.Effects(row.S("id"),row.I("level"),PerkCatalog.DefaultSettings),row.Map("effects"),row.S("id")+" level"+row.I("level"));
 Compare(PerkCatalog.NeutralModifiers(),golden.Map("perk_neutral"),"neutral");
 // Real managed purchase, persistent transactions, inheritance and failure tests.
 var funded=new DefenseState{Minerals=1e12,Energy=1e12,Science=1e12,AlienPoints=100000,ResourceCores=100,Wave=120,CompletedWaves=120};funded.SetDefenseReachStage(3);funded.RewardKill("boss",120,3);
 var pending=DeepTechnology.Nodes.Select(row=>row.S("id")).ToHashSet();
 for(int pass=0;pass<DeepTechnology.Nodes.Count&&pending.Count>0;pass++){int before=pending.Count;foreach(string id in pending.ToList())if(funded.GetGroupStatus(id).B("can_purchase")){Check(funded.PurchaseGroup(id),"actual managed purchase "+id);pending.Remove(id);}if(before==pending.Count)break;}
-Check(pending.Count==0,"entire300 actual managed DAG purchase reachable");
+Check(pending.Count==0,"entire248 actual managed DAG purchase reachable: "+string.Join(",",pending));
 Check(funded.PurchaseGroup("K_R00001"),"actual managed independent continuation purchase");
 Check(funded.SetAirframe("interceptor",18,-1,"K2"),"select heavy wing");var plan=funded.FactoryAirframePlan("interceptor",18);for(int i=1;i<plan.Count;i++)Check(plan[i].I("berth")==plan[i-1].I("berth")+2,"stable heavy occupancy");
 Check(!funded.SetAirframe("interceptor",18,1,"K1"),"cannot select second occupied capacity point");

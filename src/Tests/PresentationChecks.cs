@@ -65,8 +65,8 @@ public partial class PresentationChecks : Node
             await Click(tech.GetCenter());
             await ToSignal(GetTree().CreateTimer(.45), SceneTreeTimer.SignalName.Timeout);
             Check(_app.Tab == "tech" && _app.ResearchGraph.Visible, "native technology tab opens graph");
-            Check(_app.ResearchGraph.Nodes.Count(n => !n.B("is_successor")) == 300, "300 real base research nodes");
-            Check(_app.ResearchGraph.Nodes.Count(n => n.S("size") == "small") == 247, "247 small independent nodes");
+            Check(_app.ResearchGraph.Nodes.Count(n => !n.B("is_successor")) == 248, "248 real base research nodes");
+            Check(_app.ResearchGraph.Nodes.Count(n => n.S("size") == "small") == 195, "195 small independent nodes");
             Check(_app.Planet.GetViewSize() == view, "technology keeps render viewport");
             Check(_app.Planet.CaptureCameraState().ToJson() == camera.ToJson(), "technology leaves camera state unchanged");
             var graph = _app.ResearchGraph;
