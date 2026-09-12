@@ -165,7 +165,7 @@ public sealed partial class Battlefield
                 if (timing != null) mark = timing.Record(CombatStage.Weapons, mark);
                 UpdateShots(dt);
                 if (timing != null) mark = timing.Record(CombatStage.Projectiles, mark);
-                CheckWaveEnd();
+                if (!Paused) CheckWaveEnd();
             }
         }
         RenderDirty?.Invoke();
@@ -465,6 +465,5 @@ public sealed partial class Battlefield
         return origin.DistanceSquaredTo(position) <= range * range && Home(d).Dot(position.Normalized()) >= GetProfile(d).Cosine && CombatGeometry.HasLineOfSight(origin, position);
     }
 }
-
 
 

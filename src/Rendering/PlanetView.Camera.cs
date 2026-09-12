@@ -7,12 +7,17 @@ public sealed partial class PlanetView
     private string _focusId = "earth";
     private float _focusRadius = WorldScale.EarthRadius, _overviewDistance, _cameraYaw, _cameraPitch, _cameraDistance = WorldScale.DefaultCameraDistance, _focusElapsed = 1;
     private Vector3 _cameraTarget, _cameraViewTarget, _focusFromPosition, _focusFromTarget, _focusToPosition;
+    private bool _surfaceFocus;
+    private float _focusDuration = 1.15f, _surfaceFocusAngle, _surfaceFocusRoll;
+    private Vector3 _surfaceFocusAxis = Vector3.Up, _surfaceFocusFromUp = Vector3.Up;
     private bool _spectatorActive;
     private long _spectatorUid = -1;
     private DataMap _navigationHover = new();
     private WorldHighlight? _highlight;
     public string GetFocusId() => _focusId;
     public float GetCameraDistance() => _cameraDistance;
+    public bool IsCameraTransitionActive => !_spectatorActive && _focusElapsed < 1;
+    public float GetFocusTransitionProgress() => Mathf.Clamp(_focusElapsed, 0, 1);
     public Vector2 GetCameraHeading() => new(_cameraYaw, _cameraPitch);
     public float GetProjectedPlanetRadius()
     {
@@ -24,6 +29,7 @@ public sealed partial class PlanetView
     {
         if (_spectatorActive || !float.IsFinite(yaw) || !float.IsFinite(pitch))
             return;
+        InterruptSurfaceFocusTransition();
         _focusElapsed = 1;
         _cameraYaw = Mathf.Wrap(_cameraYaw + yaw, -Mathf.Pi, Mathf.Pi);
         _cameraPitch = Mathf.Clamp(_cameraPitch + pitch, Mathf.DegToRad(-80), Mathf.DegToRad(80));
@@ -33,6 +39,7 @@ public sealed partial class PlanetView
     {
         if (_spectatorActive || !float.IsFinite(amount))
             return;
+        InterruptSurfaceFocusTransition();
         _focusElapsed = 1;
         float closest = _focusId == "earth" ? WorldScale.MinCameraDistance : Math.Max(_focusRadius * 1.45f, _focusRadius + .5f), farthest = _focusId == "system" ? Math.Max(160, _overviewDistance * 1.4f) : 160;
         _cameraDistance = Mathf.Clamp(_cameraDistance + amount * Math.Max(1, _cameraDistance / 24), closest, farthest);
@@ -45,6 +52,7 @@ public sealed partial class PlanetView
         _focusId = "earth";
         _focusRadius = WorldScale.EarthRadius;
         _cameraTarget = _cameraViewTarget = Vector3.Zero;
+        _surfaceFocus = false;
         _focusElapsed = 1;
         _cameraYaw = _cameraPitch = 0;
         _cameraDistance = Mathf.Clamp(DefaultCameraDistance, WorldScale.MinCameraDistance, WorldScale.MaxCameraDistance);
@@ -131,6 +139,8 @@ public sealed partial class PlanetView
     }
     private void StartFocusTransition(bool instant)
     {
+        _surfaceFocus = false;
+        _focusDuration = 1.15f;
         SelectedSlot = -1;
         PlacingBuilding = false;
         Grid?.SetHover(-1);
@@ -146,12 +156,64 @@ public sealed partial class PlanetView
     {
         if (_spectatorActive || _focusElapsed >= 1)
             return;
-        _focusElapsed = Math.Min(1, _focusElapsed + (float)Math.Max(0, delta) / 1.15f);
+        if (!double.IsFinite(delta)) return;
+        _focusElapsed = Math.Min(1, _focusElapsed + (float)Math.Max(0, delta) / _focusDuration);
         float t = _focusElapsed * _focusElapsed * (3 - 2 * _focusElapsed);
-        Camera.GlobalPosition = AvoidBodyCollision(_focusFromPosition.Lerp(_focusToPosition, t));
+        if (_surfaceFocus)
+        {
+            // Orbit around the globe instead of taking a chord through its interior.
+            // The small outward arc leaves extra clearance during a large turn.
+            Vector3 direction = _surfaceFocusAngle < .001f
+                ? _focusFromPosition.Normalized().Lerp(_focusToPosition.Normalized(), t).Normalized()
+                : _focusFromPosition.Normalized().Rotated(_surfaceFocusAxis, _surfaceFocusAngle * t);
+            float radius = Mathf.Lerp(_focusFromPosition.Length(), _focusToPosition.Length(), t);
+            float outward = WorldScale.EarthRadius * .14f * Mathf.Sin(_surfaceFocusAngle * .5f) * Mathf.Sin(Mathf.Pi * t);
+            Camera.GlobalPosition = AvoidBodyCollision(_focusElapsed >= 1 ? _focusToPosition : direction * (radius + outward));
+        }
+        else
+            Camera.GlobalPosition = AvoidBodyCollision(_focusFromPosition.Lerp(_focusToPosition, t));
         _cameraViewTarget = _focusFromTarget.Lerp(_cameraTarget, t);
-        Camera.LookAt(_cameraViewTarget, Vector3.Up);
+        if (_surfaceFocus)
+        {
+            var back = (Camera.GlobalPosition - _cameraViewTarget).Normalized();
+            var up = _surfaceFocusFromUp.Rotated(_surfaceFocusAxis, _surfaceFocusAngle * t);
+            up = SafeSurfaceFocusUp(back, up).Rotated(back, _surfaceFocusRoll * t);
+            Camera.LookAt(_cameraViewTarget, up);
+            if (_focusElapsed >= 1) _surfaceFocus = false;
+        }
+        else
+            Camera.LookAt(_cameraViewTarget, Vector3.Up);
         CameraVisualsChanged();
+    }
+
+    private void InterruptSurfaceFocusTransition()
+    {
+        if (!_surfaceFocus) return;
+        if (IsCameraTransitionActive && Camera != null)
+        {
+            // Manual input continues from the actual on-screen pose, not the planned destination.
+            _cameraTarget = _cameraViewTarget;
+            var offset = Camera.GlobalPosition - _cameraTarget;
+            _cameraDistance = Math.Max(.001f, offset.Length());
+            var direction = offset / _cameraDistance;
+            _cameraYaw = Mathf.Atan2(direction.X, direction.Z);
+            _cameraPitch = Mathf.Asin(Mathf.Clamp(direction.Y, -.99999f, .99999f));
+        }
+        _surfaceFocus = false;
+        _focusElapsed = 1;
+    }
+
+    private Vector3 SafeSurfaceFocusUp(Vector3 back, Vector3 preferred)
+    {
+        Vector3 up = preferred - back * preferred.Dot(back);
+        if (up.LengthSquared() < .0001f)
+            up = back.Cross(Camera.GlobalBasis.X);
+        if (up.LengthSquared() < .0001f)
+        {
+            Vector3 reference = Math.Abs(back.Y) < .9f ? Vector3.Up : Vector3.Back;
+            up = reference - back * reference.Dot(back);
+        }
+        return up.Normalized();
     }
     private Vector3 AvoidBodyCollision(Vector3 candidate)
     {
@@ -182,6 +244,7 @@ public sealed partial class PlanetView
     public long GetSpectatorDroneUid() => _spectatorUid;
     public void BeginAircraftView(long uid)
     {
+        InterruptSurfaceFocusTransition();
         _spectatorActive = true;
         _spectatorUid = uid;
     }
@@ -204,7 +267,7 @@ public sealed partial class PlanetView
         _spectatorActive = false;
         _spectatorUid = -1;
     }
-    public DataMap CaptureCameraState() => new() { ["transform"] = Camera.GlobalTransform, ["fov"] = Camera.Fov, ["near"] = Camera.Near, ["far"] = Camera.Far, ["focus_id"] = _focusId, ["target"] = _cameraTarget, ["view_target"] = _cameraViewTarget, ["focus_radius"] = _focusRadius, ["overview_distance"] = _overviewDistance, ["yaw"] = _cameraYaw, ["pitch"] = _cameraPitch, ["distance"] = _cameraDistance, ["focus_elapsed"] = _focusElapsed, ["focus_from_position"] = _focusFromPosition, ["focus_from_target"] = _focusFromTarget, ["focus_to_position"] = _focusToPosition };
+    public DataMap CaptureCameraState() => new() { ["transform"] = Camera.GlobalTransform, ["fov"] = Camera.Fov, ["near"] = Camera.Near, ["far"] = Camera.Far, ["focus_id"] = _focusId, ["target"] = _cameraTarget, ["view_target"] = _cameraViewTarget, ["focus_radius"] = _focusRadius, ["overview_distance"] = _overviewDistance, ["yaw"] = _cameraYaw, ["pitch"] = _cameraPitch, ["distance"] = _cameraDistance, ["focus_elapsed"] = _focusElapsed, ["focus_from_position"] = _focusFromPosition, ["focus_from_target"] = _focusFromTarget, ["focus_to_position"] = _focusToPosition, ["surface_focus"] = _surfaceFocus, ["focus_duration"] = _focusDuration, ["surface_focus_axis"] = _surfaceFocusAxis, ["surface_focus_angle"] = _surfaceFocusAngle, ["surface_focus_roll"] = _surfaceFocusRoll, ["surface_focus_from_up"] = _surfaceFocusFromUp };
     public void RestoreCameraState(DataMap state)
     {
         _spectatorActive = false;
@@ -224,6 +287,13 @@ public sealed partial class PlanetView
         _focusFromPosition = state.Vector3("focus_from_position");
         _focusFromTarget = state.Vector3("focus_from_target");
         _focusToPosition = state.Vector3("focus_to_position");
+        _surfaceFocus = state.B("surface_focus") && _focusElapsed < 1;
+        _focusDuration = (float)state.N("focus_duration", 1.15);
+        if (!float.IsFinite(_focusDuration) || _focusDuration <= 0) _focusDuration = 1.15f;
+        _surfaceFocusAxis = state.Vector3("surface_focus_axis", Vector3.Up);
+        _surfaceFocusAngle = (float)state.N("surface_focus_angle");
+        _surfaceFocusRoll = (float)state.N("surface_focus_roll");
+        _surfaceFocusFromUp = state.Vector3("surface_focus_from_up", Vector3.Up);
         Camera.GlobalTransform = state.Get<Transform3D>("transform", Camera.GlobalTransform);
         Camera.Fov = (float)state.N("fov", 36);
         Camera.Near = (float)state.N("near", .1);
@@ -273,7 +343,8 @@ public sealed partial class PlanetView
                 };
             }
         }
-        return result;
+        var satellite = PickResearchSatellite(origin, ray, nearest);
+        return satellite.Count > 0 ? satellite : result;
     }
     public static float NavigationSphereHit(Vector3 origin, Vector3 ray, Vector3 center, float radius)
     {
@@ -289,7 +360,9 @@ public sealed partial class PlanetView
         _navigationHover = target;
         _highlight ??= new WorldHighlight(SpaceRoot, Camera);
         string id = target.S("id");
-        MeshInstance3D? surface = id == "earth" ? _earth.Root.GetNode<MeshInstance3D>("EarthTerrain") : _celestial.NavigationSurface(id);
+        MeshInstance3D? surface = id == "earth" ? _earth.Root.GetNode<MeshInstance3D>("EarthTerrain")
+            : id == "research_satellite" && HasOrbitalResearchStation ? _researchStation.Model.GetNode<MeshInstance3D>("CoreBus")
+            : _celestial.NavigationSurface(id);
         _highlight.SetTarget(surface);
     }
     public void ClearNavigationHover()

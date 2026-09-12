@@ -24,7 +24,7 @@ try {
         }
     }
     $scenes = @('rendering')
-    if (-not $HeadlessOnly) { $scenes += @('presentation', 'local_shield_render', 'research_topology', 'research_extensions_ui', 'factory_coverage', 'satellite_launch', 'satellite_launcher_ui') }
+    if (-not $HeadlessOnly) { $scenes += @('presentation', 'local_shield_render', 'shield_guide', 'research_topology', 'research_extensions_ui', 'factory_coverage', 'satellite_launch', 'satellite_launcher_ui') }
     foreach ($scene in $scenes) {
         $profile = Join-Path $projectRoot ('.runtime-tests\managed-suite-' + $runStamp + '-' + $scene)
         $env:APPDATA = Join-Path $profile 'AppData'

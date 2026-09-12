@@ -23,6 +23,7 @@ public partial class ResearchGraphView : Control
     public Dictionary<string, Button> NodeButtons { get; } = new();
     public string SelectedId { get; private set; } = "";
     public string HoverId { get; private set; } = "";
+    public string TutorialHighlightId { get; private set; } = "";
     public bool IsPointerActive => _pointerActive;
     public float Zoom { get; set; } = 1;
     public Vector2 Pan { get; set; } = Vector2.Zero;
@@ -39,6 +40,7 @@ public partial class ResearchGraphView : Control
     private readonly Dictionary<string, DataMap> _index = new();
 
     private readonly Dictionary<string, (float Age, string Text)> _pulses = new();
+    private float _tutorialHighlightTime;
     private bool _pointerActive;
     private bool _dragging;
     private bool _fitOnLayout;
@@ -69,7 +71,7 @@ public partial class ResearchGraphView : Control
         VisibilityChanged += () => { if (!IsVisibleInTree()) { _pointerActive = false; _dragging = false; HideHover(); } };
         Layout();
         RebuildButtons();
-        SetProcess(false);
+        SetProcess(_pulses.Count > 0 || TutorialHighlightId != "");
     }
 
     public void SetNodes(IEnumerable<DataMap> value)
@@ -268,7 +270,7 @@ public partial class ResearchGraphView : Control
         PositionButtons();
     }
 
-    public void FocusNode(string id)
+    public void FocusNode(string id, bool center = false)
     {
         if (!Available(id))
         {
@@ -276,12 +278,35 @@ public partial class ResearchGraphView : Control
             return;
         }
         if (Canvas == null) return;
-        EnsureVisible(id);
+        if (center)
+        {
+            // A tutorial may interrupt an in-progress graph drag. Do not let
+            // its eventual mouse-up activate a node after the canvas moved.
+            _pointerActive = false;
+            _dragging = false;
+            _pressNode = "";
+            _pressBoundary = "";
+            Zoom = Math.Clamp(Math.Max(Zoom, .85f), MinZoom, MaxZoom);
+            Pan = -WorldPosition(Node(id)) * Zoom;
+            PositionButtons();
+        }
+        else
+            EnsureVisible(id);
         NodeButtons[id].GrabFocus();
         SelectedId = id;
         UpdateHistoryToolbar();
         ShowHover(id);
         Canvas.QueueRedraw();
+    }
+
+    public void SetTutorialHighlight(string id)
+    {
+        if (TutorialHighlightId == id)
+            return;
+        TutorialHighlightId = id;
+        _tutorialHighlightTime = 0;
+        SetProcess(_pulses.Count > 0 || TutorialHighlightId != "");
+        Canvas?.QueueRedraw();
     }
 
     private void EnsureVisible(string id)
@@ -427,6 +452,9 @@ public partial class ResearchGraphView : Control
 
     public override void _Process(double delta)
     {
+        // Uses UI frame time, independent of the paused combat simulation.
+        if (TutorialHighlightId != "")
+            _tutorialHighlightTime = (_tutorialHighlightTime + (float)delta) % 1.4f;
         foreach (string id in _pulses.Keys.ToArray())
         {
             var p = _pulses[id];
@@ -437,7 +465,7 @@ public partial class ResearchGraphView : Control
                 _pulses[id] = p;
         }
         Canvas.QueueRedraw();
-        if (_pulses.Count == 0)
+        if (_pulses.Count == 0 && TutorialHighlightId == "")
             SetProcess(false);
     }
 
@@ -579,6 +607,8 @@ public partial class ResearchGraphView : Control
                 Canvas.DrawArc(p, r + 5 * Math.Min(Zoom, 1), 0, Mathf.Tau, 48, UiTheme.Amber, 1.2f, true);
             if (id == active || required.Contains(id))
                 Canvas.DrawArc(p, r + 9 * Math.Min(Zoom, 1), 0, Mathf.Tau, 48, UiTheme.Amber, 1.6f, true);
+            if (id == TutorialHighlightId && !owned)
+                DrawTutorialHighlight(p, r);
             string icon = node.S("icon", size == "small" ? SmallIcon(node) : new[] { "target", "missile", "laser", "mineral", "shield", "interceptor" }[BranchIndex(node)]);
             VectorIcons.Draw(Canvas, icon, p, size == "small" ? Math.Max(2.3f, r * .55f) : r * .55f, color, size == "small" ? Math.Clamp(r * .55f * .23f, .85f, 1.55f) : 1.5f);
             if (owned)
@@ -603,6 +633,29 @@ public partial class ResearchGraphView : Control
         Canvas.DrawRect(new Rect2(0, Canvas.Size.Y - 31, Canvas.Size.X, 31), new Color("0b1c27"));
         Canvas.DrawString(UiTheme.Font, new Vector2(12, Canvas.Size.Y - 11), Notice != "" ? Notice : "拖拽浏览 · 悬停详情 · 单击研究 · 每节点仅一次", HorizontalAlignment.Left, Canvas.Size.X - 100, 12, UiTheme.Muted);
         Canvas.DrawString(UiTheme.Font, new Vector2(Canvas.Size.X - 62, Canvas.Size.Y - 11), $"{Zoom * 100:0}%", HorizontalAlignment.Right, 50, 12, UiTheme.Mint);
+    }
+
+    private void DrawTutorialHighlight(Vector2 position, float radius)
+    {
+        // A slow, continuously visible warning pulse leaves the actual technology icon clear.
+        float pulse = .5f + .5f * Mathf.Cos(_tutorialHighlightTime * Mathf.Tau / 1.4f);
+        Color warning = new("ff6873");
+        float ring = radius + 12;
+        Canvas.DrawArc(position, radius + 2, 0, Mathf.Tau, 64, UiTheme.Alpha(warning, .60f + .35f * pulse), 2.5f, true);
+        Canvas.DrawArc(position, ring + pulse * 3, 0, Mathf.Tau, 64, UiTheme.Alpha(warning, .16f + .19f * pulse), 5, true);
+        Canvas.DrawArc(position, ring, 0, Mathf.Tau, 64, UiTheme.Alpha(warning, .40f + .30f * pulse), 1.2f, true);
+        float cornerRadius = ring + 7;
+        for (int i = 0; i < 4; i++)
+        {
+            float angle = Mathf.Pi * .25f + i * Mathf.Pi * .5f;
+            Canvas.DrawArc(position, cornerRadius, angle - .19f, angle + .19f, 8,
+                UiTheme.Alpha(warning, .68f + .32f * pulse), 2.8f, true);
+        }
+        Vector2 badge = position + Vector2.Up * (radius + 24);
+        Canvas.DrawCircle(badge, 7, new Color("291b27"));
+        Canvas.DrawArc(badge, 7, 0, Mathf.Tau, 24, UiTheme.Alpha(warning, .68f + .32f * pulse), 1.4f, true);
+        Canvas.DrawLine(badge + Vector2.Up * 3.6f, badge + Vector2.Up * .1f, warning, 1.7f, true);
+        Canvas.DrawCircle(badge + Vector2.Down * 2.7f, 1, warning);
     }
 
     private void NodeKeyboard(InputEvent e, string id)

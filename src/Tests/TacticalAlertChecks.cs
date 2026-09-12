@@ -111,6 +111,9 @@ public partial class TacticalAlertChecks : Node
             _app.Planet.RestoreCelestialState(celestial); _app.UpdateTacticalAlerts(.1);
             Check(_app.EarthAttackLocalDirection.IsEqualApprox(ground), "ground coordinate remains local during Earth rotation");
             Check(damage.WorldPosition.IsEqualApprox(_app.Planet.Globe.ToGlobal(ground * WorldScale.EarthRadius)), "world marker follows rotating impact site");
+            // First-impact onboarding now expands the research rail and moves
+            // the camera. Let those transitions finish before clicking a card.
+            await Wait(1.6);
             await Capture("tactical-alerts-arrival-impact");
             await Click(damage.Rect.Position + new Vector2(150, 55));
             Check(_app.Planet.GetFocusId() == "earth" && damage.Acknowledged, "impact mouse click selects Earth surface navigation");

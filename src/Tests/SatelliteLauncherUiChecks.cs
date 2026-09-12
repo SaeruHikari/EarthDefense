@@ -24,6 +24,16 @@ public partial class SatelliteLauncherUiChecks : Node
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
     }
 
+    private async Task Click(Vector2 point)
+    {
+        Input.ParseInputEvent(new InputEventMouseMotion { Position = point, GlobalPosition = point });
+        await Frames(2);
+        Input.ParseInputEvent(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = true, Position = point, GlobalPosition = point });
+        await Frames(2);
+        Input.ParseInputEvent(new InputEventMouseButton { ButtonIndex = MouseButton.Left, Pressed = false, Position = point, GlobalPosition = point });
+        await Frames(3);
+    }
+
     public override async void _Ready()
     {
         try
@@ -75,6 +85,24 @@ public partial class SatelliteLauncherUiChecks : Node
             Check(_app.SaveCheckpoint() && _app.LoadCheckpoint(), "deployed satellite saves and reloads through the same checkpoint contract");
             _app.PreserveCheckpoint = true;
             Check(_app.Game.ResearchSatelliteDeployed && !_app.Game.CanLaunchResearchSatellite(), "resume keeps science online and rejects duplicate satellite launches");
+
+            _app.SetProcess(true);
+            _app.UserPaused = false;
+            _app.Action("tab:build");
+            Vector3 satellite = _app.Planet.GetOrbitalResearchStationWorldPosition();
+            Vector3 normal = (_app.Planet.Globe.GlobalBasis.Inverse() * satellite.Normalized()).Normalized();
+            _app.Planet.RotateEarthToDirection(normal, .25f, 0);
+            await Frames(4);
+            Vector2 satellitePoint = _app.Planet.GetOrbitalResearchStationScreenPosition();
+            Check(_app.Planet.PickNavigationTarget(satellitePoint).S("kind") == "research_satellite", "visible deployed satellite is a world-space navigation target");
+            var cameraBefore = _app.Planet.Camera.GlobalTransform;
+            var viewportBefore = _app.Planet.GetViewSize();
+            await Click(satellitePoint);
+            Check(_app.ResearchSidebarOpen() && _app.ResearchGraph.Visible, "real satellite click navigates to the technology panel");
+            Check(!_app.UserPaused && _app.Planet.Camera.GlobalTransform.IsEqualApprox(cameraBefore)
+                && _app.Planet.GetViewSize() == viewportBefore, "ordinary satellite click preserves simulation and camera framing");
+            _app.Planet.SyncResearchSatellite(false, false);
+            Check(_app.Planet.PickNavigationTarget(satellitePoint).S("kind") != "research_satellite", "a non-deployed satellite cannot be clicked");
         }
         catch (Exception error)
         {

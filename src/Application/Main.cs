@@ -155,7 +155,7 @@ public partial class Main : Node2D
 		Battle.EventNotice += ShowNotice;
 		BattleHud = new CombatHud { App = this, ZIndex = -5 };
 		AddChild(BattleHud);
-	Battle.EarthDamaged += (amount, position) => { NotifyFirstEarthAttackGuide(); Planet.PulseAtmosphereHit(amount, position); NotifyEarthAttack(amount, position); BattleHud.ShieldFlash = 1; };
+	Battle.EarthDamaged += (amount, position) => { Planet.PulseAtmosphereHit(amount, position); NotifyEarthAttack(amount, position); NotifyFirstEarthAttackGuide(position); BattleHud.ShieldFlash = 1; };
 		var intel = new CombatIntelHud { App = this };
 		AddChild(intel);
 		Spectator = new AircraftSpectator();
@@ -286,6 +286,7 @@ public partial class Main : Node2D
 				QueueCheckpointSave();
 		}
 		LayoutResearchSidebar();
+		UpdateLocalShieldGuide();
 		LayoutFactoryPerks();
 		ResearchGraph.Visible = ResearchSidebarPresent() && Modal == "";
 		_researchClip.Visible = ResearchGraph.Visible;

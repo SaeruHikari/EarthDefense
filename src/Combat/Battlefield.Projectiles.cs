@@ -178,7 +178,9 @@ public sealed partial class Battlefield
                 if (InvasionWon || epoch != _epoch)
                     return;
                 HostileShots.RemoveAt(i);
-                if (Dead)
+                // A first-impact tutorial can pause us from EarthDamaged. The
+                // triggering shell is consumed; the remaining volley waits.
+                if (Dead || Paused)
                     return;
             }
             else if (C.N(s, "life") <= 0 || C.N(s, "travel_remaining", 1) <= .00001)

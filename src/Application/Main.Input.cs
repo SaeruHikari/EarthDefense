@@ -96,6 +96,9 @@ public partial class Main
                             StartWave();
                         else
                             UserPaused = !UserPaused;
+                        // Space controls the simulation, even when the guided
+                        // research node currently owns keyboard focus.
+                        GetViewport().SetInputAsHandled();
                     }
                     break;
                 case Key.V:
@@ -836,6 +839,9 @@ public partial class Main
                             SelectAircraftPerkTarget(target);
                         else if (target.S("kind") == "body")
                             FocusBody(target.S("id"));
+                        else if (target.S("kind") == "research_satellite" && Game.ResearchSatelliteDeployed
+                            && Planet.PickNavigationTarget(Mouse).S("kind") == "research_satellite")
+                            OpenResearchSidebar();
                     }
                     else
                         ClearNavigationFeedback();

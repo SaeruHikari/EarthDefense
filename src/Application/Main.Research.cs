@@ -74,9 +74,11 @@ public partial class Main
         Modal = "";
         CloseCombatSettings(false);
         LayoutResearchSidebar(true);
+        _researchClip.Visible = true;
+        ResearchGraph.Visible = true;
         RefreshGraph();
         if (LocalShieldGuidePending && ResearchGraph.Node("D_N4").Count > 0)
-            ResearchGraph.FocusNode("D_N4");
+            ResearchGraph.FocusNode("D_N4", center: true);
     }
 
     private void RefreshGraph()
@@ -102,6 +104,7 @@ public partial class Main
 
         }
         ResearchGraph.SetNodes(nodes);
+        UpdateLocalShieldGuide();
         _graphDirty = false;
         _graphRefreshDelay = .15;
     }
@@ -112,7 +115,9 @@ public partial class Main
         bool success = Game.PurchaseGroup(id);
         if (success)
         {
-            ShowNotice("研究完成 · " + status.S("name", id));
+            ShowNotice(id == LocalShieldGuideTechnology && _localShieldGuideActive && _localShieldGuideRunId == Game.RunId
+                ? "区域护盾工程已完成 · 在「建设」免费建造局部护盾 · 按空格继续"
+                : "研究完成 · " + status.S("name", id));
             if (status.B("is_successor") || id.Contains("_R")) _researchWindowFocus = "";
             Sounds.PlaySound("research");
             SaveIfSafe();

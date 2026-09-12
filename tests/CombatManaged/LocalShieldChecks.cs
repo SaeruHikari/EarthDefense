@@ -44,7 +44,24 @@ internal static class LocalShieldChecks
     }
     public static void Run(Action<bool,string> check,Action<double,double,string,double> near)
     {
-        Check=check;Near=near;CoverageAndOverlap();ProjectilesAndMeteors();RepairRegenerationAndResearch();RotationAndPersistence();LegacyAndStationaryAttack();RepeatedQueryCache();
+        Check=check;Near=near;CoverageAndOverlap();ProjectilesAndMeteors();RepairRegenerationAndResearch();RotationAndPersistence();LegacyAndStationaryAttack();RepeatedQueryCache();PauseOnImpact();
+    }
+    private static void PauseOnImpact()
+    {
+        var game = new DefenseState();
+        var battle = new Battlefield(game, new Surface()) { Active = true };
+        var point = Vector3.Back * (float)(CombatScale.EarthCollisionRadius + .05);
+        Shot(battle, point, Vector3.Forward * 10, 3);
+        Shot(battle, point, Vector3.Forward * 10, 3);
+        int impacts = 0;
+        battle.EarthDamaged += (_, _) => { if (++impacts == 1) battle.Paused = true; };
+        battle.UpdateShots(.02);
+        Check(battle.Paused && impacts == 1 && battle.HostileShots.Count == 1, "first-impact pause consumes its shell and defers the remaining volley");
+        Near(game.EarthHp, 97, "no further Earth damage after the pause callback", 1e-9);
+        battle.Paused = false;
+        battle.UpdateShots(.02);
+        Check(impacts == 2 && battle.HostileShots.Count == 0, "remaining shell resolves exactly once after resuming");
+        Near(game.EarthHp, 94, "resume preserves the unconsumed hostile damage", 1e-9);
     }
     private static void CoverageAndOverlap()
     {
