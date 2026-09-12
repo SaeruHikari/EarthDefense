@@ -1,3 +1,3 @@
 ﻿parent_id,position,key,type,value
-root,0,surface_radius,number,5.0
+root,0,surface_radius,number,6.5
 root,1,build_cooldown_waves,integer,3

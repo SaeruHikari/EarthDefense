@@ -104,6 +104,9 @@ internal static class LocalShieldChecks
     private static void LegacyAndStationaryAttack()
     {
         var legacy=new DefenseState{Wave=1,Shield=100};var lb=new Battlefield(legacy,new Surface());double hp=legacy.EarthHp;Hit(lb,Vector3.Back,1);Near(legacy.EarthHp,hp-1,"archival global balance never protects without a tower",1e-9);Near(legacy.Shield,100,"archival balance is retained but inert",1e-9);
-        var(ng,ns,nb)=Scene();var tower=Tower(nb);var enemy=nb.SpawnEnemy("scout",new(){["wave"]=1L,["role"]="claw"},Vector3.Back*(float)CombatScale.CloseAssault)!;nb.Active=true;double initial=tower.N("hp");for(int i=0;i<90;i++)nb.Step(1d/60);Check(enemy.B("stationary_bombard")&&tower.N("hp")<initial&&ng.EarthHp==100,"parked enemy inside outer dome still hits defended ground and consumes the local shield");
+        var(ng,ns,nb)=Scene();var tower=Tower(nb);var enemy=nb.SpawnEnemy("scout",new(){["wave"]=1L,["role"]="claw"},Vector3.Back*(float)CombatScale.CloseAssault)!;
+        nb.Active=true;double initial=tower.N("hp"),minimum=initial;
+        for(int i=0;i<90;i++){nb.Step(1d/60);minimum=Math.Min(minimum,tower.N("hp"));}
+        Check(enemy.B("stationary_bombard")&&minimum<initial&&ng.EarthHp==100,"parked enemy's real shots consume the local shield even when later regeneration restores the loss");
     }
 }

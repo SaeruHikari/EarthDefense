@@ -32,22 +32,33 @@ internal static class SlowCampaign
         string Option(string name, string fallback) => args.FirstOrDefault(s => s.StartsWith(name + "=", StringComparison.Ordinal))?.Split('=', 2)[1] ?? fallback;
         int target = int.Parse(Option("--target-wave", "60"));
         int[] seeds = Option("--seeds", "11,9918,49127,62026,2026").Split(',').Select(int.Parse).ToArray();
-        bool attentive = Option("--policy", "inattentive") == "attentive";
+        string policy = Option("--policy", "inattentive");
+        bool attentive = policy == "attentive", idle = policy == "idle";
         var runs = new List<object?>();
         foreach (int seed in seeds)
         {
-            Console.WriteLine($"SLOW_CAMPAIGN_BEGIN seed={seed} target={target} policy={(attentive ? "attentive" : "inattentive")}");
-            runs.Add(new Player(seed, target, attentive).Play());
+            Console.WriteLine($"SLOW_CAMPAIGN_BEGIN seed={seed} target={target} policy={policy}");
+            runs.Add(new Player(seed, target, attentive, idle).Play());
         }
         Directory.CreateDirectory("artifacts");
-        string path = "artifacts/" + (attentive ? "attentive-control-60" : "inattentive-campaign-60") + ".json";
+        string path = "artifacts/" + (idle ? "idle-campaign-control" : attentive ? "attentive-control-60" : "inattentive-campaign-60") + ".json";
         var report = new DataMap {
-            ["policy"] = attentive ? "attentive diagnostic control" : "inattentive, gradually learning player",
-            ["target_completed_wave"] = target, ["simulation_hz"] = 30, ["production_balance_unchanged"] = true,
+            ["policy"] = idle ? "only acknowledges the first-hit guide; no construction, economy or further research" : attentive ? "attentive diagnostic control" : "inattentive, gradually learning player",
+            ["target_completed_wave"] = target, ["simulation_hz"] = 30, ["combat_settings_overridden"] = false,
+            ["catalog_sha256"] = new DataMap(Directory.EnumerateFiles("data/domain", "*.csv").OrderBy(p => p, StringComparer.Ordinal)
+                .ToDictionary(p => Path.GetFileName(p)!, p => (object?)Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(p))).ToLowerInvariant())),
+            ["combat_defaults"] = DefenseState.DefaultCombatSettings,
+            ["damage_tuning"] = new DataMap {
+                ["base"] = CombatCatalog.Current.Values.DamageBase,
+                ["ground_multiplier"] = CombatCatalog.Current.Values.GroundDamageMultiplier,
+                ["ground_floor"] = CombatCatalog.Current.Values.GroundDamageFloor,
+                ["opening_multiplier"] = CombatCatalog.Current.Values.OpeningDamageMultiplier,
+                ["opening_hold_wave"] = CombatCatalog.Current.Values.OpeningDamageHoldThroughWave,
+                ["opening_full_wave"] = CombatCatalog.Current.Values.OpeningDamageFullWave },
             ["initial_meta_progress"] = "none; perks can only be bought with chips earned in this run",
-            ["operations"] = attentive ? "Every 8s, no skipped review; same construction/research priorities" : "Every 22-30s; skips every fifth review. At most one building and one research per attended review.",
-            ["economy"] = attentive ? "Review every 30s" : "Review resources every 150s, no income expansion before wave4; at most one income building per review. Core/perk review every240s.",
-            ["research_review"] = attentive ? "At each attended review when affordable" : "After a purchase, waits at least60s before another research review; funds may sit idle until an attended22-30s check. This is player behavior, not a game cooldown.",
+            ["operations"] = idle ? "No player actions after acknowledging tutorial" : attentive ? "Every 8s, no skipped review; same construction/research priorities" : "Every 22-30s; skips every fifth review. At most one building and one research per attended review.",
+            ["economy"] = idle ? "No economic or perk actions" : attentive ? "Review every 30s" : "Review resources every 150s, no income expansion before wave4; at most one income building per review. Core/perk review every240s.",
+            ["research_review"] = idle ? "Free first-hit shield unlock only; no tower is built" : attentive ? "At each attended review when affordable" : "After a purchase, waits at least60s before another research review; funds may sit idle until an attended22-30s check. This is player behavior, not a game cooldown.",
             ["defense"] = "First directions react to real Earth hits; later directions are noticed after a delay. At an attended review, noticed recent damage takes priority over economic expansion. One building maximum, no artificial second construction cooldown. Defenses are never removed to fabricate leaks.",
             ["surface"] = "Real starter coordinates, level6 hex topology and occupancy; all resource sites affect targeting; rotation at production rate, paused during building actions and first-hit guide.",
             ["limitations"] = "Foundation heights use a sphere instead of terrain texture displacement (up to0.048 world units). No graphics, input pointing errors or camera search time; impact front attribution uses nearest mothership direction.",
@@ -68,19 +79,20 @@ internal static class SlowCampaign
         private readonly DefenseCampaignDirector _campaign;
         private readonly Random _attention;
         private readonly int _seed, _target;
-        private readonly bool _attentive;
+        private readonly bool _attentive, _idle;
         private readonly List<object?> _actions = new(), _waves = new(), _hits = new(), _scienceWaits = new();
         private readonly Dictionary<long, Front> _fronts = new();
         private double _time, _wallTime, _nextReview, _nextResearch, _nextEconomy = 180, _nextPerk = 240;
         private double _launchFinish = -1, _satelliteOnline = -1, _guideFinish = -1, _buildingUntil, _damage, _paidScience;
         private double _firstAffordable = -1, _liberatedAt = -1;
+        private double _minimumHp = double.PositiveInfinity;
         private string _affordableId = "";
         private int _reviews, _skipped, _paidResearch, _peakEnemies, _peakDrones, _buildSerial;
         private long _lastCompleted;
 
-        public Player(int seed, int target, bool attentive)
+        public Player(int seed, int target, bool attentive, bool idle)
         {
-            _seed = seed; _target = target; _attentive = attentive; _attention = new Random(seed ^ 0x6a12);
+            _seed = seed; _target = target; _attentive = attentive; _idle = idle; _attention = new Random(seed ^ 0x6a12);
             var state = _game.Serialize(); state["run_id"] = "slow-campaign-" + seed;
             if (!_game.Restore(state) || _game.Science != 0 || _game.FactoryPerks.AlienChips != 0
                 || _game.Achievements.UnlockedCount != 0 || _surface.GridCellCount != 40962)
@@ -95,6 +107,7 @@ internal static class SlowCampaign
         public DataMap Play()
         {
             var watch = Stopwatch.StartNew();
+            _minimumHp = _game.EarthHp;
             _battle.StartWave(); ObserveFronts(); Snapshot("start");
             const double dt = 1d / 30;
             while (_game.CompletedWaves < _target && !_battle.Dead && _time < 7200)
@@ -119,6 +132,7 @@ internal static class SlowCampaign
                 if (_time >= _nextReview) Review();
                 _surface.Step(dt, _time < _buildingUntil);
                 _game.Tick(dt); _battle.Step(dt); _campaign.Step(dt);
+                _minimumHp = Math.Min(_minimumHp, _game.EarthHp);
                 _time += dt; _wallTime += dt;
                 ObserveFronts();
                 _peakEnemies = Math.Max(_peakEnemies, _battle.Enemies.Count);
@@ -139,7 +153,7 @@ internal static class SlowCampaign
                 ["seed"] = _seed, ["legitimate"] = valid, ["completed_target"] = _game.CompletedWaves >= _target && _game.EarthHp > 0,
                 ["death_wave"] = _battle.Dead ? _game.Wave : 0, ["completed_waves"] = _game.CompletedWaves,
                 ["current_wave"] = _game.Wave, ["game_seconds"] = _time, ["player_seconds"] = _wallTime,
-                ["compute_seconds"] = watch.Elapsed.TotalSeconds, ["earth_hp"] = _game.EarthHp, ["damage_received"] = _damage,
+                ["compute_seconds"] = watch.Elapsed.TotalSeconds, ["earth_hp"] = _game.EarthHp, ["minimum_earth_hp"] = _minimumHp, ["damage_received"] = _damage,
                 ["satellite_online_seconds"] = _satelliteOnline, ["paid_research"] = _paidResearch, ["science_spent"] = _paidScience,
                 ["reviews"] = _reviews, ["skipped_reviews"] = _skipped, ["peak_drones"] = _peakDrones, ["peak_enemies"] = _peakEnemies,
                 ["kills"] = _game.Kills, ["destroyed_drones"] = _battle.DestroyedDrones,
@@ -168,7 +182,7 @@ internal static class SlowCampaign
 
         private void EarthHit(double damage, Vector3 at)
         {
-            ObserveFronts(); _damage += damage;
+            ObserveFronts(); _damage += damage; _minimumHp = Math.Min(_minimumHp, _game.EarthHp);
             var f = _fronts.Values.Where(f => f.Active).OrderByDescending(f => f.Position.Normalized().Dot(at.Normalized())).FirstOrDefault();
             if (f != null)
             {
@@ -186,6 +200,7 @@ internal static class SlowCampaign
         private void Review()
         {
             _reviews++; _nextReview = _time + (_attentive ? 8 : 22 + _attention.Next(9));
+            if (_idle) { _skipped++; return; }
             if (!_attentive && _reviews % 5 == 0) { _skipped++; Log("attention_skipped", "", "missed this review"); return; }
             if (_game.Buildings.L("satellite_launcher") == 0)
             {

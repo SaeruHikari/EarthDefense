@@ -1,8 +1,8 @@
-﻿parent_id,position,color,description,id,name,unlock_research,has_cost,max_count
+parent_id,position,color,description,id,name,unlock_research,has_cost,max_count
 root,0,76e4f2,一次性地表卫星发射设施；建成后可免费发射科研卫星，火箭分级上升并在轨道部署。,satellite_launcher,卫星发射中心,,false,1
 root,1,70d6b1,基础 5 矿物/秒，乘资源产量系数与科技；新建消耗 1 个小型Boss掉落的资源核心。,mine,矿物采集站,,true,
 root,2,f5c975,基础 4 能量/秒，乘资源产量系数与科技；新建消耗 1 个小型Boss掉落的资源核心。,solar,太阳能阵列,,true,
 root,3,70d9f4,默认每厂编制3架拦截机；近距离围剿，损失后补充，可通过工程参数与科技扩容。,interceptor,拦截机工厂,,true,
 root,4,c1a4ff,默认每厂编制2架激光机，可通过工程参数与科技扩容。需要研究「聚能激光」。,laser,激光机工厂,,true,
 root,5,ffae83,默认每厂编制2架导弹机，可通过工程参数与科技扩容。需要研究「制导导弹」。,missile,导弹机工厂,,true,
-root,6,75d8f4,为周围地表撑起独立能量护盾，每座设施独立承伤和恢复；建造免费，受科技上限和三波建造冷却限制；「局部修复」为地球提供极慢回复,shield,局部护盾塔,D_N4,true,
+root,6,75d8f4,为周围地表撑起独立能量护盾，每座设施独立承伤和恢复；建造免费，受科技上限和三波建造冷却限制；「局部修复」为地球提供缓慢回复,shield,局部护盾塔,D_N4,true,

@@ -80,7 +80,7 @@ dotnet run --project tests/DomainManaged/DomainManaged.csproj -v quiet
 | 改动 | 当前开发版行为 |
 | --- | --- |
 | 科技/特性公式、基础机型倍率 | 重启并载入后按新表编译效果；已购买节点、永久特性所有权和等级保持。 |
-| `economy_settings.csv` 的默认参数 | 新局使用默认值；本次数值版本首次读取旧参数时，仅将敌人数基数、波增长、周期、部署窗口、弹数增长间隔这五项刷新为新默认，后续手动调整仍会保留。其余参数保留已有设置。 |
+| `economy_settings.csv` 的默认参数 | 新局使用默认值。版本 0 更新原五项节奏参数；版本 1 升至版本 2 时，仅替换仍为旧默认的敌方生命/伤害增长，自定义增长及周期保留。后续手动调整照常保存。 |
 | 永久特性设置 | 当前 ProfileVersion 的永久档优先；修改默认表不会覆盖已保存的配置。
 | 初始资源、初始建筑 | 只影响新局。结构改动后请清理开发 profile。
 | 敌人造型类别、波次权重、生成基数与技能参数 | 重启后新计划/新单位使用表值；当前版本快照按同一架构读取。
@@ -132,7 +132,9 @@ K_S21,0,string,K_S01
 
 修改一类敌人的生命倍率可从 `combat_enemies.csv` 的对应 health 列开始，而不是把每个波次都复制一份敌人记录。各参数名称、单位和范围以表头与 tuning 表说明为准。
 
-前期伤害缓冲由 `combat_tuning.csv` 的三个参数控制：`OpeningDamageMultiplier=0.35`，保持至 `OpeningDamageHoldThroughWave=10`，再线性恢复到 `OpeningDamageFullWave=20` 时的完整伤害。它同时作用于对飞机伤害和对地伤害下限；波数必须为整数，恢复结束波必须大于保持截止波。该倍率叠加在 `DamageBase=11.7` 与原有波次成长、首波保护、精锐及阶段倍率上。
+前期伤害缓冲由 `combat_tuning.csv` 的三个参数控制：`OpeningDamageMultiplier=0.35`，保持至 `OpeningDamageHoldThroughWave=20`，再线性恢复到 `OpeningDamageFullWave=40` 时的完整伤害。它同时作用于对飞机伤害和对地伤害下限；波数必须为整数，恢复结束波必须大于保持截止波。该倍率叠加在 `DamageBase=9` 与波次成长、首波保护、精锐及阶段倍率上。地球承伤另由 `GroundDamageMultiplier=0.0075` 和 `GroundDamageFloor=0.03` 控制，仍会受到真实攻击与局部盾拦截。
+
+局部盾表面覆盖半径为 `economy_local_shield.csv` 的 `surface_radius=6.5`。修复仍需研究 `D_S41`，费用在科技费用表为 6；每座发生器的 `earth_repair_rate=0.05` 在属性表配置，对应效果说明也应同步编辑。建好两座发生器并研究修复后共恢复每分钟 6 HP，没有科技或没有发生器时不会恢复。
 
 ## Excel 保存与 ID
 

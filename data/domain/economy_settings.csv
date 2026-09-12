@@ -22,8 +22,8 @@ root,19,enemy_speed_multiplier,number,1.5
 root,20,resource_output_multiplier,number,0.1
 root,21,enemy_wave_duration,number,60.0
 root,22,enemy_spawn_duration,number,45.0
-root,23,enemy_health_growth,number,0.035
-root,24,enemy_damage_growth,number,0.018
+root,23,enemy_health_growth,number,0.025
+root,24,enemy_damage_growth,number,0.012
 root,25,enemy_wave_base_count,number,6.0
 root,26,enemy_wave_growth,number,1.0
 root,27,atmosphere_hit_full_percent,number,8.0

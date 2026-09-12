@@ -86,37 +86,90 @@ internal static class OpeningResearchChecks
             ["enemy_wave_duration"] = 45, ["enemy_spawn_duration"] = 30,
             ["enemy_bullet_growth_interval"] = 90
         };
+        var oldGrowth = new Dictionary<string, double>
+        {
+            ["enemy_health_growth"] = .035, ["enemy_damage_growth"] = .018
+        };
         var oldPreferences = preferenceGame.SerializeCombatPreferences();
         oldPreferences.Remove("balance_revision");
-        foreach (var (key, value) in oldValues) oldPreferences.Map("settings")[key] = value;
+        foreach (var (key, value) in oldValues.Concat(oldGrowth)) oldPreferences.Map("settings")[key] = value;
         string oldPreferencesBefore = oldPreferences.ToJson();
         var readPreferences = preferenceGame.ReadCombatPreferences(oldPreferences);
         Check(readPreferences != null, "previous preference shape loads with the new balance revision");
         foreach (string key in oldValues.Keys)
             Near(readPreferences!.N(key), DefenseState.DefaultCombatSettings.N(key), "old saved default refreshes only pacing parameter " + key);
+        foreach (string key in oldGrowth.Keys)
+            Near(readPreferences!.N(key), DefenseState.DefaultCombatSettings.N(key), "unversioned preferences also adopt updated default growth " + key);
         Near(readPreferences!.N("drone_damage"), 13, "old preferences retain custom friendly damage");
         Near(readPreferences.N("enemy_count_multiplier"), 3, "old preferences retain chosen enemy quantity multiplier");
         Check(oldPreferences.ToJson() == oldPreferencesBefore, "reading old preferences never mutates input data");
         var oldRun = preferenceGame.Serialize();
         oldRun.Remove("balance_revision");
         oldRun["science"] = 37d;
-        foreach (var (key, value) in oldValues) oldRun.Map("combat_settings")[key] = value;
+        foreach (var (key, value) in oldValues.Concat(oldGrowth)) oldRun.Map("combat_settings")[key] = value;
         var runCopy = new DefenseState();
         Check(runCopy.Restore(oldRun), "previous live run upgrades the same five pacing defaults");
         foreach (string key in oldValues.Keys)
             Near(runCopy.CombatSettings.N(key), DefenseState.DefaultCombatSettings.N(key), "old checkpoint refreshes pacing parameter " + key);
+        foreach (string key in oldGrowth.Keys)
+            Near(runCopy.CombatSettings.N(key), DefenseState.DefaultCombatSettings.N(key), "unversioned checkpoint also adopts updated default growth " + key);
         Near(runCopy.CombatSettings.N("drone_damage"), 13, "checkpoint preserves custom damage");
         Near(runCopy.CombatSettings.N("enemy_count_multiplier"), 3, "checkpoint preserves custom multiplier");
         Near(runCopy.Science, 37, "balance refresh does not erase science already earned in the saved run");
         Check(runCopy.Serialize().I("balance_revision") == DefenseState.CombatBalanceRevision, "re-saved checkpoint records the completed balance update");
 
+        Check(preferenceGame.SetCombatSetting("enemy_wave_duration", 90), "revision-one fixture has a custom ninety-second cycle");
+        foreach (bool customGrowth in new[] { false, true })
+        {
+            var revisionOnePreferences = preferenceGame.SerializeCombatPreferences();
+            revisionOnePreferences["balance_revision"] = 1L;
+            var revisionOneRun = preferenceGame.Serialize();
+            revisionOneRun["balance_revision"] = 1L;
+            revisionOneRun["science"] = 37d;
+            foreach (var (key, previousDefault) in oldGrowth)
+            {
+                double storedGrowth = customGrowth ? previousDefault + .01 : previousDefault;
+                revisionOnePreferences.Map("settings")[key] = storedGrowth;
+                revisionOneRun.Map("combat_settings")[key] = storedGrowth;
+            }
+            string preferencesBefore = revisionOnePreferences.ToJson(), runBefore = revisionOneRun.ToJson();
+            var loadedPreferences = DataMap.Parse(preferencesBefore);
+            var loadedRun = DataMap.Parse(runBefore);
+            var revisionTwoValues = preferenceGame.ReadCombatPreferences(loadedPreferences);
+            var revisionTwoRun = new DefenseState();
+            Check(revisionTwoValues != null && revisionTwoRun.Restore(loadedRun),
+                "revision-one preferences and checkpoint restore with " + (customGrowth ? "custom" : "default") + " growth");
+            foreach (var (key, previousDefault) in oldGrowth)
+            {
+                double expected = customGrowth ? previousDefault + .01 : DefenseState.DefaultCombatSettings.N(key);
+                Near(revisionTwoValues!.N(key), expected, "revision-one preferences distinguish default from custom growth " + key);
+                Near(revisionTwoRun.CombatSettings.N(key), expected, "revision-one checkpoint distinguishes default from custom growth " + key);
+            }
+            Near(revisionTwoValues!.N("enemy_wave_duration"), 90, "growth update preserves revision-one custom preference pacing");
+            Near(revisionTwoRun.CombatSettings.N("enemy_wave_duration"), 90, "growth update preserves revision-one custom checkpoint pacing");
+            Near(revisionTwoValues.N("drone_damage"), 13, "growth update preserves unrelated custom damage preferences");
+            Near(revisionTwoRun.CombatSettings.N("enemy_count_multiplier"), 3, "growth update preserves unrelated custom enemy count");
+            Near(revisionTwoRun.Science, 37, "growth update preserves earned checkpoint science");
+            Check(loadedPreferences.ToJson() == preferencesBefore && loadedRun.ToJson() == runBefore,
+                "growth migration leaves both source documents unchanged");
+            Check(revisionTwoRun.Serialize().I("balance_revision") == DefenseState.CombatBalanceRevision,
+                "revision-one checkpoint re-saves with the current balance marker");
+        }
+
         Check(runCopy.SetCombatSetting("enemy_wave_duration", 90), "player can explicitly select a different cycle after the update");
+        foreach (var (key, previousDefault) in oldGrowth)
+            Check(runCopy.SetCombatSetting(key, previousDefault), "player may explicitly choose former growth after the update " + key);
         var currentPreferences = runCopy.SerializeCombatPreferences();
         Near(runCopy.ReadCombatPreferences(currentPreferences)!.N("enemy_wave_duration"), 90, "current preference revision retains ninety-second custom cycle");
         var currentCopy = new DefenseState();
         Check(currentCopy.Restore(runCopy.Serialize()), "current revision checkpoint restores");
         Near(currentCopy.CombatSettings.N("enemy_wave_duration"), 90, "current checkpoint retains ninety-second custom cycle");
-        foreach (object invalid in new object[] { -.1, .5, 2, "1", true })
+        foreach (var (key, previousDefault) in oldGrowth)
+        {
+            Near(runCopy.ReadCombatPreferences(currentPreferences)!.N(key), previousDefault, "current preferences do not re-migrate an intentionally chosen former growth " + key);
+            Near(currentCopy.CombatSettings.N(key), previousDefault, "current checkpoint does not re-migrate an intentionally chosen former growth " + key);
+        }
+        foreach (object invalid in new object[] { -.1, .5, DefenseState.CombatBalanceRevision + 1, "1", true })
         {
             var invalidPreferences = currentPreferences.DeepClone();
             invalidPreferences["balance_revision"] = invalid;

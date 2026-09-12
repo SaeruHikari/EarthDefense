@@ -284,4 +284,4 @@ I_N5,2,energy,integer,100
 I_N6,0,science,integer,51
 I_N6,1,minerals,integer,240
 I_N6,2,energy,integer,180
-D_S41,0,science,integer,24
+D_S41,0,science,integer,6

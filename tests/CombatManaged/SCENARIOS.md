@@ -33,6 +33,20 @@ dotnet run --project tests/CombatManaged/CombatManaged.csproj -c Release -- --sl
 
 结果输出到 `artifacts/attentive-control-60.json`。保持相同发展目标和防御选择顺序，但每 8 秒检查、没有漏看和额外科研查看间隔，资源每 30 秒、Perk 每 60 秒检查。它是诊断对照，不等于最优玩家；仍可能花钱购买便宜替代工厂，也没有全局布局优化。
 
+## 不继续建设的对照
+
+```powershell
+dotnet run --project tests/CombatManaged/CombatManaged.csproj -c Release -- --slow-campaign --policy=idle --seeds=11,9918,49127
+```
+
+只保留真实初始设施，首次受击时确认免费科技引导以恢复游戏，随后不建设、发射卫星、消费芯片或继续研究。输出 `artifacts/idle-campaign-control.json`。这个对照用于检验宽容数值是否仍要求经营和布防，不代表完全无人操作时暂停引导会自动消失。
+
+## 记录与独立验证
+
+报告记录每帧/受击事件中的最低地球生命 `minimum_earth_hp`，以及最终生命、逐波剩余敌人、总战损和科研。`catalog_sha256`、`combat_defaults` 与 `damage_tuning` 标识运行使用的数值表；`combat_settings_overridden=false` 表示模拟中没有偷偷覆盖默认战斗参数。
+
+数值调整先复跑固定五个种子，再固定候选，用未参与调参的种子验证，例如 `--seeds=37,101,777,1337,4049,8257,17011,31415,65537,104729`。保留各批次报告副本，避免后一次运行覆盖前次结论。成功应同时检查完成第 60 波、全程生命余量和末段敌人存量；如果敌军大量积压，仅完成计时并不表示防线稳定。
+
 ## 解读边界
 
 - 工厂地基使用球面半径，未采样正式地形纹理的最多 0.048 世界单位起伏；不开启渲染，不模拟镜头寻找、鼠标指向误差。
