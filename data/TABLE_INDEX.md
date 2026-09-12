@@ -33,9 +33,9 @@
 | 经济 / 基础 / 奖励 | [economy_buildings_cost.csv](domain/economy_buildings_cost.csv) | 17 | parent_id, position, currency, type, value |
 | 经济 / 基础 / 奖励 | [economy_initial_buildings.csv](domain/economy_initial_buildings.csv) | 8 | parent_id, position, key, type, value |
 | 经济 / 基础 / 奖励 | [economy_integer_settings.csv](domain/economy_integer_settings.csv) | 11 | parent_id, position, type, value |
-| 经济 / 基础 / 奖励 | [economy_local_shield.csv](domain/economy_local_shield.csv) | 1 | parent_id, position, key, type, value |
-| 经济 / 基础 / 奖励 | [economy_ranges.csv](domain/economy_ranges.csv) | 80 | parent_id, position, key, type, value |
-| 经济 / 基础 / 奖励 | [economy_settings.csv](domain/economy_settings.csv) | 40 | parent_id, position, parameter, type, value |
+| 经济 / 基础 / 奖励 | [economy_local_shield.csv](domain/economy_local_shield.csv) | 2 | parent_id, position, key, type, value |
+| 经济 / 基础 / 奖励 | [economy_ranges.csv](domain/economy_ranges.csv) | 86 | parent_id, position, key, type, value |
+| 经济 / 基础 / 奖励 | [economy_settings.csv](domain/economy_settings.csv) | 43 | parent_id, position, parameter, type, value |
 | 历史与远征兼容 | [expedition.csv](domain/expedition.csv) | 1 | parent_id, position, record_id, has_default_settings, has_legacy_tech_ids, has_sector_ids, has_setting_definitions |
 | 历史与远征兼容 | [expedition_default_settings.csv](domain/expedition_default_settings.csv) | 34 | parent_id, position, parameter, type, value |
 | 历史与远征兼容 | [expedition_sector_ids.csv](domain/expedition_sector_ids.csv) | 6 | parent_id, position, type, value |
@@ -54,7 +54,7 @@
 | 特性 | [perks_neutral_modifiers.csv](domain/perks_neutral_modifiers.csv) | 53 | parent_id, position, key, type, value |
 | 特性 | [perks_settings.csv](domain/perks_settings.csv) | 11 | parent_id, position, parameter, type, value |
 | 经济 / 基础 / 奖励 | [successor_research.csv](domain/successor_research.csv) | 6 | branch, attribute, display_name, increment, science_base, science_growth, alien_base … |
-| 科技树 | [technology_attribute_schema.csv](domain/technology_attribute_schema.csv) | 77 | attribute, type |
+| 科技树 | [technology_attribute_schema.csv](domain/technology_attribute_schema.csv) | 78 | attribute, type |
 
 同一实体的费用、属性、前置与文案各自成表；单元格内没有整段 JSON。所有表按启动缓存读取。position 保持同一父记录下从 0 起连续，parent_id 指向实体 ID。
 

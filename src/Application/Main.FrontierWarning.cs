@@ -119,6 +119,10 @@ public partial class Main
         card.Count = _alertTargets.Count;
         SelectAlertTarget(card.Index);
         if (fresh || wasPreview != card.Preview) { card.Age = 0; card.Acknowledged = false; }
+        // RefreshTacticalTargets runs periodically while the target remains alive.
+        // Do not let that polling revive an expired confirmation card; only a new
+        // target (fresh=true above) or a pre-arrival warning may make it visible.
+        card.Active = warning != null || card.Age < TacticalAlertView.AlertLifetime;
     }
     private void AddLiveAlert(DataMap enemy, ref bool fresh)
     {

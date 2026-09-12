@@ -80,6 +80,9 @@ public partial class TacticalAlertChecks : Node
             await Wait(1.3);
             Check(_app.Planet.Camera.Fov == fov, "tactical focus preserves strategic FOV");
             Check((_app.Planet.Camera.GlobalPosition - firstPosition).Length() > 10, "focus keeps reasonable standoff");
+            await Wait(TacticalAlertView.AlertLifetime + .2);
+            _app.UpdateTacticalAlerts(.2);
+            Check(!card.Active && card.TargetId.StartsWith("mother:"), "live mothership confirmation expires while the target remains alive");
             Input.ParseInputEvent(new InputEventKey { Keycode = Key.Escape, Pressed = true }); await Frames();
             Check(_app.Planet.GetFocusId() == "earth", "Escape returns ordinary Earth navigation");
             _app.Planet.ResetCamera(); _app.DockOpen = true;
@@ -95,6 +98,7 @@ public partial class TacticalAlertChecks : Node
             damageMethod.Invoke(_app.Battle, [4d, worldBack, true]);
             _app.UpdateTacticalAlerts(.1);
             Check(Math.Abs(_app.Game.EarthHp - hpBefore + 4) < .00001 && _app.TacticalAlerts.Damage.Active, "real EarthDamaged event feeds only actual health damage");
+            Check(_app.LocalShieldGuidePending && _app.Notice.Contains("区域护盾工程", StringComparison.Ordinal), "first Earth impact starts the local shield research guide");
             var damage = _app.TacticalAlerts.Damage;
             Check(damage.Backside && damage.Direction.IsFinite() && Math.Abs(damage.Direction.Length() - 1) < .001, "backside impact keeps finite direction arrow instead of false front reticle");
             Vector3 ground = _app.EarthAttackLocalDirection;

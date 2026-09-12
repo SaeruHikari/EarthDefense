@@ -15,10 +15,11 @@ public sealed class EarthVisual
     public const float CloudHeightRange = .28f;
     public const float CloudProxyAltitude = .50f;
     public const float CirrusAltitude = .52f;
-    // Lowered from 24 so the volumetric clouds stay translucent instead of
-    // reading as a solid opaque shell. Must be set at runtime: this value is
-    // baked into assets/managed/world/earth.scn at export time.
-    private const float CloudExtinction = 14f;
+    // Lowered from 14 to keep the volumetric layer translucent at the expanded
+    // Earth scale. The lower optical depth lets the terrain and ocean read
+    // through the cloud body while preserving the lit edges and height relief.
+    // Must be set at runtime because the exported proxy carries the old value.
+    private const float CloudExtinction = 10f;
     private const float BakedCloudProxyRadius = BakedPlanetRadius + .30f;
     private const float BakedCirrusRadius = BakedPlanetRadius + .32f;
     private const float AirProfileScale = WorldScale.AirProfileScale;

@@ -512,7 +512,8 @@ public partial class Main
         }
         else
         {
-            ShowNotice("资源不足或科技尚未解锁 · " + CostText(Game.BuildingCost(SelectedBuild)));
+            string reason = SelectedBuild == "shield" ? Game.ShieldBuildLockReason() : "";
+            ShowNotice(reason.Length > 0 ? reason : "资源不足或科技尚未解锁 · " + CostText(Game.BuildingCost(SelectedBuild)));
             Sounds.PlaySound("error");
         }
     }
@@ -534,7 +535,8 @@ public partial class Main
         {
             if (!_paintShortageNotified)
             {
-                ShowNotice("资源不足或科技尚未解锁，已保留建造选择 · " + CostText(Game.BuildingCost(SelectedBuild)));
+                string reason = SelectedBuild == "shield" ? Game.ShieldBuildLockReason() : "";
+                ShowNotice((reason.Length > 0 ? reason : "资源不足或科技尚未解锁") + "，已保留建造选择 · " + CostText(Game.BuildingCost(SelectedBuild)));
                 _paintShortageNotified = true;
             }
             return;
@@ -830,4 +832,3 @@ public partial class Main
         return false;
     }
 }
-

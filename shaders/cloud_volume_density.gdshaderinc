@@ -1,8 +1,9 @@
 // Shared 3D density: visible volume and solar cloud shadows evaluate identical weather.
 uniform sampler3D volume_noise : filter_linear, repeat_enable;
 uniform bool cloud_volume_enabled = true;
-// Lowered from 24.0 so the volume reads as translucent haze rather than a solid shell.
-uniform float volume_extinction = 14.0;
+// Kept deliberately light so volumetric cloud interiors remain translucent;
+// the weather map and height profile still provide the body and silhouette.
+uniform float volume_extinction = 10.0;
 // The packed noise field folds the generator's erosion and fine detail channels into one
 // 8-bit channel; this is the combined weight the shader used to apply to them separately.
 uniform float volume_noise_erosion_gain = 0.047;

@@ -310,3 +310,9 @@ M_N4,0,missile_extra_projectiles,integer,1
 I_N4,0,capacity_add,integer,1
 I_N5,0,capacity_add,integer,1
 I_N6,0,capacity_add,integer,1
+D_N1,1,shield_building_limit_add,number,1.0
+D_N2,1,shield_building_limit_add,number,1.0
+D_N3,1,shield_building_limit_add,number,1.0
+D_G1,1,shield_building_limit_add,number,2.0
+D_G2,3,shield_building_limit_add,number,2.0
+D_N4,0,shield_building_limit_add,number,1.0

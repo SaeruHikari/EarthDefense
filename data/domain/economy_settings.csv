@@ -39,3 +39,6 @@ root,36,frontier_radius_3,number,128.0
 root,37,medium_boss_first_wave,number,3.0
 root,38,medium_boss_interval,number,5.0
 root,39,patrol_coverage_multiplier,number,2.0
+root,40,first_wave_enemy_count_multiplier,number,0.75
+root,41,first_wave_enemy_health_multiplier,number,0.85
+root,42,first_wave_enemy_damage_multiplier,number,0.75

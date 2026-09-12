@@ -79,3 +79,9 @@ root,0,missile_factory_capacity,number,1.0
 root,1,missile_factory_capacity,number,32.0
 root,0,patrol_coverage_multiplier,number,0.25
 root,1,patrol_coverage_multiplier,number,8.0
+root,0,first_wave_enemy_count_multiplier,number,0.25
+root,1,first_wave_enemy_count_multiplier,number,1.0
+root,0,first_wave_enemy_health_multiplier,number,0.25
+root,1,first_wave_enemy_health_multiplier,number,1.0
+root,0,first_wave_enemy_damage_multiplier,number,0.25
+root,1,first_wave_enemy_damage_multiplier,number,1.0

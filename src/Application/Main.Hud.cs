@@ -200,7 +200,7 @@ public partial class Main
         }
         Add("earth_hp", "earth", $"{(int)Game.EarthHp}%", "—", Game.EarthHp > 45 ? UiTheme.Mint : UiTheme.Coral, "地球耐久 · 不会自动恢复，可使用修复指令");
         var shields = Battle.GetLocalShieldSummary();
-        Add("shield", "shield", UiTheme.Number(shields.N("hp")), "/" + UiTheme.Number(shields.N("capacity")), UiTheme.Cyan, $"局部护盾 · {shields.I("active")} / {shields.I("count")} 座在线 · 当前 {UiTheme.Number(shields.N("hp"))} / {UiTheme.Number(shields.N("capacity"))}\n只吸收护盾建筑覆盖范围内的攻击，范围外由地球承受伤害。");
+        Add("shield", "shield", UiTheme.Number(shields.N("hp")), "/" + UiTheme.Number(shields.N("capacity")), UiTheme.Cyan, $"局部护盾 · {shields.I("active")} / {shields.I("count")} 座在线 · 科技上限 {shields.I("build_limit")} · 当前 {UiTheme.Number(shields.N("hp"))} / {UiTheme.Number(shields.N("capacity"))}\n{(shields.L("build_cooldown_remaining") > 0 ? $"建造冷却还需 {shields.L("build_cooldown_remaining")} 波 · " : "")}只吸收护盾建筑覆盖范围内的攻击，范围外由地球承受伤害。");
         return result;
     }
 
@@ -328,7 +328,16 @@ public partial class Main
         string[] ids = { "build", "tech", "perks" }, names = { "建设", "科技", "特性" };
         float width = (rect.Size.X - 16) / 3;
         for (int i = 0; i < 3; i++)
-            Button(new(rect.Position + new Vector2(i * (width + 8), 0), new(width, rect.Size.Y)), names[i], "tab:" + ids[i], Tab == ids[i], true, "tab");
+        {
+            var tab = new Rect2(rect.Position + new Vector2(i * (width + 8), 0), new(width, rect.Size.Y));
+            Button(tab, names[i], "tab:" + ids[i], Tab == ids[i], true, "tab");
+            if (ids[i] == "tech" && LocalShieldGuidePending && Tab != "tech")
+            {
+                float pulse = .55f + .35f * MathF.Sin((float)Elapsed * 4.5f);
+                DrawStyleBox(UiTheme.Panel(new Color(0, 0, 0, 0), UiTheme.Alpha(UiTheme.Amber, pulse), 7, 0), tab.Grow(2));
+                Text("建议", tab.Position + new Vector2(tab.Size.X - 36, -4), 10, UiTheme.Amber);
+            }
+        }
     }
 
     private void DrawBuildings()
@@ -391,11 +400,13 @@ public partial class Main
             HudIcon(id, center, 16, accent);
         }
         Text(BuildingName(id), rect.Position + new Vector2(77, 22), 13, locked ? UiTheme.Muted : UiTheme.Ink);
-        Text(HudFitText(locked ? entry.LockReason : entry.CostText, 187, 10), rect.Position + new Vector2(77, 43), 10, locked ? UiTheme.Dim : CanBuildFromHud(entry) ? UiTheme.Mint : UiTheme.Amber);
+        bool canBuild = CanBuildFromHud(entry);
+        string status = locked ? entry.LockReason : canBuild ? entry.CostText : Game.ShieldBuildLockReason();
+        Text(HudFitText(status, 187, 10), rect.Position + new Vector2(77, 43), 10, locked ? UiTheme.Dim : canBuild ? UiTheme.Mint : UiTheme.Amber);
         Text(Game.Buildings.L(id).ToString("00"), rect.Position + new Vector2(8, 56), 10, accent);
         if (selected) Text("连建", rect.Position + new Vector2(242, 55), 10, UiTheme.Amber);
         RegisterButton(rect, "build:" + id);
-        Hint(rect, locked ? entry.LockReason : "局部护盾发生器 · 保护覆盖范围内的地球表面。受击护罩随建筑生成，不能提供全球无条件护盾。");
+        Hint(rect, locked ? entry.LockReason : "局部护盾发生器 · 保护覆盖范围内的地球表面。由科技树限制场上数量，连续建造之间有三波冷却；受击护罩随建筑生成，不能提供全球无条件护盾。");
     }
 
     private void DrawCommands()
@@ -633,4 +644,3 @@ public partial class Main
         }, p, r, c);
     }
 }
-

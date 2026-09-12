@@ -18,6 +18,14 @@ public static class EnemyCatalog
         double factor = C.N(settings, "enemy_health", defaults.N("enemy_health")) / tuning.HealthSettingReference;
         double hp = tuning.HealthBase * data.Health * Math.Exp(Math.Min(600, Math.Log(1 + C.N(settings, "enemy_health_growth", defaults.N("enemy_health_growth"))) * (wave - 1))) * catalog.StageHealth[stage] * factor;
         double dps = tuning.DamageBase * data.Dps * Math.Exp(Math.Min(600, Math.Log(1 + C.N(settings, "enemy_damage_growth", defaults.N("enemy_damage_growth"))) * (wave - 1))) * catalog.StageDamage[stage];
+        // The opening wave is an onboarding beat. Its count and threat are
+        // explicit CSV parameters so a fresh run can establish a defense
+        // line before the normal incremental curve takes over at wave 2.
+        if (wave == 1)
+        {
+            hp *= Math.Clamp(C.N(settings, "first_wave_enemy_health_multiplier", 1), .25, 1);
+            dps *= Math.Clamp(C.N(settings, "first_wave_enemy_damage_multiplier", 1), .25, 1);
+        }
         bool elite = kind is "scout" or "cruiser" && wave >= tuning.EliteFirstWave && C.Posmod(C.L(entry, "index"), (long)tuning.EliteInterval) == (long)tuning.EliteOrdinal;
         if (elite)
         {
@@ -49,4 +57,3 @@ public static class EnemyCatalog
         enemy["skill_clock"] = 1d;
     }
 }
-

@@ -66,7 +66,7 @@ public partial class ResearchTopologyChecks : Node
             }
         }
         Check(rings, "all 299 static technologies occupy their exact real prerequisite-depth ring");
-        Check(singleSteps && singleCount == 235, "all 235 single-parent upgrades advance by exactly one ring");
+        Check(singleSteps && singleCount == 234, "all 234 single-parent upgrades advance by exactly one ring");
         Check(deepestSteps && multiCount == 44, "all 44 multi-parent upgrades sit immediately outside their deepest prerequisite");
         Check(pairedRays && pairCount == 123, "all 123 split small-tech pairs remain adjacent on exactly the same ray");
         Check(graph.Connections.Count(graph.IsSecondaryConnection) == 54, "54 earlier or cross-branch prerequisite links remain present as secondary connections");

@@ -76,3 +76,4 @@ strategic_speed_multiplier,number
 zero_shield_cooldown,number
 zero_shield_duration,number
 zero_shield_fraction,number
+shield_building_limit_add,number

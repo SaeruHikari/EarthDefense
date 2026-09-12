@@ -199,13 +199,25 @@ public sealed partial class DefenseState
             result["resource_cores"] = 1L;
         return result;
     }
-    public bool CanBuild(string id) => BuildingUnlocked(id) && EarthHp > 0 && Buildings.L(id) < MaxExactInteger && CanAfford(BuildingCost(id));
+    public bool CanBuild(string id)
+    {
+        if (!BuildingUnlocked(id) || EarthHp <= 0 || Buildings.L(id) >= MaxExactInteger)
+            return false;
+        if (id == "shield" && ShieldBuildLockReason().Length > 0)
+            return false;
+        return CanAfford(BuildingCost(id));
+    }
     public bool Build(string id, long siteId = -1)
     {
         if (!CanBuild(id))
             return false;
         Pay(BuildingCost(id));
         Buildings[id] = Buildings.L(id) + 1;
+        if (id == "shield")
+        {
+            long cooldown = LocalShieldBuildCooldownWaves;
+            _shieldBuildReadyWave = Wave > MaxExactInteger - cooldown ? MaxExactInteger : Wave + cooldown;
+        }
         if (ResourceFacilityKinds.Contains(id) && HasResearch("I_A1"))
             _boosts.Add(new()
             {

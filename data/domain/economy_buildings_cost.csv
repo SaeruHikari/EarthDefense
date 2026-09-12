@@ -14,5 +14,3 @@ laser,0,minerals,number,480.0
 laser,1,energy,number,360.0
 missile,0,minerals,number,240.0
 missile,1,energy,number,140.0
-shield,0,minerals,number,120.0
-shield,1,energy,number,100.0

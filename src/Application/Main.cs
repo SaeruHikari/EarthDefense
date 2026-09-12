@@ -154,7 +154,7 @@ public partial class Main : Node2D
 		Battle.EventNotice += ShowNotice;
 		BattleHud = new CombatHud { App = this, ZIndex = -5 };
 		AddChild(BattleHud);
-		Battle.EarthDamaged += (amount, position) => { Planet.PulseAtmosphereHit(amount, position); NotifyEarthAttack(amount, position); BattleHud.ShieldFlash = 1; };
+	Battle.EarthDamaged += (amount, position) => { NotifyFirstEarthAttackGuide(); Planet.PulseAtmosphereHit(amount, position); NotifyEarthAttack(amount, position); BattleHud.ShieldFlash = 1; };
 		var intel = new CombatIntelHud { App = this };
 		AddChild(intel);
 		Spectator = new AircraftSpectator();

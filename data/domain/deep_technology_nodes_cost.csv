@@ -326,7 +326,7 @@ M_S46,0,science,integer,22
 M_N4,0,science,integer,140
 M_N4,1,minerals,integer,80
 M_N4,2,energy,integer,60
-D_N4,0,science,integer,24
+D_N4,0,science,integer,0
 I_N4,0,science,integer,40
 I_N4,1,minerals,integer,60
 I_N4,2,energy,integer,40

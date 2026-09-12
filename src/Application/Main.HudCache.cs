@@ -58,7 +58,7 @@ public partial class Main
         return _headerSnapshot;
     }
 
-    private sealed record BuildingHudData(string RunId, long Revision, long Wave, long Count, DataMap Cost, string CostText, string LockReason);
+    private sealed record BuildingHudData(string Id, string RunId, long Revision, long Wave, long Count, DataMap Cost, string CostText, string LockReason);
     private readonly Dictionary<string, BuildingHudData> _buildingHudData = new();
     private BuildingHudData BuildingHud(string id)
     {
@@ -66,12 +66,12 @@ public partial class Main
         if (_buildingHudData.TryGetValue(id, out var entry) && entry.RunId == Game.RunId && entry.Revision == Game.FactoryStatsRevision && entry.Wave == Game.Wave && entry.Count == count)
             return entry;
         var cost = Game.BuildingCost(id);
-        entry = new BuildingHudData(Game.RunId, Game.FactoryStatsRevision, Game.Wave, count, cost, CostText(cost), Game.BuildingLockReason(id));
+        entry = new BuildingHudData(id, Game.RunId, Game.FactoryStatsRevision, Game.Wave, count, cost, CostText(cost), Game.BuildingLockReason(id));
         _buildingHudData[id] = entry;
         return entry;
     }
 
-    private bool CanBuildFromHud(BuildingHudData entry) => entry.LockReason.Length == 0 && Game.EarthHp > 0 && entry.Count < DefenseState.MaxExactInteger && Game.CanAfford(entry.Cost);
+    private bool CanBuildFromHud(BuildingHudData entry) => entry.LockReason.Length == 0 && Game.CanBuild(entry.Id);
     private string _hudTooltipText = "";
     private float _hudTooltipAvailableWidth;
     private string[] _hudTooltipLines = [];

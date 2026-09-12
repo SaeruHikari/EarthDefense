@@ -75,6 +75,8 @@ public partial class Main
         CloseCombatSettings(false);
         LayoutResearchSidebar(true);
         RefreshGraph();
+        if (LocalShieldGuidePending && ResearchGraph.Node("D_N4").Count > 0)
+            ResearchGraph.FocusNode("D_N4");
     }
 
     private void RefreshGraph()

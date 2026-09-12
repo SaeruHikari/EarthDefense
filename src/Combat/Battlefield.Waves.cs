@@ -131,6 +131,8 @@ public sealed partial class Battlefield
         var settings = Game.CombatSettings;
         double duration = settings.N("enemy_spawn_duration", 30), cycle = Math.Max(duration, settings.N("enemy_wave_duration", 45)), multiplier = settings.N("enemy_count_multiplier", 2);
         long basis = settings.L("enemy_wave_base_count", 10), growth = settings.L("enemy_wave_growth", 2), count = _invasion.WaveBudget(wave, basis, growth, multiplier);
+        if (wave == 1)
+            count = Math.Max(1, (long)Math.Ceiling(count * Math.Clamp(settings.N("first_wave_enemy_count_multiplier", 1), .25, 1)));
         int carriers = 0, stage = 0;
         if (_postDefense)
         {

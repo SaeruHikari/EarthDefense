@@ -25,6 +25,7 @@ public sealed partial class DefenseState
         ["alien_points"] = AlienPoints,
         ["resource_cores"] = ResourceCores,
         ["completed_waves"] = CompletedWaves,
+        ["shield_build_ready_wave"] = _shieldBuildReadyWave,
         ["buildings"] = Buildings.DeepClone(),
         ["combat_settings"] = CombatSettings.DeepClone(),
         ["resource_core_upgrades"] = _resourceUpgrades.DeepClone(),
@@ -61,7 +62,7 @@ public sealed partial class DefenseState
             return false;
         if (new[] { "minerals", "energy", "science" }.Any(k => !DataMap.ValidNumber(data.Value(k), 0, ResourceLimit)) || !DataMap.ValidNumber(data.Value("defense_time", 0), 0, DefenseTimeLimit) || !DataMap.ValidNumber(data.Value("earth_hp"), 0, DomainBalance.Value("earth_max_health")))
             return false;
-        if (new[] { "wave", "kills", "score" }.Any(k => !DataMap.ValidNumber(data.Value(k), 0, MaxExactInteger, true)) || new[] { "alien_points", "resource_cores" }.Any(k => !DataMap.ValidNumber(data.Value(k, 0), 0, MaxExactInteger, true)) || !DataMap.ValidNumber(data.Value("completed_waves", data.Value("wave")), 0, data.N("wave"), true))
+        if (new[] { "wave", "kills", "score" }.Any(k => !DataMap.ValidNumber(data.Value(k), 0, MaxExactInteger, true)) || new[] { "alien_points", "resource_cores" }.Any(k => !DataMap.ValidNumber(data.Value(k, 0), 0, MaxExactInteger, true)) || !DataMap.ValidNumber(data.Value("completed_waves", data.Value("wave")), 0, data.N("wave"), true) || !DataMap.ValidNumber(data.Value("shield_build_ready_wave", 0L), 0, MaxExactInteger, true))
             return false;
         if (data.Value("buildings") is not DataMap savedBuildings)
             return false;
@@ -110,6 +111,7 @@ public sealed partial class DefenseState
         AlienPoints = data.L("alien_points");
         ResourceCores = data.L("resource_cores");
         CompletedWaves = data.L("completed_waves", Wave);
+        _shieldBuildReadyWave = data.L("shield_build_ready_wave", 0);
         Buildings = buildings;
         CombatSettings = settings;
         _resourceUpgrades = upgrades;
@@ -140,6 +142,7 @@ public sealed partial class DefenseState
         AlienPoints = 0;
         ResourceCores = 0;
         CompletedWaves = 0;
+        _shieldBuildReadyWave = 0;
         Buildings = CatalogData.Load("economy.json").Map("initial_buildings").DeepClone();
         CombatSettings = DefaultCombatSettings;
         DeepResearch = new();
