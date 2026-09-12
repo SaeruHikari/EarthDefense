@@ -9,14 +9,18 @@ Push-Location $projectRoot
 try {
     if (-not $SkipBuild) { Build-EarthwardManaged $projectRoot 'Debug' }
     foreach ($suite in @('DomainManaged', 'CombatManaged')) {
-        $log = Join-Path $projectRoot ('artifacts\managed-suite-' + $suite + '.log')
-        $suiteArgs = @('run', '--project', ('tests\' + $suite + '\' + $suite + '.csproj'), '--configuration', 'Release')
-        if ($suite -eq 'CombatManaged') { $suiteArgs += @('--', '--earth-scale') }
-        & dotnet @suiteArgs 2>&1 | Tee-Object -FilePath $log
-        if ($LASTEXITCODE -ne 0) { throw ($suite + ' regression failed. See ' + $log) }
+        $modes = if ($suite -eq 'CombatManaged') { @('--local-shields', '--coverage', '--bombardment') } else { @('') }
+        foreach ($mode in $modes) {
+            $suffix = if ($mode) { '-' + $mode.TrimStart('-').Replace('-', '_') } else { '' }
+            $log = Join-Path $projectRoot ('artifacts\managed-suite-' + $suite + $suffix + '.log')
+            $suiteArgs = @('run', '--project', ('tests\' + $suite + '\' + $suite + '.csproj'), '--configuration', 'Release')
+            if ($mode) { $suiteArgs += @('--', $mode) }
+            & dotnet @suiteArgs 2>&1 | Tee-Object -FilePath $log
+            if ($LASTEXITCODE -ne 0) { throw ($suite + $mode + ' regression failed. See ' + $log) }
+        }
     }
-    $scenes = @('rendering', 'legacy')
-    if (-not $HeadlessOnly) { $scenes += @('presentation', 'combat_assets') }
+    $scenes = @('rendering')
+    if (-not $HeadlessOnly) { $scenes += @('presentation', 'local_shield_render', 'research_topology', 'research_extensions_ui', 'factory_coverage') }
     foreach ($scene in $scenes) {
         $profile = Join-Path $projectRoot ('.runtime-tests\managed-suite-' + $scene)
         $env:APPDATA = Join-Path $profile 'AppData'

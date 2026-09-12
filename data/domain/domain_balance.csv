@@ -1,4 +1,4 @@
-﻿key,value,minimum,maximum,unit,description
+key,value,minimum,maximum,unit,description
 initial_minerals,320,0,1000000000000.0,scalar,initial minerals
 initial_energy,180,0,1000000000000.0,scalar,initial energy
 initial_science,80,0,1000000000000.0,scalar,initial science
@@ -7,17 +7,13 @@ death_blast_damage,35,0,1000000000000.0,scalar,death blast damage
 death_blast_radius,0.55,0,1000000000000.0,scalar,death blast radius
 mineral_output_base,5,0,1000000000000.0,scalar,mineral output base
 energy_output_base,4,0,1000000000000.0,scalar,energy output base
-science_output_base,1.5,0,1000000000000.0,scalar,science output base
+science_output_base,0.8,0,1000000000000.0,scalar,orbital research station science output base
 shield_capacity_base,100,0,1000000000000.0,scalar,shield capacity base
 shield_regeneration_base,0.8,0,1000000000000.0,scalar,shield regeneration base
 building_cost_per_existing,0.3,0,1000000000000.0,scalar,building cost per existing
 building_cost_late_factor,0.08,0,1000000000000.0,scalar,building cost late factor
 building_cost_late_start,12,0,1000000000000.0,scalar,building cost late start
 building_cost_late_power,1.18,0,1000000000000.0,scalar,building cost late power
-repair_minerals,65,0,1000000000000.0,scalar,repair minerals
-repair_energy,55,0,1000000000000.0,scalar,repair energy
-repair_earth_health,30,0,1000000000000.0,scalar,repair earth health
-repair_shield_budget,40,0,1000000000000.0,scalar,repair shield budget
 wave_minerals_base,45,0,1000000000000.0,scalar,wave minerals base
 wave_minerals_increment,8,0,1000000000000.0,scalar,wave minerals increment
 wave_energy_base,25,0,1000000000000.0,scalar,wave energy base

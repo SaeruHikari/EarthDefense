@@ -51,7 +51,7 @@ public partial class ResearchExtensionsUiChecks : Node
             _app.Action("tab:tech");
             await ToSignal(GetTree().CreateTimer(.5), SceneTreeTimer.SignalName.Timeout);
             var graph = _app.ResearchGraph;
-            Check(graph.Nodes.Count(node => !node.B("is_successor")) == 299, "full static tree includes deeper branches, capacity and shield unlock");
+            Check(graph.Nodes.Count(node => !node.B("is_successor")) == 300, "full static tree includes deeper branches, capacity and shield unlock");
             foreach (var (id, icon) in new[] { ("M_S21", "blast"), ("M_S22", "range"), ("M_S23", "speed") })
             {
                 var node = graph.Node(id);
@@ -125,6 +125,18 @@ public partial class ResearchExtensionsUiChecks : Node
             await Click(ground);
             Check(_app.Game.Buildings.L("shield") == count + 1, "native ground click builds unlocked shield on actual hex cell");
             await Capture("shield-construction-ui");
+            int shieldSite = _app.Planet.PickExistingSite(ground);
+            _app.SelectedBuild = "";
+            _app.Planet.PlacingBuilding = false;
+            await Click(shieldSite >= 0 ? _app.Planet.GetSlotScreenPosition(shieldSite) : ground);
+            Check(_app.SelectedShieldCoverageSiteId == shieldSite && _app.CurrentShieldCoverage != null, "clicking a shield tower selects its coverage card");
+            Check(_app.Planet.IsShieldCoverageVisible && !_app.Planet.IsFactoryCoverageVisible, "shield selection switches the world projection to a cyan local dome");
+            Check(_app.ShieldCoverageHudRect.Size.X > 240 && _app.ShieldCoverageHudRect.Size.Y > 175, "shield coverage card matches the floating factory HUD size");
+            var shieldCoverage = _app.CurrentShieldCoverage;
+            Check(shieldCoverage != null, "shield card snapshot is available after selection");
+            if (shieldCoverage != null)
+                Check(shieldCoverage.SurfaceRadius > 0 && shieldCoverage.Capacity > 0, "shield card exposes range and concrete capacity values");
+            await Capture("shield-coverage-ui");
         }
         catch (Exception error) { Check(false, error.ToString()); }
         if (IsInstanceValid(_app)) { _app.QueueFree(); await Frames(4); await ToSignal(GetTree().CreateTimer(.12), SceneTreeTimer.SignalName.Timeout); }

@@ -6,7 +6,7 @@ using System.Linq;
 using Earthward.Domain;
 using Godot;
 namespace Earthward.Combat;
-/// <summary>Safe legacy-compatible codec. No engine objects, scripts or native Variant dictionaries.</summary>
+/// <summary>Safe owned-state codec. No engine objects, scripts or native Variant dictionaries.</summary>
 public static class CombatSnapshotCodec
 {
     public const int MaximumDecodedNodes = 8_000_000;

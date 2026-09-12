@@ -130,7 +130,7 @@ public partial class Main : Node2D
 			ShowNotice("永久特性档案读取失败，已保护原文件；请检查存档目录");
 		Game.FactoryPerkRewarded += OnFactoryPerkRewarded;
 		Game.Changed += InvalidateResearchGraph;
-		foreach (string id in new[] { "mine", "solar", "lab", "interceptor", "laser", "missile", "shield", "starship_silo" })
+		foreach (string id in new[] { "mine", "solar", "interceptor", "laser", "missile", "shield", "starship_silo" })
 		{
 			string path = $"res://assets/ui/build_icons/{id}.png";
 			if (ResourceLoader.Exists(path))
@@ -304,6 +304,7 @@ public partial class Main : Node2D
 		Campaign.Step(delta);
 		UpdateTacticalAlerts(delta);
 		UpdateFactoryCoverage(delta);
+		UpdateShieldCoverage(delta);
 		SyncRender();
 		_campaignRefresh += delta;
 		if (_campaignRefresh >= .2)

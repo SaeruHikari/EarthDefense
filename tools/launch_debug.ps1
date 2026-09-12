@@ -1,4 +1,4 @@
-param([switch]$VerifyOnly, [switch]$NewCampaign, [string]$TestProfileRoot = '')
+﻿param([switch]$VerifyOnly, [switch]$NewCampaign, [string]$TestProfileRoot = '')
 $ErrorActionPreference = 'Stop'
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $debugRoot = Join-Path $projectRoot $(if ($NewCampaign) { '.runtime\new-campaign' } else { '.runtime\debug-cleared' })
@@ -22,20 +22,22 @@ try {
     $targetProfile = Join-Path $env:APPDATA $relativeProfile
     New-Item -ItemType Directory -Force -Path $targetProfile,$env:LOCALAPPDATA | Out-Null
     $checkpoint = Join-Path $targetProfile 'earthward_checkpoint.json'
-    if (-not $NewCampaign -and -not (Test-Path -LiteralPath $checkpoint)) {
-        # A named, immutable completion backup seeds this profile once.
-        # Subsequent launches retain progress made after loading this campaign.
-        $completedProfile = Join-Path $projectRoot 'saves\backups\20260910-003354-827-pre-expedition-design\profile-01\capture-01'
-        $completedCheckpoint = Join-Path $completedProfile 'earthward_checkpoint.json'
-        if (-not (Test-Path -LiteralPath $completedCheckpoint -PathType Leaf)) { throw 'The protected wave-125 completion backup is missing.' }
-        $completedSave = Get-Content -LiteralPath $completedCheckpoint -Raw -Encoding UTF8 | ConvertFrom-Json
-        if ($completedSave.game.wave -ne 125 -or @($completedSave.destroyed_fronts).Count -ne 8) { throw 'The selected completion backup did not pass the campaign check.' }
-        foreach ($name in @('earthward_checkpoint.json','earthward_combat_settings.json')) {
-            $source = Join-Path $completedProfile $name
-            $target = Join-Path $targetProfile $name
-            if ((Test-Path -LiteralPath $source) -and -not (Test-Path -LiteralPath $target)) { Copy-Item -LiteralPath $source -Destination $target }
+    if (Test-Path -LiteralPath $checkpoint -PathType Leaf) {
+        # Save compatibility is intentionally out of scope for this development
+        # branch. A profile written by the retired surface-lab schema is
+        # discarded in place so --continue always opens a valid current run.
+        $current = $false
+        try {
+            $saved = Get-Content -LiteralPath $checkpoint -Raw -Encoding UTF8 | ConvertFrom-Json
+            $buildingNames = @($saved.game.buildings.PSObject.Properties.Name)
+            $current = $saved.version -eq 3 -and $saved.game.version -eq 1 -and
+                ($buildingNames -notcontains 'lab') -and $saved.game.expedition.version -eq 4
+        } catch { $current = $false }
+        if (-not $current) {
+            Remove-Item -LiteralPath $targetProfile -Recurse -Force
+            New-Item -ItemType Directory -Force -Path $targetProfile | Out-Null
+            ('Discarded an obsolete development profile; current schema starts clean: ' + $checkpoint) | Set-Content -LiteralPath (Join-Path $debugRoot 'profile-origin.txt') -Encoding UTF8
         }
-        ('Seeded cleared development profile from: ' + $completedCheckpoint) | Set-Content -LiteralPath (Join-Path $debugRoot 'profile-origin.txt') -Encoding UTF8
     }
     # Publish current C# with the standard Release API. Debug/editor test binaries remain independent.
     $engine = Publish-EarthwardManagedPlayer -ProjectRoot $projectRoot

@@ -48,23 +48,12 @@ internal static class WorldScaleChecks
         var largeProfile = new FactoryPerks(); Check(largeProfile.ImportSnapshot(largeMeta), "all40962 cells can retain site perk overrides");
         Check(new DefenseState().Restore(largeState), "all40962 valid resource boost records can restore");
         Check(FactoryPerks.MaxSites == 65536, "bounded archive budget accommodates enlarged grid");
-        // Domain passes battle snapshots to the sole battle-owned normalizer; it never transforms their fields.
-        var previousValidator = ExpeditionData.RuntimeSnapshotValidator; var previousMigrator = ExpeditionData.RuntimeSnapshotMigrator;
-        try
-        {
-            ExpeditionData.RuntimeSnapshotValidator = value => value.I("version") == 4 && value.Count == 3;
-            int calls = 0;
-            ExpeditionData.RuntimeSnapshotMigrator = value => { calls++; if (value.Map("payload").I("scale", 1) == 1) { value.Map("payload")["radius"] = value.Map("payload").N("radius") + 4; value.Map("payload")["scale"] = 2; } return value; };
-            var runtime = new DataMap { ["version"] = 4, ["earth"] = new DataMap(), ["payload"] = new DataMap { ["radius"] = 4d } };
-            Check(archive.SetRuntimeSnapshot(runtime), "nested active snapshot delegates normalization");
-            Near(archive.RuntimeSnapshot.Map("payload").N("radius"), 8, "only delegated active radius changed");
-            var withRuntime = archive.Serialize(); Check(archive.Restore(withRuntime), "nested active snapshot can reload");
-            Near(archive.RuntimeSnapshot.Map("payload").N("radius"), 8, "active normalization remains idempotent");
-            Check(calls == 2 && !runtime.Map("payload").ContainsKey("scale"), "normalizer owns copy, source remains unchanged");
-            var before = archive.Serialize(); ExpeditionData.RuntimeSnapshotMigrator = _ => null;
-            Check(!archive.Restore(before) && DataMap.Equivalent(before, archive.Serialize()), "failed active migration aborts archive restore");
-            Check(!archive.SetRuntimeSnapshot(runtime) && DataMap.Equivalent(before, archive.Serialize()), "failed active migration aborts setter");
-        }
-        finally { ExpeditionData.RuntimeSnapshotValidator = previousValidator; ExpeditionData.RuntimeSnapshotMigrator = previousMigrator; }
+        var runtime = new DataMap { ["version"] = 4, ["earth"] = new DataMap(), ["payload"] = new DataMap() };
+        Check(archive.SetRuntimeSnapshot(runtime), "canonical active snapshot shape accepted");
+        var withRuntime = archive.Serialize(); Check(archive.Restore(withRuntime), "canonical active snapshot can reload");
+        Check(DataMap.Equivalent(archive.RuntimeSnapshot, runtime), "runtime snapshot remains an owned copy");
+        var invalidRuntime = runtime.DeepClone(); invalidRuntime["version"] = 3L;
+        var beforeRuntime = archive.Serialize();
+        Check(!archive.SetRuntimeSnapshot(invalidRuntime) && DataMap.Equivalent(beforeRuntime, archive.Serialize()), "obsolete runtime schema is rejected atomically");
     }
 }

@@ -74,7 +74,10 @@ public partial class Main
 
     public bool ValidateCheckpoint(DataMap data)
     {
-        if (data.ContainsKey("play_time_seconds") && !DataMap.ValidNumber(data.Value("play_time_seconds"), 0, DefenseState.MaxExactInteger) || data.ContainsKey("play_time_estimated") && data.Value("play_time_estimated") is not bool) return false;
+        string[] fields = { "version", "game", "slots", "site_directions", "started", "play_time_seconds", "play_time_estimated", "invasion_anchor", "destroyed_fronts", "expedition_battle", "celestial" };
+        if (data.Count != fields.Length || fields.Any(field => !data.ContainsKey(field)))
+            return false;
+        if (!DataMap.ValidNumber(data.Value("play_time_seconds"), 0, DefenseState.MaxExactInteger) || data.Value("play_time_estimated") is not bool) return false;
         if (!DataMap.ValidNumber(data.Value("version"), 3, 3) || data.N("version") != data.I("version") || data.Value("started") is not bool || data.Value("game") is not DataMap state || data.Value("slots") is not List<object?> slots)
             return false;
         if (data.Value("celestial") is not DataMap celestial)
@@ -89,13 +92,11 @@ public partial class Main
             return false;
         if (data.Value("expedition_battle") is not DataMap campaignSnapshot || !DefenseCampaignDirector.ValidateSnapshot(campaignSnapshot))
             return false;
-        if (data.ContainsKey("combat_snapshot") && (!DataMap.Equivalent(data.Map("combat_snapshot"), campaignSnapshot.Map("earth"))))
-            return false;
         if (data.Value("invasion_anchor") is not List<object?> anchor || anchor.Count != 3 || anchor.Any(v => !DataMap.ValidNumber(v, -1.01, 1.01)) || Math.Abs(Math.Sqrt(anchor.Sum(v => Math.Pow(DataMap.Number(v), 2))) - 1) > .01)
             return false;
         if (state.Value("buildings") is not DataMap buildings || !PlanetView.ValidateStructureLayout(slots, data.List("site_directions")))
             return false;
-        var counts = new Dictionary<string, long> { { "mine", 0 }, { "solar", 0 }, { "lab", 0 }, { "interceptor", 0 }, { "laser", 0 }, { "missile", 0 }, { "shield", 0 }, { "starship_silo", 0 } };
+        var counts = new Dictionary<string, long> { { "mine", 0 }, { "solar", 0 }, { "interceptor", 0 }, { "laser", 0 }, { "missile", 0 }, { "shield", 0 }, { "starship_silo", 0 } };
         foreach (var value in slots)
         {
             if (value is not string kind || kind != "" && !counts.ContainsKey(kind))

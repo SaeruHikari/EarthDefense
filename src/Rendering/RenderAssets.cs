@@ -3,7 +3,7 @@ using System.Text.Json;
 using Earthward.Domain;
 namespace Earthward.Rendering;
 
-/// <summary>Immutable baked content; no scripts are loaded from the legacy tree.</summary>
+/// <summary>Immutable baked content; runtime models are loaded from the managed asset tree.</summary>
 public static class RenderAssets
 {
     private const string ModelDirectory = "res://assets/managed/models/";

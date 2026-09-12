@@ -27,6 +27,6 @@ public partial class Main
             return;
 
         _localShieldGuideActive = true;
-        ShowNotice("首次受击引导 · 打开右侧「科技」，研究免费中科技「区域护盾工程」；随后在「建设」建造局部护盾发生器（需要 3 个资源核心）");
+        ShowNotice("首次受击引导 · 打开右侧「科技」，研究免费中科技「区域护盾工程」；随后在「建设」建造局部护盾发生器（无资源核心消耗，受科技上限和三波建造冷却限制）");
     }
 }

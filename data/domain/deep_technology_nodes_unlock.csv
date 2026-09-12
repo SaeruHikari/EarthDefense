@@ -1,4 +1,4 @@
-﻿parent_id,position,key,type,value
+parent_id,position,key,type,value
 K_S01,0,completed_wave,integer,0
 K_S01,1,defense_stage,integer,0
 K_S21,0,completed_wave,integer,0
@@ -615,3 +615,5 @@ I_N5,0,completed_wave,integer,10
 I_N5,1,defense_stage,integer,0
 I_N6,0,completed_wave,integer,0
 I_N6,1,defense_stage,integer,1
+D_S41,0,completed_wave,integer,0
+D_S41,1,defense_stage,integer,0

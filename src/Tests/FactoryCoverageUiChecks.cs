@@ -76,7 +76,7 @@ public partial class FactoryCoverageUiChecks : Node
     private void InstallFrontFixture()
     {
         // Only this fresh test profile changes placement. Production saves are never opened.
-        _app.Planet.RestoreSites(new object?[] { "mine", "solar", "lab", "interceptor" }, new object?[]
+        _app.Planet.RestoreSites(new object?[] { "mine", "solar", "", "interceptor" }, new object?[]
         {
             new Vector3(-.24f, .18f, 1).Normalized(),
             new Vector3(-.24f, -.18f, 1).Normalized(),

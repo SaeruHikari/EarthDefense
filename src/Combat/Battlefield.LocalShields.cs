@@ -24,13 +24,10 @@ public sealed partial class Battlefield
         {
             if (ReferenceEquals(_localShieldOwner.RechargeLocalShields?.Target, this))
                 _localShieldOwner.RechargeLocalShields = null;
-            if (ReferenceEquals(_localShieldOwner.HasDamagedLocalShields?.Target, this))
-                _localShieldOwner.HasDamagedLocalShields = null;
         }
         _localShieldOwner = Game;
         _localShieldRevision = -1;
         Game.RechargeLocalShields = RechargeLocalShieldBudget;
-        Game.HasDamagedLocalShields = HasDamagedLocalShield;
     }
     private void SyncLocalShields()
     {
@@ -107,7 +104,16 @@ public sealed partial class Battlefield
             if (C.N(tower, "hp") > 0)
                 active++;
         }
-        return new() { ["hp"] = hp, ["capacity"] = capacity, ["count"] = _localShieldView.Count, ["active"] = active };
+        return new()
+        {
+            ["hp"] = hp,
+            ["capacity"] = capacity,
+            ["count"] = _localShieldView.Count,
+            ["active"] = active,
+            ["build_limit"] = Game?.LocalShieldBuildLimit ?? 0,
+            ["build_cooldown_remaining"] = Game?.LocalShieldBuildCooldownRemaining ?? 0,
+            ["earth_repair_rate"] = Game?.LocalShieldEarthRepairRate() ?? 0
+        };
     }
     private void UpdateLocalShields(double dt)
     {
@@ -118,11 +124,6 @@ public sealed partial class Battlefield
             if (Active && !Dead)
                 tower["hp"] = Math.Min(C.N(tower, "max_hp"), C.N(tower, "hp") + C.N(tower, "regeneration") * Math.Max(0, dt));
         }
-    }
-    private bool HasDamagedLocalShield()
-    {
-        SyncLocalShields();
-        return _localShieldView.Any(s => C.N(s, "hp") < C.N(s, "max_hp") - .000001);
     }
     private double RechargeLocalShieldBudget(double budget)
     {
@@ -184,7 +185,7 @@ public sealed partial class Battlefield
         var tower = ShieldCoveringPoint(at);
         return tower == null ? damage : AbsorbLocalShield(tower, damage, at);
     }
-    private static bool ValidateLocalShieldSnapshot(DataMap towers, double earthRadius)
+    private static bool ValidateLocalShieldSnapshot(DataMap towers)
     {
         foreach (var (key, value) in towers)
         {
@@ -194,7 +195,7 @@ public sealed partial class Battlefield
                 return false;
             if (Math.Abs(C.V(tower, "normal").Length() - 1) > .001 || Math.Abs(C.V(tower, "world_normal").Length() - 1) > .001 || !Nonnegative(tower.Value("surface_radius"), 10000) || C.N(tower, "surface_radius") <= 0 || !Nonnegative(tower.Value("altitude"), 1000) || C.N(tower, "altitude") <= 0)
                 return false;
-            if (Math.Abs(C.N(tower, "shield_radius") - earthRadius - C.N(tower, "altitude")) > .001 || Math.Abs(C.N(tower, "angle_radians") - Math.Min(Math.PI, C.N(tower, "surface_radius") / earthRadius)) > .001 || !Nonnegative(tower.Value("hit"), .220001) || !Nonnegative(tower.Value("hold_until"), 1e12) || !Nonnegative(tower.Value("break_ready_at"), 1e12))
+            if (Math.Abs(C.N(tower, "shield_radius") - CombatScale.EarthRadius - C.N(tower, "altitude")) > .001 || Math.Abs(C.N(tower, "angle_radians") - Math.Min(Math.PI, C.N(tower, "surface_radius") / CombatScale.EarthRadius)) > .001 || !Nonnegative(tower.Value("hit"), .220001) || !Nonnegative(tower.Value("hold_until"), 1e12) || !Nonnegative(tower.Value("break_ready_at"), 1e12))
                 return false;
         }
         return true;

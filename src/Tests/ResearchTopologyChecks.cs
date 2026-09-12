@@ -33,7 +33,7 @@ public partial class ResearchTopologyChecks : Node
     private void InspectStaticTree(ResearchGraphView graph)
     {
         var nodes = graph.Nodes.Where(node => !node.B("is_successor")).ToArray();
-        Check(nodes.Length == 299 && nodes.Count(node => node.S("size") == "small") == 246, "299 static nodes include 246 independent small technologies");
+        Check(nodes.Length == 300 && nodes.Count(node => node.S("size") == "small") == 247, "300 static nodes include 247 independent small technologies");
         Check(nodes.All(node => node.B("visible") && graph.NodeButtons[node.S("id")].Visible), "every ordinary technology is browsable before unlock");
         Check(nodes.Any(node => !node.B("available") && node.S("lock_reason") != ""), "unlocked visibility preserves real research locks");
         int expected = nodes.Sum(node => ResearchGraphView.PrerequisiteIds(node).Length);
@@ -65,10 +65,10 @@ public partial class ResearchTopologyChecks : Node
                 pairedRays &= Math.Abs(parent.Normalized().Cross(child.Normalized())) < .00001f && Math.Abs(child.DistanceTo(parent) - ResearchGraphView.RingSpacing) < .002;
             }
         }
-        Check(rings, "all 299 static technologies occupy their exact real prerequisite-depth ring");
-        Check(singleSteps && singleCount == 234, "all 234 single-parent upgrades advance by exactly one ring");
+        Check(rings, "all 300 static technologies occupy their exact real prerequisite-depth ring");
+        Check(singleSteps && singleCount == 235, "all 235 single-parent upgrades advance by exactly one ring");
         Check(deepestSteps && multiCount == 44, "all 44 multi-parent upgrades sit immediately outside their deepest prerequisite");
-        Check(pairedRays && pairCount == 123, "all 123 split small-tech pairs remain adjacent on exactly the same ray");
+        Check(pairedRays && pairCount == 124, "all 124 split small-tech pairs remain adjacent on exactly the same ray");
         Check(graph.Connections.Count(graph.IsSecondaryConnection) == 54, "54 earlier or cross-branch prerequisite links remain present as secondary connections");
         bool separated = true;
         string closestPair = "";

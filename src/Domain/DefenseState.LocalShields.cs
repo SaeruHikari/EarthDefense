@@ -6,7 +6,6 @@ public sealed partial class DefenseState
     private long _shieldBuildReadyWave;
 
     public Func<double, double>? RechargeLocalShields { get; set; }
-    public Func<bool>? HasDamagedLocalShields { get; set; }
 
     /// <summary>
     /// Number of local shield generators currently permitted by the researched
@@ -22,6 +21,22 @@ public sealed partial class DefenseState
 
     public long LocalShieldBuildCooldownRemaining
         => Math.Max(0, _shieldBuildReadyWave - Wave);
+
+    /// <summary>
+    /// Very slow passive Earth recovery granted by the optional shield repair
+    /// technology.  The rate is per installed generator and remains entirely
+    /// data driven; a run with no researched node or no shield construction has
+    /// no hidden regeneration.
+    /// </summary>
+    public double LocalShieldEarthRepairRate()
+    {
+        if (!HasResearch("D_S41") || Buildings.L("shield") <= 0)
+            return 0;
+        double perGenerator = TechEffects().N("earth_repair_rate");
+        if (!double.IsFinite(perGenerator) || perGenerator <= 0)
+            return 0;
+        return Math.Min(ResourceLimit, perGenerator * Buildings.L("shield"));
+    }
 
     /// <summary>Returns the actionable reason a researched shield cannot be built yet.</summary>
     public string ShieldBuildLockReason()
@@ -56,6 +71,8 @@ public sealed partial class DefenseState
             ["build_cooldown_waves"] = LocalShieldBuildCooldownWaves,
             ["build_ready_wave"] = LocalShieldBuildReadyWave,
             ["build_cooldown_remaining"] = LocalShieldBuildCooldownRemaining,
+            ["earth_repair_rate"] = LocalShieldEarthRepairRate(),
+            ["earth_repair_rate_per_generator"] = HasResearch("D_S41") ? values.N("earth_repair_rate") : 0,
             ["break_recovery_fraction"] = rebuild ? values.N("zero_shield_fraction", .25) : 0,
             ["break_hold_seconds"] = rebuild ? values.N("zero_shield_duration", 2) : 0,
             ["break_cooldown"] = rebuild ? values.N("zero_shield_cooldown", 30) : 0

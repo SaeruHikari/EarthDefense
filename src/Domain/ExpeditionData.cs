@@ -7,11 +7,6 @@ namespace Earthward.Domain;
 /// <summary>Preserved expedition investment and dormant fleet records; no disabled gameplay is re-enabled.</summary>
 public sealed class ExpeditionData
 {
-    public static Func<DataMap, bool>? RuntimeSnapshotValidator
-    {
-        get; set;
-    }
-    public static Func<DataMap, DataMap?>? RuntimeSnapshotMigrator { get; set; }
     public static IReadOnlyList<string> SectorIds => CatalogData.Load("expedition.json").List("sector_ids").Cast<string>().ToList();
     public static DataMap DefaultSettings => CatalogData.Load("expedition.json").Map("default_settings").DeepClone();
     public static IReadOnlyList<DataMap> SettingDefinitions => CatalogData.Rows("expedition.json", "setting_definitions");
@@ -53,10 +48,9 @@ public sealed class ExpeditionData
     }
     public bool SetRuntimeSnapshot(DataMap value)
     {
-        var normalized = NormalizeRuntime(value);
-        if (normalized == null)
+        if (!ValidRuntime(value))
             return false;
-        _data["runtime_snapshot"] = normalized;
+        _data["runtime_snapshot"] = value.DeepClone();
         return true;
     }
     public bool Restore(DataMap value)
@@ -97,16 +91,9 @@ public sealed class ExpeditionData
             _ => DataMap.ValidNumber(value, -1e300, 1e300)
         };
     }
-    private static bool ValidRuntime(DataMap value) => SafeJson(value) && (value.Count == 0 || (RuntimeSnapshotValidator?.Invoke(value) ?? (DataMap.ValidNumber(value.Value("version"), 1, 4, true) && value.Count == (value.I("version") == 1 ? 5 : 3) && value.Value("earth") is DataMap && value.Value("payload") is DataMap)));
-    private static DataMap? NormalizeRuntime(DataMap value)
-    {
-        if (!ValidRuntime(value))
-            return null;
-        if (value.Count == 0 || RuntimeSnapshotMigrator == null)
-            return value.DeepClone();
-        var normalized = RuntimeSnapshotMigrator(value.DeepClone());
-        return normalized != null && normalized.Count > 0 && ValidRuntime(normalized) ? normalized : null;
-    }
+    private static bool ValidRuntime(DataMap value) => SafeJson(value)
+        && (value.Count == 0 || DataMap.ValidNumber(value.Value("version"), 4, 4, true)
+            && value.Count == 3 && value.Value("earth") is DataMap && value.Value("payload") is DataMap);
     public static DataMap? ValidateSettings(DataMap values)
     {
         var result = DefaultSettings;
@@ -163,8 +150,7 @@ public sealed class ExpeditionData
             return null;
         if (input.Value("runtime_snapshot") is not DataMap runtime)
             return null;
-        var normalizedRuntime = NormalizeRuntime(runtime);
-        if (normalizedRuntime == null)
+        if (!ValidRuntime(runtime))
             return null;
         return new()
         {
@@ -175,7 +161,7 @@ public sealed class ExpeditionData
             ["research"] = new DataMap { ["telescope"] = research.B("telescope") },
             ["sectors"] = cleaned,
             ["fleet"] = fleet,
-            ["runtime_snapshot"] = normalizedRuntime
+            ["runtime_snapshot"] = runtime.DeepClone()
         };
     }
     private static DataMap BlankFleet() => new() { ["version"] = 4L, ["next_id"] = 3000001L, ["orders"] = new List<object?>(), ["ships"] = new List<object?>() };

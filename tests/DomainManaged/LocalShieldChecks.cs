@@ -10,6 +10,8 @@ internal static class LocalShieldChecks
         void Near(double a, double b, string label) => Check(Math.Abs(a - b) < 1e-8, label + $" {a} / {b}");
         var game = new DefenseState();
         Check(game.Shield == 0 && game.Buildings.L("shield") == 0 && !game.BuildingUnlocked("shield"), "new run has no global shield or free tower");
+        Check(!DefenseState.ResourceFacilityKinds.Contains("lab") && game.Buildings.L("lab") == 0 && !game.BuildingUnlocked("lab"), "surface laboratory is removed from new runs");
+        Near(game.Rates().N("science"), .08, "one fixed orbital research station provides a conservative science rate");
         var opening = new DefenseState();
         Check(opening.PurchaseGroup("D_N4") && opening.ResearchLevel("D_N4") == 1, "local shield is a free single-level medium technology available at opening");
         Check(opening.LocalShieldBuildLimit == 1, "opening shield technology grants one field slot");
@@ -17,6 +19,13 @@ internal static class LocalShieldChecks
         Check(opening.Build("shield", 40) && opening.Wave == 0, "first local shield tower can be placed without resources");
         Near(opening.Minerals, 320, "free shield leaves opening minerals"); Near(opening.Energy, 180, "free shield leaves opening energy"); Near(opening.Science, 80, "free local shield research does not consume science"); Near(opening.ResourceCores, 0, "free local shield construction does not consume resource cores");
         Check(opening.LocalShieldBuildReadyWave == 3 && opening.LocalShieldBuildCooldownRemaining == 3, "shield construction starts a three-wave cooldown");
+        var earthRepair = new DefenseState { Science = 1000 };
+        Check(earthRepair.PurchaseGroup("D_N4") && earthRepair.PurchaseGroup("D_S41"), "slow Earth repair small technology follows local shield engineering");
+        Check(earthRepair.Build("shield", 41), "Earth repair fixture can build a free local shield generator");
+        earthRepair.TakeDamage(10);
+        earthRepair.Tick(10);
+        Near(earthRepair.EarthHp, 90.2, "one local shield repairs Earth at a deliberately slow rate");
+        Check(earthRepair.LocalShieldEarthRepairRate() == .02, "Earth repair rate is exposed per installed generator");
         var stats = game.ShieldFacilityStats();
         Near(stats.N("capacity"), 100, "per-facility base capacity"); Near(stats.N("regeneration"), .8, "per-facility base regeneration");
         Near(stats.N("surface_radius"), 5, "world-space ground coverage"); Near(stats.N("altitude"), Earthward.WorldScale.ShieldAltitude, "shared shell altitude");
@@ -48,13 +57,6 @@ internal static class LocalShieldChecks
         Check(full.LocalShieldBuildReadyWave == 6, "each new shield restarts the three-wave cooldown");
         var fullStats = full.ShieldFacilityStats(); Near(fullStats.N("break_recovery_fraction"), .25, "D_G2 rebuild fraction"); Near(fullStats.N("break_hold_seconds"), 2, "D_G2 local protection duration"); Near(fullStats.N("break_cooldown"), 30, "D_G2 local cooldown");
         full.Shield = 1000; full.EarthHp = 100; full.TakeDamage(30); Near(full.EarthHp, 70, "advanced shield research does not silently create global armor");
-        var repair = new DefenseState { Minerals = 10000, Energy = 10000, Shield = 40 };
-        Check(!repair.CanRepair() && !repair.Repair(), "no tower and undamaged Earth offers no shield-only repair");
-        double missing = 100; int calls = 0; double requested = 0;
-        repair.HasDamagedLocalShields = () => missing > 0;
-        repair.RechargeLocalShields = budget => { calls++; requested += budget; double accepted = Math.Min(budget, missing); missing -= accepted; return accepted; };
-        Check(repair.Repair(), "local damaged shield allows repair"); Near(requested, 40, "repair sends one fixed budget"); Near(missing, 60, "actual accepted local recharge"); Near(repair.Shield, 40, "local repair does not update legacy balance");
-        repair.Wave = 1; repair.RewardWave(1); Near(requested, 60, "wave reward sends only20 total"); int previousCalls = calls; repair.RewardWave(1); Check(calls == previousCalls, "duplicate wave reward does not recharge twice");
         full.EarthHp = 100; full.RechargeLocalShields = null; Near(full.ApplySacrificeRecovery(10000), 0, "no tower receives no sacrifice benefit");
         double acceptedTotal = 0, perSecond = full.ShieldMax() * .02;
         full.RechargeLocalShields = budget => { double accepted = Math.Min(budget, .5); acceptedTotal += accepted; return accepted; };

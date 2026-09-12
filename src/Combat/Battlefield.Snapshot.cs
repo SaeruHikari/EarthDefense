@@ -27,37 +27,31 @@ public sealed partial class Battlefield
     private static bool Nonnegative(object? value, double maximum = 10000, bool integer = false) => CombatSnapshotCodec.IsNumber(value) && DataMap.Number(value) >= 0 && DataMap.Number(value) <= maximum && (!integer || DataMap.Number(value) == Math.Floor(DataMap.Number(value)));
     public static bool ValidateCombatSnapshot(DataMap snapshot)
     {
-        if (!CombatSnapshotCodec.HasFields(snapshot, "version:int rng_seed:text rng_state:text") || snapshot.I("version") is not (1 or 2 or 3 or 4) || !long.TryParse(snapshot.S("rng_seed"), out _) || !long.TryParse(snapshot.S("rng_state"), out _) || !InvasionDirector.ValidateDestroyedFronts(snapshot.Value("destroyed_fronts") as IEnumerable<object?>))
-            return false;
-        if (snapshot.I("version") >= 3 && (!CombatSnapshotCodec.HasFields(snapshot, "earth_radius:number") || (snapshot.N("earth_radius") != CombatScale.EarthRadius && snapshot.N("earth_radius") != CombatScale.PreviousEarthRadius && snapshot.N("earth_radius") != CombatScale.LegacyEarthRadius)))
+        if (snapshot.Count != 7 || !CombatSnapshotCodec.HasFields(snapshot, "version:int earth_radius:number rng_seed:text rng_state:text") || snapshot.I("version") != 4 || snapshot.N("earth_radius") != CombatScale.EarthRadius || !long.TryParse(snapshot.S("rng_seed"), out _) || !long.TryParse(snapshot.S("rng_state"), out _) || !InvasionDirector.ValidateDestroyedFronts(snapshot.Value("destroyed_fronts") as IEnumerable<object?>))
             return false;
         if (!CombatSnapshotCodec.TryDecode(snapshot.Value("payload"), out var decoded) || decoded is not DataMap d || !CombatSnapshotCodec.TryDecode(snapshot.Value("anchor"), out var anchor) || anchor is not Vector3)
             return false;
-        bool legacy = snapshot.I("version") == 1, oldShields = snapshot.I("version") < 4;
-        if (d.Count != SnapshotFields.Length - (legacy ? 3 : 0) - (oldShields ? 1 : 0) || SnapshotFields.Any(k => !d.ContainsKey(k) && !(legacy && k.StartsWith("_fixed_", StringComparison.Ordinal)) && !(oldShields && k == "_local_shields")))
+        if (d.Count != SnapshotFields.Length || SnapshotFields.Any(k => !d.ContainsKey(k)))
             return false;
-        if (!oldShields && (d.Value("_local_shields") is not DataMap towers || !ValidateLocalShieldSnapshot(towers, StoredEarthRadius(snapshot))))
+        if (d.Value("_local_shields") is not DataMap towers || !ValidateLocalShieldSnapshot(towers))
             return false;
         if (!CombatSnapshotCodec.HasFields(d, "active:bool wave_running:bool _invasion_won:bool _dead:bool _post_defense:bool _wave_spawn_cancelled:bool _boss_spawned:bool _small_boss_spawned:bool _factories:map _motherships:map _post_plan:map _wave_spawn_snapshot:map enemies:array _drones:array _shots:array _hostile_shots:array _beams:array _bursts:array _damage_numbers:array _factory_activity:array"))
             return false;
         foreach (var k in "_next_uid _clock _assignment_clock _destroyed_drones _number_sequence wave_remaining wave_total _wave_spawn_duration _wave_spawn_elapsed _wave_spawned _wave_initial_count _wave_segment_start _wave_segment_count _wave_segment_spawned _spawn_clock _post_spawned".Split(' '))
             if (!Nonnegative(d.Value(k), double.MaxValue))
                 return false;
-        if (!legacy)
+        if (d.B("_fixed_cycle_running"))
         {
-            if (!CombatSnapshotCodec.HasFields(d, "_fixed_cycle_elapsed:number _fixed_cycle_running:bool _fixed_cohort_complete:bool") || d.N("_fixed_cycle_elapsed") < 0)
+            if (d.N("_fixed_cycle_elapsed") < 0)
                 return false;
-            if (d.B("_fixed_cycle_running"))
-            {
-                var p = d.Map("_wave_spawn_snapshot");
-                if (!CombatSnapshotCodec.HasFields(p, "cycle_duration:number duration:number composition:map planned_count:int regular_count:int carrier_count:int medium:bool stride:int wave:int stage:int") || p.N("cycle_duration") < p.N("duration") || p.N("duration") <= 0 || d.N("_fixed_cycle_elapsed") > p.N("cycle_duration") + .00001)
+            var p = d.Map("_wave_spawn_snapshot");
+            if (!CombatSnapshotCodec.HasFields(p, "cycle_duration:number duration:number composition:map planned_count:int regular_count:int carrier_count:int medium:bool stride:int wave:int stage:int") || p.N("cycle_duration") < p.N("duration") || p.N("duration") <= 0 || d.N("_fixed_cycle_elapsed") > p.N("cycle_duration") + .00001)
+                return false;
+            foreach (var (k, v) in p.Map("composition"))
+                if (!DefenseWavePlan.RoleOrder.Contains(k) || !Nonnegative(v, 1e9, true))
                     return false;
-                foreach (var (k, v) in p.Map("composition"))
-                    if (!DefenseWavePlan.RoleOrder.Contains(k) || !Nonnegative(v, 1e9, true))
-                        return false;
-            }
         }
-        return ValidateActors(d, StoredEarthRadius(snapshot));
+        return ValidateActors(d);
     }
     private static bool ValidatePerkActor(DataMap a)
     {
@@ -147,7 +141,7 @@ public sealed partial class Battlefield
         }
         return true;
     }
-    private static bool ValidateActors(DataMap d, double storedEarthRadius)
+    private static bool ValidateActors(DataMap d)
     {
         foreach (var k in "_next_uid _destroyed_drones _number_sequence wave_remaining wave_total _wave_spawned _wave_initial_count _wave_segment_count _wave_segment_spawned _post_spawned".Split(' '))
             if (!CombatSnapshotCodec.IsInteger(d.Value(k)))
@@ -226,7 +220,7 @@ public sealed partial class Battlefield
             return false;
         if (plan.ContainsKey("completion_handled") && plan["completion_handled"] is not bool)
             return false;
-        if (plan.ContainsKey("frontier_radius") && (!CombatSnapshotCodec.HasFields(plan, "frontier_radius:number defense_stage:int sortie_elapsed:number sortie_round:int sortie_started:bool") || plan.N("frontier_radius") < storedEarthRadius + 6 || plan.N("frontier_radius") > 1000 + storedEarthRadius - CombatScale.LegacyEarthRadius || plan.I("defense_stage") < 1 || plan.I("defense_stage") > 3 || plan.N("sortie_elapsed") < 0 || plan.I("sortie_round") < 0))
+        if (plan.ContainsKey("frontier_radius") && (!CombatSnapshotCodec.HasFields(plan, "frontier_radius:number defense_stage:int sortie_elapsed:number sortie_round:int sortie_started:bool") || plan.N("frontier_radius") < CombatScale.EarthRadius + 6 || plan.N("frontier_radius") > 1000 + CombatScale.EarthRadius - CombatScale.LegacyEarthRadius || plan.I("defense_stage") < 1 || plan.I("defense_stage") > 3 || plan.N("sortie_elapsed") < 0 || plan.I("sortie_round") < 0))
             return false;
         return d.L("_next_uid") > maximum;
     }
@@ -236,7 +230,6 @@ public sealed partial class Battlefield
             return false;
         CombatSnapshotCodec.TryDecode(snapshot["payload"], out var decoded);
         var d = (DataMap)decoded!;
-        MigrateSnapshotSpace(d, CombatScale.EarthRadius - StoredEarthRadius(snapshot));
         CombatSnapshotCodec.TryDecode(snapshot["anchor"], out var anchor);
         _epoch++;
         _invasion = new();
@@ -268,15 +261,9 @@ public sealed partial class Battlefield
         _postDefense = d.B("_post_defense");
         _postPlan = d.Map("_post_plan");
         _postSpawned = d.I("_post_spawned");
-        _cycleElapsed = d.N("_fixed_cycle_elapsed", Math.Min(44, _spawnElapsed));
-        _fixedRunning = d.B("_fixed_cycle_running", WaveRunning);
+        _cycleElapsed = d.N("_fixed_cycle_elapsed");
+        _fixedRunning = d.B("_fixed_cycle_running");
         _cohortComplete = d.B("_fixed_cohort_complete");
-        if (snapshot.I("version") == 1 && _fixedRunning)
-        {
-            var migrated = DefenseWavePlan.Build(Game.Wave, Math.Max(_initialCount, WaveTotal), _spawnDuration, Math.Max(45, _spawnDuration), _postDefense || ShouldSpawnMediumBoss(Game.Wave), _postPlan.I("defense_stage"), 0);
-            foreach (var p in migrated)
-                _wavePlan[p.Key] = p.Value;
-        }
         foreach (var (key, list) in new[] { ("enemies", Enemies), ("_drones", Drones), ("_shots", Shots), ("_hostile_shots", HostileShots), ("_beams", Beams), ("_bursts", Bursts), ("_damage_numbers", DamageNumbers), ("_factory_activity", FactoryActivity) })
         {
             list.Clear();
@@ -293,12 +280,6 @@ public sealed partial class Battlefield
         Motherships.Clear();
         foreach (var (key, value) in d.Map("_motherships"))
             Motherships[key] = (DataMap)value!;
-        foreach (var drone in Drones)
-            if (!drone.ContainsKey("airframe_id"))
-            {
-                drone["airframe_id"] = BaseFrame(drone.S("kind"));
-                drone["capacity_cost"] = 1;
-            }
         Random.Seed = unchecked((ulong)long.Parse(snapshot.S("rng_seed"), CultureInfo.InvariantCulture));
         Random.State = unchecked((ulong)long.Parse(snapshot.S("rng_state"), CultureInfo.InvariantCulture));
         _revision = -1;
@@ -313,5 +294,4 @@ public sealed partial class Battlefield
         return true;
     }
 }
-
 

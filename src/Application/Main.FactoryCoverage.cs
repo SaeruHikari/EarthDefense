@@ -24,21 +24,30 @@ public partial class Main
             ClearFactoryCoverage();
             return;
         }
+        ClearShieldCoverageOnly();
         SelectedCoverageSiteId = site;
         RefreshFactoryCoverage();
         QueueRedraw();
     }
 
-    public void ClearFactoryCoverage()
+    private void ClearFactoryCoverageOnly()
     {
-        if (SelectedCoverageSiteId < 0 && CurrentFactoryCoverage == null)
-            return;
         SelectedCoverageSiteId = -1;
         CurrentFactoryCoverage = null;
         FactoryCoverageHudRect = default;
         _factoryCoverageDelay = 0;
         if (IsInstanceValid(Planet))
             Planet.SetFactoryCoverage(null);
+    }
+
+    public void ClearFactoryCoverage()
+    {
+        bool had = SelectedCoverageSiteId >= 0 || CurrentFactoryCoverage != null
+            || SelectedShieldCoverageSiteId >= 0 || CurrentShieldCoverage != null;
+        ClearFactoryCoverageOnly();
+        ClearShieldCoverageOnly();
+        if (!had)
+            return;
         QueueRedraw();
     }
 

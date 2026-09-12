@@ -27,25 +27,7 @@ public sealed class DefenseCampaignDirector
         Game = game;
         Battle = battle;
         Battle.PostDefenseWaveCompleted += WaveCompleted;
-        RegisterSnapshotMigration();
         SyncCampaign();
-    }
-    /// <summary>May be called before a standalone domain restore; Setup also registers it.</summary>
-    public static void RegisterSnapshotMigration()
-    {
-        ExpeditionData.RuntimeSnapshotValidator = ValidateSnapshot;
-        ExpeditionData.RuntimeSnapshotMigrator = NormalizeSnapshot;
-    }
-    public static DataMap? NormalizeSnapshot(DataMap value)
-    {
-        if (!ValidateSnapshot(value))
-            return null;
-        var earth = Battlefield.NormalizeCombatSnapshot(value.Map("earth"));
-        if (earth == null)
-            return null;
-        var result = value.DeepClone();
-        result["earth"] = earth;
-        return ValidateSnapshot(result) ? result : null;
     }
     public void ResetRuntime()
     {
@@ -218,20 +200,16 @@ public sealed class DefenseCampaignDirector
 
     public static bool ValidateSnapshot(DataMap value)
     {
-        int version = value.I("version");
-        if (!CombatSnapshotCodec.IsInteger(value.Value("version")) || version < 1 || version > 4 || value.Count != (version == 1 ? 5 : 3) || value.Value("earth") is not DataMap earth || !Battlefield.ValidateCombatSnapshot(earth) || !CombatSnapshotCodec.TryDecode(value.Value("payload"), out var decoded) || decoded is not DataMap d)
+        if (!CombatSnapshotCodec.IsInteger(value.Value("version")) || value.I("version") != 4 || value.Count != 3 || value.Value("earth") is not DataMap earth || !Battlefield.ValidateCombatSnapshot(earth) || !CombatSnapshotCodec.TryDecode(value.Value("payload"), out var decoded) || decoded is not DataMap d)
             return false;
-        if (version >= 3 && d.Count != 12 - (version == 3 ? 1 : 0))
+        if (d.Count != 12)
             return false;
         if (!CombatSnapshotCodec.HasFields(d, "_enabled:bool _clock:number _earth_wave:int _earth_timer:number _earth_phase:text _baseline_health:number _baseline_wave:int _next_uid:int _bases:map") || d.N("_clock") < 0 || d.L("_earth_wave") < 0 || d.L("_baseline_wave") < 1 || d.N("_baseline_health") <= 0 || d.L("_next_uid") < 2000001)
             return false;
-        if (version >= 4 && (!CombatSnapshotCodec.HasFields(d, "_ceasefire_round_seconds:number") || d.N("_ceasefire_round_seconds") <= 0))
+        if (!CombatSnapshotCodec.HasFields(d, "_ceasefire_round_seconds:number") || d.N("_ceasefire_round_seconds") <= 0)
             return false;
-        if (version >= 3)
-        {
-            if (!new[] { "standby", "ceasefire", "continuing", "resupply" }.Contains(d.S("_earth_phase")) || !CombatSnapshotCodec.HasFields(d, "_ceasefire_initialized:bool _ceasefire_duration:number") || d.N("_ceasefire_duration") < 0 || d.N("_earth_timer") < 0 || d.S("_earth_phase") == "ceasefire" && (!d.B("_ceasefire_initialized") || d.N("_earth_timer") > d.N("_ceasefire_duration") + .000001) || d.B("_enabled") && !d.B("_ceasefire_initialized"))
-                return false;
-        }
+        if (!new[] { "standby", "ceasefire", "continuing", "resupply" }.Contains(d.S("_earth_phase")) || !CombatSnapshotCodec.HasFields(d, "_ceasefire_initialized:bool _ceasefire_duration:number") || d.N("_ceasefire_duration") < 0 || d.N("_earth_timer") < 0 || d.S("_earth_phase") == "ceasefire" && (!d.B("_ceasefire_initialized") || d.N("_earth_timer") > d.N("_ceasefire_duration") + .000001) || d.B("_enabled") && !d.B("_ceasefire_initialized"))
+            return false;
         var seen = new System.Collections.Generic.HashSet<long>();
         foreach (var b in d.Map("_bases").Values)
         {
@@ -259,20 +237,7 @@ public sealed class DefenseCampaignDirector
         _bases = d.Map("_bases");
         _ceasefireInitialized = d.B("_ceasefire_initialized");
         _ceasefireDuration = d.N("_ceasefire_duration");
-        _roundSeconds = d.N("_ceasefire_round_seconds", _ceasefireDuration > 0 ? _ceasefireDuration / Math.Max(1, Game.Expedition.Settings.N("earth_ceasefire_rounds", 5)) : Game.CombatSettings.N("enemy_wave_duration", 45));
-        if (value.I("version") < 3)
-        {
-            _ceasefireInitialized = false;
-            _ceasefireDuration = 0;
-            _earthWave = 0;
-            _phase = "standby";
-            Battle.ClearPostDefenseAttack();
-        }
-        // Older checkpoints could save the instant between a cleared frontier and
-        // its immediate respawn. Give that pending move its new preparation cycle;
-        // a positive saved countdown is restored exactly, without extending it.
-        if (_enabled && _phase == "resupply" && _earthTimer <= 0 && Game.GetDefenseReachStage() > Battle.PostPlan.I("defense_stage", 3))
-            _earthTimer = Game.CombatSettings.N("enemy_wave_duration", 45);
+        _roundSeconds = d.N("_ceasefire_round_seconds");
         SyncCampaign();
         return true;
     }

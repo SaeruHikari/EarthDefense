@@ -1,4 +1,4 @@
-﻿parent_id,position,type,value
+parent_id,position,type,value
 K_S21,0,string,K_S01
 K_S22,0,string,K_S02
 K_S23,0,string,K_S03
@@ -333,3 +333,4 @@ I_N5,0,string,I_N4
 I_N5,1,string,I_S29
 I_N6,0,string,I_N5
 I_N6,1,string,I_S34
+D_S41,0,string,D_N4

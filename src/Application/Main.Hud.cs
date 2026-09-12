@@ -46,6 +46,7 @@ public partial class Main
         {
             DrawFrontierWarning();
             DrawFactoryCoverageHud();
+            DrawShieldCoverageHud();
             DrawHudTooltip();
             DrawResourceUpgradeCursor();
             DrawAircraftHover();
@@ -134,7 +135,7 @@ public partial class Main
         Hint(rect, hint);
     }
 
-    public static string BuildingName(string kind) => kind switch { "mine" => "采矿站", "solar" => "太阳能阵列", "lab" => "研究所", "interceptor" => "动能战机工厂", "laser" => "激光战机工厂", "missile" => "导弹战机工厂", "starship_silo" => "星舰发射井", "shield" => "局部护盾发生器", _ => kind };
+    public static string BuildingName(string kind) => kind switch { "mine" => "采矿站", "solar" => "太阳能阵列", "interceptor" => "动能战机工厂", "laser" => "激光战机工厂", "missile" => "导弹战机工厂", "starship_silo" => "星舰发射井", "shield" => "局部护盾发生器", _ => kind };
 
     public static string CostText(DataMap cost)
     {
@@ -164,7 +165,8 @@ public partial class Main
         foreach (var row in new[] { ("minerals", "矿物", Game.Minerals, UiTheme.Mint), ("energy", "能量", Game.Energy, UiTheme.Amber), ("science", "科研", Game.Science, UiTheme.Cyan) })
         {
             double rate = rates.N(row.Item1) * collecting;
-            Add(row.Item1, row.Item1, UiTheme.Number(row.Item3), Rate(rate), row.Item4, $"{row.Item2} · 当前 {UiTheme.Number(row.Item3)} · 实际收入 {FormatSetting(rate)} / 秒");
+            string source = row.Item1 == "science" ? "科研轨道站（固定一座）" : row.Item2;
+            Add(row.Item1, row.Item1, UiTheme.Number(row.Item3), Rate(rate), row.Item4, $"{source} · 当前 {UiTheme.Number(row.Item3)} · 实际收入 {FormatSetting(rate)} / 秒");
         }
         Add("resource_cores", "core", UiTheme.Number(Game.ResourceCores), "—", UiTheme.Amber, "资源核心 · 击败小型 Boss 获得，用于建设及强化资源设施");
         Add("alien_points", "alien", UiTheme.Number(Game.AlienPoints), "—", UiTheme.Alien, "外星科技点 · 研究外星分化中科技、大科技与边界航程");
@@ -198,7 +200,8 @@ public partial class Main
                 result[^1]["armor"] = _forecast.Map("armor");
             }
         }
-        Add("earth_hp", "earth", $"{(int)Game.EarthHp}%", "—", Game.EarthHp > 45 ? UiTheme.Mint : UiTheme.Coral, "地球耐久 · 不会自动恢复，可使用修复指令");
+        double earthRepair = Started && !WorldIsPaused() ? Game.LocalShieldEarthRepairRate() * Speed : 0;
+        Add("earth_hp", "earth", $"{(int)Game.EarthHp}%", Rate(earthRepair), Game.EarthHp > 45 ? UiTheme.Mint : UiTheme.Coral, "地球耐久 · 局部护盾研究可提供极慢修复，也可在建筑卡片查看覆盖范围");
         var shields = Battle.GetLocalShieldSummary();
         Add("shield", "shield", UiTheme.Number(shields.N("hp")), "/" + UiTheme.Number(shields.N("capacity")), UiTheme.Cyan, $"局部护盾 · {shields.I("active")} / {shields.I("count")} 座在线 · 科技上限 {shields.I("build_limit")} · 当前 {UiTheme.Number(shields.N("hp"))} / {UiTheme.Number(shields.N("capacity"))}\n{(shields.L("build_cooldown_remaining") > 0 ? $"建造冷却还需 {shields.L("build_cooldown_remaining")} 波 · " : "")}只吸收护盾建筑覆盖范围内的攻击，范围外由地球承受伤害。");
         return result;
@@ -344,7 +347,7 @@ public partial class Main
     {
         Text("生产建设", new(1137, 200), 13, UiTheme.Amber);
         Text("设施 " + Game.FacilityCount(), new(1332, 200), 11, UiTheme.Muted);
-        string[] ids = { "mine", "solar", "lab", "interceptor", "laser", "missile" };
+        string[] ids = { "mine", "solar", "interceptor", "laser", "missile" };
         for (int i = 0; i < ids.Length; i++)
         {
             string id = ids[i];
@@ -406,7 +409,7 @@ public partial class Main
         Text(Game.Buildings.L(id).ToString("00"), rect.Position + new Vector2(8, 56), 10, accent);
         if (selected) Text("连建", rect.Position + new Vector2(242, 55), 10, UiTheme.Amber);
         RegisterButton(rect, "build:" + id);
-        Hint(rect, locked ? entry.LockReason : "局部护盾发生器 · 保护覆盖范围内的地球表面。由科技树限制场上数量，连续建造之间有三波冷却；受击护罩随建筑生成，不能提供全球无条件护盾。");
+        Hint(rect, locked ? entry.LockReason : "局部护盾发生器 · 保护覆盖范围内的地球表面，建造免费，受科技上限与三波冷却限制。研究「局部修复」后，每座还会以极慢速率修复地球耐久，点击可查看覆盖范围与护盾强度");
     }
 
     private void DrawCommands()
@@ -436,8 +439,7 @@ public partial class Main
         string label = Defeated ? "重新部署 →" : CampaignWon ? UserPaused ? "继续防御" : _campaignStatus.S("earth_phase") == "ceasefire" ? "休整中" : "地球防御中" : Started ? Battle.WaveRunning ? UserPaused ? "继续防御" : "防御进行中" : "下一波 →" : "开始防御 →";
         Button(new(x, 836, 144, 40), label, Defeated ? "modal:restart" : CampaignWon || Battle.WaveRunning ? "pause" : "start", true, true, "primary");
         Button(new(x + 152, 836, 64, 40), $"{Speed:0} ×", "speed");
-        Button(new(x + 224, 836, 98, 40), "修复防线", "repair", false, Game.CanRepair());
-        Button(new(x + 330, 836, 92, 40), "说明 F1", "help");
+        Button(new(x + 224, 836, 92, 40), "说明 F1", "help");
         if (resume)
             Button(new(x + 430, 836, 152, 40), "继续上次防御 →", "load");
     }
@@ -639,7 +641,6 @@ public partial class Main
             "armor_heavy" => "armor",
             "mine" => "mineral",
             "solar" => "power",
-            "lab" => "science",
             _ => id
         }, p, r, c);
     }

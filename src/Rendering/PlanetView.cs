@@ -57,6 +57,7 @@ public sealed partial class PlanetView : SubViewportContainer, ICombatSurface
     private const string CloudCompositeShader = "shader_type canvas_item;\nrender_mode blend_premul_alpha;\nuniform sampler2D cloud_layer : filter_linear, repeat_disable;\nvoid fragment() {\n\tvec4 base = texture(TEXTURE, UV);\n\tvec4 cloud = texture(cloud_layer, UV);\n\tvec3 sum = cloud.rgb * cloud.rgb + base.rgb * base.rgb * (1.0 - cloud.a);\n\tCOLOR = vec4(sqrt(sum), cloud.a + base.a * (1.0 - cloud.a));\n}";
     private EarthVisual _earth = null!;
     private CelestialVisual _celestial = null!;
+    private OrbitalResearchStationVisual _researchStation = null!;
     private FleetRenderer _fleet = null!;
     private CombatEffectsView _effects = null!;
     private Environment _environment = null!;
@@ -121,6 +122,7 @@ public sealed partial class PlanetView : SubViewportContainer, ICombatSurface
         _earth = new EarthVisual(Globe, SunDirection);
         _earth.SetCloudLayer(CloudLayer);
         _celestial = new CelestialVisual(SpaceRoot);
+        _researchStation = new OrbitalResearchStationVisual(SpaceRoot);
         Grid = new SphericalGrid { Name = "SurfaceConstructionGrid" };
         Globe.AddChild(Grid);
         Grid.Setup(_earth);
@@ -158,6 +160,7 @@ public sealed partial class PlanetView : SubViewportContainer, ICombatSurface
         }
         _earth.Update(delta, Paused);
         _celestial.Update(delta, Paused, Camera);
+        _researchStation?.Update(delta, Paused);
         UpdateFocusTransition(delta);
         UpdateNavigationHighlight((float)delta);
         if (PlacingBuilding)

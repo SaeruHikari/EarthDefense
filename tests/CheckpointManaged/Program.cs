@@ -38,7 +38,7 @@ Check(CombatSnapshotCodec.TryDecode(snapshot.Value("payload"),out var decoded)&&
 var state=(DataMap)decoded!;Check(state.List("_drones").Count==5000&&state.List("_shots").Count==3000,"all entities included");
 Check(state.List("_drones").Cast<DataMap>().All(d=>!d.ContainsKey("_actor_order")),"derived actor index omitted from new snapshots");
 Check(CombatSnapshotCodec.IsNumericKey(state.Map("_factories"),"3"),"numeric legacy factory-key identity retained");
-var checkpoint=new DataMap{["version"]=3L,["game"]=game.Serialize(),["started"]=true,["expedition_battle"]=campaign.SerializeWaveStart(),["slots"]=new List<object?>{"mine","solar","lab","interceptor"},["site_directions"]=new List<object?>(),["destroyed_fronts"]=new List<object?>()};
+var checkpoint=new DataMap{["version"]=3L,["game"]=game.Serialize(),["started"]=true,["expedition_battle"]=campaign.SerializeWaveStart(),["slots"]=new List<object?>{"mine","solar","","interceptor"},["site_directions"]=new List<object?>(),["destroyed_fronts"]=new List<object?>()};
 var record=new DataMap{["version"]=1L,["run_id"]=game.RunId,["wave"]=game.Wave,["origin"]="wave_start",["checkpoint"]=checkpoint};
 byte[] bytes=Measure("json_utf8_once_ms",()=>CheckpointFile.Serialize(checkpoint));byte[] wrapped=Measure("wrap_without_reserialize_ms",()=>CheckpointFile.WrapWaveStart(record,bytes));
 var parsed=Measure("read_parse_ms",()=>DataMap.Parse(Encoding.UTF8.GetString(bytes)));var wrappedMap=DataMap.Parse(Encoding.UTF8.GetString(wrapped));

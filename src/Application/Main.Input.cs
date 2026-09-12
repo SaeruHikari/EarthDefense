@@ -65,7 +65,7 @@ public partial class Main
                 case Key.Escape:
                     if (Modal != "")
                         Modal = "";
-                    else if (SelectedCoverageSiteId >= 0)
+                    else if (SelectedCoverageSiteId >= 0 || SelectedShieldCoverageSiteId >= 0)
                     {
                         ClearFactoryCoverage();
                         GetViewport().SetInputAsHandled();
@@ -307,6 +307,9 @@ public partial class Main
             case "coverage:close":
                 ClearFactoryCoverage();
                 break;
+            case "shield_coverage:close":
+                ClearFactoryCoverage();
+                break;
             case "spectator:toggle":
                 if (IsSpectating())
                     ExitSpectator();
@@ -365,16 +368,6 @@ public partial class Main
                 break;
             case "speed":
                 Speed = Speed == 1 ? 2 : 1;
-                break;
-            case "repair":
-                if (Game.Repair())
-                {
-                    Sounds.PlaySound("build");
-                    ShowNotice("修复完成 · 行星耐久 +30，轨道护盾 +40");
-                    SaveIfSafe();
-                }
-                else
-                    ShowNotice("无需修复，或修复资源不足 · " + CostText(Game.RepairCost()));
                 break;
             case "help":
                 Modal = "help";
@@ -461,6 +454,11 @@ public partial class Main
             return;
         }
         string kind = (string?)slots[index] ?? "";
+        if (kind == "shield" && SelectedBuild == "")
+        {
+            SelectShieldCoverage(index);
+            return;
+        }
         if (kind is "interceptor" or "laser" or "missile" && SelectedBuild == "")
         {
             SelectFactoryCoverage(index);
@@ -628,7 +626,7 @@ public partial class Main
         var slots = Planet.GetSlots();
         if (site < 0 || site >= slots.Count || !DefenseState.ResourceFacilityKinds.Contains((string?)slots[site] ?? ""))
         {
-            ShowNotice("核心只能强化采矿站、太阳能阵列或研究所 · 请选择已有资源设施");
+            ShowNotice("核心只能强化采矿站或太阳能阵列 · 请选择已有资源设施");
             return false;
         }
         string kind = (string)slots[site]!;

@@ -9,6 +9,7 @@ public sealed partial class SphericalGrid : Node3D
     public int SubdivisionLevel { get; private set; } = WorldScale.GridLevel;
     public IReadOnlyList<Vector3> Centers => _data.Centers;
     public int CellCount => _data.Centers.Length;
+    public bool ConstructionOverlayVisible => _base?.Visible == true || _occupied?.Visible == true || _hover?.Visible == true || _selected?.Visible == true;
     private EarthVisual _terrain = null!;
     private MeshInstance3D _base = null!, _occupied = null!, _hover = null!, _selected = null!;
     private ShaderMaterial _baseMat = null!, _occupiedMat = null!, _hoverMat = null!, _selectedMat = null!;
@@ -22,6 +23,10 @@ public sealed partial class SphericalGrid : Node3D
         (_hover, _hoverMat) = Create(new(.55f, 1, .81f, .27f));
         (_selected, _selectedMat) = Create(new(.61f, 1, .85f, .19f));
         SetSubdivision(level);
+        // The construction lattice is a tool, not a permanent scene layer.
+        // Start hidden so ordinary combat/navigation keeps the Earth surface
+        // clean; SetBuildMode(true) reveals it when the player chooses a build.
+        _base.Visible = _occupied.Visible = _hover.Visible = _selected.Visible = false;
     }
     private (MeshInstance3D, ShaderMaterial) Create(Color color)
     {
@@ -71,7 +76,10 @@ public sealed partial class SphericalGrid : Node3D
         _buildMode = value;
         _baseMat.SetShaderParameter("tint", new Color(.62f, .91f, .91f, value ? .26f : .075f));
         _occupiedMat.SetShaderParameter("tint", new Color(.44f, .90f, .73f, value ? .19f : .10f));
+        _base.Visible = value;
+        _occupied.Visible = value;
         _hover.Visible = value;
+        _selected.Visible = value;
     }
     public void SetOccupied(IEnumerable<int> cells) => _occupied.Mesh = CellsMesh(cells, false, .005f);
     public void SetHover(int cell) => SetHoverCells(cell >= 0 ? [cell] : [], true);

@@ -62,10 +62,5 @@ public sealed class FacilityVisual
             solar.Position = new(0, .177f, 0);
             solar.Rotation = new(-.27f + Mathf.Sin(t * .12f) * .11f, Mathf.Sin(t * .08f) * .15f, 0);
         }
-        else if (Kind == "lab" && _parts.TryGetValue("ResearchInstrumentRing", out var lab))
-        {
-            lab.Position = new(0, .225f, 0);
-            lab.Rotation = new(0, Mathf.PosMod(t * .45f, Mathf.Tau), 0);
-        }
     }
 }

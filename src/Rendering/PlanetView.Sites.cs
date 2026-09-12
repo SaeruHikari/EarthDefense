@@ -12,7 +12,9 @@ public sealed partial class PlanetView
         Grid.SetSubdivision(WorldScale.GridLevel);
         Globe.Rotation = new(0, Mathf.DegToRad(12), 0);
         ResetCamera();
-        string[] initial = ["mine", "solar", "lab", "interceptor"];
+        // Science is produced by the permanent orbital station; the third
+        // starter cell remains open for future surface infrastructure.
+        string[] initial = ["mine", "solar", "", "interceptor"];
         for (int i = 0; i < SiteCoordinates.Length; i++)
             AppendSite(CoordinateNormal(SiteCoordinates[i]), i < 4 ? initial[i] : "");
         _restoring = false;
@@ -103,7 +105,7 @@ public sealed partial class PlanetView
             site.RemoveChild(child);
             child.QueueFree();
         }
-        if (kind is "interceptor" or "missile" or "laser" or "mine" or "solar" or "lab" or "shield")
+        if (kind is "interceptor" or "missile" or "laser" or "mine" or "solar" or "shield")
             _facilities[index] = new(site, kind);
         else if (kind == "starship_silo" && ResourceLoader.Exists("res://assets/managed/factories/starship_silo.scn"))
             site.AddChild(RenderAssets.Instantiate("res://assets/managed/factories/starship_silo.scn"));
@@ -281,12 +283,35 @@ public sealed partial class PlanetView
     {
         int cell = PickBuildCell(point);
         int site = GetSiteAtCell(cell);
-        return site >= 0 && site < _slots.Count && _slots[site] != "" ? site : -1;
+        if (site >= 0 && site < _slots.Count && _slots[site] != "")
+            return site;
+        // A projected facility can sit on a hex boundary after the globe has
+        // rotated or the camera has been rescaled.  Keep the hit target stable
+        // by accepting the nearest occupied site's projected center as a small
+        // screen-space fallback.  This also makes the whole building card
+        // clickable instead of requiring a mathematically exact cell ray.
+        if (ScreenToSurface(point) == Vector3.Zero)
+            return -1;
+        const float hitRadius = 16f;
+        float nearest = hitRadius * hitRadius;
+        int candidate = -1;
+        for (int i = 0; i < _slots.Count; i++)
+        {
+            if (_slots[i] == "" || !IsSlotVisible(i))
+                continue;
+            float distance = GetSlotScreenPosition(i).DistanceSquaredTo(point);
+            if (distance < nearest)
+            {
+                nearest = distance;
+                candidate = i;
+            }
+        }
+        return candidate;
     }
     public int SetResourceUpgradeHover(Vector2 point)
     {
         int id = PickExistingSite(point);
-        if (id < 0 || _slots[id] is not ("mine" or "solar" or "lab"))
+        if (id < 0 || _slots[id] is not ("mine" or "solar"))
         {
             ClearResourceUpgradeHover();
             return -1;
@@ -312,6 +337,8 @@ public sealed partial class PlanetView
             return false;
         }
         int site = GetSiteAtCell(cell);
+        if (site < 0 && !PlacingBuilding)
+            site = PickExistingSite(point);
         if (site < 0 && PlacingBuilding)
             site = AppendSite(Grid.GetCellCenter(cell));
         SelectedSlot = site;

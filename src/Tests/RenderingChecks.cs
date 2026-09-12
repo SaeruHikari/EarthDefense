@@ -43,7 +43,17 @@ public partial class RenderingChecks : Node
             Check(planet.GetSlots().Count == 16, "Initial site slots preserved");
             Check(planet.GetFactorySites().Count == 1, "Initial real factory");
             var slots = planet.GetSlots();
-            Check((string)slots[0]! == "mine" && (string)slots[1]! == "solar" && (string)slots[2]! == "lab" && (string)slots[3]! == "interceptor", "Initial geography and facility kinds");
+            Check((string)slots[0]! == "mine" && (string)slots[1]! == "solar" && (string)slots[2]! == "" && (string)slots[3]! == "interceptor", "Initial geography uses extraction, power and defense only");
+            Check(planet.HasOrbitalResearchStation, "Permanent orbital research station is present");
+            Check(Math.Abs(planet.GetOrbitalResearchStationWorldPosition().Length() - OrbitalResearchStationVisual.OrbitRadius) < .01f, "Orbital research station stays on its fixed low orbit");
+            var orbitRing = planet.SpaceRoot.FindChild("ResearchStationOrbitRing", true, false);
+            var orbitHalo = planet.SpaceRoot.FindChild("ResearchStationOrbitHalo", true, false);
+            Check(orbitRing is MeshInstance3D && orbitHalo is MeshInstance3D, "Research station orbit has a layered transparent ring and halo");
+            Check(!planet.Grid.ConstructionOverlayVisible, "Construction hex grid is clear outside build mode");
+            planet.PlacingBuilding = true;
+            Check(planet.Grid.ConstructionOverlayVisible, "Construction hex grid appears while placing a building");
+            planet.PlacingBuilding = false;
+            Check(!planet.Grid.ConstructionOverlayVisible, "Construction hex grid clears when placement ends");
             Check(state.Wave < 10, "Free camera checks run before any former vision milestone");
             planet.ZoomCamera(100000);
             Check(Math.Abs(planet.GetCameraDistance() - WorldScale.MaxCameraDistance) < .001f, "Opening wave can zoom out to the global limit");

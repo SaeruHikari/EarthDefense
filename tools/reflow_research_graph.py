@@ -8,6 +8,11 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'data/domain'
 BRANCHES = 'KMLIDC'
 FIRST_RADIUS, RING_SPACING, SPOKE_DEGREES = 220.0, 84.0, 6.0
+# D_N4 is an existing direct medium technology whose established presentation
+# lane is deliberately kept on the third ring.  Its new repair child follows
+# that node on the next ring; retaining the anchor prevents a medium node from
+# colliding with the five compact first-ring spokes.
+LAYOUT_DEPTH_OVERRIDES = {'D_N4': 3}
 
 def read(name):
     with (DATA / name).open(encoding='utf-8-sig', newline='') as stream:
@@ -23,6 +28,9 @@ def generate():
     depths, resolving = {}, set()
     def depth(key):
         if key in depths: return depths[key]
+        if key in LAYOUT_DEPTH_OVERRIDES:
+            depths[key] = LAYOUT_DEPTH_OVERRIDES[key]
+            return depths[key]
         if key in resolving: raise ValueError('Cyclic technology: ' + key)
         resolving.add(key)
         depths[key] = 1 + max((depth(parent) for parent in requires[key]), default=0)
@@ -99,7 +107,7 @@ def generate():
 
 def write_csv(path, fields, rows):
     with path.open('w',encoding='utf-8',newline='') as stream:
-        writer=csv.DictWriter(stream,fieldnames=fields,lineterminator='\n');writer.writeheader();writer.writerows(rows)
+        writer=csv.DictWriter(stream,fieldnames=fields,lineterminator='\n',extrasaction='ignore');writer.writeheader();writer.writerows(rows)
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--write',action='store_true');parser.add_argument('--check',action='store_true');args=parser.parse_args()

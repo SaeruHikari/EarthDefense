@@ -14,7 +14,9 @@ public sealed partial class DefenseState
     public static IReadOnlyList<DataMap> BuildingDefinitions => CatalogData.Rows("economy.json", "buildings");
     public static DataMap DefaultCombatSettings => CatalogData.Load("economy.json").Map("settings").DeepClone();
     public static IReadOnlyList<string> IntegerCombatSettings => CatalogData.Load("economy.json").List("integer_settings").Cast<string>().ToList();
-    public static IReadOnlyList<string> ResourceFacilityKinds => new[] { "mine", "solar", "lab" };
+    // Ground construction now covers extraction and power only.  Science is
+    // supplied by the single permanent orbital research station.
+    public static IReadOnlyList<string> ResourceFacilityKinds => new[] { "mine", "solar" };
     public event Action? Changed;
     public event Action<DataMap>? FactoryPerkRewarded;
     public FactoryPerks FactoryPerks { get; } = new();
@@ -100,18 +102,23 @@ public sealed partial class DefenseState
         {
             ["mine"] = DomainBalance.Value("mineral_output_base") * multiplier * (1 + fx.N("mineral_output_bonus")),
             ["solar"] = DomainBalance.Value("energy_output_base") * multiplier * (1 + fx.N("energy_output_bonus")),
-            ["lab"] = DomainBalance.Value("science_output_base") * multiplier * (1 + fx.N("science_output_bonus")) * fx.N("science_output_multiplier", 1)
+            ["science"] = DomainBalance.Value("science_output_base") * multiplier * (1 + fx.N("science_output_bonus")) * fx.N("science_output_multiplier", 1)
         };
     }
     public DataMap Rates()
     {
         var basis = ResourceFacilityBaseOutputs();
         var result = new DataMap();
-        foreach (var (kind, currency) in new[] { ("mine", "minerals"), ("solar", "energy"), ("lab", "science") })
+        foreach (var (kind, currency) in new[] { ("mine", "minerals"), ("solar", "energy") })
         {
             double levels = _resourceLevelTotals.N(kind);
             result[currency] = Math.Min(ResourceLimit, basis.N(kind) * (Buildings.N(kind) + levels * CoreUpgradeFraction() + _boostUnits.N(kind)));
         }
+        // One orbital station is always present and cannot be spammed or
+        // upgraded as a surface facility.  Research modifiers still apply so
+        // the technology tree can improve its output without reintroducing a
+        // second ground economy.
+        result["science"] = Math.Min(ResourceLimit, basis.N("science"));
         return result;
     }
     public double CoreUpgradeFraction() => CombatSettings.N("resource_core_upgrade_percent", 5) * .01 + (HasResearch("I_N1") ? Math.Round(TechEffects().N("resource_core_fraction") - DomainBalance.Value("resource_core_reference_fraction"), 12) : 0);
@@ -182,6 +189,9 @@ public sealed partial class DefenseState
         Minerals = Math.Min(ResourceLimit, Minerals + income.N("minerals") * delta);
         Energy = Math.Min(ResourceLimit, Energy + income.N("energy") * delta);
         Science = Math.Min(ResourceLimit, Science + income.N("science") * delta);
+        double earthRepair = LocalShieldEarthRepairRate();
+        if (earthRepair > 0 && EarthHp < DomainBalance.Value("earth_max_health"))
+            EarthHp = Math.Min(DomainBalance.Value("earth_max_health"), EarthHp + earthRepair * delta);
         Changed?.Invoke();
     }
     public double ShieldMax() => DomainBalance.Value("shield_capacity_base") * (1 + TechEffects().N("earth_shield_bonus")) * TechEffects().N("earth_shield_multiplier", 1);
@@ -292,18 +302,6 @@ public sealed partial class DefenseState
             return;
         EarthHp = Math.Max(0, EarthHp - amount);
         Changed?.Invoke();
-    }
-    public DataMap RepairCost() => ScaledCost(new() { ["minerals"] = DomainBalance.Value("repair_minerals"), ["energy"] = DomainBalance.Value("repair_energy") }, 1);
-    public bool CanRepair() => EarthHp > 0 && (EarthHp < DomainBalance.Value("earth_max_health") || (HasDamagedLocalShields?.Invoke() ?? false)) && CanAfford(RepairCost());
-    public bool Repair()
-    {
-        if (!CanRepair())
-            return false;
-        Pay(RepairCost());
-        EarthHp = Math.Min(DomainBalance.Value("earth_max_health"), EarthHp + DomainBalance.Value("repair_earth_health"));
-        RequestLocalShieldRecharge(DomainBalance.Value("repair_shield_budget"));
-        Changed?.Invoke();
-        return true;
     }
     public double ApplySacrificeRecovery(double damage)
     {

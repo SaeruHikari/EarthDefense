@@ -12,14 +12,14 @@ void Compare(object? actual,object? expected,string path)
  if(DataMap.ValidNumber(expected,-double.MaxValue,double.MaxValue)){double a=DataMap.Number(actual,double.NaN),e=DataMap.Number(expected);Check(double.IsFinite(a)&&Math.Abs(a-e)<=Math.Max(1e-8,Math.Abs(e)*1e-7),path+" "+a+" / "+e);return;}
  Check(Equals(actual,expected),path+" actual="+actual+" expected="+expected);
 }
-Check(DeepTechnology.Nodes.Count==299,"299 nodes");Check(PerkCatalog.Entries.Count==39,"39 perks");
+Check(DeepTechnology.Nodes.Count==300,"300 nodes");Check(PerkCatalog.Entries.Count==39,"39 perks");
 foreach(var row in golden.List("perk_effects").OfType<DataMap>())Compare(PerkCatalog.Effects(row.S("id"),row.I("level"),PerkCatalog.DefaultSettings),row.Map("effects"),row.S("id")+" level"+row.I("level"));
 Compare(PerkCatalog.NeutralModifiers(),golden.Map("perk_neutral"),"neutral");
 // Real managed purchase, persistent transactions, inheritance and failure tests.
 var funded=new DefenseState{Minerals=1e12,Energy=1e12,Science=1e12,AlienPoints=100000,ResourceCores=100,Wave=120,CompletedWaves=120};funded.SetDefenseReachStage(3);funded.RewardKill("boss",120,3);
 var pending=DeepTechnology.Nodes.Select(row=>row.S("id")).ToHashSet();
 for(int pass=0;pass<DeepTechnology.Nodes.Count&&pending.Count>0;pass++){int before=pending.Count;foreach(string id in pending.ToList())if(funded.GetGroupStatus(id).B("can_purchase")){Check(funded.PurchaseGroup(id),"actual managed purchase "+id);pending.Remove(id);}if(before==pending.Count)break;}
-Check(pending.Count==0,"entire299 actual managed DAG purchase reachable");
+Check(pending.Count==0,"entire300 actual managed DAG purchase reachable");
 Check(funded.PurchaseGroup("K_R00001"),"actual managed independent continuation purchase");
 Check(funded.SetAirframe("interceptor",18,-1,"K2"),"select heavy wing");var plan=funded.FactoryAirframePlan("interceptor",18);for(int i=1;i<plan.Count;i++)Check(plan[i].I("berth")==plan[i-1].I("berth")+2,"stable heavy occupancy");
 Check(!funded.SetAirframe("interceptor",18,1,"K1"),"cannot select second occupied capacity point");

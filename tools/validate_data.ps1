@@ -26,7 +26,7 @@ try {
     $ErrorActionPreference = 'Stop'
     if ($result -ne 0) { throw ('CSV 检查失败。请根据文件与行号修正后重试。日志：' + $logPath) }
     Write-Host ''
-    Write-Host 'CSV 检查通过。重启游戏后会读取新表；已有存档的工程参数仍优先于表格默认值。' -ForegroundColor Green
+    Write-Host 'CSV 检查通过。重启游戏后会读取新表；当前开发版按新架构从新局开始。' -ForegroundColor Green
     Write-Host ('日志：' + $logPath)
 } finally {
     $ErrorActionPreference = 'Stop'

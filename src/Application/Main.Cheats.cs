@@ -79,6 +79,7 @@ public partial class Main
         _researchWindowFocus = "";
         RefreshGraph();
         if (SelectedCoverageSiteId >= 0) SelectFactoryCoverage((int)SelectedCoverageSiteId);
+        else if (SelectedShieldCoverageSiteId >= 0) SelectShieldCoverage((int)SelectedShieldCoverageSiteId);
         CheatFeedback = "常规科技已免费完成 · 进阶科技需自行研究，已有进度保留";
         _cheatError = false;
         Sounds.PlaySound("research");

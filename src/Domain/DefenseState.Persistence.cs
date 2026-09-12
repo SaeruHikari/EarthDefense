@@ -66,7 +66,7 @@ public sealed partial class DefenseState
             return false;
         if (data.Value("buildings") is not DataMap savedBuildings)
             return false;
-        DataMap? settings = data.Value("combat_settings") is DataMap values ? MigrateCombatSettings(values, WorldScaleVersion) : null;
+        DataMap? settings = data.Value("combat_settings") is DataMap values ? ValidatedCombatSettings(values.DeepClone()) : null;
         if (settings == null)
             return false;
         var buildings = new DataMap();

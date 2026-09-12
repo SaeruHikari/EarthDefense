@@ -1,4 +1,4 @@
-﻿attribute,type
+attribute,type
 action_radius,number
 armor_breach_seconds,number
 breached_kinetic_heavy_coefficient,number
@@ -77,3 +77,4 @@ zero_shield_cooldown,number
 zero_shield_duration,number
 zero_shield_fraction,number
 shield_building_limit_add,number
+earth_repair_rate,number

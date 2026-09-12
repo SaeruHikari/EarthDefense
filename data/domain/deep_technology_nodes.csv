@@ -271,7 +271,7 @@ root,268,true,I,,I_A2,2,,5,-3,1,科研回响,1,medium,2,true,true,true,true,true
 root,269,true,I,,I_A3,2,,7,-3,1,战利精炼,1,medium,3,true,true,true,true,true,true
 root,270,true,I,,I_G1,3,,5,-1,1,行星计算阵列,1,large,2,true,true,true,true,true,true
 root,271,true,I,,I_G2,3,,9,-4,1,并行产线,1,large,4,true,true,true,true,true,true
-root,272,false,D,,D_N1,2,,3,1,1,复合机体,1,medium,1,true,true,true,true,true,true
+root,272,false,D,,D_N1,2,,3,-1,1,复合机体,1,medium,1,true,true,true,true,true,true
 root,273,false,D,,D_N2,2,,5,1,1,快速维修,1,medium,2,true,true,true,true,true,true
 root,274,false,D,,D_N3,2,,7,-1,1,护盾整流,1,medium,3,true,true,true,true,true,true
 root,275,true,D,,D_A1,2,,3,-3,1,反应护层,1,medium,1,true,true,true,true,true,true
@@ -294,7 +294,8 @@ root,291,false,M,range,M_S45,1,true,5,-3,1,远程导引 · 续,1,small,2,true,tr
 root,292,false,M,speed,M_S23,1,false,6,3,1,持续助推,1,small,2,true,true,true,true,true,true
 root,293,false,M,speed,M_S46,1,true,7,3,1,持续助推 · 续,1,small,2,true,true,true,true,true,true
 root,294,false,M,missile,M_N4,2,,6,-1,1,双联挂架,1,medium,2,true,true,true,true,true,true
-root,295,false,D,shield,D_N4,2,,3,-1,1,区域护盾工程,1,medium,1,true,true,true,false,true,true
+root,295,false,D,shield,D_N4,2,,3,1,1,区域护盾工程,1,medium,1,true,true,true,false,true,true
 root,296,false,I,capacity,I_N4,2,,3,1,1,编制扩容 1,1,medium,1,true,true,true,true,true,true
 root,297,false,I,capacity,I_N5,2,,5,3,1,编制扩容 2,1,medium,2,true,true,true,true,true,true
 root,298,false,I,capacity,I_N6,2,,7,3,1,编制扩容 3,1,medium,3,true,true,true,true,true,true
+root,299,false,D,repair,D_S41,1,true,4,1,1,局部修复,1,small,1,true,true,true,true,true,true
