@@ -68,6 +68,7 @@ public sealed partial class DefenseState
             ["surface_radius"] = CatalogData.Load("economy.json").Map("local_shield").N("surface_radius", 5),
             ["altitude"] = (double)WorldScale.ShieldAltitude,
             ["build_limit"] = LocalShieldBuildLimit,
+            ["achievement_build_limit_bonus"] = LocalShieldAchievementBonus,
             ["build_cooldown_waves"] = LocalShieldBuildCooldownWaves,
             ["build_ready_wave"] = LocalShieldBuildReadyWave,
             ["build_cooldown_remaining"] = LocalShieldBuildCooldownRemaining,

@@ -128,6 +128,7 @@ public partial class Main : Node2D
 		CombatCatalog.Validate();
 		if (!Game.FactoryPerks.LoadProfile(ProjectSettings.GlobalizePath("user://earthward_factory_perks.json")))
 			ShowNotice("永久特性档案读取失败，已保护原文件；请检查存档目录");
+		LoadAchievements();
 		Game.FactoryPerkRewarded += OnFactoryPerkRewarded;
 		Game.Changed += InvalidateResearchGraph;
 		foreach (string id in new[] { "mine", "solar", "interceptor", "laser", "missile", "shield", "satellite_launcher" })
@@ -449,6 +450,7 @@ public partial class Main : Node2D
 		Defeated = true;
 		Modal = "defeat";
 		NextWave = -1;
+		RecordDefeatAchievement();
 	}
 
 	private void RefreshCampaignUi()

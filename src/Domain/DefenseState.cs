@@ -76,6 +76,7 @@ public sealed partial class DefenseState
     {
         CatalogData.ValidateRuntime();
         FactoryPerks.Changed += () => { InvalidateFactoryStats(); Changed?.Invoke(); };
+        Achievements.Changed += () => { InvalidateFactoryStats(); Changed?.Invoke(); };
         Expedition.Changed += () => Changed?.Invoke();
     }
     private static DataMap Find(IEnumerable<DataMap> rows, string id) => rows.FirstOrDefault(row => row.S("id") == id)?.DeepClone() ?? new();

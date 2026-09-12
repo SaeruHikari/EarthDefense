@@ -43,6 +43,13 @@ public partial class Main
             return;
         if (e is InputEventKey key && key.Pressed && !key.Echo)
         {
+            if (Modal == "achievements" && key.Keycode != Key.F11)
+            {
+                if (key.Keycode == Key.Escape)
+                    CloseAchievements();
+                GetViewport().SetInputAsHandled();
+                return;
+            }
             if (Defeated && key.Keycode != Key.F11)
                 return;
             if (Modal == "combat" && key.Keycode != Key.F11)
@@ -191,7 +198,11 @@ public partial class Main
                 for (int i = Buttons.Count - 1; i >= 0; i--)
                 {
                     var button = Buttons[i];
-                    if (Modal != "" && !button.S("action").StartsWith("modal:"))
+                    if (Modal == "achievements" && button.S("action") != "achievements"
+                        && !button.S("action").StartsWith("modal:achievements:"))
+                        continue;
+                    if (Modal != "" && !button.S("action").StartsWith("modal:")
+                        && !(button.S("action") == "achievements" && (Modal is "defeat" or "achievements")))
                         continue;
                     if (button.Get<Rect2>("rect").HasPoint(Mouse))
                     {
@@ -307,6 +318,16 @@ public partial class Main
         }
         switch (action)
         {
+            case "achievements":
+            case "modal:achievements:open":
+                OpenAchievements();
+                break;
+            case "modal:achievements:close":
+                CloseAchievements();
+                break;
+            case "modal:achievements:retry":
+                RetryAchievementSave();
+                break;
             case "coverage:close":
                 ClearFactoryCoverage();
                 break;

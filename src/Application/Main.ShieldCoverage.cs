@@ -132,6 +132,7 @@ public partial class Main
             + $"覆盖半径 {coverage.SurfaceRadius:0.##} · 地表覆盖角度 {coverage.AngleRadians * 180 / Math.PI:0.##}°\n"
             + $"护盾强度 {UiTheme.Number(coverage.Hp)} / {UiTheme.Number(coverage.Capacity)} · 自身恢复 {coverage.Regeneration:0.##}/s\n"
             + $"离地高度 {coverage.Altitude:0.##} · 单座地球修复 {coverage.EarthRepairRatePerGenerator:0.##}/s\n"
-            + $"场上 {Game.Buildings.L("shield")} / {Game.LocalShieldBuildLimit} 座 · {cooldown}");
+            + $"场上 {Game.Buildings.L("shield")} / {Game.LocalShieldBuildLimit} 座 · {cooldown}"
+            + (Game.LocalShieldAchievementBonus > 0 ? $"\n永久成就贡献：建造上限 +{Game.LocalShieldAchievementBonus} 座" : ""));
     }
 }

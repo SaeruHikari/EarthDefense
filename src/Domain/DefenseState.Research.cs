@@ -15,6 +15,7 @@ public sealed partial class DefenseState
         if (_techEffects != null)
             return _techEffects;
         _techEffects = DeepTechnology.Effects(DeepResearch, _successorLevels);
+        ApplyAchievementResearchEffects(_techEffects);
         return _techEffects;
     }
     public List<DataMap> GraphNodes(string focusId = "")
@@ -36,6 +37,7 @@ public sealed partial class DefenseState
             return new();
         bool owned = HasResearch(id);
         var status = new DataMap { ["id"] = id, ["name"] = def.S("name"), ["branch"] = def.S("branch"), ["size"] = def.S("size"), ["alien"] = def.B("alien"), ["tier"] = def.I("tier"), ["level"] = owned ? 1L : 0L, ["max"] = 1L, ["cost"] = def.Map("cost").DeepClone(), ["lock_reason"] = "", ["can_purchase"] = false, ["preview"] = string.Join("\n", def.List("effects").Cast<string>()), ["requires"] = new DataMap(), ["requirement_details"] = new List<object?>() };
+        status["preview"] = status.S("preview") + AchievementResearchPreview(def);
         foreach (string parent in def.List("requires").Cast<string>())
         {
             status.Map("requires")[parent] = 1L;

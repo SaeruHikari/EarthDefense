@@ -34,6 +34,11 @@ public partial class Main
             DrawRect(new(Vector2.Zero, WorldSize), new(.02f, .04f, .07f, .78f));
             SetUiOffset((WorldSize - DesignSize) * .5f);
             DrawModal();
+            if (Modal is "defeat" or "achievements")
+            {
+                SetUiOffset(Vector2.Zero);
+                DrawAchievementHeaderButton();
+            }
         }
         else if (UserPaused)
         {
@@ -239,7 +244,7 @@ public partial class Main
     {
         var items = HeaderData();
         var widths = _headerWidths;
-        float factor = Math.Min(1, Math.Max(1, WorldSize.X - 164) / _headerTotalWidth);
+        float factor = Math.Min(1, Math.Max(1, WorldSize.X - 204) / _headerTotalWidth);
         Vector2 origin = new(16, 14);
         DrawSetTransform(origin, 0, Vector2.One * factor);
         float x = 0;
@@ -272,6 +277,7 @@ public partial class Main
             x += widths[i] + 4;
         }
         SetUiOffset(Vector2.Zero);
+        DrawAchievementHeaderButton();
         float left = WorldSize.X - 130;
         HeaderButton(new(left, 14, 34, 34), "settings", "combat", "战斗参数 · C");
         HeaderButton(new(left + 40, 14, 34, 34), Sounds.Muted ? "muted" : "audio", "audio", Sounds.Muted ? "开启音效" : "关闭音效");
@@ -474,6 +480,11 @@ public partial class Main
 
     private void DrawModal()
     {
+        if (Modal == "achievements")
+        {
+            DrawAchievements();
+            return;
+        }
         if (Modal == "combat")
         {
             DrawCombatSettings();
@@ -504,6 +515,8 @@ public partial class Main
         Center(defeat ? "这一次，星光暂时熄灭。" : "近地威胁已清空，守望仍将继续。", new(456, 283, 528, 54), 26, UiTheme.Ink);
         Center(defeat ? "永久特性与能源核心已保留，强化后再次部署。" : "休整之后，母舰阵地将逐层拉远。", new(456, 343, 528, 36), 14, UiTheme.Muted);
         Center($"坚持 {Game.Wave:00} 波     拦截 {Game.Kills} 个目标     积分 {UiTheme.Number(Game.Score)}", new(456, 400, 528, 36), 17, UiTheme.Mint);
+        if (defeat)
+            DrawDefeatAchievement();
         Button(new(481, 481, 230, 46), defeat ? "强化工厂特性" : "继续整备", defeat ? "modal:perks" : "modal:close");
         Button(new(723, 481, 236, 46), "重新部署 →", "modal:restart", true, true, "primary");
         if (defeat && CanRetryWave)

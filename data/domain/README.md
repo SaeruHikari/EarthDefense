@@ -19,6 +19,7 @@
 | 特性实际效果公式 | `perk_effect_rules.csv` |
 | 基础与高级特性的升级费用/等级上限 | `perk_tiers.csv`、`perks_settings.csv` |
 | 永久特性工程参数的合法范围 | `perk_setting_bounds.csv` |
+| 首次战败成就文案、每项护盾容量科技的永久额外增量 | `achievements.csv` 的 `reward_per_research`（默认 1） |
 | 建筑定义、数量上限与造价 | `economy_buildings.csv`、`economy_buildings_cost.csv` |
 | 初始设施数量 | `economy_initial_buildings.csv` |
 | 参数界面的默认值、上下限和整数设置 | `economy_settings.csv`、`economy_ranges.csv`、`economy_integer_settings.csv` |

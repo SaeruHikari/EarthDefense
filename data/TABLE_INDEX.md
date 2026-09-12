@@ -1,11 +1,12 @@
 ﻿# 完整数值表索引
 
-共 **49 张 CSV**：42 张领域表与 7 张战斗表。行数不包含表头。
+共 **50 张 CSV**：43 张领域表与 7 张战斗表。行数不包含表头。
 
 返回 [数据入口](README.md)；具体规则和编辑示例见 [CSV 编辑说明](domain/README.md)。日常修改不需要手动修改结构映射表。
 
 | 分类 | 文件 | 数据行 | 主要列 |
 | --- | --- | ---: | --- |
+| 永久成就 | [achievements.csv](domain/achievements.csv) | 1 | id, name, condition, event, reward_attribute, reward_per_research, icon |
 | 机型 | [airframes.csv](domain/airframes.csv) | 1 | parent_id, position, record_id, has_base, has_definitions |
 | 机型 | [airframes_base.csv](domain/airframes_base.csv) | 3 | parent_id, position, key, type, value |
 | 机型 | [airframes_definitions.csv](domain/airframes_definitions.csv) | 9 | parent_id, position, aoe_budget, blast_radius_multiplier, burst_target_count, capacity_cost, damage_multiplier … |

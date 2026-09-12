@@ -1,0 +1,2 @@
+id,name,description,condition,event,reward_attribute,reward_per_research,icon
+first_defeat,不灭的守望,失败留下经验，让下一道防线更加坚固。,首次经历地球防线失守。,earth_defeat,shield_building_limit_add,1,shield

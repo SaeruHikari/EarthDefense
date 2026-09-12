@@ -98,5 +98,6 @@ PatrolCoverageChecks.Run(Check, golden);
 ResearchContinuationChecks.Run(Check, golden);
 LocalShieldChecks.Run(Check, golden);
 CsvCatalogChecks.Run(Check);
+AchievementChecks.Run(Check);
 Console.WriteLine($"DOMAIN_RESULT {checks-failures} PASS / {failures} FAIL");
 return failures==0?0:1;

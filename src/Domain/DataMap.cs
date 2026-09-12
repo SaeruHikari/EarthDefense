@@ -194,7 +194,7 @@ public static class CatalogData
         RowCache.Clear();
         IndexCache.Clear();
     }
-    public static void ValidateRuntime() { Load("economy.json"); DomainBalance.ValidateReferences(); PerkEffectRules.Validate(); }
+    public static void ValidateRuntime() { Load("economy.json"); DomainBalance.ValidateReferences(); PerkEffectRules.Validate(); AchievementCatalog.Validate(); }
     public static DataMap Load(string file)
     {
         if (!_csvLoaded)
@@ -226,4 +226,3 @@ public static class CatalogData
         return index.TryGetValue(id, out var row) ? row.DeepClone() : new();
     }
 }
-
