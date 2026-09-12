@@ -31,7 +31,7 @@ internal static class LocalShieldChecks
         Near(earthRepair.EarthHp, 90.2, "one local shield repairs Earth at a deliberately slow rate");
         Check(earthRepair.LocalShieldEarthRepairRate() == .02, "Earth repair rate is exposed per installed generator");
         var stats = game.ShieldFacilityStats();
-        Near(stats.N("capacity"), 100, "per-facility base capacity"); Near(stats.N("regeneration"), .8, "per-facility base regeneration");
+        Near(stats.N("capacity"), 200, "per-facility doubled base capacity"); Near(stats.N("regeneration"), 1.6, "per-facility doubled base regeneration");
         Near(stats.N("surface_radius"), 5, "world-space ground coverage"); Near(stats.N("altitude"), Earthward.WorldScale.ShieldAltitude, "shared shell altitude");
         Near(stats.N("break_recovery_fraction"), 0, "rebuild requires technology");
         game.Shield = 77; game.Tick(1); Near(game.Shield, 77, "legacy compatibility balance does not regenerate");

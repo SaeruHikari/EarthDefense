@@ -8,8 +8,8 @@ death_blast_radius,0.55,0,1000000000000.0,scalar,death blast radius
 mineral_output_base,5,0,1000000000000.0,scalar,mineral output base
 energy_output_base,4,0,1000000000000.0,scalar,energy output base
 science_output_base,0.8,0,1000000000000.0,scalar,orbital research station science output base
-shield_capacity_base,100,0,1000000000000.0,scalar,shield capacity base
-shield_regeneration_base,0.8,0,1000000000000.0,scalar,shield regeneration base
+shield_capacity_base,200,0,1000000000000.0,scalar,shield capacity base
+shield_regeneration_base,1.6,0,1000000000000.0,scalar,shield regeneration base
 building_cost_per_existing,0.3,0,1000000000000.0,scalar,building cost per existing
 building_cost_late_factor,0.08,0,1000000000000.0,scalar,building cost late factor
 building_cost_late_start,12,0,1000000000000.0,scalar,building cost late start
