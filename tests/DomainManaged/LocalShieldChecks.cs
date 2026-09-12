@@ -18,11 +18,20 @@ internal static class LocalShieldChecks
         Check(game.CompleteResearchSatelliteLaunch() && game.ResearchSatelliteDeployed && game.Rates().N("science") > 0, "completed satellite launch activates conservative science income");
         var opening = new DefenseState();
         Check(opening.PurchaseGroup("D_N4") && opening.ResearchLevel("D_N4") == 1, "local shield is a free single-level medium technology available at opening");
-        Check(opening.LocalShieldBuildLimit == 1, "opening shield technology grants one field slot");
+        Check(opening.LocalShieldBuildLimit == 2, "opening shield technology grants two field slots");
         Check(opening.BuildingCost("shield").Count == 0, "local shield generator has no construction cost");
         Check(opening.Build("shield", 40) && opening.Wave == 0, "first local shield tower can be placed without resources");
         Near(opening.Minerals, 320, "free shield leaves opening minerals"); Near(opening.Energy, 180, "free shield leaves opening energy"); Near(opening.Science, 80, "free local shield research does not consume science"); Near(opening.ResourceCores, 0, "free local shield construction does not consume resource cores");
         Check(opening.LocalShieldBuildReadyWave == 3 && opening.LocalShieldBuildCooldownRemaining == 3, "shield construction starts a three-wave cooldown");
+        opening.Wave = 2;
+        Check(!opening.CanBuild("shield") && opening.LocalShieldBuildCooldownRemaining == 1,
+            "second opening slot cannot bypass the three-wave construction cooldown");
+        opening.Wave = 3;
+        Check(opening.Build("shield", 42) && opening.Buildings.L("shield") == 2 && opening.LocalShieldBuildReadyWave == 6,
+            "second opening slot is actually buildable after the cooldown and starts another three-wave cooldown");
+        opening.Wave = 6;
+        Check(opening.LocalShieldBuildCooldownRemaining == 0 && !opening.CanBuild("shield") && !opening.Build("shield", 43),
+            "two-generator opening cap blocks a third tower even after its cooldown expires");
         var earthRepair = new DefenseState { Science = 1000 };
         Check(earthRepair.PurchaseGroup("D_N4") && earthRepair.PurchaseGroup("D_S41"), "slow Earth repair small technology follows local shield engineering");
         Check(earthRepair.Build("shield", 41), "Earth repair fixture can build a free local shield generator");
@@ -52,7 +61,7 @@ internal static class LocalShieldChecks
         Near(legacy.ShieldFacilityStats().N("capacity"), legacy.ShieldMax(), "all shield investment feeds one facility");
         var full = new DefenseState { Science = 1e9, AlienPoints = 1000000 };
         Check(full.UnlockAllTechnologyCheat(), "advanced shield technology owned");
-        Check(full.LocalShieldBuildLimit == 8, "defense technology expands the local shield field cap to eight");
+        Check(full.LocalShieldBuildLimit == 9, "defense technology expands the local shield field cap to nine");
         Check(full.Build("shield", 70), "free shield generator can be built without a wallet cost");
         full.Wave = 2;
         Check(!full.CanBuild("shield") && full.LocalShieldBuildCooldownRemaining == 1, "second shield remains locked during the three-wave cooldown");

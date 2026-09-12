@@ -152,6 +152,7 @@ public partial class Main
         Color accent = owned ? UiTheme.Mint : UiTheme.Cyan;
         var definition = AchievementCatalog.Definition(AchievementCatalog.FirstDefeatId);
         int bonus = definition.I("reward_per_research");
+        int initialQuota = DeepTechnology.Definition("D_N4").Map("values").I(AchievementCatalog.ShieldCapacityAttribute);
 
         Rect2 panel = new(294, 211, 852, 472);
         Box(new(panel.Position + new Vector2(0, 8), panel.Size), new(0, 0, 0, .28f), Colors.Transparent, 14);
@@ -182,12 +183,12 @@ public partial class Main
         Text("永久增益", new(491, 440), 11, accent);
         Text($"每项护盾容量科技，额外增加 {bonus} 座建造上限", new(491, 465), 16, UiTheme.Ink);
         Text("首次解锁", new(491, 512), 12, UiTheme.Muted);
-        Text("1", new(571, 515), 24, UiTheme.Ink, true);
+        Text(initialQuota.ToString(), new(571, 515), 24, UiTheme.Ink, true);
         Text("+", new(600, 512), 17, UiTheme.Dim);
         Box(new(625, 488, 97, 35), new(owned ? "224c3f" : "1b3640"), Colors.Transparent, 5);
         Center($"{bonus}  成就加成", new(625, 488, 97, 35), 12, accent);
         Text("=", new(739, 512), 17, UiTheme.Dim);
-        Text($"{1 + bonus} 座", new(770, 515), 23, accent);
+        Text($"{initialQuota + bonus} 座", new(770, 515), 23, accent);
         Text($"后续容量科技同样 +{bonus}", new(893, 510), 11, UiTheme.Muted);
 
         string description = owned
@@ -204,7 +205,7 @@ public partial class Main
             Text("护盾的三波建造冷却保持不变；强度与修复科技不增加建造数量。", new(324, 615), 11, UiTheme.Dim);
             HudIcon("shield", new(332, 646), 7, accent);
             string capacity = !owned ? "局部护盾工程仍需在科技树研究解锁"
-                : !Game.HasResearch("D_N4") ? $"研究「区域护盾工程」后可建 {1 + bonus} 座"
+                : !Game.HasResearch("D_N4") ? $"研究「区域护盾工程」后可建 {initialQuota + bonus} 座"
                 : $"本局护盾建造上限 {Game.LocalShieldBuildLimit} 座 · 其中成就贡献 +{Game.LocalShieldAchievementBonus}";
             Text(capacity, new(348, 650), 11, accent);
         }

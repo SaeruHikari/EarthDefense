@@ -263,5 +263,5 @@ D_N2,1,shield_building_limit_add,number,1.0
 D_N3,1,shield_building_limit_add,number,1.0
 D_G1,1,shield_building_limit_add,number,2.0
 D_G2,3,shield_building_limit_add,number,2.0
-D_N4,0,shield_building_limit_add,number,1.0
+D_N4,0,shield_building_limit_add,number,2.0
 D_S41,0,earth_repair_rate,number,0.02

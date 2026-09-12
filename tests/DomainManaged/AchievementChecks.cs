@@ -17,7 +17,7 @@ internal static class AchievementChecks
         Check(game.Achievements.LoadProfile(profile), "bind explicit isolated permanent profile");
         Check(!game.Achievements.HasUnlocked(id) && game.LocalShieldBuildLimit == 0, "new profile starts locked without granting research or capacity");
         Check(!game.RecordDefeat().B("ok") && !game.Achievements.HasUnlocked(id), "living Earth cannot claim first-defeat experience");
-        Check(game.PurchaseGroup("D_N4") && game.LocalShieldBuildLimit == 1, "unearned profile retains ordinary one-generator opening");
+        Check(game.PurchaseGroup("D_N4") && game.LocalShieldBuildLimit == 2, "unearned profile receives ordinary two-generator opening");
         var beforeDefeat = game.Serialize();
         int unlockEvents = 0;
         game.Achievements.Unlocked += unlocked => { if (unlocked == id) unlockEvents++; };
@@ -26,26 +26,35 @@ internal static class AchievementChecks
         var reward = game.RecordDefeat();
         Check(reward.B("ok") && reward.B("unlocked") && reward.S("id") == id, "first actual defeat automatically unlocks the only achievement");
         Check(game.Achievements.HasUnlocked(id) && File.Exists(profile), "first defeat is durably saved immediately");
-        Check(game.LocalShieldBuildLimit == 2 && game.TechEffects().I("shield_building_limit_add") == 2,
+        Check(game.LocalShieldBuildLimit == 3 && game.TechEffects().I("shield_building_limit_add") == 3,
             "reward invalidates cached effects and adds one to the already researched opening shield grant");
         string earnedBytes = File.ReadAllText(profile);
         var duplicate = game.RecordDefeat();
         Check(duplicate.B("ok") && duplicate.B("duplicate") && !duplicate.B("unlocked"), "repeated defeat notification is idempotent");
-        Check(game.LocalShieldBuildLimit == 2 && File.ReadAllText(profile) == earnedBytes, "duplicate defeat cannot stack reward or rewrite the profile");
+        Check(game.LocalShieldBuildLimit == 3 && File.ReadAllText(profile) == earnedBytes, "duplicate defeat cannot stack reward or rewrite the profile");
         Check(unlockEvents == 1 && game.Achievements.UnlockedCount == 1, "first and repeated defeat emit exactly one unlock and retain one achievement");
 
-        Check(game.Restore(beforeDefeat) && game.EarthHp > 0 && game.Achievements.HasUnlocked(id) && game.LocalShieldBuildLimit == 2,
+        Check(game.Restore(beforeDefeat) && game.EarthHp > 0 && game.Achievements.HasUnlocked(id) && game.LocalShieldBuildLimit == 3,
             "restoring a pre-defeat run preserves external permanent achievement and recalculates its reward");
         string previousRun = game.RunId;
         Check(game.Reset() && game.RunId != previousRun && game.Achievements.HasUnlocked(id), "new deployment preserves first-defeat unlock");
         Check(!game.HasResearch("D_N4") && game.LocalShieldBuildLimit == 0 && !game.BuildingUnlocked("shield"),
             "permanent experience never grants shield technology or construction before research");
-        Check(game.PurchaseGroup("D_N4") && game.LocalShieldBuildLimit == 2, "new run opening research grants one plus one generators");
+        Check(game.PurchaseGroup("D_N4") && game.LocalShieldBuildLimit == 3, "new run opening research grants two plus one generators");
         Check(game.Build("shield", 301) && !game.CanBuild("shield") && game.LocalShieldBuildCooldownRemaining == 3,
             "bonus capacity preserves the three-wave construction cooldown");
         game.Wave = 3;
         Check(game.Build("shield", 302) && !game.CanBuild("shield") && game.Buildings.L("shield") == 2,
-            "second earned slot is actually buildable and the two-generator cap still applies");
+            "second slot is actually buildable and restarts the three-wave cooldown");
+        game.Wave = 5;
+        Check(!game.CanBuild("shield") && game.LocalShieldBuildCooldownRemaining == 1,
+            "third earned slot still waits for the second construction cooldown");
+        game.Wave = 6;
+        Check(game.Build("shield", 303) && game.Buildings.L("shield") == 3 && game.LocalShieldBuildReadyWave == 9,
+            "third achievement slot is actually buildable on wave six");
+        game.Wave = 9;
+        Check(game.LocalShieldBuildCooldownRemaining == 0 && !game.CanBuild("shield") && !game.Build("shield", 304),
+            "three-generator achievement cap blocks a fourth tower even after its cooldown expires");
 
         game.Science = 1e9;
         game.AlienPoints = 1000000;
@@ -67,7 +76,7 @@ internal static class AchievementChecks
             Check(game.LocalShieldBuildLimit == before + baseIncrement + 1,
                 "each shield-capacity research adds its base value plus exactly one: " + research);
         }
-        Check(game.LocalShieldBuildLimit == 14, "six eligible researches total ordinary eight plus six permanent bonus slots");
+        Check(game.LocalShieldBuildLimit == 15, "six eligible researches total ordinary nine plus six permanent bonus slots");
         int capacity = game.LocalShieldBuildLimit;
         Check(!game.PurchaseGroup("D_N4") && game.LocalShieldBuildLimit == capacity, "clicking owned research cannot reapply permanent increment");
         string priorProfile = File.ReadAllText(profile);
@@ -76,14 +85,14 @@ internal static class AchievementChecks
 
         var reopened = new DefenseState();
         Check(reopened.Achievements.LoadProfile(profile) && reopened.Achievements.HasUnlocked(id), "separate process domain instance reloads earned experience");
-        Check(reopened.Restore(game.Serialize()) && reopened.LocalShieldBuildLimit == 14 && reopened.Buildings.L("shield") == 2,
+        Check(reopened.Restore(game.Serialize()) && reopened.LocalShieldBuildLimit == 15 && reopened.Buildings.L("shield") == 3,
             "post-achievement save reload restores built extra slots without duplicating earned effects");
-        Check(reopened.Reset() && reopened.PurchaseGroup("D_N4") && reopened.LocalShieldBuildLimit == 2,
+        Check(reopened.Reset() && reopened.PurchaseGroup("D_N4") && reopened.LocalShieldBuildLimit == 3,
             "reload then new deployment retains exactly the same first-research bonus");
 
         var cheat = new DefenseState();
         Check(cheat.Achievements.LoadProfile(Path.Combine(folder, "cheat.json")) && cheat.UnlockAllTechnologyCheat(), "isolated all-research cheat fixture");
-        Check(!cheat.Achievements.HasUnlocked(id) && cheat.LocalShieldBuildLimit == 8, "unlock-all research cheat never awards first-defeat experience");
+        Check(!cheat.Achievements.HasUnlocked(id) && cheat.LocalShieldBuildLimit == 9, "unlock-all research cheat never awards first-defeat experience");
 
         var noStorage = new DefenseState { EarthHp = 0 };
         Check(!noStorage.RecordDefeat().B("ok") && !noStorage.Achievements.HasUnlocked(id),

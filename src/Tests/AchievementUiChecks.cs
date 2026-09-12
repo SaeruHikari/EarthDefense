@@ -181,13 +181,13 @@ public partial class AchievementUiChecks : Node
                 && _app.Game.LocalShieldBuildLimit == 0,
                 "wave-start restore keeps permanent experience but still requires local-shield research");
             await ClickResearch("D_N4");
-            Check(_app.Game.HasResearch("D_N4") && _app.Game.LocalShieldBuildLimit == 2,
-                "native first shield-research click grants the promised one plus one capacity");
+            Check(_app.Game.HasResearch("D_N4") && _app.Game.LocalShieldBuildLimit == 3,
+                "native first shield-research click grants the promised two plus one capacity");
             _app.Game.Science = 10000;
             foreach (string prerequisite in new[] { "D_S01", "D_S21", "D_S02", "D_S22" })
                 Check(_app.Game.PurchaseGroup(prerequisite), "actual defense prerequisite " + prerequisite);
             await ClickResearch("D_N1");
-            Check(_app.Game.HasResearch("D_N1") && _app.Game.LocalShieldBuildLimit == 4,
+            Check(_app.Game.HasResearch("D_N1") && _app.Game.LocalShieldBuildLimit == 5,
                 "native next capacity research again contributes its base one plus achievement one");
 
             string priorRun = _app.Game.RunId;
@@ -198,7 +198,7 @@ public partial class AchievementUiChecks : Node
             Check(_app.Game.Achievements.HasUnlocked(AchievementId) && !_app.Game.HasResearch("D_N4")
                 && _app.Game.LocalShieldBuildLimit == 0, "redeployment resets technology without erasing permanent experience");
             await ClickResearch("D_N4");
-            Check(_app.Game.LocalShieldBuildLimit == 2, "next run native research still grants exactly two slots");
+            Check(_app.Game.LocalShieldBuildLimit == 3, "next run native research still grants exactly three slots");
             await NewMain();
             Check(_app.Game.Achievements.HasUnlocked(AchievementId), "new application instance reloads permanent achievement from disk");
         }
