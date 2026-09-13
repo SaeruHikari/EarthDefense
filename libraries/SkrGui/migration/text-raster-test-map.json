@@ -1,0 +1,142 @@
+[
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/service-and-face-configuration",
+    "target": "TextRasterContractTests.SourceCase01"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/bitmap-light-hinting-keeps-narrow-glyphs-separated",
+    "target": "TextRasterContractTests.SourceCase02"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/bitmap-embolden-changes-coverage",
+    "target": "TextRasterContractTests.SourceCase03"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/bitmap-horizontal-positioning",
+    "target": "TextRasterContractTests.SourceCase04"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/device-mapping-controls-bitmap-placement",
+    "target": "TextRasterContractTests.SourceCase05"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/bitmap-device-texel-mapping-is-pixel-perfect",
+    "target": "TextRasterContractTests.SourceCase06"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/bitmap-device-y-snap-and-unmapped-continuity",
+    "target": "TextRasterContractTests.SourceCase07"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/empty-bitmap-keeps-zero-raster-rect",
+    "target": "TextRasterContractTests.SourceCase08"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/automatic-bitmap-positioning-follows-device-size",
+    "target": "TextRasterContractTests.SourceCase09"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/sdf-placement-remains-continuous",
+    "target": "TextRasterContractTests.SourceCase10"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/descriptor-default-and-service-isolation",
+    "target": "TextRasterContractTests.SourceCase11"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/colored-glyph-through-line",
+    "target": "TextRasterContractTests.SourceCase12"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/color-layer-transform-changes-geometry",
+    "target": "TextRasterContractTests.SourceCase13"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/color-palette-affects-rendering",
+    "target": "TextRasterContractTests.SourceCase14"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/simple-slant-applies-once",
+    "target": "TextRasterContractTests.SourceCase15"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/color-glyph-positioning-and-embolden",
+    "target": "TextRasterContractTests.SourceCase16"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/color-bitmap-size-and-format",
+    "target": "TextRasterContractTests.SourceCase17"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/color-bitmap-selects-nearest-size",
+    "target": "TextRasterContractTests.SourceCase18"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/glyph-removal-refreshes-dependent-output",
+    "target": "TextRasterContractTests.SourceCase19"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/color-face-keeps-independent-size-overrides",
+    "target": "TextRasterContractTests.SourceCase20"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/color-face-keeps-monochrome-glyph-modulation",
+    "target": "TextRasterContractTests.SourceCase21"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/color-face-sdf-lcd-fallback",
+    "target": "TextRasterContractTests.SourceCase22"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/sdf-geometry-scales-with-font-size",
+    "target": "TextRasterContractTests.SourceCase23"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/sdf-lcd-mode-reaches-render-command",
+    "target": "TextRasterContractTests.SourceCase24"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/painting-does-not-change-later-layout",
+    "target": "TextRasterContractTests.SourceCase25"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/raster/fractional-size-scales-bitmap-quad",
+    "target": "TextRasterContractTests.SourceCase26"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/atlas/configuration-and-lifecycle",
+    "target": "TextRasterContractTests.SourceCase27"
+  },
+  {
+    "source": "tests/text/text_raster_contract_tests.cpp",
+    "case": "gui/text-contract/render-result/command-coalescing",
+    "target": "TextRasterContractTests.SourceCase28"
+  }
+]

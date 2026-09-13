@@ -1,0 +1,354 @@
+{
+  "source_commit": "611561f81534354c8c1618dc27c4782cd9277cbf",
+  "entries": [
+    {
+      "source": "include/SkrGuiCore/text/files_font_provider.hpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/Font/FilesFontProvider.cs"
+      ],
+      "source_sha256": "e68304520006ef956418446a3843c6d0555d28e26f02d82dbf0b159fa0a05a82"
+    },
+    {
+      "source": "include/SkrGuiCore/text/font_face.hpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/FontFace.cs",
+        "libraries/SkrGui.Core/Text/Font/TextFontFaceImpl.cs",
+        "libraries/SkrGui.Core/Text/Font/TextFontFaceMetadata.cs",
+        "libraries/SkrGui.Core/Text/Font/TextFontFaceGlyphs.cs"
+      ],
+      "source_sha256": "c95fdde1fa263c1db0aac6f42b4a912ea3ecbf17027e93cf3de329b2c539b29d"
+    },
+    {
+      "source": "include/SkrGuiCore/text/font_provider.hpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/FontProvider.cs"
+      ],
+      "source_sha256": "73bc86619e63efc480b76390d7825ae35e7009f5d89b55f020b13dbae99eabdb"
+    },
+    {
+      "source": "include/SkrGuiCore/text/font_utils.hpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/TextEnums.cs",
+        "libraries/SkrGui.Core/Text/TextTypes.cs"
+      ],
+      "source_sha256": "8dfb8254a8cda480c715ef7f041b17d657c0de75d87509a1184b55d24549c13a"
+    },
+    {
+      "source": "include/SkrGuiCore/text/text_line.hpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/TextLine.cs",
+        "libraries/SkrGui.Core/Text/ReadOnlyTextStyle.cs"
+      ],
+      "source_sha256": "9828827247d766e87be6fe3d66b57faf17df82560dbee3862f8ba42d14f2dbc2"
+    },
+    {
+      "source": "include/SkrGuiCore/text/text_paragraph.hpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/TextParagraph.cs",
+        "libraries/SkrGui.Core/Text/ReadOnlyTextStyle.cs"
+      ],
+      "source_sha256": "160492c855d13da51c19319905f311a20c643552224dd64a85cf7df4ea102feb"
+    },
+    {
+      "source": "include/SkrGuiCore/text/text_services.hpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/TextServices.cs",
+        "libraries/SkrGui.Core/Text/TextServicesImpl.cs"
+      ],
+      "source_sha256": "05e629079d9a526a8bf9b0b3e8efe4100d8ad8da18e143a41c7493f3b16c0197"
+    },
+    {
+      "source": "include/SkrGuiCore/text/text_types.hpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/TextTypes.cs",
+        "libraries/SkrGui.Core/Text/TextEnums.cs",
+        "libraries/SkrGui.Core/Text/Utf8StringView.cs"
+      ],
+      "source_sha256": "1019e086c61feb003cac4e40df8d848b3bc07acb10f3258c7b31ab497cf2321e"
+    },
+    {
+      "source": "src/text/font/files_font_provider.cpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/Font/FilesFontProvider.cs"
+      ],
+      "source_sha256": "d01d12752837526a7b66790b388cf7b616eadf36623605fd857b4a3c88c92f79"
+    },
+    {
+      "source": "src/text/font/font_face.cpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/Font/TextFontFaceImpl.cs",
+        "libraries/SkrGui.Core/Text/Font/TextFontFaceMetadata.cs",
+        "libraries/SkrGui.Core/Text/Font/TextFontFaceGlyphs.cs"
+      ],
+      "source_sha256": "2269f85e40b91a87720734d7417c3353a6328c83249febddfacca06c6beda9c0"
+    },
+    {
+      "source": "src/text/font/font_provider.cpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/FontProvider.cs",
+        "libraries/SkrGui.Core/Text/Font/WindowsFontProvider.cs"
+      ],
+      "source_sha256": "a2d792b9dbf5f64c45a875c2a9018aedf6d40b3228fc21b358601d350e9ac4af"
+    },
+    {
+      "source": "src/text/font/system_font_provider.hpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/Font/WindowsFontProvider.cs",
+        "libraries/SkrGui.Core/Text/Font/MacFontProvider.cs"
+      ],
+      "source_sha256": "3d84c373750e6bbdc2013b3db17c7556da7942333779c7fccfc01879c2d3d05b"
+    },
+    {
+      "source": "src/text/font/system_font_provider_mac.cpp",
+      "status": "implemented; compile-checked; macOS execution unavailable on this Windows host",
+      "targets": [
+        "libraries/SkrGui.Core/Text/Font/MacFontProvider.cs"
+      ],
+      "source_sha256": "20cfaff209f5254b14825594e1488c18b97a4f1f6d998e665742f6a027de7bd5"
+    },
+    {
+      "source": "src/text/font/system_font_provider_windows.cpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/Font/WindowsFontProvider.cs"
+      ],
+      "source_sha256": "0b2e576fa2b33cd8f0e2ce02cb893cf0b7591348df6c55474ad67bcb04e52d21"
+    },
+    {
+      "source": "src/text/font/text_font_cache.cpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/Font/TextFontCache.cs"
+      ],
+      "source_sha256": "07a6202e0e03e291698ca55bc015e6383f2879fec9e3b75d385091ddad83bc68"
+    },
+    {
+      "source": "src/text/font/text_font_registry.cpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/TextFontRegistry.cs"
+      ],
+      "source_sha256": "e15f724c312493a082373ececbcac1e5effd5685bd0f88471f080fb6440902f9"
+    },
+    {
+      "source": "src/text/font/text_font_size.cpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/Font/TextFontCache.cs",
+        "libraries/SkrGui.Core/Text/Font/TextFontData.cs"
+      ],
+      "source_sha256": "4bab072a401d232f8e48a1771908eed3e8f42c7ce4f46fd43c2ee92a9a9ed2c1"
+    },
+    {
+      "source": "src/text/font/text_font_size_private.hpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/Font/TextFontCache.cs",
+        "libraries/SkrGui.Core/Text/Font/TextFontData.cs"
+      ],
+      "source_sha256": "4344746d4d9c73f2b45c62a9ac18abeaf9fe7737ce76ba656d35e5c85dfc4a26"
+    },
+    {
+      "source": "src/text/layout/text_advanced_shaper.cpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/TextAdvancedShaper.cs"
+      ],
+      "source_sha256": "6fb8e066354e5a66083d495035a02ec0c26a9f34670f4f2587d344fdeb8fe646"
+    },
+    {
+      "source": "src/text/layout/text_layout_builder.cpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/TextLayoutBuilder.cs"
+      ],
+      "source_sha256": "379ab3ba7b8e5eb3b43bef0538c6cb6ec2cc9ea82746112f84f57748c37835c7"
+    },
+    {
+      "source": "src/text/layout/text_line.cpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/TextLineImpl.cs"
+      ],
+      "source_sha256": "89615ff3e2220be44c28c74ccd23e47eef2e789d4b51452d0401d6cb2db73d81"
+    },
+    {
+      "source": "src/text/layout/text_paragraph.cpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/TextParagraphImpl.cs"
+      ],
+      "source_sha256": "0b455c8b5bf234162b41a9fbb88a5585ac048252dac04756558897dcb5f9c6ef"
+    },
+    {
+      "source": "src/text/layout/text_shaped_data.cpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/TextShapedData.cs"
+      ],
+      "source_sha256": "539d07d6fe20e38719eb7ff2148c468d5f489f98f10c12840932013db5253ff4"
+    },
+    {
+      "source": "src/text/layout/text_shaped_pipeline.cpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/TextShapedPipeline.cs",
+        "libraries/SkrGui.Core/Text/TextBreakAnnotations.cs",
+        "libraries/SkrGui.Core/Text/TextShapedProjection.cs",
+        "libraries/SkrGui.Core/Text/TextLineBreaking.cs",
+        "libraries/SkrGui.Core/Text/TextFitAndTrim.cs"
+      ],
+      "source_sha256": "6de7d4ed7380f46ea73a5446a9c3ef64fee51b98ee726fa42b81eab1977de748"
+    },
+    {
+      "source": "src/text/render/text_atlas_manager.cpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/TextAtlasManager.cs"
+      ],
+      "source_sha256": "9a07c2cd7e2f393fcb047f1bf8b0758e5aa2e11d943cf999df551d3b46e290f6"
+    },
+    {
+      "source": "src/text/render/text_atlas_private.hpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/TextAtlasManager.cs"
+      ],
+      "source_sha256": "ff8c4ea9f436ee4b57ab9f73d67a4829f41b82a583283cd8279c9cfb20831808"
+    },
+    {
+      "source": "src/text/render/text_glyph_raster.cpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/TextGlyphRaster.cs",
+        "libraries/SkrGui.Core/Text/TextRasterHelpers.cs"
+      ],
+      "source_sha256": "8cf1385d05bda8b7d4590444be2628b80f7ff2995bad106f972d2c7a7bfb062c"
+    },
+    {
+      "source": "src/text/render/text_render_service.cpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/TextRenderService.cs",
+        "libraries/SkrGui.Core/Text/TextRasterConfiguration.cs"
+      ],
+      "source_sha256": "d34e30bcd67d0a8503e099cedb5fe3e9440703dc25516738e9dabd381321583a"
+    },
+    {
+      "source": "src/text/service/text_services.cpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/TextServicesImpl.cs"
+      ],
+      "source_sha256": "71d22d6b6910f49bf10808990fb086ba0facf4ee3c6e2b86f6dc4678bdfe8cc0"
+    },
+    {
+      "source": "src/text/service/text_unicode_service.cpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/TextUnicodeService.cs",
+        "libraries/SkrGui.Core/Text/TextUnicodeSecurity.cs",
+        "libraries/SkrGui.Core/Text/TextIdentifierService.cs",
+        "libraries/SkrGui.Core/Text/TextDiacriticTable.cs",
+        "libraries/SkrGui.Core/Text/IcuConstants.cs",
+        "libraries/SkrGui.Core/Text/TextNative.Unicode.cs"
+      ],
+      "source_sha256": "243e1f6e0d82505924ebae5097ef6e23f6efe70fe01ae515783c0dc362a9d78a"
+    },
+    {
+      "source": "src/text/text_private.hpp",
+      "status": "implemented; C# build and original Windows text contracts passed",
+      "targets": [
+        "libraries/SkrGui.Core/Text/TextShapedData.cs",
+        "libraries/SkrGui.Core/Text/TextRasterHelpers.cs",
+        "libraries/SkrGui.Core/Text/TextServicesImpl.cs",
+        "libraries/SkrGui.Core/Text/Font/TextFontData.cs",
+        "libraries/SkrGui.Core/Text/Font/TextNative.Font.cs"
+      ],
+      "source_sha256": "23255eeb43c0eb2f3abf4ba143d492f513559b47cda644e859d9a6cd3c082fe0"
+    },
+    {
+      "source": "include/SkrGuiCore/visual/visual_temp_text.hpp",
+      "source_sha256": "5c351b0121a858b1c418299a77e0d8a7f2c80f92dfe94b1d9ef3fd7aa0fbbf4e",
+      "targets": [
+        "libraries/SkrGui.Core/Text/VisualTempText.cs"
+      ],
+      "status": "implemented; original visual_temp_text and widget surface contracts passed"
+    },
+    {
+      "source": "src/visual/visual_temp_text.cpp",
+      "source_sha256": "03eda648616ceeb7125ac94655538138697c19d30e6655d7462aff5578fe19ce",
+      "targets": [
+        "libraries/SkrGui.Core/Text/VisualTempText.cs"
+      ],
+      "status": "implemented; original visual_temp_text and widget surface contracts passed"
+    },
+    {
+      "source": "include/SkrGuiCore/widgets/temp_text.hpp",
+      "source_sha256": "e9416f7cc016c87d8d0dc2baacdeab4124770a5e999c84db52e4080c91511758",
+      "targets": [
+        "libraries/SkrGui.Core/Text/TempText.cs"
+      ],
+      "status": "implemented; original visual_temp_text and widget surface contracts passed"
+    },
+    {
+      "source": "src/widgets/temp_text.cpp",
+      "source_sha256": "a0a4b0e0ce20784e71a20ef38c0da34c39a528b84ed6fd35c1c1ce45828d880e",
+      "targets": [
+        "libraries/SkrGui.Core/Text/TempText.cs"
+      ],
+      "status": "implemented; original visual_temp_text and widget surface contracts passed"
+    }
+  ],
+  "native_dependencies": {
+    "library": "skrgui_native",
+    "contains_skrgui_cpp_business_logic": false,
+    "freetype": "2.14.3",
+    "harfbuzz": "14.2.1",
+    "icu": "72.1",
+    "abi_report": ".report/native-abi-check.json"
+  },
+  "preserved_source_unsupported": [
+    "TextLine.Substring",
+    "TextParagraph.Substring",
+    "variable-width LineBreaks overload",
+    "vertical text orientation mutation",
+    "paragraph drop cap",
+    "SupportData load/save",
+    "StructuredTextParser"
+  ],
+  "language_mappings": [
+    "Source scalar and UTF-8 byte indices are explicit; no UTF-16 source-index substitution.",
+    "Source String data, including font source keys, metadata, family lists, languages and Unicode service results, keeps exact UTF-8 bytes; owning assignments copy while StringView returns borrow.",
+    "C++ const TextStyle borrows map to live ReadOnlyTextStyle with live read-only list views; Copy explicitly creates editable values. TempText style assignment retains its own copy.",
+    "FontFace.Source is a ref-readonly live borrow; failure paths only change ref outputs where the source changes them.",
+    "TextLayoutSpanId uses an internal offset encoding so CLR default and array elements expose the original all-ones invalid Value; TextFloatRange equality uses source float ==, including NaN.",
+    "HarfBuzz/ICU objects retain pinned UTF-16/face buffers for the full original native lifetime.",
+    "Explicit detach/dispose resource order follows the source. Last-reference C++ RC destruction is represented by managed shared references and native-holder finalizers; GC collection timing is not synchronous RC timing.",
+    "OpenTypeTagToName returns owned exact four-byte Utf8StringView, including non-UTF8 tags.",
+    "System font provider dispatch is platform-specific; macOS path is compile-checked only on Windows."
+  ],
+  "verification": {
+    "status": "passed on Windows x64",
+    "formal_core_report": "artifacts/core-contract-results.json",
+    "formal_core_passed": 610,
+    "formal_core_failed": 0,
+    "original_text_and_temp_text_cases": 155,
+    "original_text_and_temp_text_passed": 155,
+    "isolated_no_icu_report": ".report/text-no-icu-final-isolated.json",
+    "isolated_no_icu_passed": 10,
+    "audit": "migration/text-source-semantics-audit.json"
+  }
+}

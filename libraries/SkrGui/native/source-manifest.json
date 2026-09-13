@@ -1,0 +1,2376 @@
+{
+  "source_commit": "611561f81534354c8c1618dc27c4782cd9277cbf",
+  "contains_skrgui_cpp": false,
+  "packages": [
+    {
+      "name": "freetype",
+      "version": "2.14.3",
+      "build_rule_sha256": "26d12181469e8cb3376748e7302c5bf337a08927ad6d3203f5b3e4e1326b8f1e",
+      "sources": [
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/autofit/autofit.c",
+          "sha256": "24e40310f5986e7ffaffb2ac2b26b7c2ff21aac96234b7bacbc0d18b70cb4528"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/base/ftbase.c",
+          "sha256": "74c5dfb17439e5aaecc7aa3cc770c84429f01af5e90533e93b72650052ed23a6"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/base/ftbbox.c",
+          "sha256": "9671401e9aebf4ab93e9d2aa169bf9f655666403e03c04d800ba51c670068a3d"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/base/ftbdf.c",
+          "sha256": "661eb957df6f7d6efee743bfd154f028b2864f67d81ea39c50daec05f5277aa4"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/base/ftbitmap.c",
+          "sha256": "e9c19060f03c02e9417ead0a11a14e8ce2ad1076c7d0e5c81b0b17da60409975"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/base/ftcid.c",
+          "sha256": "6f7b572239f48048d2927cd26837c10d1df5e2256f00288375eddb70cf9effe0"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/base/ftfstype.c",
+          "sha256": "d45ae81dde4db5a1d50f3acf3e2a73d104aebfbf88fc2c1deace27124622fdb2"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/base/ftgasp.c",
+          "sha256": "7da071bff0c34a14eceed43390d15056cf86a151ca69c7b4c0d2a01990604499"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/base/ftglyph.c",
+          "sha256": "d235fc0fa6ed39ae9607bab7e98cf7f202bb223035118cded657f99e3f44e460"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/base/ftgxval.c",
+          "sha256": "a2b6529cffe4de761322e1faaad060170c2c528cda6ecaf289e19e6654ee620f"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/base/ftinit.c",
+          "sha256": "2df903cb646a3a854ec833dc8c344a367ff7da3c7d01957ea6965ae02cbd5d7c"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/base/ftmm.c",
+          "sha256": "eee7ca5085e53be03ed74d330f0fd862c620fc06c9b78ed5e0615cab9c128fc5"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/base/ftotval.c",
+          "sha256": "12c786955069852b08ea5b8537619445491a6c2557c832b77df44fec10fbda6b"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/base/ftpatent.c",
+          "sha256": "f9921fc6700d0ccf42bc68368ee2632eb77bfd4af31cf4ffbfe21080d063e09d"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/base/ftpfr.c",
+          "sha256": "05cbcb1933743777471ef7d93e31dae5b950caac163474ca98787ad699c56732"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/base/ftstroke.c",
+          "sha256": "7699b09aecd2cabc5c9bc3d14ecaf7c8d4a64f95b90f264d150174bf2280af74"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/base/ftsynth.c",
+          "sha256": "6dadd00db5e924974d9cd950e827221a239b8fea0599172599ff19639c0826dd"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/base/fttype1.c",
+          "sha256": "700f7887fbf190761b664d83ef51ae31f18989f028d50ad60639d772452eb737"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/base/ftwinfnt.c",
+          "sha256": "c739aa3b654c6abd57649e36ba67031d256bd5573ad26703d844644964fa7bd8"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/bdf/bdf.c",
+          "sha256": "bd2e0755d60b9470edf82d97acc55b8bc04189beaa52d7730504946bcf4052aa"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/bzip2/ftbzip2.c",
+          "sha256": "96ba8d0719ae179bd9f300e9dc6ced8464d127e0228360f50f710855ebb32369"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/cache/ftcache.c",
+          "sha256": "adabadc9d872716c0c1077693fb9f3905778587f04bff0d1bb3f2bc469437010"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/cff/cff.c",
+          "sha256": "f761d210af609bacbcdf313623d36354fd6d8ce8d9a359fa19e33c8085b63021"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/cid/type1cid.c",
+          "sha256": "811edef059796c9544990e3a2c611aa1e8a354a33e8bef43fbbaf03ddfc4b71e"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/gzip/ftgzip.c",
+          "sha256": "4a8f59f6cac862f9f478b408f939ffb5a9d45f96d53e45364496d30b02e022b7"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/lzw/ftlzw.c",
+          "sha256": "9fd8463c3124465dfe29d219839584e7afc1a39abc122d4c34bb5f627737f55d"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/pcf/pcf.c",
+          "sha256": "167dbfbcedd81f14bc4e2be803a0e6b66c677db5c1516a610c0bfa83dd456193"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/pfr/pfr.c",
+          "sha256": "829cedafe27896146746c2f6ac636d78fcec9b27f4eda07c9f81dc7588ae4c1c"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/psaux/psaux.c",
+          "sha256": "42c0a45274757b7edddc870b51185c7f1b94f59cfc7e4da1e50760949a645409"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/pshinter/pshinter.c",
+          "sha256": "db274bfc26b4aae71e0c027a6554f0037309ac6f139a53eba08e9e9301a6820f"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/psnames/psnames.c",
+          "sha256": "b40b80e8686973d4f329cf1b0505f4d7a0210872f1531cb990379abf3f9c5d7d"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/raster/raster.c",
+          "sha256": "f10989ad704bd422a7551604e221d94b4d61f4e5b5946769fd64559318406d74"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/sdf/sdf.c",
+          "sha256": "1c87824599b7d6eac5beb5c85798e91951a052bf705d4ec60ed6b2e3e37e37fd"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/sfnt/sfnt.c",
+          "sha256": "6f58e29ecc9fff5fb0405d75ab44b428b09ee529862bca921aa2e198846e9729"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/smooth/smooth.c",
+          "sha256": "8651e381eb8d740fb4fe550469042aac5f601ef852248ac16a497046c84ed711"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/svg/svg.c",
+          "sha256": "32589bc426b82688e61771917c68e3d90b4d962a2b18ecdebf9943b5c829f795"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/truetype/truetype.c",
+          "sha256": "e6f1eaba861a4c352b4b82d935089a47ca172822d5c9419625005dfe51c7a6f1"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/type1/type1.c",
+          "sha256": "f7d965d04339343a48e055d23f5ac4910dec253e95e63e91c6e0f1c516b2c159"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/type42/type42.c",
+          "sha256": "54d6cc4cce866a038c8bddd666a9228e03cc00f768c169b63799265c1eedd4d3"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/src/winfonts/winfnt.c",
+          "sha256": "5a5a8ca90155b795362ae995c6565a0c45468997984f4129054195bcb4df7748"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/builds/windows/ftsystem.c",
+          "sha256": "5acb47c2c1c8c797c2a9b4d4d7a6e53d51852902690e605d26292573bdc9a4c3"
+        },
+        {
+          "path": "engine/packages/text-render/freetype/freetype/builds/windows/ftdebug.c",
+          "sha256": "92701232d108798a89d4cf12661d9fc7f1a62b44f9e836b10c14b2fb4cfbee5b"
+        }
+      ]
+    },
+    {
+      "name": "harfbuzz",
+      "version": "14.2.1",
+      "build_rule_sha256": "305f54b4132f1d470d90ee47798efc9df6600aa3ee5d82c4af7ec69c2feb1857",
+      "sources": [
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-aat-layout.cc",
+          "sha256": "375f0bb1a88605b41c3c9b0674ee9a16417bcc494fed2a3e5aff160c16c94553"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-aat-map.cc",
+          "sha256": "404388f3ba06391a45f1b07852bac65e16343116efebe1966b6869033c9cefbd"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-blob.cc",
+          "sha256": "b20d1736320db58d1ff1dc9d37a4be8743460e980a14c2d9176ebd1631604333"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-buffer-serialize.cc",
+          "sha256": "fb958f37c66f60b746c1fc0ff76532e53657f048dd999bf56c52fd19ee0ad817"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-buffer.cc",
+          "sha256": "b9cc1b6e0c16c535af88d2b23063af39d11d9ffe1ad826bf6abc33f0b104dbdf"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-buffer-verify.cc",
+          "sha256": "91f8c4ac2f66f9ec535626d116f538f6d54e4182bd1f6e81548a71c6e74b20a5"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-common.cc",
+          "sha256": "2f1521ce41b55381aca0ec97b9378b7a3295712cbe4ef7d16c500cef07d77c74"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-draw.cc",
+          "sha256": "861ac25e0167e31a8f37fab6d4f2d842f5dd12ae2493b0790e5f652aedf45473"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-face.cc",
+          "sha256": "ff59eab3ea13766b8a1661015f4b2bed36c09d87d9615be8070007c466713867"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-face-builder.cc",
+          "sha256": "0e17b01bef1ee44323f87bdae9cbcf809d4c677cd32c0021036131ff4043a3b2"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-fallback-shape.cc",
+          "sha256": "6a2f44e703332896a15595b70272c497fc373a084d2288984a3fa4c43394cff3"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-font.cc",
+          "sha256": "6c823ef5280be3b95db267801673671d8ff191c5536712b48a558cd938fc68c8"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-map.cc",
+          "sha256": "a5ae66b6210322a894dbe1bc35cc72bf9810116dbe45ff8887a46951f580a2cc"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-number.cc",
+          "sha256": "70d81c557f4ac2791080910da43637d424736dd015c3084cdd8a54199b0dfc68"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-cff1-table.cc",
+          "sha256": "ac44cdffd3fb8c3145280c328505b4926dbce7f4061950b42ed96bd434254b5b"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-cff2-table.cc",
+          "sha256": "9b0d3d5b782775af0516a8e39153402d34f7a6b7f9e7d5840e8268560b14e1cd"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-color.cc",
+          "sha256": "640109912d975cdf3af19ffcb487ae0527da22140c73798926b7289b67994f16"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-face.cc",
+          "sha256": "935127a8e61f702be1cc009bb55152f16d33c00c72bc8a07631555aa44c9bee6"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-font.cc",
+          "sha256": "4877214576d6d49413998c9916b769d3c7f4c0b282c62e12010a6c297557c874"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-layout.cc",
+          "sha256": "b1f7cd8fd6dfb72e5278e610c77f7d95020e4b2dd4a8b9ff75fc76d370bf2272"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-map.cc",
+          "sha256": "b467c5cee8fb1798a92c92d07c5e5081aec61c455a71a9e1431279f84ac3abcb"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-math.cc",
+          "sha256": "6b3d8b6894cf92457093af038175f79c9800c8dccb40100f7f3342fe6f4575be"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-meta.cc",
+          "sha256": "48be65ab1a04a1aad81852427486d6e15c37f136b99159aa315b23a33bafac57"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-metrics.cc",
+          "sha256": "e24e5fcfd606ca5de8c39cc3bb4ce9459dcec29dafc7b2fad7f98d1c9955887f"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-name.cc",
+          "sha256": "e4d83b509e228b335804c3e66242c9f8e4e93711bf05ea4e87de4579765ac07c"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-outline.cc",
+          "sha256": "dd779f2e860fe31c936704402b05710c02b291122b2ce870cedbdbd620a9210c"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-shaper-vowel-constraints.cc",
+          "sha256": "0f004f2e810c36a274c0422351f3b1dbb221eeeba20cb6cf2708925f25db2046"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-shaper-use.cc",
+          "sha256": "ef3e83adf0de5ce32b8eb81ab9c9f640925717139089ed0d4f347ccb7c392d7b"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-shaper-thai.cc",
+          "sha256": "a5dd8cab5d4fcd2002fee4c757f10b2cc3e3b21d611612549f4422b57bffa50e"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-shaper-syllabic.cc",
+          "sha256": "bfa1c0b2170b595b6a3d4b1b32d1c22fd9b3225ecb6d933277c20da1ca504ef3"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-shaper-myanmar.cc",
+          "sha256": "0aed9845b690853515b5a2144d9c32ba6097f7216b3b754024ebfd42ae704bb5"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-shaper-khmer.cc",
+          "sha256": "ae2aa6e52ae66d375a0dd56cc1dede89471bb4d4c43b5cc1b676fc2b6256a45d"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-shaper-indic.cc",
+          "sha256": "2dc8aa08cf66b8db8b8fb84b7fa34db8549b4ca08c08f56cf0b41095f28370ce"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-shaper-indic-table.cc",
+          "sha256": "26603bb5112f782a34db15cbe9040c96dcbd20d28ab9c0aeeb46a07eefa5501c"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-shaper-hebrew.cc",
+          "sha256": "969380b9f5cba39ff4283b4f8d459f28da99fe47b871c2a581bf2feea076f8bd"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-shaper-hangul.cc",
+          "sha256": "777fd8827d8045bd2f27616f65fd0cf41b4d1aa6463bab404b84ef30de541ff1"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-shaper-default.cc",
+          "sha256": "25dae338bd076169fca7f569efa56c806f4df97228ade19656d5900a3e1b5c7e"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-shaper-arabic.cc",
+          "sha256": "b5bd53abbc8801578241c2fa489e6a2496bf242b8a7cf88f6231e0af71889869"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-shape.cc",
+          "sha256": "4398b9afaa4b7239b62caa9ac7c56099a8346190cc4fce6b12f6f87e57a73403"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-shape-normalize.cc",
+          "sha256": "ebee573746ea9a68b90e4ecdde17be0b9116a41481c9b6b5b3545fa6a0ffc13c"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-shape-fallback.cc",
+          "sha256": "501c41c29f0ad2bf87e68c20ecae1b7950e945dd089b563e205e40f96e0b096c"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-tag.cc",
+          "sha256": "7aae868e053a006f4ac40239e2a0f978d1845bcf70c7309a845ad5a6f9c738f2"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ot-var.cc",
+          "sha256": "0a4e03d851153785a0227f42a73a7ea4cf6c3c95c5fe88837f190e8a8b0cfbb0"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-paint.cc",
+          "sha256": "1c06221262e1ae9a739fcd06caea71f3667dec8e6185caa6c9722d54e70ad020"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-paint-bounded.cc",
+          "sha256": "5eb0baddf06a41d1c5c95889387e8b23bb0ed4ffe5c04cf30ebc9a031112b3a2"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-paint-extents.cc",
+          "sha256": "8fc6f7eb51ed06ee2ad52378ee06808203054c332ab742e467228be874f96033"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-raster.cc",
+          "sha256": "ceaca78970fa81fb46ea997e25ec8c5789b2761e22c8606ab9c3b5138714c340"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-raster-draw.cc",
+          "sha256": "1a247dcf40df10eef22a04a458bd87e04c595f501f0598333f6f5d265ac551d7"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-raster-image.cc",
+          "sha256": "e30b95d112b3e99ad4afa3c485d95dbce7481632b09ad90973c04a9a87e36e24"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-raster-paint.cc",
+          "sha256": "5f997446044361432704294d03a558479b3ab11fe91acbb07a4ef778a36fb3c7"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/OT/Var/VARC/VARC.cc",
+          "sha256": "9035ca18854596c4eec39236a49e86b268ed02534b45dedeff49aa41ab76009f"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-set.cc",
+          "sha256": "25c57e09284957f09615ccca45f40f8c52c5fcefe62755deabefccba159d7078"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-shape-plan.cc",
+          "sha256": "68bea8a7d42c150156e681c445008c86c1570076dd2c98ce10c9216d678569b4"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-shape.cc",
+          "sha256": "a9fe1fbfbf71703a844ee65f66608f22f81e1e3a8b16ed9cb8075ddac1ac6eb5"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-shaper.cc",
+          "sha256": "3c0d0ba8df4177c48f1f1bf14ce7197209d1ec4f61abfb20b1e90ae74f488633"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-static.cc",
+          "sha256": "7d9b6a6be7c788f609e414454ff4d5e70bee369f4a309bcece1da28258233507"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-style.cc",
+          "sha256": "6ae7ef916f35ea00a52640576b5568d92a1127592e8bd6045eff291c092c985a"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ucd.cc",
+          "sha256": "f613e33941b9dfe7416f58a2cb5c4b610300274252265251afb7d03a6b711a94"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-unicode.cc",
+          "sha256": "39794a255bca4bceff35bb39981ad74800dd9cfc89f373cc1170be89297e6280"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-ft.cc",
+          "sha256": "fdcf72f2078e6ff3c88759cca2a832d6cd457a03bf455775db73faeecf1cf22e"
+        },
+        {
+          "path": "engine/packages/text-render/harfbuzz/harfbuzz/hb-icu.cc",
+          "sha256": "79b61b17e8be581dd315e7fc60eef9aefbc08a42f910ea0125aee3827c5bcc77"
+        }
+      ]
+    },
+    {
+      "name": "icu",
+      "version": "72.1",
+      "build_rule_sha256": "6f7508d31a40c1f5b210b72063d5dc264fe12e5755340ca135945e4b4f3c89b8",
+      "sources": [
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/alphaindex.cpp",
+          "sha256": "e1d7c3aaaf5c1b3a3a30971a573d2c7a195668d7d320ef7a634fc8e4665fa3d1"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/anytrans.cpp",
+          "sha256": "d27064534c9062790c34bffaf8bf51223fc79222377ad14761ca4f43e91a0c7c"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/astro.cpp",
+          "sha256": "4af38d92e5e3c98e2b4d3916d7ed8958bd6d482a580353a58cff4863690fc6fa"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/basictz.cpp",
+          "sha256": "e6fab78acf981a651d5a7b2c8912c7e3bf204fd802224eecf0c32ea1aa7685dc"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/bocsu.cpp",
+          "sha256": "013d6259ec41b78ac4e9859d580a36e7deec5e28dad516e01548b50353a985da"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/brktrans.cpp",
+          "sha256": "a9647c32843186045be208ae0249b6e5fc230dd31c96edb40b492fbf04f86438"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/buddhcal.cpp",
+          "sha256": "76cf3e2702f0f3abf77163b2c3e6fca478d872054ecd5d42c28ade6c07d6b723"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/calendar.cpp",
+          "sha256": "c3f0ce97312d458006ae284b9ba7e9abea188a96268803231e073e3efff41be2"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/casetrn.cpp",
+          "sha256": "92cacd0c2a2bd57ee6868964df7cdb0d1c7e2ed33e662bb941850d5cec54431f"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/cecal.cpp",
+          "sha256": "917dbbb5c0f5d4d2e278c471091f542d9f71dd0ea23a8895ed19855b46bf0b1a"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/chnsecal.cpp",
+          "sha256": "a7f1703334976718a08d82368e6140dfcbd809226a4b995767cf5a59b29e9a4a"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/choicfmt.cpp",
+          "sha256": "06e592b5f4ab7486db0b09cd08384332355a38e8317727b23db897d54a9cee90"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/coleitr.cpp",
+          "sha256": "4b022727faca39af799f66d20d9017aacded37e5ca7d2b6b3aca4fa7bc4da390"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/coll.cpp",
+          "sha256": "8858cdeae9c95baad30df4cdc5cc772c20e3bbcd4a8c541091d53a5b780e677c"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/collation.cpp",
+          "sha256": "921b9a2ad4dc3688011d46a7bbd5914aa1354e55fe8b39dafa2924205fd20dc5"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/collationbuilder.cpp",
+          "sha256": "9d4e9ebee0a29ec4a3d756149d03b366638addc24258e078dee479886b902d56"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/collationcompare.cpp",
+          "sha256": "faa18b1c0e4cbe1453aa0239151aa19ab5a688bec5249f804fdfb3aa2b3b211d"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/collationdata.cpp",
+          "sha256": "5093c474c7e735b2e3b0d35e3e3637ee7222b09d19b210e2d60a8edb81640592"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/collationdatabuilder.cpp",
+          "sha256": "c233b5b9899b47c2f4c2e18abb67ff4ede836954f98d5b8e144a8c0fc2197bf0"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/collationdatareader.cpp",
+          "sha256": "be61c29c5ff9fa1779f74349ae4c2e1d8f6d43e890d6dfbf507ff2461e44c90a"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/collationdatawriter.cpp",
+          "sha256": "0ece515dd701e2c9878ba64b69d3d7b132255a26fd07d4655b7a3751eec90fb5"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/collationfastlatin.cpp",
+          "sha256": "ee6124268c4a630f1925ecf236f8e661140c3c886fbfae9c102a6e7de939662f"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/collationfastlatinbuilder.cpp",
+          "sha256": "db7dbc89d9cb545a4ffc59f3cd90bc91b97a9ebd8f75e913ecada75d88239df2"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/collationfcd.cpp",
+          "sha256": "bd21e1bf309eaa04f2dc838fd553e71bb2f90510609098d4388e71274d057b5c"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/collationiterator.cpp",
+          "sha256": "9585d7cf0597248c939039540a773c4692687498fc341b9142f375b979dcdf16"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/collationkeys.cpp",
+          "sha256": "c138b6575ce76b2ce156616e82c3f8ef7ac1269371fa354bee061ac8c02a896c"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/collationroot.cpp",
+          "sha256": "4b28534ea30f9404246899688d6fc5775887a57c80f28dcca5896096b33f318f"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/collationrootelements.cpp",
+          "sha256": "9dfdd7b84a97bb0be7607ac53e25d03d52ec04b8933165be3e310f4ef84789a0"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/collationruleparser.cpp",
+          "sha256": "52117a23f76238c2f6dbbb413148d3a0e2c02c5a9c294e0d39afea637e9ae903"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/collationsets.cpp",
+          "sha256": "087a14193f0dc804b4504afbb4dc41c637553467b9ef7ecdd0019f86c13fbaf5"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/collationsettings.cpp",
+          "sha256": "280d95e14add4d08f91222aeb4d47f4710fb755c2775a3ee1f334e6508146c24"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/collationtailoring.cpp",
+          "sha256": "a606db4bb9eb48e05c4b6c04555a77ced6ba6d18bb1f6907b3642c16320d878c"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/collationweights.cpp",
+          "sha256": "09e9f1797a4e0f5b772eef558e26740210cfe49cbbf1e40420128317496a80eb"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/compactdecimalformat.cpp",
+          "sha256": "26fe6b3d71da5767d81c8858eabb2ca6fead6efb1b9a62fa3faf288cb3598c95"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/coptccal.cpp",
+          "sha256": "6d4b3d2607f524f1242ba960c2c2cc5eaf3aef9cbb6b8e7d011b25d7ed8832a1"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/cpdtrans.cpp",
+          "sha256": "b72e33b888360c923555b2368cb60662c5da5f4168677da33cdf7d34969ba251"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/csdetect.cpp",
+          "sha256": "dafb82a6fedf8aa073f1868ac7686eb8d4438caa7be037a047f9c2289beeab63"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/csmatch.cpp",
+          "sha256": "87f3c137156933e33dcdc2fe4a0ea4800f4eeea488054604ee3613af170d7844"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/csr2022.cpp",
+          "sha256": "938262188de9bcae8612af1d4e0135171d916594285f1327a3fac56ef02cc910"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/csrecog.cpp",
+          "sha256": "ac3fe42aa6428e23fca970d3abcd2efac790c182347c36ea16011b26208db28a"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/csrmbcs.cpp",
+          "sha256": "8b7cd3150cb552133d45ce5af6a7a26c9d11fee8019bcea622ae41a7e8f4b3f9"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/csrsbcs.cpp",
+          "sha256": "07b7368c4584d521544f7b4d19f6071666c216847f4d343cb93e752dd61bacfa"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/csrucode.cpp",
+          "sha256": "c541e0643be97c3ba9caedecad3d4136d1ab5c54c2a382c88e8c6e13645ea171"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/csrutf8.cpp",
+          "sha256": "51737b8bc737580ae4a2d922c9eb5819195754a8a5ad0c7766392619d91d959c"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/curramt.cpp",
+          "sha256": "c6a743d4ebafc070983f4b14fc0ffe4b27dd24e045e658d65fbeb49521d7516d"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/currfmt.cpp",
+          "sha256": "5d5913f7f7a6f035acae25ab218086bb4e3dd984dda500e52b48101d913c42a0"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/currpinf.cpp",
+          "sha256": "bd143d166a05a3f25ba0d53d7a738800739529025f2ea7e3feeb654c8c63e49b"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/currunit.cpp",
+          "sha256": "8b83b376fa85fbc7399f8f6913881d4098832ead2fc0a28334e0d688980126e6"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/dangical.cpp",
+          "sha256": "b08b6c0ad523f178ce36a7c24ae5b72f151365d8360363492e6db52f7cf4c678"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/datefmt.cpp",
+          "sha256": "69fc5ff1569f9969a5ed2a7c2d4e1aa810ea25a2fa4d932985185b9ea27ae020"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/dayperiodrules.cpp",
+          "sha256": "99e49c1f2017f0261e0503b89381c586238c7f20cd5a5970a107ca15166ba043"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/dcfmtsym.cpp",
+          "sha256": "8af368cc8eba720510b6eb58eae659a85e2b69d2185b4ae6a302e1316feb423e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/decContext.cpp",
+          "sha256": "9fc901af4c6ea21075b86195da364dc4448ec1c695af1d0359b97c0164e3a050"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/decimfmt.cpp",
+          "sha256": "f9fc0e6925398ef983a3606d518d34bbe81c64ab8f813b8b08bb5e51a16a483e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/decNumber.cpp",
+          "sha256": "fd2d2c7a321ac9f0aee0eb069b9229a4b2cac63b36edb0fc52be5caf87f2ce32"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/displayoptions.cpp",
+          "sha256": "3638a66e63e14f201f3dcc87c411e80b6304ac2b95478672349dae42372f9446"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/double-conversion-bignum-dtoa.cpp",
+          "sha256": "1a09fb0d6b0b48830bb5d560839a9bf3ba954d89b30751b24d059be1f7b986c2"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/double-conversion-bignum.cpp",
+          "sha256": "fe304d8b5f85bda74e02d34e28c56bf501f7dc7efe9db2f2c9205d8cf3b77866"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/double-conversion-cached-powers.cpp",
+          "sha256": "c97a065eedb978f3394b9be87e990094fb97f4cc2d37f2ad4e61be2a4e450e6d"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/double-conversion-double-to-string.cpp",
+          "sha256": "ca055740b4c4c469dc0ed87d868097c10bfec2c4735dc0a651d379cc0ee9b765"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/double-conversion-fast-dtoa.cpp",
+          "sha256": "50e9089318477464b9b4525a156bf23c2c9dc5dc52af7096cebb41412e8d127d"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/double-conversion-string-to-double.cpp",
+          "sha256": "14f6f866ad6419a0e78ccf60456f531619205bcfcf854b675eb0e25248a1bbda"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/double-conversion-strtod.cpp",
+          "sha256": "9fbefa54e10a728285368bc895ad0010075bd275a94fc27a54a82af49fa0b91c"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/dtfmtsym.cpp",
+          "sha256": "e2d22fb647c6a229393d6cd93a2c336e683c425eb114d5e5dc83a7d65878a5a0"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/dtitvfmt.cpp",
+          "sha256": "5ae90b99eda8111c1908accf115cc0c8109ebd5c17fdc48230efb6f1a48e614d"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/dtitvinf.cpp",
+          "sha256": "76f7a53ba4467b5c671e175847e12542effbbd100d7b75dd0bcb5449ac84ee2d"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/dtptngen.cpp",
+          "sha256": "edc07b02894d9cddfffa82da0e3f04ffec72a09db66633108252454e05ab0331"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/dtrule.cpp",
+          "sha256": "9e05fd137fe5d5d63aa06bfd9043b9a4a6ccfdd42a252f5211f505e702833956"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/erarules.cpp",
+          "sha256": "79ee4e156f5431b2229dea28109394b98aef30062672c75534039a873c4b9e94"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/esctrn.cpp",
+          "sha256": "30d810deba725c34887fa44e325ddb1bb22398713f8f07bc9360aa7821e78227"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/ethpccal.cpp",
+          "sha256": "c649d67cde9735ffedfc2d3327ef3fe31c77388da84b73cafa079b1da402c7a3"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/fmtable.cpp",
+          "sha256": "f358c98481e92e99f4fd2a8677d2ed3b7a8ed341aa5938e5a8d1d8acc7e1e1cd"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/fmtable_cnv.cpp",
+          "sha256": "e4f52adace7d59b82c3845fa170a80a7b2e9e1fb34bef356cf0caa8aae944e2d"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/format.cpp",
+          "sha256": "551e11ec5a46cb5676fb3946be59c5757356c4ebc0271fd3d45a1c9dac4ead1e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/formatted_string_builder.cpp",
+          "sha256": "f9512df55dddcef1330a30a2f5256c9bcbe57f50f743b03184c155321aa8a2e7"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/formattedval_iterimpl.cpp",
+          "sha256": "b5f70471902debdeb964cbe5d10b318bd55164aaa3efc8c8eb4617dc09fc175e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/formattedval_sbimpl.cpp",
+          "sha256": "c4965e970ec0b47b4eb9ee8043737da1bfa4dd4241687f951bd0835c40a65e41"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/formattedvalue.cpp",
+          "sha256": "050c215b695045bd1d741c36f701e720302e7e9ac612fcf47ce63a42d968c661"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/fphdlimp.cpp",
+          "sha256": "3e6aa0735ddfa884782e6293f56cbeb1fda02f3246655692e932d30bf4350637"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/fpositer.cpp",
+          "sha256": "b21977583db4831988e68ba1bc53ac9b44604e683149a1d9c3bf083c835c1af6"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/funcrepl.cpp",
+          "sha256": "aa5d3de4038556e1b294f651ea3faf62ba7fb21a1f3a3b32208d185f6f92a1d1"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/gender.cpp",
+          "sha256": "c2df471c09e54d17f8dcf7d6c49ea84f22d074067d8dbe82ff4d4493ab68c121"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/gregocal.cpp",
+          "sha256": "2ca7dfcf726d69a7d4a749aec12cfec237221d32844cd0b3b790e383b48254d2"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/gregoimp.cpp",
+          "sha256": "e064ee71a3ff185fd4502bee74f9277c10dafd925294067b4fe77bbf26e29392"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/hebrwcal.cpp",
+          "sha256": "d75e6574a711bab71f16f19ebc384a670cdbec4aed27a1bcd426810c62296df2"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/indiancal.cpp",
+          "sha256": "cca27eb4f3cef32963ec146ef5e136f3a6bad2f74a3884d596384dc9ac81ebd9"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/inputext.cpp",
+          "sha256": "5c693cb2a46054ec60c0e719c0fe605e1e5e5c1ca2620f3f3dc9c1677a9b0532"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/islamcal.cpp",
+          "sha256": "6971567f5ac2bde440bd99971e44fdcf4c5c012c29a6a1939054fb91f0767d9e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/japancal.cpp",
+          "sha256": "8b792ee05c5c7ba8cf5a4db6c189872b6ab994c3016541e63cb70d6ebefeb8e4"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/listformatter.cpp",
+          "sha256": "a1fba76356e440b502fbfc604845573876465bf0ed2b943cde45ccda9ae9165e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/measfmt.cpp",
+          "sha256": "7a233baaf5b2feb737171c4198258f7a317af1d134893fc3fcd08e6d05c47a6e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/measunit.cpp",
+          "sha256": "d5d975f92c2f75f59ee6880d41379097012fe47f0704434d766b099dc61b31e0"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/measunit_extra.cpp",
+          "sha256": "a392fcd0f9bb8ca2698c3f0601d6416130da093cb8151b18534834b1196688bd"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/measure.cpp",
+          "sha256": "2e4eb6f4a38650c486a02a528eb214b28742629d8e40656851a4f9687792db4a"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/msgfmt.cpp",
+          "sha256": "ed6fbae1ff3ab11cc36fa90db9e20628b93221bb2491c6249cdafd54e7160878"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/name2uni.cpp",
+          "sha256": "cb40127f3422d47444ad8f3953211e8868cb9ca5d0cfa6d1195d71fbe861d9bd"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/nfrs.cpp",
+          "sha256": "30a0f7f0ca9854f2b9eadb2887a7e061401236b55e71ef2a8d9d620e321ca0b0"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/nfrule.cpp",
+          "sha256": "d77fc8597a31a2be72324b66490a847782056244439e09d6731993645e21535f"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/nfsubs.cpp",
+          "sha256": "c3df64b943fd56d745be2ac1a8b27d9d5d62df85d537aac5a6579450b66d656f"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/nortrans.cpp",
+          "sha256": "83807be5dfa7d4a3e0ce8a9f3497ac8a77df98ec89f87763943baf7f2e827dc5"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/nultrans.cpp",
+          "sha256": "69e18db95c58e4e523c540e6a66b59b7de25e96bdfdf3b55b8af66c6bc44edf6"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_affixutils.cpp",
+          "sha256": "26b0920bfc5799ea5ee96a1d484ffc1d2ddd693dce4a41762df83b0cd8ceec92"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_asformat.cpp",
+          "sha256": "32df43735938f9341ee732ffaefba8d075f9effdb743ee981d4220cb67aa2d71"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_capi.cpp",
+          "sha256": "c50002205c8c98416bc6358ab45701013c2b6ac08055a7c0dc671473e4339f58"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_compact.cpp",
+          "sha256": "04fb51670695d6854268968ad48410a4c09722d017b6e3560b3a842c0e4a8cc9"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_currencysymbols.cpp",
+          "sha256": "fb419e9ecf1cef8be1294f66d00a4b4dc45077b550209b861074deb985eb2eb1"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_decimalquantity.cpp",
+          "sha256": "b8951193a8ce48c13b49cf8aa9203a4b9afa92f9d46a6912e63fc884d0b19072"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_decimfmtprops.cpp",
+          "sha256": "f4c24ee53456b5815910b8b21fc5a4fd40f31c7fa63453edc75b352d257166d0"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_fluent.cpp",
+          "sha256": "9bf2fc6c993eca7667d3cb3e4bc668320e75cc3f5c00bf55ba90ba2bf72cda5e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_formatimpl.cpp",
+          "sha256": "8b2d1d3dec2cefd32654a699015402ac5c8e5b333218d4d806e25562ced7a777"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_grouping.cpp",
+          "sha256": "dc4cccf80a258409788a679058a966f1e3efa43b6ca16ec8a7ce38ad766ea6b4"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_integerwidth.cpp",
+          "sha256": "7f4ca66da7065b96f0eea322ae62873c902bc6c8d5582fbed9818f4698b99007"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_longnames.cpp",
+          "sha256": "fe091c591053919d8fc9725d0d75b75aa1e16c4c0dea5ee6896f9a393db0e0a9"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_mapper.cpp",
+          "sha256": "c89a9c43f9423835c85bfbe744a8aa23a59c0be2fe1366786839423a82da9919"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_modifiers.cpp",
+          "sha256": "1e73b338f5e9f3cf69b7409c5a80de9a03e959f6717cb5adf26e9533d1826c9c"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_multiplier.cpp",
+          "sha256": "c7b7499e0dbb932b6228047228d042bf4d4bb37677cfbd7aaa148c589157c8e4"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_notation.cpp",
+          "sha256": "da767d0093cb26fc79cd27715ad7b032d60f4abedce24dd5db60b08096e80056"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_output.cpp",
+          "sha256": "2ed506c1f1804d27ac220fb0e8c8ea8cc618ef7ff42941687b6695774200527e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_padding.cpp",
+          "sha256": "d242d27a81123e8562b2c27960819f19447949e9d95a15e995411c6cb9bb7cd0"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_patternmodifier.cpp",
+          "sha256": "ca6bbeb5016e84ebf9d1e7a9e1b09955219e469604a7d52324acaf4d89bd5bcf"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_patternstring.cpp",
+          "sha256": "ddbefec331d8a25164bb4dfae245a617fb92e76b2e187300e73e477f96399bc7"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_rounding.cpp",
+          "sha256": "a15a0137b25cd26c5867b5ee488550738266d2b5aedc3e71e4f2867a1449d7fa"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_scientific.cpp",
+          "sha256": "1852fb4ebfbb3623c0ae52ca6bdc4a472475bc40196c0a3c94391ae5490ccfd4"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_skeletons.cpp",
+          "sha256": "4c1ce8879e9ab74161fc9581120df1b296dcb365bd1eaa3b40212853b1618c50"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_symbolswrapper.cpp",
+          "sha256": "a316a3af004caf1e5d53baea5cd542688f53299989d655e645f8d6b56560b193"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_usageprefs.cpp",
+          "sha256": "87e189e376ae9f05739439090cf78a4d3f988c66a27e64a785c68f70ba7e1f31"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/number_utils.cpp",
+          "sha256": "15c574ca5ddfd438b2f1b013b2d302face78f15c3652b88516e4d5aed8623aaf"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/numfmt.cpp",
+          "sha256": "fdbe9eb5cc3c795a9e9b7ff584f466280a9d4622d9b243bba64949a9d19d04bb"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/numparse_affixes.cpp",
+          "sha256": "337ad9d576e4b5fd4ba68e795c5e7ca320535cd8bff9e51db8d3db8acdf13acd"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/numparse_compositions.cpp",
+          "sha256": "fbe126cfd4e30aadc511780f16e5a41c426fdf70f1c5e4c52a7bdec21711c662"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/numparse_currency.cpp",
+          "sha256": "f5b69823cc30f9d4d753f07bc649efd0f217c8ae93760f71974fc4bdf799e10e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/numparse_decimal.cpp",
+          "sha256": "5722f6726fa47886d7c7f24d6f3753f26ba45d4a8df961d3432604207f6b6a8d"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/numparse_impl.cpp",
+          "sha256": "29c6c331a49b1a416090e4ddebd738992b3c73254075f6d5e4a5f06c80748897"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/numparse_parsednumber.cpp",
+          "sha256": "c2189058420843613f06e40680f0ef3846fecabd972eacf0254bba3df6cabe7b"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/numparse_scientific.cpp",
+          "sha256": "5067bfc1dea9f793a2835458ed627c50811a0ad9ceab83e334fc8ff708cef1b4"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/numparse_symbols.cpp",
+          "sha256": "d21b45eefe0e96699fa5c7b31b1401a8f056fb6ce9935b876950bf7c876d33f7"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/numparse_validators.cpp",
+          "sha256": "bb98b8f3991c3ef857be790040e210b802555139f56580576908fdd97393ed79"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/numrange_capi.cpp",
+          "sha256": "d1870e7f6957279d002e7712f7ef41041d6962e446be5cbc412e3ddb8c6cf2ab"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/numrange_fluent.cpp",
+          "sha256": "fd0c32bfe96148b9629e2fd50c32d6d664d073be5b30cf32cb05208822217496"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/numrange_impl.cpp",
+          "sha256": "d8b3dc8aa62ba41300941732833b47967ecfe76fae9571142373453282344457"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/numsys.cpp",
+          "sha256": "32725f320d95c42613e42fd5b95cf6131d4a356dd69527f898c17a9c71d086d9"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/olsontz.cpp",
+          "sha256": "3f7010f33c52f7d22b6bbe7bb1ed37f785ce2ed199380de1c7787cde910a4809"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/persncal.cpp",
+          "sha256": "744431054b506b69a8335f9270b8c0e729d8a67605721dffdde6dadc184567bd"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/pluralranges.cpp",
+          "sha256": "556ceeee443f3163bfb4dfcfbfb12d3abf2bd7865e41ad2ca490224df47f67d4"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/plurfmt.cpp",
+          "sha256": "e911057e22311dc23b8d07a9708c5ab9b6fcbcd27fb6a108250ab8229bfa570f"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/plurrule.cpp",
+          "sha256": "ed39103857c632d845568df654b85355903358907d6d98cd029506ba8f275893"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/quant.cpp",
+          "sha256": "4d1bf3959641d0e56d6506055cb404a8718725896458ce1b714c14cbb7fb8710"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/quantityformatter.cpp",
+          "sha256": "20a07a12f66988d6c7a1b1534d0fd789498a6633105ed895a2b488e78fc029da"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/rbnf.cpp",
+          "sha256": "d2e2d2e4ef610aad062bbe2bc8ab26baf59cdf0b59974fd17cddce4c538b57c8"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/rbt.cpp",
+          "sha256": "c8f2e7a44f2063a510ae3d3633791a930e4193f1ad9874a7c5938628485c34fe"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/rbt_data.cpp",
+          "sha256": "081f129cbd24089036ca2db7691d3cea2895064a1e03f26f859e3e49b9922a47"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/rbt_pars.cpp",
+          "sha256": "5557eee8d99e63d01d112417ee6041c3d83978201e810a878d07cf89662f8e35"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/rbt_rule.cpp",
+          "sha256": "55ee6a2397604b150cd8b104c6e7a981b8759e0aca6d7e93890d4ad238a80754"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/rbt_set.cpp",
+          "sha256": "003083cba6a284ab9a6a5812974b17519288f8ce7460b0c1befd68d85edcbbff"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/rbtz.cpp",
+          "sha256": "e2d9f5b6cea563bd3690c5bbbdd54ccf36666e8f80f63c6119b4936dbe693d87"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/regexcmp.cpp",
+          "sha256": "bed916d222b4adcdc20405b5d59d3b0c825749c8303f9880d6ca09718eb510c9"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/regeximp.cpp",
+          "sha256": "261b8dfb7ca4691a0ab338615215bb256a0096a4ce1b018575ef42cd6836e526"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/regexst.cpp",
+          "sha256": "81306a601c22cb612ec7565bee20f354555824c1c7cbc4a7636cd1c1e21ae317"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/regextxt.cpp",
+          "sha256": "86a7d164bcb9a1b0aa8251fd3e890332db664205753f3a2279af6ae598a73f48"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/region.cpp",
+          "sha256": "4601c2260566398fc7fd5f79d8d55dea974085623541f3715fb3230afead9f55"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/reldatefmt.cpp",
+          "sha256": "5337c810aaa4f4a6afb4dbbc3e224dc573033bec9aae809f1a4ef02a22ecf188"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/reldtfmt.cpp",
+          "sha256": "09f3e6626375d78240fc8574fa26e04e662125ce6b3c6cfd6e21788c63eb4e79"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/rematch.cpp",
+          "sha256": "47f16f1fa63d761da82e780925b099b16fee0c96acc1a0b6e6b234ad65b5e68e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/remtrans.cpp",
+          "sha256": "57aaff0db48eaa1e077c07baccad3c369ae3c1a4c5be056cfd5c9625e688f94e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/repattrn.cpp",
+          "sha256": "a33b02f6b28f161f2efab4b6c149ccd28d0202686e3fe381e1c4d592b9ca76e8"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/rulebasedcollator.cpp",
+          "sha256": "10847c542eb2f68809f0bcdde99c436735fd019f6521a89badce616b11469fad"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/scientificnumberformatter.cpp",
+          "sha256": "2c5417f29f321dbe51854d26939f5cdb6e175f2ba4559e4df6bb81f75e9e4a72"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/scriptset.cpp",
+          "sha256": "dd379f7e1fa5f566abb9b3879ceb464d94a4a6b41e49791778af666aeefff24f"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/search.cpp",
+          "sha256": "bea18a9b79dfab08ec92cf327f77cd3d3c697b0d06d9fd826df5870ecacced69"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/selfmt.cpp",
+          "sha256": "6c2ddd2234829cb8e20b6855497f4e56eb03a6b92b0bc6bdfe289b04851dbaf8"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/sharedbreakiterator.cpp",
+          "sha256": "ead5b335b12e52d3fa17b531f5c067dfe1583d7407a1263ff4263728ce79bab0"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/simpletz.cpp",
+          "sha256": "b6318d9e93cf0fad023ff6f264aea6f6451efa83a19b5bb00e762c55babe4067"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/smpdtfmt.cpp",
+          "sha256": "ff81d172c5204a3e94b0f6a4f02a3a037f06a73ca4dbee94502f757c6a78ae73"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/smpdtfst.cpp",
+          "sha256": "76d1a2ecfeda5bb78656c41c3921aedfed49fe0b799e56a70c2226c05dba6187"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/sortkey.cpp",
+          "sha256": "162810b13f6217f31e603ae0fd02823ff60b44d61f05bb9006592ab6aa665eb5"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/standardplural.cpp",
+          "sha256": "f34ab8d84b639af64a4e056b2e6285d9aff949b700f4feb6c75572edb2e03d4f"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/string_segment.cpp",
+          "sha256": "c3eb78abeef1f1ca8de556a538fb6b99741ef1826d836e675fcd0c5cc9d5aada"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/strmatch.cpp",
+          "sha256": "d838159daeb04446cb018e4e1acfae754d71413ffe052507e9921983c026f520"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/strrepl.cpp",
+          "sha256": "a3748203a1503dcc3f70fbd897de718cd1c951ba151b020aeba6a28e8ad6d36a"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/stsearch.cpp",
+          "sha256": "305145e7bcde7983e67ffd99ec9772cfc5dec8b188870eadbea872b2648333dd"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/taiwncal.cpp",
+          "sha256": "1243379ae06f5c813c5d56ebb96a0edc485d8527f70f7aedb827bfd4e9faf73d"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/timezone.cpp",
+          "sha256": "6cf447828be037ac2712cf28bcc2c2e7d697d13019ef99756753bed79d947756"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/titletrn.cpp",
+          "sha256": "7afcfabeeef1039b25fefcd62602cc026b7439ec82e71b1d62fd0b780cb533e4"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/tmunit.cpp",
+          "sha256": "0688c77c775ecf96106cee12afab82e0433b0033c3a92a83145705a405404b50"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/tmutamt.cpp",
+          "sha256": "9a70f8736088cb740182ea68e14f15bdfd18b24e5fd4e9e627168e0484ba3e23"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/tmutfmt.cpp",
+          "sha256": "70c07ad5d5bc6772850fbb340c450e58be74be6767df7ab145182df1223975e6"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/tolowtrn.cpp",
+          "sha256": "eb55e3d5bf9886235a9ed2f8f1fe18aef576747e317135e30f31c4e658577b69"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/toupptrn.cpp",
+          "sha256": "3d5ce4be6e6effc74b284412df25434b72a42a0a7334eeca769e03204a07d7c1"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/translit.cpp",
+          "sha256": "0315ac6c78e05d3284246dfabad67db99772c80a3151aaaa9ea391bdf8ed5ff5"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/transreg.cpp",
+          "sha256": "839642e8e128cc73a0c13abcc2326184c13667c4db297710ced9e4d2d7c2f6b1"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/tridpars.cpp",
+          "sha256": "dad5b43b93f6aa3f82b4c0dc05148502f0d81947ca97ad1f296323c19a94135e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/tzfmt.cpp",
+          "sha256": "4b1bc6cc256bf8ff088c3f1adf6403e497650aaaff5bacbcbc376d68c53bf233"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/tzgnames.cpp",
+          "sha256": "1255f038a171da34fcfa93d75de06200e311916251d3cbed3928685b50700acb"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/tznames.cpp",
+          "sha256": "eab19a96a7f84461076f20c31ae453dac35423e65e4bceffac8af7fd99a59614"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/tznames_impl.cpp",
+          "sha256": "39682240c4d0582f1c29f021586136e716703b300d5a95f53b5e8e315f801c9d"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/tzrule.cpp",
+          "sha256": "eeff4ae733977723bd1df29d3363000941a4dd39897a0a2a65b8cfc89348df16"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/tztrans.cpp",
+          "sha256": "82dd9e10668bd36c4da5e52dcf81a098414082f371c89102ec546625d220f051"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/ucal.cpp",
+          "sha256": "b0779895bdbb7d72970c9791c2366b200e1a014519a790cc6fda7f3520d6de6f"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/ucln_in.cpp",
+          "sha256": "71711c49f1be4f9db7550c8bdd9642347a3ec8a17cd006f6bc2f8cf5d4a0f6ea"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/ucol.cpp",
+          "sha256": "6eae1f2eff16c156bc8250bc8f8bd62378d9bdf0088b7c6e7b06437e7295b8a7"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/ucol_res.cpp",
+          "sha256": "495d3f33f2cf25270908af1c0583e9457b358d92827cdcf281ee716cfa54ee1e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/ucol_sit.cpp",
+          "sha256": "bfc70edb4f045609f00b387cdae1ca9e451251aeaac5dc3140cb764f044f39e7"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/ucoleitr.cpp",
+          "sha256": "c7935c04cc9b2c05093b11818c9cdd5e304ace79082968824010e9e25dd43404"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/ucsdet.cpp",
+          "sha256": "0d47e19cfecff1eec644d5792cd1d9c1fcc2fc436832621828d80838c7bc0156"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/udat.cpp",
+          "sha256": "05786496dab9c25b28cd90eae208044e1231f884758f82d9c29209395039c4bb"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/udateintervalformat.cpp",
+          "sha256": "f9b8733d9b71cf5654ab7b38ed045ded0d67e47ab85251a795c80b971eafe5b4"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/udatpg.cpp",
+          "sha256": "936950cc590c8085aff8d5a3089de70b57803536b8b3e6e5a728fe335a1c5b99"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/ufieldpositer.cpp",
+          "sha256": "70dc2ded22b96341a7c36f9ec70ebb1e44d70fc1dab25680532ca6e9209ff316"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/uitercollationiterator.cpp",
+          "sha256": "54a55f09a7bdffd03598e30b8fcc667d0fbdb41a6efaf82f8f02fb349f0f2fc6"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/ulistformatter.cpp",
+          "sha256": "1eb0d48cefba7253586faceca8de0230622b5c255977e616e5ce995b3c481d3d"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/ulocdata.cpp",
+          "sha256": "04945c76b96d3f2853dcd0602365b6c4f49cd482c7b4a04d85ccfa58bb57f701"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/umsg.cpp",
+          "sha256": "c87dc052f33de9fc90e0a2db94bf97052e7ba15d576d3b425ddb136e5a9040ff"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/unesctrn.cpp",
+          "sha256": "a6e81e383d6c54a0f867c52ec7e6fd5bc6cda8fdc41d5e9aed9ba2419c3dc001"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/uni2name.cpp",
+          "sha256": "d145ec16408457733384962a7073d8f7e46ca83e3511fc56800536f4bcb444b0"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/units_complexconverter.cpp",
+          "sha256": "af4c3bc9cfa80d2b914013c29ecdca95f2271cea3eddbcc2ecbfc944db392fbe"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/units_converter.cpp",
+          "sha256": "938eae1d068ea24f26fc297a0fa8c61000f3db0cbc0d08458e0c74d5126ad83c"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/units_data.cpp",
+          "sha256": "3e0a2ba475f0155ddfbd2adbd9e38d34516684e78ae30245ab4aa8b16c81d245"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/units_router.cpp",
+          "sha256": "7b0fab8756f82f050d31e61b5c3ec9c0cf4e1b0e657a7dfe2ef1d70dc5a5dd97"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/unum.cpp",
+          "sha256": "b852b5d6cea1e656cdab9b896dc6b5a91461258d32715a86aa5461d539bee5c2"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/unumsys.cpp",
+          "sha256": "367f18ed2da1d58f9d7d796063fe230a653763076afe2d7a0e504476a0ba3da2"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/upluralrules.cpp",
+          "sha256": "525b67be13532a86e6a3716a5afb9171cee26c9e44b19bb7433d95f18f688ced"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/uregex.cpp",
+          "sha256": "4e6d442553924aeb3230a9beb8f75f9d06208b2f013aac56e4e7ef277058b074"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/uregexc.cpp",
+          "sha256": "02049b0fe010805cb6a13f9f226c7a48c9b736b372acd7a9fc113a66c12398d9"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/uregion.cpp",
+          "sha256": "855a9d302ae214c9060cb92a74730ba2b4b08759ab37d8b99325919c21787367"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/usearch.cpp",
+          "sha256": "d0e16c56fb5ea9969a44d872e02466bff0af182ef42b16f96af21257ec239948"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/uspoof.cpp",
+          "sha256": "531926e3702a737784a02a6c3cf6ead470d811ca16d8b571705391b24a9136aa"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/uspoof_build.cpp",
+          "sha256": "59ac8963893c40fe2fc25ab8a7d7701f2ba7232771382698604c30feddf6c9e0"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/uspoof_conf.cpp",
+          "sha256": "041d6b596a9453ce45fe81052fb191e356ea5bb96065098a5b965232240c07b5"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/uspoof_impl.cpp",
+          "sha256": "262b31d920e4d6548f49053ba1781ab5aed125157631c9483e587e2a7fa727d7"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/utf16collationiterator.cpp",
+          "sha256": "4b4a0b6dc9d71b755b4f574f8a2ecbb6875c2b4999184d6b38e5e63035f95860"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/utf8collationiterator.cpp",
+          "sha256": "aac25be83c916aac4a5ac9981b8b4c43231f09711af07a0802eaa049506dca05"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/utmscale.cpp",
+          "sha256": "8b9acf8f59f611db17a1058362dd153ad5c61762d56f3ea04b73b2d4ef382e60"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/utrans.cpp",
+          "sha256": "f7a8931ca4aff0f17b32bce7ac7197a40b03b02fe070c729f4dea044be2743d0"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/vtzone.cpp",
+          "sha256": "9bceb0d127e36b87c5a3a7cdd509e26512012587c71b8ddf0fbcddc00aa97d40"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/vzone.cpp",
+          "sha256": "430aad90941b845179f2628cdb51fd4dafe7b009da54cd19d959534c4a11b043"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/windtfmt.cpp",
+          "sha256": "816d70af83d3dd18dee54463ff8ed016c1bc550d19616f8f27e27f8dfd58dd80"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/winnmfmt.cpp",
+          "sha256": "6d7ea03f0ddc7d231ab50856d0faae0593a11c4e66520c6a0625f243f73d9882"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/wintzimpl.cpp",
+          "sha256": "acbcb0ad042c3bc65aec2b2eb01bb6134d0335fb9ba38f54471a0fb732127a6b"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/zonemeta.cpp",
+          "sha256": "e438046154b737cf7e4269ecee2a87da2a77a1e62190d427187bd09994b6a50d"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/zrule.cpp",
+          "sha256": "3a59d0e6a1b9c9ea6267383421188c5be5656297472335403c7afea6dcb2d0c3"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/i18n/ztrans.cpp",
+          "sha256": "1bff010b9e5dea3d1468850f3578ec7ecb6c8f7f7efe08bf52a4f289fdfd6de6"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/appendable.cpp",
+          "sha256": "c32e0138f43a57b92200a9ca08cff9616e84bafab70dd663e5427d6b8fbe914b"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/bmpset.cpp",
+          "sha256": "fcee7ba3a79f23e5886ad7314c6accb8c0ba92b2446f459e41c5f8ae48a6af38"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/brkeng.cpp",
+          "sha256": "76935973fb176a4bc776fb029b6359eca0484c291b193b4a6912598c147e6448"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/brkiter.cpp",
+          "sha256": "4681c06ec55deb873cb23e04f359b204a1c240de89a768bccc8b5ede4ad1b92b"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/bytesinkutil.cpp",
+          "sha256": "c8b1c88db36d812f6109e70e823dd35be8ff4abb7a98cce72793370c9be4d14b"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/bytestream.cpp",
+          "sha256": "832813f82193102e5621dfa652ab8ee598721517da89f1994bc448d94b247d2e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/bytestrie.cpp",
+          "sha256": "9538cabc5b71a90cb33fef3ca3f0f404dfed2c28a6ce5046ddd95fdb12f40b30"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/bytestriebuilder.cpp",
+          "sha256": "94a774235cb4ba3df9b2ce866572ddb0e0de6a5f91b7c45ad7101ebf3005a518"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/bytestrieiterator.cpp",
+          "sha256": "3a0261a355058f23bef9c5f9a42101b0f908715a112cc7fcb74f75367cb4bd25"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/caniter.cpp",
+          "sha256": "b7c8fba4433b60895c98f9eb230b0ac8ba1ae5abf494ca3e85495727604dcd25"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/characterproperties.cpp",
+          "sha256": "48425643cc1e991c835aca013791850e1f8abb274e3c855df852250aec70e6a7"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/chariter.cpp",
+          "sha256": "b47693c28f10e5c5580d6e3579684a44f65d454f2487e18cf992f8abc40c1a1f"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/charstr.cpp",
+          "sha256": "303f3dbd73b54f9a5eac2f06517dcec1cf66eaa8ccd42a5f3e650db5d655a937"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/cmemory.cpp",
+          "sha256": "27de34119b41f740b705988e64092b9760a6f3f05ea057161cfd3515f5a1ae50"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/cstr.cpp",
+          "sha256": "97d938cb7822bb1f38663034c564ab8f0e0510ca6f83ce249be6cb9c4158479c"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/cstring.cpp",
+          "sha256": "666e8e7bb04c07d4b702bfce00946a88d6bf94c7102ec068e76154bfb91e45dc"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/cwchar.cpp",
+          "sha256": "ecc29ae5e256e804dbfaa1971d2a654f68011cc29a3243586d40fd26796801da"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/dictbe.cpp",
+          "sha256": "cc93bdc53a2793e362079f799f627150ec6e845d57ae55a24667f0dedd767f54"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/dictionarydata.cpp",
+          "sha256": "a3414207f54cf03c53bdfa66fe546d7b59c5814a419129498bc9ff91ac45e342"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/dtintrv.cpp",
+          "sha256": "c138dc2bc3a8a3155b4f79d31da8719c02a6a336f6278942b37828b0708ff252"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/edits.cpp",
+          "sha256": "d2907f015922679b889cbba2abf79c4d8d7b16acd5368758e4b2b79ca29b6b8c"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/emojiprops.cpp",
+          "sha256": "15514316350ea8219c7260314dcba26a10b508b5c2ae1bbaf746787e2fa01521"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/errorcode.cpp",
+          "sha256": "8f26083516890794c34e17b69bdac8ce5de8ab50d122cdfe789410560dd65d28"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/filteredbrk.cpp",
+          "sha256": "5644fa566826f8b74fdc5939fb412d37c87ad103d24ee2b8eba1648a9bd6c625"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/filterednormalizer2.cpp",
+          "sha256": "cc9dbec2bcc40044003eebddf3ed1a591a05c972a0bb953ada4e62695236aeac"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/icudataver.cpp",
+          "sha256": "f79274d87f869e04a7b47d3c9193b8bf072e0190b6d067737d7fd7e0d934c619"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/icuplug.cpp",
+          "sha256": "24abdc1ca5b4108ef1cae705ef696785e39fe05751ed4d64bc95e242e8af7cb7"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/loadednormalizer2impl.cpp",
+          "sha256": "d91225053d4a91907d928083b39c6de58ce6fe215735ee953103f6c6e6b15eb9"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/localebuilder.cpp",
+          "sha256": "6c41df09891969852a26709be8fd20d2de01ea13439972081af04e1aeb42d353"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/localematcher.cpp",
+          "sha256": "a8368de707f2054b2c82d2918de1577ff484d49e4e810912df9be79c711817fc"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/localeprioritylist.cpp",
+          "sha256": "10a1766156b2c12ba9eb836850f9fa6ba6b55c27787413843adf7b52b26e98d0"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/locavailable.cpp",
+          "sha256": "c9a8876756a9783e7a8e0f9157ae31241c3a6f94a48f4497f43d2545625d13c7"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/locbased.cpp",
+          "sha256": "7d9da39e024dbe1d111f6df2914dd12e6579605a2d1034645233db6af869f54a"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/locdispnames.cpp",
+          "sha256": "81c5a1b7e2c8db8ec3618e067ec21c512e987b00b3ea9e9c6e9f5a0e0d0840f8"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/locdistance.cpp",
+          "sha256": "890f5489451b5920ce12689359c9ec9b2a974ec6521a0759bb4f44249569f030"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/locdspnm.cpp",
+          "sha256": "bb39cbf84611a930e7ef449189c12186a612332a76109c80c1c58aa6f38def65"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/locid.cpp",
+          "sha256": "6905c465119ebd0914a412b169c2488bd7fb4d463c22aa0a1d600c3ac1446c8f"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/loclikely.cpp",
+          "sha256": "6aecad258a09d250c33bacca5daef396088941f7b1bc870b3e71053c2d5d957c"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/loclikelysubtags.cpp",
+          "sha256": "f450e96794757aba7f584f47b745ed199aa084d6be1358e6c67ff2510c2c5563"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/locmap.cpp",
+          "sha256": "3def92aba9e7576aaed56fec36d21c766770a66642945a283f5e63fe192ee41e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/locresdata.cpp",
+          "sha256": "5bd9a8ca9cdbe8c52068e0f296682829db7d2234b3274ca12e1453e4733c2477"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/locutil.cpp",
+          "sha256": "10742cd67763ca599bb506de0799d4494db731137bc43dc9d1787eb9ddf0b3c1"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/lsr.cpp",
+          "sha256": "767f2207f4bddce82115974f2c199560bbf46680ab7fdbe830f9aae849522ad6"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/lstmbe.cpp",
+          "sha256": "275589d014537b50a0bb8a6c19a4665b1f832e4f6ff206bcdbccb44ff26324ec"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/messagepattern.cpp",
+          "sha256": "28b664f95326e7d5198b523f6c99d3983be7995602638844d41bd26e82ad6cb5"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/normalizer2.cpp",
+          "sha256": "b5d9ad0f586d9f2f409f711b8dbf7e0ebd5b2c581daef3a79af28ba8d3fba40f"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/normalizer2impl.cpp",
+          "sha256": "6b47f2b31b6e4d0660364c7166577a42f1fda57de1e9f8be6c70ce6649619de1"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/normlzr.cpp",
+          "sha256": "0175e6528e1588ffe29aa6df6bcc2b114934e383b6f144a4b711f1ef9f1af1f3"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/parsepos.cpp",
+          "sha256": "b5fff3615afd9024e300879145c54242e8dc0a965da408bed31981e46b20ec41"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/patternprops.cpp",
+          "sha256": "17d8528abdcfa57b073a321dcf014896d692810a7004501e03c806dc582e36d6"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/pluralmap.cpp",
+          "sha256": "c386ad7f74e363ffc546c5f1572f8fcfa94c779534838bb6357cbf385825475a"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/propname.cpp",
+          "sha256": "b96f1268ea6a2aa3046403fc10976a58edbf06ec86ec33bc82fbbdae9d340ad5"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/propsvec.cpp",
+          "sha256": "a833dadc9870835ec05e0c6c66e24df3d75e822481a3daebc6d423e2f73fab7a"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/punycode.cpp",
+          "sha256": "109d17e546ac1ef6b477211638b0e3dca0696da768298752178d2872ea623a0f"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/putil.cpp",
+          "sha256": "6b0f64e1db8d9ea5a5d5470be8efe9e5d119512696c3b2a88cdf369425fd3c5b"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/rbbi.cpp",
+          "sha256": "999d36e3ad44b414f885ae4cfd503eddb91338aefb9387f742c0ac8e765826ea"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/rbbi_cache.cpp",
+          "sha256": "80497aa3a2a23d66368d314e664a556086abfa96d1a96439cbe221bd566128da"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/rbbidata.cpp",
+          "sha256": "2cd99f7b6dd73317e84a09ffcfb95f2f2c68f9e01ec7f5e5e99c91df7bb36f61"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/rbbinode.cpp",
+          "sha256": "de7f0872923f517f305783fa00e6851a2548dda73ef2eb4fa486588b4218b344"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/rbbirb.cpp",
+          "sha256": "cc8d7b9bbf5619603c0f76a71c3340d76f5540e0ac07efb057331624dc8751f7"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/rbbiscan.cpp",
+          "sha256": "ff6a11b02c82c580715ae8b75f7c91874773fda1e32a0880c32c4a5374a9b9db"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/rbbisetb.cpp",
+          "sha256": "94201c30eb185889b1a416a6cdde1e359619cc7f0b9881c49a9db3dd6cb98833"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/rbbistbl.cpp",
+          "sha256": "2d19a47c8ff1e7b3337261d22f0ce24c6b17ee67d4d1b418a55c6db46389f84f"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/rbbitblb.cpp",
+          "sha256": "b9c78ab78866b5e58b793c745d368d92d976dd878742f13c28a259dea4fd728b"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/resbund.cpp",
+          "sha256": "0d27b6f3a4954ac54e425039e4eac4e7f413e1c01aa5b8104f4973933d97cfdd"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/resbund_cnv.cpp",
+          "sha256": "56ab1390a1c12a1b265b04398364192b7fbe11ea569c0cfa06619e3233b65b58"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/resource.cpp",
+          "sha256": "ea0fb834723a895d7c79cf7cf3cbc28c1053b8bce101eda7e765fafadd350709"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/restrace.cpp",
+          "sha256": "c288076ecd79461369fd3ed73b2ab8742c2b97d46ce7c88d940815b22b2da778"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ruleiter.cpp",
+          "sha256": "dd5af0c706046459fc304976283a05e4c0b7c8a626986134bc5f74ff5472ae8c"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/schriter.cpp",
+          "sha256": "449892014e079b49a3d78997a257d0410295f87821a0a03c5130bed683bea2d8"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/serv.cpp",
+          "sha256": "062b9163d0360dd8c27b1d424d5f6db2a58c994e0b313bf7792eef265d866ea2"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/servlk.cpp",
+          "sha256": "864120af4137f35e7603f7a84dbef3ed3646f343bbe9e81fc025eecb5658479e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/servlkf.cpp",
+          "sha256": "e4c010dd3ac549768682f3fc62c12bd970e8933ac7172d2a5a0790c6755c1ca1"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/servls.cpp",
+          "sha256": "731658b09ca30e0e5f92f02708c3db1b832baaf9da9854b0b2447bd8e035a607"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/servnotf.cpp",
+          "sha256": "9e8e76e938e62877a1f4c17eb12e57ed2460f6ef342aa61e0c77bd65bad5c0c6"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/servrbf.cpp",
+          "sha256": "e2c174ff2375a2f044f40cae14e318a0d28e20088cf60e3fcec18518a1a1bda1"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/servslkf.cpp",
+          "sha256": "8771213d7a17c69a62071cbfedcabea228b30ab1ba4b2079bbc6817ef95944eb"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/sharedobject.cpp",
+          "sha256": "650bce4deb00afb2fd7300269dabb03542a852f017d476975d822ded3d81cd88"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/simpleformatter.cpp",
+          "sha256": "63eac5b35499e80e6086069fbe93f53da399c4924ba4d435b59149eb24fa1872"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/static_unicode_sets.cpp",
+          "sha256": "ba2fe0f9ec9f090c65cef7a097ad27615f331160b70dddd2c5f136bd0452d652"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/stringpiece.cpp",
+          "sha256": "e6f000fc93b183c43530c5e47253340ae5a657c77dccf6652aac006ddd317ba3"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/stringtriebuilder.cpp",
+          "sha256": "00e3aff96630193f102e7f97877469e16f7283fc1633f18faed8800778b07eea"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uarrsort.cpp",
+          "sha256": "49f4b52a88951dc11e8cc069c44e7b6df0a67cb126e4e6a1795b175f8baedb2b"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ubidi.cpp",
+          "sha256": "4f9849658568bac8dd34a0a04459f235f795c7537a0d12c68f233c9140dd11cf"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ubidi_props.cpp",
+          "sha256": "dd57c81e911cd638d1de8d480b76fa9f5c902fad2f82d97bc006a3894bab78fa"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ubidiln.cpp",
+          "sha256": "9cf8f570493fe1b465b07df922b72f1a4aca8049656e5998e7d63613f8a889fc"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ubiditransform.cpp",
+          "sha256": "18192f2569632dc224273601f3b1c9b46d26b62b5b9b3f886c015412fd538421"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ubidiwrt.cpp",
+          "sha256": "a5a96fbae5e0e402b05b7ca35c5b6c12dbccf0e71691ef17d058cb032d99946e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ubrk.cpp",
+          "sha256": "4576c945d43167ce723280a32dfd17fcd839e6f2528ea69282f7c1a0f567ce56"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucase.cpp",
+          "sha256": "f4d59e2e5baa8cb69df16e31c46d3a484f6921abce2d6926e4eeeb4d533d1a0a"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucasemap.cpp",
+          "sha256": "089ea308763b88da46044911cf5447de7d8c647fc184d79751b90d909f4e9691"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucasemap_titlecase_brkiter.cpp",
+          "sha256": "b06e3e6d733e29756d8261a18cb1ea4574665c641ea2e5d80eeba991f3f4fa02"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucat.cpp",
+          "sha256": "771c14b9003bb1107b1e7e3f2f8ae9052b015ddf40f9b57b81794a1dd98641a3"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uchar.cpp",
+          "sha256": "0e738fb621ab9effc5905c4fa099a249c54ba61ad342afde4b37a83c1972abee"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucharstrie.cpp",
+          "sha256": "acf10b24bd4f890fcb98ee8f4513d87273d5de238d1f4bb5ec0ad190bb3d9402"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucharstriebuilder.cpp",
+          "sha256": "5c4afafcab213af58dedb7ab949bf2711592f2705d948bbbdae942065f5c3b0e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucharstrieiterator.cpp",
+          "sha256": "0aff8103487f829b3a57bb648e68344cd7b54a4d5a6214f4fd4dce10393ffd92"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uchriter.cpp",
+          "sha256": "ef567aac77676bc51794b8607fa5ee06b2a1545c1de0bee73f0f72a04da8ebb6"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucln_cmn.cpp",
+          "sha256": "dbc24f158acd20a94a923d79e5761a016155c1c01d7a861d04c954668578a613"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucmndata.cpp",
+          "sha256": "73c5b210c7a8d9a683d79a2510234d92a417b782f480213cbf61ea7f2d3c57f0"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnv.cpp",
+          "sha256": "9395f06bc8495c054a4111fa452e55cb94ca34dda8a63854c4068618bc27ddfb"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnv2022.cpp",
+          "sha256": "fb08d5d064622488752fe61fd1c0c32e81d41235301d6e24fb1b62da1f2738f3"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnv_bld.cpp",
+          "sha256": "337ed4db8599cda994cacad54ef25ab3d0f035817b986304315c7bfb63f48674"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnv_cb.cpp",
+          "sha256": "f125336a9cff8ab8e82052b5cd9a51eefbb7a41945882e0a5bb4bd49a10a274b"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnv_cnv.cpp",
+          "sha256": "7b3d3fc2c0674afe5948a1ab67840081918cbeaf1c317d3f5df444927a9d34b6"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnv_ct.cpp",
+          "sha256": "4f31312453316b30553baef9ab6deff659435b5b78560564b48c2280cb36cda0"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnv_err.cpp",
+          "sha256": "20a558687754fb0f41f65207474c19c516fc7eaa33e951f6805fd0403537cf6e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnv_ext.cpp",
+          "sha256": "39da5aa72205d9a248b684a1c991d6b52d47e80e5c5f8c5cf158b51155fb7d73"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnv_io.cpp",
+          "sha256": "3ebffc50d1a62ea0d37655f40d63e863c54658e6e4dafed6aa89a1175d7db86c"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnv_lmb.cpp",
+          "sha256": "13f8e383a814c0f1e50e15a977b82194b4f75e99e622466a6040dcece159b5bd"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnv_set.cpp",
+          "sha256": "fae2e063e50c1651015324e6e71205652c0dcb52e5c73e90485b543666224703"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnv_u16.cpp",
+          "sha256": "328df5fcbe7ff371b69cda8308c5d89dcd35adf2bc415117a964967dc5d0c1d4"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnv_u32.cpp",
+          "sha256": "7c3f132d483f5445f7f231e0cffe3f279e9e4a61d87603069635f73d87154dc0"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnv_u7.cpp",
+          "sha256": "e7ed93d58b485dd41215f60a4f9db9513657f1df1d22808bcc59ecaf7c7d9100"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnv_u8.cpp",
+          "sha256": "e5c728f24cda1308ee9a4cfe6b7e96550245048d7d850f5f6bb1f430790e7375"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnvbocu.cpp",
+          "sha256": "3d399b6b8df93f741affa800313d8f9599b88d7ee58c95d2d9c058dc3c7996bd"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnvdisp.cpp",
+          "sha256": "57f49df6630b3d03b243145c051f812a420b340c25599c2904c2670a1af49c54"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnvhz.cpp",
+          "sha256": "473fc40fc2748d6e74d4ffda97e5f0fa1d4479b14f2f314545ef403106e46acb"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnvisci.cpp",
+          "sha256": "020c31028d7c9d44bd0aa1280cf43307993484087d84c36cc99ce9b4b6feb1f1"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnvlat1.cpp",
+          "sha256": "7a765d4a8f683faca7d9393f82b07fb760921174d3865831a46af0cbd5af8784"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnvmbcs.cpp",
+          "sha256": "79f84f578a2b00e35ee68f72b553be5eed547628548bdd14903c0d171a96651d"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnvscsu.cpp",
+          "sha256": "4120efba37d38e51194ece8d5545b54463045dbf6e7c0b87a691b9edf7a7ee87"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucnvsel.cpp",
+          "sha256": "dab70330d0fb71c492ab281c957af4985b23cbd1bbcf0888e92ff3691ec38047"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucol_swp.cpp",
+          "sha256": "3ea425a3820fd705d71913116fcb8983377b6d4e150d487998c9cdcf564d77eb"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucptrie.cpp",
+          "sha256": "2f52a6e4f7ec262dffd9ea7409ee7a7432842587efa4b11278de85ea617b885b"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ucurr.cpp",
+          "sha256": "11cdea9907f4000f89ad072dce212354b73123871623df718c32d0cc40a65c8e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/udata.cpp",
+          "sha256": "27fb112e841c075245b70797316a090d4590c927894f2ed5ce72da6a27b50f1a"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/udatamem.cpp",
+          "sha256": "a518639b85459c03dc27d3e37b6f72406ab13a7fada724ce6ee0c10bc5a803ff"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/udataswp.cpp",
+          "sha256": "cfa4202661c17b899a449edc333919a53e584f768ba7b9a0fd6a3797c9444b49"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uenum.cpp",
+          "sha256": "f85a6a28e53b186c599919297cd9508529d45cb4bd28fec855114a9bcd9ecae2"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uhash.cpp",
+          "sha256": "e8f3ea9553cdef1c627320226559b6b521abb4f8bceab660bb3537fad446f43f"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uhash_us.cpp",
+          "sha256": "1386e74554413d4c79c2e2075aa7b7b7ed8ab1ce36c67f6da9dbf3994c2ae4cc"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uidna.cpp",
+          "sha256": "c578d1fce052510ac52aee52d06f460ae3672df0c1f8b89457cc1a4309e57249"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uinit.cpp",
+          "sha256": "1843f13e5cf91b2496eaca6f4471788c7946dd0fd707a91b3937a8b0edccdb0c"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uinvchar.cpp",
+          "sha256": "91d157ebc8f01630d09c2412527c7628fd308fb579467fd66889ab3231f18d81"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uiter.cpp",
+          "sha256": "1bb03520b36e266f4883bf3b41f61e09756d74895d2f93b0d4c85f3cad0a667a"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ulist.cpp",
+          "sha256": "7c0aab7466e528248992ff412bae53894bfc6b9971e8fedfac5a54a22f7b5845"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uloc.cpp",
+          "sha256": "b6368e7fdd16dd2b6e8c85b62ab10bfda53acf9fab0dd87855bbcda08a6f5ba5"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uloc_keytype.cpp",
+          "sha256": "4576eabcd1527dd175bc1704ac4aaa5f384ff18400fc7d07c7e45567b0493705"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uloc_tag.cpp",
+          "sha256": "74251045186fc59f40440c880ea65aff7ba8f66dac8763aaa6251ee65f06f7c0"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/umapfile.cpp",
+          "sha256": "5fdba8efb3dcb9fddf20b538cc29f2f2ac67387980392fbb8e591600118d5d26"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/umath.cpp",
+          "sha256": "ab0d460d621b3d8be24eaa1ea0238353200297fe796a0a92e7000ce90af4ae97"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/umutablecptrie.cpp",
+          "sha256": "3a15a492cdb804b5114b622bd0a6465c85f8ab02c41bf7106afecb9775684f21"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/umutex.cpp",
+          "sha256": "564461914894707f1802be77a739b61e67b36ae22a76f234b2049276fbe68247"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/unames.cpp",
+          "sha256": "c4ea3d1ffce92563ed5e79db9e0140d39d855fbe7bd68d16db5c8e3a4550d684"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/unifiedcache.cpp",
+          "sha256": "91804f28a5d66540a0594b5e0b4b1bbb34e44c877ab1ce8a76bd57d34bc4aaa9"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/unifilt.cpp",
+          "sha256": "10b9f7fc452f925dad85297d17fe15e0a5f69fc22058c130826333045019f261"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/unifunct.cpp",
+          "sha256": "af85ba3ff0e47897d7e881b599ccd06ea52bfafb1b89cda1f18a2d57b5e78633"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uniset.cpp",
+          "sha256": "833aec7e68f029df0cd9121be69a4051f9f7c38160909be9f4569c49a696fe8e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uniset_closure.cpp",
+          "sha256": "0c8d4e5a7710d25d4dc71e98a609c51180e322a51a31b8a2733fe72b2cc1369d"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uniset_props.cpp",
+          "sha256": "d63403462514846406eb6b354e28753dee7e21e8c525f6bb729852d0ec517a56"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/unisetspan.cpp",
+          "sha256": "9ad4abda1138346e3eebcbcc2e486e6b8082ffbf5a25af89b289faf8add779dd"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/unistr.cpp",
+          "sha256": "b234720ef7ca29dd7313f8fee52ba3d598f974b31fcf962f11eb65ee0e66aaed"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/unistr_case.cpp",
+          "sha256": "06e58290e700aab6e2f32d470921e8ffd84debf7b5996675bbbb90ba99825eb0"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/unistr_case_locale.cpp",
+          "sha256": "04156c28a5f9f4c515ae72da05493af93d3c49aad6cc725732ca8604452943a8"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/unistr_cnv.cpp",
+          "sha256": "bc97c125e4c74e48fb7a83e9266116aacbf11ae23719461271c4bbacb5a5c175"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/unistr_props.cpp",
+          "sha256": "0e333855bec099fe7c01e7adce980feb5512d25cee5a42f9319060f7cb917215"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/unistr_titlecase_brkiter.cpp",
+          "sha256": "27a9bbf33d233a402f415ccb869ecf877e0aa27d6fb55a716aa5ebc20aeca9bb"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/unorm.cpp",
+          "sha256": "75e2cd956fc646a8405ae7bac5d32a3c51df9f4357f9c39f9c2fae92633f18fc"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/unormcmp.cpp",
+          "sha256": "0bb557f317cabd881c9c8f05eb523f3276dd167c9399b230abda378bf40099f8"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uobject.cpp",
+          "sha256": "102024fb5c23f0fdce6a6f557c16682f911c3d90fad8f5edf9d8a7b1fea49044"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uprops.cpp",
+          "sha256": "a683472c944cf6a4e71939ad4a68671d02642d1b5d7cd35e6ed075265994b325"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ures_cnv.cpp",
+          "sha256": "02ed0b88b1166caaba3ac40a5abd450d0ff25ba0ffcd54af96ad215423af4187"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uresbund.cpp",
+          "sha256": "0a1a9d09fa31abd56eebe34626ca17cf17ee3a6fcb410751b72e67edd1302559"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uresdata.cpp",
+          "sha256": "4d906aa8c99a090884778a39dfee5ef0620d46143e7bd29050413602c1bc23c7"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/usc_impl.cpp",
+          "sha256": "893d301665497fd7c8b7bb5ea0d111a08ada0f7fba76438b55872acdf248c9a0"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uscript.cpp",
+          "sha256": "8ed04fc2f82a65a74c60e70560da3ddf8ceaad256fe077eb21b5f45bf2e984aa"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uscript_props.cpp",
+          "sha256": "08f8752295429a0c2d5dda5313ecb0c56704ea8a6d407a333d74ead0a932263b"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uset.cpp",
+          "sha256": "c8be26adf611449ef04611d906cbd6283c0fc29b0a1c24badb0eb9101dc28242"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uset_props.cpp",
+          "sha256": "b29cceb343958bab5d3fad8570eb5eb86c5f0eff3a2c8d67a5a961b58206309a"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/usetiter.cpp",
+          "sha256": "4383e566f7e1b77ad7be108f8956dbb971d9fb9a1cd979737a6bfb8791e4a6c5"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ushape.cpp",
+          "sha256": "63f9e9c2c3b01b8baac2bec897099e8c69ec7b6fe752da3724c2212ea17a9d7a"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/usprep.cpp",
+          "sha256": "6b4e0061ddc921a6de27047d34d5317f6244909219c442b8cfb3d5b0ce5423d0"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ustack.cpp",
+          "sha256": "c3ac8eff3fb418328043d3138c59af08ec6b61e806689774e6ec4a1b5456f49f"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ustr_cnv.cpp",
+          "sha256": "5f035d8d7444135d6bab2227b708a046a6dd4911366e7633859a12dd222b921a"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ustr_titlecase_brkiter.cpp",
+          "sha256": "db761dc4faad6d8aa53399b18cc398c6ccdd198e0f839cbd31353e9655892401"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ustr_wcs.cpp",
+          "sha256": "020fe36bafb519788681063aeb3c94b3c547a8c1ed27c7d0b669bbd9f9fdc980"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ustrcase.cpp",
+          "sha256": "dc926f2fad742c08f2b3f2611adc5d6d672b0869ff012bf8c567bcf9e2cb7a73"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ustrcase_locale.cpp",
+          "sha256": "f1298e87694dcc1d7db7ccc20a0ca931a954b1f4e71f59b4c2145f9ecd5a7d90"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ustrenum.cpp",
+          "sha256": "2ae243866777313e18b80ba407a92e33ef7d3a92409160e4ba919d9d10b7751e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ustrfmt.cpp",
+          "sha256": "2eb66aee8ae544fed100279859ec3ef6829d7be2b7d1f69d56d0fcf66ffe1b4f"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ustring.cpp",
+          "sha256": "305157910b6748258373ee24f2ef8d90c9bfe8bf0996ebc09a96c8a022fef6da"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/ustrtrns.cpp",
+          "sha256": "89a7d079232a7d1efdea5f89a0698f0d206bb324d5cef15308c5b494f4be09fa"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/utext.cpp",
+          "sha256": "c4ca722a64073f90fe5a798aa9063507d4fe3f3717673fe19b0433effb94307d"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/utf_impl.cpp",
+          "sha256": "8373a637bda373fdc08bb22dc659935f712b7d3ea496c3afcbb9d4c7c66736e4"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/util.cpp",
+          "sha256": "5c2e5467fa3edba28c0dee9f84baf4a452103df9763e9af655f69c1d2db1b571"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/util_props.cpp",
+          "sha256": "cce3095ed44e2e09c657420b23b6d91071ce9c720e9b33f465905660cfbeaea9"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/utrace.cpp",
+          "sha256": "3ddc95e35d8386aafd1f1ab65e83af44d6e9eb9718394e0bcb4732fdbebd0c56"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/utrie.cpp",
+          "sha256": "c85f23b676c111afd59514e54edcf5aa2ec7c4e01395aed84d6c0bec371f0eee"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/utrie2.cpp",
+          "sha256": "22730e99c5a015c24124c9eb64f2c4a9f874236856f1cb9057a08da95acc8c5a"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/utrie2_builder.cpp",
+          "sha256": "ca768c7e8f750095c4d471fa9489f07d3792c67263d5d8a2e1a4c6ae5c3cf2c8"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/utrie_swap.cpp",
+          "sha256": "4660f04041ce6c209e67c3bf4627558ae4747f6cf926a5b8b14ccc700b3217e3"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uts46.cpp",
+          "sha256": "421f6068f083219eebdd397e1e51b04f547db08857efc918f632f798fcd97b2e"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/utypes.cpp",
+          "sha256": "a6382350918e0291d99c222179d01d40624cd7b1e13a05edc734a66bfb883902"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uvector.cpp",
+          "sha256": "e0dffdf6a5f2b7f9dcb6695fe02075728a850590e10211a20d952813f9d340fd"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uvectr32.cpp",
+          "sha256": "aba8ccfa5307a2be8c5833a3b0e371cd094913421930a043e9ae4d3e600af489"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/uvectr64.cpp",
+          "sha256": "baec56c07968f0a5151106fe184c35db296c701974507744ce8779b2f7e9032d"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/common/wintz.cpp",
+          "sha256": "4ef695a06a3282eb1198c78ec4587d4afa24913a15d12c036368dd796520ab3c"
+        },
+        {
+          "path": "engine/packages/text-render/icu/icu4c/stubdata/stubdata.cpp",
+          "sha256": "f05b416a85dd1627b8fc1a0fc76180f89a7a54e7b7a77781a40423d4b7550780"
+        }
+      ]
+    },
+    {
+      "name": "png",
+      "version": "1.6.58",
+      "build_rule_sha256": "4505419565c5bc553af91162b44716f5b8586fb08b56168245f4571b2f317ac4",
+      "sources": [
+        {
+          "path": "engine/packages/file-processing/libpng/1.6.58/src/png.c",
+          "sha256": "2d0479855aa1bddb5a216b7818dcd2a47ab15ad5f16fea7b6ffae4b61e9fb2ba"
+        },
+        {
+          "path": "engine/packages/file-processing/libpng/1.6.58/src/pngerror.c",
+          "sha256": "f635bf6b9435510350a344354bcfaaa2b6acf35cfb04cf4f3b0bf1fe2662e767"
+        },
+        {
+          "path": "engine/packages/file-processing/libpng/1.6.58/src/pngget.c",
+          "sha256": "53bb17a654b79f8d2475f73674569cfa50423cdb24d2f66979f3af7d0f345a0b"
+        },
+        {
+          "path": "engine/packages/file-processing/libpng/1.6.58/src/pngmem.c",
+          "sha256": "6e0b6fe9fe70f965af4939d5b8b93504c41539444f81c087cd4fbfe1d1219aea"
+        },
+        {
+          "path": "engine/packages/file-processing/libpng/1.6.58/src/pngpread.c",
+          "sha256": "a8ac72c12e9b7633e6c50bea60e8ef0c6f924726b4ab4ff1eccc277248b0eee9"
+        },
+        {
+          "path": "engine/packages/file-processing/libpng/1.6.58/src/pngread.c",
+          "sha256": "e1b563f82ff80a37485d8c0774d62fb69905a42dc3a6a1c8d4bc751e1142e80c"
+        },
+        {
+          "path": "engine/packages/file-processing/libpng/1.6.58/src/pngrio.c",
+          "sha256": "7bb030e88fb5ae1d41a21f8c556d1194e1e44fa9c55c6cb59303f8698105e675"
+        },
+        {
+          "path": "engine/packages/file-processing/libpng/1.6.58/src/pngrtran.c",
+          "sha256": "ac59ce6f7c805ac6ae0248f6779a3abf68ec55014c4940b6d4e729a203ce2206"
+        },
+        {
+          "path": "engine/packages/file-processing/libpng/1.6.58/src/pngrutil.c",
+          "sha256": "a987b8a49f3b8a3ebc3e9edd2ee22ed0aa91d006a39b9fb153caf310ade482da"
+        },
+        {
+          "path": "engine/packages/file-processing/libpng/1.6.58/src/pngset.c",
+          "sha256": "b6a717902f85945c6c8cb28fc8fdac526bc07669294b0c62fdbf1b2e9f5b01a5"
+        },
+        {
+          "path": "engine/packages/file-processing/libpng/1.6.58/src/pngtrans.c",
+          "sha256": "19d03699a01544f76812d6540f42b1457044b8aff6977b252428a55e83313262"
+        },
+        {
+          "path": "engine/packages/file-processing/libpng/1.6.58/src/pngwio.c",
+          "sha256": "0da8c54d35aed2bd3686cee10f52cbdab5172dd0292879d6957d90b0a96ffe31"
+        },
+        {
+          "path": "engine/packages/file-processing/libpng/1.6.58/src/pngwrite.c",
+          "sha256": "4701a84f666d3b188994fdc6f0c596e37a5b4ec1c35f6134bd9f04ed0f0ef2eb"
+        },
+        {
+          "path": "engine/packages/file-processing/libpng/1.6.58/src/pngwtran.c",
+          "sha256": "4616d5085c90a61de886a41ed55eeb27c79103f812651b71e38be4dd0dda34ab"
+        },
+        {
+          "path": "engine/packages/file-processing/libpng/1.6.58/src/pngwutil.c",
+          "sha256": "bb629f3078a03c0e153c5cd0c52aaf1e40e8cdc89dd6acefdfb32d5c6b0a0a00"
+        },
+        {
+          "path": "engine/packages/file-processing/libpng/1.6.58/src/intel/intel_init.c",
+          "sha256": "aa8489d8dea2519d8ff3af6f7113fc76d61c5f80c45b4b77cdbee7425aa88117"
+        },
+        {
+          "path": "engine/packages/file-processing/libpng/1.6.58/src/intel/filter_sse2_intrinsics.c",
+          "sha256": "8b3b4990afe18a798ddbc28ac40df210d18794372378c92628f544b7bb4c4ea3"
+        }
+      ]
+    },
+    {
+      "name": "zlib",
+      "version": "1.3.2",
+      "build_rule_sha256": "8a7b20e7d83335e78d22c735b36deeecb894fd265aebd0712983c11839170a58",
+      "sources": [
+        {
+          "path": "engine/packages/runtime-libraries/zlib/1.3.2/src/adler32.c",
+          "sha256": "1e14078fc631f6b5691b7dc42fde83dc913213ec6ede54cdf68e612d3eaaf385"
+        },
+        {
+          "path": "engine/packages/runtime-libraries/zlib/1.3.2/src/compress.c",
+          "sha256": "181ba042ac0675fdcb18489d46710b2b0d8718c2e351ff3463d7dedf69653918"
+        },
+        {
+          "path": "engine/packages/runtime-libraries/zlib/1.3.2/src/crc32.c",
+          "sha256": "d8c069d1887197d14e5120c1325ced7d831145ef056dfc2ef7ea3344a6480d23"
+        },
+        {
+          "path": "engine/packages/runtime-libraries/zlib/1.3.2/src/deflate.c",
+          "sha256": "57a68b84ca2acbfde772632e5439eaeec17f8ce81925132ebc2813544f91a745"
+        },
+        {
+          "path": "engine/packages/runtime-libraries/zlib/1.3.2/src/gzclose.c",
+          "sha256": "1c766fc1bfc58f18cd3453424d71be1c962ea9b0a05281faa45aec6777daad09"
+        },
+        {
+          "path": "engine/packages/runtime-libraries/zlib/1.3.2/src/gzlib.c",
+          "sha256": "c0566173be6eca6f4ef21390e6b9bfa21192ebd46d7ef9678dc232d73ea1a132"
+        },
+        {
+          "path": "engine/packages/runtime-libraries/zlib/1.3.2/src/gzread.c",
+          "sha256": "3dcf840106be928bd9990c1c94f210a797e22600aa5434ecd8cda9ea058052f7"
+        },
+        {
+          "path": "engine/packages/runtime-libraries/zlib/1.3.2/src/gzwrite.c",
+          "sha256": "7552a6d1c8518ff75a6c98e37d25a32ecb673d354c3f5677119a12c0852f5d2c"
+        },
+        {
+          "path": "engine/packages/runtime-libraries/zlib/1.3.2/src/infback.c",
+          "sha256": "6068ee867e1ed9d31d747b5cbefb22ea12578d5fd5708f59dd9b5cf4f38b4c23"
+        },
+        {
+          "path": "engine/packages/runtime-libraries/zlib/1.3.2/src/inffast.c",
+          "sha256": "09c508af21e4f537de990edcb8609f291de47bb0850d6b3494172cfc7d28cb0a"
+        },
+        {
+          "path": "engine/packages/runtime-libraries/zlib/1.3.2/src/inflate.c",
+          "sha256": "ee560bd794eb89c35100f975337b81129a8c3cd731c6791658bb79d793e0c894"
+        },
+        {
+          "path": "engine/packages/runtime-libraries/zlib/1.3.2/src/inftrees.c",
+          "sha256": "bcd5a429031f3218ad3236153f86893b60ff70b69fa19113a7d8decb00afd7f8"
+        },
+        {
+          "path": "engine/packages/runtime-libraries/zlib/1.3.2/src/trees.c",
+          "sha256": "0ef48ff27317c9d6b95d1b208974a5c59160ce3e5bfff89b3b65c98b8403ca1c"
+        },
+        {
+          "path": "engine/packages/runtime-libraries/zlib/1.3.2/src/uncompr.c",
+          "sha256": "e25b8656e95fb94961f14a5f0fc45669f35f024c2437ba23f12bde0aef50ddbd"
+        },
+        {
+          "path": "engine/packages/runtime-libraries/zlib/1.3.2/src/zutil.c",
+          "sha256": "ab83ecebd49525f8a15aa751d058d57dcad7f101682e69b233a62afeefc35c5b"
+        }
+      ]
+    },
+    {
+      "name": "tess",
+      "version": "1.0.3",
+      "build_rule_sha256": "8b85f4c367c60afa042f05d9380c7288b850826995af36840342ee8e9cb40540",
+      "sources": [
+        {
+          "path": "engine/packages/runtime-libraries/libtess2/1.0.3/Source/bucketalloc.c",
+          "sha256": "5ca9516c4b41033dab2ebfd4e3c6f7aaf9d73bc9003744134726a96e868c7517"
+        },
+        {
+          "path": "engine/packages/runtime-libraries/libtess2/1.0.3/Source/dict.c",
+          "sha256": "acdb778aacba1bcdfa52ec42cdbe0d5629e1bb4008f3536337ad968bb0de8aae"
+        },
+        {
+          "path": "engine/packages/runtime-libraries/libtess2/1.0.3/Source/geom.c",
+          "sha256": "748ce1ac64a5a426d8daeb3e7f91cbb34a5c28b36733f48d71a5885333782452"
+        },
+        {
+          "path": "engine/packages/runtime-libraries/libtess2/1.0.3/Source/mesh.c",
+          "sha256": "c95cb6f688592d87d3434867936391923d121cfef8c32b372d94effd0e12b091"
+        },
+        {
+          "path": "engine/packages/runtime-libraries/libtess2/1.0.3/Source/priorityq.c",
+          "sha256": "17d3710d850de3ee73eaad50c07fce529130ffdf6969ac60e2f2f95d5e250e6c"
+        },
+        {
+          "path": "engine/packages/runtime-libraries/libtess2/1.0.3/Source/sweep.c",
+          "sha256": "34f7f011a6836faccd2c31d0118dedac312255c2b24b160d15c7b79e613b3308"
+        },
+        {
+          "path": "engine/packages/runtime-libraries/libtess2/1.0.3/Source/tess.c",
+          "sha256": "0d6e7e04493f0691dbf8183372487d69cf9f73a71cc243175e53084fc32180b7"
+        }
+      ]
+    }
+  ]
+}

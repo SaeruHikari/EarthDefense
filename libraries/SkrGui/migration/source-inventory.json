@@ -1,0 +1,2190 @@
+{
+  "source_root": "D:\\Code\\ExtremeEngine-CppSLJIT",
+  "commit": "611561f81534354c8c1618dc27c4782cd9277cbf",
+  "files": [
+    {
+      "path": "engine/modules/gui/core/bench/build.cs",
+      "sha256": "7ba9698e978e73374785bcf9fe8a5e9f8a82771aecfeb5b86acfa02fad8d628c",
+      "bytes": 519,
+      "lines": 16
+    },
+    {
+      "path": "engine/modules/gui/core/bench/text_service/text_service_bench.cpp",
+      "sha256": "c143973bfc51e96125673c47f6dc4354a672b67c36d248ca0313a062d2e0d668",
+      "bytes": 78993,
+      "lines": 2263
+    },
+    {
+      "path": "engine/modules/gui/core/build.cs",
+      "sha256": "a028d40fea3440c8c279281ad0fe3a3773b6e96a5c2bd8cbedd4a579f86039a5",
+      "bytes": 1406,
+      "lines": 34
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/basic_types.hpp",
+      "sha256": "636cfc552815877d773353c0faac34c4bfd4cd3a850005af85d5fdf628292f4d",
+      "bytes": 746,
+      "lines": 52
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/batch/batch_cmd.hpp",
+      "sha256": "7565a9a9e7572f1106b8383b40de627e455d702a92f2b4a132f64c33e224b5f9",
+      "bytes": 4260,
+      "lines": 162
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/batch/color_gradient.hpp",
+      "sha256": "1b5ff350edabb638f171b27bbc674b11422bb31be918ab40c76f55ea6b2712f9",
+      "bytes": 21207,
+      "lines": 829
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/batch/mesh.hpp",
+      "sha256": "5276210cf4ebb2744819083ea0288b340818b0f6f7c49409d5c2dd2e02c03965",
+      "bytes": 17007,
+      "lines": 600
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/batch/paint_context.hpp",
+      "sha256": "42a87a9dd912c8da6b4e1f406d9e38c4be16d403e19e34fba73d31e3be91c3f7",
+      "bytes": 6827,
+      "lines": 238
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/build_context.hpp",
+      "sha256": "8c0e28d4c5e3b7a22d1709b9c1c628025c27872b01d815632bd39d0876c6ef6e",
+      "bytes": 794,
+      "lines": 43
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/build_owner.hpp",
+      "sha256": "ecf290a9a4d5db49f1047cdcf2c0072b20ce73e1f506641e7a694cab1cc3ab7c",
+      "bytes": 6633,
+      "lines": 237
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/key.hpp",
+      "sha256": "72173f598e94a887af15a3b128a9e6673c4a7042b22873c5218fc0c12a5fa0fd",
+      "bytes": 9806,
+      "lines": 456
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus.hpp",
+      "sha256": "64dd7a70afc7cb629cbc15d5b696c9e20a5891182ac92489b6a23277d0bcf09c",
+      "bytes": 5925,
+      "lines": 220
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus_component.hpp",
+      "sha256": "18e04fe2c0ef0d96bf6b3b37eea084acf2183441e7a6beb82be41ed5b5e519b4",
+      "bytes": 1462,
+      "lines": 61
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus_slot.hpp",
+      "sha256": "1f548455fbf73945657205d22a66dfd0f13f9d4b17f64f76100906c401d5704f",
+      "bytes": 2452,
+      "lines": 94
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus_visual.hpp",
+      "sha256": "d17883eaa75b0b380400a53c111eeaa504fd5461a191856146ba29450aea7e1e",
+      "bytes": 1988,
+      "lines": 83
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus_visual_leaf.hpp",
+      "sha256": "82791780d8a1a390dfae7d391f1219249fe63a9e75022c10835fc31751fab1e2",
+      "bytes": 1435,
+      "lines": 60
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus_visual_multi_child.hpp",
+      "sha256": "77e94eb8efd0257496d63e4d110c7b8b38f7094c132d816966b388d4ba13e233",
+      "bytes": 1910,
+      "lines": 75
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus_visual_single_child.hpp",
+      "sha256": "31de1be5f677521074675e43b4d45479d4d42c8f2a4aa0b27de136d6bdd71133",
+      "bytes": 1863,
+      "lines": 74
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus_visual_slot.hpp",
+      "sha256": "87ea28e852da70a35643cc65a3d9b3adae65ae38e1adbf1b19dd7134727a0ef8",
+      "bytes": 1654,
+      "lines": 68
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/reactive/reactive.hpp",
+      "sha256": "cdafc725c593450a9bc5a633029bc416b941e7294f9c536c2a1a451d3379bb1a",
+      "bytes": 820,
+      "lines": 34
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/state.hpp",
+      "sha256": "ee6b6668ab6445fd3d94a51e079f6187e39eba0d514b991e1fe279c6e75f1565",
+      "bytes": 1084,
+      "lines": 51
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/component_widget.hpp",
+      "sha256": "36cb00c2c93ec603d124fd123faf9554ce343d60ae074b76afa8e883f9624997",
+      "bytes": 1047,
+      "lines": 41
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/visual_slot_widget.hpp",
+      "sha256": "3d5680684dd75396c0f06b8f5f4d856682fc5db7181e5dba42376ac2bd17a019",
+      "bytes": 773,
+      "lines": 32
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/visual_widget.hpp",
+      "sha256": "3df54a8d6a8dc1ed8f0c1797498f7dbd1dc666f9ae5798ec0464ce006a32f0ff",
+      "bytes": 826,
+      "lines": 32
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/visual_widget_leaf.hpp",
+      "sha256": "29b73616febd797245212cd28c3f67e6b01d871cbe6c71edf090ac37881f63fe",
+      "bytes": 431,
+      "lines": 16
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/visual_widget_multi_child.hpp",
+      "sha256": "708051d14ee4b1a95bcaa2a99c90c8670bc629631e4269b9d5378b53829c27c5",
+      "bytes": 545,
+      "lines": 20
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/visual_widget_single_child.hpp",
+      "sha256": "03d1c03289b965da2ab6e4e2aad18876a13fb51c4b3792577905c113507570d7",
+      "bytes": 502,
+      "lines": 19
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/widget.hpp",
+      "sha256": "d1f250889ea844b9cb152a090c3caf7dc13349640060dee7036badfccb85d102",
+      "bytes": 1501,
+      "lines": 48
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/widget_dsl.hpp",
+      "sha256": "2cc1a08a3846cf3cfc90e039831dfbbf9c85eaced763e1c50ec0f565d640ad52",
+      "bytes": 1453,
+      "lines": 55
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math.hpp",
+      "sha256": "f13ebead7cf9756bb3ef38f74843607477b3e0ebf2aae741056a4b7f0161f071",
+      "bytes": 888,
+      "lines": 28
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/fwd.hpp",
+      "sha256": "609824ed350510cadd1b1a6fd4277ad15dd316087c3ccf14b292e86df03fc0d1",
+      "bytes": 1201,
+      "lines": 54
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/geometry/offset.hpp",
+      "sha256": "78b9ddf80b7a7578c5389d201f82a38771039196f6dbb76d66b809287bfef2dd",
+      "bytes": 15016,
+      "lines": 451
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/geometry/radius.hpp",
+      "sha256": "16be7776c0b38e29e498afcf7eba0dddef9698688bdb3fdaf0562d5dfde4d871",
+      "bytes": 4049,
+      "lines": 165
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/geometry/rect.hpp",
+      "sha256": "d1fd74db6ecb2dbd71eae8d03c7595355d8addc1ffb9ed813baed43d493b3538",
+      "bytes": 15465,
+      "lines": 349
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/geometry/rrect.hpp",
+      "sha256": "e5127682a8d7873d7b0a95c1ac2781756ba57cd812dd0dfdf34065e677bc3ded",
+      "bytes": 11422,
+      "lines": 390
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/geometry/size.hpp",
+      "sha256": "7577e18ada8f83c50ac29d5b525ac69b897f4b36905bc03b77d0aa1eb2d16f58",
+      "bytes": 20354,
+      "lines": 427
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/layout/alignment.hpp",
+      "sha256": "b08379e290c55f008ed65e05be570e178d488329652b2ad8c0e54d6a093cfd30",
+      "bytes": 32376,
+      "lines": 668
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/layout/box_constraint.hpp",
+      "sha256": "6c3c329f93e61ee99cf4c8ca5951cc2457ea8c7a76c80fbcffe69ede252ba062",
+      "bytes": 15193,
+      "lines": 433
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/layout/box_fit.hpp",
+      "sha256": "35e326d9c3d3f3a8b00fb0ba3db3c12ed8c22a6bcd9c4cce7ef3cd051b66ef00",
+      "bytes": 4281,
+      "lines": 136
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/layout/edge_insets.hpp",
+      "sha256": "b613b3142dabee5d043c3964527a804fab228b7a60380b00ed7d0c03d1dfe40c",
+      "bytes": 35033,
+      "lines": 1034
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/layout/placement.hpp",
+      "sha256": "f0ac1569e61799872e518d168517f80a2a9deb03040337b2a1e78fbc0552b522",
+      "bytes": 43616,
+      "lines": 1256
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/m3/color_scheme.hpp",
+      "sha256": "7db90374028abb3115a136159b754c47818023fcb5ac1cabb5c9c8050645211d",
+      "bytes": 3696,
+      "lines": 121
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/m3/tonal_palette.hpp",
+      "sha256": "83ba33fb90c1b7e7bb9976cd466e87efcd66557bc51e54001f5ea092f9fc22a0",
+      "bytes": 1300,
+      "lines": 39
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/shape/arc.hpp",
+      "sha256": "9a339f71173e2e4349dd35f3304d132ba6e9b8c34db4ff19dcdb32749de095b4",
+      "bytes": 27338,
+      "lines": 989
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/shape/circle.hpp",
+      "sha256": "e04692a665614df60d772b282aeacb04727df6001f906af06944255e31273da9",
+      "bytes": 18689,
+      "lines": 684
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/shape/cubic_bezier.hpp",
+      "sha256": "c6b7298ddadee92874d43534ed75ef20d6c390efe562069356b5a01c9e480d5d",
+      "bytes": 22890,
+      "lines": 807
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/shape/ellipse.hpp",
+      "sha256": "1f0fd517aca938bb40dcf7d3babbe3a7c675ebadb9b4b68515666bb434cefe1a",
+      "bytes": 39374,
+      "lines": 1250
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/shape/elliptical_arc.hpp",
+      "sha256": "489667f8ec4ecee57e33218277c4a8e110c81cd481ccebb0cbe2341faf5167cc",
+      "bytes": 36911,
+      "lines": 1245
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/shape/quad_bezier.hpp",
+      "sha256": "8e1b7db751d5b4049b5759f1dfcb95beba61415175822efe3923fe544829cbef",
+      "bytes": 19596,
+      "lines": 696
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/shape/shape_sample.hpp",
+      "sha256": "9bf36016c180ff174336c7c9de3eb19720d2ac947383839525dc60f16157553a",
+      "bytes": 40601,
+      "lines": 1488
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/shape/shape_sampler.hpp",
+      "sha256": "5e0435f9818fb02dfca47ba63430fc13c8d268820106936333576d685220e53a",
+      "bytes": 9127,
+      "lines": 368
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/shape/superellipse.hpp",
+      "sha256": "f462e2d43aa633c9c8f107234648da3efd29e69141c7708a5691ba7357d71afd",
+      "bytes": 65029,
+      "lines": 2096
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/shape/superellipse_arc.hpp",
+      "sha256": "2f1da0e3f4414c7f4cf993be679337b19b8f76b29e1348d64f4f9355811acc1b",
+      "bytes": 48195,
+      "lines": 1568
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/math/transform/paint_transform.hpp",
+      "sha256": "bd4b30bedb2534d2e87e2254be11537fb71ca1f381d6777c08967fea9cd08e79",
+      "bytes": 19194,
+      "lines": 586
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/text/files_font_provider.hpp",
+      "sha256": "e68304520006ef956418446a3843c6d0555d28e26f02d82dbf0b159fa0a05a82",
+      "bytes": 3128,
+      "lines": 93
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/text/font_face.hpp",
+      "sha256": "c95fdde1fa263c1db0aac6f42b4a912ea3ecbf17027e93cf3de329b2c539b29d",
+      "bytes": 10719,
+      "lines": 230
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/text/font_provider.hpp",
+      "sha256": "73bc86619e63efc480b76390d7825ae35e7009f5d89b55f020b13dbae99eabdb",
+      "bytes": 4788,
+      "lines": 133
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/text/font_utils.hpp",
+      "sha256": "8dfb8254a8cda480c715ef7f041b17d657c0de75d87509a1184b55d24549c13a",
+      "bytes": 1431,
+      "lines": 59
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/text/text_line.hpp",
+      "sha256": "9828827247d766e87be6fe3d66b57faf17df82560dbee3862f8ba42d14f2dbc2",
+      "bytes": 12497,
+      "lines": 254
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/text/text_paragraph.hpp",
+      "sha256": "160492c855d13da51c19319905f311a20c643552224dd64a85cf7df4ea102feb",
+      "bytes": 15298,
+      "lines": 311
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/text/text_services.hpp",
+      "sha256": "05e629079d9a526a8bf9b0b3e8efe4100d8ad8da18e143a41c7493f3b16c0197",
+      "bytes": 10879,
+      "lines": 222
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/text/text_types.hpp",
+      "sha256": "1019e086c61feb003cac4e40df8d848b3bc07acb10f3258c7b31ab497cf2321e",
+      "bytes": 34829,
+      "lines": 996
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/vg/vg_basic_primitive.hpp",
+      "sha256": "ea822cd67600a97f38fb9372f6b0f8dd1934ab879c1f7b687bf1298d213e52ba",
+      "bytes": 4346,
+      "lines": 151
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/vg/vg_mesh_utils.hpp",
+      "sha256": "6792e7414b8d30b82a521fba2b1367f6e5a573d5fa331e392b9ae2c8c7cda0a1",
+      "bytes": 10840,
+      "lines": 338
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/vg/vg_path.hpp",
+      "sha256": "d75f75b371f8ae4db35ad271faef9dfe03f7c496dcda6305320248ed6322bb71",
+      "bytes": 10297,
+      "lines": 325
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/vg/vg_path_flatten.hpp",
+      "sha256": "f6d8bbc114155fa67c4cbe32fc7c14d20e64e806018472010948807914c02f1d",
+      "bytes": 12925,
+      "lines": 339
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/vg/vg_utils.hpp",
+      "sha256": "50770019b0255a67a4c3e6d31fa988adcec40f1fb487fd5ed261a05cc35ab42f",
+      "bytes": 4203,
+      "lines": 141
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/backend/render_target.hpp",
+      "sha256": "aed0a5ba3cbdfdf64fbe9198a1bf5c0c708b6bc44ad384e3b188fde7b522be0a",
+      "bytes": 436,
+      "lines": 20
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/backend/shader.hpp",
+      "sha256": "ac9b8217bdaa6dcaf73af00f8ff87a5e461289b254c8437dbef85b94225bb3fe",
+      "bytes": 401,
+      "lines": 16
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/backend/texture.hpp",
+      "sha256": "dbd259f48602be459b99de29ce02ee7a52c2ec9d0dd48e60ff5eaaea8f18e1fe",
+      "bytes": 443,
+      "lines": 18
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/backend/visual_backend.hpp",
+      "sha256": "6974efaaeb7463c84ee18c0e000588d8ec730a293a7246b18f75241a8d6fbfe2",
+      "bytes": 3252,
+      "lines": 127
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/backend/visual_owner.hpp",
+      "sha256": "ca4e86f483033dbc290cab5d7688860aa09535f91e581a23996898b2d0c5380e",
+      "bytes": 2723,
+      "lines": 98
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/fwd.hpp",
+      "sha256": "46052e583295bf8239fe2ec6b1d1e0212521960f1e1150e788a141fac80d6c42",
+      "bytes": 1250,
+      "lines": 60
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/multi_child/visual_flex.hpp",
+      "sha256": "245bb1a9fe27710671f0a725d97b9c354f1f24fa1cc1fe030173fdc7469cb894",
+      "bytes": 10057,
+      "lines": 379
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/multi_child/visual_grid.hpp",
+      "sha256": "92e529d00164619b2d999acebbaf64fd8bb97097772d082ae1f9a62dece7efb0",
+      "bytes": 16402,
+      "lines": 590
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/multi_child/visual_placement.hpp",
+      "sha256": "df0caa2c8c297c81d319229d2efbaaad169f3cf3a01f66c43fbbd00f2b5b1109",
+      "bytes": 14967,
+      "lines": 498
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/multi_child/visual_stack.hpp",
+      "sha256": "064ddde99b053255fde4a2b1b392267db4e22201e3bfb8cc76adb4b61b0e399c",
+      "bytes": 13017,
+      "lines": 496
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/multi_child/visual_wrap.hpp",
+      "sha256": "94a360c0d532ba21892806ae854168538172fe1a8d5cf449f4851d330aefade3",
+      "bytes": 8079,
+      "lines": 301
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_aspect_ratio.hpp",
+      "sha256": "90e175a748297c2c1104896ac0a5bdd31a8e46af1ae0f06dfaaacdb268daa310",
+      "bytes": 2191,
+      "lines": 77
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_clip_rect.hpp",
+      "sha256": "426762f590b4b64f7eaa79cf0327c322b9126219bd7c0e072e884153c27ce5d2",
+      "bytes": 2033,
+      "lines": 80
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_constrained.hpp",
+      "sha256": "e6906a0d02546a1d1a9e2a9b0ef7373e891ae3f6bcf34c6f44de978fb081c55d",
+      "bytes": 6313,
+      "lines": 189
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_fitted.hpp",
+      "sha256": "f921b83819a15e8674d07a3f5870fa33404ee16e8a6a7a6d959287ccd7d3aa3e",
+      "bytes": 3387,
+      "lines": 133
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_intrinsic_height.hpp",
+      "sha256": "a7d2be0e98d5d4052f157c808445599d0a33a47dc64df642115ed1f4eea8c811",
+      "bytes": 1168,
+      "lines": 37
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_intrinsic_width.hpp",
+      "sha256": "afc5e96fcaec9d55fdeb425dd18a53e03b1b1baca4420c8c5a6942cbd17231b7",
+      "bytes": 2793,
+      "lines": 98
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_limited.hpp",
+      "sha256": "04af771c0f8f0b9198e2dee1cfa52c672b2433dbe22c8cfdc8ce0633d21671bf",
+      "bytes": 2354,
+      "lines": 89
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_opacity.hpp",
+      "sha256": "32fc2eb44c69b86735073d72d8962abda6ca23a56885023d1ce134f6984b397d",
+      "bytes": 2092,
+      "lines": 86
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_proxy.hpp",
+      "sha256": "db60b9ad2f4b4b3c13d8f6b8d87e71bf0bf31d1c4ffa6e5e39794637e3fd6661",
+      "bytes": 1418,
+      "lines": 42
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_transform.hpp",
+      "sha256": "77caa4f223cc761ebe3787cddcf23852a11fcf59895a8b98b53daaeb31696817",
+      "bytes": 2713,
+      "lines": 99
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_visibility.hpp",
+      "sha256": "b6804edd80e7dfdbeb80e863e492eb0f3f2a1a8ddff372305ae429de286b5e2a",
+      "bytes": 3202,
+      "lines": 115
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/shifted/visual_aligning_shifted.hpp",
+      "sha256": "498dd91ad95488e198602f3e972c288c1f8ab18f8dde965d8e2aca3e6999198f",
+      "bytes": 1875,
+      "lines": 74
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/shifted/visual_border.hpp",
+      "sha256": "6476659f6ff54ed30dc320f734803b2fda41bf72b7a5175a38ff7d1a7516d69c",
+      "bytes": 6970,
+      "lines": 247
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/shifted/visual_padding.hpp",
+      "sha256": "669a81e8e7cc21213c77cac567db6ed4293ff8fec85157c512b70b5446415942",
+      "bytes": 2359,
+      "lines": 87
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/shifted/visual_positioned.hpp",
+      "sha256": "389ed441223776b7dbc4a84049e081e9cd93c2dd01d1bbea838fe4a76a692d86",
+      "bytes": 3672,
+      "lines": 118
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/shifted/visual_shifted.hpp",
+      "sha256": "2d06db96625fb52b9e9831dbeaa3b826f5a3a69d61609025489a5c3a77fac21a",
+      "bytes": 1689,
+      "lines": 56
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/visual_hit_test.hpp",
+      "sha256": "05788065cc9e9f4b93e724f7abe7eee60e3f7591fb4a4a5193062b75ea295333",
+      "bytes": 6900,
+      "lines": 230
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/visual_leaf.hpp",
+      "sha256": "01dfa089f671ee148f183333c30c3f0adab50a894a782e7059ac16895e50d2d2",
+      "bytes": 807,
+      "lines": 33
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/visual_multi_child.hpp",
+      "sha256": "cbb95c68022b33c319650c248c82f0afcdcce8ef7e25379091260a75e864edff",
+      "bytes": 2182,
+      "lines": 71
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/visual_node.hpp",
+      "sha256": "138243ac9e77c8db6049a9fc08709fbab8513ee819b39260e158190aca02bd53",
+      "bytes": 8254,
+      "lines": 268
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/visual_single_child.hpp",
+      "sha256": "807363170a086327ad3cd9dd7896bd0550d00f0ba0ef63c76dbf1857f6e4fc9f",
+      "bytes": 1834,
+      "lines": 76
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/visual_slot.hpp",
+      "sha256": "fb3894ab1bb3e7e843bcfbb640f36953e2cbff403d439798b05ae028b3fc56b6",
+      "bytes": 1129,
+      "lines": 40
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/visual_temp_text.hpp",
+      "sha256": "5c351b0121a858b1c418299a77e0d8a7f2c80f92dfe94b1d9ef3fd7aa0fbbf4e",
+      "bytes": 10797,
+      "lines": 359
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/column.hpp",
+      "sha256": "07643a16963426fd037918c60e83610668bc7f1e4c4a141f0a73215caaa8d300",
+      "bytes": 1093,
+      "lines": 29
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/expanded.hpp",
+      "sha256": "54072eb03cdc8d28562690156205c0a4b949c4051e52435e560c49a8ce34a9a6",
+      "bytes": 549,
+      "lines": 21
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/flex.hpp",
+      "sha256": "7b3120b71bf79f0940291da0d18694f0146a502d1dcfbe2f690cf0d9f7e0a951",
+      "bytes": 1129,
+      "lines": 30
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/flex_slot.hpp",
+      "sha256": "4f8198526034ba10921cd32a15e8b4a160af122d5aaef50d2cd6a003a9aa0ccc",
+      "bytes": 587,
+      "lines": 22
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/flexible.hpp",
+      "sha256": "99ebce3e485036cb629319f0c1eb4e4dcd4ed02e8f5c8011f859e663af659647",
+      "bytes": 549,
+      "lines": 21
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/grid.hpp",
+      "sha256": "e2b2a94ba969719456fb7c09cf3c2fe0dfa6663463b36610b19b8a5725fcdb69",
+      "bytes": 1254,
+      "lines": 31
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/grid_slot.hpp",
+      "sha256": "15d803ae29fca59d999da0b127d7b0d5c7fafa751348d977a7c0f20d5506480b",
+      "bytes": 767,
+      "lines": 26
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/indexed_stack.hpp",
+      "sha256": "39bbc433b2c70782266b28c573851781b17ae58e866ae5fd32a6d59c4990c630",
+      "bytes": 905,
+      "lines": 26
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/placement_layout.hpp",
+      "sha256": "f8a8cf0b2f543e675463e23f6af8760f4f41311a8b29f402178b4da1cbe975a9",
+      "bytes": 870,
+      "lines": 24
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/placement_slot.hpp",
+      "sha256": "aacf68478b43c731fac85b0fe4dcaa373bd613c052dfe4a9a190e6fc90889fa9",
+      "bytes": 656,
+      "lines": 22
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/positioned.hpp",
+      "sha256": "f51dbe7e97d0d672e84bfc4723f5091f072355b635e621ef60bfe497d251b8af",
+      "bytes": 730,
+      "lines": 26
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/row.hpp",
+      "sha256": "7f7c6979a9785689b9ff4ad9359a0d990cc9792dc6a46b7aad88063ecde79a7d",
+      "bytes": 1084,
+      "lines": 29
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/stack.hpp",
+      "sha256": "1b6129214eeb0a36193ee743c6eb4c1a8bcbe2e30132d3852242b0df9fcada32",
+      "bytes": 847,
+      "lines": 25
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/wrap.hpp",
+      "sha256": "18d267035fbb347d205cd112a10e10885ee6687afcd08f9edf6f97c3526e0691",
+      "bytes": 1095,
+      "lines": 30
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/aspect_ratio.hpp",
+      "sha256": "817d40f12eecf75c57ebd1441b59d66e28236674c0cc8b0e62ab037ddfef29b9",
+      "bytes": 672,
+      "lines": 22
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/clip_rect.hpp",
+      "sha256": "691dc1cd316d4343874b86476ab4a0156416be133e4771e292c113314ea1ef3c",
+      "bytes": 732,
+      "lines": 23
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/constrained_box.hpp",
+      "sha256": "9f9fbc84565667c82677564d543a473c9e3f2759a5b5c17d42a092833fc911f6",
+      "bytes": 697,
+      "lines": 22
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/fitted_box.hpp",
+      "sha256": "2e01162a1403b97b9bd6ffddcbcffe153a04415ef6bdd649204e86323640d472",
+      "bytes": 832,
+      "lines": 25
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/intrinsic_height.hpp",
+      "sha256": "c14936f5756cc802dfdbabb10fdaceb5f8ce80e0f587e4763e361b1c28bf8abd",
+      "bytes": 632,
+      "lines": 19
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/intrinsic_width.hpp",
+      "sha256": "e8518bf1c8b4f81957e3feee254bcd805ae0bdc272b430026ea167fb41800554",
+      "bytes": 729,
+      "lines": 23
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/limited_box.hpp",
+      "sha256": "e43cc2fe996d3846bc885499ddba80797cc822d86f08668047f2b8bbfa41af37",
+      "bytes": 780,
+      "lines": 25
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/opacity.hpp",
+      "sha256": "b4b8782866c5a9fee652ed52951c11f2f8ee2d1d915f6d2e58fa88b4160d7abf",
+      "bytes": 718,
+      "lines": 23
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/sized_box.hpp",
+      "sha256": "41337b2c29ec7ce2e89a44837f0fa1f4ba45e8791c3ad6248f925ff2b5b98d2a",
+      "bytes": 697,
+      "lines": 23
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/transform.hpp",
+      "sha256": "4ace9eeb6972558205bcca217e6c064811345f0f48b17aced60bb74cdb1ae612",
+      "bytes": 848,
+      "lines": 26
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/visibility.hpp",
+      "sha256": "b063846b62d77fe0905e626c33bda8fb1cf157dc0e802f2e6098ff4a70ef263c",
+      "bytes": 696,
+      "lines": 23
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/shifted/align.hpp",
+      "sha256": "3f99ef331a09b277399ea01b68603bdcf84ce4269b220f1357cd7a60b5a7fb66",
+      "bytes": 815,
+      "lines": 25
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/shifted/border.hpp",
+      "sha256": "ecf860f7de4c4aec7847f04d268c8094e1c83d7605899660143b34e59a3ba432",
+      "bytes": 832,
+      "lines": 25
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/shifted/center.hpp",
+      "sha256": "40b0841456009a2af865dfeb91878cfbd14a2cee8a77cd7095614f821a81dc1e",
+      "bytes": 707,
+      "lines": 23
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/shifted/padding.hpp",
+      "sha256": "28ea9a59d18c00177ade86277987c932cc891dd48cca2050dc62dbc9915d7329",
+      "bytes": 719,
+      "lines": 23
+    },
+    {
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/temp_text.hpp",
+      "sha256": "e9416f7cc016c87d8d0dc2baacdeab4124770a5e999c84db52e4080c91511758",
+      "bytes": 1145,
+      "lines": 34
+    },
+    {
+      "path": "engine/modules/gui/core/src/batch/batch_cmd.cpp",
+      "sha256": "0af7282a075e455a823a6e91f1341519f2407a266ca0e40975b43a0ff516854f",
+      "bytes": 13491,
+      "lines": 378
+    },
+    {
+      "path": "engine/modules/gui/core/src/batch/mesh.cpp",
+      "sha256": "50cfa75b488bfc2c90b598ab2104bf0b60ed7498fa15e0bf9c7a1fee2343d9db",
+      "bytes": 65315,
+      "lines": 1901
+    },
+    {
+      "path": "engine/modules/gui/core/src/batch/paint_context.cpp",
+      "sha256": "6ad722cf75a0a23463ca86b7e5d86af3770e51c93542b5dd2b13c4f22c36a65a",
+      "bytes": 11204,
+      "lines": 398
+    },
+    {
+      "path": "engine/modules/gui/core/src/framework/build_owner.cpp",
+      "sha256": "2b7fabbbefab082f1ef40b02d10b220a969a301ef5007269bc9fef3ce42a47af",
+      "bytes": 19345,
+      "lines": 589
+    },
+    {
+      "path": "engine/modules/gui/core/src/framework/nexus/nexus.cpp",
+      "sha256": "fec17c0477bc2c836809be00f260562e140742eb1d81863c0f9faf353dec18c4",
+      "bytes": 24590,
+      "lines": 800
+    },
+    {
+      "path": "engine/modules/gui/core/src/framework/nexus/nexus_component.cpp",
+      "sha256": "144b2762131af779a1848399a61caa596a0edaeda64b96147cb5077097f100d0",
+      "bytes": 2540,
+      "lines": 96
+    },
+    {
+      "path": "engine/modules/gui/core/src/framework/nexus/nexus_visual.cpp",
+      "sha256": "f8cf87a66ccf1970310800b30c5e0ac678757a288f2a708d43e24e9dd64abe46",
+      "bytes": 3214,
+      "lines": 127
+    },
+    {
+      "path": "engine/modules/gui/core/src/framework/nexus/nexus_visual_leaf.cpp",
+      "sha256": "6bf841de2edebea4aabc0fe19971eacc827e251e7a375b67a6a659e22c177fc6",
+      "bytes": 1270,
+      "lines": 54
+    },
+    {
+      "path": "engine/modules/gui/core/src/framework/nexus/nexus_visual_multi_child.cpp",
+      "sha256": "8635a2f982a71fe3295c18c4f270d19bd7f5a1abab378221aa9cd35893cabf0a",
+      "bytes": 2588,
+      "lines": 101
+    },
+    {
+      "path": "engine/modules/gui/core/src/framework/nexus/nexus_visual_single_child.cpp",
+      "sha256": "f8f6c6921621fcf93af1716f64e3ca7c90bd4a74cd4ab8d617fb362708f3028e",
+      "bytes": 2420,
+      "lines": 97
+    },
+    {
+      "path": "engine/modules/gui/core/src/framework/nexus/nexus_visual_slot.cpp",
+      "sha256": "1029423974c10a30a77494b7df7ebb490fb67a6a27753547e5daa29947138df6",
+      "bytes": 1672,
+      "lines": 67
+    },
+    {
+      "path": "engine/modules/gui/core/src/framework/widget/component_widget.cpp",
+      "sha256": "48492a2cc3f3281ce70379e8e35d558ea55abf3c7bdb71746c33e4284821c722",
+      "bytes": 533,
+      "lines": 27
+    },
+    {
+      "path": "engine/modules/gui/core/src/framework/widget/visual_slot_widget.cpp",
+      "sha256": "816bb98409e03411135d7fab0aade4aed3f24e3f53f16f6f83bd8280ce6f62bb",
+      "bytes": 311,
+      "lines": 12
+    },
+    {
+      "path": "engine/modules/gui/core/src/framework/widget/visual_widget.cpp",
+      "sha256": "9f28db6adbc117f823e9398ba82a5d316635d86bafe1be4fb5ae5ba641f3faed",
+      "bytes": 370,
+      "lines": 19
+    },
+    {
+      "path": "engine/modules/gui/core/src/framework/widget/visual_widget_leaf.cpp",
+      "sha256": "df5c0b62ceb6ced71657ecde1d50303d883fc03ba1b9f0bbda7199261452fd83",
+      "bytes": 311,
+      "lines": 12
+    },
+    {
+      "path": "engine/modules/gui/core/src/framework/widget/visual_widget_multi_child.cpp",
+      "sha256": "21078d8db1b414a15e077a7f9e82c87840dd19b56dcec05367f0d79b51508fb6",
+      "bytes": 343,
+      "lines": 12
+    },
+    {
+      "path": "engine/modules/gui/core/src/framework/widget/visual_widget_single_child.cpp",
+      "sha256": "61785871713b5aa3df73f4a40fdd9dab1f828e0bd5b9074aea9aa7e2db35a8f4",
+      "bytes": 348,
+      "lines": 12
+    },
+    {
+      "path": "engine/modules/gui/core/src/framework/widget/widget.cpp",
+      "sha256": "c365b4e3bea06801ee47eaf116034f73659eb8d39a96c0fd034cd20fdd9568dc",
+      "bytes": 99,
+      "lines": 5
+    },
+    {
+      "path": "engine/modules/gui/core/src/gui_core_module.cpp",
+      "sha256": "e28bd293d2f13ddae233366db9d7d21162be59c956f98082fa252a87e5988eff",
+      "bytes": 276,
+      "lines": 16
+    },
+    {
+      "path": "engine/modules/gui/core/src/math/m3/color_scheme.cpp",
+      "sha256": "942a78175cb792d9af13bf9cbb3a76cd8259fe5386ce9b3de91fc9180b6d8360",
+      "bytes": 36070,
+      "lines": 1075
+    },
+    {
+      "path": "engine/modules/gui/core/src/math/m3/m3_color_private.hpp",
+      "sha256": "85ab60a2087560f9188b1543200b8a11da41bce9fcb7a8280f9718c3d0d885d1",
+      "bytes": 4927,
+      "lines": 146
+    },
+    {
+      "path": "engine/modules/gui/core/src/math/m3/tonal_palette.cpp",
+      "sha256": "53fc276cff7aaf3774a1c6943fd4ef49568d3c9948a7bbf0bcaf4e836d720c9f",
+      "bytes": 5023,
+      "lines": 178
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/font/files_font_provider.cpp",
+      "sha256": "d01d12752837526a7b66790b388cf7b616eadf36623605fd857b4a3c88c92f79",
+      "bytes": 20374,
+      "lines": 636
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/font/font_face.cpp",
+      "sha256": "2269f85e40b91a87720734d7417c3353a6328c83249febddfacca06c6beda9c0",
+      "bytes": 52075,
+      "lines": 1778
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/font/font_provider.cpp",
+      "sha256": "a2d792b9dbf5f64c45a875c2a9018aedf6d40b3228fc21b358601d350e9ac4af",
+      "bytes": 881,
+      "lines": 44
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/font/system_font_provider.hpp",
+      "sha256": "3d84c373750e6bbdc2013b3db17c7556da7942333779c7fccfc01879c2d3d05b",
+      "bytes": 1927,
+      "lines": 69
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/font/system_font_provider_mac.cpp",
+      "sha256": "20cfaff209f5254b14825594e1488c18b97a4f1f6d998e665742f6a027de7bd5",
+      "bytes": 14454,
+      "lines": 478
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/font/system_font_provider_windows.cpp",
+      "sha256": "0b2e576fa2b33cd8f0e2ce02cb893cf0b7591348df6c55474ad67bcb04e52d21",
+      "bytes": 20860,
+      "lines": 744
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/font/text_font_cache.cpp",
+      "sha256": "07a6202e0e03e291698ca55bc015e6383f2879fec9e3b75d385091ddad83bc68",
+      "bytes": 15736,
+      "lines": 559
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/font/text_font_registry.cpp",
+      "sha256": "e15f724c312493a082373ececbcac1e5effd5685bd0f88471f080fb6440902f9",
+      "bytes": 21364,
+      "lines": 715
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/font/text_font_size.cpp",
+      "sha256": "4bab072a401d232f8e48a1771908eed3e8f42c7ce4f46fd43c2ee92a9a9ed2c1",
+      "bytes": 2991,
+      "lines": 115
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/font/text_font_size_private.hpp",
+      "sha256": "4344746d4d9c73f2b45c62a9ac18abeaf9fe7737ce76ba656d35e5c85dfc4a26",
+      "bytes": 480,
+      "lines": 19
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/layout/text_advanced_shaper.cpp",
+      "sha256": "6fb8e066354e5a66083d495035a02ec0c26a9f34670f4f2587d344fdeb8fe646",
+      "bytes": 60769,
+      "lines": 1863
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/layout/text_layout_builder.cpp",
+      "sha256": "379ab3ba7b8e5eb3b43bef0538c6cb6ec2cc9ea82746112f84f57748c37835c7",
+      "bytes": 15873,
+      "lines": 533
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/layout/text_line.cpp",
+      "sha256": "89615ff3e2220be44c28c74ccd23e47eef2e789d4b51452d0401d6cb2db73d81",
+      "bytes": 36625,
+      "lines": 1445
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/layout/text_paragraph.cpp",
+      "sha256": "0b455c8b5bf234162b41a9fbb88a5585ac048252dac04756558897dcb5f9c6ef",
+      "bytes": 52815,
+      "lines": 2056
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/layout/text_shaped_data.cpp",
+      "sha256": "539d07d6fe20e38719eb7ff2148c468d5f489f98f10c12840932013db5253ff4",
+      "bytes": 5710,
+      "lines": 224
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/layout/text_shaped_pipeline.cpp",
+      "sha256": "6de7d4ed7380f46ea73a5446a9c3ef64fee51b98ee726fa42b81eab1977de748",
+      "bytes": 100109,
+      "lines": 2959
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/render/text_atlas_manager.cpp",
+      "sha256": "9a07c2cd7e2f393fcb047f1bf8b0758e5aa2e11d943cf999df551d3b46e290f6",
+      "bytes": 28027,
+      "lines": 861
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/render/text_atlas_private.hpp",
+      "sha256": "ff8c4ea9f436ee4b57ab9f73d67a4829f41b82a583283cd8279c9cfb20831808",
+      "bytes": 7328,
+      "lines": 209
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/render/text_glyph_raster.cpp",
+      "sha256": "8cf1385d05bda8b7d4590444be2628b80f7ff2995bad106f972d2c7a7bfb062c",
+      "bytes": 45907,
+      "lines": 1549
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/render/text_render_service.cpp",
+      "sha256": "d34e30bcd67d0a8503e099cedb5fe3e9440703dc25516738e9dabd381321583a",
+      "bytes": 11967,
+      "lines": 394
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/service/text_services.cpp",
+      "sha256": "71d22d6b6910f49bf10808990fb086ba0facf4ee3c6e2b86f6dc4678bdfe8cc0",
+      "bytes": 7104,
+      "lines": 221
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/service/text_unicode_service.cpp",
+      "sha256": "243e1f6e0d82505924ebae5097ef6e23f6efe70fe01ae515783c0dc362a9d78a",
+      "bytes": 47247,
+      "lines": 1439
+    },
+    {
+      "path": "engine/modules/gui/core/src/text/text_private.hpp",
+      "sha256": "23255eeb43c0eb2f3abf4ba143d492f513559b47cda644e859d9a6cd3c082fe0",
+      "bytes": 64919,
+      "lines": 1727
+    },
+    {
+      "path": "engine/modules/gui/core/src/vg/vg_basic_primitive.cpp",
+      "sha256": "0f746b1a30edda54d84cd4162678bf7b1206212cf7bc2d0666ff23ea26743866",
+      "bytes": 149355,
+      "lines": 4063
+    },
+    {
+      "path": "engine/modules/gui/core/src/vg/vg_path.cpp",
+      "sha256": "5eaad0e74f3c94c768524d1c53ae02924051887f7a84990cc135e34bb66f7b01",
+      "bytes": 22677,
+      "lines": 740
+    },
+    {
+      "path": "engine/modules/gui/core/src/vg/vg_path_flatten.cpp",
+      "sha256": "4354465f53620e2e1b46dc9962504886be7c60274f13d635ab5b2c7168344c70",
+      "bytes": 28187,
+      "lines": 883
+    },
+    {
+      "path": "engine/modules/gui/core/src/vg/vg_path_flatten.dash.cpp",
+      "sha256": "06045bc247d2eebbaf5243f590244840e7a4a5ff23168f8ef06ccbf8bd6054f7",
+      "bytes": 22016,
+      "lines": 750
+    },
+    {
+      "path": "engine/modules/gui/core/src/vg/vg_path_flatten.fill.cpp",
+      "sha256": "b176d7b20d11a723fc320d303f2e2454fe79752f95f17bc2ba2e5e01a6b8e536",
+      "bytes": 39828,
+      "lines": 1277
+    },
+    {
+      "path": "engine/modules/gui/core/src/vg/vg_path_flatten.stroke.cpp",
+      "sha256": "f71a5b1eb6944da9f940b7bb5e7d5e79f2bfb02e9c2f2e921a982c2bbb2a2201",
+      "bytes": 43360,
+      "lines": 1193
+    },
+    {
+      "path": "engine/modules/gui/core/src/vg/vg_path_flatten.stroke_contour.cpp",
+      "sha256": "5cf68066d1c3548132c4dad85299600bee76b8703fc852d4085d7a1df1f176ed",
+      "bytes": 17701,
+      "lines": 548
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/backend/texture.cpp",
+      "sha256": "6b41c9e4949603eb49b94fcea4dcedc7ad32f4423a9f77420f008d32ac37d87e",
+      "bytes": 76,
+      "lines": 5
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/backend/visual_owner.cpp",
+      "sha256": "5ec89e4633344557d418fd81cbdaeff1ba84b7750bf38f80f6712076159ef366",
+      "bytes": 16707,
+      "lines": 524
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/multi_child/visual_flex.cpp",
+      "sha256": "4cc5ed9481dd79eeebacfecb6a5592df2a385766ebcace42a4a4140528bd2bd0",
+      "bytes": 26840,
+      "lines": 837
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/multi_child/visual_grid.cpp",
+      "sha256": "54770ec9adfba7d3863facf0996c9531a8e144e9507f91014d25c0bed8364401",
+      "bytes": 26012,
+      "lines": 801
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/multi_child/visual_placement.cpp",
+      "sha256": "b641130fce3b416c11d9b4deaead2b4b1e6fbdd56763a8e6a5fb0a5bf08040d1",
+      "bytes": 8927,
+      "lines": 280
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/multi_child/visual_stack.cpp",
+      "sha256": "c1e24623c987e737693eb222921b8e3c30bd2b8c3a7fbed2a3761aafc0a6577c",
+      "bytes": 13159,
+      "lines": 446
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/multi_child/visual_wrap.cpp",
+      "sha256": "2189f20f035efb9e9446357dad916a22ee6e0ba810f6e1e1b9807266b0cc9794",
+      "bytes": 21896,
+      "lines": 687
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/proxy/visual_aspect_ratio.cpp",
+      "sha256": "6b1bf0135869e2b0f134785aafb84557333936290fcaeece56243e4f17d13576",
+      "bytes": 3006,
+      "lines": 99
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/proxy/visual_clip_rect.cpp",
+      "sha256": "ef6f798587acc07d420b2412ffe6810f085a5d210ca93417dc921ef243954314",
+      "bytes": 978,
+      "lines": 40
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/proxy/visual_constrained.cpp",
+      "sha256": "3225f970b175abd0cb7063998015bc241bddee004a9408e5e2366707ae65c6b4",
+      "bytes": 3528,
+      "lines": 89
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/proxy/visual_fitted.cpp",
+      "sha256": "c7be957bb8e0ae9b9ed3a4991416c42bbe72da8f270331a21acc03e845ad64a1",
+      "bytes": 5431,
+      "lines": 169
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/proxy/visual_intrinsic_height.cpp",
+      "sha256": "9824f55c103f7d5c3c9b836337a5683fa56048fef12b3ce62a150c1c93a47808",
+      "bytes": 2500,
+      "lines": 80
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/proxy/visual_intrinsic_width.cpp",
+      "sha256": "a6ad9ff4ac77f17be6880406754bc8e517a309d99967c636b81b24c67c845f1b",
+      "bytes": 3279,
+      "lines": 110
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/proxy/visual_limited.cpp",
+      "sha256": "affee75c080e6eeb64ec19ed7fb44ee93f2877771418d4d3413b867fc72325be",
+      "bytes": 1218,
+      "lines": 37
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/proxy/visual_opacity.cpp",
+      "sha256": "6a28a1a8e1a8554c40bf51f05825f856a055d99d8052282829be11fb22a0a19f",
+      "bytes": 716,
+      "lines": 35
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/proxy/visual_proxy.cpp",
+      "sha256": "8088334b97c9cd8b86e0983001850bbf2640613b9bc6d71d7535a5e10a3c1743",
+      "bytes": 2526,
+      "lines": 80
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/proxy/visual_transform.cpp",
+      "sha256": "e600a4b240c0e763364324b1b7d51dfa215bb95c908b1bdbbf4ea67646f92003",
+      "bytes": 2500,
+      "lines": 96
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/proxy/visual_visibility.cpp",
+      "sha256": "457a464e440cd54cb5eeff5b86f82fdd41165122ad0d1ff300dd147c28148866",
+      "bytes": 2535,
+      "lines": 84
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/shifted/visual_aligning_shifted.cpp",
+      "sha256": "3d09854f7616b5ed4f2d7a5ec394f547da28042a48f4ce37e2ed9c8e3a673ac0",
+      "bytes": 599,
+      "lines": 19
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/shifted/visual_border.cpp",
+      "sha256": "bd775bb206fff3884168e567be69ca6eef0e47ee049feba300deb5e07315f526",
+      "bytes": 5591,
+      "lines": 170
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/shifted/visual_padding.cpp",
+      "sha256": "cbf9df10c6acd7a631b8a231fb96d51fb38d4a4ed1eb9daae54f23c8d7fcdc32",
+      "bytes": 2908,
+      "lines": 79
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/shifted/visual_positioned.cpp",
+      "sha256": "25674c8465c64e94629d086d439e60eb068b1c4bea4ac94044ad6f8771b1372d",
+      "bytes": 2770,
+      "lines": 83
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/shifted/visual_shifted.cpp",
+      "sha256": "aec56efcc2f17d38b17318df904341860bd678190d9789bf2975237c35170018",
+      "bytes": 2499,
+      "lines": 73
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/visual_leaf.cpp",
+      "sha256": "945e43621b533d51eab9e4cc5abfaa662d7fb9a6a2e748b1bd36e32c9593a9e0",
+      "bytes": 116,
+      "lines": 6
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/visual_multi_child.cpp",
+      "sha256": "2b63de0bb29bab870b03ff1b5c716ac927baf4b1cf713d27108d3f9ea2bf03b9",
+      "bytes": 6574,
+      "lines": 213
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/visual_node.cpp",
+      "sha256": "f8ffea63089ea1a9cdc921b49abb97760cf6fcad76d9784d6079976cea360aac",
+      "bytes": 8226,
+      "lines": 336
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/visual_single_child.cpp",
+      "sha256": "59493308171bf4f4eb879427ae4a7eec15be95866496d929f9c0242abebd3060",
+      "bytes": 207,
+      "lines": 11
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/visual_slot.cpp",
+      "sha256": "30905d60f32901f843825161100fae912a207f3d20f65fd8928478937c591d03",
+      "bytes": 46,
+      "lines": 1
+    },
+    {
+      "path": "engine/modules/gui/core/src/visual/visual_temp_text.cpp",
+      "sha256": "03eda648616ceeb7125ac94655538138697c19d30e6655d7462aff5578fe19ce",
+      "bytes": 19080,
+      "lines": 637
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/multi_child/column.cpp",
+      "sha256": "fd834a9f86b35d1ed6994656618cdbe4b21e18ef841d65f42b732f4bb756abe1",
+      "bytes": 1376,
+      "lines": 37
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/multi_child/expanded.cpp",
+      "sha256": "bad52165cd62c58450a7830944db9a4c3eb2bfea710d98728d0051f22f2a4027",
+      "bytes": 368,
+      "lines": 13
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/multi_child/flex.cpp",
+      "sha256": "48f32f448e3dda451b867832c5478789031ce3d56fefeb09f5273b0c10836ddd",
+      "bytes": 1354,
+      "lines": 37
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/multi_child/flex_slot.cpp",
+      "sha256": "4d59e2b9a9c981d521d3e7b812e0f249ff3db587a7ab2d91c146b61c5e09ce30",
+      "bytes": 357,
+      "lines": 13
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/multi_child/flexible.cpp",
+      "sha256": "3f180f85d000b692836a591d8504285f6b1c6319c2c2c8c421c060c8072240d5",
+      "bytes": 368,
+      "lines": 13
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/multi_child/grid.cpp",
+      "sha256": "e4772bc40640c7f8464da540895f77e631a236195230d2be12691de55c290f07",
+      "bytes": 1320,
+      "lines": 39
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/multi_child/grid_slot.cpp",
+      "sha256": "b3dc8e3a4161cb87af9bfac12fda8817b7bc81a2e0ac904c4eb7c20db331ef8e",
+      "bytes": 458,
+      "lines": 14
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/multi_child/indexed_stack.cpp",
+      "sha256": "c26ccd6c79fa09e2d2fb0c1529f2997fa6a04ec4e5c83d8f977e1d29353880f7",
+      "bytes": 919,
+      "lines": 29
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/multi_child/placement_layout.cpp",
+      "sha256": "dbe89d8c32bc33ef73d0d284bc213dab1db9145d724a50d4ccd892078b216fb8",
+      "bytes": 801,
+      "lines": 25
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/multi_child/placement_slot.cpp",
+      "sha256": "f3b5d210495a58b0ad95dd3539a68a68cae29c25256fdf1c98891f94eda7bf5e",
+      "bytes": 409,
+      "lines": 13
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/multi_child/positioned.cpp",
+      "sha256": "8cd927954bbe2eea2a628a635c801c0a4843aa51b413044a02e587864f79664a",
+      "bytes": 378,
+      "lines": 12
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/multi_child/row.cpp",
+      "sha256": "e3ef3c1f6d74dd13410c215929570cfb09963474d777bb5df2efdf0966905ea1",
+      "bytes": 1365,
+      "lines": 37
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/multi_child/stack.cpp",
+      "sha256": "74a7fc051306a63a29eb95a2302ef75eba26b9fab5bcc872b3d44637675de674",
+      "bytes": 800,
+      "lines": 27
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/multi_child/wrap.cpp",
+      "sha256": "4a6c4a9bcab3a445aa47ea12a5594527bb3e74fa28d0819aed63e357d7fbdcc2",
+      "bytes": 1302,
+      "lines": 37
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/proxy/aspect_ratio.cpp",
+      "sha256": "025b5c6d4a9811a30bc4faf80d3cb070edbe320758fd11a4a6d5299015bab577",
+      "bytes": 609,
+      "lines": 21
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/proxy/clip_rect.cpp",
+      "sha256": "c882e6008b4864d506d8f75260e1804bb5b8d555b3298860e01d7c269619e6bb",
+      "bytes": 695,
+      "lines": 23
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/proxy/constrained_box.cpp",
+      "sha256": "cfff2281dccdaf986cffacee8a8b06fa7d985bbfc602bf2bc7ab64bc37f3d9ab",
+      "bytes": 664,
+      "lines": 21
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/proxy/fitted_box.cpp",
+      "sha256": "fe2f5b4bf0ed1451a72a812fae546bdd6154fd6ba69b716be1f87d9112112a4f",
+      "bytes": 818,
+      "lines": 27
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/proxy/intrinsic_height.cpp",
+      "sha256": "3f01623d3e6205a562b2845b90d23ef246da04516959d9bf4963b566ef92c944",
+      "bytes": 521,
+      "lines": 20
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/proxy/intrinsic_width.cpp",
+      "sha256": "91afb94867cbc1edd8f0c7d8489adf0a5b1f01593eba37a2334bd411bad6ac34",
+      "bytes": 711,
+      "lines": 23
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/proxy/limited_box.cpp",
+      "sha256": "625c36425157c096157517c971549d17f61b8a7012542fd80b69556ccecd6055",
+      "bytes": 662,
+      "lines": 23
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/proxy/opacity.cpp",
+      "sha256": "4cfb272e4c04612ccd5cf2086bf0ca37a67b54361a88d49010533d65e4d3e895",
+      "bytes": 646,
+      "lines": 23
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/proxy/sized_box.cpp",
+      "sha256": "823cd1690faaf29a810f3706ec94a9f35189cfaa4d743f07fdbc01f923d4386b",
+      "bytes": 582,
+      "lines": 21
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/proxy/transform.cpp",
+      "sha256": "b8a4ac1aa024863fecb56018fa6c2374631ec78db591dc2a4b57ff3f251fd6c4",
+      "bytes": 952,
+      "lines": 29
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/proxy/visibility.cpp",
+      "sha256": "5ca8732f8e2305fe6b202c45367e837eb29939a1ee1cf097ee0934b69db4d6b1",
+      "bytes": 686,
+      "lines": 23
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/shifted/align.cpp",
+      "sha256": "03aaf7a6217200b4c372cf1e49f2d33932feb6ef301c20e0d4b5cf29224bfd28",
+      "bytes": 847,
+      "lines": 27
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/shifted/border.cpp",
+      "sha256": "0d14b3dfb33a5941de937d64b10088edd88ff28b6692aa9e8c2fa6ae2eb96eff",
+      "bytes": 848,
+      "lines": 27
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/shifted/center.cpp",
+      "sha256": "320015819a67a3fe58493e026b98d28681b1becad06ead1066b6724f8630af9d",
+      "bytes": 882,
+      "lines": 27
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/shifted/padding.cpp",
+      "sha256": "914997b9b9328dd426d539dc0032d8e6b47db2be371f5dbefff7ed0dd40b3b0e",
+      "bytes": 656,
+      "lines": 23
+    },
+    {
+      "path": "engine/modules/gui/core/src/widgets/temp_text.cpp",
+      "sha256": "a0a4b0e0ce20784e71a20ef38c0da34c39a528b84ed6fd35c1c1ce45828d880e",
+      "bytes": 1403,
+      "lines": 41
+    },
+    {
+      "path": "engine/modules/gui/core/tests/batch/batch_cmd_tests.cpp",
+      "sha256": "4892878993c742168c0231c81376a6d5586c01bc654c99525bc8dd5ed661be8d",
+      "bytes": 7743,
+      "lines": 239
+    },
+    {
+      "path": "engine/modules/gui/core/tests/batch/color_gradient_tests.cpp",
+      "sha256": "fa43596ac6ff964c82e77c167e7107a7143fee2664af1bf0ba5be192355005a0",
+      "bytes": 8191,
+      "lines": 201
+    },
+    {
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "sha256": "5d31805f6525a5e095f4f37d52db217776ef8c50e7d3ad76c50eaf6142c65d95",
+      "bytes": 48702,
+      "lines": 1391
+    },
+    {
+      "path": "engine/modules/gui/core/tests/batch/paint_context_tests.cpp",
+      "sha256": "3e0249785c0e92c47c5e88679356bdc707d1c3ff9752013de74d2d8c24f36584",
+      "bytes": 12726,
+      "lines": 335
+    },
+    {
+      "path": "engine/modules/gui/core/tests/build.cs",
+      "sha256": "0613a8e79c2298ac904e4eee9ac881a86a0d5820e7c58e52a02b0767ef638a15",
+      "bytes": 596,
+      "lines": 15
+    },
+    {
+      "path": "engine/modules/gui/core/tests/embedded_text_font_provider.hpp",
+      "sha256": "e49d9e417776145336aa196d2d63ffb43e1796c9488feeed0bc884636e6db887",
+      "bytes": 2153,
+      "lines": 82
+    },
+    {
+      "path": "engine/modules/gui/core/tests/framework/widget/component_widget_tests.cpp",
+      "sha256": "1f17d5c7bb5b8a207f914dc7d4a7e1f9127a7b320ef1130d16df06e3fbe4ac24",
+      "bytes": 9950,
+      "lines": 338
+    },
+    {
+      "path": "engine/modules/gui/core/tests/framework/widget/visual_widget_tests.cpp",
+      "sha256": "96d48ae4d7fcf03ad71a8bc4ca2e1f54df96887abb8dbd242eb258c2e5e773d3",
+      "bytes": 12456,
+      "lines": 407
+    },
+    {
+      "path": "engine/modules/gui/core/tests/framework/widget/widget_dsl_tests.cpp",
+      "sha256": "6ce4519e74bd1619e7bfac773f1043e3131d1f028d3fdf38bd7ff4511f990a5b",
+      "bytes": 7350,
+      "lines": 251
+    },
+    {
+      "path": "engine/modules/gui/core/tests/math/geometry_tests.cpp",
+      "sha256": "2bf03bbb008f902eb569e21a240299aa4d2f0b49f19284e614f3b544efca1de5",
+      "bytes": 19721,
+      "lines": 520
+    },
+    {
+      "path": "engine/modules/gui/core/tests/math/layout_tests.cpp",
+      "sha256": "55a089d3a3997bf3f8eeec3b7aa90b3caf1bc60e18d8e1da449bd1f0a952c446",
+      "bytes": 25786,
+      "lines": 543
+    },
+    {
+      "path": "engine/modules/gui/core/tests/math/m3/m3_color_test.cpp",
+      "sha256": "92991581e168e4c9c776fc6371bb450fdd6f0e10565e053dc65ffcd1f4c88299",
+      "bytes": 33832,
+      "lines": 602
+    },
+    {
+      "path": "engine/modules/gui/core/tests/math/paint_transform_tests.cpp",
+      "sha256": "837d3cfdac1b221138099d7c4fadc6f78e2a051efbbfa99b1119b06011c83921",
+      "bytes": 8511,
+      "lines": 216
+    },
+    {
+      "path": "engine/modules/gui/core/tests/math/placement_tests.cpp",
+      "sha256": "08ab9d64fb9f7df9c530a634738845dcfff89b298b49ad74b0066835853e5793",
+      "bytes": 25838,
+      "lines": 928
+    },
+    {
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "sha256": "00dbc2d607b03c501620cef784f05bd0d88b818708595f098291b9b293796da4",
+      "bytes": 114504,
+      "lines": 3381
+    },
+    {
+      "path": "engine/modules/gui/core/tests/test_common.hpp",
+      "sha256": "166b6f1fa1580b9524030b471773770d71284770493d175d07896a57a8d9221b",
+      "bytes": 5167,
+      "lines": 214
+    },
+    {
+      "path": "engine/modules/gui/core/tests/text/LICENSE.embedded-fonts.txt",
+      "sha256": "fda53f04d63d128ba844f5082204ce8dc0c1aa861ee3f0a2912c7c0809806abe",
+      "bytes": 6105,
+      "lines": 120
+    },
+    {
+      "path": "engine/modules/gui/core/tests/text/embedded_text_bitmap_font.cpp",
+      "sha256": "991f5caf9cf4957a25a7a3415131043f39b04c3d13839f1b7fda083e2885d78d",
+      "bytes": 8162,
+      "lines": 245
+    },
+    {
+      "path": "engine/modules/gui/core/tests/text/embedded_text_test_fonts.cpp",
+      "sha256": "e5863127d4027c13afc75c792b77dfc8f1c4b4fb2a33baf695648cd7e88200de",
+      "bytes": 2490872,
+      "lines": 24697
+    },
+    {
+      "path": "engine/modules/gui/core/tests/text/embedded_text_test_fonts.hpp",
+      "sha256": "e59feaa6246c59a4ec1e0a55030befbe48d26ee6a0961034de8bf01b01cea084",
+      "bytes": 1352,
+      "lines": 44
+    },
+    {
+      "path": "engine/modules/gui/core/tests/text/font_provider_tests.cpp",
+      "sha256": "a40bc39ed29d82cda5447df6df368f692c7d37075d3960d396ece43c20b83e42",
+      "bytes": 4133,
+      "lines": 146
+    },
+    {
+      "path": "engine/modules/gui/core/tests/text/text_baseline_advanced_tests.cpp",
+      "sha256": "5382d09f9c6be045c8fc3abb8a0bc99f47e7ce41d5b2dca3cc71577e66cd82e2",
+      "bytes": 12201,
+      "lines": 407
+    },
+    {
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "sha256": "e3dd9703f70efa272dfcbcadf80aaf7e17da0c69c3ecee4e263276160533a54a",
+      "bytes": 39194,
+      "lines": 1134
+    },
+    {
+      "path": "engine/modules/gui/core/tests/text/text_baseline_fixture.hpp",
+      "sha256": "02b5023205b9d3fef528f5f8632171c5d069c21826ea1882f3c4571b4796b8a1",
+      "bytes": 6242,
+      "lines": 260
+    },
+    {
+      "path": "engine/modules/gui/core/tests/text/text_baseline_paint_tests.cpp",
+      "sha256": "93c6c2ccc1a6e234af2cf0af9abcdf4d4e3f7eaef35a67640224e42f8d65f67b",
+      "bytes": 4021,
+      "lines": 136
+    },
+    {
+      "path": "engine/modules/gui/core/tests/text/text_contract_fixture.hpp",
+      "sha256": "1c1349f92e1c9884f9f923c5b727be480d3424e09d6c8f0f1ebee10c0c065615",
+      "bytes": 5315,
+      "lines": 170
+    },
+    {
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "sha256": "130fb18faed48f85b0059f867b3ae020f50912e7182fc1c8dae0dc17dbea8f1c",
+      "bytes": 36757,
+      "lines": 1026
+    },
+    {
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "sha256": "12ad39692c35b65fd8a217925d7b424d5cc33c024008836423ae2a83ced6c201",
+      "bytes": 94749,
+      "lines": 2569
+    },
+    {
+      "path": "engine/modules/gui/core/tests/text/text_no_icu_fixture.hpp",
+      "sha256": "7ddbf1463b0895b50cf7268da245c695693bcde1b9582f01065e0fc1b0e5447a",
+      "bytes": 5925,
+      "lines": 192
+    },
+    {
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "sha256": "3ea904124bb933bcbdf43ba4eb84950c64e05f0613727527ba850839f395d028",
+      "bytes": 82843,
+      "lines": 2395
+    },
+    {
+      "path": "engine/modules/gui/core/tests/text/text_service_contract_tests.cpp",
+      "sha256": "95c057ba83e725dbe4a83913f22873d53c9cf02742b9337a99a21db94004dc60",
+      "bytes": 6824,
+      "lines": 205
+    },
+    {
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "sha256": "0fe0a6fc1c6ad8eaf4cc08045ae297afb5a989dcf76369509d55dd6b63418a1b",
+      "bytes": 54416,
+      "lines": 1487
+    },
+    {
+      "path": "engine/modules/gui/core/tests/text/text_types_tests.cpp",
+      "sha256": "f45e6a4c66b8910b42659cb90129b5802b50264be697a13740fbd6d98fb3ec5f",
+      "bytes": 1111,
+      "lines": 40
+    },
+    {
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_layout_tests.cpp",
+      "sha256": "b933b8e5a9197d9053ed0ba33a40e4fb50fe669453f08419c663ff587c48e3a2",
+      "bytes": 7106,
+      "lines": 217
+    },
+    {
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_service_tests.cpp",
+      "sha256": "40b2e9d6d44b878e777b0822b98327803fd4ba17cb0626ca976e2d4c5e945191",
+      "bytes": 3762,
+      "lines": 103
+    },
+    {
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_unicode_paint_tests.cpp",
+      "sha256": "008d4309ebbdc6aa746d9564a87d681384c6cbe10c0eeb15503dd5ecb187ced2",
+      "bytes": 6247,
+      "lines": 185
+    },
+    {
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "sha256": "5682ca4289cade77aa06b4dad7f8aeec59fa5349a4289a9b7ac6d3b6067b4575",
+      "bytes": 60896,
+      "lines": 1506
+    },
+    {
+      "path": "engine/modules/gui/core/tests/vg/vg_path_command_tests.cpp",
+      "sha256": "52e9ded91a20f13e74d32a45ebfe9e87e633ef23ef5da2eaba95d92b0ffbc721",
+      "bytes": 7455,
+      "lines": 185
+    },
+    {
+      "path": "engine/modules/gui/core/tests/vg/vg_path_dash_tests.cpp",
+      "sha256": "2591934cd952f19281c9f8b92329e7c42690ee52f747b474fb72b8f39435da5d",
+      "bytes": 7139,
+      "lines": 180
+    },
+    {
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "sha256": "c07bcc20d857024582cdb14ed8a5fd11caca691bd06972cd6b1c7666905da7cd",
+      "bytes": 27697,
+      "lines": 745
+    },
+    {
+      "path": "engine/modules/gui/core/tests/vg/vg_path_flatten_tests.cpp",
+      "sha256": "42db2f4c9d5fddd34428a7db268f08596a3e04eb93a16a0ed03ae2e5810ea432",
+      "bytes": 15187,
+      "lines": 368
+    },
+    {
+      "path": "engine/modules/gui/core/tests/vg/vg_path_shape_tests.cpp",
+      "sha256": "4e7ddfb338388d57a4d7534bd14ed7a4fad29a8254cda5743a7febce4eac93d7",
+      "bytes": 7527,
+      "lines": 158
+    },
+    {
+      "path": "engine/modules/gui/core/tests/vg/vg_path_stroke_nanovg_coverage_tests.cpp",
+      "sha256": "741916acf157a37f259a71999dcac87a4d68d21d0bf8b52813513708d45981dd",
+      "bytes": 22884,
+      "lines": 678
+    },
+    {
+      "path": "engine/modules/gui/core/tests/vg/vg_path_stroke_tests.cpp",
+      "sha256": "a62390519ce6246fcb86c01079dcea2905b248886eb7334d82addf6e664d5928",
+      "bytes": 20444,
+      "lines": 516
+    },
+    {
+      "path": "engine/modules/gui/core/tests/vg/vg_test_helpers.hpp",
+      "sha256": "3b3a41214baa22c1a156a1b0457f85fe1f448b0e9a38b22ebf1cf011b17d4a0d",
+      "bytes": 11322,
+      "lines": 392
+    },
+    {
+      "path": "engine/modules/gui/core/tests/visual/layout_scheduling_tests.cpp",
+      "sha256": "94c7b8398ffa6b9a909f29e79df975e14ab790e0b3345d7659bd8a8d82833685",
+      "bytes": 11443,
+      "lines": 318
+    },
+    {
+      "path": "engine/modules/gui/core/tests/visual/multi_child/visual_grid_tests.cpp",
+      "sha256": "4823d8875a36041e2f7ac4ffe086710b73cd3dae2f64ab4a16c1031f589c0c23",
+      "bytes": 7843,
+      "lines": 226
+    },
+    {
+      "path": "engine/modules/gui/core/tests/visual/multi_child/visual_placement_tests.cpp",
+      "sha256": "d851b4fbeb2594054674b5e0d37ed51ad68ba40b5a2ce4e0f2482b0807b7640f",
+      "bytes": 9371,
+      "lines": 248
+    },
+    {
+      "path": "engine/modules/gui/core/tests/visual/proxy/visual_opacity_tests.cpp",
+      "sha256": "e9f89a6086a011f6bc399c7a8217d1db273324a5a70aa4fbc8c1bcb0d69647bb",
+      "bytes": 1730,
+      "lines": 62
+    },
+    {
+      "path": "engine/modules/gui/core/tests/visual/shifted/visual_border_tests.cpp",
+      "sha256": "e27ae8190d70c097ed7c563627eadce6bc07cfc174c35cb413b63dfead60d5ec",
+      "bytes": 5999,
+      "lines": 170
+    },
+    {
+      "path": "engine/modules/gui/core/tests/visual/visual_child_management_tests.cpp",
+      "sha256": "d921f9fffda0bc40a2a24c29ec632c4000351de0da9168b67e6cb2f55dc6655d",
+      "bytes": 25132,
+      "lines": 664
+    },
+    {
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "sha256": "f198d1ca9d78d38a25016e313908e7d2b2491581c29d2228b46e5cdaf724cb29",
+      "bytes": 73416,
+      "lines": 1695
+    },
+    {
+      "path": "engine/modules/gui/core/tests/visual/visual_owner_tests.cpp",
+      "sha256": "ef7ac26c0d94ba4325c75df113c6bdfd627b2cac564f5104335a3c32f65d25f0",
+      "bytes": 8970,
+      "lines": 261
+    },
+    {
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "sha256": "3683449aa68a685ef45d8789cae9a019ac662e059b9ea63832a555a104a89cfa",
+      "bytes": 18288,
+      "lines": 521
+    },
+    {
+      "path": "engine/modules/gui/core/tests/visual/visual_test_backend.hpp",
+      "sha256": "bc84e107a82e7e4395d72b42bbe521a57baf0e1dfa532c3cfb723808349524b8",
+      "bytes": 5271,
+      "lines": 173
+    },
+    {
+      "path": "engine/modules/gui/core/tests/widgets/widget_surface_tests.cpp",
+      "sha256": "bca2eae5b88c35d6a3cac4783dc7b874f83f78deb09bbdf28b7bdbd6985311ab",
+      "bytes": 75993,
+      "lines": 1972
+    },
+    {
+      "path": "engine/modules/gui/samples/demo/build.cs",
+      "sha256": "5c7ea6d44a480d0722505e4f42b3a79602e9b800d3f22cb179aa286ea8b23d68",
+      "bytes": 361,
+      "lines": 13
+    },
+    {
+      "path": "engine/modules/gui/samples/demo/src/gui_demo_main.cpp",
+      "sha256": "b8dcbb11d658901288728dca6441d6f9e0350694ef7c6c1bf3a0be78863037ee",
+      "bytes": 44535,
+      "lines": 1517
+    },
+    {
+      "path": "engine/modules/gui/samples/draw_gallery/build.cs",
+      "sha256": "fb5201e803acb0125b01c3a0446ab495997b422caf18157c34fb0df5eb0b919f",
+      "bytes": 432,
+      "lines": 14
+    },
+    {
+      "path": "engine/modules/gui/samples/draw_gallery/include/SkrGuiDrawGallery/draw_gallery_arch.hpp",
+      "sha256": "d7c6e44d68c30c851b3128958b8f580a1b04d6e6da8ceff20499b9ea76095a74",
+      "bytes": 15987,
+      "lines": 535
+    },
+    {
+      "path": "engine/modules/gui/samples/draw_gallery/src/draw_gallery_arch.cpp",
+      "sha256": "edd7e744b2a69f510628c9cf2a0a18942f14eb613afe3fc8f9a4604f1f81cd5d",
+      "bytes": 56397,
+      "lines": 1689
+    },
+    {
+      "path": "engine/modules/gui/samples/draw_gallery/src/draw_gallery_cases_arc.cpp",
+      "sha256": "4299d52e897be5a42c512500371da85d98dcc24898c32fd1eb2e01fa8d03eddc",
+      "bytes": 9096,
+      "lines": 266
+    },
+    {
+      "path": "engine/modules/gui/samples/draw_gallery/src/draw_gallery_cases_blur.cpp",
+      "sha256": "903fc4714cf2bc6cdde79b398387d1441b2bd4de7f0a7ad7f3c2e486016d7ae8",
+      "bytes": 20774,
+      "lines": 566
+    },
+    {
+      "path": "engine/modules/gui/samples/draw_gallery/src/draw_gallery_cases_circle.cpp",
+      "sha256": "fc160bf8675560fe0fab065447019c1b01646b4f40d9fbc41320e4c4f19421e2",
+      "bytes": 9151,
+      "lines": 259
+    },
+    {
+      "path": "engine/modules/gui/samples/draw_gallery/src/draw_gallery_cases_ellipse.cpp",
+      "sha256": "6effc18784e08f04427b7f783b7da0b1944057ece218f4c151ac0eebe43b9f6b",
+      "bytes": 8912,
+      "lines": 253
+    },
+    {
+      "path": "engine/modules/gui/samples/draw_gallery/src/draw_gallery_cases_elliptical_arc.cpp",
+      "sha256": "ab4699f24d25a62e965a21d563de74e84af94fae4d84179f41495abab3fe332a",
+      "bytes": 9964,
+      "lines": 276
+    },
+    {
+      "path": "engine/modules/gui/samples/draw_gallery/src/draw_gallery_cases_hct.cpp",
+      "sha256": "de8d38a11f6520185ec77c6a482a76f9c5ce140b45c9770a0dbfc2ab12b7cf0c",
+      "bytes": 16249,
+      "lines": 524
+    },
+    {
+      "path": "engine/modules/gui/samples/draw_gallery/src/draw_gallery_cases_m3.cpp",
+      "sha256": "bd4bd7210f1f35e40b37a9062f8970df57aad2359353919f876a444232014ae0",
+      "bytes": 24397,
+      "lines": 780
+    },
+    {
+      "path": "engine/modules/gui/samples/draw_gallery/src/draw_gallery_cases_ninepatch.cpp",
+      "sha256": "3b5057a0ccdc836a7825a6e25a6da91ac8d3156d00a48a0d6b84340203e2ecaa",
+      "bytes": 6621,
+      "lines": 189
+    },
+    {
+      "path": "engine/modules/gui/samples/draw_gallery/src/draw_gallery_cases_rect.cpp",
+      "sha256": "b77c9bddaede8d7c96daabc14b628783c2eb10d48a5cb1691eace9102e1624b9",
+      "bytes": 13472,
+      "lines": 378
+    },
+    {
+      "path": "engine/modules/gui/samples/draw_gallery/src/draw_gallery_cases_rrect.cpp",
+      "sha256": "48c01dfd990a85ec79fbe6f3d936bc099886cbc711328664a4559934b76543fb",
+      "bytes": 15376,
+      "lines": 432
+    },
+    {
+      "path": "engine/modules/gui/samples/draw_gallery/src/draw_gallery_cases_superellipse.cpp",
+      "sha256": "bd2f75cd9513865d76a785b570ea37943706effa3cbacf95996b39c5f7b88a11",
+      "bytes": 9200,
+      "lines": 256
+    },
+    {
+      "path": "engine/modules/gui/samples/draw_gallery/src/draw_gallery_cases_text.cpp",
+      "sha256": "62e4a2a7b2491fae15afa5949a808df44ec3b4f3d6b6e2e15ec08ee99f0ce38f",
+      "bytes": 134464,
+      "lines": 4345
+    },
+    {
+      "path": "engine/modules/gui/samples/draw_gallery/src/draw_gallery_cases_vg_mesh.cpp",
+      "sha256": "56afd56ca6e0829630733e4a24ce511699e47fe771205e29159d9712b5cf9592",
+      "bytes": 17241,
+      "lines": 527
+    },
+    {
+      "path": "engine/modules/gui/samples/draw_gallery/src/draw_gallery_main.cpp",
+      "sha256": "70f372725362dacbe628f8c4a8381b2dfd87396f0a708d7084ada079355532d7",
+      "bytes": 47630,
+      "lines": 1320
+    },
+    {
+      "path": "engine/modules/gui/samples/gallery_common/build.cs",
+      "sha256": "2cc3c004a32f5b2b3144edd3cd187e4ea6a40d2bada6e992dc0963d93f27a4de",
+      "bytes": 1202,
+      "lines": 26
+    },
+    {
+      "path": "engine/modules/gui/samples/gallery_common/include/SkrGuiGalleryCommon/gallery_framework.hpp",
+      "sha256": "0d420bf2cc977b58864dd18a026160c7b07e68a9ccf331549e2fe1eec36dc405",
+      "bytes": 3199,
+      "lines": 94
+    },
+    {
+      "path": "engine/modules/gui/samples/gallery_common/include/SkrGuiGalleryCommon/gallery_png.hpp",
+      "sha256": "16092febd35a05805ef1e2d35a4b9f7ab9633a9b0ec7d22d0f9d1a90e2d1cf20",
+      "bytes": 419,
+      "lines": 16
+    },
+    {
+      "path": "engine/modules/gui/samples/gallery_common/include/SkrGuiGalleryCommon/gallery_renderer.hpp",
+      "sha256": "f57790baf1a3072d28f94776a9047dca621a6c191733e4ae01a97fb651567c46",
+      "bytes": 3473,
+      "lines": 115
+    },
+    {
+      "path": "engine/modules/gui/samples/gallery_common/include/SkrGuiGalleryCommon/gallery_shared.hpp",
+      "sha256": "28e06c0891fe7f7793ca0ea3fed3ceaf7c32454e51a622c5b8205b4e62a3007f",
+      "bytes": 9075,
+      "lines": 262
+    },
+    {
+      "path": "engine/modules/gui/samples/gallery_common/include/SkrGuiGalleryCommon/gallery_svg.hpp",
+      "sha256": "886c7561e1252061606207e2c9fae325c3fed831d280fae53a97f7346bae0f66",
+      "bytes": 1070,
+      "lines": 42
+    },
+    {
+      "path": "engine/modules/gui/samples/gallery_common/include/SkrGuiGalleryCommon/gallery_window.hpp",
+      "sha256": "6f38209f1970ca8c559d9b260fd0dfe9c9e8053b5643866a335ddeb3cf969ea1",
+      "bytes": 1718,
+      "lines": 49
+    },
+    {
+      "path": "engine/modules/gui/samples/gallery_common/include/SkrGuiGalleryCommon/visual_glass.hpp",
+      "sha256": "dc5be609a64f11b92bd6e75c61b81c3b8d3307f5b16078f8fece48d6b383736f",
+      "bytes": 5528,
+      "lines": 168
+    },
+    {
+      "path": "engine/modules/gui/samples/gallery_common/shaders/gallery_backdrop.cxx",
+      "sha256": "37be9379b085e09f3ed8b6f0871643dbe404861eb4b1a336170f5faedfc99a3d",
+      "bytes": 15722,
+      "lines": 433
+    },
+    {
+      "path": "engine/modules/gui/samples/gallery_common/shaders/gallery_blur.cxx",
+      "sha256": "7ae7ff0b868f7ff42ecdd3daff1506bbfb1f467520e28ef62d02d1dcd797e0bb",
+      "bytes": 2643,
+      "lines": 87
+    },
+    {
+      "path": "engine/modules/gui/samples/gallery_common/shaders/gallery_readback.cxx",
+      "sha256": "99a0ffeffb1aef7dd2b9f72f69294e3021dc9afe5b5bc028fe4d35019c2f2ec6",
+      "bytes": 784,
+      "lines": 32
+    },
+    {
+      "path": "engine/modules/gui/samples/gallery_common/shaders/gallery_renderer.cxx",
+      "sha256": "a0856b379208c0a0d14658cfa69ea045a92a952142949c34a98dd58381396d1c",
+      "bytes": 5159,
+      "lines": 160
+    },
+    {
+      "path": "engine/modules/gui/samples/gallery_common/src/embedded_gallery_font.hpp",
+      "sha256": "19611bbae2bb003cd433065266d6fe871c6da565080d285395dffc20239d0fab",
+      "bytes": 1337870,
+      "lines": 13261
+    },
+    {
+      "path": "engine/modules/gui/samples/gallery_common/src/gallery_framework.cpp",
+      "sha256": "64bb9af02fd7916accfd879e1ad03ee500daab9bfc98b198fc2d61ec991275b1",
+      "bytes": 12102,
+      "lines": 390
+    },
+    {
+      "path": "engine/modules/gui/samples/gallery_common/src/gallery_png.cpp",
+      "sha256": "d4e634bae6d46679d17b91dbcb3b233c6c8c10abb673d52a55778b936264ea12",
+      "bytes": 6134,
+      "lines": 180
+    },
+    {
+      "path": "engine/modules/gui/samples/gallery_common/src/gallery_renderer.cpp",
+      "sha256": "6d095ee617631748805740bd7884f3feab2dad26a1b18f33219809be6c067b34",
+      "bytes": 112726,
+      "lines": 3132
+    },
+    {
+      "path": "engine/modules/gui/samples/gallery_common/src/gallery_shared.cpp",
+      "sha256": "dbceb84b4f1dafafc9dbc9fd7e07acf37062791de81d51dd0d7b94cd507e339b",
+      "bytes": 22816,
+      "lines": 729
+    },
+    {
+      "path": "engine/modules/gui/samples/gallery_common/src/gallery_svg.cpp",
+      "sha256": "0d55fb4625fdf2f4951825860dba9ec5ed2a74e1bc4bbbb1e73f77f0ba8cb757",
+      "bytes": 39935,
+      "lines": 1373
+    },
+    {
+      "path": "engine/modules/gui/samples/gallery_common/src/gallery_window.cpp",
+      "sha256": "49b3dbdc5e5141e4e96ee833a64142d96c8a04f1c5eb4c65cf361a9cb0760dfe",
+      "bytes": 5864,
+      "lines": 209
+    },
+    {
+      "path": "engine/modules/gui/samples/gallery_common/src/visual_glass.cpp",
+      "sha256": "c6df861ea8b90795ab112af5e70ac09a79bb77c8a9e1d66f734ddc7293ce6220",
+      "bytes": 3057,
+      "lines": 75
+    },
+    {
+      "path": "engine/modules/gui/samples/html_report/build.cs",
+      "sha256": "eb03657fbd5714b452d7b11281d004558572b7a5246dc29fad8ba14146d0b069",
+      "bytes": 1043,
+      "lines": 30
+    },
+    {
+      "path": "engine/modules/gui/samples/html_report/common/html_report_common.cpp",
+      "sha256": "6d3f0a363e5386b10711696b4dca73f5ea6de97c40865a5c9d0d06161e8f3841",
+      "bytes": 53912,
+      "lines": 1148
+    },
+    {
+      "path": "engine/modules/gui/samples/html_report/common/html_report_common.hpp",
+      "sha256": "349c0d6fcb8f4525e811de546d313b325ebc4f81f76b8e9a525276043304534b",
+      "bytes": 13793,
+      "lines": 403
+    },
+    {
+      "path": "engine/modules/gui/samples/html_report/reports/basic/basic_primitive_html_report.cpp",
+      "sha256": "45c8eb5763fa072ba688e4a09938ea69bd0807bf91874962da653b26239fd4eb",
+      "bytes": 68953,
+      "lines": 1564
+    },
+    {
+      "path": "engine/modules/gui/samples/html_report/reports/path/fill_html_report.cpp",
+      "sha256": "ea1b38e785eef9da9f8229da84c9ee84e29dbd774ca5a492b7b4001cacd5caee",
+      "bytes": 44531,
+      "lines": 1027
+    },
+    {
+      "path": "engine/modules/gui/samples/html_report/reports/path/simplify_html_report.cpp",
+      "sha256": "5e616bda7e5efe55813b7099c7571667c4ac2f7c3c287f47e1581c9108435f6a",
+      "bytes": 58068,
+      "lines": 1330
+    },
+    {
+      "path": "engine/modules/gui/samples/html_report/reports/path/stroke_html_report.cpp",
+      "sha256": "05071b5b78018a667405947375063c704ea5ceb72d3524860cc48a09a87902d7",
+      "bytes": 124286,
+      "lines": 2872
+    },
+    {
+      "path": "engine/modules/gui/samples/html_report/reports/performance/basic_primitive_perf_main.cpp",
+      "sha256": "29f1631bc4c58b8815f8e53416309f0bd40d1d4e40ee329ab7ff2c6473902c11",
+      "bytes": 71220,
+      "lines": 1839
+    },
+    {
+      "path": "engine/modules/gui/samples/html_report/reports/performance/vg_path_perf_main.cpp",
+      "sha256": "008e674ac0b7f2263fc402d13d9685088f8fbdbe44301ccee05ba7a6fb064eb7",
+      "bytes": 71489,
+      "lines": 1994
+    },
+    {
+      "path": "engine/modules/gui/samples/html_report/reports/research/shape_estimate_report_main.cpp",
+      "sha256": "a8e47bce2ca5cb09338a380e5da4bc4e457a6ceea3622e29099994b56d46f7d4",
+      "bytes": 70429,
+      "lines": 1695
+    },
+    {
+      "path": "engine/modules/gui/samples/html_report/reports/research/superellipse_split_report_main.cpp",
+      "sha256": "463e896b667bcca189560058019e3973e7eea8692228546a805d3f61b4e259e4",
+      "bytes": 37139,
+      "lines": 1074
+    },
+    {
+      "path": "engine/modules/gui/samples/html_report/reports/research/tessellation_perf_main.cpp",
+      "sha256": "26a6dc4237751898768d3bf252c391dcc5ec15c4faead7ade6ee5cd85c0927b7",
+      "bytes": 84176,
+      "lines": 2376
+    },
+    {
+      "path": "engine/modules/gui/samples/html_report/src/html_report_main.cpp",
+      "sha256": "364201dca18b9ccb88188498e212f5f3e112117ee154cef4e8573b37e0d3e1e4",
+      "bytes": 18923,
+      "lines": 506
+    },
+    {
+      "path": "engine/modules/gui/samples/layout_gallery/build.cs",
+      "sha256": "600aa6fdfbcb889e4e93c0d460d1cddc5c541e1d5d996c5ae4034443ae96ba92",
+      "bytes": 436,
+      "lines": 14
+    },
+    {
+      "path": "engine/modules/gui/samples/layout_gallery/include/SkrGuiLayoutGallery/layout_gallery_arch.hpp",
+      "sha256": "bd0734a72e5a5b89081bc446556895bbaeb451c14fb71b4b44fc578eb5e69aeb",
+      "bytes": 3723,
+      "lines": 126
+    },
+    {
+      "path": "engine/modules/gui/samples/layout_gallery/src/layout_gallery_arch.cpp",
+      "sha256": "e052357e8d7544b33f6ae20ca7b0c2d77e01043a48386e644bde157c12ee2c84",
+      "bytes": 14189,
+      "lines": 498
+    },
+    {
+      "path": "engine/modules/gui/samples/layout_gallery/src/layout_gallery_cases.cpp",
+      "sha256": "8a86fd3188816f26d844c9bcbd27e24db483017b0fa7744e1ce00e68c6d4c995",
+      "bytes": 94186,
+      "lines": 1802
+    },
+    {
+      "path": "engine/modules/gui/samples/layout_gallery/src/layout_gallery_main.cpp",
+      "sha256": "858d93b0808267bf196dffd4e3ac62caa6e1c2b93424665c512fb9cd794c9a73",
+      "bytes": 25239,
+      "lines": 741
+    },
+    {
+      "path": "engine/modules/gui/samples/shape_sample_estimator/build.cs",
+      "sha256": "49889ecd11c43e5e615aeb20c0d94d6a39207bc4f6114f0549c33741d29b1316",
+      "bytes": 351,
+      "lines": 13
+    },
+    {
+      "path": "engine/modules/gui/samples/shape_sample_estimator/shape_sample_estimator_main.cpp",
+      "sha256": "380681cb279367b34a0a73728f4520138e3b71c6052933bb8ee1d3046d70a3c7",
+      "bytes": 110537,
+      "lines": 3389
+    },
+    {
+      "path": "engine/modules/gui/samples/vg_stress_gallery/build.cs",
+      "sha256": "0d4b2f9cb68e4e28ba24e88407b854aa35c307d1a91995e6a6e0b62cabc7c4d7",
+      "bytes": 440,
+      "lines": 14
+    },
+    {
+      "path": "engine/modules/gui/samples/vg_stress_gallery/include/SkrGuiVGStress/vg_stress.hpp",
+      "sha256": "d19a205f116a64c9f8b76bfac92730b104b514d362716f29560d918c4fc139d5",
+      "bytes": 3645,
+      "lines": 136
+    },
+    {
+      "path": "engine/modules/gui/samples/vg_stress_gallery/src/vg_stress_artwork.cpp",
+      "sha256": "41d357e10887d4cab7b691bc16ce2179b879441b1fe7a42b98bd79c3f6948251",
+      "bytes": 26166,
+      "lines": 768
+    },
+    {
+      "path": "engine/modules/gui/samples/vg_stress_gallery/src/vg_stress_info_card.cpp",
+      "sha256": "e6a090c3410463fdc02ec2729d6f30aa81bfeeb3566913cc65e4f22cce05fa05",
+      "bytes": 13909,
+      "lines": 446
+    },
+    {
+      "path": "engine/modules/gui/samples/vg_stress_gallery/src/vg_stress_main.cpp",
+      "sha256": "4137ff5ab208c600d77584f536711dee5fed01b0bfcf5b8e4d9a198ab68b55ad",
+      "bytes": 26328,
+      "lines": 810
+    },
+    {
+      "path": "engine/modules/gui/samples/vg_stress_gallery/src/vg_stress_palette.hpp",
+      "sha256": "77de4b5c9d0d9a916d1faaf6bce56edf2d1085af71b6ad7a53ff11d4dea496ba",
+      "bytes": 760,
+      "lines": 15
+    },
+    {
+      "path": "engine/modules/gui/samples/vg_stress_gallery/src/vg_stress_scene.cpp",
+      "sha256": "b62dda90d788e7cb3d672e24b2d2908628755f7f33f8e5803d32a77c5aec7902",
+      "bytes": 31643,
+      "lines": 1008
+    }
+  ]
+}

@@ -1,0 +1,4508 @@
+{
+  "source_commit": "611561f81534354c8c1618dc27c4782cd9277cbf",
+  "owner": "skrgui_rendering",
+  "files": [
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/batch/batch_cmd.hpp",
+      "source_sha256": "7565a9a9e7572f1106b8383b40de627e455d702a92f2b4a132f64c33e224b5f9",
+      "targets": [
+        "libraries/SkrGui.Core/Batch/BatchCmd.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/src/batch/batch_cmd.cpp",
+      "source_sha256": "0af7282a075e455a823a6e91f1341519f2407a266ca0e40975b43a0ff516854f",
+      "targets": [
+        "libraries/SkrGui.Core/Batch/BatchCmd.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/batch/color_gradient.hpp",
+      "source_sha256": "1b5ff350edabb638f171b27bbc674b11422bb31be918ab40c76f55ea6b2712f9",
+      "targets": [
+        "libraries/SkrGui.Core/Batch/ColorGradient.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/batch/paint_context.hpp",
+      "source_sha256": "42a87a9dd912c8da6b4e1f406d9e38c4be16d403e19e34fba73d31e3be91c3f7",
+      "targets": [
+        "libraries/SkrGui.Core/Batch/PaintContext.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/batch/mesh.hpp",
+      "source_sha256": "5276210cf4ebb2744819083ea0288b340818b0f6f7c49409d5c2dd2e02c03965",
+      "targets": [
+        "libraries/SkrGui.Core/Batch/Mesh.cs",
+        "libraries/SkrGui.Core/Batch/MeshBuilder.cs",
+        "libraries/SkrGui.Core/Batch/BasicMeshes.cs",
+        "libraries/SkrGui.Core/Batch/BasicMeshes.Generated.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/transform/paint_transform.hpp",
+      "source_sha256": "bd4b30bedb2534d2e87e2254be11537fb71ca1f381d6777c08967fea9cd08e79",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Transform/PaintTransform.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/shape/shape_sample.hpp",
+      "source_sha256": "9bf36016c180ff174336c7c9de3eb19720d2ac947383839525dc60f16157553a",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/shape/shape_sampler.hpp",
+      "source_sha256": "5e0435f9818fb02dfca47ba63430fc13c8d268820106936333576d685220e53a",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Shape/ShapeSampler.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/shape/quad_bezier.hpp",
+      "source_sha256": "8e1b7db751d5b4049b5759f1dfcb95beba61415175822efe3923fe544829cbef",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/shape/cubic_bezier.hpp",
+      "source_sha256": "c6b7298ddadee92874d43534ed75ef20d6c390efe562069356b5a01c9e480d5d",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/shape/circle.hpp",
+      "source_sha256": "e04692a665614df60d772b282aeacb04727df6001f906af06944255e31273da9",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Shape/Circle.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/shape/arc.hpp",
+      "source_sha256": "9a339f71173e2e4349dd35f3304d132ba6e9b8c34db4ff19dcdb32749de095b4",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Shape/Arc.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/shape/ellipse.hpp",
+      "source_sha256": "1f0fd517aca938bb40dcf7d3babbe3a7c675ebadb9b4b68515666bb434cefe1a",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Shape/Ellipse.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/shape/elliptical_arc.hpp",
+      "source_sha256": "489667f8ec4ecee57e33218277c4a8e110c81cd481ccebb0cbe2341faf5167cc",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/shape/superellipse.hpp",
+      "source_sha256": "f462e2d43aa633c9c8f107234648da3efd29e69141c7708a5691ba7357d71afd",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Shape/Superellipse.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/shape/superellipse_arc.hpp",
+      "source_sha256": "2f1da0e3f4414c7f4cf993be679337b19b8f76b29e1348d64f4f9355811acc1b",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/vg/vg_utils.hpp",
+      "source_sha256": "50770019b0255a67a4c3e6d31fa988adcec40f1fb487fd5ed261a05cc35ab42f",
+      "targets": [
+        "libraries/SkrGui.Core/Vg/VgUtils.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/vg/vg_mesh_utils.hpp",
+      "source_sha256": "6792e7414b8d30b82a521fba2b1367f6e5a573d5fa331e392b9ae2c8c7cda0a1",
+      "targets": [
+        "libraries/SkrGui.Core/Vg/VgMeshUtils.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/vg/vg_basic_primitive.hpp",
+      "source_sha256": "ea822cd67600a97f38fb9372f6b0f8dd1934ab879c1f7b687bf1298d213e52ba",
+      "targets": [
+        "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/src/vg/vg_basic_primitive.cpp",
+      "source_sha256": "0f746b1a30edda54d84cd4162678bf7b1206212cf7bc2d0666ff23ea26743866",
+      "targets": [
+        "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/vg/vg_path.hpp",
+      "source_sha256": "d75f75b371f8ae4db35ad271faef9dfe03f7c496dcda6305320248ed6322bb71",
+      "targets": [
+        "libraries/SkrGui.Core/Vg/VgPath.cs",
+        "libraries/SkrGui.Core/Vg/VgPath.Flatten.cs",
+        "libraries/SkrGui.Core/Vg/VgPath.Shapes.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/src/vg/vg_path.cpp",
+      "source_sha256": "5eaad0e74f3c94c768524d1c53ae02924051887f7a84990cc135e34bb66f7b01",
+      "targets": [
+        "libraries/SkrGui.Core/Vg/VgPath.cs",
+        "libraries/SkrGui.Core/Vg/VgPath.Flatten.cs",
+        "libraries/SkrGui.Core/Vg/VgPath.Shapes.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/vg/vg_path_flatten.hpp",
+      "source_sha256": "f6d8bbc114155fa67c4cbe32fc7c14d20e64e806018472010948807914c02f1d",
+      "targets": [
+        "libraries/SkrGui.Core/Vg/VgPathFlatten.Types.cs",
+        "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+        "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+        "libraries/SkrGui.Core/Vg/VgPathFlatten.StrokeContour.cs",
+        "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+        "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+        "libraries/SkrGui.Core/Vg/TessNative.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/src/vg/vg_path_flatten.cpp",
+      "source_sha256": "4354465f53620e2e1b46dc9962504886be7c60274f13d635ab5b2c7168344c70",
+      "targets": [
+        "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/src/vg/vg_path_flatten.stroke.cpp",
+      "source_sha256": "f71a5b1eb6944da9f940b7bb5e7d5e79f2bfb02e9c2f2e921a982c2bbb2a2201",
+      "targets": [
+        "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/src/vg/vg_path_flatten.stroke_contour.cpp",
+      "source_sha256": "5cf68066d1c3548132c4dad85299600bee76b8703fc852d4085d7a1df1f176ed",
+      "targets": [
+        "libraries/SkrGui.Core/Vg/VgPathFlatten.StrokeContour.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/src/vg/vg_path_flatten.dash.cpp",
+      "source_sha256": "06045bc247d2eebbaf5243f590244840e7a4a5ff23168f8ef06ccbf8bd6054f7",
+      "targets": [
+        "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/modules/gui/core/src/vg/vg_path_flatten.fill.cpp",
+      "source_sha256": "b176d7b20d11a723fc320d303f2e2454fe79752f95f17bc2ba2e5e01a6b8e536",
+      "targets": [
+        "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+        "libraries/SkrGui.Core/Vg/TessNative.cs"
+      ],
+      "status": "ported-source",
+      "verification": "Original source cases passed; all branch bodies retained."
+    },
+    {
+      "source": "engine/packages/runtime-libraries/libtess2/1.0.3/Include/tesselator.h",
+      "source_sha256": "e037591d957d98020da8efa679631a20827a631fe34314b8cb99fe8c634f27d8",
+      "targets": [
+        "libraries/SkrGui.Core/Vg/TessNative.cs",
+        "native/artifacts/win-x64/skrgui_native.dll"
+      ],
+      "status": "third-party-c-abi",
+      "verification": "Pinned source libtess2 ABI; custom allocator and original tessellation options verified by all original fill cases."
+    },
+    {
+      "source": "engine/modules/gui/samples/gallery_common/include/SkrGuiGalleryCommon/gallery_renderer.hpp",
+      "source_sha256": "f57790baf1a3072d28f94776a9047dca621a6c191733e4ae01a97fb651567c46",
+      "targets": [
+        "libraries/SkrGui.Godot/GodotVisualBackend.cs",
+        "libraries/SkrGui.Godot/GodotRenderTarget.cs"
+      ],
+      "status": "godot-renderer-replacement",
+      "verification": "Actual main Vulkan RD/RTX4090: 12 explicit pixel and state probes, plus CounterDemo interaction/reset in all 4 concrete text AA modes."
+    },
+    {
+      "source": "engine/modules/gui/samples/gallery_common/src/gallery_renderer.cpp",
+      "source_sha256": "6d095ee617631748805740bd7884f3feab2dad26a1b18f33219809be6c067b34",
+      "targets": [
+        "libraries/SkrGui.Godot/GodotVisualBackend.cs",
+        "libraries/SkrGui.Godot/GodotRenderTarget.cs"
+      ],
+      "status": "godot-renderer-replacement",
+      "verification": "Same frame draw assembly, adjacent merging, bounds scissor, raw/L8-gray views and backdrop order. GPU API/ownership replaced; see backend_contracts below."
+    },
+    {
+      "source": "engine/modules/gui/samples/gallery_common/include/SkrGuiGalleryCommon/gallery_window.hpp",
+      "source_sha256": "6f38209f1970ca8c559d9b260fd0dfe9c9e8053b5643866a335ddeb3cf969ea1",
+      "targets": [
+        "godot/SkrGuiHost/SkrGuiHost.cs",
+        "godot/SkrGuiHost/project.godot",
+        "tools/LaunchSkrGui.ps1"
+      ],
+      "status": "godot-window-host-replacement",
+      "verification": "Window creation/events/presentation/lifetime move to Godot; concrete field/function behavior is mapped in window_contracts."
+    },
+    {
+      "source": "engine/modules/gui/samples/gallery_common/src/gallery_window.cpp",
+      "source_sha256": "49b3dbdc5e5141e4e96ee833a64142d96c8a04f1c5eb4c65cf361a9cb0760dfe",
+      "targets": [
+        "godot/SkrGuiHost/SkrGuiHost.cs",
+        "godot/SkrGuiHost/project.godot",
+        "tools/LaunchSkrGui.ps1"
+      ],
+      "status": "godot-window-host-replacement",
+      "verification": "Window creation/events/presentation/lifetime move to Godot; concrete field/function behavior is mapped in window_contracts."
+    }
+  ],
+  "generated_method_locations": [
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 9,
+      "source_line": 165,
+      "source_method": "signed_sweep"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 29,
+      "source_line": 185,
+      "source_method": "count_90_degree"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 45,
+      "source_line": 201,
+      "source_method": "count_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 80,
+      "source_line": 238,
+      "source_method": "make_segment"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 115,
+      "source_line": 301,
+      "source_method": "Zero"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 120,
+      "source_line": 305,
+      "source_method": "Invalid"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 126,
+      "source_line": 310,
+      "source_method": "ArcTo"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 198,
+      "source_line": 383,
+      "source_method": "CenterRadius"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 206,
+      "source_line": 394,
+      "source_method": "is_empty"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 211,
+      "source_line": 398,
+      "source_method": "is_valid"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 218,
+      "source_line": 404,
+      "source_method": "is_normalized"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 227,
+      "source_line": 412,
+      "source_method": "is_finite"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 233,
+      "source_line": 417,
+      "source_method": "has_nan"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 239,
+      "source_line": 422,
+      "source_method": "is_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 244,
+      "source_line": 428,
+      "source_method": "end_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 249,
+      "source_line": 432,
+      "source_method": "length"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 254,
+      "source_line": 436,
+      "source_method": "start_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 259,
+      "source_line": 440,
+      "source_method": "end_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 264,
+      "source_line": 444,
+      "source_method": "rect"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 290,
+      "source_line": 469,
+      "source_method": "bounds"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 295,
+      "source_line": 473,
+      "source_method": "contains_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 300,
+      "source_line": 477,
+      "source_method": "project"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 352,
+      "source_line": 528,
+      "source_method": "distance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 357,
+      "source_line": 532,
+      "source_method": "closest_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 362,
+      "source_line": 536,
+      "source_method": "create_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 367,
+      "source_line": 540,
+      "source_method": "point_at_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 373,
+      "source_line": 545,
+      "source_method": "point_at_ratio"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 378,
+      "source_line": 549,
+      "source_method": "point_at_t"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 383,
+      "source_line": 555,
+      "source_method": "calc_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 392,
+      "source_line": 566,
+      "source_method": "estimate_segment_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 408,
+      "source_line": 582,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 425,
+      "source_line": 601,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 441,
+      "source_line": 621,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 461,
+      "source_line": 645,
+      "source_method": "sample_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 483,
+      "source_line": 669,
+      "source_method": "sample_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 499,
+      "source_line": 689,
+      "source_method": "sample_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 519,
+      "source_line": 714,
+      "source_method": "cubic_bezier_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 541,
+      "source_line": 735,
+      "source_method": "cubic_bezier_count_fast"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 552,
+      "source_line": 748,
+      "source_method": "split_to_cubic_beziers"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 582,
+      "source_line": 778,
+      "source_method": "split_to_cubic_beziers_fast"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 617,
+      "source_line": 814,
+      "source_method": "normalized"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 631,
+      "source_line": 827,
+      "source_method": "shift"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 636,
+      "source_line": 831,
+      "source_method": "inflate"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 641,
+      "source_line": 835,
+      "source_method": "deflate"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 646,
+      "source_line": 839,
+      "source_method": "trim"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 667,
+      "source_line": 861,
+      "source_method": "reversed"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 672,
+      "source_line": 878,
+      "source_method": "_wrap_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 691,
+      "source_line": 896,
+      "source_method": "_clamp_sweep"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 709,
+      "source_line": 913,
+      "source_method": "_clamp_unit"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 718,
+      "source_line": 921,
+      "source_method": "_ratio_from_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Arc.cs",
+      "target_line": 756,
+      "source_line": 960,
+      "source_method": "_contains_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 8,
+      "source_line": 141,
+      "source_method": "count_90_degree"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 24,
+      "source_line": 157,
+      "source_method": "count_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 59,
+      "source_line": 194,
+      "source_method": "make_segment"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 92,
+      "source_line": 253,
+      "source_method": "Zero"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 97,
+      "source_line": 257,
+      "source_method": "Invalid"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 103,
+      "source_line": 262,
+      "source_method": "CenterRadius"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 108,
+      "source_line": 268,
+      "source_method": "is_empty"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 113,
+      "source_line": 272,
+      "source_method": "is_valid"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 118,
+      "source_line": 276,
+      "source_method": "is_normalized"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 123,
+      "source_line": 280,
+      "source_method": "is_finite"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 128,
+      "source_line": 284,
+      "source_method": "has_nan"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 133,
+      "source_line": 288,
+      "source_method": "is_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 138,
+      "source_line": 294,
+      "source_method": "diameter"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 143,
+      "source_line": 298,
+      "source_method": "length"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 148,
+      "source_line": 302,
+      "source_method": "area"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 153,
+      "source_line": 306,
+      "source_method": "rect"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 158,
+      "source_line": 310,
+      "source_method": "bounds"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 163,
+      "source_line": 314,
+      "source_method": "contains"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 173,
+      "source_line": 323,
+      "source_method": "project"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 202,
+      "source_line": 351,
+      "source_method": "signed_distance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 212,
+      "source_line": 360,
+      "source_method": "distance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 217,
+      "source_line": 364,
+      "source_method": "closest_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 222,
+      "source_line": 368,
+      "source_method": "create_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 227,
+      "source_line": 372,
+      "source_method": "point_at_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 233,
+      "source_line": 377,
+      "source_method": "point_at_ratio"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 238,
+      "source_line": 381,
+      "source_method": "point_at_t"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 243,
+      "source_line": 387,
+      "source_method": "calc_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 252,
+      "source_line": 398,
+      "source_method": "estimate_segment_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 268,
+      "source_line": 414,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 285,
+      "source_line": 433,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 301,
+      "source_line": 453,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 321,
+      "source_line": 477,
+      "source_method": "sample_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 343,
+      "source_line": 501,
+      "source_method": "sample_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 359,
+      "source_line": 521,
+      "source_method": "sample_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 379,
+      "source_line": 546,
+      "source_method": "cubic_bezier_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 400,
+      "source_line": 566,
+      "source_method": "cubic_bezier_count_fast"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 410,
+      "source_line": 578,
+      "source_method": "split_to_cubic_beziers"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 419,
+      "source_line": 587,
+      "source_method": "split_to_cubic_beziers"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 450,
+      "source_line": 620,
+      "source_method": "split_to_cubic_beziers_fast"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 458,
+      "source_line": 628,
+      "source_method": "split_to_cubic_beziers_fast"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 487,
+      "source_line": 658,
+      "source_method": "normalized"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 492,
+      "source_line": 662,
+      "source_method": "shift"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 497,
+      "source_line": 666,
+      "source_method": "inflate"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Circle.cs",
+      "target_line": 502,
+      "source_line": 670,
+      "source_method": "deflate"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 11,
+      "source_line": 203,
+      "source_method": "Zero"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 16,
+      "source_line": 207,
+      "source_method": "Invalid"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 25,
+      "source_line": 217,
+      "source_method": "Point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 30,
+      "source_line": 221,
+      "source_method": "Line"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 38,
+      "source_line": 230,
+      "source_method": "CubicTo"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 46,
+      "source_line": 241,
+      "source_method": "is_valid"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 51,
+      "source_line": 245,
+      "source_method": "is_finite"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 56,
+      "source_line": 249,
+      "source_method": "has_nan"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 64,
+      "source_line": 256,
+      "source_method": "is_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 69,
+      "source_line": 262,
+      "source_method": "start_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 74,
+      "source_line": 266,
+      "source_method": "control_point_1"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 79,
+      "source_line": 270,
+      "source_method": "control_point_2"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 84,
+      "source_line": 274,
+      "source_method": "end_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 89,
+      "source_line": 278,
+      "source_method": "bounding_rect"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 123,
+      "source_line": 313,
+      "source_method": "point_at"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 133,
+      "source_line": 322,
+      "source_method": "derivative_at"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 143,
+      "source_line": 331,
+      "source_method": "tangent_at"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 154,
+      "source_line": 341,
+      "source_method": "length"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 164,
+      "source_line": 352,
+      "source_method": "calc_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 172,
+      "source_line": 364,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 189,
+      "source_line": 382,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 246,
+      "source_line": 455,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 265,
+      "source_line": 476,
+      "source_method": "project"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 303,
+      "source_line": 515,
+      "source_method": "closest_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 309,
+      "source_line": 522,
+      "source_method": "distance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 314,
+      "source_line": 528,
+      "source_method": "split"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 327,
+      "source_line": 540,
+      "source_method": "subcurve"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 375,
+      "source_line": 587,
+      "source_method": "reversed"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 380,
+      "source_line": 603,
+      "source_method": "_positive_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 391,
+      "source_line": 613,
+      "source_method": "_clamp_unit"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 400,
+      "source_line": 621,
+      "source_method": "_is_flat_enough"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 410,
+      "source_line": 632,
+      "source_method": "_distance_to_line_sq"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 428,
+      "source_line": 651,
+      "source_method": "_approximate_length"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 450,
+      "source_line": 674,
+      "source_method": "_closest_point_on_segment"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 473,
+      "source_line": 698,
+      "source_method": "_accumulate_closest_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 525,
+      "source_line": 751,
+      "source_method": "_solve_axis_extrema"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/CubicBezier.cs",
+      "target_line": 538,
+      "source_line": 766,
+      "source_method": "_solve_quadratic"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 10,
+      "source_line": 163,
+      "source_method": "count_from_quarter"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 20,
+      "source_line": 173,
+      "source_method": "count_from_arc_accumulated"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 33,
+      "source_line": 188,
+      "source_method": "canonical_aspect"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 40,
+      "source_line": 195,
+      "source_method": "canonical_arc"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 62,
+      "source_line": 219,
+      "source_method": "is_full_sweep"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 67,
+      "source_line": 224,
+      "source_method": "map_to_first_quadrant"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 84,
+      "source_line": 242,
+      "source_method": "accumulate_quadrant_spans"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 132,
+      "source_line": 316,
+      "source_method": "canonical_aspect"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 137,
+      "source_line": 321,
+      "source_method": "select_aspect_model"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 149,
+      "source_line": 333,
+      "source_method": "select_ellipse_model"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 154,
+      "source_line": 338,
+      "source_method": "quarter_raw"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 170,
+      "source_line": 356,
+      "source_method": "first_quadrant_weight_prefix"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 195,
+      "source_line": 383,
+      "source_method": "first_quadrant_weight_span"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 206,
+      "source_line": 396,
+      "source_method": "estimate_ellipse"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 228,
+      "source_line": 420,
+      "source_method": "estimate_arc"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 281,
+      "source_line": 475,
+      "source_method": "count_90_degree"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 297,
+      "source_line": 491,
+      "source_method": "count_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 332,
+      "source_line": 528,
+      "source_method": "transform_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 351,
+      "source_line": 549,
+      "source_method": "transform_tangent"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 366,
+      "source_line": 568,
+      "source_method": "make_segment"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 410,
+      "source_line": 640,
+      "source_method": "Zero"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 415,
+      "source_line": 644,
+      "source_method": "Invalid"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 421,
+      "source_line": 649,
+      "source_method": "CenterRadius"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 429,
+      "source_line": 660,
+      "source_method": "is_empty"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 434,
+      "source_line": 664,
+      "source_method": "is_valid"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 441,
+      "source_line": 670,
+      "source_method": "is_normalized"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 449,
+      "source_line": 677,
+      "source_method": "is_finite"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 457,
+      "source_line": 684,
+      "source_method": "has_nan"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 463,
+      "source_line": 689,
+      "source_method": "is_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 468,
+      "source_line": 695,
+      "source_method": "area"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 473,
+      "source_line": 699,
+      "source_method": "eccentricity"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 486,
+      "source_line": 711,
+      "source_method": "rect"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 501,
+      "source_line": 725,
+      "source_method": "bounds"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 506,
+      "source_line": 729,
+      "source_method": "contains"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 520,
+      "source_line": 742,
+      "source_method": "project"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 576,
+      "source_line": 799,
+      "source_method": "signed_distance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 593,
+      "source_line": 815,
+      "source_method": "distance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 598,
+      "source_line": 819,
+      "source_method": "closest_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 603,
+      "source_line": 823,
+      "source_method": "create_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 608,
+      "source_line": 827,
+      "source_method": "point_at_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 614,
+      "source_line": 832,
+      "source_method": "point_at_ratio"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 619,
+      "source_line": 836,
+      "source_method": "point_at_t"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 624,
+      "source_line": 842,
+      "source_method": "calc_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 632,
+      "source_line": 852,
+      "source_method": "estimate_segment_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 648,
+      "source_line": 868,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 665,
+      "source_line": 887,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 683,
+      "source_line": 907,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 702,
+      "source_line": 928,
+      "source_method": "sample_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 724,
+      "source_line": 952,
+      "source_method": "sample_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 747,
+      "source_line": 977,
+      "source_method": "sample_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 771,
+      "source_line": 1004,
+      "source_method": "cubic_bezier_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 793,
+      "source_line": 1025,
+      "source_method": "cubic_bezier_count_fast"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 803,
+      "source_line": 1037,
+      "source_method": "split_to_cubic_beziers"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 812,
+      "source_line": 1046,
+      "source_method": "split_to_cubic_beziers"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 843,
+      "source_line": 1079,
+      "source_method": "split_to_cubic_beziers_fast"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 851,
+      "source_line": 1087,
+      "source_method": "split_to_cubic_beziers_fast"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 880,
+      "source_line": 1117,
+      "source_method": "normalized"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 888,
+      "source_line": 1126,
+      "source_method": "shift"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 893,
+      "source_line": 1130,
+      "source_method": "inflate"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 901,
+      "source_line": 1139,
+      "source_method": "deflate"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 906,
+      "source_line": 1156,
+      "source_method": "_wrap_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 925,
+      "source_line": 1174,
+      "source_method": "_positive_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 934,
+      "source_line": 1182,
+      "source_method": "_to_local"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 943,
+      "source_line": 1192,
+      "source_method": "_to_world"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Ellipse.cs",
+      "target_line": 954,
+      "source_line": 1202,
+      "source_method": "_closest_angle_local"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 11,
+      "source_line": 201,
+      "source_method": "vector_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 22,
+      "source_line": 214,
+      "source_method": "count_90_degree"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 38,
+      "source_line": 230,
+      "source_method": "count_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 73,
+      "source_line": 267,
+      "source_method": "transform_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 92,
+      "source_line": 288,
+      "source_method": "transform_tangent"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 107,
+      "source_line": 307,
+      "source_method": "make_segment"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 153,
+      "source_line": 390,
+      "source_method": "Zero"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 158,
+      "source_line": 394,
+      "source_method": "Invalid"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 164,
+      "source_line": 399,
+      "source_method": "ArcTo"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 285,
+      "source_line": 521,
+      "source_method": "CenterRadius"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 295,
+      "source_line": 534,
+      "source_method": "is_empty"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 300,
+      "source_line": 538,
+      "source_method": "is_valid"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 308,
+      "source_line": 545,
+      "source_method": "is_normalized"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 319,
+      "source_line": 555,
+      "source_method": "is_finite"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 326,
+      "source_line": 561,
+      "source_method": "has_nan"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 333,
+      "source_line": 567,
+      "source_method": "is_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 339,
+      "source_line": 574,
+      "source_method": "end_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 344,
+      "source_line": 578,
+      "source_method": "length"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 363,
+      "source_line": 596,
+      "source_method": "start_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 368,
+      "source_line": 600,
+      "source_method": "end_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 373,
+      "source_line": 604,
+      "source_method": "rect"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 418,
+      "source_line": 648,
+      "source_method": "bounds"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 423,
+      "source_line": 652,
+      "source_method": "contains_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 428,
+      "source_line": 656,
+      "source_method": "project"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 457,
+      "source_line": 686,
+      "source_method": "distance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 462,
+      "source_line": 690,
+      "source_method": "closest_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 468,
+      "source_line": 697,
+      "source_method": "create_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 473,
+      "source_line": 701,
+      "source_method": "point_at_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 479,
+      "source_line": 706,
+      "source_method": "point_at_ratio"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 484,
+      "source_line": 710,
+      "source_method": "point_at_t"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 489,
+      "source_line": 716,
+      "source_method": "calc_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 497,
+      "source_line": 726,
+      "source_method": "estimate_segment_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 515,
+      "source_line": 744,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 532,
+      "source_line": 763,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 550,
+      "source_line": 783,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 569,
+      "source_line": 804,
+      "source_method": "sample_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 591,
+      "source_line": 828,
+      "source_method": "sample_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 614,
+      "source_line": 853,
+      "source_method": "sample_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 638,
+      "source_line": 880,
+      "source_method": "cubic_bezier_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 660,
+      "source_line": 901,
+      "source_method": "cubic_bezier_count_fast"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 671,
+      "source_line": 914,
+      "source_method": "split_to_cubic_beziers"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 700,
+      "source_line": 943,
+      "source_method": "split_to_cubic_beziers_fast"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 734,
+      "source_line": 978,
+      "source_method": "normalized"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 764,
+      "source_line": 1007,
+      "source_method": "shift"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 769,
+      "source_line": 1011,
+      "source_method": "inflate"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 779,
+      "source_line": 1022,
+      "source_method": "deflate"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 784,
+      "source_line": 1026,
+      "source_method": "trim"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 807,
+      "source_line": 1050,
+      "source_method": "reversed"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 812,
+      "source_line": 1068,
+      "source_method": "_wrap_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 831,
+      "source_line": 1086,
+      "source_method": "_clamp_sweep"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 849,
+      "source_line": 1103,
+      "source_method": "_clamp_unit"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 858,
+      "source_line": 1111,
+      "source_method": "_positive_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 867,
+      "source_line": 1119,
+      "source_method": "_approximate_length_span"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 906,
+      "source_line": 1159,
+      "source_method": "_closest_ratio"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/EllipticalArc.cs",
+      "target_line": 958,
+      "source_line": 1212,
+      "source_method": "_contains_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 11,
+      "source_line": 180,
+      "source_method": "Zero"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 16,
+      "source_line": 184,
+      "source_method": "Invalid"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 24,
+      "source_line": 193,
+      "source_method": "Point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 29,
+      "source_line": 197,
+      "source_method": "Line"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 34,
+      "source_line": 201,
+      "source_method": "QuadTo"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 41,
+      "source_line": 211,
+      "source_method": "is_valid"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 46,
+      "source_line": 215,
+      "source_method": "is_finite"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 51,
+      "source_line": 219,
+      "source_method": "has_nan"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 58,
+      "source_line": 225,
+      "source_method": "is_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 63,
+      "source_line": 231,
+      "source_method": "start_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 68,
+      "source_line": 235,
+      "source_method": "control_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 73,
+      "source_line": 239,
+      "source_method": "end_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 78,
+      "source_line": 243,
+      "source_method": "bounding_rect"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 94,
+      "source_line": 260,
+      "source_method": "point_at"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 101,
+      "source_line": 266,
+      "source_method": "derivative_at"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 106,
+      "source_line": 270,
+      "source_method": "tangent_at"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 117,
+      "source_line": 280,
+      "source_method": "length"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 127,
+      "source_line": 291,
+      "source_method": "calc_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 135,
+      "source_line": 303,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 152,
+      "source_line": 321,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 209,
+      "source_line": 394,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 228,
+      "source_line": 415,
+      "source_method": "project"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 266,
+      "source_line": 454,
+      "source_method": "closest_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 272,
+      "source_line": 461,
+      "source_method": "distance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 277,
+      "source_line": 467,
+      "source_method": "split"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 287,
+      "source_line": 476,
+      "source_method": "subcurve"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 335,
+      "source_line": 523,
+      "source_method": "reversed"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 340,
+      "source_line": 539,
+      "source_method": "_positive_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 351,
+      "source_line": 549,
+      "source_method": "_clamp_unit"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 360,
+      "source_line": 557,
+      "source_method": "_is_flat_enough"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 369,
+      "source_line": 567,
+      "source_method": "_distance_to_line_sq"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 387,
+      "source_line": 586,
+      "source_method": "_approximate_length"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 408,
+      "source_line": 608,
+      "source_method": "_closest_point_on_segment"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 431,
+      "source_line": 632,
+      "source_method": "_accumulate_closest_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/QuadBezier.cs",
+      "target_line": 483,
+      "source_line": 685,
+      "source_method": "_solve_axis_extremum"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 15,
+      "source_line": 336,
+      "source_method": "sample_closed_uniform"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 50,
+      "source_line": 374,
+      "source_method": "sample_open_uniform"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 85,
+      "source_line": 412,
+      "source_method": "sample_closed_by_step_length"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 184,
+      "source_line": 514,
+      "source_method": "sample_open_by_step_length"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 292,
+      "source_line": 625,
+      "source_method": "sample_closed_adaptive"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 338,
+      "source_line": 674,
+      "source_method": "sample_open_adaptive"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 384,
+      "source_line": 724,
+      "source_method": "sample_closed_uniform_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 426,
+      "source_line": 765,
+      "source_method": "sample_open_uniform_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 468,
+      "source_line": 806,
+      "source_method": "sample_closed_by_step_length_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 501,
+      "source_line": 838,
+      "source_method": "sample_open_by_step_length_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 534,
+      "source_line": 870,
+      "source_method": "sample_closed_adaptive_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 565,
+      "source_line": 900,
+      "source_method": "sample_open_adaptive_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 596,
+      "source_line": 930,
+      "source_method": "resolve_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 605,
+      "source_line": 939,
+      "source_method": "resolve_step_length"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 614,
+      "source_line": 948,
+      "source_method": "resolve_max_depth"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 619,
+      "source_line": 953,
+      "source_method": "calc_geometric_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 629,
+      "source_line": 965,
+      "source_method": "calc_bezier_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 639,
+      "source_line": 977,
+      "source_method": "estimate_resample_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 657,
+      "source_line": 997,
+      "source_method": "estimate_step_length_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 662,
+      "source_line": 1002,
+      "source_method": "calc_circular_segment_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 706,
+      "source_line": 1048,
+      "source_method": "calc_step_length_segment_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 735,
+      "source_line": 1103,
+      "source_method": "_sample_open_adaptive_forward"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 781,
+      "source_line": 1152,
+      "source_method": "_sample_open_adaptive_reverse"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 827,
+      "source_line": 1201,
+      "source_method": "_sample_closed_adaptive_forward"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 876,
+      "source_line": 1253,
+      "source_method": "_sample_closed_adaptive_reverse"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 925,
+      "source_line": 1305,
+      "source_method": "_approximate_span_length"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 967,
+      "source_line": 1350,
+      "source_method": "_solve_t_at_length"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 1055,
+      "source_line": 1440,
+      "source_method": "_approximate_leaf_length"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 1066,
+      "source_line": 1453,
+      "source_method": "_is_forward"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 1071,
+      "source_line": 1460,
+      "source_method": "_midpoint_error_sq"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/ShapeSample.cs",
+      "target_line": 1079,
+      "source_line": 1470,
+      "source_method": "_resolve_visual_tolerance_scale"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 51,
+      "source_line": 244,
+      "source_method": "select_segment"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 64,
+      "source_line": 257,
+      "source_method": "quarter_raw"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 91,
+      "source_line": 286,
+      "source_method": "first_quadrant_weight_prefix"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 124,
+      "source_line": 321,
+      "source_method": "first_quadrant_weight_span"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 135,
+      "source_line": 334,
+      "source_method": "accumulate_arc_quarters"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 153,
+      "source_line": 354,
+      "source_method": "accumulate_arc_quarters_with_distribution_exponent"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 178,
+      "source_line": 381,
+      "source_method": "estimate_superellipse"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 202,
+      "source_line": 407,
+      "source_method": "estimate_arc"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 256,
+      "source_line": 462,
+      "source_method": "sample_closed_quadrants"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 308,
+      "source_line": 516,
+      "source_method": "sample_arc"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 376,
+      "source_line": 595,
+      "source_method": "_is_same_t"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 381,
+      "source_line": 599,
+      "source_method": "_is_diamond_exponent"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 386,
+      "source_line": 604,
+      "source_method": "_normalize_closed_t"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 399,
+      "source_line": 617,
+      "source_method": "_normalize_arc_t"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 412,
+      "source_line": 630,
+      "source_method": "_normalize_loop_t"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 422,
+      "source_line": 640,
+      "source_method": "_next_half_boundary"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 436,
+      "source_line": 654,
+      "source_method": "_next_quarter_boundary"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 450,
+      "source_line": 669,
+      "source_method": "_sample_closed_diamond"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 472,
+      "source_line": 694,
+      "source_method": "_sample_arc_diamond"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 496,
+      "source_line": 721,
+      "source_method": "_sample_arc_span"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 537,
+      "source_line": 764,
+      "source_method": "_half_span_index"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 546,
+      "source_line": 773,
+      "source_method": "_eval_u_from_closed_t"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 567,
+      "source_line": 796,
+      "source_method": "_unwrap_closed_t"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 575,
+      "source_line": 807,
+      "source_method": "_sample_open_span"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 599,
+      "source_line": 833,
+      "source_method": "_eval_sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 623,
+      "source_line": 861,
+      "source_method": "_eval_sample_t"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 634,
+      "source_line": 874,
+      "source_method": "_eval_axis_abs"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 671,
+      "source_line": 913,
+      "source_method": "_eval_t"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 695,
+      "source_line": 939,
+      "source_method": "_paired_abs"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 701,
+      "source_line": 945,
+      "source_method": "_starts_on_horizontal_axis"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 706,
+      "source_line": 950,
+      "source_method": "_x_sign"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 711,
+      "source_line": 955,
+      "source_method": "_y_sign"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 719,
+      "source_line": 963,
+      "source_method": "clean_trig_value"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 737,
+      "source_line": 981,
+      "source_method": "count_90_degree"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 753,
+      "source_line": 997,
+      "source_method": "count_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 816,
+      "source_line": 1062,
+      "source_method": "transform_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 837,
+      "source_line": 1085,
+      "source_method": "transform_tangent"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 852,
+      "source_line": 1104,
+      "source_method": "make_ellipse_segment"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 888,
+      "source_line": 1142,
+      "source_method": "make_catmull_segment"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 907,
+      "source_line": 1163,
+      "source_method": "make_segment"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 919,
+      "source_line": 1177,
+      "source_method": "sample_derivative"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 939,
+      "source_line": 1199,
+      "source_method": "make_adaptive_segment"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 961,
+      "source_line": 1223,
+      "source_method": "fast_quadrant_segment_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 976,
+      "source_line": 1239,
+      "source_method": "split_fast_span"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1002,
+      "source_line": 1268,
+      "source_method": "split_fast"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1024,
+      "source_line": 1292,
+      "source_method": "count_fast"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1029,
+      "source_line": 1297,
+      "source_method": "adaptive_segment_error"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1057,
+      "source_line": 1327,
+      "source_method": "distance_to_segment"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1076,
+      "source_line": 1349,
+      "source_method": "split_adaptive_span"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1113,
+      "source_line": 1389,
+      "source_method": "split_adaptive"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1138,
+      "source_line": 1416,
+      "source_method": "count_adaptive"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1168,
+      "source_line": 1480,
+      "source_method": "Zero"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1173,
+      "source_line": 1484,
+      "source_method": "Invalid"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1179,
+      "source_line": 1489,
+      "source_method": "CenterRadius"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1188,
+      "source_line": 1501,
+      "source_method": "is_empty"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1193,
+      "source_line": 1505,
+      "source_method": "is_valid"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1201,
+      "source_line": 1512,
+      "source_method": "is_normalized"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1210,
+      "source_line": 1520,
+      "source_method": "is_finite"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1219,
+      "source_line": 1528,
+      "source_method": "has_nan"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1226,
+      "source_line": 1534,
+      "source_method": "is_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1231,
+      "source_line": 1540,
+      "source_method": "length"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1258,
+      "source_line": 1566,
+      "source_method": "rect"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1300,
+      "source_line": 1607,
+      "source_method": "bounds"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1305,
+      "source_line": 1611,
+      "source_method": "contains"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1319,
+      "source_line": 1624,
+      "source_method": "create_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1324,
+      "source_line": 1628,
+      "source_method": "point_at_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1330,
+      "source_line": 1633,
+      "source_method": "point_at_ratio"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1335,
+      "source_line": 1637,
+      "source_method": "point_at_t"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1340,
+      "source_line": 1643,
+      "source_method": "calc_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1348,
+      "source_line": 1653,
+      "source_method": "estimate_segment_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1382,
+      "source_line": 1687,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1399,
+      "source_line": 1706,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1417,
+      "source_line": 1726,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1436,
+      "source_line": 1747,
+      "source_method": "sample_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1458,
+      "source_line": 1771,
+      "source_method": "sample_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1485,
+      "source_line": 1800,
+      "source_method": "sample_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1509,
+      "source_line": 1827,
+      "source_method": "cubic_bezier_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1538,
+      "source_line": 1855,
+      "source_method": "cubic_bezier_count_fast"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1548,
+      "source_line": 1867,
+      "source_method": "split_to_cubic_beziers"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1558,
+      "source_line": 1877,
+      "source_method": "split_to_cubic_beziers"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1613,
+      "source_line": 1934,
+      "source_method": "split_to_cubic_beziers_fast"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1621,
+      "source_line": 1942,
+      "source_method": "split_to_cubic_beziers_fast"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1636,
+      "source_line": 1960,
+      "source_method": "normalized"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1645,
+      "source_line": 1970,
+      "source_method": "shift"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1650,
+      "source_line": 1974,
+      "source_method": "inflate"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1659,
+      "source_line": 1984,
+      "source_method": "deflate"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1664,
+      "source_line": 1988,
+      "source_method": "reversed"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1669,
+      "source_line": 2006,
+      "source_method": "_wrap_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1688,
+      "source_line": 2024,
+      "source_method": "_positive_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1697,
+      "source_line": 2032,
+      "source_method": "_signed_pow"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1703,
+      "source_line": 2037,
+      "source_method": "_is_ellipse_exponent"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1708,
+      "source_line": 2041,
+      "source_method": "_calc_sample_bound_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1714,
+      "source_line": 2046,
+      "source_method": "_approximate_length_span"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/Superellipse.cs",
+      "target_line": 1753,
+      "source_line": 2086,
+      "source_method": "_to_local"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 8,
+      "source_line": 171,
+      "source_method": "clean_trig_value"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 26,
+      "source_line": 189,
+      "source_method": "count_90_degree"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 42,
+      "source_line": 205,
+      "source_method": "count_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 104,
+      "source_line": 269,
+      "source_method": "transform_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 125,
+      "source_line": 292,
+      "source_method": "transform_tangent"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 140,
+      "source_line": 311,
+      "source_method": "make_ellipse_segment"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 176,
+      "source_line": 349,
+      "source_method": "make_catmull_segment"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 195,
+      "source_line": 370,
+      "source_method": "make_segment"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 207,
+      "source_line": 384,
+      "source_method": "sample_derivative"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 227,
+      "source_line": 406,
+      "source_method": "make_adaptive_segment"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 249,
+      "source_line": 430,
+      "source_method": "adaptive_segment_error"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 277,
+      "source_line": 460,
+      "source_method": "distance_to_segment"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 296,
+      "source_line": 482,
+      "source_method": "split_adaptive_span"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 333,
+      "source_line": 522,
+      "source_method": "split_adaptive"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 398,
+      "source_line": 589,
+      "source_method": "count_adaptive"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 417,
+      "source_line": 610,
+      "source_method": "fast_span_segment_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 428,
+      "source_line": 622,
+      "source_method": "split_fast_span"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 450,
+      "source_line": 647,
+      "source_method": "split_fast"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 507,
+      "source_line": 704,
+      "source_method": "count_fast"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 534,
+      "source_line": 767,
+      "source_method": "Zero"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 539,
+      "source_line": 771,
+      "source_method": "Invalid"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 545,
+      "source_line": 776,
+      "source_method": "CenterRadius"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 562,
+      "source_line": 798,
+      "source_method": "is_empty"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 567,
+      "source_line": 802,
+      "source_method": "is_valid"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 576,
+      "source_line": 810,
+      "source_method": "is_normalized"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 588,
+      "source_line": 821,
+      "source_method": "is_finite"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 596,
+      "source_line": 828,
+      "source_method": "has_nan"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 604,
+      "source_line": 835,
+      "source_method": "is_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 610,
+      "source_line": 842,
+      "source_method": "end_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 615,
+      "source_line": 846,
+      "source_method": "length"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 634,
+      "source_line": 864,
+      "source_method": "start_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 639,
+      "source_line": 868,
+      "source_method": "end_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 644,
+      "source_line": 872,
+      "source_method": "rect"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 717,
+      "source_line": 944,
+      "source_method": "bounds"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 722,
+      "source_line": 948,
+      "source_method": "contains_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 727,
+      "source_line": 952,
+      "source_method": "create_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 732,
+      "source_line": 956,
+      "source_method": "point_at_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 738,
+      "source_line": 961,
+      "source_method": "point_at_ratio"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 743,
+      "source_line": 965,
+      "source_method": "point_at_t"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 748,
+      "source_line": 971,
+      "source_method": "calc_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 756,
+      "source_line": 981,
+      "source_method": "estimate_segment_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 795,
+      "source_line": 1020,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 812,
+      "source_line": 1039,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 838,
+      "source_line": 1067,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 857,
+      "source_line": 1088,
+      "source_method": "sample_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 879,
+      "source_line": 1112,
+      "source_method": "sample_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 914,
+      "source_line": 1149,
+      "source_method": "sample_with_sampler"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 938,
+      "source_line": 1176,
+      "source_method": "cubic_bezier_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 966,
+      "source_line": 1203,
+      "source_method": "cubic_bezier_count_fast"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 976,
+      "source_line": 1215,
+      "source_method": "split_to_cubic_beziers"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 1018,
+      "source_line": 1259,
+      "source_method": "split_to_cubic_beziers_fast"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 1031,
+      "source_line": 1273,
+      "source_method": "normalized"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 1061,
+      "source_line": 1302,
+      "source_method": "shift"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 1072,
+      "source_line": 1314,
+      "source_method": "inflate"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 1083,
+      "source_line": 1326,
+      "source_method": "deflate"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 1088,
+      "source_line": 1330,
+      "source_method": "trim"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 1112,
+      "source_line": 1355,
+      "source_method": "reversed"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 1123,
+      "source_line": 1382,
+      "source_method": "_wrap_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 1142,
+      "source_line": 1400,
+      "source_method": "_clamp_sweep"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 1160,
+      "source_line": 1417,
+      "source_method": "_clamp_unit"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 1169,
+      "source_line": 1425,
+      "source_method": "_positive_tolerance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 1178,
+      "source_line": 1433,
+      "source_method": "_signed_pow"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 1184,
+      "source_line": 1438,
+      "source_method": "_is_ellipse_exponent"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 1189,
+      "source_line": 1442,
+      "source_method": "_is_diamond_exponent"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 1194,
+      "source_line": 1446,
+      "source_method": "_calc_sample_bound_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 1200,
+      "source_line": 1451,
+      "source_method": "_calc_diamond_segment_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 1243,
+      "source_line": 1495,
+      "source_method": "_approximate_length_span"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Math/Shape/SuperellipseArc.cs",
+      "target_line": 1282,
+      "source_line": 1535,
+      "source_method": "_contains_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 116,
+      "source_line": 37,
+      "source_method": "push_stroke_section_aa"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 129,
+      "source_line": 55,
+      "source_method": "connect_stroke_sections"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 160,
+      "source_line": 92,
+      "source_method": "push_flat_cap_aa"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 191,
+      "source_line": 128,
+      "source_method": "connect_stroke_sections"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 226,
+      "source_line": 181,
+      "source_method": "push_body_vertices"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 239,
+      "source_line": 199,
+      "source_method": "push_body_quads"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 247,
+      "source_line": 207,
+      "source_method": "emit_fixed_ring"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 289,
+      "source_line": 336,
+      "source_method": "is_positive_span"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 294,
+      "source_line": 341,
+      "source_method": "is_collinear"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 301,
+      "source_line": 348,
+      "source_method": "cell_index"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 306,
+      "source_line": 353,
+      "source_method": "is_filled_cell"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 315,
+      "source_line": 362,
+      "source_method": "find_or_push_vertex"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 332,
+      "source_line": 384,
+      "source_method": "push_edge"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 345,
+      "source_line": 404,
+      "source_method": "find_unused_edge_from"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 357,
+      "source_line": 420,
+      "source_method": "compress_contour"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 386,
+      "source_line": 454,
+      "source_method": "emit_aa_contours"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 439,
+      "source_line": 518,
+      "source_method": "emit"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 542,
+      "source_line": 627,
+      "source_method": "positive_radius"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 551,
+      "source_line": 636,
+      "source_method": "has_radius"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 556,
+      "source_line": 641,
+      "source_method": "normalized"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 562,
+      "source_line": 656,
+      "source_method": "has_any_radius"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 570,
+      "source_line": 664,
+      "source_method": "is_uniform_radius"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 577,
+      "source_line": 671,
+      "source_method": "is_full_ellipse"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 587,
+      "source_line": 681,
+      "source_method": "corner_tl"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 597,
+      "source_line": 692,
+      "source_method": "corner_tr"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 607,
+      "source_line": 703,
+      "source_method": "corner_br"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 617,
+      "source_line": 714,
+      "source_method": "corner_bl"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 627,
+      "source_line": 725,
+      "source_method": "corner_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 652,
+      "source_line": 754,
+      "source_method": "is_circle_radius"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 657,
+      "source_line": 759,
+      "source_method": "corner_sample_desc"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 662,
+      "source_line": 769,
+      "source_method": "sample_corner"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 706,
+      "source_line": 818,
+      "source_method": "sampled_corner_point_at"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 720,
+      "source_line": 842,
+      "source_method": "find_next_corner_sample_t"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 747,
+      "source_line": 881,
+      "source_method": "corner_segment_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 782,
+      "source_line": 920,
+      "source_method": "estimate_boundary_section_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 793,
+      "source_line": 935,
+      "source_method": "range_index"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 798,
+      "source_line": 940,
+      "source_method": "is_corner_range"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 806,
+      "source_line": 948,
+      "source_method": "corner_for_range"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 823,
+      "source_line": 965,
+      "source_method": "edge_start_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 840,
+      "source_line": 982,
+      "source_method": "edge_end_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 857,
+      "source_line": 999,
+      "source_method": "edge_range_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 862,
+      "source_line": 1004,
+      "source_method": "range_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 885,
+      "source_line": 1033,
+      "source_method": "body_index_at"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 899,
+      "source_line": 1051,
+      "source_method": "boundary_contour_point_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 922,
+      "source_line": 1074,
+      "source_method": "boundary_contour_point_at"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 948,
+      "source_line": 1104,
+      "source_method": "boundary_body_index_at"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 954,
+      "source_line": 1113,
+      "source_method": "boundary_position_at"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 966,
+      "source_line": 1133,
+      "source_method": "nearest_point_index"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 981,
+      "source_line": 1148,
+      "source_method": "push_triangle_if_valid"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 991,
+      "source_line": 1158,
+      "source_method": "push_quad_or_triangle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 1021,
+      "source_line": 1194,
+      "source_method": "emit_aa_ring"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 1044,
+      "source_line": 1222,
+      "source_method": "emit_boundary_record"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 1122,
+      "source_line": 1313,
+      "source_method": "rect_touches_boundary"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 1130,
+      "source_line": 1322,
+      "source_method": "emit_paired_boundary"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 1216,
+      "source_line": 1429,
+      "source_method": "connect_paired_sections"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 1229,
+      "source_line": 1447,
+      "source_method": "emit_paired_diff_rrect"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 1331,
+      "source_line": 1562,
+      "source_method": "circle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 1424,
+      "source_line": 1659,
+      "source_method": "circle_stroke"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 1615,
+      "source_line": 1866,
+      "source_method": "ellipse"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 1705,
+      "source_line": 1960,
+      "source_method": "ellipse_stroke"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 1873,
+      "source_line": 2143,
+      "source_method": "superellipse"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 1968,
+      "source_line": 2240,
+      "source_method": "superellipse_stroke"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 2148,
+      "source_line": 2435,
+      "source_method": "fan"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 2313,
+      "source_line": 2608,
+      "source_method": "arc_stroke"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 2455,
+      "source_line": 2791,
+      "source_method": "elliptical_fan"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 2618,
+      "source_line": 2962,
+      "source_method": "elliptical_arc_stroke"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 2769,
+      "source_line": 3159,
+      "source_method": "superellipse_fan"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 2938,
+      "source_line": 3334,
+      "source_method": "superellipse_arc_stroke"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 3095,
+      "source_line": 3537,
+      "source_method": "rect"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 3144,
+      "source_line": 3588,
+      "source_method": "rect_stroke"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 3185,
+      "source_line": 3640,
+      "source_method": "diff_rect"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 3252,
+      "source_line": 3718,
+      "source_method": "rrect"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 3363,
+      "source_line": 3863,
+      "source_method": "rrect_stroke"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgBasicPrimitive.cs",
+      "target_line": 3390,
+      "source_line": 3893,
+      "source_method": "diff_rrect"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 10,
+      "source_line": 145,
+      "source_method": "value_at"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 15,
+      "source_line": 149,
+      "source_method": "is_on"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 20,
+      "source_line": 153,
+      "source_method": "build"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 77,
+      "source_line": 210,
+      "source_method": "is_on"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 82,
+      "source_line": 214,
+      "source_method": "reset"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 118,
+      "source_line": 249,
+      "source_method": "advance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 135,
+      "source_line": 265,
+      "source_method": "skip_empty_values"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 161,
+      "source_line": 300,
+      "source_method": "reset"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 167,
+      "source_line": 305,
+      "source_method": "move_to"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 181,
+      "source_line": 318,
+      "source_method": "segment_node_index"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 186,
+      "source_line": 322,
+      "source_method": "segment_next_node_index"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 196,
+      "source_line": 331,
+      "source_method": "sample"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 236,
+      "source_line": 372,
+      "source_method": "refresh_segment_distance"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 254,
+      "source_line": 390,
+      "source_method": "reserve"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 280,
+      "source_line": 415,
+      "source_method": "copy_all"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 292,
+      "source_line": 426,
+      "source_method": "copy_contour"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 306,
+      "source_line": 439,
+      "source_method": "emit"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 327,
+      "source_line": 459,
+      "source_method": "emit_contour"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 400,
+      "source_line": 531,
+      "source_method": "emit_range"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 434,
+      "source_line": 566,
+      "source_method": "merge_closed_wrap"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 465,
+      "source_line": 596,
+      "source_method": "remove_contour"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 490,
+      "source_line": 621,
+      "source_method": "need"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 513,
+      "source_line": 643,
+      "source_method": "need_contour"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 539,
+      "source_line": 670,
+      "source_method": "need_dash"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Dash.cs",
+      "target_line": 564,
+      "source_line": 696,
+      "source_method": "dash_to"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 8,
+      "source_line": 248,
+      "source_method": "to_tess_winding_rule"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 20,
+      "source_line": 404,
+      "source_method": "is_tess_point_valid"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 29,
+      "source_line": 413,
+      "source_method": "is_tess_point_equal"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 41,
+      "source_line": 425,
+      "source_method": "add_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 47,
+      "source_line": 431,
+      "source_method": "remove_repeated_closing_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 62,
+      "source_line": 446,
+      "source_method": "analyze_contour"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 116,
+      "source_line": 500,
+      "source_method": "reverse"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 126,
+      "source_line": 510,
+      "source_method": "build_contour"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 164,
+      "source_line": 561,
+      "source_method": "add_input_contours"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 182,
+      "source_line": 581,
+      "source_method": "boundary_contour_area"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 199,
+      "source_line": 598,
+      "source_method": "is_boundary_contour_valid"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 215,
+      "source_line": 616,
+      "source_method": "vertex_key"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 221,
+      "source_line": 642,
+      "source_method": "add_boundary_contours"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 254,
+      "source_line": 675,
+      "source_method": "boundary_vertex"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 262,
+      "source_line": 683,
+      "source_method": "build_aa_node"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 285,
+      "source_line": 708,
+      "source_method": "calc_aa_reserve"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 331,
+      "source_line": 756,
+      "source_method": "emit_aa_ring"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 380,
+      "source_line": 807,
+      "source_method": "convex_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 390,
+      "source_line": 819,
+      "source_method": "build_convex_aa_node"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 412,
+      "source_line": 843,
+      "source_method": "calc_convex_reserve"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 445,
+      "source_line": 880,
+      "source_method": "emit_convex"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 581,
+      "source_line": 1022,
+      "source_method": "build_boundary_contours"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 600,
+      "source_line": 1043,
+      "source_method": "emit_triangles"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Fill.cs",
+      "target_line": 741,
+      "source_line": 1187,
+      "source_method": "fill"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 8,
+      "source_line": 12,
+      "source_method": "nodes"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 13,
+      "source_line": 17,
+      "source_method": "contours"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 18,
+      "source_line": 22,
+      "source_method": "bounds"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 23,
+      "source_line": 27,
+      "source_method": "is_empty"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 28,
+      "source_line": 32,
+      "source_method": "is_finalized"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 33,
+      "source_line": 37,
+      "source_method": "reserve"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 39,
+      "source_line": 43,
+      "source_method": "clear"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 47,
+      "source_line": 51,
+      "source_method": "release"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 55,
+      "source_line": 59,
+      "source_method": "append_from"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 89,
+      "source_line": 92,
+      "source_method": "next_contour"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 102,
+      "source_line": 105,
+      "source_method": "add_node"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 144,
+      "source_line": 147,
+      "source_method": "close_contour"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 184,
+      "source_line": 187,
+      "source_method": "finalize"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 217,
+      "source_line": 220,
+      "source_method": "remove_collinear_segments"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 311,
+      "source_line": 314,
+      "source_method": "add_line_intersections"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 418,
+      "source_line": 426,
+      "source_method": "_cleanup_tail_contour"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 431,
+      "source_line": 439,
+      "source_method": "_cleanup_contours"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 443,
+      "source_line": 451,
+      "source_method": "_is_contour_valid"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 456,
+      "source_line": 464,
+      "source_method": "_remove_contour"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 476,
+      "source_line": 484,
+      "source_method": "_is_pass_through_join"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 491,
+      "source_line": 499,
+      "source_method": "_is_collinear_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 516,
+      "source_line": 526,
+      "source_method": "_is_line_valid"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 527,
+      "source_line": 537,
+      "source_method": "_try_calc_segment_line_intersection_t"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 567,
+      "source_line": 579,
+      "source_method": "_find_next_segment_line_intersection_t"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 602,
+      "source_line": 616,
+      "source_method": "_find_previous_segment_line_intersection_t"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 637,
+      "source_line": 653,
+      "source_method": "_count_segment_line_intersections"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 653,
+      "source_line": 671,
+      "source_method": "_make_line_intersection_node"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 661,
+      "source_line": 683,
+      "source_method": "_calc_contour_area"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 679,
+      "source_line": 701,
+      "source_method": "_reverse_contour_nodes"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 693,
+      "source_line": 715,
+      "source_method": "_enforce_winding_hint"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 716,
+      "source_line": 738,
+      "source_method": "_update_segment_data"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 768,
+      "source_line": 790,
+      "source_method": "_update_join_data"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 823,
+      "source_line": 845,
+      "source_method": "_calc_segment_count"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 833,
+      "source_line": 855,
+      "source_method": "_next_node"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Retained.cs",
+      "target_line": 846,
+      "source_line": 870,
+      "source_method": "_previous_node"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 11,
+      "source_line": 170,
+      "source_method": "line_intersection"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 29,
+      "source_line": 189,
+      "source_method": "calc_bevel_aa_corner"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 50,
+      "source_line": 211,
+      "source_method": "calc_round_divisions"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 62,
+      "source_line": 222,
+      "source_method": "emit_section"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 71,
+      "source_line": 232,
+      "source_method": "emit_section"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 85,
+      "source_line": 247,
+      "source_method": "emit_direction_section"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 105,
+      "source_line": 268,
+      "source_method": "emit_direction_section"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 113,
+      "source_line": 277,
+      "source_method": "emit_miter_section"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 137,
+      "source_line": 303,
+      "source_method": "build_start_cap"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 165,
+      "source_line": 332,
+      "source_method": "build_end_cap"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 193,
+      "source_line": 361,
+      "source_method": "build_join"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 219,
+      "source_line": 388,
+      "source_method": "build_inner_bevel_join"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 279,
+      "source_line": 449,
+      "source_method": "build_bevel_join"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 446,
+      "source_line": 617,
+      "source_method": "build_round_join"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 580,
+      "source_line": 753,
+      "source_method": "connect_segment"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 611,
+      "source_line": 785,
+      "source_method": "build_flat_cap_aa"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 621,
+      "source_line": 794,
+      "source_method": "build_round_cap"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 657,
+      "source_line": 832,
+      "source_method": "emit_round_arc_vertices"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 699,
+      "source_line": 875,
+      "source_method": "connect_round_arc"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 729,
+      "source_line": 905,
+      "source_method": "section_vertices"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 734,
+      "source_line": 909,
+      "source_method": "segment_triangles"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 739,
+      "source_line": 913,
+      "source_method": "round_arc_extra_vertices"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 748,
+      "source_line": 921,
+      "source_method": "round_arc_triangles"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 753,
+      "source_line": 925,
+      "source_method": "round_fan_vertices"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 758,
+      "source_line": 929,
+      "source_method": "round_join_triangles"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 763,
+      "source_line": 933,
+      "source_method": "add_contour"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.Stroke.cs",
+      "target_line": 807,
+      "source_line": 980,
+      "source_method": "stroke"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.StrokeContour.cs",
+      "target_line": 9,
+      "source_line": 84,
+      "source_method": "calc_round_divisions"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.StrokeContour.cs",
+      "target_line": 23,
+      "source_line": 100,
+      "source_method": "direction_from_angle"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.StrokeContour.cs",
+      "target_line": 28,
+      "source_line": 105,
+      "source_method": "next_node"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.StrokeContour.cs",
+      "target_line": 39,
+      "source_line": 118,
+      "source_method": "previous_node"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.StrokeContour.cs",
+      "target_line": 49,
+      "source_line": 130,
+      "source_method": "side_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.StrokeContour.cs",
+      "target_line": 59,
+      "source_line": 142,
+      "source_method": "miter_point"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.StrokeContour.cs",
+      "target_line": 74,
+      "source_line": 159,
+      "source_method": "open_endpoint"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.StrokeContour.cs",
+      "target_line": 86,
+      "source_line": 173,
+      "source_method": "emit_arc"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.StrokeContour.cs",
+      "target_line": 110,
+      "source_line": 199,
+      "source_method": "emit_side_bevel"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.StrokeContour.cs",
+      "target_line": 127,
+      "source_line": 218,
+      "source_method": "emit_side_round"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.StrokeContour.cs",
+      "target_line": 157,
+      "source_line": 250,
+      "source_method": "emit_side_miter"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.StrokeContour.cs",
+      "target_line": 164,
+      "source_line": 259,
+      "source_method": "emit_side_join"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.StrokeContour.cs",
+      "target_line": 213,
+      "source_line": 310,
+      "source_method": "emit_round_cap"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.StrokeContour.cs",
+      "target_line": 225,
+      "source_line": 322,
+      "source_method": "emit_open_contour"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.StrokeContour.cs",
+      "target_line": 276,
+      "source_line": 373,
+      "source_method": "emit_closed_side_contour"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.StrokeContour.cs",
+      "target_line": 297,
+      "source_line": 396,
+      "source_method": "emit"
+    },
+    {
+      "target": "libraries/SkrGui.Core/Vg/VgPathFlatten.StrokeContour.cs",
+      "target_line": 316,
+      "source_line": 416,
+      "source_method": "stroke_contour_to"
+    }
+  ],
+  "language_adaptations": [
+    "Public names retain original types and PascalCase members. MeshIndex remains uint; CPU transforms/sorting/geometry are not moved to a native GUI implementation.",
+    "BatchRoot preserves O(N^2) overlap-depth/order checks. Native pointer-address sort keys become stable managed reference identities; independent-resource physical address order has no portable C# identity.",
+    "SortedBatchCmd and BatchRegion are value structs; source auto& writes use ref over CollectionsMarshal.AsSpan, including VisualOwner combined index ranges.",
+    "Sampler caches are value structs. Mutable eval callbacks use ref TSampler; readonly sample callback values are snapshots. Source reference cache updates persist to callers.",
+    "PaintTransform borrowed getters and PaintContext.Transform use ref readonly. VgBuffer exposes only IReadOnlyList publicly; internal ref indexers preserve original mutable-node aliases.",
+    "ColorGradient boxed alternatives retain mutable AsSolid/AsAxis/AsCurve references; explicit copy constructors deep-copy source value copies. CLR default(T) differs from C++ member-initialized {}; translated source uses new T() where member defaults apply.",
+    "VGFillAllocator.UserData is a managed context object, with all three callbacks receiving it. A GCHandle bridges this context to pinned libtess2 native allocator ABI; default diagnostic tag preserves the source name.",
+    "VGPath and VGPathFlatten expose explicit deep-copy constructors corresponding to implicit C++ copies.",
+    "Test-only original NanoVG 0.1.0 C API is used as the independent coverage oracle; all coverage sampling, cases and assertions are C#."
+  ],
+  "backend_contracts": [
+    {
+      "source": "begin_frame / end_frame",
+      "mapping": "Recording guards and retry state retained. Missing RD returns false. EndFrame always closes a valid completed recording, retains the submitted frame and strong resource snapshots. RD resource creation errors return false when executed inline and are reported via LastRenderError on a queued rendering-thread execution; the host checks that result. This asynchronous hardware-error timing is an explicit Godot-host boundary, not claimed to match CGPU synchronously."
+    },
+    {
+      "source": "create_image_render_target / begin_render_target",
+      "mapping": "Nonpositive target size returns null. Empty viewport falls back to full target. Logic dimensions use ceil then max(1). A clear-only frame still clears with empty vertices/indices."
+    },
+    {
+      "source": "begin_clip / set_draw_scissor",
+      "mapping": "Every clip intersects the prior logical bound. Original ClipMesh remains AABB-only. Logical bounds intersect viewport, then physical scissor; floor minimum/ceil maximum clamp to target."
+    },
+    {
+      "source": "create_frame_resources / text_atlas",
+      "mapping": "20-byte vertices: position float2, UV float2, source RGBA-packed color converted to little-endian RGBA8. TextService+atlas id identity and generation/size/stride/format changes recreate GPU storage. R8 gray-alpha shared view maps R to all RGBA channels for direct textured/gray mode; SDF/LCD uses raw view."
+    },
+    {
+      "source": "create_render_program_for_shader",
+      "mapping": "RGBA8 UNORM single-sample target, premultiplied ONE/ONE_MINUS_SRC_ALPHA. GrayLCD/SDFLCD preserve ONE/ONE_MINUS_SRC1_COLOR and independent alpha dual-source blend."
+    },
+    {
+      "source": "record_backdrop_blur",
+      "mapping": "End draw pass, copy previously rendered complete background, original crop/downsample4 and H/V Gaussian compute, glass draw with original 208-byte parameter fields, resume LOAD draw pass. Original 40 bytes of blur fields use a 48-byte RD push-constant allocation because Godot rounds the SPIR-V block alignment."
+    },
+    {
+      "source": "destroy_frame_resources",
+      "mapping": "Godot owns fences and deferred GPU deletion. Dependent vertex/index arrays and uniform sets release before buffers; invalidated texture-dependent sets are checked. Frames retain their mesh bytes/textures/text services until consumed."
+    },
+    {
+      "source": "readback",
+      "mapping": "Original RGBA pack compute runs on the shared main RD; buffer readback completes asynchronously. No private/local RD and no GUI-to-bitmap approximation are used for drawing."
+    }
+  ],
+  "window_contracts": [
+    {
+      "source": "GalleryOptions.backend / create_swapchain",
+      "mapping": "Godot process rendering-method mobile (or Forward+) and rendering-driver vulkan select the shared device before the C# scene. Godot owns platform surface/swapchain, image count, queue/fences and recreation; no CGPU backend handles survive."
+    },
+    {
+      "source": "GalleryOptions.window_title / window_create",
+      "mapping": "project.godot config/name plus Godot Window.Title replaces native title; viewport and window width/height overrides create the CounterDemo logical window. project.godot window/size/resizable=false establishes source is_resizable=false before native window creation, preserving the 960x720 client area. The Ready-time GetWindow().Unresizable=true assignment is then idempotent and does not resize the Win32 client area."
+    },
+    {
+      "source": "GalleryOptions.window_scale / pixel_ratio",
+      "mapping": "Godot window/viewport resolution supplies equivalent concrete sizing. Host maps input by viewport dimensions to CounterDemo logical extent, and computes paint pixel ratio from physical target/logical extent. Generic native window_scale/pixel_ratio knobs are replaced by Godot host configuration; there is no claim that a separate CGPU GalleryOptions object is still instantiated."
+    },
+    {
+      "source": "GalleryOptions.enable_vsync",
+      "mapping": "project.godot window/vsync/vsync_mode=0 preserves the original default false; Godot command-line/project/display server settings own alternate modes."
+    },
+    {
+      "source": "window_current_pixel_ratio / sync_physical_size",
+      "mapping": "GetViewportRect().Size is the render target pixel extent; SizeChanged updates target size. LogicPosition converts position to CounterDemo.DemoWidth/Height using this extent; text raster pixel ratio is recalculated by the original CounterDemo render logic."
+    },
+    {
+      "source": "GalleryWindowEventHandler.handle_event",
+      "mapping": "_Input is scoped to the Godot scene viewport/window. Pressed&&!Echo retains repeat suppression. Escape calls SceneTree.Quit; mouse move/left down/up/leave forward to the original CounterDemo handlers."
+    },
+    {
+      "source": "pump_events / should_close / destroy",
+      "mapping": "Godot runs the event pump and close lifecycle. _Process calls the original render path; close/Escape terminates SceneTree; _ExitTree disposes demo, target and backend and releases resources on the render thread."
+    }
+  ],
+  "verification_artifacts": [
+    "artifacts/tests/full-current.json",
+    "artifacts/tests/vg-complete.json",
+    "artifacts/tests/nanovg-coverage.json",
+    "artifacts/tests/rendering-owned.json",
+    "artifacts/gpu-probe/results.json",
+    "artifacts/godot/host-verification.json",
+    "artifacts/godot-gray/host-verification.json",
+    "artifacts/godot-gray-lcd/host-verification.json",
+    "artifacts/godot-sdf-lcd/host-verification.json"
+  ],
+  "limits": [
+    "Source behavioral cases and analytic pixel expectations are verified. An original CGPU gallery screenshot baseline was not executed, so cross-driver bit-exact full-image parity is not asserted.",
+    "Independent draw/layout gallery pages and developer HTML/performance/estimator tools are tracked by root separately; this map does not claim they are migrated by the rendering subagent."
+  ]
+}

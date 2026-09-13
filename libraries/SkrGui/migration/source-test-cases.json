@@ -1,0 +1,2795 @@
+{
+  "commit": "611561f81534354c8c1618dc27c4782cd9277cbf",
+  "cases": [
+    {
+      "name": "gui/batch/adjacent compatible meshes share one batch",
+      "path": "engine/modules/gui/core/tests/batch/batch_cmd_tests.cpp",
+      "line": 103
+    },
+    {
+      "name": "gui/batch/clip commands remain isolated",
+      "path": "engine/modules/gui/core/tests/batch/batch_cmd_tests.cpp",
+      "line": 122
+    },
+    {
+      "name": "gui/batch/text from one layout may cross within that layout",
+      "path": "engine/modules/gui/core/tests/batch/batch_cmd_tests.cpp",
+      "line": 139
+    },
+    {
+      "name": "gui/batch/lookahead combines compatible non-overlapping meshes",
+      "path": "engine/modules/gui/core/tests/batch/batch_cmd_tests.cpp",
+      "line": 185
+    },
+    {
+      "name": "gui/batch/lookahead preserves overlapping draw order",
+      "path": "engine/modules/gui/core/tests/batch/batch_cmd_tests.cpp",
+      "line": 202
+    },
+    {
+      "name": "gui/batch/external rule reads command data",
+      "path": "engine/modules/gui/core/tests/batch/batch_cmd_tests.cpp",
+      "line": 221
+    },
+    {
+      "name": "gui/batch/color-gradient solid and axis sampling",
+      "path": "engine/modules/gui/core/tests/batch/color_gradient_tests.cpp",
+      "line": 5
+    },
+    {
+      "name": "gui/batch/color-gradient validity",
+      "path": "engine/modules/gui/core/tests/batch/color_gradient_tests.cpp",
+      "line": 70
+    },
+    {
+      "name": "gui/batch/color-gradient curve stop sorting and duplicate override",
+      "path": "engine/modules/gui/core/tests/batch/color_gradient_tests.cpp",
+      "line": 113
+    },
+    {
+      "name": "gui/batch/color-gradient rect sampling",
+      "path": "engine/modules/gui/core/tests/batch/color_gradient_tests.cpp",
+      "line": 192
+    },
+    {
+      "name": "gui/batch/mesh-builder maps vertex attributes",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 131
+    },
+    {
+      "name": "gui/batch/basic-meshes text builds rect span mesh",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 180
+    },
+    {
+      "name": "gui/batch/basic-meshes text emits every rect in span",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 225
+    },
+    {
+      "name": "gui/batch/basic-meshes premultiply color option",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 243
+    },
+    {
+      "name": "gui/batch/basic-meshes rect fill axis gradient",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 275
+    },
+    {
+      "name": "gui/batch/basic-meshes rect stroke axis gradient uses vg fast path",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 302
+    },
+    {
+      "name": "gui/batch/basic-meshes rect fill colored corners",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 328
+    },
+    {
+      "name": "gui/batch/basic-meshes ninepatch emits inset grid",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 353
+    },
+    {
+      "name": "gui/batch/basic-meshes ninepatch rejects invalid inset",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 379
+    },
+    {
+      "name": "gui/batch/basic-meshes rrect fill uses delaunay when curve split is required",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 398
+    },
+    {
+      "name": "gui/batch/basic-meshes rrect stroke uses vg path",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 430
+    },
+    {
+      "name": "gui/batch/basic-meshes diff rrect uses vg path",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 448
+    },
+    {
+      "name": "gui/batch/rrect/square-corners-use-rect-primitives",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 466
+    },
+    {
+      "name": "gui/batch/basic-meshes fill workspace can be reused",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 493
+    },
+    {
+      "name": "gui/batch/basic-meshes rrect border uses diff path when all insets are nonzero",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 536
+    },
+    {
+      "name": "gui/batch/basic-meshes rrect border skips zero inset side",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 554
+    },
+    {
+      "name": "gui/batch/basic-meshes rrect border handles opposite zero inset sides",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 573
+    },
+    {
+      "name": "gui/batch/basic-meshes rrect border handles single inset side",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 593
+    },
+    {
+      "name": "gui/batch/basic-meshes rrect border rejects zero inset",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 613
+    },
+    {
+      "name": "gui/batch/rrect-border/square-corners-use-diff-rect",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 630
+    },
+    {
+      "name": "gui/batch/basic-meshes superellipse fill uses delaunay when curve split is required",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 651
+    },
+    {
+      "name": "gui/batch/basic-meshes superellipse stroke uses vg path",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 691
+    },
+    {
+      "name": "gui/batch/basic-meshes circle filled uses vg primitive without curve split",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 717
+    },
+    {
+      "name": "gui/batch/basic-meshes circle filled uses delaunay when curve split is required",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 737
+    },
+    {
+      "name": "gui/batch/basic-meshes circle stroke uses vg path",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 774
+    },
+    {
+      "name": "gui/batch/basic-meshes ellipse filled uses vg primitive without curve split",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 794
+    },
+    {
+      "name": "gui/batch/basic-meshes ellipse filled uses delaunay when curve split is required",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 814
+    },
+    {
+      "name": "gui/batch/basic-meshes ellipse stroke uses vg path",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 851
+    },
+    {
+      "name": "gui/batch/basic-meshes fan uses vg primitive without curve split",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 871
+    },
+    {
+      "name": "gui/batch/basic-meshes fan uses vg path when curve split is required",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 892
+    },
+    {
+      "name": "gui/batch/basic-meshes arc stroke uses vg path",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 921
+    },
+    {
+      "name": "gui/batch/basic-meshes elliptical fan uses vg primitive without curve split",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 941
+    },
+    {
+      "name": "gui/batch/basic-meshes elliptical fan uses vg path when curve split is required",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 969
+    },
+    {
+      "name": "gui/batch/basic-meshes elliptical arc stroke uses vg path",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 1005
+    },
+    {
+      "name": "gui/batch/basic-meshes rect fill uses delaunay when curve split is required",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 1032
+    },
+    {
+      "name": "gui/batch/basic-meshes rect fill curve gradient without inner stop uses vg rect",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 1067
+    },
+    {
+      "name": "gui/batch/basic-meshes curve gradient splits rect stroke before fill",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 1094
+    },
+    {
+      "name": "gui/batch/basic-meshes rect stroke curve gradient without inner stop uses vg ring",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 1124
+    },
+    {
+      "name": "gui/batch/basic-meshes diff rect curve gradient without inner stop uses vg ring",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 1152
+    },
+    {
+      "name": "gui/batch/basic-meshes rejects invalid gradient before geometry",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 1180
+    },
+    {
+      "name": "gui/batch/basic-meshes diff rect follows vg aa coverage",
+      "path": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "line": 1369
+    },
+    {
+      "name": "gui/batch/PaintContext draws mesh with current transform state",
+      "path": "engine/modules/gui/core/tests/batch/paint_context_tests.cpp",
+      "line": 47
+    },
+    {
+      "name": "gui/batch/PaintContext resolves uniform device mapping",
+      "path": "engine/modules/gui/core/tests/batch/paint_context_tests.cpp",
+      "line": 86
+    },
+    {
+      "name": "gui/batch/PaintContext builds clip root tree",
+      "path": "engine/modules/gui/core/tests/batch/paint_context_tests.cpp",
+      "line": 139
+    },
+    {
+      "name": "gui/batch/PaintContext complex clip rect falls back to clip mesh",
+      "path": "engine/modules/gui/core/tests/batch/paint_context_tests.cpp",
+      "line": 173
+    },
+    {
+      "name": "gui/batch/PaintContext supports clip mesh backdrop opacity and reset",
+      "path": "engine/modules/gui/core/tests/batch/paint_context_tests.cpp",
+      "line": 194
+    },
+    {
+      "name": "gui/batch/PaintContext root complex transform forces mesh clip",
+      "path": "engine/modules/gui/core/tests/batch/paint_context_tests.cpp",
+      "line": 233
+    },
+    {
+      "name": "gui/batch/PaintContext clips draw command bounds with clip stack",
+      "path": "engine/modules/gui/core/tests/batch/paint_context_tests.cpp",
+      "line": 247
+    },
+    {
+      "name": "gui/batch/PaintContext skips empty clipped clip commands",
+      "path": "engine/modules/gui/core/tests/batch/paint_context_tests.cpp",
+      "line": 289
+    },
+    {
+      "name": "gui/component-widget/hosts-state-and-explicitly-rebuilds",
+      "path": "engine/modules/gui/core/tests/framework/widget/component_widget_tests.cpp",
+      "line": 231
+    },
+    {
+      "name": "gui/component-widget/can-suppress-forced-update-rebuild",
+      "path": "engine/modules/gui/core/tests/framework/widget/component_widget_tests.cpp",
+      "line": 285
+    },
+    {
+      "name": "gui/component-widget/supports-stateless-components",
+      "path": "engine/modules/gui/core/tests/framework/widget/component_widget_tests.cpp",
+      "line": 315
+    },
+    {
+      "name": "gui/visual-widget/creates-once-and-updates-existing-visual",
+      "path": "engine/modules/gui/core/tests/framework/widget/visual_widget_tests.cpp",
+      "line": 237
+    },
+    {
+      "name": "gui/visual-widget/single-child-reuses-nexus-and-visual",
+      "path": "engine/modules/gui/core/tests/framework/widget/visual_widget_tests.cpp",
+      "line": 267
+    },
+    {
+      "name": "gui/visual-widget/reorders-keyed-slot-widgets",
+      "path": "engine/modules/gui/core/tests/framework/widget/visual_widget_tests.cpp",
+      "line": 313
+    },
+    {
+      "name": "gui/widget-dsl/configures-widget-and-returns-typed-rc",
+      "path": "engine/modules/gui/core/tests/framework/widget/widget_dsl_tests.cpp",
+      "line": 113
+    },
+    {
+      "name": "gui/widget-dsl/runs-optional-construction-hooks",
+      "path": "engine/modules/gui/core/tests/framework/widget/widget_dsl_tests.cpp",
+      "line": 128
+    },
+    {
+      "name": "gui/widget-dsl/composes-nested-widgets",
+      "path": "engine/modules/gui/core/tests/framework/widget/widget_dsl_tests.cpp",
+      "line": 167
+    },
+    {
+      "name": "gui/widget-dsl/composes-complex-widget-and-param-tree",
+      "path": "engine/modules/gui/core/tests/framework/widget/widget_dsl_tests.cpp",
+      "line": 187
+    },
+    {
+      "name": "gui/math/Offsetf factories and getters",
+      "path": "engine/modules/gui/core/tests/math/geometry_tests.cpp",
+      "line": 2
+    },
+    {
+      "name": "gui/math/Offsetf arithmetic and scalar operators",
+      "path": "engine/modules/gui/core/tests/math/geometry_tests.cpp",
+      "line": 27
+    },
+    {
+      "name": "gui/math/Offseti arithmetic and conversions",
+      "path": "engine/modules/gui/core/tests/math/geometry_tests.cpp",
+      "line": 66
+    },
+    {
+      "name": "gui/math/Sizef factories predicates and helpers",
+      "path": "engine/modules/gui/core/tests/math/geometry_tests.cpp",
+      "line": 104
+    },
+    {
+      "name": "gui/math/Sizef offsets arithmetic and conversions",
+      "path": "engine/modules/gui/core/tests/math/geometry_tests.cpp",
+      "line": 132
+    },
+    {
+      "name": "gui/math/Size semantics keep absolute area and inclusive local bounds",
+      "path": "engine/modules/gui/core/tests/math/geometry_tests.cpp",
+      "line": 166
+    },
+    {
+      "name": "gui/math/Sizei helpers arithmetic and conversions",
+      "path": "engine/modules/gui/core/tests/math/geometry_tests.cpp",
+      "line": 181
+    },
+    {
+      "name": "gui/math/Rectf factories and predicates",
+      "path": "engine/modules/gui/core/tests/math/geometry_tests.cpp",
+      "line": 214
+    },
+    {
+      "name": "gui/math/Rectf transforms contains overlaps and lerp",
+      "path": "engine/modules/gui/core/tests/math/geometry_tests.cpp",
+      "line": 246
+    },
+    {
+      "name": "gui/math/Rect containment uses half open edges",
+      "path": "engine/modules/gui/core/tests/math/geometry_tests.cpp",
+      "line": 281
+    },
+    {
+      "name": "gui/math/Recti transforms and conversions",
+      "path": "engine/modules/gui/core/tests/math/geometry_tests.cpp",
+      "line": 299
+    },
+    {
+      "name": "gui/math/Radius arithmetic and lerp",
+      "path": "engine/modules/gui/core/tests/math/geometry_tests.cpp",
+      "line": 331
+    },
+    {
+      "name": "gui/math/RRect factories transforms contains and lerp",
+      "path": "engine/modules/gui/core/tests/math/geometry_tests.cpp",
+      "line": 360
+    },
+    {
+      "name": "gui/math/RRect oversized radii keep helper rects empty before scaling",
+      "path": "engine/modules/gui/core/tests/math/geometry_tests.cpp",
+      "line": 508
+    },
+    {
+      "name": "gui/math/BoxFit apply matches Flutter semantics",
+      "path": "engine/modules/gui/core/tests/math/layout_tests.cpp",
+      "line": 3
+    },
+    {
+      "name": "gui/math/Alignment factories math and positioning",
+      "path": "engine/modules/gui/core/tests/math/layout_tests.cpp",
+      "line": 45
+    },
+    {
+      "name": "gui/math/AlignmentDirectional factories arithmetic and resolve",
+      "path": "engine/modules/gui/core/tests/math/layout_tests.cpp",
+      "line": 104
+    },
+    {
+      "name": "gui/math/AlignmentMixed arithmetic and resolve",
+      "path": "engine/modules/gui/core/tests/math/layout_tests.cpp",
+      "line": 141
+    },
+    {
+      "name": "gui/math/EdgeInsets factories arithmetic and geometry",
+      "path": "engine/modules/gui/core/tests/math/layout_tests.cpp",
+      "line": 191
+    },
+    {
+      "name": "gui/math/EdgeInsetsDirectional factories arithmetic and resolve",
+      "path": "engine/modules/gui/core/tests/math/layout_tests.cpp",
+      "line": 298
+    },
+    {
+      "name": "gui/math/EdgeInsetsMixed arithmetic and resolve",
+      "path": "engine/modules/gui/core/tests/math/layout_tests.cpp",
+      "line": 357
+    },
+    {
+      "name": "gui/math/BoxConstraints factories and predicates",
+      "path": "engine/modules/gui/core/tests/math/layout_tests.cpp",
+      "line": 427
+    },
+    {
+      "name": "gui/math/BoxConstraints constrain semantics and enforcement",
+      "path": "engine/modules/gui/core/tests/math/layout_tests.cpp",
+      "line": 462
+    },
+    {
+      "name": "gui/math/BoxConstraints helpers transforms and validation",
+      "path": "engine/modules/gui/core/tests/math/layout_tests.cpp",
+      "line": 492
+    },
+    {
+      "name": "gui/math/m3/tonal-palette",
+      "path": "engine/modules/gui/core/tests/math/m3/m3_color_test.cpp",
+      "line": 148
+    },
+    {
+      "name": "gui/math/m3/cmf-palette-parameters",
+      "path": "engine/modules/gui/core/tests/math/m3/m3_color_test.cpp",
+      "line": 175
+    },
+    {
+      "name": "gui/math/m3/cmf-dual-source-reference",
+      "path": "engine/modules/gui/core/tests/math/m3/m3_color_test.cpp",
+      "line": 216
+    },
+    {
+      "name": "gui/math/m3/cmf-2026-phone-role-golden",
+      "path": "engine/modules/gui/core/tests/math/m3/m3_color_test.cpp",
+      "line": 287
+    },
+    {
+      "name": "gui/math/m3/cmf-canonicalization-aliases-and-grid",
+      "path": "engine/modules/gui/core/tests/math/m3/m3_color_test.cpp",
+      "line": 352
+    },
+    {
+      "name": "gui/math/m3/cmf-thresholds-and-contrast-saturation",
+      "path": "engine/modules/gui/core/tests/math/m3/m3_color_test.cpp",
+      "line": 412
+    },
+    {
+      "name": "gui/math/m3/default-scheme-is-opaque-black",
+      "path": "engine/modules/gui/core/tests/math/m3/m3_color_test.cpp",
+      "line": 478
+    },
+    {
+      "name": "gui/math/m3/cmf-error-hue-boundaries",
+      "path": "engine/modules/gui/core/tests/math/m3/m3_color_test.cpp",
+      "line": 491
+    },
+    {
+      "name": "gui/math/m3/invalid-input-defaults",
+      "path": "engine/modules/gui/core/tests/math/m3/m3_color_test.cpp",
+      "line": 562
+    },
+    {
+      "name": "gui/math/PaintTransform offset fast path",
+      "path": "engine/modules/gui/core/tests/math/paint_transform_tests.cpp",
+      "line": 13
+    },
+    {
+      "name": "gui/math/PaintTransform reset restores default state",
+      "path": "engine/modules/gui/core/tests/math/paint_transform_tests.cpp",
+      "line": 37
+    },
+    {
+      "name": "gui/math/PaintTransform scale keeps scale offset state",
+      "path": "engine/modules/gui/core/tests/math/paint_transform_tests.cpp",
+      "line": 57
+    },
+    {
+      "name": "gui/math/PaintTransform complex 2d state",
+      "path": "engine/modules/gui/core/tests/math/paint_transform_tests.cpp",
+      "line": 77
+    },
+    {
+      "name": "gui/math/PaintTransform 3d rotation overloads and projection",
+      "path": "engine/modules/gui/core/tests/math/paint_transform_tests.cpp",
+      "line": 96
+    },
+    {
+      "name": "gui/math/PaintTransform matrix apply",
+      "path": "engine/modules/gui/core/tests/math/paint_transform_tests.cpp",
+      "line": 131
+    },
+    {
+      "name": "gui/math/PaintTransform can apply another PaintTransform",
+      "path": "engine/modules/gui/core/tests/math/paint_transform_tests.cpp",
+      "line": 161
+    },
+    {
+      "name": "gui/math/PaintTransform components apply in semantic order",
+      "path": "engine/modules/gui/core/tests/math/paint_transform_tests.cpp",
+      "line": 187
+    },
+    {
+      "name": "gui/math/Placement/construction and value semantics",
+      "path": "engine/modules/gui/core/tests/math/placement_tests.cpp",
+      "line": 68
+    },
+    {
+      "name": "gui/math/Placement/pin builders",
+      "path": "engine/modules/gui/core/tests/math/placement_tests.cpp",
+      "line": 146
+    },
+    {
+      "name": "gui/math/Placement/align builders",
+      "path": "engine/modules/gui/core/tests/math/placement_tests.cpp",
+      "line": 278
+    },
+    {
+      "name": "gui/math/Placement/inset combined setters",
+      "path": "engine/modules/gui/core/tests/math/placement_tests.cpp",
+      "line": 372
+    },
+    {
+      "name": "gui/math/Placement/inset percent setters",
+      "path": "engine/modules/gui/core/tests/math/placement_tests.cpp",
+      "line": 437
+    },
+    {
+      "name": "gui/math/Placement/inset pixel setters",
+      "path": "engine/modules/gui/core/tests/math/placement_tests.cpp",
+      "line": 482
+    },
+    {
+      "name": "gui/math/Placement/modes and validation",
+      "path": "engine/modules/gui/core/tests/math/placement_tests.cpp",
+      "line": 527
+    },
+    {
+      "name": "gui/math/Placement/constraint propagation",
+      "path": "engine/modules/gui/core/tests/math/placement_tests.cpp",
+      "line": 632
+    },
+    {
+      "name": "gui/math/Placement/exact size propagation",
+      "path": "engine/modules/gui/core/tests/math/placement_tests.cpp",
+      "line": 753
+    },
+    {
+      "name": "gui/math/Placement/positive size failure contract",
+      "path": "engine/modules/gui/core/tests/math/placement_tests.cpp",
+      "line": 790
+    },
+    {
+      "name": "gui/math/Placement/placement",
+      "path": "engine/modules/gui/core/tests/math/placement_tests.cpp",
+      "line": 841
+    },
+    {
+      "name": "gui/math/Circle normalization relations and measures",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 449
+    },
+    {
+      "name": "gui/math/Shape Invalid factories are consistently invalid",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 466
+    },
+    {
+      "name": "gui/math/Ellipse normalization relations and measures",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 488
+    },
+    {
+      "name": "gui/math/Arc normalization length and closest point",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 512
+    },
+    {
+      "name": "gui/math/EllipticalArc normalization length and closest point",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 539
+    },
+    {
+      "name": "gui/math/Shape cubic bezier fast split preserves full contour endpoints",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 576
+    },
+    {
+      "name": "gui/math/Shape cubic bezier counts match emitted segments",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 629
+    },
+    {
+      "name": "gui/math/Shape samplers match point sampling",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 1007
+    },
+    {
+      "name": "gui/math/ShapeSampleHelper sampler callbacks expose synced sampler",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 1102
+    },
+    {
+      "name": "gui/math/Shape sampler sampling entries match regular sampling",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 1209
+    },
+    {
+      "name": "gui/math/Superellipse tolerance sampling splits closed contour by quadrants",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 1292
+    },
+    {
+      "name": "gui/math/Superellipse tolerance sampling handles diamond exponent",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 1369
+    },
+    {
+      "name": "gui/math/SuperellipseArc tolerance sampling splits by half quadrants",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 1409
+    },
+    {
+      "name": "gui/math/SuperellipseArc tolerance sampling handles diamond exponent",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 1481
+    },
+    {
+      "name": "gui/math/Shape cubic bezier split supports closed shape direction",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 1536
+    },
+    {
+      "name": "gui/math/Arc cubic bezier fast split respects sweep bounds",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 1559
+    },
+    {
+      "name": "gui/math/EllipticalArc cubic bezier fast split preserves endpoints",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 1607
+    },
+    {
+      "name": "gui/math/Shape cubic bezier tolerance split handles density and invalid input",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 1654
+    },
+    {
+      "name": "gui/math/Shape cubic bezier split skips empty and invalid primitives",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 1697
+    },
+    {
+      "name": "gui/math/QuadBezier length and closest point",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 1711
+    },
+    {
+      "name": "gui/math/Bezier path-style factories match direct construction",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 1730
+    },
+    {
+      "name": "gui/math/Arc ArcTo builds tangent corner arc and rejects invalid input",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 1763
+    },
+    {
+      "name": "gui/math/EllipticalArc ArcTo supports flags scaling and invalid input",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 1807
+    },
+    {
+      "name": "gui/math/Shape calc_tolerance scale response",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 1891
+    },
+    {
+      "name": "gui/math/Shape sample tolerance is monotonic across primitives",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 1906
+    },
+    {
+      "name": "gui/math/Arc shape estimate_segment_count handles ellipse and superellipse arcs",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 1959
+    },
+    {
+      "name": "gui/math/Superellipse estimate_segment_count handles exponent segments",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 2109
+    },
+    {
+      "name": "gui/math/SuperellipseArc estimate_segment_count handles exponent segments",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 2161
+    },
+    {
+      "name": "gui/math/Shape sample step length is supported across primitives",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 2295
+    },
+    {
+      "name": "gui/math/Shape sample max depth controls adaptive refinement",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 2369
+    },
+    {
+      "name": "gui/math/Shape sampling direction preserves native t values",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 2427
+    },
+    {
+      "name": "gui/math/Shape sampling distinguishes open and closed endpoint contracts",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 2506
+    },
+    {
+      "name": "gui/math/Shape sampling skips degenerate primitives",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 2552
+    },
+    {
+      "name": "gui/math/CubicBezier length and closest point",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 2580
+    },
+    {
+      "name": "gui/math/Shape project APIs expose semantic parameters",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 2600
+    },
+    {
+      "name": "gui/math/Shape trim and subcurve APIs preserve endpoints",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 2651
+    },
+    {
+      "name": "gui/math/Arc normalization preserves geometry under radius sign flips",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 2722
+    },
+    {
+      "name": "gui/math/EllipticalArc normalization preserves geometry under radius sign flips",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 2745
+    },
+    {
+      "name": "gui/math/Shape trim and subcurve clamp and reverse out-of-range inputs",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 2767
+    },
+    {
+      "name": "gui/math/Shape project stays valid for degenerate inputs",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 2843
+    },
+    {
+      "name": "gui/math/Superellipse normalization invalid and exponent two parity",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 2898
+    },
+    {
+      "name": "gui/math/Superellipse geometry bounds sampling and direction",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 2964
+    },
+    {
+      "name": "gui/math/Superellipse cubic bezier splits preserve endpoints",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 3010
+    },
+    {
+      "name": "gui/math/Superellipse cubic bezier split obeys sampled tolerance",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 3041
+    },
+    {
+      "name": "gui/math/Superellipse skips empty and invalid callbacks",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 3076
+    },
+    {
+      "name": "gui/math/SuperellipseArc normalization invalid and exponent two parity",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 3098
+    },
+    {
+      "name": "gui/math/SuperellipseArc bounds sampling reverse and trim",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 3172
+    },
+    {
+      "name": "gui/math/SuperellipseArc cubic bezier splits preserve endpoints",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 3237
+    },
+    {
+      "name": "gui/math/SuperellipseArc cubic bezier split obeys sampled tolerance",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 3289
+    },
+    {
+      "name": "gui/math/SuperellipseArc skips empty and invalid callbacks",
+      "path": "engine/modules/gui/core/tests/math/shape_tests.cpp",
+      "line": 3361
+    },
+    {
+      "name": "gui/font-provider/abstract-query-and-load",
+      "path": "engine/modules/gui/core/tests/text/font_provider_tests.cpp",
+      "line": 66
+    },
+    {
+      "name": "gui/font-provider/files-provider-indexes-font-file",
+      "path": "engine/modules/gui/core/tests/text/font_provider_tests.cpp",
+      "line": 92
+    },
+    {
+      "name": "gui/text-baseline/advanced/visual-and-logical-bidi",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_advanced_tests.cpp",
+      "line": 45
+    },
+    {
+      "name": "gui/text-baseline/advanced/forced-direction-and-override",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_advanced_tests.cpp",
+      "line": 104
+    },
+    {
+      "name": "gui/text-baseline/advanced/bidi-ranges",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_advanced_tests.cpp",
+      "line": 128
+    },
+    {
+      "name": "gui/text-baseline/advanced/character-breaks",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_advanced_tests.cpp",
+      "line": 165
+    },
+    {
+      "name": "gui/text-baseline/advanced/word-breaks",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_advanced_tests.cpp",
+      "line": 193
+    },
+    {
+      "name": "gui/text-baseline/advanced/long-emoji-breaks",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_advanced_tests.cpp",
+      "line": 237
+    },
+    {
+      "name": "gui/text-baseline/advanced/unicode-identifiers",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_advanced_tests.cpp",
+      "line": 254
+    },
+    {
+      "name": "gui/text-baseline/advanced/letter-and-diacritic",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_advanced_tests.cpp",
+      "line": 303
+    },
+    {
+      "name": "gui/text-baseline/advanced/context-case-and-security",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_advanced_tests.cpp",
+      "line": 355
+    },
+    {
+      "name": "gui/text-baseline/advanced/opentype-cluster-contract",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_advanced_tests.cpp",
+      "line": 379
+    },
+    {
+      "name": "gui/text-baseline/common/service-and-font-lifetime",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 232
+    },
+    {
+      "name": "gui/text-baseline/common/source-span-object-invalidation",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 297
+    },
+    {
+      "name": "gui/text-baseline/common/break-flags-and-hard-breaks",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 366
+    },
+    {
+      "name": "gui/text-baseline/common/fixed-line-breaking",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 449
+    },
+    {
+      "name": "gui/text-baseline/common/strip-diacritics",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 575
+    },
+    {
+      "name": "gui/text-baseline/common/hard-break-space-trimming",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 630
+    },
+    {
+      "name": "gui/text-baseline/common/tabs-objects-and-line-views",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 720
+    },
+    {
+      "name": "gui/text-baseline/common/trim-justify-and-editing",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 776
+    },
+    {
+      "name": "gui/text-baseline/common/stable-provider-is-not-polled",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 841
+    },
+    {
+      "name": "gui/text-baseline/common/provider-topology-invalidates",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 866
+    },
+    {
+      "name": "gui/text-baseline/common/family-fallback-is-lazy",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 912
+    },
+    {
+      "name": "gui/text-baseline/common/provider-negative-cache-is-topology-scoped",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 977
+    },
+    {
+      "name": "gui/text-baseline/common/font-data-cache-includes-provider-identity",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 1022
+    },
+    {
+      "name": "gui/text-baseline/common/font-data-load-failure-is-cached",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 1075
+    },
+    {
+      "name": "gui/text-baseline/common/empty-paragraph-contract",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 1115
+    },
+    {
+      "name": "gui/text-baseline/paint/sdf-atlas-and-cache-reset",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_paint_tests.cpp",
+      "line": 12
+    },
+    {
+      "name": "gui/text-baseline/paint/empty-glyph-is-a-noop",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_paint_tests.cpp",
+      "line": 59
+    },
+    {
+      "name": "gui/text-baseline/paint/missing-glyph-solid-box",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_paint_tests.cpp",
+      "line": 74
+    },
+    {
+      "name": "gui/text-baseline/paint/paragraph-line-local-origin",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_paint_tests.cpp",
+      "line": 108
+    },
+    {
+      "name": "gui/text-contract/font-face/metadata-glyphs-and-contour",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 122
+    },
+    {
+      "name": "gui/text-contract/font-face/metadata-and-support-overrides",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 183
+    },
+    {
+      "name": "gui/text-contract/font-face/variation-and-opentype-overrides",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 225
+    },
+    {
+      "name": "gui/text-contract/font-face/public-metric-and-glyph-overrides",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 310
+    },
+    {
+      "name": "gui/text-contract/font-face/sdf-glyph-overrides-scale-with-size",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 382
+    },
+    {
+      "name": "gui/text-contract/font-face/glyph-raster-rect-overrides-affect-paint",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 471
+    },
+    {
+      "name": "gui/text-contract/font-face/glyph-raster-override-before-first-load",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 547
+    },
+    {
+      "name": "gui/text-contract/font-face/invalid-glyph-overrides-round-trip",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 602
+    },
+    {
+      "name": "gui/text-contract/font-face/baseline-offset-refreshes-dependent-line",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 657
+    },
+    {
+      "name": "gui/text-contract/font-face/baseline-offset-is-font-height-fraction",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 689
+    },
+    {
+      "name": "gui/text-contract/font-face/transform-affects-raster-and-contour",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 797
+    },
+    {
+      "name": "gui/text-contract/font-face/collection-face-index",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 880
+    },
+    {
+      "name": "gui/text-contract/font-face/mutation-refreshes-dependent-text",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 910
+    },
+    {
+      "name": "gui/text-contract/font-face/color-palettes",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 997
+    },
+    {
+      "name": "gui/text-contract/line/max-width-and-actual-size",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 197
+    },
+    {
+      "name": "gui/text-contract/line/presentation-projection-is-reversible",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 265
+    },
+    {
+      "name": "gui/text-contract/layout/trimmed-width-follows-backend-contract",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 329
+    },
+    {
+      "name": "gui/text-contract/line/object-follows-advance-projection",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 423
+    },
+    {
+      "name": "gui/text-contract/line/full-range-projection-preserves-root",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 504
+    },
+    {
+      "name": "gui/text-contract/layout/root-and-substring-share-line-metrics",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 593
+    },
+    {
+      "name": "gui/text-contract/layout/ligature-hit-exposes-source-boundaries",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 640
+    },
+    {
+      "name": "gui/text-contract/paragraph/draw-frame-and-local-editing",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 727
+    },
+    {
+      "name": "gui/text-contract/paragraph/equal-lines-ignore-hard-break-geometry",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 862
+    },
+    {
+      "name": "gui/text-contract/paragraph/explicit-empty-lines-keep-font-metrics",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 907
+    },
+    {
+      "name": "gui/text-contract/line/control-editing-geometry",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 991
+    },
+    {
+      "name": "gui/text-contract/line/fill-is-not-paragraph-last-line-policy",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1071
+    },
+    {
+      "name": "gui/text-contract/paragraph/zero-index-box-is-not-visible-text",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1132
+    },
+    {
+      "name": "gui/text-contract/paragraph/alignment-moves-objects-with-glyphs",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1173
+    },
+    {
+      "name": "gui/text-contract/layout/overflow-frame-alignment",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1250
+    },
+    {
+      "name": "gui/text-contract/paragraph/hidden-lines-do-not-expand-visible-size",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1387
+    },
+    {
+      "name": "gui/text-contract/line/configuration-and-navigation",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1426
+    },
+    {
+      "name": "gui/text-contract/line/configuration-invalidates-shaped-state",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1518
+    },
+    {
+      "name": "gui/text-contract/paint/ellipsis-follows-raw-glyph-pen",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1540
+    },
+    {
+      "name": "gui/text-contract/paragraph/ellipsis-uses-final-logical-span",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1592
+    },
+    {
+      "name": "gui/text-contract/paragraph/ellipsis-tracks-late-fallback-dependencies",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1643
+    },
+    {
+      "name": "gui/text-contract/paint/frame-culls-whole-glyphs",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1695
+    },
+    {
+      "name": "gui/text-contract/paint/rtl-fill-and-overflow-frame",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1838
+    },
+    {
+      "name": "gui/text-contract/paint/frame-does-not-cull-ellipsis",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1936
+    },
+    {
+      "name": "gui/text-contract/editing/trim-keeps-source-geometry",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1964
+    },
+    {
+      "name": "gui/text-contract/cache/non-fill-alignment-keeps-line-ready",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 2013
+    },
+    {
+      "name": "gui/text-contract/cache/non-fill-alignment-keeps-paragraph-ready",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 2062
+    },
+    {
+      "name": "gui/text-contract/paragraph/configuration-lines-and-editing",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 2123
+    },
+    {
+      "name": "gui/text-contract/paragraph/max-lines-limits-visibility-only",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 2276
+    },
+    {
+      "name": "gui/text-contract/layout/public-size-rounds-line-height",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 2359
+    },
+    {
+      "name": "gui/text-contract/paragraph/hit-test-uses-real-line-boxes",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 2424
+    },
+    {
+      "name": "gui/text-contract/paragraph/hidden-single-line-fill",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 2542
+    },
+    {
+      "name": "gui/text-contract/raster/service-and-face-configuration",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 258
+    },
+    {
+      "name": "gui/text-contract/raster/bitmap-light-hinting-keeps-narrow-glyphs-separated",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 372
+    },
+    {
+      "name": "gui/text-contract/raster/bitmap-embolden-changes-coverage",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 437
+    },
+    {
+      "name": "gui/text-contract/raster/bitmap-horizontal-positioning",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 479
+    },
+    {
+      "name": "gui/text-contract/raster/device-mapping-controls-bitmap-placement",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 566
+    },
+    {
+      "name": "gui/text-contract/raster/bitmap-device-texel-mapping-is-pixel-perfect",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 646
+    },
+    {
+      "name": "gui/text-contract/raster/bitmap-device-y-snap-and-unmapped-continuity",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 744
+    },
+    {
+      "name": "gui/text-contract/raster/empty-bitmap-keeps-zero-raster-rect",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 821
+    },
+    {
+      "name": "gui/text-contract/raster/automatic-bitmap-positioning-follows-device-size",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 867
+    },
+    {
+      "name": "gui/text-contract/raster/sdf-placement-remains-continuous",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 930
+    },
+    {
+      "name": "gui/text-contract/raster/descriptor-default-and-service-isolation",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 964
+    },
+    {
+      "name": "gui/text-contract/raster/colored-glyph-through-line",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1031
+    },
+    {
+      "name": "gui/text-contract/raster/color-layer-transform-changes-geometry",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1075
+    },
+    {
+      "name": "gui/text-contract/raster/color-palette-affects-rendering",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1227
+    },
+    {
+      "name": "gui/text-contract/raster/simple-slant-applies-once",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1330
+    },
+    {
+      "name": "gui/text-contract/raster/color-glyph-positioning-and-embolden",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1409
+    },
+    {
+      "name": "gui/text-contract/raster/color-bitmap-size-and-format",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1482
+    },
+    {
+      "name": "gui/text-contract/raster/color-bitmap-selects-nearest-size",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1653
+    },
+    {
+      "name": "gui/text-contract/raster/glyph-removal-refreshes-dependent-output",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1734
+    },
+    {
+      "name": "gui/text-contract/raster/color-face-keeps-independent-size-overrides",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1795
+    },
+    {
+      "name": "gui/text-contract/raster/color-face-keeps-monochrome-glyph-modulation",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1821
+    },
+    {
+      "name": "gui/text-contract/raster/color-face-sdf-lcd-fallback",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1876
+    },
+    {
+      "name": "gui/text-contract/raster/sdf-geometry-scales-with-font-size",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 2035
+    },
+    {
+      "name": "gui/text-contract/raster/sdf-lcd-mode-reaches-render-command",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 2079
+    },
+    {
+      "name": "gui/text-contract/raster/painting-does-not-change-later-layout",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 2116
+    },
+    {
+      "name": "gui/text-contract/raster/fractional-size-scales-bitmap-quad",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 2212
+    },
+    {
+      "name": "gui/text-contract/atlas/configuration-and-lifecycle",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 2243
+    },
+    {
+      "name": "gui/text-contract/render-result/command-coalescing",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 2339
+    },
+    {
+      "name": "gui/text-contract/service/features-and-font-provider-registry",
+      "path": "engine/modules/gui/core/tests/text/text_service_contract_tests.cpp",
+      "line": 48
+    },
+    {
+      "name": "gui/text-contract/service/provider-precedence-and-affinity",
+      "path": "engine/modules/gui/core/tests/text/text_service_contract_tests.cpp",
+      "line": 80
+    },
+    {
+      "name": "gui/text-contract/service/preload-deduplicate-and-unload",
+      "path": "engine/modules/gui/core/tests/text/text_service_contract_tests.cpp",
+      "line": 140
+    },
+    {
+      "name": "gui/text-contract/service/opentype-tag-roundtrip",
+      "path": "engine/modules/gui/core/tests/text/text_service_contract_tests.cpp",
+      "line": 192
+    },
+    {
+      "name": "gui/text-contract/shaping/fractional-size-changes-advance",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 81
+    },
+    {
+      "name": "gui/text-contract/shaping/horizontal-rounding-policy",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 105
+    },
+    {
+      "name": "gui/text-contract/shaping/automatic-subpixel-rounding-by-size",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 201
+    },
+    {
+      "name": "gui/text-contract/shaping/glyph-advance-overrides-follow-raster-mode",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 251
+    },
+    {
+      "name": "gui/text-contract/shaping/embolden-increases-advance",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 286
+    },
+    {
+      "name": "gui/text-contract/shaping/fallback-is-stable-across-remainder-policy",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 333
+    },
+    {
+      "name": "gui/text-contract/shaping/raster-config-refreshes-dependent-lines",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 377
+    },
+    {
+      "name": "gui/text-contract/shaping/default-raster-config-respects-face-override",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 471
+    },
+    {
+      "name": "gui/text-contract/shaping/raster-config-change-discards-glyph-overrides",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 516
+    },
+    {
+      "name": "gui/text-contract/shaping/sdf-size-change-refreshes-layout",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 566
+    },
+    {
+      "name": "gui/text-contract/shaping/source-control-glyph-semantics",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 598
+    },
+    {
+      "name": "gui/text-contract/shaping/preserved-default-ignorables-use-explicit-fallback",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 726
+    },
+    {
+      "name": "gui/text-contract/shaping/hard-break-family-backend-semantics",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 786
+    },
+    {
+      "name": "gui/text-contract/shaping/terminal-fallback-preserves-source-semantics",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 883
+    },
+    {
+      "name": "gui/text-contract/shaping/trailing-control-spacing-and-fallback-kerning",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 977
+    },
+    {
+      "name": "gui/text-contract/shaping/deterministic-font-fallback",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 1079
+    },
+    {
+      "name": "gui/text-contract/shaping/whole-cluster-font-fallback",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 1153
+    },
+    {
+      "name": "gui/text-contract/shaping/advanced-script-clusters",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 1228
+    },
+    {
+      "name": "gui/text-contract/shaping/thai-break-glyph-flags",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 1274
+    },
+    {
+      "name": "gui/text-contract/shaping/thai-arabic-fixed-line-breaking",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 1362
+    },
+    {
+      "name": "gui/text-contract/shaping/span-object-run-projection",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 1409
+    },
+    {
+      "name": "gui/text-style/basic-fields",
+      "path": "engine/modules/gui/core/tests/text/text_types_tests.cpp",
+      "line": 11
+    },
+    {
+      "name": "gui/text-style/font-family-fallback-chain",
+      "path": "engine/modules/gui/core/tests/text/text_types_tests.cpp",
+      "line": 22
+    },
+    {
+      "name": "gui/text-types/layout-id-validity",
+      "path": "engine/modules/gui/core/tests/text/text_types_tests.cpp",
+      "line": 31
+    },
+    {
+      "name": "gui/text-no-icu/line/shaping-scenario-matrix",
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_layout_tests.cpp",
+      "line": 12
+    },
+    {
+      "name": "gui/text-no-icu/line/direction-controls-and-missing-glyphs",
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_layout_tests.cpp",
+      "line": 51
+    },
+    {
+      "name": "gui/text-no-icu/line/layout-objects-overrun-and-editing",
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_layout_tests.cpp",
+      "line": 78
+    },
+    {
+      "name": "gui/text-no-icu/paragraph/empty-wrap-lines-and-objects",
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_layout_tests.cpp",
+      "line": 161
+    },
+    {
+      "name": "gui/text-no-icu/service/capabilities-and-factories",
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_service_tests.cpp",
+      "line": 10
+    },
+    {
+      "name": "gui/text-no-icu/service/font-query-preload-and-invalidation",
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_service_tests.cpp",
+      "line": 45
+    },
+    {
+      "name": "gui/text-no-icu/service/repeated-independent-lifetimes",
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_service_tests.cpp",
+      "line": 93
+    },
+    {
+      "name": "gui/text-no-icu/unicode/local-degradation-remains-usable",
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_unicode_paint_tests.cpp",
+      "line": 45
+    },
+    {
+      "name": "gui/text-no-icu/unicode/data-required-features-fail-safely",
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_unicode_paint_tests.cpp",
+      "line": 97
+    },
+    {
+      "name": "gui/text-no-icu/paint/atlas-text-and-missing-glyph",
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_unicode_paint_tests.cpp",
+      "line": 133
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives returns operation status",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 455
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives circle emits direct fan mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 517
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives circle AA emits outer strip",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 536
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives circle AA radius follows pixel ratio",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 552
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives circle ignores empty and invalid inputs",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 567
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives circle_stroke emits direct ring mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 580
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives circle_stroke AA emits inner and outer strips",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 595
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives circle_stroke ignores invalid widths",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 616
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives ellipse emits direct fan mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 634
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives ellipse AA emits outer strip",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 652
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives ellipse ignores empty and invalid inputs",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 673
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives ellipse_stroke emits direct ring mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 686
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives ellipse_stroke AA emits inner and outer strips",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 708
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives ellipse_stroke ignores invalid widths",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 736
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives superellipse emits direct fan mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 754
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives superellipse AA emits outer strip",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 773
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives superellipse ignores empty and invalid inputs",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 797
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives superellipse_stroke emits direct ring mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 817
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives superellipse_stroke AA emits inner and outer strips",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 840
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives superellipse_stroke ignores invalid widths",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 870
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives fan emits direct open fan mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 894
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives fan AA emits connected fill fringe",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 907
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives arc_stroke emits direct open ring mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 927
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives arc_stroke AA emits inner outer and cap strips",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 941
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives elliptical_fan emits direct open fan mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 962
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives elliptical_fan AA emits connected fill fringe",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 982
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives elliptical_arc_stroke AA emits open ring mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1008
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives superellipse_fan emits direct open fan mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1033
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives superellipse_fan AA emits connected fill fringe",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1054
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives superellipse_arc_stroke AA emits open ring mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1081
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives fan primitives ignore empty invalid and bad stroke widths",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1107
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives rect emits direct quad mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1141
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives rect AA emits outer strips",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1159
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives rect AA radius follows pixel ratio",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1182
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives rect_stroke emits direct ring mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1204
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives rect_stroke AA emits inner and outer strips",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1217
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives diff_rect emits direct ring mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1235
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives diff_rect AA emits inner and outer strips",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1249
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives rect primitives ignore invalid and covered inputs",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1267
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives rrect emits direct rounded fan mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1297
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives rrect AA emits outer ring",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1316
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives rrect reuses adjacent corner seam vertices",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1338
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives rrect degenerates to rect and ellipse primitives",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1377
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives rrect_stroke emits direct rounded ring mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1395
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives rrect_stroke AA emits inner and outer rings",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1410
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives diff_rrect emits direct rounded ring mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1425
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives diff_rrect AA emits inner and outer rings",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1441
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives diff_rrect AA handles rectangular inner hole",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1456
+    },
+    {
+      "name": "gui/vg/VGBasicPrimitives rrect primitives ignore invalid and covered inputs",
+      "path": "engine/modules/gui/core/tests/vg/vg_basic_primitive_tests.cpp",
+      "line": 1474
+    },
+    {
+      "name": "gui/vg/VGPath command writes validate state",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_command_tests.cpp",
+      "line": 25
+    },
+    {
+      "name": "gui/vg/VGPath close stores winding hint in close command data",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_command_tests.cpp",
+      "line": 51
+    },
+    {
+      "name": "gui/vg/VGPathFlatten finalize enforces close winding hint",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_command_tests.cpp",
+      "line": 65
+    },
+    {
+      "name": "gui/vg/VGPath invalid and degenerate writes leave command buffer unchanged",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_command_tests.cpp",
+      "line": 95
+    },
+    {
+      "name": "gui/vg/VGPath close after pending MoveTo ignores empty contour and finalizes drawn contour",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_command_tests.cpp",
+      "line": 143
+    },
+    {
+      "name": "gui/vg/VGPath consecutive MoveTo normalizes contours",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_command_tests.cpp",
+      "line": 167
+    },
+    {
+      "name": "gui/vg/VGPathFlatten dash_to cuts open contours by distance",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_dash_tests.cpp",
+      "line": 7
+    },
+    {
+      "name": "gui/vg/VGPathFlatten need_dash detects effective dash work",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_dash_tests.cpp",
+      "line": 36
+    },
+    {
+      "name": "gui/vg/VGPathFlatten dash_to merges closed contour seam interval",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_dash_tests.cpp",
+      "line": 66
+    },
+    {
+      "name": "gui/vg/VGPathFlatten dash_to normalizes pattern and offset",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_dash_tests.cpp",
+      "line": 88
+    },
+    {
+      "name": "gui/vg/VGPathFlatten dash_to resets pattern per contour and keeps exact cuts",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_dash_tests.cpp",
+      "line": 117
+    },
+    {
+      "name": "gui/vg/VGPathFlatten dash_to handles none and degenerate patterns",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_dash_tests.cpp",
+      "line": 147
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill convex fast path advances unique odd and even endpoints",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 45
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill convex fast path emits allocation free AA",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 90
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill convex fast path keeps acute AA winding",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 126
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill convex fast path normalizes counter clockwise AA",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 149
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill convex fast path handles high node contours",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 177
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill convex fast path requires explicit opt in",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 196
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill convex optimization rejects multiple contours",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 220
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill ignores open line contours",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 247
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill implicitly closes open contour",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 260
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill ignores fully degenerate closed contours",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 274
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill emits closed triangle mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 289
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill emits closed rect mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 304
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill AA emits rect fringe and keeps body coverage",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 316
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill AA radius follows pixel ratio",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 328
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill AA reuses body vertices at fringe seam",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 352
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill AA emits fringe triangles before body triangles",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 364
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill options default AA miter limit",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 377
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill constrained Delaunay emits valid mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 386
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill Delaunay on and off both emit legal coverage",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 402
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill workspace reuses scratch storage",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 427
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill workspace custom allocator is used",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 444
+    },
+    {
+      "name": "gui/vg/VGFillAllocator default factory is valid",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 466
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill AA emits triangle fringe and keeps body coverage",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 495
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill AA miter limit bevels sharp corners",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 510
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill AA inner bevel protects short edges",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 533
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill EvenOdd nested rectangles leaves center hole",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 546
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill AA EvenOdd nested rectangles leaves center hole",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 562
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill AA EvenOdd multiple holes keeps holes uncovered and emits fringe",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 580
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill NonZero reverse inner rectangle leaves hole",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 603
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill NonZero same winding nested rectangles stays solid",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 619
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill overlapping rectangles emits union mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 635
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill self intersecting bowtie keeps legal mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 650
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill curved closed contour emits valid mesh",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 666
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill ignores open and degenerate contour noise",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 681
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill AA implicitly closes open triangle",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 703
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill AA ignores open line contours",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 717
+    },
+    {
+      "name": "gui/vg/VGPathFlatten fill AA ignores degenerate closed contours",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_fill_tests.cpp",
+      "line": 731
+    },
+    {
+      "name": "gui/vg/VGPath open line flatten builds cache metadata",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_flatten_tests.cpp",
+      "line": 7
+    },
+    {
+      "name": "gui/vg/VGPath MoveTo finalizes multiple open contours",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_flatten_tests.cpp",
+      "line": 26
+    },
+    {
+      "name": "gui/vg/VGPath flatten marks line-line left turn join flag and direction",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_flatten_tests.cpp",
+      "line": 42
+    },
+    {
+      "name": "gui/vg/VGPath close adds closing edge without duplicating start",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_flatten_tests.cpp",
+      "line": 66
+    },
+    {
+      "name": "gui/vg/VGPath close removes explicit repeated start tail",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_flatten_tests.cpp",
+      "line": 94
+    },
+    {
+      "name": "gui/vg/VGPathFlatten remove_collinear_segments simplifies open contour",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_flatten_tests.cpp",
+      "line": 107
+    },
+    {
+      "name": "gui/vg/VGPathFlatten remove_collinear_segments simplifies closed contour",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_flatten_tests.cpp",
+      "line": 129
+    },
+    {
+      "name": "gui/vg/VGPathFlatten remove_collinear_segments can remove closed contour first node",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_flatten_tests.cpp",
+      "line": 153
+    },
+    {
+      "name": "gui/vg/VGPathFlatten remove_collinear_segments respects tolerance",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_flatten_tests.cpp",
+      "line": 176
+    },
+    {
+      "name": "gui/vg/VGPathFlatten remove_collinear_segments keeps opposite collinear turn",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_flatten_tests.cpp",
+      "line": 194
+    },
+    {
+      "name": "gui/vg/VGPathFlatten add_line_intersections inserts sorted open contour vertices",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_flatten_tests.cpp",
+      "line": 206
+    },
+    {
+      "name": "gui/vg/VGPathFlatten add_line_intersections splits closed contour closing edge",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_flatten_tests.cpp",
+      "line": 231
+    },
+    {
+      "name": "gui/vg/VGPathFlatten add_line_intersections skips degenerate line cases",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_flatten_tests.cpp",
+      "line": 258
+    },
+    {
+      "name": "gui/vg/VGPath flatten preserves explicit contour winding",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_flatten_tests.cpp",
+      "line": 284
+    },
+    {
+      "name": "gui/vg/VGPath flatten marks clockwise contour convex",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_flatten_tests.cpp",
+      "line": 321
+    },
+    {
+      "name": "gui/vg/VGPath curve flatten responds to tolerance",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_flatten_tests.cpp",
+      "line": 337
+    },
+    {
+      "name": "gui/vg/VGPath arc primitives lower to cubic commands",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_shape_tests.cpp",
+      "line": 7
+    },
+    {
+      "name": "gui/vg/VGPath elliptical arc primitive lowers to cubic commands",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_shape_tests.cpp",
+      "line": 24
+    },
+    {
+      "name": "gui/vg/VGPath add shape primitives build closed contours",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_shape_tests.cpp",
+      "line": 48
+    },
+    {
+      "name": "gui/vg/VGPath closed shape primitives support explicit winding",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_shape_tests.cpp",
+      "line": 76
+    },
+    {
+      "name": "gui/vg/VGPathFlatten stroke no-AA coverage matches NanoVG cap cases",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_stroke_nanovg_coverage_tests.cpp",
+      "line": 639
+    },
+    {
+      "name": "gui/vg/VGPathFlatten stroke no-AA coverage matches NanoVG join cases",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_stroke_nanovg_coverage_tests.cpp",
+      "line": 653
+    },
+    {
+      "name": "gui/vg/VGPathFlatten stroke no-AA coverage matches NanoVG contour cases",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_stroke_nanovg_coverage_tests.cpp",
+      "line": 669
+    },
+    {
+      "name": "gui/vg/VGPathFlatten stroke emits butt line body and AA rings",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_stroke_tests.cpp",
+      "line": 107
+    },
+    {
+      "name": "gui/vg/VGPathFlatten stroke ignores empty paths and invalid widths",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_stroke_tests.cpp",
+      "line": 150
+    },
+    {
+      "name": "gui/vg/VGPathFlatten stroke handles square cap and closed miter contour",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_stroke_tests.cpp",
+      "line": 178
+    },
+    {
+      "name": "gui/vg/VGPathFlatten stroke expands dashed contours with cap geometry",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_stroke_tests.cpp",
+      "line": 218
+    },
+    {
+      "name": "gui/vg/VGPathFlatten stroke round tessellation follows circular tolerance",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_stroke_tests.cpp",
+      "line": 247
+    },
+    {
+      "name": "gui/vg/VGPathFlatten stroke bevel and round joins add corner geometry",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_stroke_tests.cpp",
+      "line": 302
+    },
+    {
+      "name": "gui/vg/VGPathFlatten stroke emits strict collinear pass-through line nodes",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_stroke_tests.cpp",
+      "line": 328
+    },
+    {
+      "name": "gui/vg/VGPathFlatten stroke_contour_to and fill emit strict collinear line nodes",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_stroke_tests.cpp",
+      "line": 367
+    },
+    {
+      "name": "gui/vg/VGPathFlatten stroke_contour_to emits fillable open stroke contour",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_stroke_tests.cpp",
+      "line": 392
+    },
+    {
+      "name": "gui/vg/VGPathFlatten stroke_contour_to matches direct square cap bounds",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_stroke_tests.cpp",
+      "line": 419
+    },
+    {
+      "name": "gui/vg/VGPathFlatten stroke_contour_to matches direct round cap bounds",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_stroke_tests.cpp",
+      "line": 441
+    },
+    {
+      "name": "gui/vg/VGPathFlatten stroke_contour_to matches direct round join bounds",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_stroke_tests.cpp",
+      "line": 465
+    },
+    {
+      "name": "gui/vg/VGPathFlatten stroke_contour_to emits two closed contours for closed path",
+      "path": "engine/modules/gui/core/tests/vg/vg_path_stroke_tests.cpp",
+      "line": 490
+    },
+    {
+      "name": "gui/layout-scheduling/same-constraints-short-circuits",
+      "path": "engine/modules/gui/core/tests/visual/layout_scheduling_tests.cpp",
+      "line": 146
+    },
+    {
+      "name": "gui/layout-scheduling/constraint-change-relayouts",
+      "path": "engine/modules/gui/core/tests/visual/layout_scheduling_tests.cpp",
+      "line": 161
+    },
+    {
+      "name": "gui/layout-scheduling/set-child-dirty-only-relayouts-its-path",
+      "path": "engine/modules/gui/core/tests/visual/layout_scheduling_tests.cpp",
+      "line": 172
+    },
+    {
+      "name": "gui/layout-scheduling/first-layout-always-runs",
+      "path": "engine/modules/gui/core/tests/visual/layout_scheduling_tests.cpp",
+      "line": 193
+    },
+    {
+      "name": "gui/layout-scheduling/visibility-boundary-isolates-child",
+      "path": "engine/modules/gui/core/tests/visual/layout_scheduling_tests.cpp",
+      "line": 205
+    },
+    {
+      "name": "gui/layout-scheduling/dirty-ancestor-lays-out-descendants-once",
+      "path": "engine/modules/gui/core/tests/visual/layout_scheduling_tests.cpp",
+      "line": 233
+    },
+    {
+      "name": "gui/layout-scheduling/sized-by-parent-isolates-parent",
+      "path": "engine/modules/gui/core/tests/visual/layout_scheduling_tests.cpp",
+      "line": 270
+    },
+    {
+      "name": "gui/layout-scheduling/sized-by-parent-attribute-change-relayouts-parent",
+      "path": "engine/modules/gui/core/tests/visual/layout_scheduling_tests.cpp",
+      "line": 297
+    },
+    {
+      "name": "gui/visual-grid/track-sizing-and-layout",
+      "path": "engine/modules/gui/core/tests/visual/multi_child/visual_grid_tests.cpp",
+      "line": 89
+    },
+    {
+      "name": "gui/visual-grid/rtl-and-alignment",
+      "path": "engine/modules/gui/core/tests/visual/multi_child/visual_grid_tests.cpp",
+      "line": 146
+    },
+    {
+      "name": "gui/visual-grid/baseline-first-child",
+      "path": "engine/modules/gui/core/tests/visual/multi_child/visual_grid_tests.cpp",
+      "line": 184
+    },
+    {
+      "name": "gui/visual-placement/axis-size-rules-and-default-fill",
+      "path": "engine/modules/gui/core/tests/visual/multi_child/visual_placement_tests.cpp",
+      "line": 88
+    },
+    {
+      "name": "gui/visual-placement/inset-pin-and-align-placement",
+      "path": "engine/modules/gui/core/tests/visual/multi_child/visual_placement_tests.cpp",
+      "line": 126
+    },
+    {
+      "name": "gui/visual-placement/loose-placement-uses-measured-child-size",
+      "path": "engine/modules/gui/core/tests/visual/multi_child/visual_placement_tests.cpp",
+      "line": 164
+    },
+    {
+      "name": "gui/visual-placement/children-do-not-inflate-container",
+      "path": "engine/modules/gui/core/tests/visual/multi_child/visual_placement_tests.cpp",
+      "line": 186
+    },
+    {
+      "name": "gui/visual-placement/baseline-uses-first-child-with-baseline",
+      "path": "engine/modules/gui/core/tests/visual/multi_child/visual_placement_tests.cpp",
+      "line": 207
+    },
+    {
+      "name": "gui/visual-opacity/layout-proxy",
+      "path": "engine/modules/gui/core/tests/visual/proxy/visual_opacity_tests.cpp",
+      "line": 51
+    },
+    {
+      "name": "gui/visual-border/radius",
+      "path": "engine/modules/gui/core/tests/visual/shifted/visual_border_tests.cpp",
+      "line": 75
+    },
+    {
+      "name": "gui/visual-border/layout-insets-child",
+      "path": "engine/modules/gui/core/tests/visual/shifted/visual_border_tests.cpp",
+      "line": 100
+    },
+    {
+      "name": "gui/visual-border/no-child",
+      "path": "engine/modules/gui/core/tests/visual/shifted/visual_border_tests.cpp",
+      "line": 136
+    },
+    {
+      "name": "gui/visual-border/paint-single-side",
+      "path": "engine/modules/gui/core/tests/visual/shifted/visual_border_tests.cpp",
+      "line": 149
+    },
+    {
+      "name": "gui/visual-node/single-child-tree-api",
+      "path": "engine/modules/gui/core/tests/visual/visual_child_management_tests.cpp",
+      "line": 125
+    },
+    {
+      "name": "gui/visual-node/leaf-tree-api",
+      "path": "engine/modules/gui/core/tests/visual/visual_child_management_tests.cpp",
+      "line": 159
+    },
+    {
+      "name": "gui/visual-node/multi-child-tree-api",
+      "path": "engine/modules/gui/core/tests/visual/visual_child_management_tests.cpp",
+      "line": 169
+    },
+    {
+      "name": "gui/visual-node/owner-destruction-clears-child-state",
+      "path": "engine/modules/gui/core/tests/visual/visual_child_management_tests.cpp",
+      "line": 218
+    },
+    {
+      "name": "gui/visual-multi-child/rebuild-aligned-mutations-require-flush",
+      "path": "engine/modules/gui/core/tests/visual/visual_child_management_tests.cpp",
+      "line": 250
+    },
+    {
+      "name": "gui/visual-multi-child/rebuild-remove-swaps-physical-tail",
+      "path": "engine/modules/gui/core/tests/visual/visual_child_management_tests.cpp",
+      "line": 282
+    },
+    {
+      "name": "gui/visual-multi-child/rebuild-move-and-flush",
+      "path": "engine/modules/gui/core/tests/visual/visual_child_management_tests.cpp",
+      "line": 321
+    },
+    {
+      "name": "gui/visual-multi-child/rebuild-add-remove-and-move",
+      "path": "engine/modules/gui/core/tests/visual/visual_child_management_tests.cpp",
+      "line": 390
+    },
+    {
+      "name": "gui/visual-multi-child/rebuild-clear-resets-state",
+      "path": "engine/modules/gui/core/tests/visual/visual_child_management_tests.cpp",
+      "line": 462
+    },
+    {
+      "name": "gui/visual-multi-child/mounted-structural-mutations",
+      "path": "engine/modules/gui/core/tests/visual/visual_child_management_tests.cpp",
+      "line": 491
+    },
+    {
+      "name": "gui/visual-multi-child/rebuild-invalid-permutation-recovers",
+      "path": "engine/modules/gui/core/tests/visual/visual_child_management_tests.cpp",
+      "line": 545
+    },
+    {
+      "name": "gui/visual-multi-child/rebuild-visual-integration",
+      "path": "engine/modules/gui/core/tests/visual/visual_child_management_tests.cpp",
+      "line": 580
+    },
+    {
+      "name": "gui/visual-node/hit-test self and bounds",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 227
+    },
+    {
+      "name": "gui/visual-node/hit-test shifted child coordinates",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 250
+    },
+    {
+      "name": "gui/visual-node/hit-test stack uses reverse paint order",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 276
+    },
+    {
+      "name": "gui/visual-node/hit-test indexed stack only tests displayed child",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 299
+    },
+    {
+      "name": "gui/visual-node/hit-test visibility hidden skips subtree",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 323
+    },
+    {
+      "name": "gui/visual-node/hit-test clip rect filters child",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 340
+    },
+    {
+      "name": "gui/visual-node/hit-test fitted node transforms child position",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 362
+    },
+    {
+      "name": "gui/visual-node/hit-test proxy forwards child",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 383
+    },
+    {
+      "name": "gui/visual-node/hit-test transform maps child position",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 401
+    },
+    {
+      "name": "gui/visual-node/hit-test transform stack composes nested child transforms",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 433
+    },
+    {
+      "name": "gui/visual-node/hit-test raw transform records entry transform",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 461
+    },
+    {
+      "name": "gui/visual-node/proxy no child",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 488
+    },
+    {
+      "name": "gui/visual-node/baseline base fallback and proxy forwarding",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 502
+    },
+    {
+      "name": "gui/visual-node/aspect-ratio bounded width layouts child tightly",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 542
+    },
+    {
+      "name": "gui/visual-node/aspect-ratio bounded height and constraint iteration",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 563
+    },
+    {
+      "name": "gui/visual-node/aspect-ratio no child uses ratio size",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 597
+    },
+    {
+      "name": "gui/visual-node/intrinsic-width steps child constraints",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 610
+    },
+    {
+      "name": "gui/visual-node/intrinsic-width no child",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 649
+    },
+    {
+      "name": "gui/visual-node/intrinsic-height tightens child height",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 662
+    },
+    {
+      "name": "gui/visual-node/baseline wrappers forward dry constraints",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 701
+    },
+    {
+      "name": "gui/visual-node/flex horizontal distributes flex and spacing",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 750
+    },
+    {
+      "name": "gui/visual-node/flex rtl and vertical direction flip offsets",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 810
+    },
+    {
+      "name": "gui/visual-node/flex vertical shrink wraps and stretches cross axis",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 843
+    },
+    {
+      "name": "gui/visual-node/flex baseline alignment",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 872
+    },
+    {
+      "name": "gui/visual-node/flex vertical baseline uses first child baseline",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 906
+    },
+    {
+      "name": "gui/visual-node/flex intrinsic main axis follows flex fractions",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 932
+    },
+    {
+      "name": "gui/visual-node/wrap horizontal wraps and aligns runs",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 967
+    },
+    {
+      "name": "gui/visual-node/wrap distributes child and run alignment",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1027
+    },
+    {
+      "name": "gui/visual-node/wrap dry layout uses strict flutter line break",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1057
+    },
+    {
+      "name": "gui/visual-node/flex and wrap use flutter overflow precision",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1078
+    },
+    {
+      "name": "gui/visual-node/wrap rtl and vertical direction flip offsets",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1109
+    },
+    {
+      "name": "gui/visual-node/wrap vertical wraps columns and uses highest baseline",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1138
+    },
+    {
+      "name": "gui/visual-node/stack fit controls non-positioned child constraints",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1177
+    },
+    {
+      "name": "gui/visual-node/stack aligns non-positioned children",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1212
+    },
+    {
+      "name": "gui/visual-node/stack lays out positioned children",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1253
+    },
+    {
+      "name": "gui/visual-node/stack baseline uses highest child baseline",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1288
+    },
+    {
+      "name": "gui/visual-node/shifted no child",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1324
+    },
+    {
+      "name": "gui/visual-node/baseline shifted padding and positioned offsets",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1340
+    },
+    {
+      "name": "gui/visual-node/positioned factors shrink wrap and scale intrinsic",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1381
+    },
+    {
+      "name": "gui/visual-node/positioned unbounded axes and directional alignment",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1413
+    },
+    {
+      "name": "gui/visual-node/fitted scale-down layout",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1449
+    },
+    {
+      "name": "gui/visual-node/padding directional resolve and no child",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1475
+    },
+    {
+      "name": "gui/visual-node/constrained fixed size no child",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1501
+    },
+    {
+      "name": "gui/visual-node/constrained constrains child",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1519
+    },
+    {
+      "name": "gui/visual-node/constrained expand and shrink helpers",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1542
+    },
+    {
+      "name": "gui/visual-node/constrained width and height helpers",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1563
+    },
+    {
+      "name": "gui/visual-node/limited limits only unbounded axes",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1622
+    },
+    {
+      "name": "gui/visual-node/limited mixed constraints and no child",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1652
+    },
+    {
+      "name": "gui/visual-node/limited keeps proxy intrinsic behavior",
+      "path": "engine/modules/gui/core/tests/visual/visual_node_tests.cpp",
+      "line": 1682
+    },
+    {
+      "name": "gui/visual-owner/retains-render-environment",
+      "path": "engine/modules/gui/core/tests/visual/visual_owner_tests.cpp",
+      "line": 89
+    },
+    {
+      "name": "gui/visual-owner/propagates-owner-and-depth",
+      "path": "engine/modules/gui/core/tests/visual/visual_owner_tests.cpp",
+      "line": 111
+    },
+    {
+      "name": "gui/visual-owner/replaces-removes-and-detaches-root",
+      "path": "engine/modules/gui/core/tests/visual/visual_owner_tests.cpp",
+      "line": 135
+    },
+    {
+      "name": "gui/visual-owner/migrates-detached-subtree",
+      "path": "engine/modules/gui/core/tests/visual/visual_owner_tests.cpp",
+      "line": 157
+    },
+    {
+      "name": "gui/visual-owner/layouts-and-hit-tests-root",
+      "path": "engine/modules/gui/core/tests/visual/visual_owner_tests.cpp",
+      "line": 177
+    },
+    {
+      "name": "gui/visual-owner/renders-complete-frame",
+      "path": "engine/modules/gui/core/tests/visual/visual_owner_tests.cpp",
+      "line": 195
+    },
+    {
+      "name": "gui/visual-owner/renders-empty-root",
+      "path": "engine/modules/gui/core/tests/visual/visual_owner_tests.cpp",
+      "line": 220
+    },
+    {
+      "name": "gui/visual-owner/requires-paint-before-render",
+      "path": "engine/modules/gui/core/tests/visual/visual_owner_tests.cpp",
+      "line": 230
+    },
+    {
+      "name": "gui/visual-owner/rejects-foreign-target",
+      "path": "engine/modules/gui/core/tests/visual/visual_owner_tests.cpp",
+      "line": 237
+    },
+    {
+      "name": "gui/visual-owner/frame-retains-target",
+      "path": "engine/modules/gui/core/tests/visual/visual_owner_tests.cpp",
+      "line": 250
+    },
+    {
+      "name": "gui/visual-temp-text/layout-and-baseline",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 143
+    },
+    {
+      "name": "gui/visual-temp-text/soft-wrap-and-visible-overflow",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 173
+    },
+    {
+      "name": "gui/visual-temp-text/ellipsis-max-lines",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 197
+    },
+    {
+      "name": "gui/visual-temp-text/width-trim-is-not-max-lines",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 219
+    },
+    {
+      "name": "gui/visual-temp-text/start-end-alignment",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 233
+    },
+    {
+      "name": "gui/visual-temp-text/overflow-controls-visual-clip",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 265
+    },
+    {
+      "name": "gui/visual-temp-text/paint-requires-committed-layout",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 283
+    },
+    {
+      "name": "gui/visual-temp-text/font-revision-requires-committed-layout",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 325
+    },
+    {
+      "name": "gui/visual-temp-text/detach-discards-owner-bound-layout",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 364
+    },
+    {
+      "name": "gui/visual-temp-text/tab-stops-round-trip",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 389
+    },
+    {
+      "name": "gui/visual-temp-text/resolves-text-service-from-owner",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 428
+    },
+    {
+      "name": "gui/visual-temp-text/tight-width-paint-alignment",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 449
+    },
+    {
+      "name": "gui/widgets/canonical-map-and-update",
+      "path": "engine/modules/gui/core/tests/widgets/widget_surface_tests.cpp",
+      "line": 246
+    },
+    {
+      "name": "gui/widgets/canonical-multi-child-map-and-update",
+      "path": "engine/modules/gui/core/tests/widgets/widget_surface_tests.cpp",
+      "line": 723
+    },
+    {
+      "name": "gui/widgets/slot-map-and-update",
+      "path": "engine/modules/gui/core/tests/widgets/widget_surface_tests.cpp",
+      "line": 1186
+    },
+    {
+      "name": "gui/widgets/convenience-map-and-update",
+      "path": "engine/modules/gui/core/tests/widgets/widget_surface_tests.cpp",
+      "line": 1313
+    },
+    {
+      "name": "gui/widgets/child-topology-and-order",
+      "path": "engine/modules/gui/core/tests/widgets/widget_surface_tests.cpp",
+      "line": 1605
+    },
+    {
+      "name": "gui/widgets/complex-dsl-tree",
+      "path": "engine/modules/gui/core/tests/widgets/widget_surface_tests.cpp",
+      "line": 1763
+    }
+  ]
+}

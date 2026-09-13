@@ -1,0 +1,209 @@
+{
+  "source_commit": "611561f81534354c8c1618dc27c4782cd9277cbf",
+  "entries": [
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/backend/visual_backend.hpp",
+      "source_sha256": "6974efaaeb7463c84ee18c0e000588d8ec730a293a7246b18f75241a8d6fbfe2",
+      "targets": [
+        "libraries/SkrGui.Core/Backend/VisualBackend.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/backend/visual_owner.hpp",
+      "source_sha256": "ca4e86f483033dbc290cab5d7688860aa09535f91e581a23996898b2d0c5380e",
+      "targets": [
+        "libraries/SkrGui.Core/Backend/VisualOwner.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/backend/texture.hpp",
+      "source_sha256": "dbd259f48602be459b99de29ce02ee7a52c2ec9d0dd48e60ff5eaaea8f18e1fe",
+      "targets": [
+        "libraries/SkrGui.Core/Backend/Resources.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/backend/shader.hpp",
+      "source_sha256": "ac9b8217bdaa6dcaf73af00f8ff87a5e461289b254c8437dbef85b94225bb3fe",
+      "targets": [
+        "libraries/SkrGui.Core/Backend/Resources.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/backend/render_target.hpp",
+      "source_sha256": "aed0a5ba3cbdfdf64fbe9198a1bf5c0c708b6bc44ad384e3b188fde7b522be0a",
+      "targets": [
+        "libraries/SkrGui.Core/Backend/Resources.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/backend/visual_owner.cpp",
+      "source_sha256": "5ec89e4633344557d418fd81cbdaeff1ba84b7750bf38f80f6712076159ef366",
+      "targets": [
+        "libraries/SkrGui.Core/Backend/VisualOwner.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/core/src/batch/mesh.cpp",
+      "source_sha256": "50cfa75b488bfc2c90b598ab2104bf0b60ed7498fa15e0bf9c7a1fee2343d9db",
+      "targets": [
+        "libraries/SkrGui.Core/Batch/BasicMeshes.Generated.cs",
+        "libraries/SkrGui.Core/Batch/BasicMeshes.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/batch/mesh.hpp",
+      "source_sha256": "5276210cf4ebb2744819083ea0288b340818b0f6f7c49409d5c2dd2e02c03965",
+      "targets": [
+        "libraries/SkrGui.Core/Batch/Mesh.cs",
+        "libraries/SkrGui.Core/Batch/MeshBuilder.cs",
+        "libraries/SkrGui.Core/Batch/BasicMeshes.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/core/tests/batch/mesh_tests.cpp",
+      "source_sha256": "5d31805f6525a5e095f4f37d52db217776ef8c50e7d3ad76c50eaf6142c65d95",
+      "targets": [
+        "tests/SkrGui.Core.Tests/Batch/BasicMeshesContractTests.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/core/tests/math/paint_transform_tests.cpp",
+      "source_sha256": "837d3cfdac1b221138099d7c4fadc6f78e2a051efbbfa99b1119b06011c83921",
+      "targets": [
+        "tests/SkrGui.Core.Tests/Math/PaintTransformContractTests.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "source_sha256": "12ad39692c35b65fd8a217925d7b424d5cc33c024008836423ae2a83ced6c201",
+      "targets": [
+        "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "source_sha256": "130fb18faed48f85b0059f867b3ae020f50912e7182fc1c8dae0dc17dbea8f1c",
+      "targets": [
+        "tests/SkrGui.Core.Tests/Text/FontFaceContractTests.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/core/tests/visual/visual_owner_tests.cpp",
+      "source_sha256": "ef7ac26c0d94ba4325c75df113c6bdfd627b2cac564f5104335a3c32f65d25f0",
+      "targets": [
+        "tests/SkrGui.Core.Tests/Visual/VisualOwnerTests.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/samples/gallery_common/include/SkrGuiGalleryCommon/gallery_framework.hpp",
+      "source_sha256": "0d420bf2cc977b58864dd18a026160c7b07e68a9ccf331549e2fe1eec36dc405",
+      "targets": [
+        "libraries/SkrGui.Godot/Gallery/GalleryFramework.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/samples/gallery_common/src/gallery_framework.cpp",
+      "source_sha256": "64bb9af02fd7916accfd879e1ad03ee500daab9bfc98b198fc2d61ec991275b1",
+      "targets": [
+        "libraries/SkrGui.Godot/Gallery/GalleryFramework.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/samples/gallery_common/include/SkrGuiGalleryCommon/gallery_png.hpp",
+      "source_sha256": "16092febd35a05805ef1e2d35a4b9f7ab9633a9b0ec7d22d0f9d1a90e2d1cf20",
+      "targets": [
+        "libraries/SkrGui.Godot/Gallery/GalleryPng.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/samples/gallery_common/src/gallery_png.cpp",
+      "source_sha256": "d4e634bae6d46679d17b91dbcb3b233c6c8c10abb673d52a55778b936264ea12",
+      "targets": [
+        "libraries/SkrGui.Godot/Gallery/GalleryPng.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/samples/gallery_common/include/SkrGuiGalleryCommon/gallery_svg.hpp",
+      "source_sha256": "886c7561e1252061606207e2c9fae325c3fed831d280fae53a97f7346bae0f66",
+      "targets": [
+        "libraries/SkrGui.Godot/Gallery/GallerySvg.cs",
+        "libraries/SkrGui.Godot/Gallery/GallerySvgPathParser.cs",
+        "libraries/SkrGui.Godot/Gallery/GallerySvgDownload.cs",
+        "libraries/SkrGui.Godot/Gallery/GalleryNative.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/samples/gallery_common/src/gallery_svg.cpp",
+      "source_sha256": "0d55fb4625fdf2f4951825860dba9ec5ed2a74e1bc4bbbb1e73f77f0ba8cb757",
+      "targets": [
+        "libraries/SkrGui.Godot/Gallery/GallerySvg.cs",
+        "libraries/SkrGui.Godot/Gallery/GallerySvgPathParser.cs",
+        "libraries/SkrGui.Godot/Gallery/GallerySvgDownload.cs",
+        "libraries/SkrGui.Godot/Gallery/GalleryNative.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/samples/gallery_common/include/SkrGuiGalleryCommon/gallery_shared.hpp",
+      "source_sha256": "28e06c0891fe7f7793ca0ea3fed3ceaf7c32454e51a622c5b8205b4e62a3007f",
+      "targets": [
+        "libraries/SkrGui.Godot/Gallery/GalleryShared.cs",
+        "libraries/SkrGui.Godot/Gallery/GalleryResources.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/samples/gallery_common/src/gallery_shared.cpp",
+      "source_sha256": "dbceb84b4f1dafafc9dbc9fd7e07acf37062791de81d51dd0d7b94cd507e339b",
+      "targets": [
+        "libraries/SkrGui.Godot/Gallery/GalleryShared.cs",
+        "libraries/SkrGui.Godot/Gallery/GalleryResources.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/samples/gallery_common/include/SkrGuiGalleryCommon/visual_glass.hpp",
+      "source_sha256": "dc5be609a64f11b92bd6e75c61b81c3b8d3307f5b16078f8fece48d6b383736f",
+      "targets": [
+        "libraries/SkrGui.Godot/Gallery/VisualGlass.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/samples/gallery_common/src/visual_glass.cpp",
+      "source_sha256": "c6df861ea8b90795ab112af5e70ac09a79bb77c8a9e1d66f734ddc7293ce6220",
+      "targets": [
+        "libraries/SkrGui.Godot/Gallery/VisualGlass.cs"
+      ],
+      "status": "ported-source"
+    },
+    {
+      "source": "engine/modules/gui/samples/demo/src/gui_demo_main.cpp",
+      "source_sha256": "b8dcbb11d658901288728dca6441d6f9e0350694ef7c6c1bf3a0be78863037ee",
+      "targets": [
+        "libraries/SkrGui.Godot/Gallery/CounterDemo.cs",
+        "godot/SkrGuiHost/SkrGuiHost.cs"
+      ],
+      "status": "GUI logic ported-source; platform window/input/render loop hosted by Godot"
+    }
+  ]
+}

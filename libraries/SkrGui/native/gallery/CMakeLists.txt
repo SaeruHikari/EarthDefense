@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.24)
+project(SkrGuiGalleryNative LANGUAGES C)
+add_library(skrgui_gallery_native SHARED crt_bridge.c exports.def)
+target_link_libraries(skrgui_gallery_native PRIVATE "D:/Code/ExtremeEngine-CppSLJIT/build/.build/clang-cl/Windows-X64-debug/nng.lib" ws2_32 mswsock advapi32)
+set_target_properties(skrgui_gallery_native PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/../artifacts/win-x64")

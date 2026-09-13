@@ -1,0 +1,1 @@
+<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><OutputType>Exe</OutputType><RootNamespace>SkrGui.Tests</RootNamespace></PropertyGroup><ItemGroup><ProjectReference Include="../../libraries/SkrGui.Godot/SkrGui.Godot.csproj"/><Compile Include="../SkrGui.Core.Tests/Check.cs" Link="Check.cs"/><Compile Include="../SkrGui.Core.Tests/Program.cs" Link="Program.cs"/></ItemGroup></Project>

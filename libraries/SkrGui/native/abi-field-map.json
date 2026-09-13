@@ -1,0 +1,174 @@
+{
+  "FT_Generic": {
+    "Data": "data",
+    "Finalizer": "finalizer"
+  },
+  "FT_Vector": {
+    "X": "x",
+    "Y": "y"
+  },
+  "FT_BBox": {
+    "XMin": "xMin",
+    "YMin": "yMin",
+    "XMax": "xMax",
+    "YMax": "yMax"
+  },
+  "FT_Matrix": {
+    "Xx": "xx",
+    "Xy": "xy",
+    "Yx": "yx",
+    "Yy": "yy"
+  },
+  "FT_Bitmap_Size": {
+    "Height": "height",
+    "Width": "width",
+    "Size": "size",
+    "XPpem": "x_ppem",
+    "YPpem": "y_ppem"
+  },
+  "FT_Size_Metrics": {
+    "XPpem": "x_ppem",
+    "YPpem": "y_ppem",
+    "XScale": "x_scale",
+    "YScale": "y_scale",
+    "Ascender": "ascender",
+    "Descender": "descender",
+    "Height": "height",
+    "MaxAdvance": "max_advance"
+  },
+  "FT_SizeRec": {
+    "Face": "face",
+    "Generic": "generic",
+    "Metrics": "metrics",
+    "Internal": "internal"
+  },
+  "FT_FaceRec": {
+    "NumFaces": "num_faces",
+    "FaceIndex": "face_index",
+    "FaceFlags": "face_flags",
+    "StyleFlags": "style_flags",
+    "NumGlyphs": "num_glyphs",
+    "FamilyName": "family_name",
+    "StyleName": "style_name",
+    "NumFixedSizes": "num_fixed_sizes",
+    "AvailableSizes": "available_sizes",
+    "NumCharmaps": "num_charmaps",
+    "Charmaps": "charmaps",
+    "Generic": "generic",
+    "Bbox": "bbox",
+    "UnitsPerEm": "units_per_EM",
+    "Ascender": "ascender",
+    "Descender": "descender",
+    "Height": "height",
+    "MaxAdvanceWidth": "max_advance_width",
+    "MaxAdvanceHeight": "max_advance_height",
+    "UnderlinePosition": "underline_position",
+    "UnderlineThickness": "underline_thickness",
+    "Glyph": "glyph",
+    "Size": "size",
+    "Charmap": "charmap"
+  },
+  "FT_Glyph_Metrics": {
+    "Width": "width",
+    "Height": "height",
+    "HoriBearingX": "horiBearingX",
+    "HoriBearingY": "horiBearingY",
+    "HoriAdvance": "horiAdvance",
+    "VertBearingX": "vertBearingX",
+    "VertBearingY": "vertBearingY",
+    "VertAdvance": "vertAdvance"
+  },
+  "FT_Bitmap": {
+    "Rows": "rows",
+    "Width": "width",
+    "Pitch": "pitch",
+    "Buffer": "buffer",
+    "NumGrays": "num_grays",
+    "PixelMode": "pixel_mode",
+    "PaletteMode": "palette_mode",
+    "Palette": "palette"
+  },
+  "FT_Outline": {
+    "NContours": "n_contours",
+    "NPoints": "n_points",
+    "Points": "points",
+    "Tags": "tags",
+    "Contours": "contours",
+    "Flags": "flags"
+  },
+  "FT_GlyphSlotRec": {
+    "Library": "library",
+    "Face": "face",
+    "Next": "next",
+    "GlyphIndex": "glyph_index",
+    "Generic": "generic",
+    "Metrics": "metrics",
+    "LinearHoriAdvance": "linearHoriAdvance",
+    "LinearVertAdvance": "linearVertAdvance",
+    "Advance": "advance",
+    "Format": "format",
+    "Bitmap": "bitmap",
+    "BitmapLeft": "bitmap_left",
+    "BitmapTop": "bitmap_top",
+    "Outline": "outline",
+    "NumSubglyphs": "num_subglyphs",
+    "Subglyphs": "subglyphs",
+    "ControlData": "control_data",
+    "ControlLen": "control_len",
+    "LsbDelta": "lsb_delta",
+    "RsbDelta": "rsb_delta",
+    "Other": "other",
+    "Internal": "internal"
+  },
+  "FT_Size_Request": {
+    "Type": "type",
+    "Width": "width",
+    "Height": "height",
+    "HoriResolution": "horiResolution",
+    "VertResolution": "vertResolution"
+  },
+  "FT_MM_Var": {
+    "NumAxis": "num_axis",
+    "NumDesigns": "num_designs",
+    "NumNamedStyles": "num_namedstyles",
+    "Axis": "axis",
+    "NamedStyle": "namedstyle"
+  },
+  "FT_Var_Axis": {
+    "Name": "name",
+    "Minimum": "minimum",
+    "Default": "def",
+    "Maximum": "maximum",
+    "Tag": "tag",
+    "Strid": "strid"
+  },
+  "FT_SfntName": {
+    "PlatformId": "platform_id",
+    "EncodingId": "encoding_id",
+    "LanguageId": "language_id",
+    "NameId": "name_id",
+    "String": "string",
+    "StringLength": "string_len"
+  },
+  "FT_Palette_Data": {
+    "NumPalettes": "num_palettes",
+    "PaletteNameIds": "palette_name_ids",
+    "PaletteFlags": "palette_flags",
+    "NumPaletteEntries": "num_palette_entries",
+    "PaletteEntryNameIds": "palette_entry_name_ids"
+  },
+  "FT_Color": {
+    "Blue": "blue",
+    "Green": "green",
+    "Red": "red",
+    "Alpha": "alpha"
+  },
+  "FT_Outline_Funcs": {
+    "MoveTo": "move_to",
+    "LineTo": "line_to",
+    "ConicTo": "conic_to",
+    "CubicTo": "cubic_to",
+    "Shift": "shift",
+    "Delta": "delta"
+  }
+}

@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><RootNamespace>SkrGui.Tests</RootNamespace></PropertyGroup>
+  <ItemGroup><ProjectReference Include="../../libraries/SkrGui.Core/SkrGui.Core.csproj" /></ItemGroup>
+<ItemGroup><EmbeddedResource Include="Text/Assets/*.font" LogicalName="SkrGui.Tests.Text.Assets.%(Filename)%(Extension)" /></ItemGroup></Project>

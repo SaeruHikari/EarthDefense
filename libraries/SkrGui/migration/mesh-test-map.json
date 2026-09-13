@@ -1,0 +1,248 @@
+[
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 131,
+    "case": "gui/batch/mesh-builder maps vertex attributes",
+    "target": "BasicMeshesContractTests.SourceCase01"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 180,
+    "case": "gui/batch/basic-meshes text builds rect span mesh",
+    "target": "BasicMeshesContractTests.SourceCase02"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 225,
+    "case": "gui/batch/basic-meshes text emits every rect in span",
+    "target": "BasicMeshesContractTests.SourceCase03"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 243,
+    "case": "gui/batch/basic-meshes premultiply color option",
+    "target": "BasicMeshesContractTests.SourceCase04"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 275,
+    "case": "gui/batch/basic-meshes rect fill axis gradient",
+    "target": "BasicMeshesContractTests.SourceCase05"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 302,
+    "case": "gui/batch/basic-meshes rect stroke axis gradient uses vg fast path",
+    "target": "BasicMeshesContractTests.SourceCase06"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 328,
+    "case": "gui/batch/basic-meshes rect fill colored corners",
+    "target": "BasicMeshesContractTests.SourceCase07"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 353,
+    "case": "gui/batch/basic-meshes ninepatch emits inset grid",
+    "target": "BasicMeshesContractTests.SourceCase08"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 379,
+    "case": "gui/batch/basic-meshes ninepatch rejects invalid inset",
+    "target": "BasicMeshesContractTests.SourceCase09"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 398,
+    "case": "gui/batch/basic-meshes rrect fill uses delaunay when curve split is required",
+    "target": "BasicMeshesContractTests.SourceCase10"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 430,
+    "case": "gui/batch/basic-meshes rrect stroke uses vg path",
+    "target": "BasicMeshesContractTests.SourceCase11"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 448,
+    "case": "gui/batch/basic-meshes diff rrect uses vg path",
+    "target": "BasicMeshesContractTests.SourceCase12"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 466,
+    "case": "gui/batch/rrect/square-corners-use-rect-primitives",
+    "target": "BasicMeshesContractTests.SourceCase13"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 493,
+    "case": "gui/batch/basic-meshes fill workspace can be reused",
+    "target": "BasicMeshesContractTests.SourceCase14"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 536,
+    "case": "gui/batch/basic-meshes rrect border uses diff path when all insets are nonzero",
+    "target": "BasicMeshesContractTests.SourceCase15"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 554,
+    "case": "gui/batch/basic-meshes rrect border skips zero inset side",
+    "target": "BasicMeshesContractTests.SourceCase16"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 573,
+    "case": "gui/batch/basic-meshes rrect border handles opposite zero inset sides",
+    "target": "BasicMeshesContractTests.SourceCase17"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 593,
+    "case": "gui/batch/basic-meshes rrect border handles single inset side",
+    "target": "BasicMeshesContractTests.SourceCase18"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 613,
+    "case": "gui/batch/basic-meshes rrect border rejects zero inset",
+    "target": "BasicMeshesContractTests.SourceCase19"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 630,
+    "case": "gui/batch/rrect-border/square-corners-use-diff-rect",
+    "target": "BasicMeshesContractTests.SourceCase20"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 651,
+    "case": "gui/batch/basic-meshes superellipse fill uses delaunay when curve split is required",
+    "target": "BasicMeshesContractTests.SourceCase21"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 691,
+    "case": "gui/batch/basic-meshes superellipse stroke uses vg path",
+    "target": "BasicMeshesContractTests.SourceCase22"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 717,
+    "case": "gui/batch/basic-meshes circle filled uses vg primitive without curve split",
+    "target": "BasicMeshesContractTests.SourceCase23"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 737,
+    "case": "gui/batch/basic-meshes circle filled uses delaunay when curve split is required",
+    "target": "BasicMeshesContractTests.SourceCase24"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 774,
+    "case": "gui/batch/basic-meshes circle stroke uses vg path",
+    "target": "BasicMeshesContractTests.SourceCase25"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 794,
+    "case": "gui/batch/basic-meshes ellipse filled uses vg primitive without curve split",
+    "target": "BasicMeshesContractTests.SourceCase26"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 814,
+    "case": "gui/batch/basic-meshes ellipse filled uses delaunay when curve split is required",
+    "target": "BasicMeshesContractTests.SourceCase27"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 851,
+    "case": "gui/batch/basic-meshes ellipse stroke uses vg path",
+    "target": "BasicMeshesContractTests.SourceCase28"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 871,
+    "case": "gui/batch/basic-meshes fan uses vg primitive without curve split",
+    "target": "BasicMeshesContractTests.SourceCase29"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 892,
+    "case": "gui/batch/basic-meshes fan uses vg path when curve split is required",
+    "target": "BasicMeshesContractTests.SourceCase30"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 921,
+    "case": "gui/batch/basic-meshes arc stroke uses vg path",
+    "target": "BasicMeshesContractTests.SourceCase31"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 941,
+    "case": "gui/batch/basic-meshes elliptical fan uses vg primitive without curve split",
+    "target": "BasicMeshesContractTests.SourceCase32"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 969,
+    "case": "gui/batch/basic-meshes elliptical fan uses vg path when curve split is required",
+    "target": "BasicMeshesContractTests.SourceCase33"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 1005,
+    "case": "gui/batch/basic-meshes elliptical arc stroke uses vg path",
+    "target": "BasicMeshesContractTests.SourceCase34"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 1032,
+    "case": "gui/batch/basic-meshes rect fill uses delaunay when curve split is required",
+    "target": "BasicMeshesContractTests.SourceCase35"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 1067,
+    "case": "gui/batch/basic-meshes rect fill curve gradient without inner stop uses vg rect",
+    "target": "BasicMeshesContractTests.SourceCase36"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 1094,
+    "case": "gui/batch/basic-meshes curve gradient splits rect stroke before fill",
+    "target": "BasicMeshesContractTests.SourceCase37"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 1124,
+    "case": "gui/batch/basic-meshes rect stroke curve gradient without inner stop uses vg ring",
+    "target": "BasicMeshesContractTests.SourceCase38"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 1152,
+    "case": "gui/batch/basic-meshes diff rect curve gradient without inner stop uses vg ring",
+    "target": "BasicMeshesContractTests.SourceCase39"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 1180,
+    "case": "gui/batch/basic-meshes rejects invalid gradient before geometry",
+    "target": "BasicMeshesContractTests.SourceCase40"
+  },
+  {
+    "source": "tests/batch/mesh_tests.cpp",
+    "line": 1369,
+    "case": "gui/batch/basic-meshes diff rect follows vg aa coverage",
+    "target": "BasicMeshesContractTests.SourceCase41"
+  }
+]

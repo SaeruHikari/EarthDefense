@@ -1,0 +1,18 @@
+config_version=5
+[application]
+config/name="SkrGui — C# / Godot"
+run/main_scene="res://main.tscn"
+[dotnet]
+project/assembly_name="SkrGuiHost"
+[display]
+window/size/viewport_width=960
+window/size/viewport_height=720
+window/size/resizable=false
+window/size/window_width_override=960
+window/size/window_height_override=720
+window/stretch/mode="disabled"
+window/vsync/vsync_mode=0
+[rendering]
+renderer/rendering_method="mobile"
+renderer/rendering_method.mobile="mobile"
+textures/default_filters/use_nearest_mipmap_filter=false

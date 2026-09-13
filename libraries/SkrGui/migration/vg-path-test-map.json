@@ -1,0 +1,788 @@
+[
+  {
+    "source": "tests/vg/vg_path_command_tests.cpp",
+    "line": 25,
+    "case": "gui/vg/VGPath command writes validate state",
+    "target": "VgPathCommandTests.Case1"
+  },
+  {
+    "source": "tests/vg/vg_path_command_tests.cpp",
+    "line": 51,
+    "case": "gui/vg/VGPath close stores winding hint in close command data",
+    "target": "VgPathCommandTests.Case2"
+  },
+  {
+    "source": "tests/vg/vg_path_command_tests.cpp",
+    "line": 65,
+    "case": "gui/vg/VGPathFlatten finalize enforces close winding hint",
+    "target": "VgPathCommandTests.Case3"
+  },
+  {
+    "source": "tests/vg/vg_path_command_tests.cpp",
+    "line": 95,
+    "case": "gui/vg/VGPath invalid and degenerate writes leave command buffer unchanged",
+    "target": "VgPathCommandTests.Case4"
+  },
+  {
+    "source": "tests/vg/vg_path_command_tests.cpp",
+    "line": 143,
+    "case": "gui/vg/VGPath close after pending MoveTo ignores empty contour and finalizes drawn contour",
+    "target": "VgPathCommandTests.Case5"
+  },
+  {
+    "source": "tests/vg/vg_path_command_tests.cpp",
+    "line": 167,
+    "case": "gui/vg/VGPath consecutive MoveTo normalizes contours",
+    "target": "VgPathCommandTests.Case6"
+  },
+  {
+    "source": "tests/vg/vg_path_flatten_tests.cpp",
+    "line": 7,
+    "case": "gui/vg/VGPath open line flatten builds cache metadata",
+    "target": "VgPathFlattenTests.Case1"
+  },
+  {
+    "source": "tests/vg/vg_path_flatten_tests.cpp",
+    "line": 26,
+    "case": "gui/vg/VGPath MoveTo finalizes multiple open contours",
+    "target": "VgPathFlattenTests.Case2"
+  },
+  {
+    "source": "tests/vg/vg_path_flatten_tests.cpp",
+    "line": 42,
+    "case": "gui/vg/VGPath flatten marks line-line left turn join flag and direction",
+    "target": "VgPathFlattenTests.Case3"
+  },
+  {
+    "source": "tests/vg/vg_path_flatten_tests.cpp",
+    "line": 66,
+    "case": "gui/vg/VGPath close adds closing edge without duplicating start",
+    "target": "VgPathFlattenTests.Case4"
+  },
+  {
+    "source": "tests/vg/vg_path_flatten_tests.cpp",
+    "line": 94,
+    "case": "gui/vg/VGPath close removes explicit repeated start tail",
+    "target": "VgPathFlattenTests.Case5"
+  },
+  {
+    "source": "tests/vg/vg_path_flatten_tests.cpp",
+    "line": 107,
+    "case": "gui/vg/VGPathFlatten remove_collinear_segments simplifies open contour",
+    "target": "VgPathFlattenTests.Case6"
+  },
+  {
+    "source": "tests/vg/vg_path_flatten_tests.cpp",
+    "line": 129,
+    "case": "gui/vg/VGPathFlatten remove_collinear_segments simplifies closed contour",
+    "target": "VgPathFlattenTests.Case7"
+  },
+  {
+    "source": "tests/vg/vg_path_flatten_tests.cpp",
+    "line": 153,
+    "case": "gui/vg/VGPathFlatten remove_collinear_segments can remove closed contour first node",
+    "target": "VgPathFlattenTests.Case8"
+  },
+  {
+    "source": "tests/vg/vg_path_flatten_tests.cpp",
+    "line": 176,
+    "case": "gui/vg/VGPathFlatten remove_collinear_segments respects tolerance",
+    "target": "VgPathFlattenTests.Case9"
+  },
+  {
+    "source": "tests/vg/vg_path_flatten_tests.cpp",
+    "line": 194,
+    "case": "gui/vg/VGPathFlatten remove_collinear_segments keeps opposite collinear turn",
+    "target": "VgPathFlattenTests.Case10"
+  },
+  {
+    "source": "tests/vg/vg_path_flatten_tests.cpp",
+    "line": 206,
+    "case": "gui/vg/VGPathFlatten add_line_intersections inserts sorted open contour vertices",
+    "target": "VgPathFlattenTests.Case11"
+  },
+  {
+    "source": "tests/vg/vg_path_flatten_tests.cpp",
+    "line": 231,
+    "case": "gui/vg/VGPathFlatten add_line_intersections splits closed contour closing edge",
+    "target": "VgPathFlattenTests.Case12"
+  },
+  {
+    "source": "tests/vg/vg_path_flatten_tests.cpp",
+    "line": 258,
+    "case": "gui/vg/VGPathFlatten add_line_intersections skips degenerate line cases",
+    "target": "VgPathFlattenTests.Case13"
+  },
+  {
+    "source": "tests/vg/vg_path_flatten_tests.cpp",
+    "line": 284,
+    "case": "gui/vg/VGPath flatten preserves explicit contour winding",
+    "target": "VgPathFlattenTests.Case14"
+  },
+  {
+    "source": "tests/vg/vg_path_flatten_tests.cpp",
+    "line": 321,
+    "case": "gui/vg/VGPath flatten marks clockwise contour convex",
+    "target": "VgPathFlattenTests.Case15"
+  },
+  {
+    "source": "tests/vg/vg_path_flatten_tests.cpp",
+    "line": 337,
+    "case": "gui/vg/VGPath curve flatten responds to tolerance",
+    "target": "VgPathFlattenTests.Case16"
+  },
+  {
+    "source": "tests/vg/vg_path_dash_tests.cpp",
+    "line": 7,
+    "case": "gui/vg/VGPathFlatten dash_to cuts open contours by distance",
+    "target": "VgPathDashTests.Case1"
+  },
+  {
+    "source": "tests/vg/vg_path_dash_tests.cpp",
+    "line": 36,
+    "case": "gui/vg/VGPathFlatten need_dash detects effective dash work",
+    "target": "VgPathDashTests.Case2"
+  },
+  {
+    "source": "tests/vg/vg_path_dash_tests.cpp",
+    "line": 66,
+    "case": "gui/vg/VGPathFlatten dash_to merges closed contour seam interval",
+    "target": "VgPathDashTests.Case3"
+  },
+  {
+    "source": "tests/vg/vg_path_dash_tests.cpp",
+    "line": 88,
+    "case": "gui/vg/VGPathFlatten dash_to normalizes pattern and offset",
+    "target": "VgPathDashTests.Case4"
+  },
+  {
+    "source": "tests/vg/vg_path_dash_tests.cpp",
+    "line": 117,
+    "case": "gui/vg/VGPathFlatten dash_to resets pattern per contour and keeps exact cuts",
+    "target": "VgPathDashTests.Case5"
+  },
+  {
+    "source": "tests/vg/vg_path_dash_tests.cpp",
+    "line": 147,
+    "case": "gui/vg/VGPathFlatten dash_to handles none and degenerate patterns",
+    "target": "VgPathDashTests.Case6"
+  },
+  {
+    "source": "tests/vg/vg_path_shape_tests.cpp",
+    "line": 7,
+    "case": "gui/vg/VGPath arc primitives lower to cubic commands",
+    "target": "VgPathShapeTests.Case1"
+  },
+  {
+    "source": "tests/vg/vg_path_shape_tests.cpp",
+    "line": 24,
+    "case": "gui/vg/VGPath elliptical arc primitive lowers to cubic commands",
+    "target": "VgPathShapeTests.Case2"
+  },
+  {
+    "source": "tests/vg/vg_path_shape_tests.cpp",
+    "line": 48,
+    "case": "gui/vg/VGPath add shape primitives build closed contours",
+    "target": "VgPathShapeTests.Case3"
+  },
+  {
+    "source": "tests/vg/vg_path_shape_tests.cpp",
+    "line": 76,
+    "case": "gui/vg/VGPath closed shape primitives support explicit winding",
+    "target": "VgPathShapeTests.Case4"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 45,
+    "case": "gui/vg/VGPathFlatten fill convex fast path advances unique odd and even endpoints",
+    "target": "VgPathFillTests.Case1"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 90,
+    "case": "gui/vg/VGPathFlatten fill convex fast path emits allocation free AA",
+    "target": "VgPathFillTests.Case2"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 126,
+    "case": "gui/vg/VGPathFlatten fill convex fast path keeps acute AA winding",
+    "target": "VgPathFillTests.Case3"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 149,
+    "case": "gui/vg/VGPathFlatten fill convex fast path normalizes counter clockwise AA",
+    "target": "VgPathFillTests.Case4"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 177,
+    "case": "gui/vg/VGPathFlatten fill convex fast path handles high node contours",
+    "target": "VgPathFillTests.Case5"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 196,
+    "case": "gui/vg/VGPathFlatten fill convex fast path requires explicit opt in",
+    "target": "VgPathFillTests.Case6"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 220,
+    "case": "gui/vg/VGPathFlatten fill convex optimization rejects multiple contours",
+    "target": "VgPathFillTests.Case7"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 247,
+    "case": "gui/vg/VGPathFlatten fill ignores open line contours",
+    "target": "VgPathFillTests.Case8"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 260,
+    "case": "gui/vg/VGPathFlatten fill implicitly closes open contour",
+    "target": "VgPathFillTests.Case9"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 274,
+    "case": "gui/vg/VGPathFlatten fill ignores fully degenerate closed contours",
+    "target": "VgPathFillTests.Case10"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 289,
+    "case": "gui/vg/VGPathFlatten fill emits closed triangle mesh",
+    "target": "VgPathFillTests.Case11"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 304,
+    "case": "gui/vg/VGPathFlatten fill emits closed rect mesh",
+    "target": "VgPathFillTests.Case12"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 316,
+    "case": "gui/vg/VGPathFlatten fill AA emits rect fringe and keeps body coverage",
+    "target": "VgPathFillTests.Case13"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 328,
+    "case": "gui/vg/VGPathFlatten fill AA radius follows pixel ratio",
+    "target": "VgPathFillTests.Case14"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 352,
+    "case": "gui/vg/VGPathFlatten fill AA reuses body vertices at fringe seam",
+    "target": "VgPathFillTests.Case15"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 364,
+    "case": "gui/vg/VGPathFlatten fill AA emits fringe triangles before body triangles",
+    "target": "VgPathFillTests.Case16"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 377,
+    "case": "gui/vg/VGPathFlatten fill options default AA miter limit",
+    "target": "VgPathFillTests.Case17"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 386,
+    "case": "gui/vg/VGPathFlatten fill constrained Delaunay emits valid mesh",
+    "target": "VgPathFillTests.Case18"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 402,
+    "case": "gui/vg/VGPathFlatten fill Delaunay on and off both emit legal coverage",
+    "target": "VgPathFillTests.Case19"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 427,
+    "case": "gui/vg/VGPathFlatten fill workspace reuses scratch storage",
+    "target": "VgPathFillTests.Case20"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 444,
+    "case": "gui/vg/VGPathFlatten fill workspace custom allocator is used",
+    "target": "VgPathFillTests.Case21"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 466,
+    "case": "gui/vg/VGFillAllocator default factory is valid",
+    "target": "VgPathFillTests.Case22"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 495,
+    "case": "gui/vg/VGPathFlatten fill AA emits triangle fringe and keeps body coverage",
+    "target": "VgPathFillTests.Case23"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 510,
+    "case": "gui/vg/VGPathFlatten fill AA miter limit bevels sharp corners",
+    "target": "VgPathFillTests.Case24"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 533,
+    "case": "gui/vg/VGPathFlatten fill AA inner bevel protects short edges",
+    "target": "VgPathFillTests.Case25"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 546,
+    "case": "gui/vg/VGPathFlatten fill EvenOdd nested rectangles leaves center hole",
+    "target": "VgPathFillTests.Case26"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 562,
+    "case": "gui/vg/VGPathFlatten fill AA EvenOdd nested rectangles leaves center hole",
+    "target": "VgPathFillTests.Case27"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 580,
+    "case": "gui/vg/VGPathFlatten fill AA EvenOdd multiple holes keeps holes uncovered and emits fringe",
+    "target": "VgPathFillTests.Case28"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 603,
+    "case": "gui/vg/VGPathFlatten fill NonZero reverse inner rectangle leaves hole",
+    "target": "VgPathFillTests.Case29"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 619,
+    "case": "gui/vg/VGPathFlatten fill NonZero same winding nested rectangles stays solid",
+    "target": "VgPathFillTests.Case30"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 635,
+    "case": "gui/vg/VGPathFlatten fill overlapping rectangles emits union mesh",
+    "target": "VgPathFillTests.Case31"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 650,
+    "case": "gui/vg/VGPathFlatten fill self intersecting bowtie keeps legal mesh",
+    "target": "VgPathFillTests.Case32"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 666,
+    "case": "gui/vg/VGPathFlatten fill curved closed contour emits valid mesh",
+    "target": "VgPathFillTests.Case33"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 681,
+    "case": "gui/vg/VGPathFlatten fill ignores open and degenerate contour noise",
+    "target": "VgPathFillTests.Case34"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 703,
+    "case": "gui/vg/VGPathFlatten fill AA implicitly closes open triangle",
+    "target": "VgPathFillTests.Case35"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 717,
+    "case": "gui/vg/VGPathFlatten fill AA ignores open line contours",
+    "target": "VgPathFillTests.Case36"
+  },
+  {
+    "source": "tests/vg/vg_path_fill_tests.cpp",
+    "line": 731,
+    "case": "gui/vg/VGPathFlatten fill AA ignores degenerate closed contours",
+    "target": "VgPathFillTests.Case37"
+  },
+  {
+    "source": "tests/vg/vg_path_stroke_tests.cpp",
+    "line": 107,
+    "case": "gui/vg/VGPathFlatten stroke emits butt line body and AA rings",
+    "target": "VgPathStrokeTests.Case1"
+  },
+  {
+    "source": "tests/vg/vg_path_stroke_tests.cpp",
+    "line": 150,
+    "case": "gui/vg/VGPathFlatten stroke ignores empty paths and invalid widths",
+    "target": "VgPathStrokeTests.Case2"
+  },
+  {
+    "source": "tests/vg/vg_path_stroke_tests.cpp",
+    "line": 178,
+    "case": "gui/vg/VGPathFlatten stroke handles square cap and closed miter contour",
+    "target": "VgPathStrokeTests.Case3"
+  },
+  {
+    "source": "tests/vg/vg_path_stroke_tests.cpp",
+    "line": 218,
+    "case": "gui/vg/VGPathFlatten stroke expands dashed contours with cap geometry",
+    "target": "VgPathStrokeTests.Case4"
+  },
+  {
+    "source": "tests/vg/vg_path_stroke_tests.cpp",
+    "line": 247,
+    "case": "gui/vg/VGPathFlatten stroke round tessellation follows circular tolerance",
+    "target": "VgPathStrokeTests.Case5"
+  },
+  {
+    "source": "tests/vg/vg_path_stroke_tests.cpp",
+    "line": 302,
+    "case": "gui/vg/VGPathFlatten stroke bevel and round joins add corner geometry",
+    "target": "VgPathStrokeTests.Case6"
+  },
+  {
+    "source": "tests/vg/vg_path_stroke_tests.cpp",
+    "line": 328,
+    "case": "gui/vg/VGPathFlatten stroke emits strict collinear pass-through line nodes",
+    "target": "VgPathStrokeTests.Case7"
+  },
+  {
+    "source": "tests/vg/vg_path_stroke_tests.cpp",
+    "line": 367,
+    "case": "gui/vg/VGPathFlatten stroke_contour_to and fill emit strict collinear line nodes",
+    "target": "VgPathStrokeTests.Case8"
+  },
+  {
+    "source": "tests/vg/vg_path_stroke_tests.cpp",
+    "line": 392,
+    "case": "gui/vg/VGPathFlatten stroke_contour_to emits fillable open stroke contour",
+    "target": "VgPathStrokeTests.Case9"
+  },
+  {
+    "source": "tests/vg/vg_path_stroke_tests.cpp",
+    "line": 419,
+    "case": "gui/vg/VGPathFlatten stroke_contour_to matches direct square cap bounds",
+    "target": "VgPathStrokeTests.Case10"
+  },
+  {
+    "source": "tests/vg/vg_path_stroke_tests.cpp",
+    "line": 441,
+    "case": "gui/vg/VGPathFlatten stroke_contour_to matches direct round cap bounds",
+    "target": "VgPathStrokeTests.Case11"
+  },
+  {
+    "source": "tests/vg/vg_path_stroke_tests.cpp",
+    "line": 465,
+    "case": "gui/vg/VGPathFlatten stroke_contour_to matches direct round join bounds",
+    "target": "VgPathStrokeTests.Case12"
+  },
+  {
+    "source": "tests/vg/vg_path_stroke_tests.cpp",
+    "line": 490,
+    "case": "gui/vg/VGPathFlatten stroke_contour_to emits two closed contours for closed path",
+    "target": "VgPathStrokeTests.Case13"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 455,
+    "case": "gui/vg/VGBasicPrimitives returns operation status",
+    "target": "VgBasicPrimitiveTests.Case1"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 517,
+    "case": "gui/vg/VGBasicPrimitives circle emits direct fan mesh",
+    "target": "VgBasicPrimitiveTests.Case2"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 536,
+    "case": "gui/vg/VGBasicPrimitives circle AA emits outer strip",
+    "target": "VgBasicPrimitiveTests.Case3"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 552,
+    "case": "gui/vg/VGBasicPrimitives circle AA radius follows pixel ratio",
+    "target": "VgBasicPrimitiveTests.Case4"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 567,
+    "case": "gui/vg/VGBasicPrimitives circle ignores empty and invalid inputs",
+    "target": "VgBasicPrimitiveTests.Case5"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 580,
+    "case": "gui/vg/VGBasicPrimitives circle_stroke emits direct ring mesh",
+    "target": "VgBasicPrimitiveTests.Case6"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 595,
+    "case": "gui/vg/VGBasicPrimitives circle_stroke AA emits inner and outer strips",
+    "target": "VgBasicPrimitiveTests.Case7"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 616,
+    "case": "gui/vg/VGBasicPrimitives circle_stroke ignores invalid widths",
+    "target": "VgBasicPrimitiveTests.Case8"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 634,
+    "case": "gui/vg/VGBasicPrimitives ellipse emits direct fan mesh",
+    "target": "VgBasicPrimitiveTests.Case9"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 652,
+    "case": "gui/vg/VGBasicPrimitives ellipse AA emits outer strip",
+    "target": "VgBasicPrimitiveTests.Case10"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 673,
+    "case": "gui/vg/VGBasicPrimitives ellipse ignores empty and invalid inputs",
+    "target": "VgBasicPrimitiveTests.Case11"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 686,
+    "case": "gui/vg/VGBasicPrimitives ellipse_stroke emits direct ring mesh",
+    "target": "VgBasicPrimitiveTests.Case12"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 708,
+    "case": "gui/vg/VGBasicPrimitives ellipse_stroke AA emits inner and outer strips",
+    "target": "VgBasicPrimitiveTests.Case13"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 736,
+    "case": "gui/vg/VGBasicPrimitives ellipse_stroke ignores invalid widths",
+    "target": "VgBasicPrimitiveTests.Case14"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 754,
+    "case": "gui/vg/VGBasicPrimitives superellipse emits direct fan mesh",
+    "target": "VgBasicPrimitiveTests.Case15"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 773,
+    "case": "gui/vg/VGBasicPrimitives superellipse AA emits outer strip",
+    "target": "VgBasicPrimitiveTests.Case16"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 797,
+    "case": "gui/vg/VGBasicPrimitives superellipse ignores empty and invalid inputs",
+    "target": "VgBasicPrimitiveTests.Case17"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 817,
+    "case": "gui/vg/VGBasicPrimitives superellipse_stroke emits direct ring mesh",
+    "target": "VgBasicPrimitiveTests.Case18"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 840,
+    "case": "gui/vg/VGBasicPrimitives superellipse_stroke AA emits inner and outer strips",
+    "target": "VgBasicPrimitiveTests.Case19"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 870,
+    "case": "gui/vg/VGBasicPrimitives superellipse_stroke ignores invalid widths",
+    "target": "VgBasicPrimitiveTests.Case20"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 894,
+    "case": "gui/vg/VGBasicPrimitives fan emits direct open fan mesh",
+    "target": "VgBasicPrimitiveTests.Case21"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 907,
+    "case": "gui/vg/VGBasicPrimitives fan AA emits connected fill fringe",
+    "target": "VgBasicPrimitiveTests.Case22"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 927,
+    "case": "gui/vg/VGBasicPrimitives arc_stroke emits direct open ring mesh",
+    "target": "VgBasicPrimitiveTests.Case23"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 941,
+    "case": "gui/vg/VGBasicPrimitives arc_stroke AA emits inner outer and cap strips",
+    "target": "VgBasicPrimitiveTests.Case24"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 962,
+    "case": "gui/vg/VGBasicPrimitives elliptical_fan emits direct open fan mesh",
+    "target": "VgBasicPrimitiveTests.Case25"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 982,
+    "case": "gui/vg/VGBasicPrimitives elliptical_fan AA emits connected fill fringe",
+    "target": "VgBasicPrimitiveTests.Case26"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1008,
+    "case": "gui/vg/VGBasicPrimitives elliptical_arc_stroke AA emits open ring mesh",
+    "target": "VgBasicPrimitiveTests.Case27"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1033,
+    "case": "gui/vg/VGBasicPrimitives superellipse_fan emits direct open fan mesh",
+    "target": "VgBasicPrimitiveTests.Case28"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1054,
+    "case": "gui/vg/VGBasicPrimitives superellipse_fan AA emits connected fill fringe",
+    "target": "VgBasicPrimitiveTests.Case29"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1081,
+    "case": "gui/vg/VGBasicPrimitives superellipse_arc_stroke AA emits open ring mesh",
+    "target": "VgBasicPrimitiveTests.Case30"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1107,
+    "case": "gui/vg/VGBasicPrimitives fan primitives ignore empty invalid and bad stroke widths",
+    "target": "VgBasicPrimitiveTests.Case31"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1141,
+    "case": "gui/vg/VGBasicPrimitives rect emits direct quad mesh",
+    "target": "VgBasicPrimitiveTests.Case32"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1159,
+    "case": "gui/vg/VGBasicPrimitives rect AA emits outer strips",
+    "target": "VgBasicPrimitiveTests.Case33"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1182,
+    "case": "gui/vg/VGBasicPrimitives rect AA radius follows pixel ratio",
+    "target": "VgBasicPrimitiveTests.Case34"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1204,
+    "case": "gui/vg/VGBasicPrimitives rect_stroke emits direct ring mesh",
+    "target": "VgBasicPrimitiveTests.Case35"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1217,
+    "case": "gui/vg/VGBasicPrimitives rect_stroke AA emits inner and outer strips",
+    "target": "VgBasicPrimitiveTests.Case36"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1235,
+    "case": "gui/vg/VGBasicPrimitives diff_rect emits direct ring mesh",
+    "target": "VgBasicPrimitiveTests.Case37"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1249,
+    "case": "gui/vg/VGBasicPrimitives diff_rect AA emits inner and outer strips",
+    "target": "VgBasicPrimitiveTests.Case38"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1267,
+    "case": "gui/vg/VGBasicPrimitives rect primitives ignore invalid and covered inputs",
+    "target": "VgBasicPrimitiveTests.Case39"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1297,
+    "case": "gui/vg/VGBasicPrimitives rrect emits direct rounded fan mesh",
+    "target": "VgBasicPrimitiveTests.Case40"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1316,
+    "case": "gui/vg/VGBasicPrimitives rrect AA emits outer ring",
+    "target": "VgBasicPrimitiveTests.Case41"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1338,
+    "case": "gui/vg/VGBasicPrimitives rrect reuses adjacent corner seam vertices",
+    "target": "VgBasicPrimitiveTests.Case42"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1377,
+    "case": "gui/vg/VGBasicPrimitives rrect degenerates to rect and ellipse primitives",
+    "target": "VgBasicPrimitiveTests.Case43"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1395,
+    "case": "gui/vg/VGBasicPrimitives rrect_stroke emits direct rounded ring mesh",
+    "target": "VgBasicPrimitiveTests.Case44"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1410,
+    "case": "gui/vg/VGBasicPrimitives rrect_stroke AA emits inner and outer rings",
+    "target": "VgBasicPrimitiveTests.Case45"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1425,
+    "case": "gui/vg/VGBasicPrimitives diff_rrect emits direct rounded ring mesh",
+    "target": "VgBasicPrimitiveTests.Case46"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1441,
+    "case": "gui/vg/VGBasicPrimitives diff_rrect AA emits inner and outer rings",
+    "target": "VgBasicPrimitiveTests.Case47"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1456,
+    "case": "gui/vg/VGBasicPrimitives diff_rrect AA handles rectangular inner hole",
+    "target": "VgBasicPrimitiveTests.Case48"
+  },
+  {
+    "source": "tests/vg/vg_basic_primitive_tests.cpp",
+    "line": 1474,
+    "case": "gui/vg/VGBasicPrimitives rrect primitives ignore invalid and covered inputs",
+    "target": "VgBasicPrimitiveTests.Case49"
+  }
+]

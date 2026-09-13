@@ -1,0 +1,635 @@
+{
+  "commit": "611561f81534354c8c1618dc27c4782cd9277cbf",
+  "types": [
+    {
+      "type": "BatchCmd",
+      "guid": "9c04088a-f75e-4a4a-af7a-0005fa38c488",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/batch/batch_cmd.hpp",
+      "line": 46
+    },
+    {
+      "type": "BatchCmdDrawMesh",
+      "guid": "56ac06b6-f739-4370-8ca1-b021794ae3fe",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/batch/batch_cmd.hpp",
+      "line": 60
+    },
+    {
+      "type": "BatchCmdText",
+      "guid": "f997915a-259e-4780-bebd-261462436f32",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/batch/batch_cmd.hpp",
+      "line": 72
+    },
+    {
+      "type": "BatchCmdAtlas",
+      "guid": "4414d9eb-0696-41c2-81b5-99ff3bb74451",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/batch/batch_cmd.hpp",
+      "line": 86
+    },
+    {
+      "type": "BatchCmdClip",
+      "guid": "6ec0cd97-8e64-424b-a731-c9c2c356080c",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/batch/batch_cmd.hpp",
+      "line": 97
+    },
+    {
+      "type": "BatchCmdClipRect",
+      "guid": "0d89459d-bbee-4f14-a062-75bc3df2d06c",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/batch/batch_cmd.hpp",
+      "line": 106
+    },
+    {
+      "type": "BatchCmdClipMesh",
+      "guid": "2107e0eb-e082-4ae3-8b1a-b690ac5a6788",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/batch/batch_cmd.hpp",
+      "line": 113
+    },
+    {
+      "type": "BatchCmdBackdrop",
+      "guid": "5b11c1e7-ed43-4594-89e0-3de7ab244c09",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/batch/batch_cmd.hpp",
+      "line": 123
+    },
+    {
+      "type": "Nexus",
+      "guid": "5f4e6418-3f86-4c8f-832f-8a371a5f4f81",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus.hpp",
+      "line": 33
+    },
+    {
+      "type": "NexusComponent",
+      "guid": "9437dc8f-2413-45e8-9ce5-68c5e264db1c",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus_component.hpp",
+      "line": 14
+    },
+    {
+      "type": "NexusVisual",
+      "guid": "46960b2a-4e91-4025-85d6-3d4371017657",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus_visual.hpp",
+      "line": 13
+    },
+    {
+      "type": "NexusVisualLeaf",
+      "guid": "8b06e239-1e4f-4244-a83c-107b395800f1",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus_visual_leaf.hpp",
+      "line": 12
+    },
+    {
+      "type": "NexusVisualMultiChild",
+      "guid": "9f4ecd0a-89a8-4bf8-982a-41d8b87f262a",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus_visual_multi_child.hpp",
+      "line": 14
+    },
+    {
+      "type": "NexusVisualSingleChild",
+      "guid": "8ca27464-5d5f-4849-9e2d-20751b2db6a9",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus_visual_single_child.hpp",
+      "line": 13
+    },
+    {
+      "type": "NexusVisualSlot",
+      "guid": "a831b376-309b-4a27-825f-772733542aa2",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus_visual_slot.hpp",
+      "line": 13
+    },
+    {
+      "type": "IProvider",
+      "guid": "5c1eec80-1e53-4ff5-a495-f69934e40a04",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/reactive/reactive.hpp",
+      "line": 12
+    },
+    {
+      "type": "IConsumer",
+      "guid": "0ea2f4bc-59cb-4c2f-9ff8-be8cbebcd03f",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/reactive/reactive.hpp",
+      "line": 20
+    },
+    {
+      "type": "IComputed",
+      "guid": "de53e96a-c3c2-4d06-abfd-4fc2fc35557f",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/reactive/reactive.hpp",
+      "line": 28
+    },
+    {
+      "type": "State",
+      "guid": "b2116159-f950-4cd6-ab5a-29b326dea2b2",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/state.hpp",
+      "line": 15
+    },
+    {
+      "type": "ComponentWidget",
+      "guid": "067837a8-1907-461f-a671-dd5d7d5ee591",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/component_widget.hpp",
+      "line": 16
+    },
+    {
+      "type": "VisualSlotWidget",
+      "guid": "f9421dbe-ac80-4b08-8586-369fb3be9d2b",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/visual_slot_widget.hpp",
+      "line": 14
+    },
+    {
+      "type": "VisualWidget",
+      "guid": "3a98fdd2-823e-4e69-b0d3-0718f819f143",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/visual_widget.hpp",
+      "line": 15
+    },
+    {
+      "type": "VisualWidgetLeaf",
+      "guid": "0bccd961-6ffb-4781-8527-f0f50cc3650d",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/visual_widget_leaf.hpp",
+      "line": 7
+    },
+    {
+      "type": "VisualWidgetMultiChild",
+      "guid": "94b7fcfd-6c19-41de-918e-c0fcdb8f9481",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/visual_widget_multi_child.hpp",
+      "line": 8
+    },
+    {
+      "type": "VisualWidgetSingleChild",
+      "guid": "7d9f75ee-2b50-46be-b9b8-5eaaa28d7d5c",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/visual_widget_single_child.hpp",
+      "line": 7
+    },
+    {
+      "type": "Widget",
+      "guid": "8f6fede5-619a-4d58-b362-b4af07321d4d",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/widget.hpp",
+      "line": 20
+    },
+    {
+      "type": "FilesFontProvider",
+      "guid": "145dac3a-c7a4-4ce8-8967-626b25273c27",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/text/files_font_provider.hpp",
+      "line": 31
+    },
+    {
+      "type": "FontFace",
+      "guid": "442264b3-9f28-4a6e-bf4e-9aa182c2a3c2",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/text/font_face.hpp",
+      "line": 23
+    },
+    {
+      "type": "FontProvider",
+      "guid": "edc0d9a6-0055-4d5a-954f-ea5635692578",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/text/font_provider.hpp",
+      "line": 40
+    },
+    {
+      "type": "TextLine",
+      "guid": "2cf81ad9-12c3-4c5b-90b0-77502282a4a1",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/text/text_line.hpp",
+      "line": 28
+    },
+    {
+      "type": "TextParagraph",
+      "guid": "f9e6ab5c-6e2d-4a54-861b-33590c372a8b",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/text/text_paragraph.hpp",
+      "line": 27
+    },
+    {
+      "type": "TextServices",
+      "guid": "55a8b106-49c2-4a6d-bf29-2402fcb8cc44",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/text/text_services.hpp",
+      "line": 40
+    },
+    {
+      "type": "Shader",
+      "guid": "256d26a4-7c38-45f3-bf14-6346c60d358a",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/backend/shader.hpp",
+      "line": 9
+    },
+    {
+      "type": "Texture",
+      "guid": "3cf56cda-e535-41d3-a3ba-c980b06d1a77",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/backend/texture.hpp",
+      "line": 9
+    },
+    {
+      "type": "VisualFlexSlot",
+      "guid": "76553b5d-5cc1-4a57-9619-22bfa3f35fae",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/multi_child/visual_flex.hpp",
+      "line": 39
+    },
+    {
+      "type": "VisualFlex",
+      "guid": "0405e7a1-d420-4edc-aad1-f5f911def915",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/multi_child/visual_flex.hpp",
+      "line": 66
+    },
+    {
+      "type": "VisualGridSlot",
+      "guid": "8a7398aa-5a5f-47af-bc2f-78bffcd75b87",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/multi_child/visual_grid.hpp",
+      "line": 58
+    },
+    {
+      "type": "VisualGrid",
+      "guid": "941f4c85-0167-41c8-82dd-f082b0d72614",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/multi_child/visual_grid.hpp",
+      "line": 103
+    },
+    {
+      "type": "VisualPlacementSlot",
+      "guid": "7b4cca53-1c42-4f2f-8e0f-a2ea34b5cac1",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/multi_child/visual_placement.hpp",
+      "line": 52
+    },
+    {
+      "type": "VisualPlacement",
+      "guid": "d6fcc0f2-dc99-4871-8e42-fbf4781b8032",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/multi_child/visual_placement.hpp",
+      "line": 81
+    },
+    {
+      "type": "VisualStackSlot",
+      "guid": "206b6d6c-eef6-4d36-925c-20f7b6377f61",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/multi_child/visual_stack.hpp",
+      "line": 17
+    },
+    {
+      "type": "VisualStack",
+      "guid": "1ea24ce5-2d3a-44af-8c83-cbaeb6b28968",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/multi_child/visual_stack.hpp",
+      "line": 76
+    },
+    {
+      "type": "VisualIndexedStack",
+      "guid": "157ea7e1-400a-4296-8090-1a6b134699b2",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/multi_child/visual_stack.hpp",
+      "line": 161
+    },
+    {
+      "type": "VisualWrapSlot",
+      "guid": "083d7d33-bb5f-467c-b885-60f110b95cf8",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/multi_child/visual_wrap.hpp",
+      "line": 26
+    },
+    {
+      "type": "VisualWrap",
+      "guid": "c96f850c-605d-4df8-a270-48887e13e2b4",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/multi_child/visual_wrap.hpp",
+      "line": 43
+    },
+    {
+      "type": "VisualAspectRatio",
+      "guid": "6ac1790b-3576-462a-ae57-70b59053e79d",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_aspect_ratio.hpp",
+      "line": 8
+    },
+    {
+      "type": "VisualClipRect",
+      "guid": "63886519-1821-4343-a36c-325266c36fb8",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_clip_rect.hpp",
+      "line": 8
+    },
+    {
+      "type": "VisualConstrained",
+      "guid": "bd1f3d45-cc02-4400-88be-3b93e2814c34",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_constrained.hpp",
+      "line": 8
+    },
+    {
+      "type": "VisualFitted",
+      "guid": "68a8e1f2-6d8b-45d8-ac85-e98970c4e6a1",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_fitted.hpp",
+      "line": 9
+    },
+    {
+      "type": "VisualIntrinsicHeight",
+      "guid": "fe6d917f-b0d2-4325-9a53-5a7263163b0b",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_intrinsic_height.hpp",
+      "line": 8
+    },
+    {
+      "type": "VisualIntrinsicWidth",
+      "guid": "2877baac-d908-4fe7-9883-1dbb0f476df4",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_intrinsic_width.hpp",
+      "line": 8
+    },
+    {
+      "type": "VisualLimited",
+      "guid": "bdaa7156-932b-4ba5-adc2-57476daac1ea",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_limited.hpp",
+      "line": 8
+    },
+    {
+      "type": "VisualOpacity",
+      "guid": "2316ecb6-f6f5-42f4-857e-811d519a6257",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_opacity.hpp",
+      "line": 16
+    },
+    {
+      "type": "VisualProxy",
+      "guid": "56a0cd83-aa38-458b-aabb-13942377714d",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_proxy.hpp",
+      "line": 8
+    },
+    {
+      "type": "VisualTransform",
+      "guid": "dd4d3257-51f8-40bd-b9e9-7db13f04327a",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_transform.hpp",
+      "line": 8
+    },
+    {
+      "type": "VisualVisibility",
+      "guid": "bed7141e-afcd-4029-b64b-92448d9a33c7",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_visibility.hpp",
+      "line": 8
+    },
+    {
+      "type": "VisualAligningShifted",
+      "guid": "76f63f57-795d-48cb-8649-0ae4f01bb638",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/shifted/visual_aligning_shifted.hpp",
+      "line": 8
+    },
+    {
+      "type": "VisualBorder",
+      "guid": "999f69ff-2857-4386-8f40-6c0e78fe665d",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/shifted/visual_border.hpp",
+      "line": 42
+    },
+    {
+      "type": "VisualPadding",
+      "guid": "a635c5dd-0360-4cfc-85e9-ec7de3882bc1",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/shifted/visual_padding.hpp",
+      "line": 8
+    },
+    {
+      "type": "VisualPositioned",
+      "guid": "a78a56b3-8a7f-4890-8f7a-030c8e34a94b",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/shifted/visual_positioned.hpp",
+      "line": 8
+    },
+    {
+      "type": "VisualShifted",
+      "guid": "d804257f-eba4-48f4-ac9c-65f2cb12d1ba",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/shifted/visual_shifted.hpp",
+      "line": 8
+    },
+    {
+      "type": "VisualLeaf",
+      "guid": "07b83c38-5d80-42f7-b1b4-644b01199bdd",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/visual_leaf.hpp",
+      "line": 8
+    },
+    {
+      "type": "VisualMultiChild",
+      "guid": "1fb7993b-1724-4aa9-a66b-eb3d783c2680",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/visual_multi_child.hpp",
+      "line": 9
+    },
+    {
+      "type": "VisualNode",
+      "guid": "53a27ced-6689-4311-9bf9-3e35241b9230",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/visual_node.hpp",
+      "line": 12
+    },
+    {
+      "type": "VisualSingleChild",
+      "guid": "7f410cf4-d273-4c66-a230-c95d74a21b3b",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/visual_single_child.hpp",
+      "line": 8
+    },
+    {
+      "type": "VisualSlot",
+      "guid": "27270ec3-e3fe-426d-9271-f216789a099b",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/visual_slot.hpp",
+      "line": 14
+    },
+    {
+      "type": "VisualTempText",
+      "guid": "53e67bd4-5c76-4f22-a198-a342f219a190",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/visual/visual_temp_text.hpp",
+      "line": 38
+    },
+    {
+      "type": "Column",
+      "guid": "ccdf4b96-4763-4596-95c7-25a031d25ae6",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/column.hpp",
+      "line": 8
+    },
+    {
+      "type": "Expanded",
+      "guid": "c3140bb6-1036-40a8-aa1c-9508aa6e6db3",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/expanded.hpp",
+      "line": 8
+    },
+    {
+      "type": "Flex",
+      "guid": "bb24fee3-9253-4a56-9257-530c25e9f146",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/flex.hpp",
+      "line": 8
+    },
+    {
+      "type": "FlexSlot",
+      "guid": "7fd73439-ddaa-41a7-b357-ee584d679283",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/flex_slot.hpp",
+      "line": 8
+    },
+    {
+      "type": "Flexible",
+      "guid": "9ef12566-4b6d-4962-9d4c-14761f26c234",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/flexible.hpp",
+      "line": 8
+    },
+    {
+      "type": "Grid",
+      "guid": "5cad15b7-6dfa-44ea-b3d5-ad2826fd7759",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/grid.hpp",
+      "line": 8
+    },
+    {
+      "type": "GridSlot",
+      "guid": "5b0bf644-122b-4c1a-92b3-997097651fdd",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/grid_slot.hpp",
+      "line": 8
+    },
+    {
+      "type": "IndexedStack",
+      "guid": "c5ab8d63-048d-46b3-998f-ec5303dbd110",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/indexed_stack.hpp",
+      "line": 8
+    },
+    {
+      "type": "PlacementLayout",
+      "guid": "0424ed0e-4fd5-44f8-afba-0916f25170da",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/placement_layout.hpp",
+      "line": 8
+    },
+    {
+      "type": "PlacementSlot",
+      "guid": "370eee7d-87d9-4b45-ba59-342c209884b8",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/placement_slot.hpp",
+      "line": 8
+    },
+    {
+      "type": "Positioned",
+      "guid": "00390ed8-55bc-4115-8efd-79ce2dcc7d56",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/positioned.hpp",
+      "line": 8
+    },
+    {
+      "type": "Row",
+      "guid": "538bcff1-1e44-4890-801b-dc6a6502f8e9",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/row.hpp",
+      "line": 8
+    },
+    {
+      "type": "Stack",
+      "guid": "bed18181-7c11-4326-b1db-2c71f0293eda",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/stack.hpp",
+      "line": 8
+    },
+    {
+      "type": "Wrap",
+      "guid": "b61ee969-80e2-43da-85d4-8a7a44ecfcd4",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/wrap.hpp",
+      "line": 8
+    },
+    {
+      "type": "AspectRatio",
+      "guid": "74bd22e8-7956-4314-9a97-d850c168147e",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/aspect_ratio.hpp",
+      "line": 8
+    },
+    {
+      "type": "ClipRect",
+      "guid": "0171fcda-d0c0-4c5d-86a5-155fe66f741c",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/clip_rect.hpp",
+      "line": 8
+    },
+    {
+      "type": "ConstrainedBox",
+      "guid": "03911abe-bd8b-42da-a627-ea5d5d23db48",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/constrained_box.hpp",
+      "line": 8
+    },
+    {
+      "type": "FittedBox",
+      "guid": "938681a7-dde9-4ef4-85f8-6fd35de4d5bb",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/fitted_box.hpp",
+      "line": 8
+    },
+    {
+      "type": "IntrinsicHeight",
+      "guid": "920bbbb0-5029-4291-b9e6-81bbf74b3786",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/intrinsic_height.hpp",
+      "line": 8
+    },
+    {
+      "type": "IntrinsicWidth",
+      "guid": "f80ec5a4-ca37-4496-af6b-b13d54b2e0b2",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/intrinsic_width.hpp",
+      "line": 8
+    },
+    {
+      "type": "LimitedBox",
+      "guid": "29ef8b96-ef48-45d6-b57c-c86e89c15dfd",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/limited_box.hpp",
+      "line": 10
+    },
+    {
+      "type": "Opacity",
+      "guid": "901f5119-e32e-4f69-9811-e749ecaad518",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/opacity.hpp",
+      "line": 8
+    },
+    {
+      "type": "SizedBox",
+      "guid": "93813235-f2fc-437c-aab5-3927fd2ed4d9",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/sized_box.hpp",
+      "line": 8
+    },
+    {
+      "type": "Transform",
+      "guid": "60296eae-f492-411b-83e1-6fd239c0b3d5",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/transform.hpp",
+      "line": 8
+    },
+    {
+      "type": "Visibility",
+      "guid": "810823ee-1eef-4ea6-95c2-39672ed2daed",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/visibility.hpp",
+      "line": 8
+    },
+    {
+      "type": "Align",
+      "guid": "07dee7b5-2759-4fc0-90fc-39c37d54363f",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/shifted/align.hpp",
+      "line": 8
+    },
+    {
+      "type": "Border",
+      "guid": "a40b4484-bd33-4c9d-9dc6-480a2aa9a0cd",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/shifted/border.hpp",
+      "line": 8
+    },
+    {
+      "type": "Center",
+      "guid": "5760dccb-586a-416e-8609-b84188ec1bf2",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/shifted/center.hpp",
+      "line": 8
+    },
+    {
+      "type": "Padding",
+      "guid": "a39be86f-ed23-4cca-9cca-ffd8e60eb7d1",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/shifted/padding.hpp",
+      "line": 8
+    },
+    {
+      "type": "TempText",
+      "guid": "f8ce5847-3e5c-41ce-9293-4ca3ba15d9ae",
+      "path": "engine/modules/gui/core/include/SkrGuiCore/widgets/temp_text.hpp",
+      "line": 8
+    },
+    {
+      "type": "WindowsFontProvider",
+      "guid": "f52b4ae0-16f7-429f-9f85-b37ea1f34fe8",
+      "path": "engine/modules/gui/core/src/text/font/system_font_provider.hpp",
+      "line": 10
+    },
+    {
+      "type": "MacFontProvider",
+      "guid": "4ed56614-dea1-4ac2-8953-de13c8c72556",
+      "path": "engine/modules/gui/core/src/text/font/system_font_provider.hpp",
+      "line": 43
+    },
+    {
+      "type": "TextFontFaceImpl",
+      "guid": "23865c6d-63ec-468e-99a3-116118429b82",
+      "path": "engine/modules/gui/core/src/text/text_private.hpp",
+      "line": 647
+    },
+    {
+      "type": "TextServicesImpl",
+      "guid": "140ae5a1-d3db-47f3-93da-b03dd1b31e91",
+      "path": "engine/modules/gui/core/src/text/text_private.hpp",
+      "line": 946
+    },
+    {
+      "type": "TextParagraphImpl",
+      "guid": "9b34cee3-6606-4dfd-a2cf-d62fa52f2049",
+      "path": "engine/modules/gui/core/src/text/text_private.hpp",
+      "line": 1298
+    },
+    {
+      "type": "TextLineImpl",
+      "guid": "c221b093-a9d5-4808-bdaa-5bfcb62457cb",
+      "path": "engine/modules/gui/core/src/text/text_private.hpp",
+      "line": 1535
+    },
+    {
+      "type": "BatchCmdBackdropGlass",
+      "guid": "72303764-e38b-4a2d-b61d-11c37b07e19c",
+      "path": "engine/modules/gui/samples/gallery_common/include/SkrGuiGalleryCommon/visual_glass.hpp",
+      "line": 14
+    },
+    {
+      "type": "VisualGlass",
+      "guid": "a91e2bf6-b190-4d8f-9200-0f63fd5b6959",
+      "path": "engine/modules/gui/samples/gallery_common/include/SkrGuiGalleryCommon/visual_glass.hpp",
+      "line": 34
+    }
+  ]
+}

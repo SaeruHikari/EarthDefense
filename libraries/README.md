@@ -82,3 +82,12 @@ Dispatch 在调用时就开始派发流程：同步 Build/Prepare，随后等待
 - [使用真正 StagingWorld 的防御模拟](../samples/Sugoi.DefenseSimulation/README.md)
 
 此前“World 替代 StagingWorld、队列满就丢弃”的版本记录已经被本版本取代。当前验证针对 ECS 运行库及独立业务消费者；EarthDefense 游戏自身的战斗和渲染尚未迁入这些库。
+
+## SkrGui C# / Godot
+
+[SkrGui](SkrGui/README.md) 保留原 Widget → Nexus → Visual、布局、文本与矢量绘制逻辑，渲染与窗口由 Godot 4.6.1 .NET 宿主承接。完整工程放在 `libraries/SkrGui/`，保留自己的构建属性、原生依赖、测试与逐源映射。
+
+- 从仓库根目录运行 `LaunchSkrGui.cmd`，启动独立的 Counter 验证示例。
+- 构建与全部源码契约验证：`powershell -ExecutionPolicy Bypass -File .\libraries\SkrGui\tools\BuildSkrGui.ps1 -Verify`。
+- Godot GPU 和四种文字 AA 模式验证：`powershell -ExecutionPolicy Bypass -File .\libraries\SkrGui\tools\VerifyGodot.ps1 -NoBuild`。
+- 主游戏继续使用 `Earthward.sln`、`Earthward.csproj` 和现有启动入口；GUI 使用自己的 `SkrGui.sln`，由本目录的 `.gdignore` 隔离嵌套 Godot 资源。

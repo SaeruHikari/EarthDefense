@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><RootNamespace>SkrGui.Godot</RootNamespace></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../SkrGui.Core/SkrGui.Core.csproj" />
+    <PackageReference Include="GodotSharp" Version="4.6.1" />
+  </ItemGroup>
+  <ItemGroup><EmbeddedResource Include="Shaders/*.glsl" /><EmbeddedResource Include="Assets/*" /></ItemGroup><ItemGroup><None Include="../../native/artifacts/win-x64/skrgui_gallery_native.dll" Link="skrgui_gallery_native.dll" CopyToOutputDirectory="PreserveNewest" Condition="Exists('../../native/artifacts/win-x64/skrgui_gallery_native.dll')" /></ItemGroup></Project>

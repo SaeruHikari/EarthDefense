@@ -1,0 +1,107 @@
+[
+  {
+    "source": "tests/text/text_shaping_contract_tests.cpp",
+    "case": "gui/text-contract/shaping/fractional-size-changes-advance",
+    "target": "TextShapingContractTests.SourceCase01"
+  },
+  {
+    "source": "tests/text/text_shaping_contract_tests.cpp",
+    "case": "gui/text-contract/shaping/horizontal-rounding-policy",
+    "target": "TextShapingContractTests.SourceCase02"
+  },
+  {
+    "source": "tests/text/text_shaping_contract_tests.cpp",
+    "case": "gui/text-contract/shaping/automatic-subpixel-rounding-by-size",
+    "target": "TextShapingContractTests.SourceCase03"
+  },
+  {
+    "source": "tests/text/text_shaping_contract_tests.cpp",
+    "case": "gui/text-contract/shaping/glyph-advance-overrides-follow-raster-mode",
+    "target": "TextShapingContractTests.SourceCase04"
+  },
+  {
+    "source": "tests/text/text_shaping_contract_tests.cpp",
+    "case": "gui/text-contract/shaping/embolden-increases-advance",
+    "target": "TextShapingContractTests.SourceCase05"
+  },
+  {
+    "source": "tests/text/text_shaping_contract_tests.cpp",
+    "case": "gui/text-contract/shaping/fallback-is-stable-across-remainder-policy",
+    "target": "TextShapingContractTests.SourceCase06"
+  },
+  {
+    "source": "tests/text/text_shaping_contract_tests.cpp",
+    "case": "gui/text-contract/shaping/raster-config-refreshes-dependent-lines",
+    "target": "TextShapingContractTests.SourceCase07"
+  },
+  {
+    "source": "tests/text/text_shaping_contract_tests.cpp",
+    "case": "gui/text-contract/shaping/default-raster-config-respects-face-override",
+    "target": "TextShapingContractTests.SourceCase08"
+  },
+  {
+    "source": "tests/text/text_shaping_contract_tests.cpp",
+    "case": "gui/text-contract/shaping/raster-config-change-discards-glyph-overrides",
+    "target": "TextShapingContractTests.SourceCase09"
+  },
+  {
+    "source": "tests/text/text_shaping_contract_tests.cpp",
+    "case": "gui/text-contract/shaping/sdf-size-change-refreshes-layout",
+    "target": "TextShapingContractTests.SourceCase10"
+  },
+  {
+    "source": "tests/text/text_shaping_contract_tests.cpp",
+    "case": "gui/text-contract/shaping/source-control-glyph-semantics",
+    "target": "TextShapingContractTests.SourceCase11"
+  },
+  {
+    "source": "tests/text/text_shaping_contract_tests.cpp",
+    "case": "gui/text-contract/shaping/preserved-default-ignorables-use-explicit-fallback",
+    "target": "TextShapingContractTests.SourceCase12"
+  },
+  {
+    "source": "tests/text/text_shaping_contract_tests.cpp",
+    "case": "gui/text-contract/shaping/hard-break-family-backend-semantics",
+    "target": "TextShapingContractTests.SourceCase13"
+  },
+  {
+    "source": "tests/text/text_shaping_contract_tests.cpp",
+    "case": "gui/text-contract/shaping/terminal-fallback-preserves-source-semantics",
+    "target": "TextShapingContractTests.SourceCase14"
+  },
+  {
+    "source": "tests/text/text_shaping_contract_tests.cpp",
+    "case": "gui/text-contract/shaping/trailing-control-spacing-and-fallback-kerning",
+    "target": "TextShapingContractTests.SourceCase15"
+  },
+  {
+    "source": "tests/text/text_shaping_contract_tests.cpp",
+    "case": "gui/text-contract/shaping/deterministic-font-fallback",
+    "target": "TextShapingContractTests.SourceCase16"
+  },
+  {
+    "source": "tests/text/text_shaping_contract_tests.cpp",
+    "case": "gui/text-contract/shaping/whole-cluster-font-fallback",
+    "target": "TextShapingContractTests.SourceCase17"
+  },
+  {
+    "source": "tests/text/text_shaping_contract_tests.cpp",
+    "case": "gui/text-contract/shaping/advanced-script-clusters",
+    "target": "TextShapingContractTests.SourceCase18"
+  },
+  {
+    "source": "tests/text/text_shaping_contract_tests.cpp",
+    "case": "gui/text-contract/shaping/thai-break-glyph-flags",
+    "target": "TextShapingContractTests.SourceCase19"
+  },
+  {
+    "source": "tests/text/text_shaping_contract_tests.cpp",
+    "case": "gui/text-contract/shaping/thai-arabic-fixed-line-breaking",
+    "target": "TextShapingContractTests.SourceCase20"
+  },
+  {
+    "source": "tests/text/text_shaping_contract_tests.cpp",
+    "case": "gui/text-contract/shaping/span-object-run-projection",
+    "target": "TextShapingContractTests.SourceCase21"
+  }
+]

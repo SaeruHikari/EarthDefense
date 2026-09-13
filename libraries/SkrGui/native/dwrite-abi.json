@@ -1,0 +1,69 @@
+{
+  "IDWriteFactory2": {
+    "guid": "0439fc60-ca44-4994-8dee-3a9af7b732ec",
+    "slots": {
+      "GetSystemFontCollection": 3,
+      "GetSystemFontFallback": 26,
+      "CreateNumberSubstitution": 22
+    }
+  },
+  "IDWriteFontCollection": {
+    "guid": "a84cee02-3eea-4eee-a827-87c1a02a0fcc",
+    "slots": {
+      "FindFamilyName": 5,
+      "GetFontFamily": 4
+    }
+  },
+  "IDWriteFontFamily": {
+    "guid": "da20d8ef-812a-4c43-9802-62ec4abd7add",
+    "slots": {
+      "GetFirstMatchingFont": 7
+    }
+  },
+  "IDWriteFont": {
+    "guid": "acd16696-8c14-4f5d-877e-fe3fc1d32737",
+    "slots": {
+      "CreateFontFace": 13
+    }
+  },
+  "IDWriteFontFace": {
+    "guid": "5f49804d-7024-4d43-bfa9-d25984f53849",
+    "slots": {
+      "GetFiles": 4,
+      "GetIndex": 5
+    }
+  },
+  "IDWriteFontFile": {
+    "guid": "739d886a-cef5-47dc-8769-1a8b41bebbb0",
+    "slots": {
+      "GetLoader": 4,
+      "GetReferenceKey": 3
+    }
+  },
+  "IDWriteLocalFontFileLoader": {
+    "guid": "b2d9f3ec-c9fe-4a11-a2ec-d86208f7c0a2",
+    "slots": {
+      "GetFilePathLengthFromKey": 4,
+      "GetFilePathFromKey": 5
+    }
+  },
+  "IDWriteFontFallback": {
+    "guid": "EFA008F9-F7A1-48BF-B05C-F224713CC0FF",
+    "slots": {
+      "MapCharacters": 3
+    }
+  },
+  "IDWriteTextAnalysisSource": {
+    "guid": "688e1a58-5094-47c8-adc8-fbcea60ae92b",
+    "slots": {
+      "QueryInterface": 0,
+      "AddRef": 1,
+      "Release": 2,
+      "GetTextAtPosition": 3,
+      "GetTextBeforePosition": 4,
+      "GetParagraphReadingDirection": 5,
+      "GetLocaleName": 6,
+      "GetNumberSubstitution": 7
+    }
+  }
+}

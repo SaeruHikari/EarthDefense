@@ -1,0 +1,77 @@
+{
+  "source_commit": "611561f81534354c8c1618dc27c4782cd9277cbf",
+  "runtime_file_mapping": {
+    "mapped": 239,
+    "unmapped": 0,
+    "original_headers": 128,
+    "original_sources_and_private_headers": 111
+  },
+  "reference_source_hashes": {
+    "checked": 364,
+    "changed": []
+  },
+  "original_test_cases": {
+    "report": "artifacts\\core-contract-results.json",
+    "passed_original_cases": 558,
+    "missing_or_failed_original_cases": [],
+    "all_result_count": 610,
+    "all_failures": 0
+  },
+  "core_tests": {
+    "passed": 610,
+    "failed": 0
+  },
+  "gallery_tests": {
+    "passed": 15,
+    "failed": 0
+  },
+  "gpu_checks": {
+    "device": "Godot main Vulkan RenderingDevice",
+    "passed": [
+      "failed frame attempts retain recording state; empty geometry still clears",
+      "RGBA8 UNORM, vertex color unpack and top-left world-to-pixel coordinates",
+      "premultiplied source-over color and alpha blend",
+      "source ClipMesh contract: intersected AABB scissor",
+      "nonzero viewport and physical scissor preserve source pixel mapping",
+      "RGBA atlas upload, clamp and bilinear sampling",
+      "dual-source LCD independently blends red/green/blue coverage",
+      "L8 direct text uses the original R-to-RGBA alpha view",
+      "ResetData recreates GPU storage and bindings across atlas generation/format",
+      "TextSdf R8 atlas pipeline and derivative branch",
+      "TextSdfLcd R8 atlas pipeline and derivative branch",
+      "backdrop captures previous draws, downsamples and executes Gaussian H/V passes"
+    ]
+  },
+  "counter_host": {
+    "backend": "Godot main RenderingDevice",
+    "before": "635a5bf4424235c731ebcd7003e3f44cffb94085fd68bfe6ebb14c52f5d43243",
+    "after": "3dacbc164d3e733590ddcd0801f05d210a5c8757796192045053b78467597dd4",
+    "reset": "635a5bf4424235c731ebcd7003e3f44cffb94085fd68bfe6ebb14c52f5d43243",
+    "key_changes_pixels": true,
+    "reset_restores_pixels": true
+  },
+  "native_dependencies": {
+    "icudt72l.dat": {
+      "bytes": 31251968,
+      "sha256": "d201aaa64229f5d2f418d1934c971fb281ce282e10858be889489f9402d45fe8"
+    },
+    "skrgui_gallery_native.dll": {
+      "bytes": 190464,
+      "sha256": "6ef979484ae80c52cb966c0e83fd8870c1a7d5c2ce43adca0993b3b8625b2c2e"
+    },
+    "skrgui_nanovg_test.dll": {
+      "bytes": 41984,
+      "sha256": "77bc54b9b5dfae609e3c2bc97c534c21a28c5a1a8ca3acbbe44569de8735079e"
+    },
+    "skrgui_native.dll": {
+      "bytes": 7404032,
+      "sha256": "f29e9438ad9f5b1471be841ddbae78509f53600db9d0f83e2703c1e8c1098f5f"
+    }
+  },
+  "language_and_host_boundaries": [
+    "C# GC final collection timing differs from last-RC synchronous destruction; explicit GUI lifecycle and non-owning references are preserved.",
+    "Godot RenderingDevice submissions report asynchronous device failures through LastRenderError.",
+    "macOS platform provider has not been run on the Windows validation host."
+  ],
+  "additional_source_tools": "Standalone draw/layout gallery pages, HTML reports and benchmark/estimator programs remain separate reference tools, not linked into the migrated GUI runtime."
+}

@@ -1,0 +1,162 @@
+[
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/line/max-width-and-actual-size",
+    "target": "TextLayoutContractTests.SourceCase01"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/line/presentation-projection-is-reversible",
+    "target": "TextLayoutContractTests.SourceCase02"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/layout/trimmed-width-follows-backend-contract",
+    "target": "TextLayoutContractTests.SourceCase03"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/line/object-follows-advance-projection",
+    "target": "TextLayoutContractTests.SourceCase04"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/line/full-range-projection-preserves-root",
+    "target": "TextLayoutContractTests.SourceCase05"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/layout/root-and-substring-share-line-metrics",
+    "target": "TextLayoutContractTests.SourceCase06"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/layout/ligature-hit-exposes-source-boundaries",
+    "target": "TextLayoutContractTests.SourceCase07"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/paragraph/draw-frame-and-local-editing",
+    "target": "TextLayoutContractTests.SourceCase08"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/paragraph/equal-lines-ignore-hard-break-geometry",
+    "target": "TextLayoutContractTests.SourceCase09"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/paragraph/explicit-empty-lines-keep-font-metrics",
+    "target": "TextLayoutContractTests.SourceCase10"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/line/control-editing-geometry",
+    "target": "TextLayoutContractTests.SourceCase11"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/line/fill-is-not-paragraph-last-line-policy",
+    "target": "TextLayoutContractTests.SourceCase12"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/paragraph/zero-index-box-is-not-visible-text",
+    "target": "TextLayoutContractTests.SourceCase13"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/paragraph/alignment-moves-objects-with-glyphs",
+    "target": "TextLayoutContractTests.SourceCase14"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/layout/overflow-frame-alignment",
+    "target": "TextLayoutContractTests.SourceCase15"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/paragraph/hidden-lines-do-not-expand-visible-size",
+    "target": "TextLayoutContractTests.SourceCase16"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/line/configuration-and-navigation",
+    "target": "TextLayoutContractTests.SourceCase17"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/line/configuration-invalidates-shaped-state",
+    "target": "TextLayoutContractTests.SourceCase18"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/paint/ellipsis-follows-raw-glyph-pen",
+    "target": "TextLayoutContractTests.SourceCase19"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/paragraph/ellipsis-uses-final-logical-span",
+    "target": "TextLayoutContractTests.SourceCase20"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/paragraph/ellipsis-tracks-late-fallback-dependencies",
+    "target": "TextLayoutContractTests.SourceCase21"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/paint/frame-culls-whole-glyphs",
+    "target": "TextLayoutContractTests.SourceCase22"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/paint/rtl-fill-and-overflow-frame",
+    "target": "TextLayoutContractTests.SourceCase23"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/paint/frame-does-not-cull-ellipsis",
+    "target": "TextLayoutContractTests.SourceCase24"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/editing/trim-keeps-source-geometry",
+    "target": "TextLayoutContractTests.SourceCase25"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/cache/non-fill-alignment-keeps-line-ready",
+    "target": "TextLayoutContractTests.SourceCase26"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/cache/non-fill-alignment-keeps-paragraph-ready",
+    "target": "TextLayoutContractTests.SourceCase27"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/paragraph/configuration-lines-and-editing",
+    "target": "TextLayoutContractTests.SourceCase28"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/paragraph/max-lines-limits-visibility-only",
+    "target": "TextLayoutContractTests.SourceCase29"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/layout/public-size-rounds-line-height",
+    "target": "TextLayoutContractTests.SourceCase30"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/paragraph/hit-test-uses-real-line-boxes",
+    "target": "TextLayoutContractTests.SourceCase31"
+  },
+  {
+    "source": "tests/text/text_layout_contract_tests.cpp",
+    "case": "gui/text-contract/paragraph/hidden-single-line-fill",
+    "target": "TextLayoutContractTests.SourceCase32"
+  }
+]

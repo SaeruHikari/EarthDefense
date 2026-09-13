@@ -1,0 +1,20 @@
+[
+  {
+    "source": "tests/vg/vg_path_stroke_nanovg_coverage_tests.cpp",
+    "line": 639,
+    "case": "gui/vg/VGPathFlatten stroke no-AA coverage matches NanoVG cap cases",
+    "target": "NanoVGStrokeCoverageTests.Case1"
+  },
+  {
+    "source": "tests/vg/vg_path_stroke_nanovg_coverage_tests.cpp",
+    "line": 653,
+    "case": "gui/vg/VGPathFlatten stroke no-AA coverage matches NanoVG join cases",
+    "target": "NanoVGStrokeCoverageTests.Case2"
+  },
+  {
+    "source": "tests/vg/vg_path_stroke_nanovg_coverage_tests.cpp",
+    "line": 669,
+    "case": "gui/vg/VGPathFlatten stroke no-AA coverage matches NanoVG contour cases",
+    "target": "NanoVGStrokeCoverageTests.Case3"
+  }
+]

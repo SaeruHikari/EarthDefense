@@ -1,0 +1,1 @@
+<Project Sdk="Godot.NET.Sdk/4.6.1"><PropertyGroup><TargetFramework>net8.0</TargetFramework><EnableDynamicLoading>true</EnableDynamicLoading><AssemblyName>SkrGuiHost</AssemblyName></PropertyGroup><ItemGroup><ProjectReference Include="../../libraries/SkrGui.Godot/SkrGui.Godot.csproj" /></ItemGroup></Project>

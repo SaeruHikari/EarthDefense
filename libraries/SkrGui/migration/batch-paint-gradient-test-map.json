@@ -1,0 +1,74 @@
+[
+  {
+    "source": "tests/batch/color_gradient_tests.cpp",
+    "line": 5,
+    "case": "gui/batch/color-gradient solid and axis sampling",
+    "target": "BatchPaintGradientContractTests.Case1"
+  },
+  {
+    "source": "tests/batch/color_gradient_tests.cpp",
+    "line": 70,
+    "case": "gui/batch/color-gradient validity",
+    "target": "BatchPaintGradientContractTests.Case2"
+  },
+  {
+    "source": "tests/batch/color_gradient_tests.cpp",
+    "line": 113,
+    "case": "gui/batch/color-gradient curve stop sorting and duplicate override",
+    "target": "BatchPaintGradientContractTests.Case3"
+  },
+  {
+    "source": "tests/batch/color_gradient_tests.cpp",
+    "line": 192,
+    "case": "gui/batch/color-gradient rect sampling",
+    "target": "BatchPaintGradientContractTests.Case4"
+  },
+  {
+    "source": "tests/batch/paint_context_tests.cpp",
+    "line": 47,
+    "case": "gui/batch/PaintContext draws mesh with current transform state",
+    "target": "BatchPaintGradientContractTests.Case5"
+  },
+  {
+    "source": "tests/batch/paint_context_tests.cpp",
+    "line": 86,
+    "case": "gui/batch/PaintContext resolves uniform device mapping",
+    "target": "BatchPaintGradientContractTests.Case6"
+  },
+  {
+    "source": "tests/batch/paint_context_tests.cpp",
+    "line": 139,
+    "case": "gui/batch/PaintContext builds clip root tree",
+    "target": "BatchPaintGradientContractTests.Case7"
+  },
+  {
+    "source": "tests/batch/paint_context_tests.cpp",
+    "line": 173,
+    "case": "gui/batch/PaintContext complex clip rect falls back to clip mesh",
+    "target": "BatchPaintGradientContractTests.Case8"
+  },
+  {
+    "source": "tests/batch/paint_context_tests.cpp",
+    "line": 194,
+    "case": "gui/batch/PaintContext supports clip mesh backdrop opacity and reset",
+    "target": "BatchPaintGradientContractTests.Case9"
+  },
+  {
+    "source": "tests/batch/paint_context_tests.cpp",
+    "line": 233,
+    "case": "gui/batch/PaintContext root complex transform forces mesh clip",
+    "target": "BatchPaintGradientContractTests.Case10"
+  },
+  {
+    "source": "tests/batch/paint_context_tests.cpp",
+    "line": 247,
+    "case": "gui/batch/PaintContext clips draw command bounds with clip stack",
+    "target": "BatchPaintGradientContractTests.Case11"
+  },
+  {
+    "source": "tests/batch/paint_context_tests.cpp",
+    "line": 289,
+    "case": "gui/batch/PaintContext skips empty clipped clip commands",
+    "target": "BatchPaintGradientContractTests.Case12"
+  }
+]

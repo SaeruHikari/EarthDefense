@@ -1,0 +1,1093 @@
+{
+  "source_commit": "611561f81534354c8c1618dc27c4782cd9277cbf",
+  "original_cases": 155,
+  "mapped_cases": 155,
+  "missing": [],
+  "cases": [
+    {
+      "name": "gui/font-provider/abstract-query-and-load",
+      "path": "engine/modules/gui/core/tests/text/font_provider_tests.cpp",
+      "line": 66,
+      "target": "tests/SkrGui.Core.Tests/Text/FontProviderTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/font-provider/files-provider-indexes-font-file",
+      "path": "engine/modules/gui/core/tests/text/font_provider_tests.cpp",
+      "line": 92,
+      "target": "tests/SkrGui.Core.Tests/Text/FontProviderTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/advanced/visual-and-logical-bidi",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_advanced_tests.cpp",
+      "line": 45,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineAdvancedTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/advanced/forced-direction-and-override",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_advanced_tests.cpp",
+      "line": 104,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineAdvancedTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/advanced/bidi-ranges",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_advanced_tests.cpp",
+      "line": 128,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineAdvancedTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/advanced/character-breaks",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_advanced_tests.cpp",
+      "line": 165,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineAdvancedTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/advanced/word-breaks",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_advanced_tests.cpp",
+      "line": 193,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineAdvancedTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/advanced/long-emoji-breaks",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_advanced_tests.cpp",
+      "line": 237,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineAdvancedTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/advanced/unicode-identifiers",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_advanced_tests.cpp",
+      "line": 254,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineAdvancedTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/advanced/letter-and-diacritic",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_advanced_tests.cpp",
+      "line": 303,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineAdvancedTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/advanced/context-case-and-security",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_advanced_tests.cpp",
+      "line": 355,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineAdvancedTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/advanced/opentype-cluster-contract",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_advanced_tests.cpp",
+      "line": 379,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineAdvancedTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/common/service-and-font-lifetime",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 232,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineCommonTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/common/source-span-object-invalidation",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 297,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineCommonTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/common/break-flags-and-hard-breaks",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 366,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineCommonTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/common/fixed-line-breaking",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 449,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineCommonTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/common/strip-diacritics",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 575,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineCommonTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/common/hard-break-space-trimming",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 630,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineCommonTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/common/tabs-objects-and-line-views",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 720,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineCommonTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/common/trim-justify-and-editing",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 776,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineCommonTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/common/stable-provider-is-not-polled",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 841,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineCommonTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/common/provider-topology-invalidates",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 866,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineCommonTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/common/family-fallback-is-lazy",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 912,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineCommonTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/common/provider-negative-cache-is-topology-scoped",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 977,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineCommonTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/common/font-data-cache-includes-provider-identity",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 1022,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineCommonTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/common/font-data-load-failure-is-cached",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 1075,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineCommonTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/common/empty-paragraph-contract",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_common_tests.cpp",
+      "line": 1115,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselineCommonTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/paint/sdf-atlas-and-cache-reset",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_paint_tests.cpp",
+      "line": 12,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselinePaintTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/paint/empty-glyph-is-a-noop",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_paint_tests.cpp",
+      "line": 59,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselinePaintTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/paint/missing-glyph-solid-box",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_paint_tests.cpp",
+      "line": 74,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselinePaintTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-baseline/paint/paragraph-line-local-origin",
+      "path": "engine/modules/gui/core/tests/text/text_baseline_paint_tests.cpp",
+      "line": 108,
+      "target": "tests/SkrGui.Core.Tests/Text/TextBaselinePaintTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/font-face/metadata-glyphs-and-contour",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 122,
+      "target": "tests/SkrGui.Core.Tests/Text/FontFaceContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/font-face/metadata-and-support-overrides",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 183,
+      "target": "tests/SkrGui.Core.Tests/Text/FontFaceContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/font-face/variation-and-opentype-overrides",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 225,
+      "target": "tests/SkrGui.Core.Tests/Text/FontFaceContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/font-face/public-metric-and-glyph-overrides",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 310,
+      "target": "tests/SkrGui.Core.Tests/Text/FontFaceContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/font-face/sdf-glyph-overrides-scale-with-size",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 382,
+      "target": "tests/SkrGui.Core.Tests/Text/FontFaceContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/font-face/glyph-raster-rect-overrides-affect-paint",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 471,
+      "target": "tests/SkrGui.Core.Tests/Text/FontFaceContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/font-face/glyph-raster-override-before-first-load",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 547,
+      "target": "tests/SkrGui.Core.Tests/Text/FontFaceContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/font-face/invalid-glyph-overrides-round-trip",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 602,
+      "target": "tests/SkrGui.Core.Tests/Text/FontFaceContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/font-face/baseline-offset-refreshes-dependent-line",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 657,
+      "target": "tests/SkrGui.Core.Tests/Text/FontFaceContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/font-face/baseline-offset-is-font-height-fraction",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 689,
+      "target": "tests/SkrGui.Core.Tests/Text/FontFaceContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/font-face/transform-affects-raster-and-contour",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 797,
+      "target": "tests/SkrGui.Core.Tests/Text/FontFaceContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/font-face/collection-face-index",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 880,
+      "target": "tests/SkrGui.Core.Tests/Text/FontFaceContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/font-face/mutation-refreshes-dependent-text",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 910,
+      "target": "tests/SkrGui.Core.Tests/Text/FontFaceContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/font-face/color-palettes",
+      "path": "engine/modules/gui/core/tests/text/text_font_face_contract_tests.cpp",
+      "line": 997,
+      "target": "tests/SkrGui.Core.Tests/Text/FontFaceContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/line/max-width-and-actual-size",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 197,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/line/presentation-projection-is-reversible",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 265,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/layout/trimmed-width-follows-backend-contract",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 329,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/line/object-follows-advance-projection",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 423,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/line/full-range-projection-preserves-root",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 504,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/layout/root-and-substring-share-line-metrics",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 593,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/layout/ligature-hit-exposes-source-boundaries",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 640,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/paragraph/draw-frame-and-local-editing",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 727,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/paragraph/equal-lines-ignore-hard-break-geometry",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 862,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/paragraph/explicit-empty-lines-keep-font-metrics",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 907,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/line/control-editing-geometry",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 991,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/line/fill-is-not-paragraph-last-line-policy",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1071,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/paragraph/zero-index-box-is-not-visible-text",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1132,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/paragraph/alignment-moves-objects-with-glyphs",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1173,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/layout/overflow-frame-alignment",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1250,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/paragraph/hidden-lines-do-not-expand-visible-size",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1387,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/line/configuration-and-navigation",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1426,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/line/configuration-invalidates-shaped-state",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1518,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/paint/ellipsis-follows-raw-glyph-pen",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1540,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/paragraph/ellipsis-uses-final-logical-span",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1592,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/paragraph/ellipsis-tracks-late-fallback-dependencies",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1643,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/paint/frame-culls-whole-glyphs",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1695,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/paint/rtl-fill-and-overflow-frame",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1838,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/paint/frame-does-not-cull-ellipsis",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1936,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/editing/trim-keeps-source-geometry",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 1964,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/cache/non-fill-alignment-keeps-line-ready",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 2013,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/cache/non-fill-alignment-keeps-paragraph-ready",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 2062,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/paragraph/configuration-lines-and-editing",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 2123,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/paragraph/max-lines-limits-visibility-only",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 2276,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/layout/public-size-rounds-line-height",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 2359,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/paragraph/hit-test-uses-real-line-boxes",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 2424,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/paragraph/hidden-single-line-fill",
+      "path": "engine/modules/gui/core/tests/text/text_layout_contract_tests.cpp",
+      "line": 2542,
+      "target": "tests/SkrGui.Core.Tests/Text/TextLayoutContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/service-and-face-configuration",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 258,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/bitmap-light-hinting-keeps-narrow-glyphs-separated",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 372,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/bitmap-embolden-changes-coverage",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 437,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/bitmap-horizontal-positioning",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 479,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/device-mapping-controls-bitmap-placement",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 566,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/bitmap-device-texel-mapping-is-pixel-perfect",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 646,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/bitmap-device-y-snap-and-unmapped-continuity",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 744,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/empty-bitmap-keeps-zero-raster-rect",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 821,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/automatic-bitmap-positioning-follows-device-size",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 867,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/sdf-placement-remains-continuous",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 930,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/descriptor-default-and-service-isolation",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 964,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/colored-glyph-through-line",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1031,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/color-layer-transform-changes-geometry",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1075,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/color-palette-affects-rendering",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1227,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/simple-slant-applies-once",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1330,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/color-glyph-positioning-and-embolden",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1409,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/color-bitmap-size-and-format",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1482,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/color-bitmap-selects-nearest-size",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1653,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/glyph-removal-refreshes-dependent-output",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1734,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/color-face-keeps-independent-size-overrides",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1795,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/color-face-keeps-monochrome-glyph-modulation",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1821,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/color-face-sdf-lcd-fallback",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 1876,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/sdf-geometry-scales-with-font-size",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 2035,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/sdf-lcd-mode-reaches-render-command",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 2079,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/painting-does-not-change-later-layout",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 2116,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/raster/fractional-size-scales-bitmap-quad",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 2212,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/atlas/configuration-and-lifecycle",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 2243,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/render-result/command-coalescing",
+      "path": "engine/modules/gui/core/tests/text/text_raster_contract_tests.cpp",
+      "line": 2339,
+      "target": "tests/SkrGui.Core.Tests/Text/TextRasterContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/service/features-and-font-provider-registry",
+      "path": "engine/modules/gui/core/tests/text/text_service_contract_tests.cpp",
+      "line": 48,
+      "target": "tests/SkrGui.Core.Tests/Text/TextServiceContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/service/provider-precedence-and-affinity",
+      "path": "engine/modules/gui/core/tests/text/text_service_contract_tests.cpp",
+      "line": 80,
+      "target": "tests/SkrGui.Core.Tests/Text/TextServiceContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/service/preload-deduplicate-and-unload",
+      "path": "engine/modules/gui/core/tests/text/text_service_contract_tests.cpp",
+      "line": 140,
+      "target": "tests/SkrGui.Core.Tests/Text/TextServiceContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/service/opentype-tag-roundtrip",
+      "path": "engine/modules/gui/core/tests/text/text_service_contract_tests.cpp",
+      "line": 192,
+      "target": "tests/SkrGui.Core.Tests/Text/TextServiceContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/shaping/fractional-size-changes-advance",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 81,
+      "target": "tests/SkrGui.Core.Tests/Text/TextShapingContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/shaping/horizontal-rounding-policy",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 105,
+      "target": "tests/SkrGui.Core.Tests/Text/TextShapingContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/shaping/automatic-subpixel-rounding-by-size",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 201,
+      "target": "tests/SkrGui.Core.Tests/Text/TextShapingContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/shaping/glyph-advance-overrides-follow-raster-mode",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 251,
+      "target": "tests/SkrGui.Core.Tests/Text/TextShapingContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/shaping/embolden-increases-advance",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 286,
+      "target": "tests/SkrGui.Core.Tests/Text/TextShapingContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/shaping/fallback-is-stable-across-remainder-policy",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 333,
+      "target": "tests/SkrGui.Core.Tests/Text/TextShapingContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/shaping/raster-config-refreshes-dependent-lines",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 377,
+      "target": "tests/SkrGui.Core.Tests/Text/TextShapingContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/shaping/default-raster-config-respects-face-override",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 471,
+      "target": "tests/SkrGui.Core.Tests/Text/TextShapingContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/shaping/raster-config-change-discards-glyph-overrides",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 516,
+      "target": "tests/SkrGui.Core.Tests/Text/TextShapingContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/shaping/sdf-size-change-refreshes-layout",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 566,
+      "target": "tests/SkrGui.Core.Tests/Text/TextShapingContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/shaping/source-control-glyph-semantics",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 598,
+      "target": "tests/SkrGui.Core.Tests/Text/TextShapingContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/shaping/preserved-default-ignorables-use-explicit-fallback",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 726,
+      "target": "tests/SkrGui.Core.Tests/Text/TextShapingContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/shaping/hard-break-family-backend-semantics",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 786,
+      "target": "tests/SkrGui.Core.Tests/Text/TextShapingContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/shaping/terminal-fallback-preserves-source-semantics",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 883,
+      "target": "tests/SkrGui.Core.Tests/Text/TextShapingContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/shaping/trailing-control-spacing-and-fallback-kerning",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 977,
+      "target": "tests/SkrGui.Core.Tests/Text/TextShapingContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/shaping/deterministic-font-fallback",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 1079,
+      "target": "tests/SkrGui.Core.Tests/Text/TextShapingContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/shaping/whole-cluster-font-fallback",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 1153,
+      "target": "tests/SkrGui.Core.Tests/Text/TextShapingContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/shaping/advanced-script-clusters",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 1228,
+      "target": "tests/SkrGui.Core.Tests/Text/TextShapingContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/shaping/thai-break-glyph-flags",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 1274,
+      "target": "tests/SkrGui.Core.Tests/Text/TextShapingContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/shaping/thai-arabic-fixed-line-breaking",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 1362,
+      "target": "tests/SkrGui.Core.Tests/Text/TextShapingContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-contract/shaping/span-object-run-projection",
+      "path": "engine/modules/gui/core/tests/text/text_shaping_contract_tests.cpp",
+      "line": 1409,
+      "target": "tests/SkrGui.Core.Tests/Text/TextShapingContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-style/basic-fields",
+      "path": "engine/modules/gui/core/tests/text/text_types_tests.cpp",
+      "line": 11,
+      "target": "tests/SkrGui.Core.Tests/Text/TextServiceContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-style/font-family-fallback-chain",
+      "path": "engine/modules/gui/core/tests/text/text_types_tests.cpp",
+      "line": 22,
+      "target": "tests/SkrGui.Core.Tests/Text/TextServiceContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-types/layout-id-validity",
+      "path": "engine/modules/gui/core/tests/text/text_types_tests.cpp",
+      "line": 31,
+      "target": "tests/SkrGui.Core.Tests/Text/TextServiceContractTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-no-icu/line/shaping-scenario-matrix",
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_layout_tests.cpp",
+      "line": 12,
+      "target": "tests/SkrGui.Core.Tests/Text/TextWithoutIcuTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-no-icu/line/direction-controls-and-missing-glyphs",
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_layout_tests.cpp",
+      "line": 51,
+      "target": "tests/SkrGui.Core.Tests/Text/TextWithoutIcuTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-no-icu/line/layout-objects-overrun-and-editing",
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_layout_tests.cpp",
+      "line": 78,
+      "target": "tests/SkrGui.Core.Tests/Text/TextWithoutIcuTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-no-icu/paragraph/empty-wrap-lines-and-objects",
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_layout_tests.cpp",
+      "line": 161,
+      "target": "tests/SkrGui.Core.Tests/Text/TextWithoutIcuTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-no-icu/service/capabilities-and-factories",
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_service_tests.cpp",
+      "line": 10,
+      "target": "tests/SkrGui.Core.Tests/Text/TextWithoutIcuTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-no-icu/service/font-query-preload-and-invalidation",
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_service_tests.cpp",
+      "line": 45,
+      "target": "tests/SkrGui.Core.Tests/Text/TextWithoutIcuTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-no-icu/service/repeated-independent-lifetimes",
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_service_tests.cpp",
+      "line": 93,
+      "target": "tests/SkrGui.Core.Tests/Text/TextWithoutIcuTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-no-icu/unicode/local-degradation-remains-usable",
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_unicode_paint_tests.cpp",
+      "line": 45,
+      "target": "tests/SkrGui.Core.Tests/Text/TextWithoutIcuTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-no-icu/unicode/data-required-features-fail-safely",
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_unicode_paint_tests.cpp",
+      "line": 97,
+      "target": "tests/SkrGui.Core.Tests/Text/TextWithoutIcuTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/text-no-icu/paint/atlas-text-and-missing-glyph",
+      "path": "engine/modules/gui/core/tests/text/text_without_icu_unicode_paint_tests.cpp",
+      "line": 133,
+      "target": "tests/SkrGui.Core.Tests/Text/TextWithoutIcuTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/visual-temp-text/layout-and-baseline",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 143,
+      "target": "tests/SkrGui.Core.Tests/Visual/VisualTempTextTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/visual-temp-text/soft-wrap-and-visible-overflow",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 173,
+      "target": "tests/SkrGui.Core.Tests/Visual/VisualTempTextTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/visual-temp-text/ellipsis-max-lines",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 197,
+      "target": "tests/SkrGui.Core.Tests/Visual/VisualTempTextTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/visual-temp-text/width-trim-is-not-max-lines",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 219,
+      "target": "tests/SkrGui.Core.Tests/Visual/VisualTempTextTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/visual-temp-text/start-end-alignment",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 233,
+      "target": "tests/SkrGui.Core.Tests/Visual/VisualTempTextTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/visual-temp-text/overflow-controls-visual-clip",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 265,
+      "target": "tests/SkrGui.Core.Tests/Visual/VisualTempTextTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/visual-temp-text/paint-requires-committed-layout",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 283,
+      "target": "tests/SkrGui.Core.Tests/Visual/VisualTempTextTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/visual-temp-text/font-revision-requires-committed-layout",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 325,
+      "target": "tests/SkrGui.Core.Tests/Visual/VisualTempTextTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/visual-temp-text/detach-discards-owner-bound-layout",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 364,
+      "target": "tests/SkrGui.Core.Tests/Visual/VisualTempTextTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/visual-temp-text/tab-stops-round-trip",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 389,
+      "target": "tests/SkrGui.Core.Tests/Visual/VisualTempTextTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/visual-temp-text/resolves-text-service-from-owner",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 428,
+      "target": "tests/SkrGui.Core.Tests/Visual/VisualTempTextTests.cs",
+      "implemented": true
+    },
+    {
+      "name": "gui/visual-temp-text/tight-width-paint-alignment",
+      "path": "engine/modules/gui/core/tests/visual/visual_temp_text_tests.cpp",
+      "line": 449,
+      "target": "tests/SkrGui.Core.Tests/Visual/VisualTempTextTests.cs",
+      "implemented": true
+    }
+  ]
+}

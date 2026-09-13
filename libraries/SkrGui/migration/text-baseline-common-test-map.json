@@ -1,0 +1,77 @@
+[
+  {
+    "source": "tests/text/text_baseline_common_tests.cpp",
+    "case": "gui/text-baseline/common/service-and-font-lifetime",
+    "target": "TextBaselineCommonTests.SourceCase01"
+  },
+  {
+    "source": "tests/text/text_baseline_common_tests.cpp",
+    "case": "gui/text-baseline/common/source-span-object-invalidation",
+    "target": "TextBaselineCommonTests.SourceCase02"
+  },
+  {
+    "source": "tests/text/text_baseline_common_tests.cpp",
+    "case": "gui/text-baseline/common/break-flags-and-hard-breaks",
+    "target": "TextBaselineCommonTests.SourceCase03"
+  },
+  {
+    "source": "tests/text/text_baseline_common_tests.cpp",
+    "case": "gui/text-baseline/common/fixed-line-breaking",
+    "target": "TextBaselineCommonTests.SourceCase04"
+  },
+  {
+    "source": "tests/text/text_baseline_common_tests.cpp",
+    "case": "gui/text-baseline/common/strip-diacritics",
+    "target": "TextBaselineCommonTests.SourceCase05"
+  },
+  {
+    "source": "tests/text/text_baseline_common_tests.cpp",
+    "case": "gui/text-baseline/common/hard-break-space-trimming",
+    "target": "TextBaselineCommonTests.SourceCase06"
+  },
+  {
+    "source": "tests/text/text_baseline_common_tests.cpp",
+    "case": "gui/text-baseline/common/tabs-objects-and-line-views",
+    "target": "TextBaselineCommonTests.SourceCase07"
+  },
+  {
+    "source": "tests/text/text_baseline_common_tests.cpp",
+    "case": "gui/text-baseline/common/trim-justify-and-editing",
+    "target": "TextBaselineCommonTests.SourceCase08"
+  },
+  {
+    "source": "tests/text/text_baseline_common_tests.cpp",
+    "case": "gui/text-baseline/common/stable-provider-is-not-polled",
+    "target": "TextBaselineCommonTests.SourceCase09"
+  },
+  {
+    "source": "tests/text/text_baseline_common_tests.cpp",
+    "case": "gui/text-baseline/common/provider-topology-invalidates",
+    "target": "TextBaselineCommonTests.SourceCase10"
+  },
+  {
+    "source": "tests/text/text_baseline_common_tests.cpp",
+    "case": "gui/text-baseline/common/family-fallback-is-lazy",
+    "target": "TextBaselineCommonTests.SourceCase11"
+  },
+  {
+    "source": "tests/text/text_baseline_common_tests.cpp",
+    "case": "gui/text-baseline/common/provider-negative-cache-is-topology-scoped",
+    "target": "TextBaselineCommonTests.SourceCase12"
+  },
+  {
+    "source": "tests/text/text_baseline_common_tests.cpp",
+    "case": "gui/text-baseline/common/font-data-cache-includes-provider-identity",
+    "target": "TextBaselineCommonTests.SourceCase13"
+  },
+  {
+    "source": "tests/text/text_baseline_common_tests.cpp",
+    "case": "gui/text-baseline/common/font-data-load-failure-is-cached",
+    "target": "TextBaselineCommonTests.SourceCase14"
+  },
+  {
+    "source": "tests/text/text_baseline_common_tests.cpp",
+    "case": "gui/text-baseline/common/empty-paragraph-contract",
+    "target": "TextBaselineCommonTests.SourceCase15"
+  }
+]

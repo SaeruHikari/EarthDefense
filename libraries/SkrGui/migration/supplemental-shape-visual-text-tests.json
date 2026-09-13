@@ -1,0 +1,382 @@
+{
+  "source_commit": "611561f81534354c8c1618dc27c4782cd9277cbf",
+  "source_test_cases": [
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Circle normalization relations and measures",
+      "method": "Case0",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Shape Invalid factories are consistently invalid",
+      "method": "Case1",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Ellipse normalization relations and measures",
+      "method": "Case2",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Arc normalization length and closest point",
+      "method": "Case3",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/EllipticalArc normalization length and closest point",
+      "method": "Case4",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Shape cubic bezier fast split preserves full contour endpoints",
+      "method": "Case5",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Shape cubic bezier counts match emitted segments",
+      "method": "Case6",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Shape samplers match point sampling",
+      "method": "Case7",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/ShapeSampleHelper sampler callbacks expose synced sampler",
+      "method": "Case8",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Shape sampler sampling entries match regular sampling",
+      "method": "Case9",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Superellipse tolerance sampling splits closed contour by quadrants",
+      "method": "Case10",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Superellipse tolerance sampling handles diamond exponent",
+      "method": "Case11",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/SuperellipseArc tolerance sampling splits by half quadrants",
+      "method": "Case12",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/SuperellipseArc tolerance sampling handles diamond exponent",
+      "method": "Case13",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Shape cubic bezier split supports closed shape direction",
+      "method": "Case14",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Arc cubic bezier fast split respects sweep bounds",
+      "method": "Case15",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/EllipticalArc cubic bezier fast split preserves endpoints",
+      "method": "Case16",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Shape cubic bezier tolerance split handles density and invalid input",
+      "method": "Case17",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Shape cubic bezier split skips empty and invalid primitives",
+      "method": "Case18",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/QuadBezier length and closest point",
+      "method": "Case19",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Bezier path-style factories match direct construction",
+      "method": "Case20",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Arc ArcTo builds tangent corner arc and rejects invalid input",
+      "method": "Case21",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/EllipticalArc ArcTo supports flags scaling and invalid input",
+      "method": "Case22",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Shape calc_tolerance scale response",
+      "method": "Case23",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Shape sample tolerance is monotonic across primitives",
+      "method": "Case24",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Arc shape estimate_segment_count handles ellipse and superellipse arcs",
+      "method": "Case25",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Superellipse estimate_segment_count handles exponent segments",
+      "method": "Case26",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/SuperellipseArc estimate_segment_count handles exponent segments",
+      "method": "Case27",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Shape sample step length is supported across primitives",
+      "method": "Case28",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Shape sample max depth controls adaptive refinement",
+      "method": "Case29",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Shape sampling direction preserves native t values",
+      "method": "Case30",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Shape sampling distinguishes open and closed endpoint contracts",
+      "method": "Case31",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Shape sampling skips degenerate primitives",
+      "method": "Case32",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/CubicBezier length and closest point",
+      "method": "Case33",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Shape project APIs expose semantic parameters",
+      "method": "Case34",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Shape trim and subcurve APIs preserve endpoints",
+      "method": "Case35",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Arc normalization preserves geometry under radius sign flips",
+      "method": "Case36",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/EllipticalArc normalization preserves geometry under radius sign flips",
+      "method": "Case37",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Shape trim and subcurve clamp and reverse out-of-range inputs",
+      "method": "Case38",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Shape project stays valid for degenerate inputs",
+      "method": "Case39",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Superellipse normalization invalid and exponent two parity",
+      "method": "Case40",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Superellipse geometry bounds sampling and direction",
+      "method": "Case41",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Superellipse cubic bezier splits preserve endpoints",
+      "method": "Case42",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Superellipse cubic bezier split obeys sampled tolerance",
+      "method": "Case43",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/Superellipse skips empty and invalid callbacks",
+      "method": "Case44",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/SuperellipseArc normalization invalid and exponent two parity",
+      "method": "Case45",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/SuperellipseArc bounds sampling reverse and trim",
+      "method": "Case46",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/SuperellipseArc cubic bezier splits preserve endpoints",
+      "method": "Case47",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/SuperellipseArc cubic bezier split obeys sampled tolerance",
+      "method": "Case48",
+      "status": "passed"
+    },
+    {
+      "source": "math/shape_tests.cpp",
+      "case": "gui/math/SuperellipseArc skips empty and invalid callbacks",
+      "method": "Case49",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_temp_text_tests.cpp",
+      "case": "gui/visual-temp-text/layout-and-baseline",
+      "method": "Case0",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_temp_text_tests.cpp",
+      "case": "gui/visual-temp-text/soft-wrap-and-visible-overflow",
+      "method": "Case1",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_temp_text_tests.cpp",
+      "case": "gui/visual-temp-text/ellipsis-max-lines",
+      "method": "Case2",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_temp_text_tests.cpp",
+      "case": "gui/visual-temp-text/width-trim-is-not-max-lines",
+      "method": "Case3",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_temp_text_tests.cpp",
+      "case": "gui/visual-temp-text/start-end-alignment",
+      "method": "Case4",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_temp_text_tests.cpp",
+      "case": "gui/visual-temp-text/overflow-controls-visual-clip",
+      "method": "Case5",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_temp_text_tests.cpp",
+      "case": "gui/visual-temp-text/paint-requires-committed-layout",
+      "method": "Case6",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_temp_text_tests.cpp",
+      "case": "gui/visual-temp-text/font-revision-requires-committed-layout",
+      "method": "Case7",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_temp_text_tests.cpp",
+      "case": "gui/visual-temp-text/detach-discards-owner-bound-layout",
+      "method": "Case8",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_temp_text_tests.cpp",
+      "case": "gui/visual-temp-text/tab-stops-round-trip",
+      "method": "Case9",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_temp_text_tests.cpp",
+      "case": "gui/visual-temp-text/resolves-text-service-from-owner",
+      "method": "Case10",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_temp_text_tests.cpp",
+      "case": "gui/visual-temp-text/tight-width-paint-alignment",
+      "method": "Case11",
+      "status": "passed"
+    }
+  ],
+  "mode": "Original source Debug branches; assertion-triggering SKR_SHIPPING-only body excluded exactly as native debug harness.",
+  "result": {
+    "passed": 62,
+    "failed": 0
+  }
+}

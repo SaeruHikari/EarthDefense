@@ -1,0 +1,52 @@
+[
+  {
+    "source": "tests/text/text_baseline_advanced_tests.cpp",
+    "case": "gui/text-baseline/advanced/visual-and-logical-bidi",
+    "target": "TextBaselineAdvancedTests.SourceCase01"
+  },
+  {
+    "source": "tests/text/text_baseline_advanced_tests.cpp",
+    "case": "gui/text-baseline/advanced/forced-direction-and-override",
+    "target": "TextBaselineAdvancedTests.SourceCase02"
+  },
+  {
+    "source": "tests/text/text_baseline_advanced_tests.cpp",
+    "case": "gui/text-baseline/advanced/bidi-ranges",
+    "target": "TextBaselineAdvancedTests.SourceCase03"
+  },
+  {
+    "source": "tests/text/text_baseline_advanced_tests.cpp",
+    "case": "gui/text-baseline/advanced/character-breaks",
+    "target": "TextBaselineAdvancedTests.SourceCase04"
+  },
+  {
+    "source": "tests/text/text_baseline_advanced_tests.cpp",
+    "case": "gui/text-baseline/advanced/word-breaks",
+    "target": "TextBaselineAdvancedTests.SourceCase05"
+  },
+  {
+    "source": "tests/text/text_baseline_advanced_tests.cpp",
+    "case": "gui/text-baseline/advanced/long-emoji-breaks",
+    "target": "TextBaselineAdvancedTests.SourceCase06"
+  },
+  {
+    "source": "tests/text/text_baseline_advanced_tests.cpp",
+    "case": "gui/text-baseline/advanced/unicode-identifiers",
+    "target": "TextBaselineAdvancedTests.SourceCase07"
+  },
+  {
+    "source": "tests/text/text_baseline_advanced_tests.cpp",
+    "case": "gui/text-baseline/advanced/letter-and-diacritic",
+    "target": "TextBaselineAdvancedTests.SourceCase08"
+  },
+  {
+    "source": "tests/text/text_baseline_advanced_tests.cpp",
+    "case": "gui/text-baseline/advanced/context-case-and-security",
+    "target": "TextBaselineAdvancedTests.SourceCase09"
+  },
+  {
+    "source": "tests/text/text_baseline_advanced_tests.cpp",
+    "case": "gui/text-baseline/advanced/opentype-cluster-contract",
+    "target": "TextBaselineAdvancedTests.SourceCase10"
+  }
+]

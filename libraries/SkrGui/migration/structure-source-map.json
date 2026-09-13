@@ -1,0 +1,2704 @@
+{
+  "source_commit": "611561f81534354c8c1618dc27c4782cd9277cbf",
+  "owner": "skrgui_structure",
+  "files": [
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/framework/build_context.hpp",
+      "source_sha256": "8c0e28d4c5e3b7a22d1709b9c1c628025c27872b01d815632bd39d0876c6ef6e",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Widget.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/framework/build_owner.hpp",
+      "source_sha256": "ecf290a9a4d5db49f1047cdcf2c0072b20ce73e1f506641e7a694cab1cc3ab7c",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/BuildOwner.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/framework/key.hpp",
+      "source_sha256": "72173f598e94a887af15a3b128a9e6673c4a7042b22873c5218fc0c12a5fa0fd",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Key.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus.hpp",
+      "source_sha256": "64dd7a70afc7cb629cbc15d5b696c9e20a5891182ac92489b6a23277d0bcf09c",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Nexus.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus_component.hpp",
+      "source_sha256": "18e04fe2c0ef0d96bf6b3b37eea084acf2183441e7a6beb82be41ed5b5e519b4",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/NexusWidgets.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus_slot.hpp",
+      "source_sha256": "1f548455fbf73945657205d22a66dfd0f13f9d4b17f64f76100906c401d5704f",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Key.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus_visual.hpp",
+      "source_sha256": "d17883eaa75b0b380400a53c111eeaa504fd5461a191856146ba29450aea7e1e",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/NexusWidgets.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus_visual_leaf.hpp",
+      "source_sha256": "82791780d8a1a390dfae7d391f1219249fe63a9e75022c10835fc31751fab1e2",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/NexusWidgets.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus_visual_multi_child.hpp",
+      "source_sha256": "77e94eb8efd0257496d63e4d110c7b8b38f7094c132d816966b388d4ba13e233",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/NexusWidgets.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus_visual_single_child.hpp",
+      "source_sha256": "31de1be5f677521074675e43b4d45479d4d42c8f2a4aa0b27de136d6bdd71133",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/NexusWidgets.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/framework/nexus/nexus_visual_slot.hpp",
+      "source_sha256": "87ea28e852da70a35643cc65a3d9b3adae65ae38e1adbf1b19dd7134727a0ef8",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/NexusWidgets.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/framework/reactive/reactive.hpp",
+      "source_sha256": "cdafc725c593450a9bc5a633029bc416b941e7294f9c536c2a1a451d3379bb1a",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Widget.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/framework/state.hpp",
+      "source_sha256": "ee6b6668ab6445fd3d94a51e079f6187e39eba0d514b991e1fe279c6e75f1565",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Widget.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/component_widget.hpp",
+      "source_sha256": "36cb00c2c93ec603d124fd123faf9554ce343d60ae074b76afa8e883f9624997",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Widget.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/visual_slot_widget.hpp",
+      "source_sha256": "3d5680684dd75396c0f06b8f5f4d856682fc5db7181e5dba42376ac2bd17a019",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Widget.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/visual_widget.hpp",
+      "source_sha256": "3df54a8d6a8dc1ed8f0c1797498f7dbd1dc666f9ae5798ec0464ce006a32f0ff",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Widget.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/visual_widget_leaf.hpp",
+      "source_sha256": "29b73616febd797245212cd28c3f67e6b01d871cbe6c71edf090ac37881f63fe",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Widget.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/visual_widget_multi_child.hpp",
+      "source_sha256": "708051d14ee4b1a95bcaa2a99c90c8670bc629631e4269b9d5378b53829c27c5",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Widget.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/visual_widget_single_child.hpp",
+      "source_sha256": "03d1c03289b965da2ab6e4e2aad18876a13fb51c4b3792577905c113507570d7",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Widget.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/widget.hpp",
+      "source_sha256": "d1f250889ea844b9cb152a090c3caf7dc13349640060dee7036badfccb85d102",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Widget.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/framework/widget/widget_dsl.hpp",
+      "source_sha256": "2cc1a08a3846cf3cfc90e039831dfbbf9c85eaced763e1c50ec0f565d640ad52",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Widget.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/fwd.hpp",
+      "source_sha256": "609824ed350510cadd1b1a6fd4277ad15dd316087c3ccf14b292e86df03fc0d1",
+      "targets": [
+        "libraries/SkrGui.Core/Math/BasicTypes.cs"
+      ],
+      "status": "language-only",
+      "verification": "original corresponding source cases passed",
+      "note": "C++ forward declarations are resolved directly by C# compilation; runtime definitions live in the corresponding type files."
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/geometry/offset.hpp",
+      "source_sha256": "78b9ddf80b7a7578c5389d201f82a38771039196f6dbb76d66b809287bfef2dd",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Geometry/Offsetf.cs",
+        "libraries/SkrGui.Core/Math/Geometry/Offseti.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/geometry/radius.hpp",
+      "source_sha256": "16be7776c0b38e29e498afcf7eba0dddef9698688bdb3fdaf0562d5dfde4d871",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Geometry/Radius.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/geometry/rect.hpp",
+      "source_sha256": "d1fd74db6ecb2dbd71eae8d03c7595355d8addc1ffb9ed813baed43d493b3538",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Geometry/Rectf.cs",
+        "libraries/SkrGui.Core/Math/Geometry/Recti.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/geometry/rrect.hpp",
+      "source_sha256": "e5127682a8d7873d7b0a95c1ac2781756ba57cd812dd0dfdf34065e677bc3ded",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Geometry/RRect.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/geometry/size.hpp",
+      "source_sha256": "7577e18ada8f83c50ac29d5b525ac69b897f4b36905bc03b77d0aa1eb2d16f58",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Geometry/Sizef.cs",
+        "libraries/SkrGui.Core/Math/Geometry/Sizei.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/layout/alignment.hpp",
+      "source_sha256": "b08379e290c55f008ed65e05be570e178d488329652b2ad8c0e54d6a093cfd30",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Layout/Alignment.cs",
+        "libraries/SkrGui.Core/Math/Layout/AlignmentDirectional.cs",
+        "libraries/SkrGui.Core/Math/Layout/AlignmentMixed.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/layout/box_constraint.hpp",
+      "source_sha256": "6c3c329f93e61ee99cf4c8ca5951cc2457ea8c7a76c80fbcffe69ede252ba062",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Layout/BoxConstraints.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/layout/box_fit.hpp",
+      "source_sha256": "35e326d9c3d3f3a8b00fb0ba3db3c12ed8c22a6bcd9c4cce7ef3cd051b66ef00",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Layout/BoxFit.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/layout/edge_insets.hpp",
+      "source_sha256": "b613b3142dabee5d043c3964527a804fab228b7a60380b00ed7d0c03d1dfe40c",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Layout/EdgeInsets.cs",
+        "libraries/SkrGui.Core/Math/Layout/EdgeInsetsDirectional.cs",
+        "libraries/SkrGui.Core/Math/Layout/EdgeInsetsMixed.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/layout/placement.hpp",
+      "source_sha256": "f0ac1569e61799872e518d168517f80a2a9deb03040337b2a1e78fbc0552b522",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Layout/Placement.cs",
+        "libraries/SkrGui.Core/Math/Layout/Placement.Builders.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/m3/color_scheme.hpp",
+      "source_sha256": "7db90374028abb3115a136159b754c47818023fcb5ac1cabb5c9c8050645211d",
+      "targets": [
+        "libraries/SkrGui.Core/Math/M3/M3ColorScheme.cs",
+        "libraries/SkrGui.Core/Math/M3/M3SchemeBuilder.cs",
+        "libraries/SkrGui.Core/Math/M3/M3SchemeFunctions.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/math/m3/tonal_palette.hpp",
+      "source_sha256": "83ba33fb90c1b7e7bb9976cd466e87efcd66557bc51e54001f5ea092f9fc22a0",
+      "targets": [
+        "libraries/SkrGui.Core/Math/M3/M3TonalPalette.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/fwd.hpp",
+      "source_sha256": "46052e583295bf8239fe2ec6b1d1e0212521960f1e1150e788a141fac80d6c42",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/VisualNode.cs"
+      ],
+      "status": "language-only",
+      "verification": "original corresponding source cases passed",
+      "note": "Forward declarations have no runtime behavior; full classes remain in mapped Visual files."
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/multi_child/visual_flex.hpp",
+      "source_sha256": "245bb1a9fe27710671f0a725d97b9c354f1f24fa1cc1fe030173fdc7469cb894",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/MultiChild/VisualFlex.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/multi_child/visual_grid.hpp",
+      "source_sha256": "92e529d00164619b2d999acebbaf64fd8bb97097772d082ae1f9a62dece7efb0",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/MultiChild/VisualGrid.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/multi_child/visual_placement.hpp",
+      "source_sha256": "df0caa2c8c297c81d319229d2efbaaad169f3cf3a01f66c43fbbd00f2b5b1109",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/MultiChild/VisualPlacement.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/multi_child/visual_stack.hpp",
+      "source_sha256": "064ddde99b053255fde4a2b1b392267db4e22201e3bfb8cc76adb4b61b0e399c",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/MultiChild/VisualStack.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/multi_child/visual_wrap.hpp",
+      "source_sha256": "94a360c0d532ba21892806ae854168538172fe1a8d5cf449f4851d330aefade3",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/MultiChild/VisualWrap.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_aspect_ratio.hpp",
+      "source_sha256": "90e175a748297c2c1104896ac0a5bdd31a8e46af1ae0f06dfaaacdb268daa310",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualProxy.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_clip_rect.hpp",
+      "source_sha256": "426762f590b4b64f7eaa79cf0327c322b9126219bd7c0e072e884153c27ce5d2",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualProxy.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_constrained.hpp",
+      "source_sha256": "e6906a0d02546a1d1a9e2a9b0ef7373e891ae3f6bcf34c6f44de978fb081c55d",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualConstrained.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_fitted.hpp",
+      "source_sha256": "f921b83819a15e8674d07a3f5870fa33404ee16e8a6a7a6d959287ccd7d3aa3e",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualFitted.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_intrinsic_height.hpp",
+      "source_sha256": "a7d2be0e98d5d4052f157c808445599d0a33a47dc64df642115ed1f4eea8c811",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualIntrinsic.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_intrinsic_width.hpp",
+      "source_sha256": "afc5e96fcaec9d55fdeb425dd18a53e03b1b1baca4420c8c5a6942cbd17231b7",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualIntrinsic.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_limited.hpp",
+      "source_sha256": "04af771c0f8f0b9198e2dee1cfa52c672b2433dbe22c8cfdc8ce0633d21671bf",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualProxy.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_opacity.hpp",
+      "source_sha256": "32fc2eb44c69b86735073d72d8962abda6ca23a56885023d1ce134f6984b397d",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualProxy.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_proxy.hpp",
+      "source_sha256": "db60b9ad2f4b4b3c13d8f6b8d87e71bf0bf31d1c4ffa6e5e39794637e3fd6661",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualProxy.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_transform.hpp",
+      "source_sha256": "77caa4f223cc761ebe3787cddcf23852a11fcf59895a8b98b53daaeb31696817",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualTransform.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/proxy/visual_visibility.hpp",
+      "source_sha256": "b6804edd80e7dfdbeb80e863e492eb0f3f2a1a8ddff372305ae429de286b5e2a",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualProxy.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/shifted/visual_aligning_shifted.hpp",
+      "source_sha256": "498dd91ad95488e198602f3e972c288c1f8ab18f8dde965d8e2aca3e6999198f",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Shifted/VisualShifted.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/shifted/visual_border.hpp",
+      "source_sha256": "6476659f6ff54ed30dc320f734803b2fda41bf72b7a5175a38ff7d1a7516d69c",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Shifted/VisualBorder.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/shifted/visual_padding.hpp",
+      "source_sha256": "669a81e8e7cc21213c77cac567db6ed4293ff8fec85157c512b70b5446415942",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Shifted/VisualShifted.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/shifted/visual_positioned.hpp",
+      "source_sha256": "389ed441223776b7dbc4a84049e081e9cd93c2dd01d1bbea838fe4a76a692d86",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Shifted/VisualShifted.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/shifted/visual_shifted.hpp",
+      "source_sha256": "2d06db96625fb52b9e9831dbeaa3b826f5a3a69d61609025489a5c3a77fac21a",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Shifted/VisualShifted.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/visual_hit_test.hpp",
+      "source_sha256": "05788065cc9e9f4b93e724f7abe7eee60e3f7591fb4a4a5193062b75ea295333",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/VisualHitTest.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/visual_leaf.hpp",
+      "source_sha256": "01dfa089f671ee148f183333c30c3f0adab50a894a782e7059ac16895e50d2d2",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/VisualNode.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/visual_multi_child.hpp",
+      "source_sha256": "cbb95c68022b33c319650c248c82f0afcdcce8ef7e25379091260a75e864edff",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/VisualMultiChild.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/visual_node.hpp",
+      "source_sha256": "138243ac9e77c8db6049a9fc08709fbab8513ee819b39260e158190aca02bd53",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/VisualNode.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/visual_single_child.hpp",
+      "source_sha256": "807363170a086327ad3cd9dd7896bd0550d00f0ba0ef63c76dbf1857f6e4fc9f",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/VisualNode.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/visual/visual_slot.hpp",
+      "source_sha256": "fb3894ab1bb3e7e843bcfbb640f36953e2cbff403d439798b05ae028b3fc56b6",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/VisualNode.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/column.hpp",
+      "source_sha256": "07643a16963426fd037918c60e83610668bc7f1e4c4a141f0a73215caaa8d300",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Column.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/expanded.hpp",
+      "source_sha256": "54072eb03cdc8d28562690156205c0a4b949c4051e52435e560c49a8ce34a9a6",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Expanded.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/flex.hpp",
+      "source_sha256": "7b3120b71bf79f0940291da0d18694f0146a502d1dcfbe2f690cf0d9f7e0a951",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Flex.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/flex_slot.hpp",
+      "source_sha256": "4f8198526034ba10921cd32a15e8b4a160af122d5aaef50d2cd6a003a9aa0ccc",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/FlexSlot.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/flexible.hpp",
+      "source_sha256": "99ebce3e485036cb629319f0c1eb4e4dcd4ed02e8f5c8011f859e663af659647",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Flexible.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/grid.hpp",
+      "source_sha256": "e2b2a94ba969719456fb7c09cf3c2fe0dfa6663463b36610b19b8a5725fcdb69",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Grid.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/grid_slot.hpp",
+      "source_sha256": "15d803ae29fca59d999da0b127d7b0d5c7fafa751348d977a7c0f20d5506480b",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/GridSlot.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/indexed_stack.hpp",
+      "source_sha256": "39bbc433b2c70782266b28c573851781b17ae58e866ae5fd32a6d59c4990c630",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/IndexedStack.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/placement_layout.hpp",
+      "source_sha256": "f8a8cf0b2f543e675463e23f6af8760f4f41311a8b29f402178b4da1cbe975a9",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/PlacementLayout.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/placement_slot.hpp",
+      "source_sha256": "aacf68478b43c731fac85b0fe4dcaa373bd613c052dfe4a9a190e6fc90889fa9",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/PlacementSlot.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/positioned.hpp",
+      "source_sha256": "f51dbe7e97d0d672e84bfc4723f5091f072355b635e621ef60bfe497d251b8af",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Positioned.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/row.hpp",
+      "source_sha256": "7f7c6979a9785689b9ff4ad9359a0d990cc9792dc6a46b7aad88063ecde79a7d",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Row.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/stack.hpp",
+      "source_sha256": "1b6129214eeb0a36193ee743c6eb4c1a8bcbe2e30132d3852242b0df9fcada32",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Stack.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/multi_child/wrap.hpp",
+      "source_sha256": "18d267035fbb347d205cd112a10e10885ee6687afcd08f9edf6f97c3526e0691",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Wrap.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/aspect_ratio.hpp",
+      "source_sha256": "817d40f12eecf75c57ebd1441b59d66e28236674c0cc8b0e62ab037ddfef29b9",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/AspectRatio.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/clip_rect.hpp",
+      "source_sha256": "691dc1cd316d4343874b86476ab4a0156416be133e4771e292c113314ea1ef3c",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/ClipRect.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/constrained_box.hpp",
+      "source_sha256": "9f9fbc84565667c82677564d543a473c9e3f2759a5b5c17d42a092833fc911f6",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/ConstrainedBox.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/fitted_box.hpp",
+      "source_sha256": "2e01162a1403b97b9bd6ffddcbcffe153a04415ef6bdd649204e86323640d472",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/FittedBox.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/intrinsic_height.hpp",
+      "source_sha256": "c14936f5756cc802dfdbabb10fdaceb5f8ce80e0f587e4763e361b1c28bf8abd",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/IntrinsicHeight.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/intrinsic_width.hpp",
+      "source_sha256": "e8518bf1c8b4f81957e3feee254bcd805ae0bdc272b430026ea167fb41800554",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/IntrinsicWidth.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/limited_box.hpp",
+      "source_sha256": "e43cc2fe996d3846bc885499ddba80797cc822d86f08668047f2b8bbfa41af37",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/LimitedBox.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/opacity.hpp",
+      "source_sha256": "b4b8782866c5a9fee652ed52951c11f2f8ee2d1d915f6d2e58fa88b4160d7abf",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Opacity.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/sized_box.hpp",
+      "source_sha256": "41337b2c29ec7ce2e89a44837f0fa1f4ba45e8791c3ad6248f925ff2b5b98d2a",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/SizedBox.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/transform.hpp",
+      "source_sha256": "4ace9eeb6972558205bcca217e6c064811345f0f48b17aced60bb74cdb1ae612",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Transform.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/proxy/visibility.hpp",
+      "source_sha256": "b063846b62d77fe0905e626c33bda8fb1cf157dc0e802f2e6098ff4a70ef263c",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Visibility.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/shifted/align.hpp",
+      "source_sha256": "3f99ef331a09b277399ea01b68603bdcf84ce4269b220f1357cd7a60b5a7fb66",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Align.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/shifted/border.hpp",
+      "source_sha256": "ecf860f7de4c4aec7847f04d268c8094e1c83d7605899660143b34e59a3ba432",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Border.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/shifted/center.hpp",
+      "source_sha256": "40b0841456009a2af865dfeb91878cfbd14a2cee8a77cd7095614f821a81dc1e",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Center.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/include/SkrGuiCore/widgets/shifted/padding.hpp",
+      "source_sha256": "28ea9a59d18c00177ade86277987c932cc891dd48cca2050dc62dbc9915d7329",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Padding.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/framework/build_owner.cpp",
+      "source_sha256": "2b7fabbbefab082f1ef40b02d10b220a969a301ef5007269bc9fef3ce42a47af",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/BuildOwner.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/framework/nexus/nexus.cpp",
+      "source_sha256": "fec17c0477bc2c836809be00f260562e140742eb1d81863c0f9faf353dec18c4",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Nexus.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/framework/nexus/nexus_component.cpp",
+      "source_sha256": "144b2762131af779a1848399a61caa596a0edaeda64b96147cb5077097f100d0",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/NexusWidgets.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/framework/nexus/nexus_visual.cpp",
+      "source_sha256": "f8cf87a66ccf1970310800b30c5e0ac678757a288f2a708d43e24e9dd64abe46",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/NexusWidgets.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/framework/nexus/nexus_visual_leaf.cpp",
+      "source_sha256": "6bf841de2edebea4aabc0fe19971eacc827e251e7a375b67a6a659e22c177fc6",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/NexusWidgets.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/framework/nexus/nexus_visual_multi_child.cpp",
+      "source_sha256": "8635a2f982a71fe3295c18c4f270d19bd7f5a1abab378221aa9cd35893cabf0a",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/NexusWidgets.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/framework/nexus/nexus_visual_single_child.cpp",
+      "source_sha256": "f8f6c6921621fcf93af1716f64e3ca7c90bd4a74cd4ab8d617fb362708f3028e",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/NexusWidgets.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/framework/nexus/nexus_visual_slot.cpp",
+      "source_sha256": "1029423974c10a30a77494b7df7ebb490fb67a6a27753547e5daa29947138df6",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/NexusWidgets.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/framework/widget/component_widget.cpp",
+      "source_sha256": "48492a2cc3f3281ce70379e8e35d558ea55abf3c7bdb71746c33e4284821c722",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Widget.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/framework/widget/visual_slot_widget.cpp",
+      "source_sha256": "816bb98409e03411135d7fab0aade4aed3f24e3f53f16f6f83bd8280ce6f62bb",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Widget.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/framework/widget/visual_widget.cpp",
+      "source_sha256": "9f28db6adbc117f823e9398ba82a5d316635d86bafe1be4fb5ae5ba641f3faed",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Widget.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/framework/widget/visual_widget_leaf.cpp",
+      "source_sha256": "df5c0b62ceb6ced71657ecde1d50303d883fc03ba1b9f0bbda7199261452fd83",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Widget.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/framework/widget/visual_widget_multi_child.cpp",
+      "source_sha256": "21078d8db1b414a15e077a7f9e82c87840dd19b56dcec05367f0d79b51508fb6",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Widget.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/framework/widget/visual_widget_single_child.cpp",
+      "source_sha256": "61785871713b5aa3df73f4a40fdd9dab1f828e0bd5b9074aea9aa7e2db35a8f4",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Widget.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/framework/widget/widget.cpp",
+      "source_sha256": "c365b4e3bea06801ee47eaf116034f73659eb8d39a96c0fd034cd20fdd9568dc",
+      "targets": [
+        "libraries/SkrGui.Core/Framework/Widget.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/math/m3/color_scheme.cpp",
+      "source_sha256": "942a78175cb792d9af13bf9cbb3a76cd8259fe5386ce9b3de91fc9180b6d8360",
+      "targets": [
+        "libraries/SkrGui.Core/Math/M3/M3ColorScheme.cs",
+        "libraries/SkrGui.Core/Math/M3/M3SchemeBuilder.cs",
+        "libraries/SkrGui.Core/Math/M3/M3SchemeFunctions.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/math/m3/m3_color_private.hpp",
+      "source_sha256": "85ab60a2087560f9188b1543200b8a11da41bce9fcb7a8280f9718c3d0d885d1",
+      "targets": [
+        "libraries/SkrGui.Core/Math/M3/M3ColorHelper.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/math/m3/tonal_palette.cpp",
+      "source_sha256": "53fc276cff7aaf3774a1c6943fd4ef49568d3c9948a7bbf0bcaf4e836d720c9f",
+      "targets": [
+        "libraries/SkrGui.Core/Math/M3/M3TonalPalette.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/multi_child/visual_flex.cpp",
+      "source_sha256": "4cc5ed9481dd79eeebacfecb6a5592df2a385766ebcace42a4a4140528bd2bd0",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/MultiChild/VisualFlex.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/multi_child/visual_grid.cpp",
+      "source_sha256": "54770ec9adfba7d3863facf0996c9531a8e144e9507f91014d25c0bed8364401",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/MultiChild/VisualGrid.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/multi_child/visual_placement.cpp",
+      "source_sha256": "b641130fce3b416c11d9b4deaead2b4b1e6fbdd56763a8e6a5fb0a5bf08040d1",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/MultiChild/VisualPlacement.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/multi_child/visual_stack.cpp",
+      "source_sha256": "c1e24623c987e737693eb222921b8e3c30bd2b8c3a7fbed2a3761aafc0a6577c",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/MultiChild/VisualStack.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/multi_child/visual_wrap.cpp",
+      "source_sha256": "2189f20f035efb9e9446357dad916a22ee6e0ba810f6e1e1b9807266b0cc9794",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/MultiChild/VisualWrap.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/proxy/visual_aspect_ratio.cpp",
+      "source_sha256": "6b1bf0135869e2b0f134785aafb84557333936290fcaeece56243e4f17d13576",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualProxy.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/proxy/visual_clip_rect.cpp",
+      "source_sha256": "ef6f798587acc07d420b2412ffe6810f085a5d210ca93417dc921ef243954314",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualProxy.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/proxy/visual_constrained.cpp",
+      "source_sha256": "3225f970b175abd0cb7063998015bc241bddee004a9408e5e2366707ae65c6b4",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualConstrained.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/proxy/visual_fitted.cpp",
+      "source_sha256": "c7be957bb8e0ae9b9ed3a4991416c42bbe72da8f270331a21acc03e845ad64a1",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualFitted.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/proxy/visual_intrinsic_height.cpp",
+      "source_sha256": "9824f55c103f7d5c3c9b836337a5683fa56048fef12b3ce62a150c1c93a47808",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualIntrinsic.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/proxy/visual_intrinsic_width.cpp",
+      "source_sha256": "a6ad9ff4ac77f17be6880406754bc8e517a309d99967c636b81b24c67c845f1b",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualIntrinsic.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/proxy/visual_limited.cpp",
+      "source_sha256": "affee75c080e6eeb64ec19ed7fb44ee93f2877771418d4d3413b867fc72325be",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualProxy.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/proxy/visual_opacity.cpp",
+      "source_sha256": "6a28a1a8e1a8554c40bf51f05825f856a055d99d8052282829be11fb22a0a19f",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualProxy.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/proxy/visual_proxy.cpp",
+      "source_sha256": "8088334b97c9cd8b86e0983001850bbf2640613b9bc6d71d7535a5e10a3c1743",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualProxy.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/proxy/visual_transform.cpp",
+      "source_sha256": "e600a4b240c0e763364324b1b7d51dfa215bb95c908b1bdbbf4ea67646f92003",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualTransform.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/proxy/visual_visibility.cpp",
+      "source_sha256": "457a464e440cd54cb5eeff5b86f82fdd41165122ad0d1ff300dd147c28148866",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Proxy/VisualProxy.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/shifted/visual_aligning_shifted.cpp",
+      "source_sha256": "3d09854f7616b5ed4f2d7a5ec394f547da28042a48f4ce37e2ed9c8e3a673ac0",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Shifted/VisualShifted.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/shifted/visual_border.cpp",
+      "source_sha256": "bd775bb206fff3884168e567be69ca6eef0e47ee049feba300deb5e07315f526",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Shifted/VisualBorder.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/shifted/visual_padding.cpp",
+      "source_sha256": "cbf9df10c6acd7a631b8a231fb96d51fb38d4a4ed1eb9daae54f23c8d7fcdc32",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Shifted/VisualShifted.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/shifted/visual_positioned.cpp",
+      "source_sha256": "25674c8465c64e94629d086d439e60eb068b1c4bea4ac94044ad6f8771b1372d",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Shifted/VisualShifted.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/shifted/visual_shifted.cpp",
+      "source_sha256": "aec56efcc2f17d38b17318df904341860bd678190d9789bf2975237c35170018",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/Shifted/VisualShifted.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/visual_leaf.cpp",
+      "source_sha256": "945e43621b533d51eab9e4cc5abfaa662d7fb9a6a2e748b1bd36e32c9593a9e0",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/VisualNode.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/visual_multi_child.cpp",
+      "source_sha256": "2b63de0bb29bab870b03ff1b5c716ac927baf4b1cf713d27108d3f9ea2bf03b9",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/VisualMultiChild.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/visual_node.cpp",
+      "source_sha256": "f8ffea63089ea1a9cdc921b49abb97760cf6fcad76d9784d6079976cea360aac",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/VisualNode.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/visual_single_child.cpp",
+      "source_sha256": "59493308171bf4f4eb879427ae4a7eec15be95866496d929f9c0242abebd3060",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/VisualNode.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/visual/visual_slot.cpp",
+      "source_sha256": "30905d60f32901f843825161100fae912a207f3d20f65fd8928478937c591d03",
+      "targets": [
+        "libraries/SkrGui.Core/Visual/VisualNode.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/multi_child/column.cpp",
+      "source_sha256": "fd834a9f86b35d1ed6994656618cdbe4b21e18ef841d65f42b732f4bb756abe1",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Column.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/multi_child/expanded.cpp",
+      "source_sha256": "bad52165cd62c58450a7830944db9a4c3eb2bfea710d98728d0051f22f2a4027",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Expanded.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/multi_child/flex.cpp",
+      "source_sha256": "48f32f448e3dda451b867832c5478789031ce3d56fefeb09f5273b0c10836ddd",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Flex.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/multi_child/flex_slot.cpp",
+      "source_sha256": "4d59e2b9a9c981d521d3e7b812e0f249ff3db587a7ab2d91c146b61c5e09ce30",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/FlexSlot.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/multi_child/flexible.cpp",
+      "source_sha256": "3f180f85d000b692836a591d8504285f6b1c6319c2c2c8c421c060c8072240d5",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Flexible.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/multi_child/grid.cpp",
+      "source_sha256": "e4772bc40640c7f8464da540895f77e631a236195230d2be12691de55c290f07",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Grid.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/multi_child/grid_slot.cpp",
+      "source_sha256": "b3dc8e3a4161cb87af9bfac12fda8817b7bc81a2e0ac904c4eb7c20db331ef8e",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/GridSlot.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/multi_child/indexed_stack.cpp",
+      "source_sha256": "c26ccd6c79fa09e2d2fb0c1529f2997fa6a04ec4e5c83d8f977e1d29353880f7",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/IndexedStack.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/multi_child/placement_layout.cpp",
+      "source_sha256": "dbe89d8c32bc33ef73d0d284bc213dab1db9145d724a50d4ccd892078b216fb8",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/PlacementLayout.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/multi_child/placement_slot.cpp",
+      "source_sha256": "f3b5d210495a58b0ad95dd3539a68a68cae29c25256fdf1c98891f94eda7bf5e",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/PlacementSlot.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/multi_child/positioned.cpp",
+      "source_sha256": "8cd927954bbe2eea2a628a635c801c0a4843aa51b413044a02e587864f79664a",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Positioned.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/multi_child/row.cpp",
+      "source_sha256": "e3ef3c1f6d74dd13410c215929570cfb09963474d777bb5df2efdf0966905ea1",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Row.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/multi_child/stack.cpp",
+      "source_sha256": "74a7fc051306a63a29eb95a2302ef75eba26b9fab5bcc872b3d44637675de674",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Stack.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/multi_child/wrap.cpp",
+      "source_sha256": "4a6c4a9bcab3a445aa47ea12a5594527bb3e74fa28d0819aed63e357d7fbdcc2",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Wrap.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/proxy/aspect_ratio.cpp",
+      "source_sha256": "025b5c6d4a9811a30bc4faf80d3cb070edbe320758fd11a4a6d5299015bab577",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/AspectRatio.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/proxy/clip_rect.cpp",
+      "source_sha256": "c882e6008b4864d506d8f75260e1804bb5b8d555b3298860e01d7c269619e6bb",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/ClipRect.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/proxy/constrained_box.cpp",
+      "source_sha256": "cfff2281dccdaf986cffacee8a8b06fa7d985bbfc602bf2bc7ab64bc37f3d9ab",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/ConstrainedBox.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/proxy/fitted_box.cpp",
+      "source_sha256": "fe2f5b4bf0ed1451a72a812fae546bdd6154fd6ba69b716be1f87d9112112a4f",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/FittedBox.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/proxy/intrinsic_height.cpp",
+      "source_sha256": "3f01623d3e6205a562b2845b90d23ef246da04516959d9bf4963b566ef92c944",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/IntrinsicHeight.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/proxy/intrinsic_width.cpp",
+      "source_sha256": "91afb94867cbc1edd8f0c7d8489adf0a5b1f01593eba37a2334bd411bad6ac34",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/IntrinsicWidth.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/proxy/limited_box.cpp",
+      "source_sha256": "625c36425157c096157517c971549d17f61b8a7012542fd80b69556ccecd6055",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/LimitedBox.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/proxy/opacity.cpp",
+      "source_sha256": "4cfb272e4c04612ccd5cf2086bf0ca37a67b54361a88d49010533d65e4d3e895",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Opacity.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/proxy/sized_box.cpp",
+      "source_sha256": "823cd1690faaf29a810f3706ec94a9f35189cfaa4d743f07fdbc01f923d4386b",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/SizedBox.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/proxy/transform.cpp",
+      "source_sha256": "b8a4ac1aa024863fecb56018fa6c2374631ec78db591dc2a4b57ff3f251fd6c4",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Transform.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/proxy/visibility.cpp",
+      "source_sha256": "5ca8732f8e2305fe6b202c45367e837eb29939a1ee1cf097ee0934b69db4d6b1",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Visibility.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/shifted/align.cpp",
+      "source_sha256": "03aaf7a6217200b4c372cf1e49f2d33932feb6ef301c20e0d4b5cf29224bfd28",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Align.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/shifted/border.cpp",
+      "source_sha256": "0d14b3dfb33a5941de937d64b10088edd88ff28b6692aa9e8c2fa6ae2eb96eff",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Border.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/shifted/center.cpp",
+      "source_sha256": "320015819a67a3fe58493e026b98d28681b1becad06ead1066b6724f8630af9d",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Center.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/gui/core/src/widgets/shifted/padding.cpp",
+      "source_sha256": "914997b9b9328dd426d539dc0032d8e6b47db2be371f5dbefff7ed0dd40b3b0e",
+      "targets": [
+        "libraries/SkrGui.Core/Widgets/Padding.cs"
+      ],
+      "status": "ported-source",
+      "verification": "original corresponding source cases passed",
+      "note": ""
+    },
+    {
+      "source": "engine/modules/core/base/include/SkrBase/math/manual/color/srgb_color.hpp",
+      "source_sha256": "ee6666e457a68f05dfe23bf9517c27a9ecfdcfdf299a8a7aa2d114e0c1a2428d",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Color/SRGBColor.cs"
+      ],
+      "status": "ported-dependency",
+      "verification": "M3 original independent packed-color goldens passed"
+    },
+    {
+      "source": "engine/modules/core/base/include/SkrBase/math/manual/color/hct_color.hpp",
+      "source_sha256": "e6a9b8e8a8c67eb7482b3cf2fac63e472b146e33988d48ef665797532b64d93e",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Color/HCTColor.cs"
+      ],
+      "status": "ported-dependency",
+      "verification": "M3 original independent packed-color goldens passed"
+    },
+    {
+      "source": "engine/modules/core/base/src/SkrBase/build.hct_color.cpp",
+      "source_sha256": "4173bb8e2e2922c8852aa62d4f6844b50ed088a34e1cadb1d7971c15f09309e5",
+      "targets": [
+        "libraries/SkrGui.Core/Math/Color/HCTColorAlgorithm.cs",
+        "libraries/SkrGui.Core/Math/Color/HCTColor.Conversions.cs"
+      ],
+      "status": "ported-dependency",
+      "verification": "M3 original independent packed-color goldens passed"
+    }
+  ],
+  "source_test_cases": [
+    {
+      "source": "framework/widget/component_widget_tests.cpp",
+      "case": "gui/component-widget/hosts-state-and-explicitly-rebuilds",
+      "target": "ComponentWidgetTests.cs",
+      "method": "Case0",
+      "status": "passed"
+    },
+    {
+      "source": "framework/widget/component_widget_tests.cpp",
+      "case": "gui/component-widget/can-suppress-forced-update-rebuild",
+      "target": "ComponentWidgetTests.cs",
+      "method": "Case1",
+      "status": "passed"
+    },
+    {
+      "source": "framework/widget/component_widget_tests.cpp",
+      "case": "gui/component-widget/supports-stateless-components",
+      "target": "ComponentWidgetTests.cs",
+      "method": "Case2",
+      "status": "passed"
+    },
+    {
+      "source": "framework/widget/visual_widget_tests.cpp",
+      "case": "gui/visual-widget/creates-once-and-updates-existing-visual",
+      "target": "VisualWidgetTests.cs",
+      "method": "Case0",
+      "status": "passed"
+    },
+    {
+      "source": "framework/widget/visual_widget_tests.cpp",
+      "case": "gui/visual-widget/single-child-reuses-nexus-and-visual",
+      "target": "VisualWidgetTests.cs",
+      "method": "Case1",
+      "status": "passed"
+    },
+    {
+      "source": "framework/widget/visual_widget_tests.cpp",
+      "case": "gui/visual-widget/reorders-keyed-slot-widgets",
+      "target": "VisualWidgetTests.cs",
+      "method": "Case2",
+      "status": "passed"
+    },
+    {
+      "source": "framework/widget/widget_dsl_tests.cpp",
+      "case": "gui/widget-dsl/configures-widget-and-returns-typed-rc",
+      "target": "WidgetDslTests.cs",
+      "method": "Case0",
+      "status": "passed"
+    },
+    {
+      "source": "framework/widget/widget_dsl_tests.cpp",
+      "case": "gui/widget-dsl/runs-optional-construction-hooks",
+      "target": "WidgetDslTests.cs",
+      "method": "Case1",
+      "status": "passed"
+    },
+    {
+      "source": "framework/widget/widget_dsl_tests.cpp",
+      "case": "gui/widget-dsl/composes-nested-widgets",
+      "target": "WidgetDslTests.cs",
+      "method": "Case2",
+      "status": "passed"
+    },
+    {
+      "source": "framework/widget/widget_dsl_tests.cpp",
+      "case": "gui/widget-dsl/composes-complex-widget-and-param-tree",
+      "target": "WidgetDslTests.cs",
+      "method": "Case3",
+      "status": "passed"
+    },
+    {
+      "source": "math/geometry_tests.cpp",
+      "case": "gui/math/Offsetf factories and getters",
+      "target": "GeometryTests.cs",
+      "method": "Case0",
+      "status": "passed"
+    },
+    {
+      "source": "math/geometry_tests.cpp",
+      "case": "gui/math/Offsetf arithmetic and scalar operators",
+      "target": "GeometryTests.cs",
+      "method": "Case1",
+      "status": "passed"
+    },
+    {
+      "source": "math/geometry_tests.cpp",
+      "case": "gui/math/Offseti arithmetic and conversions",
+      "target": "GeometryTests.cs",
+      "method": "Case2",
+      "status": "passed"
+    },
+    {
+      "source": "math/geometry_tests.cpp",
+      "case": "gui/math/Sizef factories predicates and helpers",
+      "target": "GeometryTests.cs",
+      "method": "Case3",
+      "status": "passed"
+    },
+    {
+      "source": "math/geometry_tests.cpp",
+      "case": "gui/math/Sizef offsets arithmetic and conversions",
+      "target": "GeometryTests.cs",
+      "method": "Case4",
+      "status": "passed"
+    },
+    {
+      "source": "math/geometry_tests.cpp",
+      "case": "gui/math/Size semantics keep absolute area and inclusive local bounds",
+      "target": "GeometryTests.cs",
+      "method": "Case5",
+      "status": "passed"
+    },
+    {
+      "source": "math/geometry_tests.cpp",
+      "case": "gui/math/Sizei helpers arithmetic and conversions",
+      "target": "GeometryTests.cs",
+      "method": "Case6",
+      "status": "passed"
+    },
+    {
+      "source": "math/geometry_tests.cpp",
+      "case": "gui/math/Rectf factories and predicates",
+      "target": "GeometryTests.cs",
+      "method": "Case7",
+      "status": "passed"
+    },
+    {
+      "source": "math/geometry_tests.cpp",
+      "case": "gui/math/Rectf transforms contains overlaps and lerp",
+      "target": "GeometryTests.cs",
+      "method": "Case8",
+      "status": "passed"
+    },
+    {
+      "source": "math/geometry_tests.cpp",
+      "case": "gui/math/Rect containment uses half open edges",
+      "target": "GeometryTests.cs",
+      "method": "Case9",
+      "status": "passed"
+    },
+    {
+      "source": "math/geometry_tests.cpp",
+      "case": "gui/math/Recti transforms and conversions",
+      "target": "GeometryTests.cs",
+      "method": "Case10",
+      "status": "passed"
+    },
+    {
+      "source": "math/geometry_tests.cpp",
+      "case": "gui/math/Radius arithmetic and lerp",
+      "target": "GeometryTests.cs",
+      "method": "Case11",
+      "status": "passed"
+    },
+    {
+      "source": "math/geometry_tests.cpp",
+      "case": "gui/math/RRect factories transforms contains and lerp",
+      "target": "GeometryTests.cs",
+      "method": "Case12",
+      "status": "passed"
+    },
+    {
+      "source": "math/geometry_tests.cpp",
+      "case": "gui/math/RRect oversized radii keep helper rects empty before scaling",
+      "target": "GeometryTests.cs",
+      "method": "Case13",
+      "status": "passed"
+    },
+    {
+      "source": "math/layout_tests.cpp",
+      "case": "gui/math/BoxFit apply matches Flutter semantics",
+      "target": "LayoutTests.cs",
+      "method": "Case0",
+      "status": "passed"
+    },
+    {
+      "source": "math/layout_tests.cpp",
+      "case": "gui/math/Alignment factories math and positioning",
+      "target": "LayoutTests.cs",
+      "method": "Case1",
+      "status": "passed"
+    },
+    {
+      "source": "math/layout_tests.cpp",
+      "case": "gui/math/AlignmentDirectional factories arithmetic and resolve",
+      "target": "LayoutTests.cs",
+      "method": "Case2",
+      "status": "passed"
+    },
+    {
+      "source": "math/layout_tests.cpp",
+      "case": "gui/math/AlignmentMixed arithmetic and resolve",
+      "target": "LayoutTests.cs",
+      "method": "Case3",
+      "status": "passed"
+    },
+    {
+      "source": "math/layout_tests.cpp",
+      "case": "gui/math/EdgeInsets factories arithmetic and geometry",
+      "target": "LayoutTests.cs",
+      "method": "Case4",
+      "status": "passed"
+    },
+    {
+      "source": "math/layout_tests.cpp",
+      "case": "gui/math/EdgeInsetsDirectional factories arithmetic and resolve",
+      "target": "LayoutTests.cs",
+      "method": "Case5",
+      "status": "passed"
+    },
+    {
+      "source": "math/layout_tests.cpp",
+      "case": "gui/math/EdgeInsetsMixed arithmetic and resolve",
+      "target": "LayoutTests.cs",
+      "method": "Case6",
+      "status": "passed"
+    },
+    {
+      "source": "math/layout_tests.cpp",
+      "case": "gui/math/BoxConstraints factories and predicates",
+      "target": "LayoutTests.cs",
+      "method": "Case7",
+      "status": "passed"
+    },
+    {
+      "source": "math/layout_tests.cpp",
+      "case": "gui/math/BoxConstraints constrain semantics and enforcement",
+      "target": "LayoutTests.cs",
+      "method": "Case8",
+      "status": "passed"
+    },
+    {
+      "source": "math/layout_tests.cpp",
+      "case": "gui/math/BoxConstraints helpers transforms and validation",
+      "target": "LayoutTests.cs",
+      "method": "Case9",
+      "status": "passed"
+    },
+    {
+      "source": "math/placement_tests.cpp",
+      "case": "gui/math/Placement/construction and value semantics",
+      "target": "PlacementTests.cs",
+      "method": "Case0",
+      "status": "passed"
+    },
+    {
+      "source": "math/placement_tests.cpp",
+      "case": "gui/math/Placement/pin builders",
+      "target": "PlacementTests.cs",
+      "method": "Case1",
+      "status": "passed"
+    },
+    {
+      "source": "math/placement_tests.cpp",
+      "case": "gui/math/Placement/align builders",
+      "target": "PlacementTests.cs",
+      "method": "Case2",
+      "status": "passed"
+    },
+    {
+      "source": "math/placement_tests.cpp",
+      "case": "gui/math/Placement/inset combined setters",
+      "target": "PlacementTests.cs",
+      "method": "Case3",
+      "status": "passed"
+    },
+    {
+      "source": "math/placement_tests.cpp",
+      "case": "gui/math/Placement/inset percent setters",
+      "target": "PlacementTests.cs",
+      "method": "Case4",
+      "status": "passed"
+    },
+    {
+      "source": "math/placement_tests.cpp",
+      "case": "gui/math/Placement/inset pixel setters",
+      "target": "PlacementTests.cs",
+      "method": "Case5",
+      "status": "passed"
+    },
+    {
+      "source": "math/placement_tests.cpp",
+      "case": "gui/math/Placement/modes and validation",
+      "target": "PlacementTests.cs",
+      "method": "Case6",
+      "status": "passed"
+    },
+    {
+      "source": "math/placement_tests.cpp",
+      "case": "gui/math/Placement/constraint propagation",
+      "target": "PlacementTests.cs",
+      "method": "Case7",
+      "status": "passed"
+    },
+    {
+      "source": "math/placement_tests.cpp",
+      "case": "gui/math/Placement/exact size propagation",
+      "target": "PlacementTests.cs",
+      "method": "Case8",
+      "status": "passed"
+    },
+    {
+      "source": "math/placement_tests.cpp",
+      "case": "gui/math/Placement/positive size failure contract",
+      "target": "PlacementTests.cs",
+      "method": "Case9",
+      "status": "passed"
+    },
+    {
+      "source": "math/placement_tests.cpp",
+      "case": "gui/math/Placement/placement",
+      "target": "PlacementTests.cs",
+      "method": "Case10",
+      "status": "passed"
+    },
+    {
+      "source": "math/m3/m3_color_test.cpp",
+      "case": "gui/math/m3/tonal-palette",
+      "target": "M3ColorTest.cs",
+      "method": "Case0",
+      "status": "passed"
+    },
+    {
+      "source": "math/m3/m3_color_test.cpp",
+      "case": "gui/math/m3/cmf-palette-parameters",
+      "target": "M3ColorTest.cs",
+      "method": "Case1",
+      "status": "passed"
+    },
+    {
+      "source": "math/m3/m3_color_test.cpp",
+      "case": "gui/math/m3/cmf-dual-source-reference",
+      "target": "M3ColorTest.cs",
+      "method": "Case2",
+      "status": "passed"
+    },
+    {
+      "source": "math/m3/m3_color_test.cpp",
+      "case": "gui/math/m3/cmf-2026-phone-role-golden",
+      "target": "M3ColorTest.cs",
+      "method": "Case3",
+      "status": "passed"
+    },
+    {
+      "source": "math/m3/m3_color_test.cpp",
+      "case": "gui/math/m3/cmf-canonicalization-aliases-and-grid",
+      "target": "M3ColorTest.cs",
+      "method": "Case4",
+      "status": "passed"
+    },
+    {
+      "source": "math/m3/m3_color_test.cpp",
+      "case": "gui/math/m3/cmf-thresholds-and-contrast-saturation",
+      "target": "M3ColorTest.cs",
+      "method": "Case5",
+      "status": "passed"
+    },
+    {
+      "source": "math/m3/m3_color_test.cpp",
+      "case": "gui/math/m3/default-scheme-is-opaque-black",
+      "target": "M3ColorTest.cs",
+      "method": "Case6",
+      "status": "passed"
+    },
+    {
+      "source": "math/m3/m3_color_test.cpp",
+      "case": "gui/math/m3/cmf-error-hue-boundaries",
+      "target": "M3ColorTest.cs",
+      "method": "Case7",
+      "status": "passed"
+    },
+    {
+      "source": "math/m3/m3_color_test.cpp",
+      "case": "gui/math/m3/invalid-input-defaults",
+      "target": "M3ColorTest.cs",
+      "method": "Case8",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_child_management_tests.cpp",
+      "case": "gui/visual-node/single-child-tree-api",
+      "target": "VisualChildManagementTests.cs",
+      "method": "Case0",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_child_management_tests.cpp",
+      "case": "gui/visual-node/leaf-tree-api",
+      "target": "VisualChildManagementTests.cs",
+      "method": "Case1",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_child_management_tests.cpp",
+      "case": "gui/visual-node/multi-child-tree-api",
+      "target": "VisualChildManagementTests.cs",
+      "method": "Case2",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_child_management_tests.cpp",
+      "case": "gui/visual-node/owner-destruction-clears-child-state",
+      "target": "VisualChildManagementTests.cs",
+      "method": "Case3",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_child_management_tests.cpp",
+      "case": "gui/visual-multi-child/rebuild-aligned-mutations-require-flush",
+      "target": "VisualChildManagementTests.cs",
+      "method": "Case4",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_child_management_tests.cpp",
+      "case": "gui/visual-multi-child/rebuild-remove-swaps-physical-tail",
+      "target": "VisualChildManagementTests.cs",
+      "method": "Case5",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_child_management_tests.cpp",
+      "case": "gui/visual-multi-child/rebuild-move-and-flush",
+      "target": "VisualChildManagementTests.cs",
+      "method": "Case6",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_child_management_tests.cpp",
+      "case": "gui/visual-multi-child/rebuild-add-remove-and-move",
+      "target": "VisualChildManagementTests.cs",
+      "method": "Case7",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_child_management_tests.cpp",
+      "case": "gui/visual-multi-child/rebuild-clear-resets-state",
+      "target": "VisualChildManagementTests.cs",
+      "method": "Case8",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_child_management_tests.cpp",
+      "case": "gui/visual-multi-child/mounted-structural-mutations",
+      "target": "VisualChildManagementTests.cs",
+      "method": "Case9",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_child_management_tests.cpp",
+      "case": "gui/visual-multi-child/rebuild-invalid-permutation-recovers",
+      "target": "VisualChildManagementTests.cs",
+      "method": "Case10",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_child_management_tests.cpp",
+      "case": "gui/visual-multi-child/rebuild-visual-integration",
+      "target": "VisualChildManagementTests.cs",
+      "method": "Case11",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/hit-test self and bounds",
+      "target": "VisualNodeTests.cs",
+      "method": "Case0",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/hit-test shifted child coordinates",
+      "target": "VisualNodeTests.cs",
+      "method": "Case1",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/hit-test stack uses reverse paint order",
+      "target": "VisualNodeTests.cs",
+      "method": "Case2",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/hit-test indexed stack only tests displayed child",
+      "target": "VisualNodeTests.cs",
+      "method": "Case3",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/hit-test visibility hidden skips subtree",
+      "target": "VisualNodeTests.cs",
+      "method": "Case4",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/hit-test clip rect filters child",
+      "target": "VisualNodeTests.cs",
+      "method": "Case5",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/hit-test fitted node transforms child position",
+      "target": "VisualNodeTests.cs",
+      "method": "Case6",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/hit-test proxy forwards child",
+      "target": "VisualNodeTests.cs",
+      "method": "Case7",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/hit-test transform maps child position",
+      "target": "VisualNodeTests.cs",
+      "method": "Case8",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/hit-test transform stack composes nested child transforms",
+      "target": "VisualNodeTests.cs",
+      "method": "Case9",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/hit-test raw transform records entry transform",
+      "target": "VisualNodeTests.cs",
+      "method": "Case10",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/proxy no child",
+      "target": "VisualNodeTests.cs",
+      "method": "Case11",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/baseline base fallback and proxy forwarding",
+      "target": "VisualNodeTests.cs",
+      "method": "Case12",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/aspect-ratio bounded width layouts child tightly",
+      "target": "VisualNodeTests.cs",
+      "method": "Case13",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/aspect-ratio bounded height and constraint iteration",
+      "target": "VisualNodeTests.cs",
+      "method": "Case14",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/aspect-ratio no child uses ratio size",
+      "target": "VisualNodeTests.cs",
+      "method": "Case15",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/intrinsic-width steps child constraints",
+      "target": "VisualNodeTests.cs",
+      "method": "Case16",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/intrinsic-width no child",
+      "target": "VisualNodeTests.cs",
+      "method": "Case17",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/intrinsic-height tightens child height",
+      "target": "VisualNodeTests.cs",
+      "method": "Case18",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/baseline wrappers forward dry constraints",
+      "target": "VisualNodeTests.cs",
+      "method": "Case19",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/flex horizontal distributes flex and spacing",
+      "target": "VisualNodeTests.cs",
+      "method": "Case20",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/flex rtl and vertical direction flip offsets",
+      "target": "VisualNodeTests.cs",
+      "method": "Case21",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/flex vertical shrink wraps and stretches cross axis",
+      "target": "VisualNodeTests.cs",
+      "method": "Case22",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/flex baseline alignment",
+      "target": "VisualNodeTests.cs",
+      "method": "Case23",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/flex vertical baseline uses first child baseline",
+      "target": "VisualNodeTests.cs",
+      "method": "Case24",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/flex intrinsic main axis follows flex fractions",
+      "target": "VisualNodeTests.cs",
+      "method": "Case25",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/wrap horizontal wraps and aligns runs",
+      "target": "VisualNodeTests.cs",
+      "method": "Case26",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/wrap distributes child and run alignment",
+      "target": "VisualNodeTests.cs",
+      "method": "Case27",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/wrap dry layout uses strict flutter line break",
+      "target": "VisualNodeTests.cs",
+      "method": "Case28",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/flex and wrap use flutter overflow precision",
+      "target": "VisualNodeTests.cs",
+      "method": "Case29",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/wrap rtl and vertical direction flip offsets",
+      "target": "VisualNodeTests.cs",
+      "method": "Case30",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/wrap vertical wraps columns and uses highest baseline",
+      "target": "VisualNodeTests.cs",
+      "method": "Case31",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/stack fit controls non-positioned child constraints",
+      "target": "VisualNodeTests.cs",
+      "method": "Case32",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/stack aligns non-positioned children",
+      "target": "VisualNodeTests.cs",
+      "method": "Case33",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/stack lays out positioned children",
+      "target": "VisualNodeTests.cs",
+      "method": "Case34",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/stack baseline uses highest child baseline",
+      "target": "VisualNodeTests.cs",
+      "method": "Case35",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/shifted no child",
+      "target": "VisualNodeTests.cs",
+      "method": "Case36",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/baseline shifted padding and positioned offsets",
+      "target": "VisualNodeTests.cs",
+      "method": "Case37",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/positioned factors shrink wrap and scale intrinsic",
+      "target": "VisualNodeTests.cs",
+      "method": "Case38",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/positioned unbounded axes and directional alignment",
+      "target": "VisualNodeTests.cs",
+      "method": "Case39",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/fitted scale-down layout",
+      "target": "VisualNodeTests.cs",
+      "method": "Case40",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/padding directional resolve and no child",
+      "target": "VisualNodeTests.cs",
+      "method": "Case41",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/constrained fixed size no child",
+      "target": "VisualNodeTests.cs",
+      "method": "Case42",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/constrained constrains child",
+      "target": "VisualNodeTests.cs",
+      "method": "Case43",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/constrained expand and shrink helpers",
+      "target": "VisualNodeTests.cs",
+      "method": "Case44",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/constrained width and height helpers",
+      "target": "VisualNodeTests.cs",
+      "method": "Case45",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/limited limits only unbounded axes",
+      "target": "VisualNodeTests.cs",
+      "method": "Case46",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/limited mixed constraints and no child",
+      "target": "VisualNodeTests.cs",
+      "method": "Case47",
+      "status": "passed"
+    },
+    {
+      "source": "visual/visual_node_tests.cpp",
+      "case": "gui/visual-node/limited keeps proxy intrinsic behavior",
+      "target": "VisualNodeTests.cs",
+      "method": "Case48",
+      "status": "passed"
+    },
+    {
+      "source": "visual/layout_scheduling_tests.cpp",
+      "case": "gui/layout-scheduling/same-constraints-short-circuits",
+      "target": "LayoutSchedulingTests.cs",
+      "method": "Case0",
+      "status": "passed"
+    },
+    {
+      "source": "visual/layout_scheduling_tests.cpp",
+      "case": "gui/layout-scheduling/constraint-change-relayouts",
+      "target": "LayoutSchedulingTests.cs",
+      "method": "Case1",
+      "status": "passed"
+    },
+    {
+      "source": "visual/layout_scheduling_tests.cpp",
+      "case": "gui/layout-scheduling/set-child-dirty-only-relayouts-its-path",
+      "target": "LayoutSchedulingTests.cs",
+      "method": "Case2",
+      "status": "passed"
+    },
+    {
+      "source": "visual/layout_scheduling_tests.cpp",
+      "case": "gui/layout-scheduling/first-layout-always-runs",
+      "target": "LayoutSchedulingTests.cs",
+      "method": "Case3",
+      "status": "passed"
+    },
+    {
+      "source": "visual/layout_scheduling_tests.cpp",
+      "case": "gui/layout-scheduling/visibility-boundary-isolates-child",
+      "target": "LayoutSchedulingTests.cs",
+      "method": "Case4",
+      "status": "passed"
+    },
+    {
+      "source": "visual/layout_scheduling_tests.cpp",
+      "case": "gui/layout-scheduling/dirty-ancestor-lays-out-descendants-once",
+      "target": "LayoutSchedulingTests.cs",
+      "method": "Case5",
+      "status": "passed"
+    },
+    {
+      "source": "visual/layout_scheduling_tests.cpp",
+      "case": "gui/layout-scheduling/sized-by-parent-isolates-parent",
+      "target": "LayoutSchedulingTests.cs",
+      "method": "Case6",
+      "status": "passed"
+    },
+    {
+      "source": "visual/layout_scheduling_tests.cpp",
+      "case": "gui/layout-scheduling/sized-by-parent-attribute-change-relayouts-parent",
+      "target": "LayoutSchedulingTests.cs",
+      "method": "Case7",
+      "status": "passed"
+    },
+    {
+      "source": "visual/multi_child/visual_grid_tests.cpp",
+      "case": "gui/visual-grid/track-sizing-and-layout",
+      "target": "VisualGridTests.cs",
+      "method": "Case0",
+      "status": "passed"
+    },
+    {
+      "source": "visual/multi_child/visual_grid_tests.cpp",
+      "case": "gui/visual-grid/rtl-and-alignment",
+      "target": "VisualGridTests.cs",
+      "method": "Case1",
+      "status": "passed"
+    },
+    {
+      "source": "visual/multi_child/visual_grid_tests.cpp",
+      "case": "gui/visual-grid/baseline-first-child",
+      "target": "VisualGridTests.cs",
+      "method": "Case2",
+      "status": "passed"
+    },
+    {
+      "source": "visual/multi_child/visual_placement_tests.cpp",
+      "case": "gui/visual-placement/axis-size-rules-and-default-fill",
+      "target": "VisualPlacementTests.cs",
+      "method": "Case0",
+      "status": "passed"
+    },
+    {
+      "source": "visual/multi_child/visual_placement_tests.cpp",
+      "case": "gui/visual-placement/inset-pin-and-align-placement",
+      "target": "VisualPlacementTests.cs",
+      "method": "Case1",
+      "status": "passed"
+    },
+    {
+      "source": "visual/multi_child/visual_placement_tests.cpp",
+      "case": "gui/visual-placement/loose-placement-uses-measured-child-size",
+      "target": "VisualPlacementTests.cs",
+      "method": "Case2",
+      "status": "passed"
+    },
+    {
+      "source": "visual/multi_child/visual_placement_tests.cpp",
+      "case": "gui/visual-placement/children-do-not-inflate-container",
+      "target": "VisualPlacementTests.cs",
+      "method": "Case3",
+      "status": "passed"
+    },
+    {
+      "source": "visual/multi_child/visual_placement_tests.cpp",
+      "case": "gui/visual-placement/baseline-uses-first-child-with-baseline",
+      "target": "VisualPlacementTests.cs",
+      "method": "Case4",
+      "status": "passed"
+    },
+    {
+      "source": "visual/proxy/visual_opacity_tests.cpp",
+      "case": "gui/visual-opacity/layout-proxy",
+      "target": "VisualOpacityTests.cs",
+      "method": "Case0",
+      "status": "passed"
+    },
+    {
+      "source": "visual/shifted/visual_border_tests.cpp",
+      "case": "gui/visual-border/radius",
+      "target": "VisualBorderTests.cs",
+      "method": "Case0",
+      "status": "passed"
+    },
+    {
+      "source": "visual/shifted/visual_border_tests.cpp",
+      "case": "gui/visual-border/layout-insets-child",
+      "target": "VisualBorderTests.cs",
+      "method": "Case1",
+      "status": "passed"
+    },
+    {
+      "source": "visual/shifted/visual_border_tests.cpp",
+      "case": "gui/visual-border/no-child",
+      "target": "VisualBorderTests.cs",
+      "method": "Case2",
+      "status": "passed"
+    },
+    {
+      "source": "visual/shifted/visual_border_tests.cpp",
+      "case": "gui/visual-border/paint-single-side",
+      "target": "VisualBorderTests.cs",
+      "method": "Case3",
+      "status": "passed"
+    },
+    {
+      "source": "widgets/widget_surface_tests.cpp",
+      "case": "gui/widgets/canonical-map-and-update",
+      "target": "WidgetSurfaceTests.cs",
+      "method": "Case0",
+      "status": "passed"
+    },
+    {
+      "source": "widgets/widget_surface_tests.cpp",
+      "case": "gui/widgets/canonical-multi-child-map-and-update",
+      "target": "WidgetSurfaceTests.cs",
+      "method": "Case1",
+      "status": "passed"
+    },
+    {
+      "source": "widgets/widget_surface_tests.cpp",
+      "case": "gui/widgets/slot-map-and-update",
+      "target": "WidgetSurfaceTests.cs",
+      "method": "Case2",
+      "status": "passed"
+    },
+    {
+      "source": "widgets/widget_surface_tests.cpp",
+      "case": "gui/widgets/convenience-map-and-update",
+      "target": "WidgetSurfaceTests.cs",
+      "method": "Case3",
+      "status": "passed"
+    },
+    {
+      "source": "widgets/widget_surface_tests.cpp",
+      "case": "gui/widgets/child-topology-and-order",
+      "target": "WidgetSurfaceTests.cs",
+      "method": "Case4",
+      "status": "passed"
+    },
+    {
+      "source": "widgets/widget_surface_tests.cpp",
+      "case": "gui/widgets/complex-dsl-tree",
+      "target": "WidgetSurfaceTests.cs",
+      "method": "Case5",
+      "status": "passed"
+    }
+  ],
+  "result": {
+    "owned_cases": 142,
+    "passed": 142,
+    "failed": 0
+  },
+  "preserved_unsupported": [
+    "GlobalKey registry and inactive re-take remain source TODO.",
+    "DataScopeWidget/NexusDataScope/NexusNotification remain source TODO, not invented runtime features.",
+    "Reactive remains source IProvider/IConsumer/IComputed interfaces, without invented automatic tracking.",
+    "Intrinsic/dry/baseline caches and paint dirty processing remain source TODO.",
+    "Bulk VisualGrid.SetColumns/SetRows retain source absence of layout invalidation."
+  ],
+  "language_adaptations": [
+    "C++ retained references map to managed reference identity; owned destruction maps to IDisposable at original owning release points. State.Dispose is the virtual destructor counterpart.",
+    "Geometry remains original concrete float and int pairs; double precision HCT uses Double3. No replacement with Godot layout types.",
+    "C++ source fields whose PascalCase equals their C# enclosing class map to OpacityValue,PaddingValue,VisibilityValue,AspectRatioValue.",
+    "Placement mutating fill/pin/align map to ResetFill/PinAt/AlignTo because PascalCase collides with factories. ResetFill returns ref Placement; ref struct builders retain the parent reference.",
+    "C++ consteval color literal validation maps to checked runtime parser; no C# compile-time evaluator is invented.",
+    "std::min/max preserve ordered NaN comparisons using CppMath. Round uses AwayFromZero.",
+    "Original fixture CountingAspectRatio inherits generated Super=VisualProxy, so its explicit ancestor layout call is translated to that exact method body rather than C# base.PerformLayout. Runtime VisualAspectRatio remains unchanged.",
+    "Original source test SUBCASE blocks have independent local setup and are retained as scoped blocks; no assertions are removed."
+  ]
+}

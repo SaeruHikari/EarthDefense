@@ -1,0 +1,15 @@
+{
+  "purpose": "Pinned third-party reference used only by source stroke-coverage tests; no SkrGui business C++",
+  "version": "0.1.0",
+  "source_head": "611561f81534354c8c1618dc27c4782cd9277cbf",
+  "sources": [
+    {
+      "path": "D:\\Code\\ExtremeEngine-CppSLJIT\\engine\\packages\\nanovg\\nanovg\\nanovg.cpp",
+      "sha256": "5c95c0f9a94c7307915b01140a98c660d609a60c4c30ee1bba4926cc4241dac7"
+    },
+    {
+      "path": "D:\\Code\\ExtremeEngine-CppSLJIT\\engine\\packages\\nanovg\\nanovg\\nanovg.h",
+      "sha256": "f76c25e9db4bd00e6798f92803abc76bead765288113c05231c41362b6b06b78"
+    }
+  ]
+}

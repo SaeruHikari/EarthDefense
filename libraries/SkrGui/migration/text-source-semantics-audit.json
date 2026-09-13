@@ -1,0 +1,89 @@
+{
+  "source_commit": "611561f81534354c8c1618dc27c4782cd9277cbf",
+  "scope": "Text services, shaping/layout/raster, font faces/providers/cache, VisualTempText and TempText. Source-level review and contract execution, not a formal equivalence proof.",
+  "status": "implemented and passed",
+  "original_source_files": 35,
+  "original_cases": 155,
+  "missing_original_cases": [],
+  "verification": {
+    "status": "passed on Windows x64",
+    "formal_core_report": "artifacts/core-contract-results.json",
+    "formal_core_passed": 610,
+    "formal_core_failed": 0,
+    "original_text_and_temp_text_cases": 155,
+    "original_text_and_temp_text_passed": 155,
+    "isolated_no_icu_report": ".report/text-no-icu-final-isolated.json",
+    "isolated_no_icu_passed": 10,
+    "audit": "migration/text-source-semantics-audit.json"
+  },
+  "corrected_source_semantics": [
+    {
+      "area": "borrowed const styles",
+      "correction": "Read-only live view preserves observed updates and does not expose mutation around dirty/cache APIs.",
+      "tests": "TextBorrowedStyleTests.cs"
+    },
+    {
+      "area": "font source const borrow",
+      "correction": "ref readonly source exposes current FaceIndex while an ordinary copied value remains independent.",
+      "tests": "TextFontReferenceAuditTests.cs::SourceBorrow"
+    },
+    {
+      "area": "failure ref outputs",
+      "correction": "Font metrics/cache/trim helpers and bitmap format retain caller sentinels on source early failures; successful reset branches remain reset.",
+      "tests": "TextFontReferenceAuditTests.cs::FailedMetrics, BitmapFormatFailure"
+    },
+    {
+      "area": "raw source strings",
+      "correction": "Font names, support override keys, source identity, style family lists, span/run languages, Unicode service result/dictionary arguments and OpenType tags retain original bytes. Owning setters copy caller storage.",
+      "tests": "TextRawSourceContracts.cs; TextFontReferenceAuditTests.cs; TextBorrowedStyleTests.cs"
+    },
+    {
+      "area": "widget style ownership",
+      "correction": "TempText.TextStyle assignment copies the source value; later edits to the widget-owned mutable style remain allowed.",
+      "tests": "TextRawSourceContracts.cs::RawFamilyLanguage"
+    },
+    {
+      "area": "scalar defaults and float comparison",
+      "correction": "TextLayoutSpanId default/arrays expose invalid all-ones Value and source TextFloatRange float equality treats NaN as unequal.",
+      "tests": "TextRawSourceContracts.cs::TextScalarDefaultsAndEquality"
+    },
+    {
+      "area": "files provider",
+      "correction": "Source numeric/table/name failure outputs preserved, catalog is a borrowed read-only view, source String API boundaries retain bytes. Implemented by structure agent.",
+      "tests": "FilesFontSourceContractTests.cs; FilesFontUtf8ContractTests.cs"
+    },
+    {
+      "area": "test comparison precision",
+      "correction": "Shaping SKR_TEST_APPROX matches source 100*FLT_EPSILON*(1+max(abs(a),abs(b))).",
+      "tests": "TextShapingContractTests.cs"
+    }
+  ],
+  "native_dependencies": {
+    "library": "skrgui_native",
+    "contains_skrgui_cpp_business_logic": false,
+    "freetype": "2.14.3",
+    "harfbuzz": "14.2.1",
+    "icu": "72.1",
+    "abi_report": ".report/native-abi-check.json"
+  },
+  "preserved_source_unsupported": [
+    "TextLine.Substring",
+    "TextParagraph.Substring",
+    "variable-width LineBreaks overload",
+    "vertical text orientation mutation",
+    "paragraph drop cap",
+    "SupportData load/save",
+    "StructuredTextParser"
+  ],
+  "language_and_platform_boundaries": [
+    "Source scalar and UTF-8 byte indices are explicit; no UTF-16 source-index substitution.",
+    "Source String data, including font source keys, metadata, family lists, languages and Unicode service results, keeps exact UTF-8 bytes; owning assignments copy while StringView returns borrow.",
+    "C++ const TextStyle borrows map to live ReadOnlyTextStyle with live read-only list views; Copy explicitly creates editable values. TempText style assignment retains its own copy.",
+    "FontFace.Source is a ref-readonly live borrow; failure paths only change ref outputs where the source changes them.",
+    "TextLayoutSpanId uses an internal offset encoding so CLR default and array elements expose the original all-ones invalid Value; TextFloatRange equality uses source float ==, including NaN.",
+    "HarfBuzz/ICU objects retain pinned UTF-16/face buffers for the full original native lifetime.",
+    "Explicit detach/dispose resource order follows the source. Last-reference C++ RC destruction is represented by managed shared references and native-holder finalizers; GC collection timing is not synchronous RC timing.",
+    "OpenTypeTagToName returns owned exact four-byte Utf8StringView, including non-UTF8 tags.",
+    "System font provider dispatch is platform-specific; macOS path is compile-checked only on Windows."
+  ]
+}

@@ -1,0 +1,171 @@
+[
+  {
+    "source": "src/batch/mesh.cpp",
+    "line": 396,
+    "symbol": "BasicMeshes::rect_fill",
+    "target_symbol": "BasicMeshes.RectFill",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "src/batch/mesh.cpp",
+    "line": 460,
+    "symbol": "BasicMeshes::rect_stroke",
+    "target_symbol": "BasicMeshes.RectStroke",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "src/batch/mesh.cpp",
+    "line": 535,
+    "symbol": "BasicMeshes::diff_rect",
+    "target_symbol": "BasicMeshes.DiffRect",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "src/batch/mesh.cpp",
+    "line": 625,
+    "symbol": "BasicMeshes::rect_fill_colored",
+    "target_symbol": "BasicMeshes.RectFillColored",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "src/batch/mesh.cpp",
+    "line": 674,
+    "symbol": "BasicMeshes::ninepatch",
+    "target_symbol": "BasicMeshes.Ninepatch",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "src/batch/mesh.cpp",
+    "line": 910,
+    "symbol": "BasicMeshes::rrect_fill",
+    "target_symbol": "BasicMeshes.RRectFill",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "src/batch/mesh.cpp",
+    "line": 962,
+    "symbol": "BasicMeshes::rrect_stroke",
+    "target_symbol": "BasicMeshes.RRectStroke",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "src/batch/mesh.cpp",
+    "line": 1021,
+    "symbol": "BasicMeshes::diff_rrect",
+    "target_symbol": "BasicMeshes.DiffRRect",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "src/batch/mesh.cpp",
+    "line": 1077,
+    "symbol": "BasicMeshes::rrect_border",
+    "target_symbol": "BasicMeshes.RRectBorder",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "src/batch/mesh.cpp",
+    "line": 1163,
+    "symbol": "BasicMeshes::superellipse_fill",
+    "target_symbol": "BasicMeshes.SuperellipseFill",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "src/batch/mesh.cpp",
+    "line": 1217,
+    "symbol": "BasicMeshes::superellipse_stroke",
+    "target_symbol": "BasicMeshes.SuperellipseStroke",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "src/batch/mesh.cpp",
+    "line": 1278,
+    "symbol": "BasicMeshes::circle_filled",
+    "target_symbol": "BasicMeshes.CircleFilled",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "src/batch/mesh.cpp",
+    "line": 1342,
+    "symbol": "BasicMeshes::circle_stroke",
+    "target_symbol": "BasicMeshes.CircleStroke",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "src/batch/mesh.cpp",
+    "line": 1403,
+    "symbol": "BasicMeshes::ellipse_filled",
+    "target_symbol": "BasicMeshes.EllipseFilled",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "src/batch/mesh.cpp",
+    "line": 1467,
+    "symbol": "BasicMeshes::ellipse_stroke",
+    "target_symbol": "BasicMeshes.EllipseStroke",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "src/batch/mesh.cpp",
+    "line": 1528,
+    "symbol": "BasicMeshes::fan",
+    "target_symbol": "BasicMeshes.Fan",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "src/batch/mesh.cpp",
+    "line": 1609,
+    "symbol": "BasicMeshes::arc_stroke",
+    "target_symbol": "BasicMeshes.ArcStroke",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "src/batch/mesh.cpp",
+    "line": 1683,
+    "symbol": "BasicMeshes::elliptical_fan",
+    "target_symbol": "BasicMeshes.EllipticalFan",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "src/batch/mesh.cpp",
+    "line": 1772,
+    "symbol": "BasicMeshes::elliptical_arc_stroke",
+    "target_symbol": "BasicMeshes.EllipticalArcStroke",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "src/batch/mesh.cpp",
+    "symbol": "BasicMeshes::text",
+    "target_symbol": "BasicMeshes.Text",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "include/SkrGuiCore/batch/mesh.hpp",
+    "symbol": "BasicMeshes::_collect_curve_split_lines",
+    "target_symbol": "BasicMeshes.CollectCurveSplitLines",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "include/SkrGuiCore/batch/mesh.hpp",
+    "symbol": "BasicMeshes::_flatten_options",
+    "target_symbol": "BasicMeshes.FlattenOptions",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "include/SkrGuiCore/batch/mesh.hpp",
+    "symbol": "BasicMeshes::_fill_options",
+    "target_symbol": "BasicMeshes.FillOptions",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "include/SkrGuiCore/batch/mesh.hpp",
+    "symbol": "BasicMeshes::_single_convex_fill_options",
+    "target_symbol": "BasicMeshes.SingleConvexFillOptions",
+    "status": "ported; all 41 original mesh cases passed"
+  },
+  {
+    "source": "include/SkrGuiCore/batch/mesh.hpp",
+    "symbol": "BasicMeshes::_stroke_options",
+    "target_symbol": "BasicMeshes.StrokeOptions",
+    "status": "ported; all 41 original mesh cases passed"
+  }
+]

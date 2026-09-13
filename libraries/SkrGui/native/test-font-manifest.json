@@ -1,0 +1,35 @@
+{
+  "Latin": {
+    "sha256": "7454583868339bd4f6c4c692d02e33d8439f8d742bec32e8be3e5aab1646cd74",
+    "bytes": 211772
+  },
+  "Hebrew": {
+    "sha256": "7d419be19cf33c53abd583c5976b1402d403f26037652ebfa8f638c145be62f5",
+    "bytes": 16836
+  },
+  "Arabic": {
+    "sha256": "7bf5f3a70b38a597624e2b6682b3b577ad3a80795e7cf316dfebae141766c7f9",
+    "bytes": 122752
+  },
+  "Thai": {
+    "sha256": "e911d349105040042c827c0aede77b04c7fd9393f642a4484b277150f62fbac0",
+    "bytes": 20960
+  },
+  "Emoji": {
+    "sha256": "8d339b6ca3e06e874f66918ad032c50960c3bd539fe84dce5ec3df0feb73b746",
+    "bytes": 8120
+  },
+  "Collection": {
+    "sha256": "ae8a0f61925fa98738518713ea7623bcfe9dd15faa124aea57686ed941a2cda7",
+    "bytes": 8080
+  },
+  "Color": {
+    "sha256": "4155543403db2d35da30139e1f7c1748a0528337d1888bffc1ab30af03692424",
+    "bytes": 5744
+  },
+  "ColorBitmap": {
+    "sha256": "9eabc8f84246fd5bba5b882e4d2d601958fd5d05c7520cca442992b73e6e8662",
+    "bytes": 5744,
+    "source_builder": "embedded_text_bitmap_font.cpp"
+  }
+}

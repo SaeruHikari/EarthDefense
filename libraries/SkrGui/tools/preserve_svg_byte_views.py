@@ -1,0 +1,15 @@
+import pathlib
+root=pathlib.Path(__file__).resolve().parents[1]
+p=root/'libraries/SkrGui.Godot/Gallery/GallerySvg.cs';s=p.read_text()
+s=s.replace('Parse(string svgText,ref GallerySvgDocument document','Parse(Utf8StringView svgText,ref GallerySvgDocument document')
+s=s.replace('Encoding.Latin1.GetString(Encoding.UTF8.GetBytes(svgText))','Encoding.Latin1.GetString(svgText.Bytes)')
+s=s.replace('Math.Min(bounds.Left,p.X)','(p.X<bounds.Left?p.X:bounds.Left)').replace('Math.Min(bounds.Top,p.Y)','(p.Y<bounds.Top?p.Y:bounds.Top)').replace('Math.Max(bounds.Right,p.X)','(bounds.Right<p.X?p.X:bounds.Right)').replace('Math.Max(bounds.Bottom,p.Y)','(bounds.Bottom<p.Y?p.Y:bounds.Bottom)')
+p.write_text(s)
+p=root/'libraries/SkrGui.Godot/Gallery/GallerySvgDownload.cs';s=p.read_text()
+s=s.replace('ref string svg,ref string error','ref Utf8StringView svg,ref string error')
+s=s.replace('svg=""','svg=default').replace('svg=Encoding.UTF8.GetString(stream.ToArray())','svg=new Utf8StringView(stream.ToArray())').replace('svg.Length==0','svg.IsEmpty()')
+s=s.replace('svg=Encoding.UTF8.GetString(bytes)','svg=new Utf8StringView(bytes)')
+s=s.replace('string svg=default,error="";','Utf8StringView svg=default;string error="";')
+s=s.replace('Encoding.UTF8.GetByteCount(svg)','svg.Size()')
+s=s.replace('url=string.IsNullOrEmpty(url)?"":url;','url=string.IsNullOrEmpty(url)?"":url;\n  int terminator=url.IndexOf(\'\\0\');if(terminator>=0)url=url[..terminator];')
+p.write_text(s)

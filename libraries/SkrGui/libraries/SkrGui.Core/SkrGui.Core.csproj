@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>SkrGui.Core</AssemblyName>
+    <RootNamespace>SkrGui</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="../../native/artifacts/win-x64/skrgui_native.dll" Link="skrgui_native.dll" CopyToOutputDirectory="PreserveNewest" Condition="Exists('../../native/artifacts/win-x64/skrgui_native.dll')" />
+    <None Include="../../native/artifacts/win-x64/icudt72l.dat" Link="icudt72l.dat" CopyToOutputDirectory="PreserveNewest" Condition="Exists('../../native/artifacts/win-x64/icudt72l.dat')" />
+  </ItemGroup>
+</Project>

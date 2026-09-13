@@ -1,0 +1,38 @@
+[
+  {
+    "source": "tests/batch/batch_cmd_tests.cpp",
+    "line": 103,
+    "case": "gui/batch/adjacent compatible meshes share one batch",
+    "target": "BatchCommandContractTests.Case1"
+  },
+  {
+    "source": "tests/batch/batch_cmd_tests.cpp",
+    "line": 122,
+    "case": "gui/batch/clip commands remain isolated",
+    "target": "BatchCommandContractTests.Case2"
+  },
+  {
+    "source": "tests/batch/batch_cmd_tests.cpp",
+    "line": 139,
+    "case": "gui/batch/text from one layout may cross within that layout",
+    "target": "BatchCommandContractTests.Case3"
+  },
+  {
+    "source": "tests/batch/batch_cmd_tests.cpp",
+    "line": 185,
+    "case": "gui/batch/lookahead combines compatible non-overlapping meshes",
+    "target": "BatchCommandContractTests.Case4"
+  },
+  {
+    "source": "tests/batch/batch_cmd_tests.cpp",
+    "line": 202,
+    "case": "gui/batch/lookahead preserves overlapping draw order",
+    "target": "BatchCommandContractTests.Case5"
+  },
+  {
+    "source": "tests/batch/batch_cmd_tests.cpp",
+    "line": 221,
+    "case": "gui/batch/external rule reads command data",
+    "target": "BatchCommandContractTests.Case6"
+  }
+]

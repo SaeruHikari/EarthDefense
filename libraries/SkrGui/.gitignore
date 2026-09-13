@@ -1,0 +1,20 @@
+**/bin/
+**/obj/
+**/.godot/
+/.reference/
+/.report/
+/native/build/
+/native/artifacts/
+*.pdb
+*.obj
+*.tmp
+__pycache__/
+/.runtime/
+/artifacts/
+/native/gallery/build/
+/native/nanovg-test/build/
+/native/*/build_current.cmd
+
+# Local migration staging and native build command files
+/.integration/
+/native/build_current.cmd
