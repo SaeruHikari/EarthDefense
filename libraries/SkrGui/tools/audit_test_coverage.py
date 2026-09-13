@@ -28,7 +28,7 @@ if args.results:
  report['execution']={'report':str(args.results),'passed_original_cases':len(source)-len(not_passed),'missing_or_failed_original_cases':not_passed,'all_result_count':len(results['tests']),'all_failures':results['failed']}
  failed|=bool(not_passed or results['failed'])
  print(f'Executed and passed {len(source)-len(not_passed)} / {len(source)} original cases')
-(root/'migration/test-coverage.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
+(root/'migration/test-coverage.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8',newline='\n')
 print(f'Mapped {len(source)-len(missing)} / {len(source)} original cases; {len(extra)} additional checks')
 for c in missing:print('MISSING',c['path'],c['name'])
 if report['duplicate_case_names']:print('DUPLICATES',list(report['duplicate_case_names']))
