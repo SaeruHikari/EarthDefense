@@ -12,7 +12,7 @@ EliteOrdinal,12,0,99999,精英在间隔中的零基序号
 EliteHealthMultiplier,2,0.001,1000,精英生命倍率
 EliteDamageMultiplier,1.5,0.001,1000,精英伤害倍率
 GroundDamageFloor,0.03,0,1000000000.0,敌方对地单发最低伤害
-GroundDamageMultiplier,0.0075,0,100,敌方DPS转对地伤害系数
+GroundDamageMultiplier,0.075,0,100,敌方DPS转对地伤害系数
 SmallBossSpawnFraction,0.35,0,0.95,小Boss在部署窗口中的相对顺序
 MediumBossSpawnFraction,0.5,0,0.99,中Boss相对顺序
 MotherAltitude,5.65,0.1,1000,近地母舰离地球基准表面的高度

@@ -37,7 +37,7 @@ internal static class OpeningCombatChecks
         var catalog = CombatCatalog.Current;
         Near(catalog.Values.DamageBase, 9, "campaign enemy base DPS remains nine");
         Near(catalog.Values.GroundDamageFloor, .03, "ground impact floor stays independently configurable");
-        Near(catalog.Values.GroundDamageMultiplier, .0075, "only the configured fraction of enemy shot damage reaches Earth");
+        Near(catalog.Values.GroundDamageMultiplier, .075, "only the configured fraction of enemy shot damage reaches Earth");
         Near(settings.N("enemy_health_growth"), .025, "enemy health grows by two and a half percent per wave");
         Near(settings.N("enemy_damage_growth"), .012, "enemy damage grows by one point two percent per wave");
         Near(catalog.Values.OpeningDamageMultiplier, .35, "opening damage reduction is configurable and leaves a novice response window");
@@ -52,7 +52,7 @@ internal static class OpeningCombatChecks
             double opening = wave == 1 ? settings.N("first_wave_enemy_damage_multiplier") : 1;
             double shotDamage = 9 * data.Dps * Math.Pow(1.012, wave - 1) * catalog.StageDamage[0] * opening * data.Cooldown * ramp;
             Near(unit.N("attack_damage"), shotDamage, "actual ordinary per-shot damage includes the lower base and opening ramp at wave " + wave);
-            Near(unit.N("ground_damage"), Math.Max(.03 * ramp, shotDamage * .0075), "Earth bombardment applies the opening ramp to damage and its minimum at wave " + wave);
+            Near(unit.N("ground_damage"), Math.Max(.03 * ramp, shotDamage * .075), "Earth bombardment applies the opening ramp to damage and its minimum at wave " + wave);
             double legacyRamp = wave <= 10 ? .35 : wave >= 20 ? 1 : .35 + .065 * (wave - 10);
             double legacyShot = 11.7 * data.Dps * Math.Pow(1.018, wave - 1) * catalog.StageDamage[0] * opening * data.Cooldown * legacyRamp;
             Check(unit.N("ground_damage") < Math.Max(.75 * legacyRamp, legacyShot * .12), "actual Earth damage is below the previous campaign at wave " + wave);
@@ -62,7 +62,7 @@ internal static class OpeningCombatChecks
             if (wave == 1)
             {
                 Near(unit.N("attack_damage"), 1.819125, "first ordinary claw shot retains its independent damage regression value");
-                Near(unit.N("ground_damage"), .0136434375, "first claw Earth impact is small but nonzero");
+                Near(unit.N("ground_damage"), .136434375, "first claw Earth impact uses the requested damage conversion");
             }
             var elite = new DataMap { ["kind"] = "scout" };
             EnemyCatalog.Apply(elite, new DataMap { ["wave"] = wave, ["role"] = "claw", ["index"] = 12 }, settings);
@@ -99,7 +99,7 @@ internal static class OpeningCombatChecks
             Check(rejected, "invalid opening damage configuration is rejected: " + to);
         }
         string root = Path.GetFullPath("data/domain");
-        string floorOnlyCsv = tuningCsv.Replace("GroundDamageMultiplier,0.0075,", "GroundDamageMultiplier,0,");
+        string floorOnlyCsv = tuningCsv.Replace("GroundDamageMultiplier,0.075,", "GroundDamageMultiplier,0,");
         Check(floorOnlyCsv != tuningCsv, "floor fixture edits the real ground-conversion parameter");
         try
         {

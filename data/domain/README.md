@@ -132,7 +132,7 @@ K_S21,0,string,K_S01
 
 修改一类敌人的生命倍率可从 `combat_enemies.csv` 的对应 health 列开始，而不是把每个波次都复制一份敌人记录。各参数名称、单位和范围以表头与 tuning 表说明为准。
 
-前期伤害缓冲由 `combat_tuning.csv` 的三个参数控制：`OpeningDamageMultiplier=0.35`，保持至 `OpeningDamageHoldThroughWave=20`，再线性恢复到 `OpeningDamageFullWave=40` 时的完整伤害。它同时作用于对飞机伤害和对地伤害下限；波数必须为整数，恢复结束波必须大于保持截止波。该倍率叠加在 `DamageBase=9` 与波次成长、首波保护、精锐及阶段倍率上。地球承伤另由 `GroundDamageMultiplier=0.0075` 和 `GroundDamageFloor=0.03` 控制，仍会受到真实攻击与局部盾拦截。
+前期伤害缓冲由 `combat_tuning.csv` 的三个参数控制：`OpeningDamageMultiplier=0.35`，保持至 `OpeningDamageHoldThroughWave=20`，再线性恢复到 `OpeningDamageFullWave=40` 时的完整伤害。它同时作用于对飞机伤害和对地伤害下限；波数必须为整数，恢复结束波必须大于保持截止波。该倍率叠加在 `DamageBase=9` 与波次成长、首波保护、精锐及阶段倍率上。地球承伤另由 `GroundDamageMultiplier=0.075` 和 `GroundDamageFloor=0.03` 控制，仍会受到真实攻击与局部盾拦截。
 
 局部盾表面覆盖半径为 `economy_local_shield.csv` 的 `surface_radius=6.5`。修复仍需研究 `D_S41`，费用在科技费用表为 6；每座发生器的 `earth_repair_rate=0.05` 在属性表配置，对应效果说明也应同步编辑。建好两座发生器并研究修复后共恢复每分钟 6 HP，没有科技或没有发生器时不会恢复。
 
