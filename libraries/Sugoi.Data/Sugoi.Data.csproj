@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <IsAotCompatible>true</IsAotCompatible>
+    <IsTrimmable>true</IsTrimmable>
+    <AssemblyName>Sugoi.Data</AssemblyName>
+    <RootNamespace>Sugoi.Data</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Sugoi.Tasks" />
+    <InternalsVisibleTo Include="SugoiChecks" />
+  </ItemGroup>
+</Project>

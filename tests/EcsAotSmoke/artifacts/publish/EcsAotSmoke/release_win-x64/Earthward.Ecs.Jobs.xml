@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Earthward.Ecs.Jobs</name>
+    </assembly>
+    <members>
+        <member name="T:Earthward.Ecs.Jobs.OptionalRO`1">
+            <summary>An optional, borrowed component value. Disabled is distinct from absent.</summary>
+        </member>
+        <member name="T:Earthward.Ecs.Jobs.IEcsJob`1">
+            <summary>The low-level contract implemented by generated jobs. Handwritten
+            implementations must declare every resource they access.</summary>
+        </member>
+        <member name="T:Earthward.Ecs.Jobs.PartitionContext">
+            <summary>Stable logical coordinates, independent of which worker claims a range.</summary>
+        </member>
+        <member name="T:Earthward.Ecs.Jobs.ReductionWriter`1">
+            <summary>One default-initialized local slot per stable partition. Inspect
+            HasValue to supply a non-zero identity; untouched partitions are skipped.</summary>
+        </member>
+        <member name="T:Earthward.Ecs.Jobs.TaskGraph">
+            <summary>A graph builder. Adding nodes does not execute work or borrow a World.</summary>
+        </member>
+        <member name="M:Earthward.Ecs.Jobs.TaskGraph.AddRanges(System.Int32,System.Int32,System.Action{System.Int32,System.Int32},System.Collections.Generic.IEnumerable{Earthward.Ecs.Jobs.ResourceAccess},System.Boolean,Earthward.Ecs.Jobs.JobNode[])">
+            <summary>Explicit managed host adapter. The cached callback receives [start,end).</summary>
+        </member>
+        <member name="M:Earthward.Ecs.Jobs.TaskGraph.DependsOn(Earthward.Ecs.Jobs.JobNode,Earthward.Ecs.Jobs.JobNode)">
+            <summary>Adds an explicit edge; may refer to nodes added in either order.</summary>
+        </member>
+        <member name="T:Earthward.Ecs.Jobs.ResourceHandle">
+            <summary>An explicit identity and exclusive execution lease for host-owned data.
+            Separate executions sharing a handle must be completed in order; accesses within
+            one graph are ordered by their read/write declarations.</summary>
+        </member>
+        <member name="T:Earthward.Ecs.Jobs.ExecutionHandle">
+            <summary>Owns one execution result. Valid until disposed; graph nodes are not
+            completion handles. Completion drains all running ranges and releases leases.</summary>
+        </member>
+        <member name="T:Earthward.Ecs.Jobs.IRangeJob`1">
+            <summary>A statically dispatched, unmanaged synchronous range kernel.</summary>
+        </member>
+        <member name="T:Earthward.Ecs.Jobs.Scheduler">
+            <summary>A shared, fixed worker budget for ECS graphs and explicit managed host ranges.</summary>
+        </member>
+        <member name="M:Earthward.Ecs.Jobs.Scheduler.ExecuteRanges(System.Int32,System.Int32,System.Action{System.Int32,System.Int32})">
+            <summary>Runs a cached managed callback for each fixed [start,end) range.
+            This is a host adapter, not an unmanaged ECS job. Calls are serialized;
+            steady-state calls reuse their completion state and queue storage.</summary>
+        </member>
+        <member name="M:Earthward.Ecs.Jobs.Scheduler.ExecuteRanges``1(System.Int32,System.Int32,``0@)">
+            <summary>Executes an unmanaged kernel synchronously. Any native pointers in
+            the payload must remain valid until this call returns; failures drain all
+            running partitions before rethrowing.</summary>
+        </member>
+    </members>
+</doc>

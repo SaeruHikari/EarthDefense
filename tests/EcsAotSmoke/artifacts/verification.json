@@ -1,0 +1,30 @@
+﻿{
+    "generator_checks":  163,
+    "generator_failures":  0,
+    "native_smoke_checks":  33,
+    "native_smoke_failures":  0,
+    "workers":  3,
+    "publish_aot":  true,
+    "runtime":  "win-x64",
+    "pe_magic":  523,
+    "pe_clr_directory_rva":  0,
+    "executable_bytes":  2196480,
+    "executable_sha256":  "49D3ECF07C296D364A9EEA56418E3EF156D5BCEBA6AA7FBC8DE53298596EE8A8",
+    "publish_files":  [
+                          "Earthward.Ecs.Jobs.pdb",
+                          "Earthward.Ecs.Jobs.xml",
+                          "Earthward.Ecs.World.pdb",
+                          "EcsAotSmoke.exe",
+                          "EcsAotSmoke.pdb"
+                      ],
+    "analyzer_package_files":  [
+                                   "_rels/.rels",
+                                   "Earthward.Ecs.SourceGen.nuspec",
+                                   "README.md",
+                                   "analyzers/dotnet/cs/Earthward.Ecs.SourceGen.dll",
+                                   "[Content_Types].xml",
+                                   "package/services/metadata/core-properties/b6a82213329b45c4ad83cc1367d0a577.psmdcp"
+                               ],
+    "analyzer_package_has_roslyn_dependency":  false,
+    "analyzer_package_has_runtime_library":  false
+}

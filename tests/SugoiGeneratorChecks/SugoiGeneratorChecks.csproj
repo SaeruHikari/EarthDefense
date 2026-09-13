@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../libraries/Sugoi.Data/Sugoi.Data.csproj" />
+    <ProjectReference Include="../../libraries/Sugoi.Tasks/Sugoi.Tasks.csproj" />
+    <ProjectReference Include="../../libraries/Sugoi.SourceGen/Sugoi.SourceGen.csproj" />
+    <ProjectReference Include="../SugoiFixtures/SugoiFixtures.csproj" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.11.0" />
+  </ItemGroup>
+</Project>
