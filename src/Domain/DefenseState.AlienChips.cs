@@ -1,6 +1,5 @@
 using System;
 using System.Buffers.Binary;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -10,8 +9,7 @@ namespace Earthward.Domain;
 public sealed partial class DefenseState
 {
     public event Action<DataMap>? AlienChipDropped;
-    private readonly Dictionary<string, HashSet<string>> _pendingAlienChipEvents = new(StringComparer.Ordinal);
-    public int PendingAlienChipCount => _pendingAlienChipEvents.Values.Sum(events => events.Count);
+    public int PendingAlienChipCount => _pendingEnemyLoot.Values.Count(row => row.S("currency") == "alien_chips");
 
     private static string EnemyRewardIdentity(DataMap enemy, long currentWave)
     {
@@ -26,41 +24,17 @@ public sealed partial class DefenseState
     /// A wave-plan identity has a stable roll within the run. Changing combat
     /// RNG consumption or replaying a wave cannot reroll a defeated aircraft.
     /// </summary>
-    public bool EnemyDropsAlienChip(DataMap enemy)
+    public bool EnemyDropsAlienChip(DataMap enemy) => EnemyDropsRareLoot(enemy, "alien_chips", PerkCatalog.AlienChipDropChance);
+
+    private bool EnemyDropsRareLoot(DataMap enemy, string currency, double chance)
     {
         double hp = enemy.N("hp", double.NaN);
-        if (enemy.S("kind") is not ("scout" or "cruiser") || enemy.B("resource_core_carrier")
-            || enemy.B("post_carrier") || !double.IsFinite(hp) || hp > 0)
+        if (enemy.S("kind", "scout") != "scout" || enemy.B("post_carrier") || !double.IsFinite(hp) || hp > 0)
             return false;
         string id = EnemyRewardIdentity(enemy, Wave);
-        byte[] digest = SHA256.HashData(Encoding.UTF8.GetBytes(RunId + "\u001fchip:\u001f" + id));
+        byte[] digest = SHA256.HashData(Encoding.UTF8.GetBytes(RunId + "\u001fdrop:" + currency + "\u001f" + id));
         double roll = (BinaryPrimitives.ReadUInt64LittleEndian(digest) >> 11) * (1d / 9007199254740992d);
-        return roll < PerkCatalog.AlienChipDropChance;
+        return roll < chance;
     }
 
-    private void QueueAlienChipDrop(DataMap enemy, string rewardId)
-    {
-        if (!EnemyDropsAlienChip(enemy)) return;
-        if (!_pendingAlienChipEvents.TryGetValue(RunId, out var events))
-            _pendingAlienChipEvents[RunId] = events = new(StringComparer.Ordinal);
-        events.Add("chip:" + rewardId);
-    }
-
-    /// <summary>
-    /// Settle one burst of kills with one permanent-profile transaction, rather
-    /// than synchronously rewriting the profile inside every projectile hit.
-    /// Failed transactions remain pending for a later retry.
-    /// </summary>
-    public bool FlushAlienChipDrops()
-    {
-        if (_pendingAlienChipEvents.Count == 0) return true;
-        foreach (string run in _pendingAlienChipEvents.Keys.ToArray())
-        {
-            var result = FactoryPerks.ClaimAlienChips(run, _pendingAlienChipEvents[run].ToArray());
-            if (!result.B("ok")) return false;
-            _pendingAlienChipEvents.Remove(run);
-            if (result.L("alien_chips") > 0) AlienChipDropped?.Invoke(result);
-        }
-        return true;
-    }
 }

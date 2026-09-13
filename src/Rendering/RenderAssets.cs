@@ -14,10 +14,7 @@ public static class RenderAssets
         "airframe/K1", "airframe/K2", "airframe/K3",
         "airframe/M1", "airframe/M2", "airframe/M3",
         "airframe/L1", "airframe/L2", "airframe/L3",
-        "enemy/claw", "enemy/needle", "enemy/rock", "enemy/siege",
-        "enemy/prism", "enemy/weaver", "enemy/hatcher", "enemy/jammer",
-        "boss/brood", "boss/forge", "boss/prism",
-        "scout", "cruiser", "small_boss", "boss", "carrier", "mothership",
+        "enemy/claw", "scout", "carrier", "mothership",
         "projectile/interceptor", "projectile/laser", "projectile/missile", "projectile/hostile"
     }.ToDictionary(key => key, key => ModelDirectory + key.Replace('/', '_') + ".scn", StringComparer.Ordinal);
 
@@ -27,8 +24,8 @@ public static class RenderAssets
 
     public static string CanonicalModelKey(string key) => key switch
     {
-        // Older combat packets called a kinetic projectile "friendly" (its side),
-        // while the baked asset is named after the interceptor weapon family.
+        // Combat packets label a kinetic shot by side; its baked model is
+        // named after the interceptor weapon family.
         "projectile/friendly" or "friendly" => "projectile/interceptor",
         "hostile" => "projectile/hostile",
         "interceptor" => "airframe/K1",
@@ -148,8 +145,7 @@ public static class RenderAssets
         if (key.StartsWith("airframe/", StringComparison.Ordinal))
             return key.StartsWith("airframe/M", StringComparison.Ordinal) ? "airframe/M1" :
                 key.StartsWith("airframe/L", StringComparison.Ordinal) ? "airframe/L1" : "airframe/K1";
-        return key.StartsWith("boss/", StringComparison.Ordinal) || key is "boss" or "small_boss" or "carrier" or "mothership"
-            ? "boss/brood" : "enemy/claw";
+        return key is "carrier" or "mothership" ? "mothership" : "enemy/claw";
     }
 
     internal static void ReportModelFallback(string key, string reason, string fallback)

@@ -66,7 +66,7 @@ public sealed class FleetStressFixture
     public static string ConfigureCatalog(string? projectRoot = null)
     {
         _fixtureProjectRoot = Path.GetFullPath(projectRoot ?? Directory.GetCurrentDirectory());
-        string path = Path.GetFullPath(Path.Combine(_fixtureProjectRoot, "tests", "CombatManaged", "Fixtures", "fleet127-data"));
+        string path = Path.GetFullPath(Path.Combine(_fixtureProjectRoot, "data", "domain"));
         CatalogData.Configure(path);
         return path;
     }
@@ -128,7 +128,7 @@ public sealed class FleetStressFixture
     }
     private static string CompiledFile => Path.Combine(_fixtureProjectRoot, "tests", "CombatManaged", "Fixtures", "fleet127-compiled-profiles.json");
     public bool FrozenProfilesLoaded { get; private set; }
-    public bool FreezeCompiledProfilesEnabled { get; set; } = true;
+    public bool FreezeCompiledProfilesEnabled { get; set; }
     private DataMap? _frozenProfileData;
     public void ExportCompiledProfiles()
     {
@@ -209,7 +209,7 @@ public sealed class FleetStressFixture
             while (_battle.Enemies.Count < EnemyCount)
             {
                 int index = _generation++; double angle = index * 2.39996323, radius = .10 + .035 * (index % 6);
-                var n = new Vector3((float)(radius * Math.Cos(angle)), (float)(radius * Math.Sin(angle)), 1).Normalized(); string role = DefenseWavePlan.RoleOrder[index % 8];
+                var n = new Vector3((float)(radius * Math.Cos(angle)), (float)(radius * Math.Sin(angle)), 1).Normalized(); string role = "claw";
                 long sourceSite = -1;
                 if (Layout == FleetStressLayout.World)
                 {
@@ -220,7 +220,7 @@ public sealed class FleetStressFixture
                     double sideways = (.35 + .08 * (index % 6)) / (WorldScale.EarthRadius + 1.75);
                     n = (home + east * (float)(Math.Cos(angle) * sideways) + north * (float)(Math.Sin(angle) * sideways)).Normalized();
                 }
-                var e = _battle.SpawnEnemy(role is "claw" or "needle" or "prism" or "jammer" ? "scout" : "cruiser", new() { ["wave"] = 28L, ["stage"] = 0, ["role"] = role, ["index"] = index }, n * (float)(WorldScale.EarthRadius + 1.75 + .025 * (index % 8)))!;
+                var e = _battle.SpawnEnemy("scout", new() { ["wave"] = 28L, ["stage"] = 0, ["role"] = role, ["index"] = index }, n * (float)(WorldScale.EarthRadius + 1.75 + .025 * (index % 8)))!;
                 if (sourceSite >= 0) e["benchmark_factory_site_id"] = sourceSite;
                 double shieldFraction = e.N("energy_max_hp") / e.N("max_hp"); e["hp"] = 4000d; e["max_hp"] = 4000d; e["energy_hp"] = 4000 * shieldFraction; e["energy_max_hp"] = e["energy_hp"]; e["fire"] = .05 * (index % 12); _totalEnemyCreated++;
             }

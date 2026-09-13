@@ -95,10 +95,10 @@ public sealed partial class FleetRenderer
             float unitScale = scale * (category == "drones" ? FrameScales.GetValueOrDefault(actor.S("airframe_id"), 1) : 1);
             var transform = new Transform3D(new Basis(right, normal, -tangent).Scaled(Vector3.One * unitScale), position);
             double hp = actor.N("hp", 1), max = actor.N("max_hp", 1);
-            bool critical = !projectile && max > 0 && hp > 0 && hp <= max * .3 && (category == "drones" || actor.S("kind") is "scout" or "cruiser") && !actor.B("post_carrier");
+            bool critical = !projectile && max > 0 && hp > 0 && hp <= max * .3 && (category == "drones" || actor.S("kind") == "scout") && !actor.B("post_carrier");
             string visual = VisualKey(actor, enemy, projectile);
             float energy = Mathf.Clamp((float)(actor.N("energy_hp") / Math.Max(1, actor.N("energy_max_hp", 1))), 0, 1);
-            float charge = Mathf.Clamp((float)Math.Max(actor.N("telegraph"), actor.N("weapon_charge", actor.N("fire_charge", actor.N("warmup_progress")))), 0, 1);
+            float charge = Mathf.Clamp((float)actor.N("weapon_charge", actor.N("fire_charge", actor.N("warmup_progress"))), 0, 1);
             return new RenderPose(true, transform, new Color(energy, charge, (float)((uid * .61803398875) % 1), 1), visual, inSpace, critical);
     }
 }

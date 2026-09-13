@@ -124,7 +124,7 @@ public sealed partial class DefenseState
             {
                 if (new[] { "damage_multiplier", "fire_rate_multiplier", "projectile_speed_multiplier", "blast_radius_multiplier", "death_blast_multiplier", "health_multiplier", "patrol_multiplier", "speed_multiplier", "spawn_multiplier", "capacity_add" }.Contains(key))
                     continue;
-                if (key.EndsWith("_multiplier") && key != "slow_boss_multiplier")
+                if (key.EndsWith("_multiplier"))
                     stats[key] = stats.N(key, 1) * DataMap.Number(value);
                 else if (value is int or long)
                     stats[key] = Math.Max(stats.L(key), DataMap.Integer(value));

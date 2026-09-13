@@ -11,7 +11,7 @@ namespace Earthward.Combat;
 /// CatalogData.Revision changes only when a host explicitly selects a data source.</summary>
 public static class CombatCatalog
 {
-    public sealed record EnemyDefinition(string Id, string Kind, string Role, string BossVariant, string Name, string Armor, long MinimumWave, double Health, double Dps, double Speed, double Cooldown, double Energy);
+    public sealed record EnemyDefinition(string Id, string Kind, string Role, string Name, string Armor, double Health, double Dps, double Speed, double Cooldown);
     public sealed record EnemyKind(string Id, double Size, double BombardSeconds, double LegacySpeed, double DroneCooldown, double EarthCooldown);
     public sealed record FrontDefinition(string Id, int Ordinal, string Name, Color Color, Vector3 Direction, long UnlockWave);
     public sealed record WaveComposition(long From, long Through, DataMap Weights);
@@ -24,15 +24,8 @@ public static class CombatCatalog
         public double OpeningDamageHoldThroughWave { get; }
         public double OpeningDamageFullWave { get; }
         public double TacticalSpeedBase { get; }
-        public double EliteFirstWave { get; }
-        public double EliteInterval { get; }
-        public double EliteOrdinal { get; }
-        public double EliteHealthMultiplier { get; }
-        public double EliteDamageMultiplier { get; }
         public double GroundDamageFloor { get; }
         public double GroundDamageMultiplier { get; }
-        public double SmallBossSpawnFraction { get; }
-        public double MediumBossSpawnFraction { get; }
         public double MotherAltitude { get; }
         public double SpawnConeMin { get; }
         public double SpawnConeMax { get; }
@@ -46,20 +39,6 @@ public static class CombatCatalog
         public double ContinuingCarrierHealthMultiplier { get; }
         public double LegacySpawnSpeedBase { get; }
         public double LegacySpawnSpeedWaveGrowth { get; }
-        public double ArmorExposedMultiplier { get; }
-        public double WeaverCooldown { get; }
-        public double WeaverRange { get; }
-        public double WeaverMaxLinks { get; }
-        public double WeaverShieldFraction { get; }
-        public double WeaverRecoveryBudget { get; }
-        public double WeaverRecoveryFraction { get; }
-        public double JammerCooldown { get; }
-        public double JammerDuration { get; }
-        public double JammerFireRateMultiplier { get; }
-        public double HeavyChargeSeconds { get; }
-        public double LightChargeSeconds { get; }
-        public double ForgeExposureSeconds { get; }
-        public double SporeProjectileSpeedMultiplier { get; }
         internal Tuning(CsvTable table)
         {
             table.RequireHeaders("id", "value", "minimum", "maximum", "description");
@@ -78,15 +57,8 @@ public static class CombatCatalog
             OpeningDamageHoldThroughWave = Get("OpeningDamageHoldThroughWave");
             OpeningDamageFullWave = Get("OpeningDamageFullWave");
             TacticalSpeedBase = Get("TacticalSpeedBase");
-            EliteFirstWave = Get("EliteFirstWave");
-            EliteInterval = Get("EliteInterval");
-            EliteOrdinal = Get("EliteOrdinal");
-            EliteHealthMultiplier = Get("EliteHealthMultiplier");
-            EliteDamageMultiplier = Get("EliteDamageMultiplier");
             GroundDamageFloor = Get("GroundDamageFloor");
             GroundDamageMultiplier = Get("GroundDamageMultiplier");
-            SmallBossSpawnFraction = Get("SmallBossSpawnFraction");
-            MediumBossSpawnFraction = Get("MediumBossSpawnFraction");
             MotherAltitude = Get("MotherAltitude");
             SpawnConeMin = Get("SpawnConeMin");
             SpawnConeMax = Get("SpawnConeMax");
@@ -100,25 +72,11 @@ public static class CombatCatalog
             ContinuingCarrierHealthMultiplier = Get("ContinuingCarrierHealthMultiplier");
             LegacySpawnSpeedBase = Get("LegacySpawnSpeedBase");
             LegacySpawnSpeedWaveGrowth = Get("LegacySpawnSpeedWaveGrowth");
-            ArmorExposedMultiplier = Get("ArmorExposedMultiplier");
-            WeaverCooldown = Get("WeaverCooldown");
-            WeaverRange = Get("WeaverRange");
-            WeaverMaxLinks = Get("WeaverMaxLinks");
-            WeaverShieldFraction = Get("WeaverShieldFraction");
-            WeaverRecoveryBudget = Get("WeaverRecoveryBudget");
-            WeaverRecoveryFraction = Get("WeaverRecoveryFraction");
-            JammerCooldown = Get("JammerCooldown");
-            JammerDuration = Get("JammerDuration");
-            JammerFireRateMultiplier = Get("JammerFireRateMultiplier");
-            HeavyChargeSeconds = Get("HeavyChargeSeconds");
-            LightChargeSeconds = Get("LightChargeSeconds");
-            ForgeExposureSeconds = Get("ForgeExposureSeconds");
-            SporeProjectileSpeedMultiplier = Get("SporeProjectileSpeedMultiplier");
-            var known = new HashSet<string>(new[] { "OpeningDamageMultiplier", "OpeningDamageHoldThroughWave", "OpeningDamageFullWave", "HealthBase", "HealthSettingReference", "DamageBase", "TacticalSpeedBase", "EliteFirstWave", "EliteInterval", "EliteOrdinal", "EliteHealthMultiplier", "EliteDamageMultiplier", "GroundDamageFloor", "GroundDamageMultiplier", "SmallBossSpawnFraction", "MediumBossSpawnFraction", "MotherAltitude", "SpawnConeMin", "SpawnConeMax", "SpawnMotherClearance", "FrontierLateralRadius", "FrontierLateralMinimum", "FrontierForwardMin", "FrontierForwardMax", "ContinuingVolleyCount", "ContinuingHangarInterval", "ContinuingCarrierHealthMultiplier", "LegacySpawnSpeedBase", "LegacySpawnSpeedWaveGrowth", "ArmorExposedMultiplier", "WeaverCooldown", "WeaverRange", "WeaverMaxLinks", "WeaverShieldFraction", "WeaverRecoveryBudget", "WeaverRecoveryFraction", "JammerCooldown", "JammerDuration", "JammerFireRateMultiplier", "HeavyChargeSeconds", "LightChargeSeconds", "ForgeExposureSeconds", "SporeProjectileSpeedMultiplier" }, StringComparer.Ordinal);
+            var known = new HashSet<string>(new[] { "OpeningDamageMultiplier", "OpeningDamageHoldThroughWave", "OpeningDamageFullWave", "HealthBase", "HealthSettingReference", "DamageBase", "TacticalSpeedBase", "GroundDamageFloor", "GroundDamageMultiplier", "MotherAltitude", "SpawnConeMin", "SpawnConeMax", "SpawnMotherClearance", "FrontierLateralRadius", "FrontierLateralMinimum", "FrontierForwardMin", "FrontierForwardMax", "ContinuingVolleyCount", "ContinuingHangarInterval", "ContinuingCarrierHealthMultiplier", "LegacySpawnSpeedBase", "LegacySpawnSpeedWaveGrowth" }, StringComparer.Ordinal);
             foreach (var row in table.Rows) if (!known.Contains(row.String("id"))) throw row.Error("id", "unknown tuning parameter");
-            foreach (double integer in new[] {EliteFirstWave,EliteInterval,EliteOrdinal,ContinuingVolleyCount,WeaverMaxLinks})
+            foreach (double integer in new[] {ContinuingVolleyCount})
                 if (Math.Floor(integer) != integer) throw new InvalidDataException(table.SourceName + ": count parameters require integers");
-            if (EliteOrdinal >= EliteInterval || MediumBossSpawnFraction < SmallBossSpawnFraction || SpawnConeMin > SpawnConeMax || FrontierForwardMin > FrontierForwardMax)
+            if (SpawnConeMin > SpawnConeMax || FrontierForwardMin > FrontierForwardMax)
                 throw new InvalidDataException(table.SourceName + ": inconsistent paired parameters");
             if (OpeningDamageMultiplier <= 0 || OpeningDamageMultiplier > 1 || OpeningDamageHoldThroughWave < 1
                 || OpeningDamageFullWave <= OpeningDamageHoldThroughWave
@@ -136,7 +94,7 @@ public static class CombatCatalog
     {
         public readonly Tuning Values;
         public readonly Dictionary<string, EnemyDefinition> Roles = new(StringComparer.Ordinal);
-        public readonly Dictionary<string, EnemyDefinition[]> Variants = new(StringComparer.Ordinal);
+        public readonly Dictionary<string, EnemyDefinition> Enemies = new(StringComparer.Ordinal);
         public readonly Dictionary<string, EnemyKind> Kinds = new(StringComparer.Ordinal);
         public readonly WaveComposition[] Composition;
         public readonly FrontDefinition[] Fronts;
@@ -149,43 +107,29 @@ public static class CombatCatalog
         {
             Values = new(CatalogData.ReadCsv("combat_tuning.csv"));
             var enemies = CatalogData.ReadCsv("combat_enemies.csv");
-            enemies.RequireHeaders("id","kind","role_id","boss_variant_id","name","armor","minimum_wave","health_multiplier","dps_multiplier","speed_multiplier","attack_cooldown","energy_ratio");
-            var ids = new HashSet<string>(); var variants = new Dictionary<string,List<EnemyDefinition>>();
+            enemies.RequireHeaders("id", "kind", "role_id", "name", "armor", "health_multiplier", "dps_multiplier", "speed_multiplier", "attack_cooldown");
             foreach (var row in enemies.Rows)
             {
-                var value = new EnemyDefinition(row.String("id"),row.String("kind"),row.String("role_id"),row.String("boss_variant_id"),row.String("name"),row.String("armor"),row.Integer("minimum_wave"),row.Number("health_multiplier"),row.Number("dps_multiplier"),row.Number("speed_multiplier"),row.Number("attack_cooldown"),row.Number("energy_ratio"));
-                if (!ids.Add(value.Id) || value.Id.Length==0) throw row.Error("id","empty or duplicate enemy definition");
-                if (value.Armor is not ("light" or "heavy") || value.MinimumWave < 1 || value.Health <= 0 || value.Dps < 0 || value.Speed <= 0 || value.Cooldown <= 0 || value.Energy < 0) throw row.Error("id","invalid enemy balance");
-                if (value.Role.Length > 0)
-                {
-                    if (value.Kind is not ("scout" or "cruiser") || !Roles.TryAdd(value.Role,value)) throw row.Error("role_id","duplicate or unsupported role kind");
-                }
-                else
-                {
-                    if (value.Kind is not ("small_boss" or "boss" or "carrier")) throw row.Error("kind","unsupported enemy variant kind");
-                    if (value.Kind=="boss" && value.BossVariant is not ("brood" or "forge" or "prism")) throw row.Error("boss_variant_id","unknown boss model/behavior");
-                    if (!variants.TryGetValue(value.Kind,out var list)) variants[value.Kind]=list=new();
-                    list.Add(value);
-                }
+                var value = new EnemyDefinition(row.String("id"), row.String("kind"), row.String("role_id"), row.String("name"), row.String("armor"), row.Number("health_multiplier"), row.Number("dps_multiplier"), row.Number("speed_multiplier"), row.Number("attack_cooldown"));
+                if (value.Kind is not ("scout" or "carrier") || value.Id != value.Kind || !Enemies.TryAdd(value.Kind, value))
+                    throw row.Error("kind", "expected one scout and one invasion carrier definition");
+                if (value.Armor != "light" || value.Health <= 0 || value.Dps < 0 || value.Speed <= 0 || value.Cooldown <= 0)
+                    throw row.Error("id", "expected positive aircraft balance and light hull armor");
+                if (value.Role != (value.Kind == "scout" ? "claw" : ""))
+                    throw row.Error("role_id", "ordinary aircraft use only the claw role; invasion carriers have no aircraft role");
+                if (value.Kind == "scout") Roles.Add("claw", value);
             }
-            RoleOrder = Roles.Keys.ToArray();
-            var expectedRoles = new[]{"claw","needle","rock","siege","prism","weaver","hatcher","jammer"};
-            if (!RoleOrder.SequenceEqual(expectedRoles)) throw new InvalidDataException(enemies.SourceName+": role ordering or required role IDs changed; these IDs map to existing models and behaviors");
-            foreach (string kind in new[]{"small_boss","boss","carrier"})
-            {
-                if (!variants.TryGetValue(kind,out var list)) throw new InvalidDataException(enemies.SourceName+": missing variants for "+kind);
-                var sorted = list.OrderBy(v=>v.MinimumWave).ToArray();
-                if (sorted[0].MinimumWave!=1 || sorted.Select(v=>v.MinimumWave).Distinct().Count()!=sorted.Length) throw new InvalidDataException(enemies.SourceName+": variants must start at wave 1 with distinct thresholds for "+kind);
-                Variants[kind]=sorted;
-            }
+            if (Enemies.Count != 2 || !Roles.ContainsKey("claw"))
+                throw new InvalidDataException(enemies.SourceName + ": one ordinary aircraft and one invasion carrier are required");
+            RoleOrder = ["claw"];
             var kinds = CatalogData.ReadCsv("combat_enemy_kinds.csv");
             kinds.RequireHeaders("id","base_size","bombard_seconds","legacy_speed_multiplier","drone_fire_cooldown","earth_fire_cooldown");
             foreach (var row in kinds.Rows)
             {
                 var value = new EnemyKind(row.String("id"),row.Number("base_size"),row.Number("bombard_seconds"),row.Number("legacy_speed_multiplier"),row.Number("drone_fire_cooldown"),row.Number("earth_fire_cooldown"));
-                if (value.Size<=0 || value.BombardSeconds<=0 || value.LegacySpeed<=0 || value.DroneCooldown<=0 || value.EarthCooldown<=0 || !Kinds.TryAdd(value.Id,value)) throw row.Error("id","invalid or duplicate enemy kind");
+                if (value.Id is not ("scout" or "carrier") || value.Size<=0 || value.BombardSeconds<=0 || value.LegacySpeed<=0 || value.DroneCooldown<=0 || value.EarthCooldown<=0 || !Kinds.TryAdd(value.Id,value)) throw row.Error("id","invalid or duplicate enemy kind");
             }
-            foreach(string kind in new[]{"scout","cruiser","small_boss","boss","carrier","default"}) if(!Kinds.ContainsKey(kind))throw new InvalidDataException(kinds.SourceName+": missing kind "+kind);
+            foreach(string kind in new[]{"scout","carrier"}) if(!Kinds.ContainsKey(kind))throw new InvalidDataException(kinds.SourceName+": missing kind "+kind);
             var stages=CatalogData.ReadCsv("combat_defense_stages.csv");stages.RequireHeaders("stage","health_multiplier","damage_multiplier");var seen=new HashSet<long>();
             foreach(var row in stages.Rows)
             {
@@ -220,13 +164,12 @@ public static class CombatCatalog
             }
             if(pairs.Count!=9)throw new InvalidDataException(armor.SourceName+": all nine armor/weapon interactions are required");
         }
-        public EnemyDefinition Enemy(string kind,string role,long wave)
+        public EnemyDefinition Enemy(string kind, string role, long wave)
         {
-            if(kind=="mothership")kind="carrier";
-            if(Variants.TryGetValue(kind,out var list)) {for(int i=list.Length-1;i>=0;i--)if(wave>=list[i].MinimumWave)return list[i];return list[0];}
-            return Roles.GetValueOrDefault(role,Roles["claw"]);
+            if (kind == "mothership") kind = "carrier";
+            return Enemies.TryGetValue(kind, out var enemy) ? enemy : throw new ArgumentException("Unknown enemy kind: " + kind, nameof(kind));
         }
-        public EnemyKind Kind(string kind)=>Kinds.GetValueOrDefault(kind,Kinds["default"]);
+        public EnemyKind Kind(string kind) => Kinds.TryGetValue(kind, out var value) ? value : throw new ArgumentException("Unknown enemy kind: " + kind, nameof(kind));
     }
     private static long _revision=long.MinValue;
     private static Data? _current;

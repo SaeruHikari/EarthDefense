@@ -1,7 +1,7 @@
 ﻿param([switch]$VerifyOnly, [switch]$NewCampaign, [string]$TestProfileRoot = '')
 $ErrorActionPreference = 'Stop'
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
-$debugRoot = Join-Path $projectRoot $(if ($NewCampaign) { '.runtime\new-campaign' } else { '.runtime\debug-cleared' })
+$debugRoot = Join-Path $projectRoot $(if ($NewCampaign) { '.runtime\new-campaign-pickups' } else { '.runtime\debug-pickups' })
 if ($TestProfileRoot) {
     if (-not $VerifyOnly) { throw 'TestProfileRoot is reserved for VerifyOnly validation.' }
     $testRoot = [IO.Path]::GetFullPath($TestProfileRoot)
@@ -21,24 +21,8 @@ try {
     $relativeProfile = 'Godot\app_userdata\EARTHWARD · 地球守望'
     $targetProfile = Join-Path $env:APPDATA $relativeProfile
     New-Item -ItemType Directory -Force -Path $targetProfile,$env:LOCALAPPDATA | Out-Null
-    $checkpoint = Join-Path $targetProfile 'earthward_checkpoint.json'
-    if (Test-Path -LiteralPath $checkpoint -PathType Leaf) {
-        # Save compatibility is intentionally out of scope for this development
-        # branch. A profile written by the retired surface-lab schema is
-        # discarded in place so --continue always opens a valid current run.
-        $current = $false
-        try {
-            $saved = Get-Content -LiteralPath $checkpoint -Raw -Encoding UTF8 | ConvertFrom-Json
-            $buildingNames = @($saved.game.buildings.PSObject.Properties.Name)
-            $current = $saved.version -eq 3 -and $saved.game.version -eq 1 -and
-                ($buildingNames -notcontains 'lab') -and $saved.game.expedition.version -eq 4
-        } catch { $current = $false }
-        if (-not $current) {
-            Remove-Item -LiteralPath $targetProfile -Recurse -Force
-            New-Item -ItemType Directory -Force -Path $targetProfile | Out-Null
-            ('Discarded an obsolete development profile; current schema starts clean: ' + $checkpoint) | Set-Content -LiteralPath (Join-Path $debugRoot 'profile-origin.txt') -Encoding UTF8
-        }
-    }
+    # This branch starts in its own current-schema profile. Retired campaign
+    # data is neither migrated nor mixed with receipt-backed world pickups.
     # Publish current C# with the standard Release API. Debug/editor test binaries remain independent.
     $engine = Publish-EarthwardManagedPlayer -ProjectRoot $projectRoot
     $importLog = Join-Path $debugRoot 'import.log'

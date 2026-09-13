@@ -54,7 +54,7 @@ public partial class CombatHud : Node2D
         foreach (var unit in battle.Motherships.Values)
             DrawCommander(unit);
         foreach (var unit in battle.Enemies)
-            if (unit.S("kind") is "boss" or "small_boss" || unit.B("post_carrier"))
+            if (unit.B("post_carrier"))
                 DrawCommander(unit);
         foreach (var number in battle.DamageNumbers)
         {

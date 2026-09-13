@@ -41,7 +41,7 @@ internal static class SlowCampaign
             runs.Add(new Player(seed, target, attentive, idle).Play());
         }
         Directory.CreateDirectory("artifacts");
-        string path = "artifacts/" + (idle ? "idle-campaign-control" : attentive ? "attentive-control-60" : "inattentive-campaign-60") + ".json";
+        string path = "artifacts/" + (idle ? "idle-campaign-control-" : attentive ? "attentive-control-" : "inattentive-campaign-") + target + ".json";
         var report = new DataMap {
             ["policy"] = idle ? "only acknowledges the first-hit guide; no construction, economy or further research" : attentive ? "attentive diagnostic control" : "inattentive, gradually learning player",
             ["target_completed_wave"] = target, ["simulation_hz"] = 30, ["combat_settings_overridden"] = false,
@@ -57,6 +57,7 @@ internal static class SlowCampaign
                 ["opening_full_wave"] = CombatCatalog.Current.Values.OpeningDamageFullWave },
             ["initial_meta_progress"] = "none; perks can only be bought with chips earned in this run",
             ["operations"] = idle ? "No player actions after acknowledging tutorial" : attentive ? "Every 8s, no skipped review; same construction/research priorities" : "Every 22-30s; skips every fifth review. At most one building and one research per attended review.",
+            ["loot_policy"] = idle ? "No pickup clicks; all defeated-enemy currency stays in the world." : "Each attended review clicks existing world pickup clusters. The actual 0.9s UI flights advance each frame, including guide pauses; only arrival credits resources. Camera search and pointer travel are not simulated.",
             ["economy"] = idle ? "No economic or perk actions" : attentive ? "Review every 30s" : "Review resources every 150s, no income expansion before wave4; at most one income building per review. Core/perk review every240s.",
             ["research_review"] = idle ? "Free first-hit shield unlock only; no tower is built" : attentive ? "At each attended review when affordable" : "After a purchase, waits at least60s before another research review; funds may sit idle until an attended22-30s check. This is player behavior, not a game cooldown.",
             ["defense"] = "First directions react to real Earth hits; later directions are noticed after a delay. At an attended review, noticed recent damage takes priority over economic expansion. One building maximum, no artificial second construction cooldown. Defenses are never removed to fabricate leaks.",
@@ -77,6 +78,7 @@ internal static class SlowCampaign
         private readonly CampaignTestSurface _surface = new();
         private readonly Battlefield _battle;
         private readonly DefenseCampaignDirector _campaign;
+        private readonly PlayerLootCollection _loot;
         private readonly Random _attention;
         private readonly int _seed, _target;
         private readonly bool _attentive, _idle;
@@ -98,6 +100,7 @@ internal static class SlowCampaign
                 || _game.Achievements.UnlockedCount != 0 || _surface.GridCellCount != 40962)
                 throw new InvalidOperationException("Fresh campaign setup failed.");
             _battle = new(_game, _surface); _battle.Random.Seed = (ulong)seed;
+            _loot = new(_battle);
             _campaign = new(_game, _battle);
             _battle.InvasionDefeated += _campaign.SyncCampaign;
             _battle.EarthDamaged += EarthHit;
@@ -112,6 +115,7 @@ internal static class SlowCampaign
             const double dt = 1d / 30;
             while (_game.CompletedWaves < _target && !_battle.Dead && _time < 7200)
             {
+                _loot.Advance(dt);
                 if (_battle.Paused)
                 {
                     _wallTime += dt;
@@ -157,6 +161,7 @@ internal static class SlowCampaign
                 ["satellite_online_seconds"] = _satelliteOnline, ["paid_research"] = _paidResearch, ["science_spent"] = _paidScience,
                 ["reviews"] = _reviews, ["skipped_reviews"] = _skipped, ["peak_drones"] = _peakDrones, ["peak_enemies"] = _peakEnemies,
                 ["kills"] = _game.Kills, ["destroyed_drones"] = _battle.DestroyedDrones,
+                ["loot"] = _loot.Report(),
                 ["near_mothers_destroyed"] = _battle.GetDestroyedFronts().Count, ["earth_liberated_seconds"] = _liberatedAt,
                 ["research_goals_unmet"] = Goals.Where(id => !_game.HasResearch(id)).Select(id => (object?)new DataMap {
                     ["id"] = id, ["name"] = DeepTechnology.Definition(id).S("name"), ["reason"] = _game.GetGroupStatus(id).S("lock_reason") }).ToList(),
@@ -202,6 +207,8 @@ internal static class SlowCampaign
             _reviews++; _nextReview = _time + (_attentive ? 8 : 22 + _attention.Next(9));
             if (_idle) { _skipped++; return; }
             if (!_attentive && _reviews % 5 == 0) { _skipped++; Log("attention_skipped", "", "missed this review"); return; }
+            int pickups = _loot.Review();
+            if (pickups > 0) Log("loot_clicked", pickups.ToString(), "world pickups begin their unpaid flight to the resource bar");
             if (_game.Buildings.L("satellite_launcher") == 0)
             {
                 Build("satellite_launcher", _surface.InitialFactoryNormal.Rotated(Vector3.Up, .15f), null); return;
@@ -290,7 +297,6 @@ internal static class SlowCampaign
                 // Do not let a wave/stage-locked milestone freeze all learning.
                 var unlock = DeepTechnology.Definition(next).Map("unlock");
                 if (unlock.L("completed_wave") > _game.CompletedWaves || unlock.L("defense_stage") > _game.GetDefenseReachStage()) continue;
-                if (unlock.B("first_medium_boss_defeated") && _game.GetGroupStatus(next).S("lock_reason") == "先击败一只中型Boss") continue;
                 return next;
             }
             return "";

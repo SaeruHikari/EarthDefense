@@ -737,6 +737,8 @@ public partial class Main
 
     private DataMap PickWorldTarget(Vector2 point, bool precise = false)
     {
+        var loot = PickLootTarget(point, precise);
+        if (loot.Count > 0) return loot;
         var target = Planet.PickNavigationTarget(point);
         if (target.S("kind") == "body" && target.S("id") == FocusId)
             target = new DataMap();
@@ -768,6 +770,7 @@ public partial class Main
             _navigationCursorActive = false;
         }
         _aircraftHover = new();
+        _hoveredLootUid = -1;
     }
 
     private void CancelNavigationPress()
@@ -788,7 +791,8 @@ public partial class Main
             return;
         }
         var target = PickWorldTarget(Mouse);
-        if (target.S("kind") == "aircraft")
+        _hoveredLootUid = target.S("kind") == "loot" ? target.L("uid") : -1;
+        if (target.S("kind") is "aircraft" or "loot")
             Planet.ClearNavigationHover();
         else
             Planet.SetNavigationHover(target);
@@ -856,7 +860,9 @@ public partial class Main
                     if (click)
                     {
                         ClearNavigationFeedback();
-                        if (target.S("kind") == "aircraft")
+                        if (target.S("kind") == "loot" && PickLootTarget(Mouse, true).L("uid", -1) == target.L("uid"))
+                            TryCollectLoot(target.L("uid"));
+                        else if (target.S("kind") == "aircraft")
                             SelectAircraftPerkTarget(target);
                         else if (target.S("kind") == "body")
                             FocusBody(target.S("id"));

@@ -52,7 +52,7 @@ public partial class Main
             var item = _headerSnapshot[i];
             float valueWidth = HudTextWidth(item.S("value"), 15);
             _headerValueWidths[i] = valueWidth;
-            _headerWidths[i] = item.S("id") == "forecast" ? 91 : Math.Max(64, 41 + valueWidth + HudTextWidth(item.S("gain"), 10));
+            _headerWidths[i] = Math.Max(64, 41 + valueWidth + HudTextWidth(item.S("gain"), 10));
             _headerTotalWidth += _headerWidths[i];
         }
         return _headerSnapshot;

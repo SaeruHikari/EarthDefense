@@ -8,7 +8,7 @@ public sealed partial class DefenseState
 {
     public DataMap Serialize() => new()
     {
-        ["version"] = 1L,
+        ["version"] = 2L,
         ["incremental_version"] = 1L,
         ["world_scale_version"] = WorldScaleVersion,
         ["balance_revision"] = CombatBalanceRevision,
@@ -34,6 +34,7 @@ public sealed partial class DefenseState
         ["resource_core_upgrades"] = _resourceUpgrades.DeepClone(),
         ["research_state"] = DeepSave(),
         ["research_runtime"] = RuntimeSave(),
+        ["enemy_loot"] = EnemyLootSave(),
         ["airframe_selection"] = _airframes.DeepClone(),
         ["research_flags"] = _flags.DeepClone(),
         ["expedition"] = Expedition.Serialize()
@@ -59,7 +60,8 @@ public sealed partial class DefenseState
     }
     public bool Restore(DataMap data)
     {
-        if (!DataMap.ValidNumber(data.Value("version"), 1, 1, true) || !DataMap.ValidNumber(data.Value("world_scale_version"), WorldScaleVersion, WorldScaleVersion, true) || !DataMap.ValidNumber(data.Value("defense_reach_stage", 0), 0, 3, true))
+        if (_settlingLoot) return false;
+        if (!DataMap.ValidNumber(data.Value("version"), 2, 2, true) || !DataMap.ValidNumber(data.Value("world_scale_version"), WorldScaleVersion, WorldScaleVersion, true) || !DataMap.ValidNumber(data.Value("defense_reach_stage", 0), 0, 3, true))
             return false;
         if (data.Value("run_id") is not string suppliedRunId || suppliedRunId.Length == 0 || suppliedRunId.Length > 96)
             return false;
@@ -69,7 +71,7 @@ public sealed partial class DefenseState
             return false;
         if (data.Value("buildings") is not DataMap savedBuildings)
             return false;
-        DataMap? settings = data.Value("combat_settings") is DataMap values ? ReadBalancedCombatSettings(values, data.Value("balance_revision", 0)) : null;
+        DataMap? settings = data.Value("combat_settings") is DataMap values ? ReadBalancedCombatSettings(values, data.Value("balance_revision")) : null;
         if (settings == null)
             return false;
         if (data.Value("research_satellite_deployed") is not bool satelliteDeployed || data.Value("research_satellite_launching") is not bool satelliteLaunching || satelliteDeployed && satelliteLaunching)
@@ -93,6 +95,9 @@ public sealed partial class DefenseState
         var payload = ValidateResearchPayload(data);
         if (payload == null)
             return false;
+        var loot = ValidateEnemyLoot(data.Value("enemy_loot"), suppliedRunId, payload.Map("runtime"));
+        if (loot == null)
+            return false;
         var state = payload.Map("state");
         if (!DataMap.ValidNumber(data.Value("shield"), 0, ResourceLimit))
             return false;
@@ -107,7 +112,6 @@ public sealed partial class DefenseState
         if (expedition == null)
             return false;
         string runId = suppliedRunId;
-        if (!FlushAlienChipDrops()) return false;
         if (!FactoryPerks.ResetRunSites(runId))
             return false;
         Minerals = data.N("minerals");
@@ -132,13 +136,14 @@ public sealed partial class DefenseState
         DefenseReachStage = data.I("defense_reach_stage");
         RunId = runId;
         ApplyResearchPayload(payload);
+        RestoreEnemyLoot(loot);
         InvalidateFactoryStats();
         Changed?.Invoke();
         return true;
     }
     public bool Reset()
     {
-        if (!FlushAlienChipDrops()) return false;
+        if (_settlingLoot) return false;
         string id = Guid.NewGuid().ToString("N");
         if (!FactoryPerks.ResetRunSites(id))
             return false;
@@ -165,7 +170,6 @@ public sealed partial class DefenseState
         _successorLevels = new();
         _flags = new()
         {
-            ["first_medium_boss_defeated"] = false,
             ["missile_intel"] = FactoryPerks.KnowsIntel("M1"),
             ["laser_intel"] = FactoryPerks.KnowsIntel("L1"),
             ["unrestricted_research"] = false
@@ -181,6 +185,7 @@ public sealed partial class DefenseState
         _sacrificeBucket = -1;
         _sacrificeUsed = 0;
         _rewardedEnemies.Clear();
+        ClearEnemyLoot();
         Expedition.Reset(false);
         InvalidateFactoryStats();
         Changed?.Invoke();
@@ -190,14 +195,14 @@ public sealed partial class DefenseState
     {
         var state = DeepTechnology.Validate(data.Value("research_state"));
         var frames = AirframeCatalog.Validate(data.Value("airframe_selection"));
-        if (state == null || frames == null || data.Value("research_flags") is not DataMap flags || flags.Count != 4 || flags.Keys.Any(k => k is not ("first_medium_boss_defeated" or "missile_intel" or "laser_intel" or "unrestricted_research")) || new[] { "first_medium_boss_defeated", "missile_intel", "laser_intel", "unrestricted_research" }.Any(k => flags.Value(k) is not bool))
+        if (state == null || frames == null || data.Value("research_flags") is not DataMap flags || flags.Count != 3 || flags.Keys.Any(k => k is not ("missile_intel" or "laser_intel" or "unrestricted_research")) || new[] { "missile_intel", "laser_intel", "unrestricted_research" }.Any(k => flags.Value(k) is not bool))
             return null;
         foreach (string id in state.Map("nodes").Keys)
         {
             if (flags.B("unrestricted_research"))
                 continue;
             var gate = DeepTechnology.Definition(id).Map("unlock");
-            if (data.I("defense_reach_stage") < gate.I("defense_stage") || data.L("completed_waves") < gate.L("completed_wave") || gate.B("first_medium_boss_defeated") && !flags.B("first_medium_boss_defeated"))
+            if (data.I("defense_reach_stage") < gate.I("defense_stage") || data.L("completed_waves") < gate.L("completed_wave"))
                 return null;
         }
         foreach (string field in new[] { "templates", "sites", "berths" })

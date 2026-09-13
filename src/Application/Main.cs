@@ -215,8 +215,6 @@ public partial class Main : Node2D
 
 	public override void _ExitTree()
 	{
-		if (Game != null && !Game.FlushAlienChipDrops())
-			GD.PushError("退出时外星芯片保存失败：" + Game.FactoryPerks.LastError);
 		FlushCheckpointWrites(false);
 		if (Game != null && IsInstanceValid(GetViewport()))
 			GetViewport().SizeChanged -= ResizeWorldView;
@@ -311,6 +309,7 @@ public partial class Main : Node2D
 		Battle.Step(delta);
 		if (CaptureFrameTimings) LastCombatStepMs = FrameElapsed(combatStart);
 		Campaign.Step(delta);
+		UpdateLootPresentation(delta);
 		UpdateTacticalAlerts(delta);
 		UpdateFactoryCoverage(delta);
 		UpdateShieldCoverage(delta);
@@ -355,6 +354,7 @@ public partial class Main : Node2D
 		_renderProjectiles.AddRange(Battle.HostileShots);
 		Planet.SyncCombatUnits(Battle.Drones, Battle.Enemies, _renderProjectiles, Battle.Beams, Battle.Bursts);
 		Planet.SyncFactoryActivity(Battle.FactoryActivity);
+		Planet.SyncLoot(Battle.LootPickups, Elapsed, _hoveredLootUid);
 		Planet.SyncLocalShields(Battle.GetLocalShieldState());
 		Planet.SetInvasionFronts(Battle.GetInvasionFronts());
 		Planet.SyncUnitShields(Battle.Motherships.Values);
@@ -418,14 +418,9 @@ public partial class Main : Node2D
 		_graphDirty = true;
 		string hint = wave switch
 		{
-			3 => "中型指挥舰出现 · 击败可获得外星科技点与永久特性",
-			5 => "重甲增援 · 导弹武装对重甲更有效",
-			10 => "外星光学情报就绪 · 准备研究聚能激光",
-			16 => "能量甲出现 · 激光拆层，动能或导弹接力",
-			20 => "混合装甲编队 · 检查三类武器覆盖",
-			21 => "织幕支援舰出现 · 优先拆除支援能量层",
-			24 => "孵化运输舟出现 · 提前截击运输目标",
-			28 => "干扰机出现 · 轻甲猎杀机型能快速处理",
+			1 => "击毁敌机后左键拾取掉落 · 飞抵左上角后资源入账",
+			5 => "新方向出现 · 稀有资源核心与外星科技点需要拾取",
+			10 => "外星光学情报就绪 · 可准备研究聚能激光",
 			_ => ""
 		};
 		if (hint != "")
@@ -454,7 +449,6 @@ public partial class Main : Node2D
 		Defeated = true;
 		Modal = "defeat";
 		NextWave = -1;
-		FlushAlienChipsForPersistence();
 		RecordDefeatAchievement();
 	}
 

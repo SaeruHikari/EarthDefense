@@ -64,13 +64,14 @@ foreach(var (id, attribute, value) in new[]
 var retainedPerkControls = new HashSet<string>
 {
  "launch_damage_seconds", "kill_spawn_reduction_cooldown", "erosion_max_stacks", "erosion_duration",
- "cluster_fragments", "slow_duration", "slow_boss_multiplier", "refraction_targets", "k2_dense_hits_required",
+ "cluster_fragments", "slow_duration", "refraction_targets", "k2_dense_hits_required",
  "k2_dense_duration", "k2_reload_cooldown", "k3_peak_damage_multiplier", "m2_delayed_seconds",
  "m2_shock_required", "m2_shock_cooldown", "m3_escort_radius", "l3_damage_multiplier"
 };
 foreach(var row in golden.List("perk_effects").OfType<DataMap>())
 {
- int level=row.I("level");var expected=row.Map("effects").DeepClone();
+ int level=row.I("level");var expected=row.Map("effects").DeepClone();expected.Remove("slow_boss_multiplier");
+ if(expected.Remove("k3_support_first_multiplier",out object? firstHit))expected["k3_first_hit_multiplier"]=firstHit;
  foreach(string field in expected.Keys.ToArray())
  {
   double previous=expected.N(field);
@@ -87,9 +88,11 @@ foreach(var row in golden.List("perk_effects").OfType<DataMap>())
  }
  Compare(PerkCatalog.Effects(row.S("id"),level,PerkCatalog.DefaultSettings),expected,"rebalanced "+row.S("id")+" level"+level);
 }
-Compare(PerkCatalog.NeutralModifiers(),golden.Map("perk_neutral"),"neutral");
+var expectedNeutral=golden.Map("perk_neutral").DeepClone();expectedNeutral.Remove("slow_boss_multiplier");
+if(expectedNeutral.Remove("k3_support_first_multiplier",out object? neutralFirstHit))expectedNeutral["k3_first_hit_multiplier"]=neutralFirstHit;
+Compare(PerkCatalog.NeutralModifiers(),expectedNeutral,"neutral");
 // Real managed purchase, persistent transactions, inheritance and failure tests.
-var funded=new DefenseState{Minerals=1e12,Energy=1e12,Science=1e12,AlienPoints=100000,ResourceCores=100,Wave=120,CompletedWaves=120};funded.SetDefenseReachStage(3);funded.RewardKill("boss",120,3);
+var funded=new DefenseState{Minerals=1e12,Energy=1e12,Science=1e12,AlienPoints=100000,ResourceCores=100,Wave=120,CompletedWaves=120};funded.SetDefenseReachStage(3);
 var pending=DeepTechnology.Nodes.Select(row=>row.S("id")).ToHashSet();
 for(int pass=0;pass<DeepTechnology.Nodes.Count&&pending.Count>0;pass++){int before=pending.Count;foreach(string id in pending.ToList())if(funded.GetGroupStatus(id).B("can_purchase")){Check(funded.PurchaseGroup(id),"actual managed purchase "+id);pending.Remove(id);}if(before==pending.Count)break;}
 Check(pending.Count==0,"entire248 actual managed DAG purchase reachable: "+string.Join(",",pending));
@@ -98,9 +101,9 @@ Check(funded.SetAirframe("interceptor",18,-1,"K2"),"select heavy wing");var plan
 Check(!funded.SetAirframe("interceptor",18,1,"K1"),"cannot select second occupied capacity point");
 var fullSnapshot=funded.Serialize();var reopen=new DefenseState();Check(reopen.Restore(DataMap.Parse(fullSnapshot.ToJson())),"full purchasedmanaged save restore");Compare(reopen.DroneStats(),funded.DroneStats(),"purchasedfull restore exact");
 var small=new DefenseState{Science=80};double opening=small.Science;Check(small.PurchaseGroup("K_S01")&&small.Science==opening-4&&small.Minerals==320&&small.Energy==180,"small node onlyscience and one node");Check(small.DeepResearch.Count==1&&!small.HasResearch("K_S02"),"no bundled sibling purchase");Check(small.PurchaseGroup("K_S21")&&small.PurchaseGroup("M_N1"),"missile8 independent of alienpoint randomloot");small.Science=10000;Check(small.PurchaseGroup("I_S03")&&small.PurchaseGroup("I_S23"),"laser prerequisite science node");Check(!small.PurchaseGroup("L_N1"),"laser wave10 gate");small.Wave=10;small.RewardWave(10);Check(small.PurchaseGroup("L_N1"),"laser afterwave10");Check(small.Reset()&&!small.HasResearch("M_N1")&&small.FactoryPerks.KnowsIntel("L1"),"newrun remembersintel but resets paidnodes");small.Science=10000;small.PurchaseGroup("K_S01");small.PurchaseGroup("K_S21");small.PurchaseGroup("M_N1");small.PurchaseGroup("I_S03");small.PurchaseGroup("I_S23");Check(!small.PurchaseGroup("L_N1"),"permanentintel never skips newrun wave10 gate");
-var assault=new DefenseState{Science=100000,AlienPoints=100,Wave=24,CompletedWaves=23};assault.RewardKill("boss",3);foreach(string id in new[]{"C_S01","C_S21","C_S02","C_S22","C_S06","C_S26","C_N1","C_A1"})Check(assault.PurchaseGroup(id),"assault prerequisite "+id);Check(!assault.PurchaseGroup("C_G1")&&assault.GetGroupStatus("C_G1").S("lock_reason").Contains("24"),"assault explicit24gate");assault.RewardWave(24);Check(assault.PurchaseGroup("C_G1")&&assault.DroneStats().B("mothership_assault_unlocked"),"wave25 actual assault authorization");
+var assault=new DefenseState{Science=100000,AlienPoints=100,Wave=24,CompletedWaves=23};foreach(string id in new[]{"C_S01","C_S21","C_S02","C_S22","C_S06","C_S26","C_N1","C_A1"})Check(assault.PurchaseGroup(id),"assault prerequisite "+id);Check(!assault.PurchaseGroup("C_G1")&&assault.GetGroupStatus("C_G1").S("lock_reason").Contains("24"),"assault explicit24gate");assault.RewardWave(24);Check(assault.PurchaseGroup("C_G1")&&assault.DroneStats().B("mothership_assault_unlocked"),"wave25 actual assault authorization");
 funded.SetCombatSetting("resource_core_upgrade_percent",20);Check(funded.EffectiveResourceCorePercent()==22,"core configurablebase20 plus2points");double mineBase=funded.ResourceFacilityBaseOutputs().N("mine");Check(funded.Build("mine",33),"buildboostedresource");Compare(funded.ResourceFacilityOutput("mine",33),mineBase*2,"boostdoubleactualsiteoutput");Check(funded.UpgradeResourceFacility(33,"mine"),"coreupgradeboostedsite");Compare(funded.ResourceFacilityOutput("mine",33),mineBase*2*1.22,"coreplusboostcomposeonce");funded.Tick(10);var timerCopy=new DefenseState();Check(timerCopy.Restore(DataMap.Parse(funded.Serialize().ToJson())),"boost10seconds snapshot");timerCopy.Tick(10);Compare(timerCopy.ResourceFacilityOutput("mine",33),mineBase*1.22,"boostremaining10 expires");
-var carrier=new DefenseState{Wave=40};var unit=new DataMap{["kind"]="carrier",["uid"]=100L,["wave"]=30L,["defense_stage"]=1L};var wallet=carrier.Serialize();Check(carrier.RewardEnemy(unit),"carrierfirstreward");Check(carrier.Minerals==wallet.N("minerals")+22&&carrier.Energy==wallet.N("energy")+9&&carrier.Science==wallet.N("science")&&carrier.AlienPoints==0,"carrier22/9 resources with no passive science or alien reward");Check(!carrier.RewardEnemy(unit),"carrierduplicateidempotent");var carrier2=new DefenseState();Check(carrier2.Restore(DataMap.Parse(carrier.Serialize().ToJson()))&&!carrier2.RewardEnemy(unit),"carrierledgerpersists");carrier.RewardEnemy(new(){["kind"]="boss",["uid"]=101L,["wave"]=3L,["spawn_wave"]=3L});Check(carrier.AlienPoints==3,"overlappingbossusesgeneratedwave");
+var carrier=new DefenseState{Wave=40};var unit=new DataMap{["kind"]="carrier",["hp"]=0d,["uid"]=100L,["wave"]=30L,["defense_stage"]=1L};var wallet=carrier.Serialize();Check(carrier.RegisterEnemyLoot(unit).Count>0,"carrierfirstreward");Check(carrier.Minerals==wallet.N("minerals")&&carrier.Energy==wallet.N("energy"),"carrier reward waits for pickup arrival");Check(carrier.CollectLootBatch(carrier.PendingEnemyLoot.Select(row=>row.S("id")).ToArray())&&carrier.Minerals==wallet.N("minerals")+22&&carrier.Energy==wallet.N("energy")+9&&carrier.Science==wallet.N("science")&&carrier.AlienPoints==0,"carrier arrival credits22/9 resources with no science or alien reward");Check(carrier.RegisterEnemyLoot(unit).Count==0,"carrierduplicateidempotent");var carrier2=new DefenseState();Check(carrier2.Restore(DataMap.Parse(carrier.Serialize().ToJson()))&&carrier2.RegisterEnemyLoot(unit).Count==0,"carrierledgerpersists");
 string folder=Path.GetFullPath(Path.Combine(".runtime-tests","domain-permanent-"+Guid.NewGuid().ToString("N")));Directory.CreateDirectory(folder);string profile=Path.Combine(folder,"perks.json");
 var perks=new FactoryPerks();Check(perks.ProfilePath.Length==0&&!File.Exists(profile),"constructor noIO");Check(perks.LoadProfile(profile),"bind explicit isolated profile");
 var drop=perks.ClaimAlienChip("original","enemy:1");Check(drop.B("claimed")&&drop.L("alien_chips")==1&&perks.AlienChips==1&&!perks.IsUnlocked("a_kinetic_core"),"aircraft chip drop adds one currency without randomly unlocking perks");
@@ -137,6 +140,7 @@ LocalShieldChecks.Run(Check, golden);
 CsvCatalogChecks.Run(Check);
 AchievementChecks.Run(Check);
 AlienChipChecks.Run(Check);
+EnemyLootChecks.Run(Check);
 OpeningResearchChecks.Run(Check);
 Console.WriteLine($"DOMAIN_RESULT {checks-failures} PASS / {failures} FAIL");
 return failures==0?0:1;

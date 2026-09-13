@@ -57,7 +57,7 @@ public sealed partial class DefenseState
     public DataMap Buildings { get; private set; } = CatalogData.Load("economy.json").Map("initial_buildings").DeepClone();
     public DataMap CombatSettings { get; private set; } = DefaultCombatSettings;
     public DataMap DeepResearch { get; private set; } = new();
-    private DataMap _successorLevels = new(), _flags = new() { ["first_medium_boss_defeated"] = false, ["missile_intel"] = false, ["laser_intel"] = false, ["unrestricted_research"] = false };
+    private DataMap _successorLevels = new(), _flags = new() { ["missile_intel"] = false, ["laser_intel"] = false, ["unrestricted_research"] = false };
     private DataMap _airframes = AirframeCatalog.EmptySelection(), _resourceUpgrades = new();
     private List<DataMap> _refunds = new(), _boosts = new();
     private DataMap _boostUnits = new(), _boostSites = new(), _resourceLevelTotals = new();
@@ -322,33 +322,6 @@ public sealed partial class DefenseState
     }
     public double KillRewardMultiplier() => 1;
     public double WaveRewardMultiplier() => 1;
-    public long AlienRewardForWave(long wave, int stage = 0) => (long)Math.Ceiling((DomainBalance.Value("alien_reward_base") + Math.Floor(Math.Max(0, wave) / DomainBalance.Value("alien_reward_wave_interval"))) * (1 + DomainBalance.Value("alien_reward_stage_increment") * Math.Clamp(stage, 0, 3)));
-    public void RewardKill(string kind, long waveValue = -1, int stage = 0)
-    {
-        var reward = DomainBalance.KillReward(kind);
-        if(reward.Count==0)return;
-        double m=reward.N("minerals"),e=reward.N("energy"),s=reward.N("science");long score=reward.L("score"),ap=reward.B("wave_alien_reward")?AlienRewardForWave(waveValue<0?Wave:waveValue,stage):reward.L("alien_points");
-        long cores=reward.S("resource_core_setting").Length>0?CombatSettings.L(reward.S("resource_core_setting")):0;
-        if(reward.B("first_medium_boss"))_flags["first_medium_boss_defeated"]=true;
-        Minerals = Math.Min(ResourceLimit, Minerals + m * KillRewardMultiplier() * (1 + TechEffects().N("mineral_kill_bonus")));
-        Energy = Math.Min(ResourceLimit, Energy + e * KillRewardMultiplier());
-        Science = Math.Min(ResourceLimit, Science + s * KillRewardMultiplier());
-        AlienPoints = Math.Min(MaxExactInteger, AlienPoints + ap);
-        ResourceCores = Math.Min(MaxExactInteger, ResourceCores + cores);
-        Kills = Math.Min(MaxExactInteger, Kills + 1);
-        Score = Math.Min(MaxExactInteger, Score + score);
-        Changed?.Invoke();
-    }
-    public bool RewardEnemy(DataMap enemy)
-    {
-        string id = EnemyRewardIdentity(enemy, Wave);
-        if (!_rewardedEnemies.Add(id))
-            return false;
-        string kind = enemy.B("resource_core_carrier") ? "small_boss" : enemy.S("reward_kind", enemy.S("kind", "scout"));
-        RewardKill(kind, enemy.L("spawn_wave", enemy.L("wave", Wave)), enemy.I("defense_stage", DefenseReachStage));
-        QueueAlienChipDrop(enemy, id);
-        return true;
-    }
     public void RewardWave(long waveValue = -1)
     {
         long ended = waveValue < 0 ? Wave : waveValue;

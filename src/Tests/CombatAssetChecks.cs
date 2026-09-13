@@ -59,7 +59,9 @@ public partial class CombatAssetChecks : Node
         try
         {
             CatalogData.Configure(file => Godot.FileAccess.GetFileAsString("res://data/domain/" + file));
-            Check(RenderAssets.ModelKeys.Count == 31, "All 31 baked combat model keys are registered");
+            Check(RenderAssets.ModelKeys.Count == 17, "The 17 active aircraft, carrier and projectile model keys are registered");
+            Check(!RenderAssets.ModelKeys.Any(key => key.StartsWith("boss/") || key is "cruiser" or "small_boss" or "boss"),
+                "Retired enemy and boss models are absent from the active renderer catalog");
             foreach (string key in RenderAssets.ModelKeys)
             {
                 string path = RenderAssets.ModelPath(key);
@@ -97,27 +99,29 @@ public partial class CombatAssetChecks : Node
             var state = new DefenseState { Wave = 40 };
             var battle = new Battlefield(state);
             var enemies = new List<DataMap>();
+            Check(DefenseWavePlan.RoleOrder.SequenceEqual(new[] { "claw" }), "The wave catalog has one ordinary aircraft role");
             foreach (string role in DefenseWavePlan.RoleOrder)
             {
-                string kind = role is "claw" or "needle" or "prism" or "jammer" ? "scout" : "cruiser";
-                var actor = battle.SpawnEnemy(kind, new() { ["wave"] = 40L, ["stage"] = 0, ["role"] = role }, new Vector3(0, 0, WorldScale.SpawnMinRadius));
+                var actor = battle.SpawnEnemy("scout", new() { ["wave"] = 40L, ["stage"] = 0, ["role"] = role }, new Vector3(0, 0, WorldScale.SpawnMinRadius));
                 Check(actor != null, "Actual SpawnEnemy produced role " + role);
                 if (actor == null)
                     continue;
                 CheckKey(actor, true, false, "enemy/" + role);
                 enemies.Add(actor);
             }
+            // Stale optional visual metadata must never resurrect a retired model.
             foreach (string variant in new[] { "brood", "forge", "prism" })
             {
-                var boss = Packet("boss", uid++);
-                boss["boss_variant_id"] = variant;
-                CheckKey(boss, true, false, "boss/" + variant);
-                enemies.Add(boss);
+                var actor = Packet("scout", uid++);
+                actor["boss_variant_id"] = variant;
+                actor["enemy_role_id"] = "retired-role";
+                CheckKey(actor, true, false, "enemy/claw");
+                enemies.Add(actor);
             }
-            foreach (string kind in new[] { "scout", "cruiser", "small_boss", "boss", "carrier", "mothership" })
+            foreach (string kind in new[] { "scout", "carrier", "mothership" })
             {
                 var actor = Packet(kind, uid++);
-                CheckKey(actor, true, false, kind);
+                CheckKey(actor, true, false, kind == "scout" ? "enemy/claw" : kind);
                 enemies.Add(actor);
             }
 
@@ -199,7 +203,7 @@ public partial class CombatAssetChecks : Node
             renderer.Sync("enemies", enemies, .5f, 0);
             renderer.Sync("projectiles", bullets, 1f, 0);
             var batches = Batches(space).ToArray();
-            Check(batches.Length > 31, "Actual native buckets contain model parts");
+            Check(batches.Length >= 16, "Native buckets cover nine airframes, three enemy/carrier visuals and four projectile families");
             Check(batches.All(batch => batch.Multimesh.Mesh != null && batch.Multimesh.VisibleInstanceCount > 0), "Every populated batch has visible native instances");
             foreach (string family in new[] { "interceptor", "laser", "missile", "hostile" })
                 Check(batches.Any(batch => batch.Name.ToString().Contains("projectile_" + family, StringComparison.Ordinal)), "Native projectile family uploaded: " + family);
@@ -210,7 +214,7 @@ public partial class CombatAssetChecks : Node
             Check(RenderAssets.ModelFallbackDiagnostics.Count == 0, "All valid gameplay packet forms render without an asset fallback");
 
             // Fault contracts use only transient test nodes, never modify a baked asset.
-            foreach (string key in new[] { "airframe/K1", "airframe/M1", "airframe/L1", "enemy/claw", "boss/brood", "projectile/hostile", "projectile/missile" })
+            foreach (string key in new[] { "airframe/K1", "airframe/M1", "airframe/L1", "enemy/claw", "carrier", "projectile/hostile", "projectile/missile" })
             {
                 var fallback = RenderAssets.CreateFallbackModel(key);
                 Check(RenderAssets.HasRenderableGeometry(fallback), "Last-resort fallback remains visible: " + key);
@@ -264,40 +268,82 @@ public partial class CombatAssetChecks : Node
         {
             app = new Earthward.Application.Main();
             AddChild(app);
+            app.Sounds.Muted = true;
+            app.Modal = "";
+            app.Speed = 1;
             app.StartWave();
+            app.PreserveCheckpoint = true;
             var sites = app.Planet.GetFactorySites();
-            if (sites.Count > 0)
-            {
-                var normal = sites[0].Vector3("normal");
-                for (int i = 0; i < 3; i++)
-                {
-                    var direction = normal.Rotated(Vector3.Up, (i - 1) * .035f);
-                    app.Battle.SpawnEnemy("scout", new() { ["wave"] = 1L, ["role"] = "claw" }, app.Planet.SurfaceToSpace(direction, 1.2));
-                }
-            }
+            Check(sites.Count > 0 && app.Started && app.Battle.Active, "live fixture starts its real starter factory and wave");
             var friendlyIds = new HashSet<long>();
             var hostileIds = new HashSet<long>();
+            var firingDrones = new HashSet<long>();
             int nativeFrames = 0;
             int visibleProjectileFrames = 0;
+            int friendlyNativeFrames = 0;
+            bool encounterSeeded = false, resumedFirstImpactGuide = false;
             ulong started = Time.GetTicksMsec();
             GD.Print("COMBAT_ASSET_LIVE: starting 30 seconds of real Main/native-render combat");
             while (Time.GetTicksMsec() - started < 30000)
             {
                 await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
                 nativeFrames++;
+                // Close-range enemies used to be inserted before the starter
+                // factory's five-second build plus launch animation completed.
+                // Their first Earth hit paused Main for the shield tutorial,
+                // leaving the test to count frozen hostile meshes for 30 seconds.
+                // Wait for a real production aircraft, then give it a valid
+                // engagement inside its unchanged weapon/home coverage.
+                if (!encounterSeeded)
+                {
+                    var ready = app.Battle.Drones.FirstOrDefault(drone => drone.S("kind") == "interceptor"
+                        && drone.N("hp") > 0 && drone.N("launch_age") >= CombatScale.LaunchDuration
+                        && drone.S("state") is "patrol" or "engaging");
+                    if (ready != null)
+                    {
+                        Vector3 origin = app.Battle.GetDroneWorldPosition(ready);
+                        Vector3 radial = origin.Normalized();
+                        Vector3 across = radial.Cross(Vector3.Up);
+                        across = across.LengthSquared() > .0001f ? across.Normalized() : Vector3.Right;
+                        Vector3 target = origin + radial * 1.25f;
+                        if (app.Battle.CanDroneEngagePosition(ready, target))
+                        {
+                            for (int i = 0; i < 3; i++)
+                                app.Battle.SpawnEnemy("scout", new() { ["wave"] = 1L, ["role"] = "claw" }, target + across * ((i - 1) * .16f));
+                            encounterSeeded = true;
+                            GD.Print($"COMBAT_ASSET_LIVE: factory aircraft {ready.L("uid")} completed launch at {app.Battle.Clock:F2}s; close encounter deployed");
+                        }
+                    }
+                }
+                // A player's Space input explicitly resumes the one-time guide.
+                // Exercise that input rather than suppressing production onboarding.
+                if (!resumedFirstImpactGuide && app.LocalShieldGuidePending && app.UserPaused && !app.Defeated)
+                {
+                    Input.ParseInputEvent(new InputEventKey { Keycode = Key.Space, Pressed = true });
+                    Input.ParseInputEvent(new InputEventKey { Keycode = Key.Space, Pressed = false });
+                    resumedFirstImpactGuide = true;
+                    GD.Print("COMBAT_ASSET_LIVE: acknowledged first-impact guide with native Space input");
+                }
                 foreach (var shot in app.Battle.Shots)
                     friendlyIds.Add(shot.L("uid"));
                 foreach (var shot in app.Battle.HostileShots)
                     hostileIds.Add(shot.L("uid"));
+                foreach (var drone in app.Battle.Drones)
+                    if (drone.L("total_weapon_shots") > 0) firingDrones.Add(drone.L("uid"));
                 if (Batches(app.Planet.SpaceRoot).Any(batch => batch.Visible && batch.Multimesh.VisibleInstanceCount > 0 && batch.Name.ToString().Contains("projectiles_", StringComparison.Ordinal)))
                     visibleProjectileFrames++;
+                if (Batches(app.Planet.SpaceRoot).Any(batch => batch.Visible && batch.Multimesh.VisibleInstanceCount > 0 && batch.Name.ToString().Contains("projectiles_projectile_interceptor_", StringComparison.Ordinal)))
+                    friendlyNativeFrames++;
             }
             Check(nativeFrames > 120, "Thirty-second live battle submitted more than 120 native frames");
+            Check(encounterSeeded, "a factory-produced aircraft finishes launch and receives an in-range encounter");
+            Check(firingDrones.Count > 0, "real factory aircraft weapon counters confirm actual firing");
             Check(friendlyIds.Count > 0, "Actual factory aircraft fired during real Main rendering");
             Check(hostileIds.Count > 0, "Actual enemies fired during real Main rendering");
             Check(visibleProjectileFrames > 0, "Real projectile packets reached visible native MultiMesh batches");
+            Check(friendlyNativeFrames > 0, "actual friendly kinetic shots reached visible native MultiMesh batches");
             Check(RenderAssets.ModelFallbackDiagnostics.Count == 0, "Thirty-second valid gameplay requires no fallback model");
-            GD.Print($"COMBAT_ASSET_LIVE: frames={nativeFrames}, friendly={friendlyIds.Count}, hostile={hostileIds.Count}, visible_projectile_frames={visibleProjectileFrames}");
+            GD.Print($"COMBAT_ASSET_LIVE: frames={nativeFrames}, friendly={friendlyIds.Count}, hostile={hostileIds.Count}, visible_projectile_frames={visibleProjectileFrames}, friendly_native_frames={friendlyNativeFrames}, firing_drones={firingDrones.Count}, simulation_seconds={app.Battle.Clock:F2}, guide_resumed={resumedFirstImpactGuide}");
         }
         catch (Exception error)
         {

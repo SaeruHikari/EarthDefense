@@ -1,4 +1,4 @@
-﻿# 数值表编辑说明
+# 数值表编辑说明
 
 正式运行时使用本目录的 UTF-8 CSV。科技、机型、建筑、特性、资源、初始基数与奖励目录不再读取旧的正式 JSON；缺表、重复 ID、无效数值、未知引用或科技循环依赖会报错，并显示文件、行号或对应 ID。修改后重新启动游戏生效。
 
@@ -19,6 +19,7 @@
 | 特性实际效果公式 | `perk_effect_rules.csv` |
 | 基础与高级特性的购买价、升级费用/等级上限 | `perk_tiers.csv`、`perks_settings.csv` |
 | 普通敌方战机的外星芯片掉率（默认 3%，每次 1 枚） | `perk_economy.csv` |
+| 普通敌机的资源核心与外星科技点掉率（默认 0.5% / 0.25%，每次 1 个） | `domain_balance.csv` 的 `resource_core_drop_chance`、`alien_point_drop_chance` |
 | 永久特性工程参数的合法范围 | `perk_setting_bounds.csv` |
 | 首次战败成就文案、每项护盾容量科技的永久额外增量 | `achievements.csv` 的 `reward_per_research`（默认 1） |
 | 建筑定义、数量上限与造价 | `economy_buildings.csv`、`economy_buildings_cost.csv` |
@@ -26,7 +27,7 @@
 | 参数界面的默认值、上下限和整数设置 | `economy_settings.csv`、`economy_ranges.csv`、`economy_integer_settings.csv` |
 | 初始资源、武器基数、资源产出、波次奖励等 | `domain_balance.csv` |
 | 各工厂基础巡航半径、远端范围、速度和生命 | `patrol_bases.csv` |
-| 击杀每类敌人的资源、积分、外星点和核心规则 | `kill_rewards.csv` |
+| 普通敌机与母舰的固定矿物、能量、科研和积分 | `kill_rewards.csv` |
 | 零科研开局、卫星科研与无战斗科研奖励 | `domain_balance.csv` 的 `initial_science`、`science_output_base`、`wave_science_*` 及 `kill_rewards.csv` 的 `science` |
 | 后继单级科技的收益、科研与外星点增长曲线 | `successor_research.csv` |
 | 四层边境航程基础值（供 C_A2/C_A3/C_G2 与外推使用） | `legacy_frontiers.csv` |
@@ -34,9 +35,25 @@
 
 `combat_*.csv` 由战斗系统维护，包含敌人和波次构成等内容；其具体列见该部分说明。
 
+## 战利品与领取
+
+普通出击敌机只有 `scout` / `claw` 一种。击毁后，`kill_rewards.csv` 中非零的矿物、能量和科研生成对应的实物；普通敌机当前每架为 9 矿物、3 能量、0 科研，积分为 30。`carrier` 是后续母舰，固定资源为 22 矿物与 9 能量；战略母舰 `mothership` 为 1800 矿物与 1200 能量。两种母舰都不提供资源核心、外星科技点或外星芯片。
+
+| 普通敌机稀有掉落 | 参数 | 默认概率 | 每次数量 |
+| --- | --- | ---: | ---: |
+| 资源核心 | `domain_balance.csv` → `resource_core_drop_chance` | 0.005 = 0.5% | 1 |
+| 外星科技点 | `domain_balance.csv` → `alien_point_drop_chance` | 0.0025 = 0.25% | 1 |
+| 外星芯片 | `perk_economy.csv` → `alien_chip_drop_chance` | 0.03 = 3% | 1 |
+
+三种稀有掉落独立判定，概率必须在 0 到 1 之间。判定由本局 ID、稳定敌机 ID 和币种共同决定；重放相同敌机、载入档案或改变战斗随机数消耗不会重新抽取。核心用于建设和强化资源设施，外星科技点用于外星研究，芯片用于永久特性的购买和升级。
+
+所有敌方货币奖励都遵循 **击毁生成实物 → 左键点击拾取 → 飞抵左上角资源栏 → 增加余额**。飞行途中和未点击时均不入账。击杀数及积分在击毁时立即记录；波次奖励与设施被动收入仍立即到账。领取一簇芯片仅写一次永久档案；写入失败时整簇保留待结算，其他同批资源也不会部分入账。
+
+Domain 存档版本为 2，必须包含 `enemy_loot` 的待领取奖励和已结算收据；战场档案同时保存实物位置和飞行状态。当前格式不接受缺少该字段的旧版档案。保存或经过时间不会自动领取物品；新局丢弃未领取物品及本局结算账本，已到账的永久芯片继续保留。修改奖励 CSV 只影响后续击毁产生的新物品，存档中已有物品的金额不随表格改动重算。
+
 ## 编辑规则
 
-- 文件编码为 UTF-8（包含 BOM，方便 Windows 表格软件识别中文）。保存时选择 UTF-8 CSV，保留逗号分隔。包含逗号、换行或双引号的单元格使用标准 CSV 引号规则。
+- 文件编码为 UTF-8，可带 BOM，方便 Windows 表格软件识别中文。保存时选择 UTF-8 CSV，保留逗号分隔。包含逗号、换行或双引号的单元格使用标准 CSV 引号规则。
 - 小数用点，例如 `0.15`；布尔值用 `true` / `false`；不要填写百分号、千位分隔符或公式。`0.15` 表示比例 15%，具体含义以属性名称与说明为准。
 - `id` 是稳定的游戏和存档 ID。`parent_id` 指向所属记录。例如科技效果表的 `parent_id=K_S01` 表示它属于 K_S01。不要只改 ID 而遗漏关联表。
 - `position` 是同一父记录下从 0 开始的顺序。新增或删除条目后保持连续；它不是界面坐标。地图坐标在 `draw_position` 关系表中：位置 0 是 x，位置 1 是 y。
@@ -80,11 +97,12 @@ dotnet run --project tests/DomainManaged/DomainManaged.csproj -v quiet
 | 改动 | 当前开发版行为 |
 | --- | --- |
 | 科技/特性公式、基础机型倍率 | 重启并载入后按新表编译效果；已购买节点、永久特性所有权和等级保持。 |
-| `economy_settings.csv` 的默认参数 | 新局使用默认值。版本 0 更新原五项节奏参数；版本 1 升至版本 2 时，仅替换仍为旧默认的敌方生命/伤害增长，自定义增长及周期保留。后续手动调整照常保存。 |
+| `economy_settings.csv` 的默认参数 | 新局使用默认值；只读取当前 balance_revision 的完整合法参数，自定义数值原样保存和恢复。缺版本、旧版本、缺字段或未知字段均拒绝，不进行历史默认数值迁移。 |
 | 永久特性设置 | 当前 ProfileVersion 的永久档优先；修改默认表不会覆盖已保存的配置。
 | 初始资源、初始建筑 | 只影响新局。结构改动后请清理开发 profile。
-| 敌人造型类别、波次权重、生成基数与技能参数 | 重启后新计划/新单位使用表值；当前版本快照按同一架构读取。
-| 击杀/波次奖励 | 重启后的后续结算读取新表，历史已领取奖励不会重新发放。 |
+| 普通敌机与母舰参数、波次生成基数 | 重启后新计划/新单位使用表值；当前版本快照按同一架构读取。
+| 击毁奖励与稀有掉率 | 后续击毁时读取当前启动的表格，生成实物时冻结金额；已有待领取物品保持原金额，已领取奖励不会重新发放。 |
+| 波次奖励 | 完成后续波次时立即结算，已完成波次不会再次发放。 |
 
 所有运行中的数值来自当前启动时加载的 CSV；更改建筑、经济或存档结构后应清理开发 profile 并从新局开始。永久特性档案也按当前 ProfileVersion 校验，不提供旧格式迁移。
 
@@ -122,17 +140,17 @@ K_S21,0,string,K_S01
 
 | 文件 | 用途 |
 | --- | --- |
-| `combat_enemies.csv` | 普通角色、Boss 变体、护甲、生命/火力/速度倍率和冷却。 |
+| `combat_enemies.csv` | 唯一普通敌机 `scout` 与后续母舰 `carrier` 的护甲、生命/火力/速度倍率和冷却。 |
 | `combat_enemy_kinds.csv` | 单位类别尺寸、投弹与攻击节奏等。 |
-| `combat_wave_composition.csv` | 各波次区间的角色权重；区间必须连续，权重不能为负。 |
+| `combat_wave_composition.csv` | 普通敌机统一为 `claw=1`，从第一波持续到无尽波次。 |
 | `combat_fronts.csv` | 母舰方位、颜色、方向与开放波次。 |
 | `combat_defense_stages.csv` | 每次外推对应的数值倍率。 |
 | `combat_armor.csv` | 武器对护甲/能量层的伤害关系。 |
-| `combat_tuning.csv` | 波次、数量、生成范围、精锐及特殊技能等公共系数。 |
+| `combat_tuning.csv` | 基础战斗数值、前期伤害缓冲、生成范围和后续母舰等公共系数。 |
 
 修改一类敌人的生命倍率可从 `combat_enemies.csv` 的对应 health 列开始，而不是把每个波次都复制一份敌人记录。各参数名称、单位和范围以表头与 tuning 表说明为准。
 
-前期伤害缓冲由 `combat_tuning.csv` 的三个参数控制：`OpeningDamageMultiplier=0.35`，保持至 `OpeningDamageHoldThroughWave=20`，再线性恢复到 `OpeningDamageFullWave=40` 时的完整伤害。它同时作用于对飞机伤害和对地伤害下限；波数必须为整数，恢复结束波必须大于保持截止波。该倍率叠加在 `DamageBase=9` 与波次成长、首波保护、精锐及阶段倍率上。地球承伤另由 `GroundDamageMultiplier=0.075` 和 `GroundDamageFloor=0.03` 控制，仍会受到真实攻击与局部盾拦截。
+前期伤害缓冲由 `combat_tuning.csv` 的三个参数控制：`OpeningDamageMultiplier=0.35`，保持至 `OpeningDamageHoldThroughWave=20`，再线性恢复到 `OpeningDamageFullWave=40` 时的完整伤害。它同时作用于对飞机伤害和对地伤害下限；波数必须为整数，恢复结束波必须大于保持截止波。该倍率叠加在 `DamageBase=9` 与波次成长、首波保护及阶段倍率上。地球承伤另由 `GroundDamageMultiplier=0.075` 和 `GroundDamageFloor=0.03` 控制，仍会受到真实攻击与局部盾拦截。
 
 局部盾表面覆盖半径为 `economy_local_shield.csv` 的 `surface_radius=6.5`。修复仍需研究 `D_S41`，费用在科技费用表为 6；每座发生器的 `earth_repair_rate=0.05` 在属性表配置，对应效果说明也应同步编辑。建好两座发生器并研究修复后共恢复每分钟 6 HP，没有科技或没有发生器时不会恢复。
 

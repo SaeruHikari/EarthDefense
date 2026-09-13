@@ -78,12 +78,16 @@ public partial class UnitShieldRenderChecks : Node
             Check(Math.Abs(turned.Basis.Z.Length() / k3Shell.Basis.Z.Length() - .5) < .0001, "changing aircraft render scale changes shield by the same factor");
 
             var enemyRows = new List<DataMap>();
-            string[] roles = ["claw", "needle", "rock", "siege", "prism", "weaver", "hatcher", "jammer"];
-            for (int i = 0; i < roles.Length; i++) { var actor = Actor(100 + i, "scout", new((i - 3.5f) * .8f, -1, 0), 75); actor["enemy_role_id"] = roles[i]; enemyRows.Add(actor); }
-            for (int i = 0; i < 3; i++) { var actor = Actor(200 + i, "boss", new((i - 1) * 2f, -2.1f, 0), 100); actor["boss_variant_id"] = new[] { "brood", "forge", "prism" }[i]; enemyRows.Add(actor); }
+            for (int i = 0; i < 4; i++)
+            {
+                var actor = Actor(100 + i, "scout", new((i - 1.5f) * 1.4f, -1, 0), (i + 1) * 25);
+                actor["enemy_role_id"] = "claw";
+                Check(FleetRenderer.VisualKey(actor, true, false) == "enemy/claw", "ordinary shielded aircraft retains the unified hull");
+                enemyRows.Add(actor);
+            }
             enemyRows.Add(Actor(300, "carrier", new(0, 2, 0), 100));
             hulls.Sync("enemies", enemyRows, .7f, 0);
-            Check(shields.InstanceCount == 15 && shields.BatchCount == 2, "all eight enemy roles, three bosses and moving carrier have shields");
+            Check(shields.InstanceCount == 8 && shields.BatchCount == 2, "four ordinary aircraft integrity levels and a moving carrier share one enemy shield batch");
             using var models = await Capture("unit-shields-model-family");
             var surfaceActor = new DataMap { ["uid"] = 700L, ["kind"] = "laser", ["airframe_id"] = "L1", ["normal"] = Vector3.Back, ["altitude"] = .7d, ["tangent"] = Vector3.Right, ["hp"] = 100d, ["energy_hp"] = 50d, ["energy_max_hp"] = 100d };
             hulls.Sync("drones", new[] { surfaceActor }, .5f, 0);

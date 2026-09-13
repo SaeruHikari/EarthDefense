@@ -63,6 +63,7 @@ internal static class NaturalOpening
             ["action_interval_seconds"] = 10d, ["reaction_delay_after_two_hits_min_seconds"] = 10d,
             ["reaction_delay_after_two_hits_max_seconds"] = 20d,
             ["first_hit_guide_reading_paused_seconds"] = 10d,
+            ["loot_policy"] = "Each ten-second action review clicks existing world pickup clusters. Real 0.9s flights advance every UI frame, including tutorial pauses; funds become spendable only on arrival. Camera search and pointer travel are not simulated.",
             ["launch_seconds"] = 30d, ["earth_radius"] = CombatScale.EarthRadius, ["runs"] = runs }.ToJson());
         int failures = runs.Cast<DataMap>().Count(r => !r.B("survived") || !r.B("legitimate_run") || !r.B("all_new_fronts_hit_earth_twice"));
         Console.WriteLine($"NATURAL_OPENING runs={runs.Count} failures={failures}");
@@ -79,6 +80,7 @@ internal static class NaturalOpening
             throw new InvalidOperationException("Requires default zero-science, no-perk, no-achievement state.");
         var surface = new Surface(); surface.Add("interceptor", Vector3.Back);
         var battle = new Battlefield(game, surface); battle.Random.Seed = (ulong)seed;
+        var loot = new PlayerLootCollection(battle);
         var purchases = new List<object?>(); var buildings = new List<object?>(); var waves = new List<object?>();
         double elapsed = 0, playerTime = 0, nextAction = 0, lastPaid = -60, damageReceived = 0, firstImpactAt = -1, satelliteAt = -1;
         double guideResumeAt = -1, guidePauseDuration = 0;
@@ -149,6 +151,7 @@ internal static class NaturalOpening
         void Act()
         {
             if (game.EarthHp <= 0) return;
+            loot.Review();
             // A novice reacts only to damage they experienced. No advance
             // construction at a newly revealed direction or its future sites.
             var candidates = encounters.Values.Where(f => f.Hits >= 2 && elapsed - f.SecondHit >= 10)
@@ -210,6 +213,7 @@ internal static class NaturalOpening
         battle.StartWave(); RecordMothers(); const double step = 1d / 30;
         while (elapsed < 600 - 1e-6 && !battle.Dead)
         {
+            loot.Advance(step);
             if (battle.Paused)
             {
                 playerTime += step; guidePauseDuration += step;
@@ -245,13 +249,14 @@ internal static class NaturalOpening
             ["guide_pause_seconds"] = guidePauseDuration, ["wave"] = game.Wave, ["completed_waves"] = game.CompletedWaves,
             ["earth_hp"] = game.EarthHp, ["shield_hp"] = battle.GetLocalShieldSummary().N("hp"),
             ["kills"] = game.Kills, ["destroyed_drones"] = battle.DestroyedDrones, ["earth_impacts"] = impacts,
+            ["loot"] = loot.Report(),
             ["earth_damage_received"] = damageReceived, ["first_impact_seconds"] = firstImpactAt,
             ["satellite_ready_seconds"] = satelliteAt, ["science"] = game.Science, ["science_per_second"] = game.Rates().N("science"),
             ["paid_research_count"] = purchases.Cast<DataMap>().Count(r => r.N("science_paid") > 0),
             ["research_count"] = purchases.Count, ["peak_enemies"] = peakEnemies, ["peak_drones"] = peakDrones,
             ["perks_owned"] = !noPerks, ["achievements_unlocked"] = game.Achievements.UnlockedCount,
             ["default_settings_unchanged"] = game.CombatSettings.ToJson() == DefenseState.DefaultCombatSettings.ToJson(),
-            ["all_new_fronts_hit_earth_twice"] = encounters.Values.All(f => f.Hits >= 2),
+            ["all_new_fronts_hit_earth_twice"] = encounters.Values.Where(f => f.SpawnAt > 0).All(f => f.Hits >= 2),
             ["front_encounters"] = encounters.Values.Select(f => (object?)f.Report()).ToList(), ["hit_log"] = hitLog,
             ["action_queue_log"] = queueLog,
             ["purchases"] = purchases, ["buildings"] = buildings, ["waves"] = waves };

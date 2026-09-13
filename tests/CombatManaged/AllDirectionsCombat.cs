@@ -53,7 +53,7 @@ internal static class AllDirectionsCombat
         var game=new DefenseState{Wave=1};var b=new Battlefield(game,new RotatingSurface());var farSide=Vector3.Forward*(float)CombatScale.CloseAssault;
         var enemy=b.SpawnEnemy("scout",new(){["wave"]=1L,["role"]="claw"},farSide)!;enemy["phase"]="ground_attack";
         Check((bool)Call(b,"CanBombardEarth",enemy)!,"wave1 far-side enemy has ordinary planetary attack access");double shield=game.EarthHp;
-        Call(b,"FireHostile",enemy,2d,false);Check(b.HostileShots.Count>0,"far-side planetary shot is actually fired");b.UpdateShots(1.0);Near(game.EarthHp,shield-2,"actual far-side shot damages Earth normally",.000001);
+        Call(b,"FireHostile",enemy,2d);Check(b.HostileShots.Count>0,"far-side planetary shot is actually fired");b.UpdateShots(1.0);Near(game.EarthHp,shield-2,"actual far-side shot damages Earth normally",.000001);
         b.DetonateHostile(Vector3.Forward*(float)CombatScale.EarthCollisionRadius,new(){["damage"]=10d,["target_kind"]="earth",["blast_radius"]=0d},null,true);Near(game.EarthHp,shield-12,"all-direction impact has no geographic damage immunity",.000001);
     }
     private static void FixedWaveCounts()
@@ -67,7 +67,7 @@ internal static class AllDirectionsCombat
             var plan=b.GetWaveSpawnPlan();Near(plan.N("duration"),spawn,"configured deployment window retained",.000001);Near(plan.N("cycle_duration"),cycle,"configured wave cycle retained",.000001);
             Check(plan.L("planned_count")==count,"larger Earth never multiplies the wave budget");b.UpdateSpawning(spawn);
             Check(b.GetWaveSpawnPlan().L("spawned")==count&&b.WaveRemaining==0,"every planned enemy consumes one budget entry");
-            long actual=b.Enemies.Count+b.Enemies.Sum(e=>e.List("cargo").Count);Check(actual==count,"hatcher reserve is within the same total budget");
+            Check(b.Enemies.Count==count&&b.Enemies.All(e=>e.S("kind")=="scout"),"every deployment is one ordinary aircraft within the same budget");
         }
     }
 }

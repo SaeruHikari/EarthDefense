@@ -2,6 +2,14 @@
 
 这些实验使用当前 `data/domain` 和真实 C# Domain / Combat，不使用压力测试的冻结数值，也不修改玩家档案。玩家失败是有效实验结果，不能为了得到绿色通过标记而补血、送资源、强推波次或削弱敌人。
 
+## 当前规则与历史报告
+
+当前出击敌机只有 `scout/claw` 一种轻甲普通机；小 Boss、中 Boss、精锐序号变种、其他敌机角色及其特殊技能已删除。近地母舰方向和后续外推的 `carrier` 来源仍保留。击毁敌人只登记击杀、分数和待回收物资，任何掉落货币都必须由玩家点击实物、等待其飞抵资源栏后才能使用。当前 CSV 默认的普通敌机稀有掉率为资源核心 0.5%、外星科技点 0.25%、芯片 3%；核心和外星点不再由固定 Boss 保证供应。
+
+**此前基于多种敌机、Boss 保底掉落或击杀立即入账得到的 60 波通过率、生命余量、科技节奏和经营结论，均不再适用于当前版本。** 历史报告仅保留为旧规则记录；相同种子也不能使旧报告成为新规则的基线。必须用当前表和下面的拾取行为重新完成目标波次，再建立新的 60 波结论。本次接入已核对第 5 波的 attentive / inattentive 短样本、第 3 波 idle 对照和三种子的十分钟开局样本；这些短样本不证明能够完成第 60 波。
+
+判定报告适用性时检查 JSON 中的 `catalog_sha256`、`target_completed_wave`、`loot_policy` 和每次运行的 `loot`，不要只根据文件名中的数字判断测试目标。旧报告没有拾取行为记录，不能用来推断当前实际到账或可消费资源。
+
 ## 注意力较差玩家，目标完成第 60 波
 
 在项目根目录执行：
@@ -11,6 +19,8 @@ dotnet run --project tests/CombatManaged/CombatManaged.csproj -c Release -- --sl
 ```
 
 默认种子为 `11,9918,49127,62026,2026`。可指定 `--seeds=11,9918`、`--target-wave=60`。结果输出到 `artifacts/inattentive-campaign-60.json`。JSON 中 `completed_target` 与 `legitimate` 分别表示是否完成目标、模拟是否遵守真实默认配置与资源/建筑约束，两者不能混为一谈。
+
+输出文件名使用实际目标波次；例如 `--target-wave=5` 写入 `artifacts/inattentive-campaign-5.json`，不会覆盖 60 波目标报告。
 
 行为固定如下，不根据种子或即将失败的波次临时调整：
 
@@ -24,6 +34,18 @@ dotnet run --project tests/CombatManaged/CombatManaged.csproj -c Release -- --sl
 `CampaignTestSurface` 重现正式初始矿站、太阳能与拦截机工厂的位置和 40,962 格球面拓扑；建筑必须占用合法格，发射中心占 7 格。所有占用设施都影响敌军目标。初始地转角 12°，自动旋转每秒 0.00175 rad，建造操作与首次受击指南期间按正式规则暂停。
 
 主循环固定 30 Hz，运行经济、战斗和 `DefenseCampaignDirector`；不使用大步长跳过战斗。首次击毁八艘近地母舰后由正式调度接管休战和后续进攻。目标检查 `CompletedWaves >= 60`，不能把进入第 60 波或仅存活 3600 秒当作完成目标。地球死亡即结束该样本，不复活续算。
+
+## 实物拾取模拟契约
+
+`SlowCampaign` 与 `NaturalOpening` 共用 `PlayerLootCollection`，通过正式 `Battlefield.BeginLootFlight` 和 `Battlefield.AdvanceLootFlights` 执行回收，不直接修改钱包，也不直接结算 Domain 收据。
+
+- 每次真正参加的 review 会点击当时已经存在的世界物品簇；点击只开始默认 0.9 秒飞行，此次建造或研究仍只能使用已经到账的余额。拾取动作独立于每次最多一座建筑、一项科技的操作限制。
+- 漏看 review 时不发起拾取。已经起飞的物品继续沿 UI 时间飞行；之后新产生的掉落必须等待下一次实际查看，不能并入已起飞的物品簇。
+- 每个 30 Hz UI 时间步推进真实飞行，包括首次受击引导暂停期间。到达边界才入账；存储失败的物品返回世界，等待后续 review 重新点击。结束模拟时不额外结清仍在世界中或飞行中的物品。
+- inattentive 每 22～30 秒 review、每五次漏看一次；attentive 每 8 秒 review；NaturalOpening 每 10 秒操作一次。idle 对照不点击物品，因此即使防御设施击毁敌人，掉落也不会自行成为可用资源。
+- 无图形模拟假设玩家在一次 review 中能够找到并点击所有现存物品簇。它不执行真实相机搜索、地球遮挡判断或指针移动，以归一化屏幕中心作为飞行起点；因此只能验证回收时序和经济消费，不能代表真实 UI 的拾取效率。
+
+每个运行结果的 `loot` 保存 `clicks`、`arrivals`、`failed_arrivals`、`received`、`world_items` 与 `flying_items`。`received` 是飞行到达实际增加的钱包数值；击杀数、点击数、物品簇数量不能代替实收资源。密集掉落按币种聚合，单次点击可以回收多条击杀收据，因此点击数也不等于敌人数量。
 
 ## 较高操作频率对照
 
@@ -39,7 +61,7 @@ dotnet run --project tests/CombatManaged/CombatManaged.csproj -c Release -- --sl
 dotnet run --project tests/CombatManaged/CombatManaged.csproj -c Release -- --slow-campaign --policy=idle --seeds=11,9918,49127
 ```
 
-只保留真实初始设施，首次受击时确认免费科技引导以恢复游戏，随后不建设、发射卫星、消费芯片或继续研究。输出 `artifacts/idle-campaign-control.json`。这个对照用于检验宽容数值是否仍要求经营和布防，不代表完全无人操作时暂停引导会自动消失。
+只保留真实初始设施，首次受击时确认免费科技引导以恢复游戏，随后不建设、发射卫星、点击掉落、消费芯片或继续研究。默认输出 `artifacts/idle-campaign-control-60.json`；指定其他目标时文件名使用该目标波次。这个对照用于检验宽容数值是否仍要求经营和布防，不代表完全无人操作时暂停引导会自动消失。
 
 ## 记录与独立验证
 
@@ -52,4 +74,4 @@ dotnet run --project tests/CombatManaged/CombatManaged.csproj -c Release -- --sl
 - 工厂地基使用球面半径，未采样正式地形纹理的最多 0.048 世界单位起伏；不开启渲染，不模拟镜头寻找、鼠标指向误差。
 - 伤害位置对应最近活跃母舰方向，用于方向归因；护盾剩余总量只能证明还有护盾未耗尽，不能单独量化地转、选址、敌军路径各自的贡献。
 - 模拟不是通关证明，也不是人类总体通过率估计。改变数值或行为后，应使用同一组种子重新测量，并注明改了哪一项。
-- `--natural-opening` 保留旧版三种子、固定地表、开局补两座工厂的十分钟测试，用于独立回归；不能将其结果等同于本实验。
+- `--natural-opening` 保留三种子、固定地表、开局补两座工厂的十分钟行为样本，现使用当前敌机和实物拾取规则；不能将其结果等同于本实验。`all_new_fronts_hit_earth_twice` 只检查开局之后新出现的方向，开场已设防方向的受击数完整保留在日志中，不强制已有防线漏弹。

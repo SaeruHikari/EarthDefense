@@ -9,11 +9,10 @@ public static class EnemyCatalog
     {
         long wave = Math.Max(1, C.L(entry, "wave", 1));
         int stage = Math.Clamp(C.I(entry, "stage"), 0, 3);
-        string role = C.S(entry, "role", "claw"), kind = C.S(enemy, "kind");
+        string kind = C.S(enemy, "kind");
         var catalog = CombatCatalog.Current;
         var tuning = catalog.Values;
-        var data = catalog.Enemy(kind, role, wave);
-        if (data.BossVariant.Length > 0) enemy["boss_variant_id"] = data.BossVariant;
+        var data = catalog.Enemy(kind, "claw", wave);
         var defaults = CatalogData.Load("economy.json").Map("settings");
         double factor = C.N(settings, "enemy_health", defaults.N("enemy_health")) / tuning.HealthSettingReference;
         double hp = tuning.HealthBase * data.Health * Math.Exp(Math.Min(600, Math.Log(1 + C.N(settings, "enemy_health_growth", defaults.N("enemy_health_growth"))) * (wave - 1))) * catalog.StageHealth[stage] * factor;
@@ -28,23 +27,13 @@ public static class EnemyCatalog
             hp *= Math.Clamp(C.N(settings, "first_wave_enemy_health_multiplier", 1), .25, 1);
             dps *= Math.Clamp(C.N(settings, "first_wave_enemy_damage_multiplier", 1), .25, 1);
         }
-        bool elite = kind is "scout" or "cruiser" && wave >= tuning.EliteFirstWave && C.Posmod(C.L(entry, "index"), (long)tuning.EliteInterval) == (long)tuning.EliteOrdinal;
-        if (elite)
-        {
-            hp *= tuning.EliteHealthMultiplier;
-            dps *= tuning.EliteDamageMultiplier;
-        }
-        enemy["elite"] = elite;
         enemy["wave"] = wave;
-        enemy["name"] = (elite ? "精锐 · " : "") + data.Name;
-        enemy["enemy_role_id"] = kind is "scout" or "cruiser" ? role : "";
+        enemy["name"] = data.Name;
+        enemy["enemy_role_id"] = kind == "scout" ? "claw" : "";
         enemy["armor_type"] = data.Armor;
         enemy["body_armor"] = data.Armor;
         enemy["hp"] = hp;
         enemy["max_hp"] = hp;
-        enemy["energy_hp"] = hp * data.Energy;
-        enemy["energy_max_hp"] = hp * data.Energy;
-        enemy["shield_broken"] = false;
         enemy["tactical_speed"] = tuning.TacticalSpeedBase * data.Speed * C.N(settings, "enemy_speed_multiplier", defaults.N("enemy_speed_multiplier"));
         enemy["speed"] = enemy["tactical_speed"];
         enemy["base_speed"] = tuning.TacticalSpeedBase * data.Speed;
@@ -54,8 +43,5 @@ public static class EnemyCatalog
         enemy["defense_stage"] = stage;
         enemy["reward_wave"] = wave;
         enemy["planned_uid"] = C.S(entry, "planned_uid");
-        enemy["telegraph"] = 0d;
-        enemy["skill_phase"] = "travel";
-        enemy["skill_clock"] = 1d;
     }
 }

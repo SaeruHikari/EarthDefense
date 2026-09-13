@@ -23,5 +23,4 @@ public static class WorldScale
     public const int BakedGridLevel = 4, GridLevel = 6;
     public const int DefaultGridCellCount = 40962;
     public const float InterplanetaryDistanceMultiplier = 2f;
-    public const float CruiserStandoff = EarthRadius + .9f, BossStandoff = EarthRadius + 1.3f;
 }

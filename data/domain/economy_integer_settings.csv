@@ -1,12 +1,9 @@
-﻿parent_id,position,type,value
+parent_id,position,type,value
 root,0,string,interceptor_factory_capacity
 root,1,string,laser_factory_capacity
 root,2,string,missile_factory_capacity
 root,3,string,enemy_bullet_base_count
 root,4,string,enemy_bullet_growth_step
 root,5,string,enemy_bullet_max_count
-root,6,string,resource_core_drop_count
-root,7,string,enemy_wave_base_count
-root,8,string,enemy_wave_growth
-root,9,string,medium_boss_first_wave
-root,10,string,medium_boss_interval
+root,6,string,enemy_wave_base_count
+root,7,string,enemy_wave_growth

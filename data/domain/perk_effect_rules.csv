@@ -27,14 +27,13 @@ a_missile_guidance,projectile_speed_multiplier,linear,1,0.05,0,,,number,1,0,0
 a_missile_guidance,damage_multiplier,linear,1,0.04,0,,,number,1,0,0
 a_missile_cluster,cluster_fragments,linear,3,0,0,,,integer,1,0,0
 a_missile_slow,slow_duration,linear,2.5,0,0,,,number,1,0,0
-a_missile_slow,slow_boss_multiplier,linear,0.5,0,0,,,number,1,0,0
 a_laser_refraction,refraction_targets,linear,2,0,0,,,integer,1,0,0
 a_k2_dense_fire,k2_dense_hits_required,linear,3,0,0,,,integer,1,0,0
 a_k2_dense_fire,k2_dense_fire_rate_multiplier,linear,1.05,0.01,0,,,number,1,0,0
 a_k2_dense_fire,k2_dense_duration,linear,3,0,0,,,number,1,0,0
 a_k2_recovery,k2_reload_reduction_seconds,linear,0.05,0.0075,0,,,number,1,0,0
 a_k2_recovery,k2_reload_cooldown,linear,1,0,0,,,number,1,0,0
-a_k3_marked_shot,k3_support_first_multiplier,linear,1.15,0.02,0,,,number,1,0,0
+a_k3_marked_shot,k3_first_hit_multiplier,linear,1.15,0.02,0,,,number,1,0,0
 a_k3_mobile_gun,k3_mobile_warmup_retention,linear,0.2,0.015,0,,,number,1,0,0
 a_k3_mobile_gun,k3_peak_damage_multiplier,linear,0.9,0,0,,,number,1,0,0
 a_m2_dual_zone,m2_delayed_fraction,linear,0.175,0.005,0,,,number,1,0,0

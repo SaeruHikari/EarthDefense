@@ -54,8 +54,6 @@ public sealed partial class DefenseState
             reason = $"需要完成上一层母舰并进入第{gate.I("defense_stage")}次外推";
         else if (CompletedWaves < gate.L("completed_wave"))
             reason = $"需要完成第{gate.L("completed_wave")}波情报";
-        else if (gate.B("first_medium_boss_defeated") && !_flags.B("first_medium_boss_defeated"))
-            reason = "先击败一只中型Boss";
         else
             foreach (string parent in def.List("requires").Cast<string>())
                 if (!HasResearch(parent))

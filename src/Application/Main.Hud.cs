@@ -20,6 +20,7 @@ public partial class Main
         _tooltips.Clear();
         SetUiOffset(Vector2.Zero);
         DrawHeader();
+        DrawLootHints();
         DrawOrbitLabels();
         SetUiOffset(new(WorldSize.X - DesignSize.X, 0));
         DrawRight();
@@ -58,6 +59,7 @@ public partial class Main
             DrawAircraftHover();
             DrawPlayTime();
         }
+        DrawLootFlights();
         if (CaptureFrameTimings) LastHudDrawMs = FrameElapsed(drawStarted);
     }
 
@@ -174,8 +176,9 @@ public partial class Main
             string source = row.Item1 == "science" ? Game.ResearchSatelliteDeployed ? "科研卫星" : "科研卫星（待发射）" : row.Item2;
             Add(row.Item1, row.Item1, UiTheme.Number(row.Item3), Rate(rate), row.Item4, $"{source} · 当前 {UiTheme.Number(row.Item3)} · 实际收入 {FormatSetting(rate)} / 秒");
         }
-        Add("resource_cores", "core", UiTheme.Number(Game.ResourceCores), "—", UiTheme.Amber, "资源核心 · 击败小型 Boss 获得，用于建设及强化资源设施");
+        Add("resource_cores", "core", UiTheme.Number(Game.ResourceCores), "—", UiTheme.Amber, "资源核心 · 敌机极低概率掉落，拾取后用于建设及强化资源设施");
         Add("alien_points", "alien", UiTheme.Number(Game.AlienPoints), "—", UiTheme.Alien, "外星科技点 · 研究外星分化中科技、大科技与边界航程");
+        Add("alien_chips", "chip", UiTheme.Number(Game.FactoryPerks.AlienChips), "—", LootColor("alien_chips"), "外星芯片 · 敌机低概率掉落，拾取后可购买与永久升级特性");
         var fleet = Battle.FleetCapacityState();
         int active = Battle.GetActiveDroneCount();
         Add("fleet", "interceptor", UiTheme.Number(active), fleet.N("pending") > 0 ? "+" + UiTheme.Number(fleet.N("pending")) : "—", UiTheme.Mint, $"地球防御机群 · 在役 {active} 架 · 编制点 {fleet.L("used_points")} / {fleet.L("capacity_points")} · 待补造 {fleet.L("pending")} 架；重型机占 2 点");
@@ -202,8 +205,7 @@ public partial class Main
             }
             if (_forecast.L("wave") > 0)
             {
-                Add("forecast", "eye", "", "", UiTheme.Muted, _forecast.S("tooltip"));
-                result[^1]["armor"] = _forecast.Map("armor");
+                Add("forecast", "eye", UiTheme.Number(_forecast.N("count")), "", UiTheme.Muted, _forecast.S("tooltip"));
             }
         }
         double earthRepair = Started && !WorldIsPaused() ? Game.LocalShieldEarthRepairRate() * Speed : 0;
@@ -215,28 +217,11 @@ public partial class Main
 
     private static DataMap DescribeForecast(DataMap plan)
     {
-        var composition = plan.Map("composition");
-        long light = 0, heavy = 0, energy = 0;
-        var entries = new List<string>();
-        var names = new Dictionary<string, string> { { "claw", "裂爪" }, { "needle", "针翼" }, { "rock", "岩甲" }, { "siege", "攻城" }, { "prism", "棱镜" }, { "weaver", "织幕" }, { "hatcher", "孵化" }, { "jammer", "干扰" } };
-        foreach (var pair in composition)
-        {
-            long n = composition.L(pair.Key);
-            if (n == 0)
-                continue;
-            if (pair.Key is "rock" or "siege" or "hatcher")
-                heavy += n;
-            else if (pair.Key is "prism" or "weaver")
-                energy += n;
-            else
-                light += n;
-            entries.Add(names.GetValueOrDefault(pair.Key, pair.Key) + " " + n);
-        }
         return new()
         {
             ["wave"] = plan.L("wave"),
-            ["armor"] = new DataMap { ["light"] = light, ["heavy"] = heavy, ["energy"] = energy },
-            ["tooltip"] = $"下波预告 · 第 {plan.L("wave")} 波 · 共 {plan.L("planned_count")} 架\n" + string.Join(" · ", entries) + "\n动能克轻甲，对能量层无效；导弹克重甲；激光优先拆能量层。"
+            ["count"] = plan.L("planned_count"),
+            ["tooltip"] = $"下波预告 · 第 {plan.L("wave")} 波 · 共 {plan.L("planned_count")} 架\n裂爪战机 · 统一轻甲船体\n击毁后拾取资源，资源核心与外星科技点为稀有掉落。"
         };
     }
 
@@ -254,14 +239,8 @@ public partial class Main
             Rect2 rect = new(x, 0, widths[i], 34);
             Color color = item.Get<Color>("color");
             Box(rect, new(.035f, .075f, .105f, .72f), new(.35f, .53f, .59f, .21f), 6);
-            HudIcon(item.S("icon"), new(x + 15, 17), 8, color);
-            if (item.S("id") == "forecast")
-            {
-                string[] ids = { "light", "heavy", "energy" };
-                Color[] colors = { UiTheme.Cyan, UiTheme.Amber, UiTheme.Alien };
-                for (int a = 0; a < 3; a++)
-                    HudIcon("armor_" + ids[a], new(x + 37 + a * 20, 17), 6, item.Map("armor").L(ids[a]) > 0 ? colors[a] : UiTheme.Dim);
-            }
+            if (item.S("id") == "alien_chips") DrawLootGlyph("alien_chips", new(x + 15, 17), 8, color);
+            else HudIcon(item.S("icon"), new(x + 15, 17), 8, color);
             Text(item.S("value"), new(x + 29, 22), 15, UiTheme.Ink);
             float w = _headerValueWidths[i];
             Text(item.S("gain"), new(x + 34 + w, 21), 10, item.S("gain") == "—" ? UiTheme.Dim : color);

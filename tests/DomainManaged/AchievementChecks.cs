@@ -60,7 +60,6 @@ internal static class AchievementChecks
         game.AlienPoints = 1000000;
         game.Wave = game.CompletedWaves = 120;
         game.SetDefenseReachStage(3);
-        game.RewardKill("boss", 120, 3);
         void Prepare(string research)
         {
             if (game.HasResearch(research)) return;

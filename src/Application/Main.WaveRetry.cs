@@ -70,7 +70,6 @@ public partial class Main
 
     private void CaptureWaveStartCheckpoint(long wave)
     {
-        if (!FlushAlienChipsForPersistence()) return;
         try
         {
             var data = CaptureCheckpointData(Campaign.SerializeWaveStart());

@@ -43,7 +43,7 @@ internal static class FactoryCoverageChecks
     {
         d["space_position"]=position;d["normal"]=b.SpaceToSurface(position);d["state"]="engaging";d["launch_age"]=2d;b.WorldCache[d.L("uid")]=position;
     }
-    private static DataMap Target(Vector3 p,bool large=false)=>new(){["uid"]=99999L,["kind"]=large?"boss":"scout",["phase"]="approach",["armor_type"]="light",["hp"]=1e6,["space_position"]=p};
+    private static DataMap Target(Vector3 p,bool large=false)=>new(){["uid"]=99999L,["kind"]=large?"carrier":"scout",["phase"]="approach",["armor_type"]="light",["hp"]=1e6,["space_position"]=p};
     private static void Boundaries(string kind)
     {
         var (g,s,b)=Create(kind);var preview=b.GetFactoryCoverage(18)!;

@@ -44,7 +44,7 @@ public partial class LaserGlowChecks : Node
             float exposure = environment.TonemapExposure;
             Vector3 a = new(-1.45f, .03f, WorldScale.EarthRadius + 1.5f), b = new(1.45f, .03f, WorldScale.EarthRadius + 1.5f);
             var friendly = new DataMap { ["uid"] = 50L, ["kind"] = "laser", ["airframe_id"] = "L2", ["space_position"] = a - Vector3.Right * .15f, ["aim_direction"] = Vector3.Right, ["aim_up"] = Vector3.Up, ["hp"] = 100d, ["max_hp"] = 100d };
-            var enemy = new DataMap { ["uid"] = 51L, ["kind"] = "scout", ["enemy_role_id"] = "prism", ["space_position"] = b + Vector3.Right * .12f, ["tangent"] = Vector3.Left, ["hp"] = 10000d, ["max_hp"] = 10000d };
+            var enemy = new DataMap { ["uid"] = 51L, ["kind"] = "scout", ["enemy_role_id"] = "claw", ["space_position"] = b + Vector3.Right * .12f, ["tangent"] = Vector3.Left, ["hp"] = 10000d, ["max_hp"] = 10000d };
             planet.SyncCombatUnits(new[] { friendly }, new[] { enemy }, [], []);
             using var baseline = await Capture("laser-glow-baseline");
             var battle = new Battlefield(game) { Surface = planet };

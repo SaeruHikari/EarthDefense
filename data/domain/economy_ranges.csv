@@ -1,4 +1,4 @@
-﻿parent_id,position,key,type,value
+parent_id,position,key,type,value
 root,0,enemy_health,number,1.0
 root,1,enemy_health,number,1000000.0
 root,0,drone_damage,number,1.0
@@ -29,8 +29,6 @@ root,0,enemy_bullet_speed,number,1.0
 root,1,enemy_bullet_speed,number,30.0
 root,0,enemy_bombard_speed,number,0.5
 root,1,enemy_bombard_speed,number,20.0
-root,0,resource_core_drop_count,number,0.0
-root,1,resource_core_drop_count,number,128.0
 root,0,enemy_speed_multiplier,number,0.25
 root,1,enemy_speed_multiplier,number,8.0
 root,0,resource_output_multiplier,number,0.0
@@ -61,10 +59,6 @@ root,0,drone_base_damage_multiplier,number,0.05
 root,1,drone_base_damage_multiplier,number,128.0
 root,0,drone_base_health_multiplier,number,0.05
 root,1,drone_base_health_multiplier,number,128.0
-root,0,medium_boss_first_wave,number,1.0
-root,1,medium_boss_first_wave,number,1000.0
-root,0,medium_boss_interval,number,1.0
-root,1,medium_boss_interval,number,1000.0
 root,0,frontier_radius_1,number,32.0
 root,1,frontier_radius_1,number,312.0
 root,0,frontier_radius_2,number,32.0

@@ -8,14 +8,14 @@ namespace Earthward.Combat;
 
 public sealed partial class Battlefield
 {
-    private static readonly string[] SnapshotFields = "active wave_running enemies _drones _shots _hostile_shots _beams _bursts _damage_numbers _factories _factory_activity _motherships _invasion_won _dead _next_uid _clock _assignment_clock _destroyed_drones _number_sequence wave_remaining wave_total _wave_spawn_snapshot _wave_spawn_duration _wave_spawn_elapsed _wave_spawned _wave_initial_count _wave_spawn_cancelled _wave_segment_start _wave_segment_count _wave_segment_spawned _spawn_clock _boss_spawned _small_boss_spawned _post_defense _post_plan _post_spawned _fixed_cycle_elapsed _fixed_cycle_running _fixed_cohort_complete _local_shields".Split(' ');
+    private static readonly string[] SnapshotFields = "active wave_running enemies _drones _shots _hostile_shots _beams _bursts _damage_numbers _factories _factory_activity _motherships _invasion_won _dead _next_uid _clock _assignment_clock _destroyed_drones _number_sequence wave_remaining wave_total _wave_spawn_snapshot _wave_spawn_duration _wave_spawn_elapsed _wave_spawned _wave_initial_count _wave_spawn_cancelled _wave_segment_start _wave_segment_count _wave_segment_spawned _spawn_clock _post_defense _post_plan _post_spawned _fixed_cycle_elapsed _fixed_cycle_running _fixed_cohort_complete _local_shields _loot".Split(' ');
     public DataMap SerializeCombatSnapshot()
     {
         SyncLocalShields();
-        var data = new DataMap { ["active"] = Active, ["wave_running"] = WaveRunning, ["enemies"] = Enemies, ["_drones"] = Drones, ["_shots"] = Shots, ["_hostile_shots"] = HostileShots, ["_beams"] = Beams, ["_bursts"] = Bursts, ["_damage_numbers"] = DamageNumbers, ["_factories"] = Factories, ["_factory_activity"] = FactoryActivity, ["_motherships"] = Motherships, ["_invasion_won"] = InvasionWon, ["_dead"] = Dead, ["_next_uid"] = _nextUid, ["_clock"] = Clock, ["_assignment_clock"] = _assignmentClock, ["_destroyed_drones"] = DestroyedDrones, ["_number_sequence"] = NumberSequence, ["wave_remaining"] = WaveRemaining, ["wave_total"] = WaveTotal, ["_wave_spawn_snapshot"] = _wavePlan, ["_wave_spawn_duration"] = _spawnDuration, ["_wave_spawn_elapsed"] = _spawnElapsed, ["_wave_spawned"] = _spawned, ["_wave_initial_count"] = _initialCount, ["_wave_spawn_cancelled"] = _spawnCancelled, ["_wave_segment_start"] = _segmentStart, ["_wave_segment_count"] = _segmentCount, ["_wave_segment_spawned"] = _segmentSpawned, ["_spawn_clock"] = _spawnClock, ["_boss_spawned"] = _bossSpawned, ["_small_boss_spawned"] = _smallBossSpawned, ["_post_defense"] = _postDefense, ["_post_plan"] = _postPlan, ["_post_spawned"] = _postSpawned, ["_fixed_cycle_elapsed"] = _cycleElapsed, ["_fixed_cycle_running"] = _fixedRunning, ["_fixed_cohort_complete"] = _cohortComplete, ["_local_shields"] = _localShields };
+        var data = new DataMap { ["active"] = Active, ["wave_running"] = WaveRunning, ["enemies"] = Enemies, ["_drones"] = Drones, ["_shots"] = Shots, ["_hostile_shots"] = HostileShots, ["_beams"] = Beams, ["_bursts"] = Bursts, ["_damage_numbers"] = DamageNumbers, ["_factories"] = Factories, ["_factory_activity"] = FactoryActivity, ["_motherships"] = Motherships, ["_invasion_won"] = InvasionWon, ["_dead"] = Dead, ["_next_uid"] = _nextUid, ["_clock"] = Clock, ["_assignment_clock"] = _assignmentClock, ["_destroyed_drones"] = DestroyedDrones, ["_number_sequence"] = NumberSequence, ["wave_remaining"] = WaveRemaining, ["wave_total"] = WaveTotal, ["_wave_spawn_snapshot"] = _wavePlan, ["_wave_spawn_duration"] = _spawnDuration, ["_wave_spawn_elapsed"] = _spawnElapsed, ["_wave_spawned"] = _spawned, ["_wave_initial_count"] = _initialCount, ["_wave_spawn_cancelled"] = _spawnCancelled, ["_wave_segment_start"] = _segmentStart, ["_wave_segment_count"] = _segmentCount, ["_wave_segment_spawned"] = _segmentSpawned, ["_spawn_clock"] = _spawnClock, ["_post_defense"] = _postDefense, ["_post_plan"] = _postPlan, ["_post_spawned"] = _postSpawned, ["_fixed_cycle_elapsed"] = _cycleElapsed, ["_fixed_cycle_running"] = _fixedRunning, ["_fixed_cohort_complete"] = _cohortComplete, ["_local_shields"] = _localShields, ["_loot"] = _lootPickups };
         return new()
         {
-            ["version"] = 4,
+            ["version"] = 5,
             ["earth_radius"] = CombatScale.EarthRadius,
             ["rng_seed"] = unchecked((long)Random.Seed).ToString(CultureInfo.InvariantCulture),
             ["rng_state"] = unchecked((long)Random.State).ToString(CultureInfo.InvariantCulture),
@@ -27,15 +27,16 @@ public sealed partial class Battlefield
     private static bool Nonnegative(object? value, double maximum = 10000, bool integer = false) => CombatSnapshotCodec.IsNumber(value) && DataMap.Number(value) >= 0 && DataMap.Number(value) <= maximum && (!integer || DataMap.Number(value) == Math.Floor(DataMap.Number(value)));
     public static bool ValidateCombatSnapshot(DataMap snapshot)
     {
-        if (snapshot.Count != 7 || !CombatSnapshotCodec.HasFields(snapshot, "version:int earth_radius:number rng_seed:text rng_state:text") || snapshot.I("version") != 4 || snapshot.N("earth_radius") != CombatScale.EarthRadius || !long.TryParse(snapshot.S("rng_seed"), out _) || !long.TryParse(snapshot.S("rng_state"), out _) || !InvasionDirector.ValidateDestroyedFronts(snapshot.Value("destroyed_fronts") as IEnumerable<object?>))
+        if (snapshot.Count != 7 || !CombatSnapshotCodec.HasFields(snapshot, "version:int earth_radius:number rng_seed:text rng_state:text") || snapshot.I("version") != 5 || snapshot.N("earth_radius") != CombatScale.EarthRadius || !long.TryParse(snapshot.S("rng_seed"), out _) || !long.TryParse(snapshot.S("rng_state"), out _) || !InvasionDirector.ValidateDestroyedFronts(snapshot.Value("destroyed_fronts") as IEnumerable<object?>))
             return false;
         if (!CombatSnapshotCodec.TryDecode(snapshot.Value("payload"), out var decoded) || decoded is not DataMap d || !CombatSnapshotCodec.TryDecode(snapshot.Value("anchor"), out var anchor) || anchor is not Vector3)
             return false;
         if (d.Count != SnapshotFields.Length || SnapshotFields.Any(k => !d.ContainsKey(k)))
             return false;
+        if (!ValidateLootRecords(d.Value("_loot"))) return false;
         if (d.Value("_local_shields") is not DataMap towers || !ValidateLocalShieldSnapshot(towers))
             return false;
-        if (!CombatSnapshotCodec.HasFields(d, "active:bool wave_running:bool _invasion_won:bool _dead:bool _post_defense:bool _wave_spawn_cancelled:bool _boss_spawned:bool _small_boss_spawned:bool _factories:map _motherships:map _post_plan:map _wave_spawn_snapshot:map enemies:array _drones:array _shots:array _hostile_shots:array _beams:array _bursts:array _damage_numbers:array _factory_activity:array"))
+        if (!CombatSnapshotCodec.HasFields(d, "active:bool wave_running:bool _invasion_won:bool _dead:bool _post_defense:bool _wave_spawn_cancelled:bool _factories:map _motherships:map _post_plan:map _wave_spawn_snapshot:map enemies:array _drones:array _shots:array _hostile_shots:array _beams:array _bursts:array _damage_numbers:array _factory_activity:array"))
             return false;
         foreach (var k in "_next_uid _clock _assignment_clock _destroyed_drones _number_sequence wave_remaining wave_total _wave_spawn_duration _wave_spawn_elapsed _wave_spawned _wave_initial_count _wave_segment_start _wave_segment_count _wave_segment_spawned _spawn_clock _post_spawned".Split(' '))
             if (!Nonnegative(d.Value(k), double.MaxValue))
@@ -45,7 +46,7 @@ public sealed partial class Battlefield
             if (d.N("_fixed_cycle_elapsed") < 0)
                 return false;
             var p = d.Map("_wave_spawn_snapshot");
-            if (!CombatSnapshotCodec.HasFields(p, "cycle_duration:number duration:number composition:map planned_count:int regular_count:int carrier_count:int medium:bool stride:int wave:int stage:int") || p.N("cycle_duration") < p.N("duration") || p.N("duration") <= 0 || d.N("_fixed_cycle_elapsed") > p.N("cycle_duration") + .00001)
+            if (!CombatSnapshotCodec.HasFields(p, "cycle_duration:number duration:number composition:map planned_count:int regular_count:int carrier_count:int wave:int stage:int") || p.N("cycle_duration") < p.N("duration") || p.N("duration") <= 0 || d.N("_fixed_cycle_elapsed") > p.N("cycle_duration") + .00001)
                 return false;
             foreach (var (k, v) in p.Map("composition"))
                 if (!DefenseWavePlan.RoleOrder.Contains(k) || !Nonnegative(v, 1e9, true))
@@ -69,19 +70,16 @@ public sealed partial class Battlefield
                 return false;
         if (a.ContainsKey("energy_hp") && (!Nonnegative(a.Value("energy_hp"), 1e300) || !Nonnegative(a.Value("energy_max_hp"), 1e300) || a.N("energy_hp") > a.N("energy_max_hp") || a.B("shield_broken") && a.N("energy_hp") > 0))
             return false;
-        foreach (var k in new[] { "shield_broken", "energy_granted", "shield_unloaded", "shield_field_used" })
+        foreach (var k in new[] { "shield_broken", "shield_unloaded", "shield_field_used" })
             if (a.ContainsKey(k) && a[k] is not bool)
                 return false;
         if (a.ContainsKey("enemy_role_id") && a.S("enemy_role_id") != "" && !DefenseWavePlan.RoleOrder.Contains(a.S("enemy_role_id")))
             return false;
-        if (a.ContainsKey("boss_variant_id") && !new[] { "brood", "forge", "prism" }.Contains(a.S("boss_variant_id")))
-            return false;
-        foreach (var k in "spawn_radius combat_entry_radius energy_recovery_budget lock_progress lock_tick fire_charge charge_total charge_remaining telegraph saturation_ready chain_ready intercept_boost_until intercept_boost_next dense_until pulse_next burst_until burst_ready first_energy_ready shield_field_until energy_recovery_blocked_until stagger_until target_lock_until".Split(' '))
+        foreach (var k in "spawn_radius combat_entry_radius lock_progress lock_tick fire_charge saturation_ready chain_ready intercept_boost_until intercept_boost_next dense_until pulse_next burst_until burst_ready first_energy_ready shield_field_until energy_recovery_blocked_until stagger_until target_lock_until".Split(' '))
             if (a.ContainsKey(k) && !Nonnegative(a[k], 1e300))
                 return false;
         return true;
     }
-    private static readonly string[] HistoricalProjectileAbilityIds = "K_N1 K_N2 K_N3 K_A1 K_A2 K_A3 K_G1 K_G2 M_N1 M_N2 M_N3 M_A1 M_A2 M_A3 M_G1 M_G2 L_N1 L_N2 L_N3 L_A1 L_A2 L_A3 L_G1 L_G2 I_N1 I_N2 I_N3 I_A1 I_A2 I_A3 I_G1 I_G2 D_N1 D_N2 D_N3 D_A1 D_A2 D_A3 D_G1 D_G2 C_N1 C_N2 C_N3 C_A1 C_A2 C_A3 C_G1 C_G2 M_N4 D_N4".Split(' ');
     private static long _projectileAbilityRevision = long.MinValue;
     private static readonly HashSet<string> _projectileAbilityIds = new(StringComparer.Ordinal);
     private static bool ValidProjectileAbilities(DataMap abilities)
@@ -89,7 +87,6 @@ public sealed partial class Battlefield
         if (_projectileAbilityRevision != CatalogData.Revision)
         {
             _projectileAbilityIds.Clear();
-            foreach (string id in HistoricalProjectileAbilityIds) _projectileAbilityIds.Add(id);
             foreach (var row in DeepTechnology.Nodes) if (row.S("size") != "small") _projectileAbilityIds.Add(row.S("id"));
             _projectileAbilityRevision = CatalogData.Revision;
         }
@@ -178,7 +175,7 @@ public sealed partial class Battlefield
                 return false;
             if (a.B("stationary_bombard") && (!UsesStationaryBombardment(a) || a.S("phase") != "ground_attack" || !CombatSnapshotCodec.HasFields(a, "aim_direction:v3 aim_up:v3") || C.V(a, "velocity").LengthSquared() > .000001))
                 return false;
-            if (!CombatSnapshotCodec.HasFields(a, "space_position:v3 target_space:v3 speed:number base_speed:number phase:text bombard_time:number bombard_duration:number base_size:number size:number wave:int age:number fire:number") || !new[] { "scout", "small_boss", "cruiser", "boss", "carrier" }.Contains(a.S("kind")) || !new[] { "approach", "ground_attack", "retreat" }.Contains(a.S("phase")))
+            if (!CombatSnapshotCodec.HasFields(a, "space_position:v3 target_space:v3 speed:number base_speed:number phase:text bombard_time:number bombard_duration:number base_size:number size:number wave:int age:number fire:number") || !new[] { "scout", "carrier" }.Contains(a.S("kind")) || !new[] { "approach", "ground_attack", "retreat" }.Contains(a.S("phase")))
                 return false;
             if (a.ContainsKey("post_wave_id") && !CombatSnapshotCodec.HasFields(a, "post_wave_id:text post_carrier:bool post_damage_multiplier:number locked_volley_count:int hangar_remaining:int hangar_clock:number hangar_open:number"))
                 return false;
@@ -222,11 +219,16 @@ public sealed partial class Battlefield
             return false;
         if (plan.ContainsKey("frontier_radius") && (!CombatSnapshotCodec.HasFields(plan, "frontier_radius:number defense_stage:int sortie_elapsed:number sortie_round:int sortie_started:bool") || plan.N("frontier_radius") < CombatScale.EarthRadius + 6 || plan.N("frontier_radius") > 1000 + CombatScale.EarthRadius - CombatScale.LegacyEarthRadius || plan.I("defense_stage") < 1 || plan.I("defense_stage") > 3 || plan.N("sortie_elapsed") < 0 || plan.I("sortie_round") < 0))
             return false;
+        foreach (var loot in d.List("_loot").Cast<DataMap>())
+        {
+            if (!used.Add(loot.L("uid"))) return false;
+            maximum = Math.Max(maximum, loot.L("uid"));
+        }
         return d.L("_next_uid") > maximum;
     }
     public bool RestoreCombatSnapshot(DataMap snapshot)
     {
-        if (!ValidateCombatSnapshot(snapshot))
+        if (!ValidateCombatSnapshot(snapshot) || !ValidateLootConsistency(snapshot, Game))
             return false;
         CombatSnapshotCodec.TryDecode(snapshot["payload"], out var decoded);
         var d = (DataMap)decoded!;
@@ -256,8 +258,6 @@ public sealed partial class Battlefield
         _segmentCount = d.L("_wave_segment_count");
         _segmentSpawned = d.L("_wave_segment_spawned");
         _spawnClock = d.N("_spawn_clock");
-        _bossSpawned = d.B("_boss_spawned");
-        _smallBossSpawned = d.B("_small_boss_spawned");
         _postDefense = d.B("_post_defense");
         _postPlan = d.Map("_post_plan");
         _postSpawned = d.I("_post_spawned");
@@ -269,6 +269,7 @@ public sealed partial class Battlefield
             list.Clear();
             list.AddRange(d.List(key).Cast<DataMap>());
         }
+        RestoreLoot(d.List("_loot").Cast<DataMap>());
         _localShields.Clear();
         _localShieldView.Clear();
         foreach (var (key, value) in d.Map("_local_shields"))

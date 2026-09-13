@@ -80,13 +80,12 @@ public sealed partial class Battlefield
     // Reset/restore starts a new actor timeline; ephemeral HUD notifications
     // must not retain identities from a previous use of the same actor UIDs.
     public int TimelineEpoch => _epoch;
-    private double _chipSettlementClock;
     private bool _layoutDirty = true, _postDefense, _fixedRunning, _cohortComplete;
     private int _postSpawned;
     private DataMap _postPlan = new(), _wavePlan = new(), _globalWeapons = new();
     private double _cycleElapsed, _spawnDuration, _spawnElapsed, _segmentStart, _spawnClock, _assignmentClock;
     private long _spawned, _initialCount, _segmentCount, _segmentSpawned;
-    private bool _spawnCancelled, _bossSpawned, _smallBossSpawned;
+    private bool _spawnCancelled;
     private readonly Dictionary<long, DataMap> _enemyById = new(), _droneById = new();
     private readonly Dictionary<long, Profile> _factoryProfiles = new();
     private readonly Dictionary<long, Profile> _actorProfiles = new();
@@ -132,16 +131,6 @@ public sealed partial class Battlefield
     public void Step(double delta)
     {
         if (Game == null) return;
-        _chipSettlementClock += double.IsFinite(delta) ? Math.Max(0, delta) : 0;
-        if (_chipSettlementClock >= 1)
-        {
-            _chipSettlementClock = 0;
-            if (!Game.FlushAlienChipDrops())
-            {
-                EventNotice?.Invoke("外星芯片暂未保存，正在重试 · " + Game.FactoryPerks.LastError);
-                _chipSettlementClock = -4;
-            }
-        }
         if (Paused) return;
         var timing = Performance;
         long mark = timing?.BeginFrame() ?? 0;
@@ -224,7 +213,7 @@ public sealed partial class Battlefield
         WaveRemaining = WaveTotal = _spawned = _initialCount = _segmentCount = _segmentSpawned = 0;
         _spawnElapsed = _spawnDuration = _segmentStart = _spawnClock = _assignmentClock = 0;
         _spawnCancelled = false;
-        _smallBossSpawned = _bossSpawned = false;
+        ClearLoot();
         _revision = -1;
         _motherWave = -1;
         _layoutDirty = true;

@@ -51,7 +51,7 @@ internal static class C
     }
     public static long Posmod(long x, long n) => (x % n + n) % n;
     public static bool Near(double a, double b) => Math.Abs(a - b) < 0.00001 * Math.Max(1, Math.Abs(a));
-    public static bool Large(DataMap e) => S(e, "kind") is "cruiser" or "boss" or "small_boss" or "carrier" or "mothership";
+    public static bool Large(DataMap e) => S(e, "kind") is "carrier" or "mothership";
     public static double Packet(DataMap context, string key, double fallback) => context.TryGetValue("ability_values", out var v) && v is DataMap map ? N(map, key, fallback) : N(context, key, fallback);
 }
 
@@ -67,4 +67,3 @@ public static class CombatScale
     public static double DefaultFrontierRadius(int stage) => EarthRadius + new double[] { 40, 72, 112 }[Math.Clamp(stage, 1, 3) - 1];
     public static readonly Color Cyan = new("8ae6eb"), Coral = new("ef947e"), Gold = new("d5bd85"), Violet = new("c2acf4");
 }
-

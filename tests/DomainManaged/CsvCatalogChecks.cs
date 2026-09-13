@@ -38,7 +38,7 @@ internal static class CsvCatalogChecks
                 if(mutation=="cycle"&&file=="deep_technology_nodes_requires.csv")return text.Replace("K_S21,0,string,K_S01","K_S21,0,string,K_S21");
                 if(mutation=="missing_balance"&&file=="domain_balance.csv")return text.Replace("kinetic_fire_rate_base,","missing_original_parameter,");
                 if(mutation=="invalid_perk"&&file=="perk_effect_rules.csv")return text.Replace("f_kinetic_quality,damage_multiplier,linear","f_kinetic_quality,damage_multiplier,execute_script");
-                if(mutation=="invalid_reward_reference"&&file=="kill_rewards.csv")return text.Replace("resource_core_drop_count","missing_setting");
+                if(mutation=="invalid_reward_reference"&&file=="kill_rewards.csv")return text.Replace("scout,9,3,0,30","missing_enemy,9,3,0,30");
                 if(mutation=="invalid_successor_reference"&&file=="successor_research.csv")return text.Replace("kinetic_damage_bonus","missing_attribute");
                 if(mutation=="negative_airframe"&&file=="airframes_definitions.csv")
                 {

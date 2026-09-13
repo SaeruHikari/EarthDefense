@@ -29,11 +29,9 @@ public sealed partial class FleetRenderer
     public UnitShieldRenderer? UnitShields { get; set; }
     private readonly ShaderMaterial _warning = new() { Shader = GD.Load<Shader>("res://shaders/aircraft_critical.gdshader") };
     private static readonly HashSet<string> Frames = new() { "K1", "K2", "K3", "M1", "M2", "M3", "L1", "L2", "L3" };
-    private static readonly HashSet<string> Roles = new() { "claw", "needle", "rock", "siege", "prism", "weaver", "hatcher", "jammer" };
     private static Dictionary<string, float> FrameScales = new();
     private static long _frameScaleRevision = -1;
     private static readonly Dictionary<string, string> FrameVisuals = Frames.ToDictionary(id => id, id => "airframe/" + id);
-    private static readonly Dictionary<string, string> RoleVisuals = Roles.ToDictionary(id => id, id => "enemy/" + id);
     public int BatchCount => _buckets.Values.Sum(bucket => bucket.Nodes.Length);
     public int PrototypePartCount => _prototypes.Values.Sum(parts => parts.Length);
     public FleetRenderer(Node3D space, Node3D surface)
@@ -61,16 +59,7 @@ public sealed partial class FleetRenderer
         }
         if (kind is "carrier" or "mothership")
             return kind;
-        if (enemy)
-        {
-            string boss = data.S("boss_variant_id");
-            if (boss is "brood" or "forge" or "prism")
-                return boss switch { "brood" => "boss/brood", "forge" => "boss/forge", _ => "boss/prism" };
-            string role = data.S("enemy_role_id");
-            if (Roles.Contains(role))
-                return RoleVisuals[role];
-            return kind is "scout" or "cruiser" or "small_boss" or "boss" ? kind : "enemy/" + (role.Length > 0 ? role : kind);
-        }
+        if (enemy) return "enemy/claw";
         string frame = data.S("airframe_id", kind == "laser" ? "L1" : kind == "missile" ? "M1" : "K1");
         string baseFrame = kind == "laser" ? "L1" : kind == "missile" ? "M1" : "K1";
         return FrameVisuals.GetValueOrDefault(frame, FrameVisuals[baseFrame]);

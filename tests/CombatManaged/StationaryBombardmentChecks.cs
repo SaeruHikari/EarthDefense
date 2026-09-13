@@ -27,11 +27,11 @@ internal static class StationaryBombardmentChecks
     {
         Check=check;Near=near;
         foreach(string role in DefenseWavePlan.RoleOrder)TravelHoldFireRetreat(role);
-        ApproachCounterfire();SavedHoldAndReapproach();LargeHullAndBossRoutes();
+        ApproachCounterfire();SavedHoldAndReapproach();LargeHullAndCarrierRoutes();
     }
     private static (DefenseState Game,Battlefield Battle,DataMap Enemy) Scene(string role="claw",double altitude=2,double scale=.5)
     {
-        string kind=role is "claw" or "needle" or "prism" or "jammer"?"scout":"cruiser";
+        string kind="scout";
         var g=new DefenseState{Wave=1};g.SetCombatSetting("enemy_aircraft_scale",scale);var b=new Battlefield(g,new Surface()){Active=true};b.Random.Seed=126;
         return(g,b,b.SpawnEnemy(kind,new(){["wave"]=1L,["role"]=role},Vector3.Back*(float)(CombatScale.EarthRadius+altitude))!);
     }
@@ -88,33 +88,10 @@ internal static class StationaryBombardmentChecks
         for(int i=0;i<360&&!e.B("stationary_bombard");i++)b.Step(1d/60);Check(e.B("stationary_bombard")&&e.N("bombard_time")>=previousTime,"reapproach returns once to legal stationary bombardment");
         var invalid=save.DeepClone();CombatSnapshotCodec.TryDecode(invalid.Value("payload"),out var decoded);var fields=(DataMap)decoded!;var row=fields.List("enemies").OfType<DataMap>().Single();row["stationary_bombard"]="yes";invalid["payload"]=CombatSnapshotCodec.Encode(fields);Check(!Battlefield.ValidateCombatSnapshot(invalid),"malformed stationary state rejected");row["stationary_bombard"]=true;row["phase"]="approach";invalid["payload"]=CombatSnapshotCodec.Encode(fields);Check(!Battlefield.ValidateCombatSnapshot(invalid),"contradictory moving stationary phase rejected");
     }
-    private static void LargeHullAndBossRoutes()
+    private static void LargeHullAndCarrierRoutes()
     {
-        var(g,b,e)=Scene("rock",2,2);for(int i=0;i<600&&!e.B("stationary_bombard");i++)b.Step(1d/60);
-        Check(e.B("stationary_bombard")&&e.Vector3("space_position").Length()>=CombatScale.EarthCollisionRadius+e.N("hit_radius")+.0249,"largest editable cruiser hull parks outside ground");Check(e.Vector3("space_position").Length()>=CombatScale.ShieldShellRadius,"large cruiser parks outside the shield shell instead of dipping below it");
-        foreach(var scenario in new[]{("small_boss",3L),("boss",3L),("boss",10L),("boss",20L)})
-        {
-            var game=new DefenseState{Wave=scenario.Item2};var other=new Battlefield(game,new Surface()){Active=true};var actor=other.SpawnEnemy(scenario.Item1,new(){["wave"]=scenario.Item2},Vector3.Back*(float)(CombatScale.EarthRadius+1))!;
-            var phases=new List<string>{"approach"};var shots=new HashSet<long>();var heldPosition=Vector3.Zero;int heldFrames=0;bool charged=false,exposed=false;
-            for(int tick=0;tick<3600;tick++)
-            {
-                other.Step(1d/60);if(phases[^1]!=actor.S("phase"))phases.Add(actor.S("phase"));charged|=actor.S("skill_phase")=="charging"&&actor.N("telegraph")>0;exposed|=actor.N("armor_exposed_until")>other.Clock;
-                foreach(var shot in other.HostileShots)if(shot.S("target_kind")=="earth")shots.Add(shot.L("uid"));
-                if(actor.B("stationary_bombard"))
-                {
-                    if(heldFrames++==0)heldPosition=actor.Vector3("space_position");
-                    Near(actor.Vector3("space_position").DistanceTo(heldPosition),0,"boss stays fixed throughout near-Earth bombardment "+scenario,1e-8);
-                    Check(actor.Vector3("velocity")==Vector3.Zero&&actor.Vector3("tangent").Dot(-heldPosition.Normalized())>.9999,"boss nose remains toward Earth while skills charge "+scenario);
-                }
-                if(!other.Enemies.Contains(actor))break;
-            }
-            Check(heldFrames>300&&shots.Count>=2&&game.EarthHp<100,"boss parks and repeatedly causes actual Earth damage "+scenario);
-            Check(phases.SequenceEqual(new[]{"approach","ground_attack","retreat"}),"boss makes stable approach/hold/retreat transitions "+scenario);
-            Near(actor.N("bombard_time"),actor.N("bombard_duration"),"boss retains original finite bombardment window "+scenario,1d/60+.000001);
-            Check(!actor.B("stationary_bombard")&&!other.Enemies.Contains(actor),"boss still retreats after its attack window "+scenario);
-            if(scenario.Item1=="boss")Check(charged,"boss charge telegraph continues while stationary "+scenario);
-            if(actor.S("boss_variant_id")=="forge")Check(exposed,"forge armor-exposure skill continues while stationary");
-        }
+        var(g,b,e)=Scene("claw",2,2);for(int i=0;i<600&&!e.B("stationary_bombard");i++)b.Step(1d/60);
+        Check(e.B("stationary_bombard")&&e.Vector3("space_position").Length()>=CombatScale.EarthCollisionRadius+e.N("hit_radius")+.0249,"largest editable aircraft hull parks outside ground");Check(e.Vector3("space_position").Length()>=CombatScale.ShieldShellRadius,"large aircraft parks outside the shield shell instead of dipping below it");
         var carrier=b.SpawnEnemy("carrier",new(){["wave"]=30L},Vector3.Back*56)!;carrier["post_carrier"]=true;carrier["frontier_radius"]=56d;var before=carrier.Vector3("space_position");Call(b,"AdvancePostCarrier",carrier,.1);Check(!carrier.B("stationary_bombard")&&carrier.Vector3("space_position")==before,"outer mothership keeps its separate fixed-space deployment behavior");
     }
 }

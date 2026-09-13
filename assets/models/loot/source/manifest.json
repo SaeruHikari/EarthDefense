@@ -1,0 +1,187 @@
+{
+  "generator": "tools/build_loot_models.py",
+  "blender_version": "5.0.1",
+  "units": "meters",
+  "gltf_up_axis": "+Y",
+  "maximum_vertex_radius": 0.48,
+  "emission_strength": 0.38,
+  "notes": "Original procedural meshes authored in Blender. Opaque PBR. No textures, lights, cameras, animation or presentation props in GLBs.",
+  "models": {
+    "minerals": {
+      "file": "../loot_minerals.glb",
+      "mesh_count": 1,
+      "triangles": 184,
+      "vertices_before_gltf_split": 108,
+      "material_surfaces": 4,
+      "bounds_gltf_xyz": [
+        [
+          -0.302009,
+          0.302009
+        ],
+        [
+          -0.388708,
+          0.388708
+        ],
+        [
+          -0.270248,
+          0.270248
+        ]
+      ],
+      "size_bytes": 13940,
+      "silhouette": "faceted ore",
+      "color_linear_rgb": [
+        0.07,
+        0.82,
+        0.91
+      ],
+      "export_validation": "single scene/node/mesh; centered finite vertices; radius <= 0.480001; triangle count verified"
+    },
+    "energy": {
+      "file": "../loot_energy.glb",
+      "mesh_count": 1,
+      "triangles": 544,
+      "vertices_before_gltf_split": 292,
+      "material_surfaces": 4,
+      "bounds_gltf_xyz": [
+        [
+          -0.304932,
+          0.304932
+        ],
+        [
+          -0.464244,
+          0.464244
+        ],
+        [
+          -0.304932,
+          0.304932
+        ]
+      ],
+      "size_bytes": 29960,
+      "silhouette": "charged cell",
+      "color_linear_rgb": [
+        1.0,
+        0.64,
+        0.08
+      ],
+      "export_validation": "single scene/node/mesh; centered finite vertices; radius <= 0.480001; triangle count verified"
+    },
+    "science": {
+      "file": "../loot_science.glb",
+      "mesh_count": 1,
+      "triangles": 812,
+      "vertices_before_gltf_split": 420,
+      "material_surfaces": 4,
+      "bounds_gltf_xyz": [
+        [
+          -0.440732,
+          0.440732
+        ],
+        [
+          -0.47244,
+          0.47244
+        ],
+        [
+          -0.382025,
+          0.382025
+        ]
+      ],
+      "size_bytes": 52848,
+      "silhouette": "orbital archive",
+      "color_linear_rgb": [
+        0.16,
+        0.42,
+        1.0
+      ],
+      "export_validation": "single scene/node/mesh; centered finite vertices; radius <= 0.480001; triangle count verified"
+    },
+    "resource_cores": {
+      "file": "../loot_resource_cores.glb",
+      "mesh_count": 1,
+      "triangles": 876,
+      "vertices_before_gltf_split": 504,
+      "material_surfaces": 4,
+      "bounds_gltf_xyz": [
+        [
+          -0.282812,
+          0.282812
+        ],
+        [
+          -0.282812,
+          0.282812
+        ],
+        [
+          -0.282812,
+          0.282812
+        ]
+      ],
+      "size_bytes": 69540,
+      "silhouette": "compressed matter",
+      "color_linear_rgb": [
+        1.0,
+        0.27,
+        0.075
+      ],
+      "export_validation": "single scene/node/mesh; centered finite vertices; radius <= 0.480001; triangle count verified"
+    },
+    "alien_points": {
+      "file": "../loot_alien_points.glb",
+      "mesh_count": 1,
+      "triangles": 292,
+      "vertices_before_gltf_split": 172,
+      "material_surfaces": 4,
+      "bounds_gltf_xyz": [
+        [
+          -0.360428,
+          0.360428
+        ],
+        [
+          -0.319915,
+          0.319915
+        ],
+        [
+          -0.096127,
+          0.096127
+        ]
+      ],
+      "size_bytes": 26212,
+      "silhouette": "triad seal",
+      "color_linear_rgb": [
+        0.68,
+        0.18,
+        0.97
+      ],
+      "export_validation": "single scene/node/mesh; centered finite vertices; radius <= 0.480001; triangle count verified"
+    },
+    "alien_chips": {
+      "file": "../loot_alien_chips.glb",
+      "mesh_count": 1,
+      "triangles": 716,
+      "vertices_before_gltf_split": 408,
+      "material_surfaces": 4,
+      "bounds_gltf_xyz": [
+        [
+          -0.399354,
+          0.399354
+        ],
+        [
+          -0.367636,
+          0.367636
+        ],
+        [
+          -0.16003,
+          0.16003
+        ]
+      ],
+      "size_bytes": 57036,
+      "silhouette": "circuit wafer",
+      "color_linear_rgb": [
+        0.22,
+        0.95,
+        0.34
+      ],
+      "export_validation": "single scene/node/mesh; centered finite vertices; radius <= 0.480001; triangle count verified"
+    }
+  },
+  "asset_directory": "assets/models/loot",
+  "source_directory": "assets/models/loot/source"
+}

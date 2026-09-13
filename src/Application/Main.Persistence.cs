@@ -11,10 +11,18 @@ namespace Earthward.Application;
 public partial class Main
 {
     private readonly CheckpointWriteQueue _checkpointWriter = new();
+
+    public override void _Notification(int what)
+    {
+        // Capture while the scene is still alive. Waiting for _ExitTree loses
+        // the last debounced pickup save and its in-flight presentation state.
+        if (what == NotificationWMCloseRequest && Game != null && Battle != null
+            && IsInstanceValid(Planet) && !Defeated && !PreserveCheckpoint)
+            SaveCheckpoint();
+    }
+
     public bool QueueCheckpointSave()
     {
-        if (!FlushAlienChipsForPersistence())
-            return false;
         _checkpointPending = false;
         try
         {
@@ -54,8 +62,6 @@ public partial class Main
 
     public bool SaveCheckpoint()
     {
-        if (!FlushAlienChipsForPersistence())
-            return false;
         FlushCheckpointWrites();
         _checkpointPending = false;
         try
@@ -82,7 +88,7 @@ public partial class Main
         if (data.Count != fields.Length || fields.Any(field => !data.ContainsKey(field)))
             return false;
         if (!DataMap.ValidNumber(data.Value("play_time_seconds"), 0, DefenseState.MaxExactInteger) || data.Value("play_time_estimated") is not bool) return false;
-        if (!DataMap.ValidNumber(data.Value("version"), 3, 3) || data.N("version") != data.I("version") || data.Value("started") is not bool || data.Value("game") is not DataMap state || data.Value("slots") is not List<object?> slots)
+        if (!DataMap.ValidNumber(data.Value("version"), 4, 4) || data.N("version") != data.I("version") || data.Value("started") is not bool || data.Value("game") is not DataMap state || data.Value("slots") is not List<object?> slots)
             return false;
         if (data.Value("celestial") is not DataMap celestial)
             return false;
@@ -113,6 +119,7 @@ public partial class Main
         var verifier = new DefenseState();
         if (!verifier.Restore(state))
             return false;
+        if (!Battlefield.ValidateLootConsistency(campaignSnapshot.Map("earth"), verifier)) return false;
         var fleet = verifier.Expedition.Serialize().Map("fleet");
         // The current defense campaign has no expedition shipyards. A science
         // launcher must never validate as the old starship production silo.
@@ -155,7 +162,7 @@ public partial class Main
         var anchor = Battle.GetInvasionAnchor();
         return new DataMap
         {
-            ["version"] = 3, ["game"] = Game.Serialize(), ["slots"] = Planet.GetSlots(),
+            ["version"] = 4, ["game"] = Game.Serialize(), ["slots"] = Planet.GetSlots(),
             ["site_directions"] = Planet.GetSiteDirections(), ["started"] = Started,
             ["play_time_seconds"] = PlayTimeSeconds, ["play_time_estimated"] = PlayTimeEstimated,
             ["invasion_anchor"] = new List<object?> { anchor.X, anchor.Y, anchor.Z },
@@ -166,10 +173,9 @@ public partial class Main
 
     private bool RestoreCheckpointData(DataMap data, bool retry)
     {
-        if (!FlushAlienChipsForPersistence())
-            return false;
         FlushCheckpointWrites();
         ClearFactoryCoverage();
+        ResetLootFeedback();
         _researchWindowFocus = "";
         ExitSpectator();
         CancelResourceUpgrade();
@@ -228,8 +234,6 @@ public partial class Main
 
     public bool Restart()
     {
-        if (!FlushAlienChipsForPersistence())
-            return false;
         FlushCheckpointWrites();
         var preferences = Game.CombatSettings.DeepClone();
         if (!Game.Reset())
@@ -242,6 +246,7 @@ public partial class Main
         _checkpointPending = false;
         _waveStartRecord = null;
         ClearFactoryCoverage();
+        ResetLootFeedback();
         _researchWindowFocus = "";
         ExitSpectator();
         CancelResourceUpgrade();

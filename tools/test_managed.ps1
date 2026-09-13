@@ -13,7 +13,7 @@ try {
     # test run can never leak state into the next one.
     $runStamp = Get-Date -Format 'yyyyMMdd-HHmmss-fff'
     foreach ($suite in @('DomainManaged', 'CombatManaged')) {
-        $modes = if ($suite -eq 'CombatManaged') { @('--local-shields', '--coverage', '--bombardment') } else { @('') }
+        $modes = if ($suite -eq 'CombatManaged') { @('', '--local-shields', '--coverage', '--bombardment') } else { @('') }
         foreach ($mode in $modes) {
             $suffix = if ($mode) { '-' + $mode.TrimStart('-').Replace('-', '_') } else { '' }
             $log = Join-Path $projectRoot ('artifacts\managed-suite-' + $suite + $suffix + '.log')

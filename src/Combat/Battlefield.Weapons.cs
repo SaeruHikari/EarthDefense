@@ -73,7 +73,7 @@ public sealed partial class Battlefield
             damage = FrameFiringDamage(d, target, stats, damage);
             var source = WeaponSource(d, stats);
             source["weapon_range"] = TargetRange(d, target);
-            double rate = C.N(stats, kind == "interceptor" ? "fire_rate" : kind + "_fire_rate") * (Clock < C.N(d, "jammed_until") ? CombatCatalog.Current.Values.JammerFireRateMultiplier : 1);
+            double rate = C.N(stats, kind == "interceptor" ? "fire_rate" : kind + "_fire_rate");
             if (Clock < C.N(d, "dense_until"))
                 rate *= C.N(stats, "k2_dense_fire_rate_multiplier", 1);
             d["fire"] = 1 / Math.Max(.3, rate) * Random.Range(.9, 1.1);
@@ -275,8 +275,6 @@ public sealed partial class Battlefield
             double delay = (C.N(stats, "suppression_delay", .5) + C.N(stats, "l3_afterpulse_seconds")) * (C.Large(e) ? .5 : 1);
             e["l3_pulse_ready"] = Clock + Math.Max(1.5, delay * 2);
             e["fire"] = C.N(e, "fire") + delay;
-            if (C.S(e, "skill_phase") == "charging")
-                e["charge_remaining"] = C.N(e, "charge_remaining") + delay;
         }
         AddBurst(C.V(target, "space_position"), CombatScale.Violet, radius * 20);
     }

@@ -44,7 +44,7 @@ public partial class ResearchExtensionsUiChecks : Node
             _app.Game.Minerals = _app.Game.Energy = _app.Game.Science = 1e25;
             _app.Game.AlienPoints = 1000000000000; _app.Game.ResourceCores = 1000;
             _app.Game.Wave = 100; _app.Game.CompletedWaves = 100;
-            _app.Game.RewardKill("boss"); _app.Game.SetDefenseReachStage(3);
+            _app.Game.SetDefenseReachStage(3);
             Prepare("D_N4"); Prepare("M_N1");
             foreach (string id in new[] { "M_S21", "M_S22", "M_S23", "M_N4" })
                 foreach (string parent in DeepTechnology.Definition(id).List("requires").Cast<string>()) Prepare(parent);

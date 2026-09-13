@@ -78,7 +78,7 @@ public partial class WaveRetryChecks : Node
             if (!ProjectSettings.GlobalizePath("user://").Contains("runtime-tests", StringComparison.OrdinalIgnoreCase)) throw new InvalidOperationException("Retry tests require an isolated runtime-tests profile");
             GetWindow().Size = new Vector2I(1440, 900);
             await NewMain();
-            _app.Game.SetCombatSetting("medium_boss_first_wave", 3);
+            Check(DefenseWavePlan.RoleOrder.SequenceEqual(new[] { "claw" }), "retry fixture uses the current ordinary-aircraft wave catalog");
             _app.Game.AddResourcesCheat("minerals", 500); _app.Game.AddResourcesCheat("energy", 500); _app.Game.AddResourcesCheat("science", 100); _app.Game.AddResourcesCheat("resource_cores", 10);
             _app.Battle.Active = true; _app.Battle.Paused = false;
             for (int i = 0; i < 600; i++) _app.Battle.Step(1d / 60);

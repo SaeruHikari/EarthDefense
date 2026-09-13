@@ -90,9 +90,6 @@ public partial class CombatIntelHud : Node2D
             ["name"] = enemy.S("name", enemy.S("kind") switch
             {
                 "scout" => "外星战机",
-                "cruiser" => "外星重舰",
-                "boss" => "外星指挥舰",
-                "small_boss" => "资源运载虫",
                 _ => "外星单位"
             }),
             ["armor"] = armor,

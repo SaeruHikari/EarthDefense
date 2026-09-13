@@ -1,7 +1,4 @@
-﻿kind,minerals,energy,science,score,alien_points,wave_alien_reward,resource_core_setting,first_medium_boss
-scout,9,3,0,30,0,false,,false
-cruiser,22,9,0,90,0,false,,false
-carrier,22,9,0,90,0,false,,false
-small_boss,35,15,0,150,0,false,resource_core_drop_count,false
-boss,120,60,0,500,0,true,,true
-mothership,1800,1200,0,5000,3,false,,false
+kind,minerals,energy,science,score
+scout,9,3,0,30
+carrier,22,9,0,90
+mothership,1800,1200,0,5000

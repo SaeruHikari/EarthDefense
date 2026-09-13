@@ -23,9 +23,8 @@ wave_science_increment,0,0,1000000000000.0,scalar,wave science increment
 wave_score_base,100,0,1000000000000.0,scalar,wave score base
 wave_score_increment,20,0,1000000000000.0,scalar,wave score increment
 wave_shield_budget,20,0,1000000000000.0,scalar,wave shield budget
-alien_reward_base,3,0,1000000000000.0,scalar,alien reward base
-alien_reward_wave_interval,10,0,1000000000000.0,scalar,alien reward wave interval
-alien_reward_stage_increment,0.5,0,1000000000000.0,scalar,alien reward stage increment
+resource_core_drop_chance,0.005,0,1,probability,ordinary aircraft resource core pickup chance
+alien_point_drop_chance,0.0025,0,1,probability,ordinary aircraft alien technology point pickup chance
 laser_intel_wave,10,0,1000000000000.0,scalar,laser intel wave
 kinetic_fire_rate_base,2,0,1000000000000.0,scalar,kinetic fire rate base
 laser_fire_rate_base,1.25,0,1000000000000.0,scalar,laser fire rate base

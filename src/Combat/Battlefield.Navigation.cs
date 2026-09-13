@@ -99,7 +99,7 @@ public sealed partial class Battlefield
         for (int i = 0; i < _targets.Count; i++)
         {
             var enemy = _targets[i]; var position = C.V(enemy, "space_position");
-            _assignmentTargets[i] = new(enemy, C.L(enemy, "uid"), position, position.Normalized(), position.Length(), (C.N(enemy, "hp") + C.N(enemy, "energy_hp")) * 1.35, C.N(enemy, "hp") > 0 && C.S(enemy, "phase") != "retreat", C.Large(enemy), C.S(enemy, "enemy_role_id") is "weaver" or "hatcher" or "jammer");
+            _assignmentTargets[i] = new(enemy, C.L(enemy, "uid"), position, position.Normalized(), position.Length(), (C.N(enemy, "hp") + C.N(enemy, "energy_hp")) * 1.35, C.N(enemy, "hp") > 0 && C.S(enemy, "phase") != "retreat", C.Large(enemy));
             _assignmentTree.Add(position, enemy, i, C.L(enemy, "uid"));
         }
         _assignmentTree.Build();
@@ -125,9 +125,8 @@ public sealed partial class Battlefield
                 {
                     var target = _assignmentTargets[i]; double match = armor.Matches[i];
                     if (!target.Active || match <= 0 || target.Radius > (target.Large ? largeRadius : ordinaryRadius) || home.Dot(target.Normal) < profile.Cosine) { group.Matches[i] = 0; continue; }
-                    bool support = profile.Frame == "K3" && target.Support;
-                    group.Matches[i] = match; group.Support[i] = support;
-                    group.LowerMultiplier = Math.Min(group.LowerMultiplier, (support ? .2 : 1) / Math.Max(.1, match));
+                    group.Matches[i] = match;
+                    group.LowerMultiplier = Math.Min(group.LowerMultiplier, 1 / Math.Max(.1, match));
                 }
                 group.Generation = _assignmentGeneration;
             }
@@ -150,10 +149,10 @@ public sealed partial class Battlefield
     private sealed class AssignmentGroup
     {
         public Vector3 Home; public double Cosine, Sine;
-        public double[] Matches = Array.Empty<double>(); public bool[] Support = Array.Empty<bool>(); public double LowerMultiplier = double.PositiveInfinity; public long Generation = -1;
-        public void Ensure(int count) { if (Matches.Length < count) { int size = Math.Max(count, Matches.Length * 2); Array.Resize(ref Matches, size); Array.Resize(ref Support, size); } }
+        public double[] Matches = Array.Empty<double>(); public double LowerMultiplier = double.PositiveInfinity; public long Generation = -1;
+        public void Ensure(int count) { if (Matches.Length < count) { int size = Math.Max(count, Matches.Length * 2); Array.Resize(ref Matches, size); } }
     }
-    private readonly record struct AssignmentTarget(DataMap Actor, long Uid, Vector3 Position, Vector3 Normal, double Radius, double BudgetLimit, bool Active, bool Large, bool Support);
+    private readonly record struct AssignmentTarget(DataMap Actor, long Uid, Vector3 Position, Vector3 Normal, double Radius, double BudgetLimit, bool Active, bool Large);
     private AssignmentTarget[] _assignmentTargets = Array.Empty<AssignmentTarget>();
     private long _assignmentGeneration;
     private readonly Dictionary<Profile, AssignmentGroup> _assignmentGroups = new();
@@ -168,7 +167,7 @@ public sealed partial class Battlefield
             var target = Targets[entry.Order]; long uid = target.Uid; int count = Counts.GetValueOrDefault(uid);
             if (count >= 8 || Budgets.GetValueOrDefault(uid) >= target.BudgetLimit) return double.PositiveInfinity;
             double score = (distanceSquared + count * .4) / Math.Max(.1, match);
-            return Group.Support[entry.Order] ? score * .2 : score;
+            return score;
         }
         public bool Accept(in PointSearchTree<DataMap>.Entry entry) => CombatGeometry.HasLineOfSight(Origin, entry.Position);
         public bool MayContain(Vector3 center, float radius) => SphereIntersectsDirectionCone(center, radius, Group.Home, Group.Cosine, Group.Sine);

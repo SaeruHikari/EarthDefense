@@ -37,7 +37,7 @@ public static class PerkCatalog
 		foreach (var (key, value) in addition)
 			if (key == "spawn_multiplier")
 				result[key] = result.N(key) * DataMap.Number(value);
-			else if (key.EndsWith("_multiplier") && key != "slow_boss_multiplier")
+			else if (key.EndsWith("_multiplier"))
 				result[key] = result.N(key) + DataMap.Number(value) - 1;
 			else if (key == "capacity_add")
 				result[key] = result.L(key) + DataMap.Integer(value);
@@ -72,7 +72,7 @@ public static class PerkCatalog
 			"a_laser_erosion" => $"每层易伤 +{Percent(e.N("erosion_damage_per_stack"))} · 最多 {e.I("erosion_max_stacks")} 层 · 持续 {e.N("erosion_duration"):F0} 秒",
 			"a_missile_guidance" => $"导弹速度 +{Percent(e.N("projectile_speed_multiplier") - 1)} · 伤害 +{Percent(e.N("damage_multiplier") - 1)}",
 			"a_missile_cluster" => $"{e.I("cluster_fragments")} 枚子弹药 · 每枚 {Percent(e.N("cluster_damage_retention"))} 伤害 · 不递归",
-			"a_missile_slow" => $"爆炸减速 {Percent(e.N("slow_fraction"))} · {e.N("slow_duration"):F1} 秒 · Boss 效果减半",
+			"a_missile_slow" => $"爆炸减速 {Percent(e.N("slow_fraction"))} · {e.N("slow_duration"):F1} 秒",
 			_ => ""
 		};
 		if (text.Length > 0)

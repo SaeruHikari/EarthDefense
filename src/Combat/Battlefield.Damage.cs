@@ -8,7 +8,7 @@ namespace Earthward.Combat;
 public sealed partial class Battlefield
 {
     private static readonly string[] TechPacketKeys = "missile_large_heavy_multiplier saturation_hit_count saturation_damage_multiplier saturation_cooldown linked_factory_count linked_factory_window linked_damage_multiplier linked_cooldown armor_breach_seconds breached_kinetic_heavy_coefficient kinetic_suppress_seconds laser_regen_delay shield_break_stagger_seconds shield_break_field_radius shield_break_field_duration laser_first_energy_multiplier laser_first_energy_cooldown laser_energy_multiplier post_shield_kinetic_multiplier post_shield_seconds proximity_fuse_radius".Split(' ');
-    private static readonly string[] PerkEffectKeys = "big_target_damage_multiplier launch_damage_multiplier launch_damage_seconds death_spawn_reduction_seconds kill_spawn_reduction_seconds kill_spawn_reduction_cooldown pierce_extra_targets pierce_damage_retention ricochet_targets ricochet_damage_retention refraction_targets refraction_damage_retention erosion_damage_per_stack erosion_max_stacks erosion_duration cluster_fragments cluster_damage_retention slow_fraction slow_duration slow_boss_multiplier k2_dense_hits_required k2_dense_fire_rate_multiplier k2_dense_duration k2_reload_reduction_seconds k2_reload_cooldown k3_support_first_multiplier k3_mobile_warmup_retention k3_peak_damage_multiplier m2_delayed_fraction m2_delayed_seconds m2_shock_required m2_next_damage_multiplier m2_shock_cooldown m3_drill_heavy_multiplier m3_escort_lock_multiplier m3_escort_radius l2_memory_seconds l2_memory_fraction l2_energy_resonance_per_second l2_resonance_cap l3_pulse_radius_multiplier l3_damage_multiplier l3_afterpulse_seconds".Split(' ');
+    private static readonly string[] PerkEffectKeys = "big_target_damage_multiplier launch_damage_multiplier launch_damage_seconds death_spawn_reduction_seconds kill_spawn_reduction_seconds kill_spawn_reduction_cooldown pierce_extra_targets pierce_damage_retention ricochet_targets ricochet_damage_retention refraction_targets refraction_damage_retention erosion_damage_per_stack erosion_max_stacks erosion_duration cluster_fragments cluster_damage_retention slow_fraction slow_duration k2_dense_hits_required k2_dense_fire_rate_multiplier k2_dense_duration k2_reload_reduction_seconds k2_reload_cooldown k3_first_hit_multiplier k3_mobile_warmup_retention k3_peak_damage_multiplier m2_delayed_fraction m2_delayed_seconds m2_shock_required m2_next_damage_multiplier m2_shock_cooldown m3_drill_heavy_multiplier m3_escort_lock_multiplier m3_escort_radius l2_memory_seconds l2_memory_fraction l2_energy_resonance_per_second l2_resonance_cap l3_pulse_radius_multiplier l3_damage_multiplier l3_afterpulse_seconds".Split(' ');
     private static DataMap Capture(DataMap stats, string[] keys)
     {
         var result = new DataMap();
@@ -177,21 +177,7 @@ public sealed partial class Battlefield
         _targets.Remove(e);
         _nearestTargetDirty = true;
         _sectorsDirty = true;
-        foreach (var id in C.A(e, "energy_links"))
-        {
-            var ward = EnemyByUid(DataMap.Integer(id));
-            if (ward != null && C.L(ward, "energy_owner_uid") == C.L(e, "uid"))
-            {
-                ward["energy_hp"] = 0d;
-                ward["shield_broken"] = true;
-                ward["energy_broken_at"] = Clock;
-            }
-        }
-        Game.RewardEnemy(e);
-        if (C.S(e, "kind") == "boss")
-            EventNotice?.Invoke("中型 Boss 已击毁 · 外星科技点已回收");
-        else if (C.S(e, "kind") == "small_boss" || C.B(e, "resource_core_carrier"))
-            EventNotice?.Invoke($"小 Boss 已击毁 · 资源核心 +{Game.CombatSettings.I("resource_core_drop_count", 5)}");
+        SpawnEnemyLoot(e);
         AddBurst(C.V(e, "space_position"), CombatScale.Coral, C.N(e, "size") * 1.6);
         if (C.B(e, "post_carrier") && _postSpawned >= C.I(_postPlan, "carrier_count", 1) && FrontierCohortStatus().I("alive") == 0)
         {
@@ -236,14 +222,14 @@ public sealed partial class Battlefield
             actor["first_energy_ready"] = Clock + C.Packet(source, "laser_first_energy_cooldown", 3);
             actor["first_energy_uid"] = C.L(e, "uid");
         }
-        if (frame == "K3" && primary && C.S(e, "enemy_role_id") is "weaver" or "hatcher" or "jammer" && actor != null)
+        if (frame == "K3" && primary && C.S(e, "kind") == "scout" && EnemyArmor.Layer(e) == "light" && actor != null)
         {
-            var marked = C.A(e, "support_marked_by");
+            var marked = C.A(e, "first_hit_by");
             if (!marked.Any(v => DataMap.Integer(v) == C.L(actor, "uid")) && marked.Count < 64)
             {
-                damage *= C.N(effects, "k3_support_first_multiplier", 1);
+                damage *= C.N(effects, "k3_first_hit_multiplier", 1);
                 marked.Add(C.L(actor, "uid"));
-                e["support_marked_by"] = marked;
+                e["first_hit_by"] = marked;
             }
         }
         if (frame == "M3" && EnemyArmor.Layer(e) == "heavy")
@@ -357,8 +343,6 @@ public sealed partial class Battlefield
         double fraction = C.Clamp(C.N(effects, "slow_fraction"), 0, .6);
         if (fraction <= 0 || C.N(e, "hp") <= 0)
             return;
-        if (C.S(e, "kind") is "small_boss" or "boss" or "carrier" or "mothership")
-            fraction *= C.Clamp(C.N(effects, "slow_boss_multiplier", .5), 0, 1);
         if (C.N(e, "perk_slow_remaining") <= 0)
             AddBurst(C.V(e, "space_position"), new("82d6f2"), 9);
         e["perk_slow_fraction"] = Math.Max(fraction, C.N(e, "perk_slow_fraction"));

@@ -20,7 +20,7 @@ internal static class OpeningCombatChecks
             Near(plan.N("duration"), 45, "deployment is spread across forty-five seconds at wave " + wave);
             Near(plan.N("cycle_duration"), 60, "every opening wave lasts sixty seconds at wave " + wave);
             var entries = Enumerable.Range(0, (int)plan.L("planned_count")).Select(index => DefenseWavePlan.Entry(plan, index)).ToList();
-            Check(entries.Count(entry => entry.S("kind") == "small_boss") == 1, "reduced waves still include exactly one resource-core carrier at wave " + wave);
+            Check(entries.All(entry => entry.S("kind") == "scout" && entry.S("role") == "claw"), "every opening wave contains only the ordinary aircraft at wave " + wave);
         }
         battle.StartWave();
         battle.AdvanceFixedSchedule(44.9);
@@ -66,8 +66,8 @@ internal static class OpeningCombatChecks
             }
             var elite = new DataMap { ["kind"] = "scout" };
             EnemyCatalog.Apply(elite, new DataMap { ["wave"] = wave, ["role"] = "claw", ["index"] = 12 }, settings);
-            Check(elite.B("elite") == (wave >= 5), "elite pressure starts at wave five: " + wave);
-            Near(elite.N("attack_damage"), unit.N("attack_damage") * (wave >= 5 ? 1.5 : 1), "elite shot multiplier follows the gentler opening curve at wave " + wave);
+            Check(!elite.ContainsKey("elite"), "deployment order never creates a second aircraft variant: " + wave);
+            Near(elite.N("attack_damage"), unit.N("attack_damage"), "all ordinary aircraft at the same wave share identical shot damage: " + wave);
         }
         Near(catalog.Values.DamageMultiplierForWave(21) / catalog.Values.DamageMultiplierForWave(20), .3825 / .35,
             "wave twenty-one eases into recovery instead of abruptly removing the damage buffer");

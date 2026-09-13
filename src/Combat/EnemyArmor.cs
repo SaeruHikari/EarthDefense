@@ -18,8 +18,6 @@ public static class EnemyArmor
         var tech = C.M(context, "tech_abilities");
         if (layer == "heavy" && family == "kinetic" && clock < C.N(enemy, "armor_breach_until", -1))
             result = C.N(enemy, "armor_breach_coefficient", .35);
-        if (layer != "energy" && clock < C.N(enemy, "armor_exposed_until", -1))
-            result *= CombatCatalog.Current.Values.ArmorExposedMultiplier;
         if (layer == "light")
         {
             result *= Math.Max(0, C.N(context, "light_damage_multiplier", 1));
@@ -29,7 +27,6 @@ public static class EnemyArmor
         if (layer == "energy" && family == "beam")
         {
             result *= Math.Max(0, C.N(context, "energy_damage_multiplier", 1)) * (1 + Math.Max(0, C.N(context, "laser_energy_damage_bonus")));
-            // Explicit historical in-flight values remain valid; the new L_G1 is already compiled into general laser damage.
             result *= C.Packet(context, "laser_energy_multiplier", 1);
         }
         if (layer != "energy" && family == "kinetic" && C.B(tech, "K_A3") && clock < C.N(enemy, "energy_broken_at", -10) + C.Packet(context, "post_shield_seconds", 3))

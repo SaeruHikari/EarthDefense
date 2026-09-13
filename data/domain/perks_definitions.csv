@@ -1,4 +1,4 @@
-﻿parent_id,position,color,description,display_key,display_mode,effect_label,icon,id,layer,name,priority,stage,has_airframes,has_kinds
+parent_id,position,color,description,display_key,display_mode,effect_label,icon,id,layer,name,priority,stage,has_airframes,has_kinds
 root,0,70d9f4,初始增加 1 个工厂编制，此后每升 5 级再增加 1 个；缺额由工厂正常补造。,,,,hangar,expanded_hangar,factory,扩展机库,50,0,true,true
 root,1,7fe0bf,提高工厂补造速度，已有生产进度继续保留。,,,,assembly,assembly,factory,自动装配,51,0,true,true
 root,2,e5be79,提高该工厂所属飞机的武器伤害。,,,,targeting,targeting,factory,精准火控,20,0,true,true
@@ -9,7 +9,7 @@ root,6,ecc58a,拦截机专属产线，为所属飞机提供更高伤害的动能
 root,7,dfbc80,拦截机专属。提高所属飞机的开火频率。,,,,assembly,f_kinetic_feed,factory,高速供弹产线,40,0,true,true
 root,8,f1a783,所属拦截机阵亡后，仅在本厂缺编并补造时推进当前进度；满编不囤积，不跨工厂生效。,,,,last_stand,f_kinetic_mobilize,factory,战损应急动员,100,1,true,true
 root,9,cbb2ff,激光机专属。增强所属飞机的光束伤害。,,,,laser,f_laser_lattice,factory,晶格增益产线,11,0,true,true
-root,10,c0a5ef,激光机专属。提高对大型战舰、Boss和工事的伤害。,,,,targeting,f_laser_focus,factory,大型目标聚焦,41,0,true,true
+root,10,c0a5ef,激光机专属。提高对母舰和工事的伤害。,,,,targeting,f_laser_focus,factory,大型目标聚焦,41,0,true,true
 root,11,e0c3ff,所属激光机新造后的首次开火起8秒获得额外伤害；每条生命仅一次，维修重飞不重置预充。,,,,laser,f_laser_precharge,factory,出厂超频预充,101,1,true,true
 root,12,ffa887,导弹机专属。提高所属飞机导弹伤害。,,,,missile,f_missile_warhead,factory,高能战斗部产线,12,0,true,true
 root,13,f6ae8e,导弹机专属。扩大所属飞机导弹的爆炸范围。,,,,cluster,f_missile_payload,factory,扩散装药产线,42,0,true,true
@@ -25,10 +25,10 @@ root,22,bfa0f1,主光束叠加短时易伤标记，所有伤害读取同一有�
 root,23,ffb190,导弹机专属。直接提高该编制飞机的导弹伤害。,,,,missile,a_missile_charge,aircraft,聚能战斗部,2,0,true,true
 root,24,ffc49e,导弹机专属。同时提高导弹速度与伤害。,,,,navigation,a_missile_guidance,aircraft,末段加速制导,32,0,true,true
 root,25,ffa883,主导弹爆炸时生成三个小范围子弹药；子弹药不再生成集束。,,,,cluster,a_missile_cluster,aircraft,集束子弹药,114,1,true,true
-root,26,f6c49f,爆炸短暂减速目标，Boss减速效果减半；同类减速取较强效果。,,,,slow,a_missile_slow,aircraft,离子滞速装药,115,1,true,true
+root,26,f6c49f,爆炸短暂减速目标；同类减速取较强效果。,,,,slow,a_missile_slow,aircraft,离子滞速装药,115,1,true,true
 root,27,d1b3f4,扫荡机持续命中多个不同轻甲目标后，短时提高枪机效率。,k2_dense_fire_rate_multiplier,bonus,枪机效率,kinetic,a_k2_dense_fire,aircraft,稠密火网,120,1,true,true
 root,28,d1b3f4,扫荡机击毁轻甲后缩短下一次装填，每秒最多触发一次。,k2_reload_reduction_seconds,seconds,装填推进,assembly,a_k2_recovery,aircraft,破片回收,121,1,true,true
-root,29,d1b3f4,猎隼机对轻甲支援单位的首次有效主击增伤。,k3_support_first_multiplier,bonus,标定首击,targeting,a_k3_marked_shot,aircraft,标定射击,122,1,true,true
+root,29,d1b3f4,猎隼机对轻甲单位的首次有效主击增伤。,k3_first_hit_multiplier,bonus,标定首击,targeting,a_k3_marked_shot,aircraft,标定射击,122,1,true,true
 root,30,d1b3f4,猎隼机移动中保留准备进度，峰值伤害降低10%。,k3_mobile_warmup_retention,percent,移动准备保留,navigation,a_k3_mobile_gun,aircraft,机动射台,123,1,true,true
 root,31,d1b3f4,轰击机将一次爆炸的既定预算分为立即与延迟两次覆盖，总预算不增加。,m2_delayed_fraction,percent,延迟预算比例,cluster,a_m2_dual_zone,aircraft,双域引爆,124,1,true,true
 root,32,d1b3f4,轰击机范围命中三个重甲后，强化下一次主弹；触发有冷却。,m2_next_damage_multiplier,bonus,强化主弹,missile,a_m2_shock_charge,aircraft,震荡推进,125,1,true,true

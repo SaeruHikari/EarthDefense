@@ -118,14 +118,11 @@ public sealed partial class Battlefield
         _segmentStart = 0;
         _segmentCount = WaveTotal;
         _segmentSpawned = 0;
-        _bossSpawned = false;
-        _smallBossSpawned = false;
         _spawnClock = _spawnDuration / Math.Max(1, WaveTotal);
         SyncFleet();
         WaveStarted?.Invoke(wave, GetWaveSpawnPlan());
         EventNotice?.Invoke($"第{wave:00}波 · {_spawnDuration:0}秒部署窗口，{C.N(_wavePlan, "cycle_duration"):0}秒防御周期");
     }
-    public bool ShouldSpawnMediumBoss(long wave) => wave >= 1 && (wave == Math.Max(1, Game.CombatSettings.L("medium_boss_first_wave", 3)) || wave % Math.Max(1, Game.CombatSettings.L("medium_boss_interval", 5)) == 0);
     private DataMap MakeWavePlan(long wave)
     {
         var settings = Game.CombatSettings;
@@ -141,7 +138,7 @@ public sealed partial class Battlefield
             int live = FrontierCohortStatus().I("alive") + carriers;
             count = (long)Math.Ceiling((basis + growth * (double)Math.Max(0, wave - 1)) * multiplier * live / Math.Max(1, C.I(_postPlan, "carrier_count", 1)));
         }
-        var plan = DefenseWavePlan.Build(wave, count, duration, cycle, _postDefense || ShouldSpawnMediumBoss(wave), stage, carriers);
+        var plan = DefenseWavePlan.Build(wave, count, duration, cycle, stage, carriers);
         plan["base_count"] = basis;
         plan["growth"] = growth;
         plan["count_multiplier"] = multiplier;
@@ -210,20 +207,6 @@ public sealed partial class Battlefield
         while (_segmentSpawned < due && WaveRemaining > 0)
         {
             var entry = DefenseWavePlan.Entry(_wavePlan, _spawned);
-            string kind = C.S(entry, "kind");
-            if (kind == "small_boss" && _smallBossSpawned || kind == "boss" && _bossSpawned)
-            {
-                entry["kind"] = "scout";
-                entry["role"] = "claw";
-            }
-            bool bossDue = C.B(_wavePlan, "medium") && !_bossSpawned;
-            int reserved = (_smallBossSpawned ? 0 : 1) + (bossDue ? 1 : 0);
-            if (WaveRemaining <= reserved)
-                entry["kind"] = _smallBossSpawned ? "boss" : "small_boss";
-            if (C.S(entry, "kind") == "small_boss")
-                _smallBossSpawned = true;
-            if (C.S(entry, "kind") == "boss")
-                _bossSpawned = true;
             if (!SpawnPlannedEntry(entry))
             {
                 CancelSpawnWindow();
@@ -253,6 +236,7 @@ public sealed partial class Battlefield
     }
     public DataMap? SpawnEnemy(string kind, DataMap? planned = null, Vector3 originOverride = default)
     {
+        if (kind is not ("scout" or "carrier")) throw new ArgumentException("Unknown enemy kind: " + kind, nameof(kind));
         EnsureInvasionAnchor();
         var front = originOverride.LengthSquared() > .01 ? new DataMap { ["position"] = originOverride, ["front_id"] = "outer", ["front_name"] = "" } : _invasion.SpawnPoint(Math.Max(1, Game.Wave), Random);
         if (front.Count == 0)
@@ -273,14 +257,9 @@ public sealed partial class Battlefield
         {
             ["wave"] = Game.Wave,
             ["stage"] = 0,
-            ["role"] = kind == "scout" ? "claw" : "rock"
+            ["role"] = kind == "scout" ? "claw" : ""
         };
         EnemyCatalog.Apply(enemy, metadata, Game.CombatSettings);
-        if (kind == "boss")
-        {
-            enemy["reward_event_id"] = $"earth:wave:{Game.Wave}:medium:0";
-            EventNotice?.Invoke("警告：外星旗舰正在从深空进入烽烟阵位");
-        }
         enemy["front_id"] = front["front_id"];
         enemy["front_name"] = front["front_name"];
         enemy["spawn_radius"] = (double)position.Length();
@@ -314,25 +293,10 @@ public sealed partial class Battlefield
             origin = _invasion.FrontierAircraftSpawn(C.V(owner, "space_position"), Random);
             owner["hangar_open"] = .7;
         }
-        if (kind == "scout" && C.S(entry, "role") == "claw" && _spawnElapsed < _spawnDuration - 2)
-        {
-            foreach (var owner in Enemies)
-            {
-                if (C.S(owner, "enemy_role_id") != "hatcher" || C.L(owner, "wave") != C.L(entry, "wave") || C.I(owner, "cargo_claimed") >= 2)
-                    continue;
-                var cargo = C.A(owner, "cargo");
-                cargo.Add(new DataMap { ["entry"] = entry.DeepClone(), ["release_at"] = Clock + 1 });
-                owner["cargo"] = cargo;
-                owner["cargo_claimed"] = C.I(owner, "cargo_claimed") + 1;
-                return true;
-            }
-        }
         var enemy = SpawnEnemy(kind, entry, origin);
         if (enemy == null)
             return false;
         enemy["wave"] = C.L(entry, "wave");
-        if (kind == "boss")
-            enemy["reward_event_id"] = $"earth:wave:{C.L(entry, "wave")}:medium:0";
         return true;
     }
     private Vector3 FacilitySpaceTarget(Vector3 origin)
@@ -372,7 +336,7 @@ public sealed partial class Battlefield
         EnemyCatalog.Apply(prototype, new()
         {
             ["wave"] = Math.Max(1, waveValue < 0 ? Game.Wave : waveValue),
-            ["role"] = kind == "cruiser" ? "rock" : "claw",
+            ["role"] = "claw",
             ["stage"] = 0
         }, Game.CombatSettings);
         return C.N(prototype, "max_hp");
@@ -382,22 +346,16 @@ public sealed partial class Battlefield
     {
         foreach (var enemy in Enemies.Concat(Motherships.Values))
         {
-            double previous = Math.Max(.001, C.N(enemy, "max_hp")), fraction = C.Clamp(C.N(enemy, "hp") / previous, 0, 1), shieldFraction = C.N(enemy, "energy_hp") / Math.Max(.001, C.N(enemy, "energy_max_hp")), shieldRatio = C.N(enemy, "energy_max_hp") / previous;
+            double previous = Math.Max(.001, C.N(enemy, "max_hp")), fraction = C.Clamp(C.N(enemy, "hp") / previous, 0, 1);
             var proto = new DataMap { ["kind"] = C.S(enemy, "kind") };
             EnemyCatalog.Apply(proto, new()
             {
                 ["wave"] = C.L(enemy, "wave", Game.Wave),
                 ["stage"] = C.I(enemy, "defense_stage"),
-                ["role"] = C.S(enemy, "enemy_role_id", "claw"),
-                ["index"] = C.B(enemy, "elite") ? 12 : 0
+                ["role"] = "claw"
             }, Game.CombatSettings);
             enemy["max_hp"] = proto["max_hp"];
             enemy["hp"] = C.N(proto, "max_hp") * fraction;
-            if (enemy.ContainsKey("energy_hp"))
-            {
-                enemy["energy_max_hp"] = C.N(proto, "max_hp") * shieldRatio;
-                enemy["energy_hp"] = C.N(enemy, "energy_max_hp") * shieldFraction;
-            }
             foreach (var key in new[] { "attack_cooldown", "attack_damage", "ground_damage", "tactical_speed", "speed", "base_speed" })
                 enemy[key] = proto[key];
             if (C.S(enemy, "kind") != "mothership")
@@ -451,7 +409,7 @@ public sealed partial class Battlefield
         position = C.V(_invasion.FrontierSpawnPoint(_postSpawned, C.I(_postPlan, "carrier_count"), C.N(_postPlan, "frontier_radius"), Random), "position");
         var heading = -position.Normalized();
         double health = C.N(_postPlan, "carrier_health", 600);
-        var e = new DataMap { ["uid"] = NewUid(), ["kind"] = "carrier", ["space_position"] = position, ["velocity"] = Vector3.Zero, ["tangent"] = heading, ["world_up"] = position.Normalized(), ["target_space"] = FacilitySpaceTarget(position), ["speed"] = .31 * GetEnemySpeedMultiplier(), ["base_speed"] = .31, ["phase"] = "approach", ["bombard_time"] = 0d, ["bombard_duration"] = 16d, ["hp"] = health, ["max_hp"] = health, ["base_size"] = 48d, ["size"] = 30d, ["hit_radius"] = .46, ["wave"] = Game.Wave, ["hit"] = 0d, ["age"] = 0d, ["fire"] = 1d, ["post_carrier"] = true, ["resource_core_carrier"] = false, ["elite"] = _postSpawned == 0, ["post_wave_id"] = C.S(_postPlan, "id"), ["post_damage_multiplier"] = C.N(_postPlan, "damage_multiplier", 1), ["locked_volley_count"] = C.I(_postPlan, "volley_count", 1), ["hangar_remaining"] = 0, ["hangar_clock"] = .5, ["hangar_open"] = 0d, ["front_id"] = "post_defense", ["front_name"] = "", ["frontier_radius"] = (double)position.Length() };
+        var e = new DataMap { ["uid"] = NewUid(), ["kind"] = "carrier", ["space_position"] = position, ["velocity"] = Vector3.Zero, ["tangent"] = heading, ["world_up"] = position.Normalized(), ["target_space"] = FacilitySpaceTarget(position), ["speed"] = .31 * GetEnemySpeedMultiplier(), ["base_speed"] = .31, ["phase"] = "approach", ["bombard_time"] = 0d, ["bombard_duration"] = 16d, ["hp"] = health, ["max_hp"] = health, ["base_size"] = 48d, ["size"] = 30d, ["hit_radius"] = .46, ["wave"] = Game.Wave, ["hit"] = 0d, ["age"] = 0d, ["fire"] = 1d, ["post_carrier"] = true, ["post_wave_id"] = C.S(_postPlan, "id"), ["post_damage_multiplier"] = C.N(_postPlan, "damage_multiplier", 1), ["locked_volley_count"] = C.I(_postPlan, "volley_count", 1), ["hangar_remaining"] = 0, ["hangar_clock"] = .5, ["hangar_open"] = 0d, ["front_id"] = "post_defense", ["front_name"] = "", ["frontier_radius"] = (double)position.Length() };
         Enemies.Add(e);
         _targets.Add(e);
         _enemyById[C.L(e, "uid")] = e;
@@ -503,11 +461,11 @@ public sealed partial class Battlefield
         string id = C.S(vessel, "front_id");
         if (!_invasion.DestroyFront(id))
             return;
-        Game.RewardKill("mothership");
+        SpawnEnemyLoot(vessel);
         AddBurst(C.V(vessel, "space_position"), CombatScale.Coral, 125);
         Motherships.Remove(id);
         SyncMotherships();
-        EventNotice?.Invoke("外星母舰已击毁 · 该方向停止增援 · 外星点 +3");
+        EventNotice?.Invoke("外星母舰已击毁 · 该方向停止增援 · 点击物资回收");
         if (WaveRunning)
         {
             int alive = _invasion.FrontsForWave(Game.Wave).Count;
@@ -515,8 +473,7 @@ public sealed partial class Battlefield
                 CancelSpawnWindow();
             else
             {
-                int reserve = (_smallBossSpawned ? 0 : 1) + (C.B(_wavePlan, "medium") && !_bossSpawned ? 1 : 0);
-                WaveRemaining = Math.Max(Math.Min(WaveRemaining, reserve), (long)Math.Floor(WaveRemaining * (double)alive / (alive + 1)));
+                WaveRemaining = (long)Math.Floor(WaveRemaining * (double)alive / (alive + 1));
                 WaveTotal = _spawned + WaveRemaining;
                 _segmentStart = _spawnElapsed;
                 _segmentCount = WaveRemaining;

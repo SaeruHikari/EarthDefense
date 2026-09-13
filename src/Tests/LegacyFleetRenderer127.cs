@@ -28,10 +28,8 @@ public sealed class LegacyFleetRenderer127
     private readonly Dictionary<string, Part[]> _prototypes = new();
     private readonly ShaderMaterial _warning = new() { Shader = GD.Load<Shader>("res://shaders/aircraft_critical.gdshader") };
     private static readonly HashSet<string> Frames = new() { "K1", "K2", "K3", "M1", "M2", "M3", "L1", "L2", "L3" };
-    private static readonly HashSet<string> Roles = new() { "claw", "needle", "rock", "siege", "prism", "weaver", "hatcher", "jammer" };
     private static readonly Dictionary<string, float> FrameScales = AirframeCatalog.Definitions.ToDictionary(row => row.S("id"), row => (float)row.N("scale_multiplier", 1));
     private static readonly Dictionary<string, string> FrameVisuals = Frames.ToDictionary(id => id, id => "airframe/" + id);
-    private static readonly Dictionary<string, string> RoleVisuals = Roles.ToDictionary(id => id, id => "enemy/" + id);
     public int BatchCount => _buckets.Values.Sum(bucket => bucket.Nodes.Length);
     public int PrototypePartCount => _prototypes.Values.Sum(parts => parts.Length);
     public LegacyFleetRenderer127(Node3D space, Node3D surface)
@@ -57,18 +55,11 @@ public sealed class LegacyFleetRenderer127
                 return "projectile/laser";
             return "projectile/interceptor";
         }
-        if (kind is "meteor" or "carrier" or "mothership")
+        if (kind is "carrier" or "mothership")
             return kind;
-        if (enemy)
-        {
-            string boss = data.S("boss_variant_id");
-            if (boss is "brood" or "forge" or "prism")
-                return boss switch { "brood" => "boss/brood", "forge" => "boss/forge", _ => "boss/prism" };
-            string role = data.S("enemy_role_id");
-            if (Roles.Contains(role))
-                return RoleVisuals[role];
-            return kind is "scout" or "cruiser" or "small_boss" or "boss" ? kind : "enemy/" + (role.Length > 0 ? role : kind);
-        }
+        // Retain the legacy pose/upload algorithm while comparing the same
+        // current model catalog as FleetRenderer in performance regressions.
+        if (enemy) return "enemy/claw";
         string frame = data.S("airframe_id", kind == "laser" ? "L1" : kind == "missile" ? "M1" : "K1");
         string baseFrame = kind == "laser" ? "L1" : kind == "missile" ? "M1" : "K1";
         return FrameVisuals.GetValueOrDefault(frame, FrameVisuals[baseFrame]);
@@ -137,7 +128,7 @@ public sealed class LegacyFleetRenderer127
             if (actor.S("kind") == "meteor")
                 transform = transform.RotatedLocal(Vector3.Up, (float)time * .43f + uid * .71f);
             double hp = actor.N("hp", 1), max = actor.N("max_hp", 1);
-            bool critical = !projectile && max > 0 && hp > 0 && hp <= max * .3 && (category == "drones" || actor.S("kind") is "scout" or "cruiser") && !actor.B("post_carrier");
+            bool critical = !projectile && max > 0 && hp > 0 && hp <= max * .3 && (category == "drones" || actor.S("kind") == "scout") && !actor.B("post_carrier");
             string visual = VisualKey(actor, enemy, projectile);
             var bucket = GetBucket(category, visual, inSpace, critical);
             bucket.Transforms.Add(transform);
